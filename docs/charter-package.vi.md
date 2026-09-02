@@ -8,16 +8,18 @@
 <tr><td>Dự án</td><td>Xây dựng và triển khai phần mềm quản lý trung tâm đào tạo</td></tr>
 <tr><td>Tên sản phẩm</td><td><mark>[tên sản phẩm — sẽ quyết định sau]</mark></td></tr>
 <tr><td>Ngân sách</td><td>700.000.000 VNĐ (700 triệu đồng)</td></tr>
-<tr><td>Thời gian</td><td>5 tháng — 14/09/2026 đến 05/02/2027</td></tr>
+<tr><td>Thời gian</td><td>5 tháng — 14/09/2026 đến 05/02/2027 (20,6 tuần thực tế)</td></tr>
 <tr><td>Quy mô nhân sự</td><td>5 người toàn thời gian (1 PM/BA, 3 lập trình viên, 1 kiểm thử)</td></tr>
-<tr><td>Khách hàng</td><td>Đỗ Thị Bích Ngọc — chủ sở hữu kiêm giám đốc trung tâm đào tạo</td></tr>
-<tr><td>Phiên bản tài liệu</td><td>1.0</td></tr>
+<tr><td>Khách hàng</td><td><mark>Đỗ Thị Bích Ngọc — chủ sở hữu kiêm giám đốc trung tâm đào tạo</mark></td></tr>
+<tr><td>Phiên bản tài liệu</td><td>2.0</td></tr>
 <tr><td>Ngày lập</td><td>02/09/2026</td></tr>
 </table>
 
 </div>
 
-<p class="note">Phạm vi tài liệu: Phần 1 là đặc tả yêu cầu bản rút gọn; Phần 2 là tuyên bố dự án, trình bày trước theo danh mục thành phần của Bảng 1.1 trong <em>A Project Manager's Book of Forms</em> (ấn bản 3), sau đó theo đúng biểu mẫu PROJECT CHARTER 4 trang. Tên khách hàng và toàn bộ số liệu là giả định cho bài tập học phần, được liệt kê ở mục 1.7.</p>
+<p class="note">Phạm vi tài liệu: Phần 1 là đặc tả yêu cầu bản rút gọn; Phần 2 là tuyên bố dự án, trình bày trước theo danh mục thành phần của Bảng 1.1 trong <em>A Project Manager's Book of Forms</em> (ấn bản 3), sau đó theo đúng biểu mẫu PROJECT CHARTER 4 trang; Phần 3 là nhật ký prompt theo yêu cầu số 4 của đề bài.</p>
+
+<p class="note"><strong>Cách đọc phần tô nền vàng.</strong> <mark>Nền vàng</mark> đánh dấu nội dung không thể khẳng định đúng hay sai từ đề bài: thông tin khách hàng do nhóm tự đặt ra, số liệu ước lượng, và những mốc ngày cần đối chiếu với lịch thực tế hoặc với khách hàng thật. Nội dung không tô nền là nội dung <em>đề bài cho sẵn</em> (ngân sách 700 triệu đồng, thời gian 5 tháng, quy mô 4–6 người) hoặc là quyết định thiết kế có chủ ý của tài liệu này (danh sách chức năng F01–F11, yêu cầu phi chức năng N01–N08, cấu trúc các mốc). Ô để trống nghĩa là không có thông tin và cũng không đưa ra được giả định hợp lý. Toàn bộ giả định được tập hợp ở mục 1.7.</p>
 
 <div class="pagebreak"></div>
 
@@ -25,7 +27,7 @@
 
 ### 1.1 Mô tả sản phẩm
 
-Khách hàng, Đỗ Thị Bích Ngọc, sở hữu và điều hành một trung tâm đào tạo ngoài giờ tư nhân với khoảng 1.200 học viên đang học, 35 giáo viên và 3 cơ sở trong cùng một thành phố. Trung tâm dạy tiếng Anh, toán và kỹ năng tin học theo các khóa cố định từ 24 đến 48 buổi. Hiện nay trung tâm vận hành bằng sổ giấy, bảng tính và nhóm chat: danh sách học viên nằm trong Excel, điểm danh ghi trên phiếu in, công nợ học phí do kế toán theo dõi ở một tệp riêng, phụ huynh được thông báo bằng tin nhắn thủ công. Hệ quả là dữ liệu bị nhập trùng lặp, phòng học và giáo viên bị xếp trùng lịch, học phí thu trễ, và không có bức tranh tin cậy về doanh thu hay tỷ lệ lấp đầy lớp.
+Khách hàng, <mark>Đỗ Thị Bích Ngọc</mark>, sở hữu và điều hành một trung tâm đào tạo ngoài giờ tư nhân với khoảng <mark>1.200 học viên đang học, 35 giáo viên và 3 cơ sở</mark> trong cùng một thành phố. Trung tâm dạy tiếng Anh, toán và kỹ năng tin học theo các khóa cố định từ 24 đến 48 buổi. Hiện nay trung tâm vận hành bằng sổ giấy, bảng tính và nhóm chat: danh sách học viên nằm trong Excel, điểm danh ghi trên phiếu in, công nợ học phí do kế toán theo dõi ở một tệp riêng, phụ huynh được thông báo bằng tin nhắn thủ công. Hệ quả là dữ liệu bị nhập trùng lặp, phòng học và giáo viên bị xếp trùng lịch, học phí thu trễ, và không có bức tranh tin cậy về doanh thu hay tỷ lệ lấp đầy lớp.
 
 Hệ thống (tên sản phẩm <mark>[tên sản phẩm — sẽ quyết định sau]</mark>) là một ứng dụng web thay thế các bảng tính đó bằng một cơ sở dữ liệu dùng chung, bao phủ toàn bộ chu trình vận hành của trung tâm: danh mục khóa học, mở lớp và xếp lịch, ghi danh học viên, điểm danh, học phí và thanh toán, hồ sơ giáo viên và tính lương theo giờ dạy, đánh giá kết quả, thông báo cho phụ huynh, và báo cáo quản trị. Nhân viên trung tâm sử dụng trên trình duyệt máy tính; giáo viên và phụ huynh sử dụng trên trình duyệt điện thoại.
 
@@ -37,7 +39,7 @@ Dự án bàn giao phần mềm, triển khai trên máy chủ đám mây của 
 
 - Ứng dụng web đáp ứng đa thiết bị, giao diện tiếng Việt, gồm 11 chức năng ở mục 1.4, dùng cho 3 cơ sở hiện có.
 - Cơ sở dữ liệu quan hệ là nguồn dữ liệu duy nhất cho học viên, khóa học, lớp, buổi học, điểm danh, hóa đơn, thanh toán và giờ dạy.
-- Phân quyền theo vai trò cho 6 nhóm người dùng (mục 1.3).
+- Phân quyền theo vai trò cho 7 nhóm người dùng (mục 1.3).
 - Chuyển đổi dữ liệu hiện có từ các tệp Excel của trung tâm: hồ sơ học viên, danh mục khóa học, các lớp đang hoạt động và công nợ học phí còn tồn.
 - Gửi thông báo cho phụ huynh và giáo viên qua email và SMS thông qua một nhà cung cấp dịch vụ bên thứ ba.
 - Triển khai trên máy chủ ảo đám mây, gồm tên miền, HTTPS và sao lưu tự động hằng đêm.
@@ -90,9 +92,9 @@ Dự án bàn giao phần mềm, triển khai trên máy chủ đám mây của 
 
 | Mã | Nhóm | Yêu cầu |
 | --- | --- | --- |
-| N01 | Hiệu năng | Mọi màn hình phản hồi trong 3 giây với 50 người dùng đồng thời; báo cáo trong một kỳ học sinh ra trong 10 giây. |
+| N01 | Hiệu năng | Màn hình dành cho nhân sự phản hồi trong 3 giây với 50 người dùng nghiệp vụ đồng thời. Cổng thông tin học viên/phụ huynh phản hồi trong 3 giây với <mark>300 phiên đồng thời</mark> — mức cao điểm giả định khi công bố kết quả hoặc gửi thông báo học phí đến hạn cho toàn trung tâm. Báo cáo trong một kỳ học sinh ra trong 10 giây. |
 | N02 | Sức chứa | Hệ thống lưu tối thiểu 5.000 hồ sơ học viên, 200 lớp mỗi kỳ và lịch sử 3 năm buổi học mà không cần thiết kế lại. |
-| N03 | An toàn thông tin | Chỉ dùng HTTPS; mật khẩu lưu dạng băm một chiều có muối; kiểm tra quyền phía máy chủ cho mọi yêu cầu; dữ liệu cá nhân học viên xử lý theo Nghị định 13/2023/NĐ-CP về bảo vệ dữ liệu cá nhân. |
+| N03 | An toàn thông tin | Chỉ dùng HTTPS; mật khẩu lưu dạng băm một chiều có muối; kiểm tra quyền phía máy chủ cho mọi yêu cầu; dữ liệu cá nhân của học viên và phụ huynh xử lý theo Luật Bảo vệ dữ liệu cá nhân (hiệu lực từ 01/01/2026) và <mark>Nghị định 13/2023/NĐ-CP, trong phạm vi Nghị định còn hiệu lực song song với Luật</mark>. Sự đồng ý nhận thông báo được ghi nhận theo từng người giám hộ. |
 | N04 | Truy vết | Thao tác thêm, sửa, xóa trên dữ liệu tài chính và học viên được ghi vào nhật ký không sửa được, lưu tối thiểu 3 năm. |
 | N05 | Tính sẵn sàng | Sẵn sàng 99% trong khung 07:00–22:00; sao lưu tự động hằng đêm với RPO 24 giờ và RTO 4 giờ. |
 | N06 | Tính dễ dùng | Giao diện tiếng Việt; các tác vụ hằng ngày (điểm danh, thu học phí, ghi danh) thao tác được trong tối đa 3 lần bấm từ màn hình chính; nhân viên dùng được sau nửa ngày đào tạo. |
@@ -101,21 +103,25 @@ Dự án bàn giao phần mềm, triển khai trên máy chủ đám mây của 
 
 ### 1.6 Hướng tiếp cận kỹ thuật
 
-Hệ thống được xây dựng dưới dạng ứng dụng web với kiến trúc phân lớp phía máy chủ và cơ sở dữ liệu quan hệ, triển khai gồm một máy chủ ứng dụng và một máy chủ cơ sở dữ liệu trên một máy chủ ảo đám mây, kèm một môi trường thứ hai dành cho kiểm thử và UAT. Phương pháp bàn giao theo lặp: hai vòng lặp xây dựng dài 4–5 tuần, mỗi vòng kết thúc bằng buổi demo cho khách hàng, sau đó là kiểm thử chấp nhận người dùng trên toàn hệ thống. Yêu cầu được chốt đường cơ sở khi kết thúc giai đoạn phân tích; thay đổi sau đó đi qua quy trình quản lý thay đổi nêu trong tuyên bố dự án.
+Hệ thống được xây dựng dưới dạng ứng dụng web với kiến trúc phân lớp phía máy chủ và cơ sở dữ liệu quan hệ, triển khai gồm một máy chủ ứng dụng và một máy chủ cơ sở dữ liệu trên một máy chủ ảo đám mây, kèm một môi trường thứ hai dành cho kiểm thử và UAT. Phương pháp bàn giao theo lặp: hai vòng lặp xây dựng dài 4 tuần, mỗi vòng kết thúc bằng buổi demo cho khách hàng, sau đó là kiểm thử chấp nhận người dùng trên toàn hệ thống. Kiểm thử hệ thống chạy song song với xây dựng: các chức năng của vòng lặp 1 (F01–F05) được kiểm thử hệ thống trong khi vòng lặp 2 đang được xây dựng, nhờ đó mốc kiểm thử sau khi hoàn thành chức năng chỉ còn kiểm thử tích hợp và hồi quy. Chính cách chồng lấn này giúp một tháng bảo hành nằm gọn trong khung 5 tháng cố định (mục 1.7). Yêu cầu được chốt đường cơ sở khi kết thúc giai đoạn phân tích; thay đổi sau đó đi qua quy trình quản lý thay đổi nêu trong tuyên bố dự án.
 
 ### 1.7 Giả định và ràng buộc
 
 **Ràng buộc**
 
 - Ngân sách cố định 700.000.000 VNĐ, bao gồm phần mềm, triển khai, đào tạo và bảo hành.
-- Thời gian cố định 5 tháng, từ 14/09/2026 đến 05/02/2027, bắt buộc vận hành chính thức trước kỳ nghỉ Tết Nguyên đán.
+- Thời gian cố định 5 tháng, từ 14/09/2026 đến 05/02/2027. Con số hợp đồng là 5 tháng; thời gian thực tế là 20,6 tuần (4 tháng 22 ngày), và tài liệu này lập kế hoạch theo ngày cụ thể chứ không theo con số đã làm tròn.
+- Một tháng bảo hành phải kết thúc bên trong dự án, nên ngày vận hành chính thức được đặt trước ngày đóng dự án đúng một tháng, không đặt sát ngày đóng dự án.
 - Nhân sự gồm 5 người toàn thời gian; không bổ sung thêm người.
 - Hệ thống phải dùng tiếng Việt và chạy trong ngân sách hạ tầng hiện có của khách hàng là một máy chủ ảo.
 
 **Giả định**
 
-- Trung tâm của khách hàng (1.200 học viên, 35 giáo viên, 3 cơ sở) và toàn bộ số liệu trong tài liệu này là giả định cho bài tập học phần; không sử dụng dữ liệu khách hàng thật.
+- Trung tâm của khách hàng (1.200 học viên, 35 giáo viên, 3 cơ sở) và toàn bộ số liệu trong tài liệu này là giả định cho bài tập học phần; không sử dụng dữ liệu khách hàng thật. Mọi số liệu như vậy đều được tô nền vàng tại nơi xuất hiện.
 - Tên thương mại của sản phẩm chưa được quyết định; mọi vị trí cần tên sản phẩm đều được tô nền vàng và sẽ điền ở phiên bản sau của tài liệu.
+- Hệ thống có 52 người dùng nghiệp vụ: 35 giáo viên cộng 17 nhân sự hành chính, tài chính và quản lý (1 giám đốc, 3 quản lý đào tạo, 9 nhân viên tư vấn/lễ tân ở ba cơ sở, 3 kế toán, 1 quản trị CNTT). Học viên và phụ huynh được đếm riêng và không nằm trong chỉ tiêu đào tạo.
+- Tết Nguyên đán 2027 được giả định bắt đầu ngày 06/02/2027. Ngày đóng dự án đặt trước đó một ngày, và tháng bảo hành được xếp trọn vẹn trước kỳ nghỉ để không ngày bảo hành nào rơi vào kỳ nghỉ. Cần đối chiếu ngày này với lịch âm đã công bố trước khi chốt tiến độ.
+- Kinh phí nhân sự được ký theo 25 người-tháng (5 người × 5 tháng). Thời gian thực tế ngắn hơn 5 tháng dương lịch, nên 25 người-tháng là căn cứ cấp kinh phí chứ không phải số công đo được.
 - Quản lý đào tạo và kế toán dành tối thiểu 4 giờ mỗi tuần cho các buổi làm việc lấy yêu cầu, demo và UAT.
 - Các tệp Excel hiện có của trung tâm dùng được làm nguồn chuyển đổi và được trung tâm làm sạch trước khi chuyển đổi.
 - Trung tâm cung cấp và chi trả một tài khoản dịch vụ SMS/email; API của dịch vụ ổn định và có tài liệu.
@@ -130,7 +136,7 @@ Hệ thống được xây dựng dưới dạng ứng dụng web với kiến t
 
 #### Mục đích dự án (Project purpose)
 
-Cách vận hành thủ công dựa trên giấy tờ và bảng tính khiến trung tâm tốn khoảng 60 giờ công mỗi tháng cho việc nhập trùng dữ liệu, thường xuyên xếp trùng phòng học và giáo viên, và để khoảng 8% học phí thu quá hạn vì không ai có danh sách công nợ đáng tin cậy. Dự án được thực hiện để loại bỏ tổn thất vận hành đó và cung cấp cho giám đốc một góc nhìn duy nhất, cập nhật về tuyển sinh, doanh thu và năng lực giảng dạy trên cả 3 cơ sở, phục vụ kế hoạch mở cơ sở thứ tư trong năm 2027.
+Cách vận hành thủ công dựa trên giấy tờ và bảng tính khiến trung tâm tốn khoảng <mark>60 giờ công mỗi tháng</mark> cho việc nhập trùng dữ liệu, thường xuyên xếp trùng phòng học và giáo viên, và để khoảng <mark>8% học phí thu quá hạn</mark> vì không ai có danh sách công nợ đáng tin cậy. Dự án được thực hiện để loại bỏ tổn thất vận hành đó và cung cấp cho giám đốc một góc nhìn duy nhất, cập nhật về tuyển sinh, doanh thu và năng lực giảng dạy trên cả 3 cơ sở, phục vụ <mark>kế hoạch mở cơ sở thứ tư trong năm 2027</mark>.
 
 #### Mô tả tổng quan dự án (High-level project description)
 
@@ -166,13 +172,13 @@ Dự án kết thúc tại cuộc họp tổng kết sau tháng bảo hành; vi�
 - Hóa đơn học phí sinh ra từ học phí khóa học và chính sách ưu đãi; công nợ tồn xem được theo học viên, lớp và cơ sở tại mọi thời điểm.
 - Giờ dạy được suy ra từ dữ liệu điểm danh đã ghi nhận, không nhập tay, và kết xuất được để tính lương.
 - Phụ huynh và giáo viên được thông báo tự động về nhắc lịch, vắng mặt, học phí đến hạn và kết quả, kèm nhật ký gửi.
-- Mỗi vai trò trong 6 vai trò chỉ thấy dữ liệu và màn hình thuộc quyền của mình; mọi thay đổi dữ liệu tài chính và học viên đều truy vết được.
+- Mỗi vai trò trong 7 vai trò chỉ thấy dữ liệu và màn hình thuộc quyền của mình; mọi thay đổi dữ liệu tài chính và học viên đều truy vết được.
 - Giao diện tiếng Việt, nhân viên hiện tại dùng được sau nửa ngày đào tạo.
 - Đáp ứng các yêu cầu phi chức năng N01–N08 ở mục 1.5.
 
 #### Mức rủi ro tổng thể (Overall project risk)
 
-Rủi ro tổng thể ở mức **Trung bình**. Công nghệ đã quen thuộc và nghiệp vụ ổn định, nhưng cả ngân sách lẫn ngày vận hành chính thức đều cố định, đội dự án nhỏ tới mức mất một lập trình viên là đường găng bị đẩy lùi, và những người nắm quy tắc nghiệp vụ phía khách hàng chỉ tham gia bán thời gian. Bất định lớn nhất là sự thay đổi chính sách học phí, ưu đãi và hoàn phí — vốn là quyết định quản trị của trung tâm chứ không phải vấn đề kỹ thuật. Rủi ro thứ hai là dịch vụ thông báo của bên thứ ba nằm ngoài tầm kiểm soát của dự án. Kỳ nghỉ Tết Nguyên đán tháng 02/2027 làm mất toàn bộ dự phòng tiến độ sau ngày vận hành chính thức.
+Rủi ro tổng thể ở mức **Trung bình**. Công nghệ đã quen thuộc và nghiệp vụ ổn định, nhưng cả ngân sách lẫn ngày vận hành chính thức đều cố định, đội dự án nhỏ tới mức mất một lập trình viên là đường găng bị đẩy lùi, và những người nắm quy tắc nghiệp vụ phía khách hàng chỉ tham gia bán thời gian. Bất định lớn nhất là sự thay đổi chính sách học phí, ưu đãi và hoàn phí — vốn là quyết định quản trị của trung tâm chứ không phải vấn đề kỹ thuật. Rủi ro thứ hai là dịch vụ thông báo của bên thứ ba nằm ngoài tầm kiểm soát của dự án. Tiến độ bị nén chứ không chỉ là chặt ở cuối: khung 5 tháng cố định phải chứa cả phần bàn giao lẫn trọn một tháng bảo hành, nên ngày vận hành chính thức được chốt vào 05/01/2027 và các giai đoạn phân tích, thiết kế, kiểm thử mỗi giai đoạn chỉ còn tối đa một tuần dự phòng. Kỳ nghỉ Tết Nguyên đán tháng 02/2027 nằm ngay sau ngày đóng dự án và không hấp thụ được bất kỳ khoản trượt nào.
 
 | # | Rủi ro chính | Ứng phó |
 | --- | --- | --- |
@@ -182,30 +188,33 @@ Rủi ro tổng thể ở mức **Trung bình**. Công nghệ đã quen thuộc 
 | R4 | Dịch vụ SMS/email bên thứ ba không ổn định hoặc chi phí phát sinh | Cô lập dịch vụ sau một lớp giao tiếp duy nhất; làm thử nghiệm khả thi trước M2; giữ một nhà cung cấp dự phòng |
 | R5 | Dữ liệu Excel nguồn quá bẩn để chuyển đổi | Đánh giá chất lượng dữ liệu tại M1; trung tâm làm sạch tệp trước M5; giới hạn chuyển đổi trong hai kỳ học gần nhất |
 | R6 | Bài toán xếp lịch và phát hiện trùng phức tạp hơn ước lượng | Làm F04 sớm nhất trong vòng lặp 1; khống chế thời gian và soát lại tại buổi demo M3 |
-| R7 | Vận hành chính thức trượt qua kỳ nghỉ Tết | Triển khai tại M6, trước kỳ nghỉ một tuần; nếu trượt qua kỳ nghỉ thì go-live chậm 3 tuần và phải báo cáo nhà tài trợ ngay |
+| R7 | Vận hành chính thức trượt, đẩy tháng bảo hành vào kỳ nghỉ Tết | Chốt go-live tại M6 (05/01/2027), trước ngày Tết giả định trọn một tháng, nhờ đó tháng bảo hành có bốn tuần dự phòng trước kỳ nghỉ; nếu dự báo trượt quá 15/01/2027 thì báo cáo nhà tài trợ ngay và lập lại kế hoạch phạm vi bảo hành thay vì âm thầm rút ngắn |
+| R8 | Giám đốc dự án kiêm luôn vai trò phân tích nghiệp vụ, nên công việc lấy yêu cầu và công việc quản lý tranh nhau cùng một người | Dồn công việc phân tích vào M0–M1 khi tải quản lý thấp nhất; kỹ sư kiểm thử viết ca kiểm thử trực tiếp từ đường cơ sở yêu cầu, đóng vai người đọc thứ hai của yêu cầu; báo cáo nhà tài trợ nếu khối lượng làm lại phần phân tích sau M1 vượt một tuần |
 
 #### Mục tiêu dự án và tiêu chí thành công (Project objectives and success criteria)
 
 | Khía cạnh | Mục tiêu | Tiêu chí thành công |
 | --- | --- | --- |
 | Phạm vi | Bàn giao 11 chức năng F01–F11 và 10 sản phẩm D1–D10 | 100% F01–F11 được chấp nhận trong UAT; cả 10 sản phẩm được nhà tài trợ ký duyệt |
-| Thời gian | Vận hành chính thức trước 29/01/2027 và kết thúc dự án trước 05/02/2027 | Go-live vào hoặc trước 29/01/2027; không mốc nào hoàn thành trễ quá 1 tuần |
+| Thời gian | Vận hành chính thức trước 05/01/2027 và kết thúc dự án trước 05/02/2027 | Go-live vào hoặc trước 05/01/2027; không mốc nào hoàn thành trễ quá 1 tuần; tháng bảo hành chạy đủ 31 ngày trước khi đóng dự án |
 | Chi phí | Hoàn thành trong 700.000.000 VNĐ | Chi phí cuối ≤ 700 triệu đồng; sai lệch chi phí tại mỗi cổng kiểm soát trong khoảng ±5% so với đường cơ sở |
 | Chất lượng | Bàn giao hệ thống dùng được cho vận hành hằng ngày | ≥ 95% ca kiểm thử UAT đạt; không còn lỗi mức Nghiêm trọng hoặc Cao tại thời điểm go-live; tối đa 5 lỗi mức Trung bình còn mở, mỗi lỗi có hạn sửa đã thống nhất |
-| Sự hài lòng của bên liên quan | Nhân sự trung tâm vận hành được trên hệ thống | ≥ 80% trong 25 người dùng nghiệp vụ được đào tạo và sử dụng thực tế trong tháng đầu; điểm hài lòng trung bình ≥ 4/5 trong khảo sát tổng kết; ≥ 90% số lớp có điểm danh trên hệ thống trong tháng bảo hành |
+| Sự hài lòng của bên liên quan | Nhân sự trung tâm vận hành được trên hệ thống | ≥ 80% trong <mark>52 người dùng nghiệp vụ</mark> được đào tạo và sử dụng thực tế trong tháng đầu, trong đó ≥ 90% của 17 nhân sự hành chính và ≥ 75% của 35 giáo viên; điểm hài lòng trung bình ≥ 4/5 trong khảo sát tổng kết; ≥ 90% số lớp có điểm danh trên hệ thống trong tháng bảo hành |
 
 #### Lịch mốc tóm tắt (Summary milestone schedule)
 
 | Mã | Mốc | Ngày hoàn thành |
 | --- | --- | --- |
-| M0 | Khởi động dự án, phê duyệt tuyên bố dự án | 14/09/2026 |
-| M1 | Phê duyệt và chốt đường cơ sở đặc tả yêu cầu | 02/10/2026 |
-| M2 | Phê duyệt đường cơ sở thiết kế (kiến trúc, cơ sở dữ liệu, giao diện) | 23/10/2026 |
-| M3 | Nghiệm thu demo vòng lặp 1 (F01–F05) | 20/11/2026 |
-| M4 | Nghiệm thu vòng lặp 2 — hoàn thành chức năng (F06–F11) | 25/12/2026 |
-| M5 | Hoàn tất kiểm thử hệ thống, đạt điều kiện vào UAT | 15/01/2027 |
-| M6 | Ký duyệt UAT, chuyển đổi dữ liệu, vận hành chính thức và bàn giao | 29/01/2027 |
-| M7 | Kết thúc bảo hành, tổng kết dự án | 05/02/2027 |
+| M0 | Khởi động dự án, phê duyệt tuyên bố dự án | Thứ 2, 14/09/2026 |
+| M1 | Phê duyệt và chốt đường cơ sở đặc tả yêu cầu | Thứ 6, 02/10/2026 |
+| M2 | Phê duyệt đường cơ sở thiết kế (kiến trúc, cơ sở dữ liệu, giao diện) | Thứ 6, 16/10/2026 |
+| M3 | Nghiệm thu demo vòng lặp 1 (F01–F05) | Thứ 6, 13/11/2026 |
+| M4 | Nghiệm thu vòng lặp 2 — hoàn thành chức năng (F06–F11) | Thứ 6, 11/12/2026 |
+| M5 | Hoàn tất kiểm thử hệ thống, đạt điều kiện vào UAT | Thứ 6, 18/12/2026 |
+| M6 | Ký duyệt UAT, chuyển đổi dữ liệu, vận hành chính thức và bàn giao | Thứ 3, 05/01/2027 |
+| M7 | Kết thúc bảo hành, tổng kết dự án | Thứ 6, 05/02/2027 |
+
+Ngày vận hành chính thức được đặt vào thứ Ba để hai ngày đầu tiên hệ thống chạy thật đều là ngày làm việc đủ nhân sự; các mốc còn lại rơi vào thứ Sáu để khép lại một tuần làm việc. Khoảng từ M6 đến M7 là thời hạn bảo hành, kết thúc đúng một ngày trước ngày giả định bắt đầu kỳ nghỉ Tết (mục 1.7).
 
 #### Nguồn tài chính đã phê duyệt (Preapproved financial resources)
 
@@ -213,10 +222,10 @@ Tổng kinh phí đã phê duyệt là **700.000.000 VNĐ**, do trung tâm cấp
 
 | # | Khoản mục | Số tiền (VNĐ) | Tỷ trọng | Căn cứ |
 | --- | --- | --- | --- | --- |
-| 1 | Nhân sự — 5 người × 5 tháng = 25 người-tháng | 490.000.000 | 70% | 19,6 triệu đồng/người-tháng, đã gồm chi phí gián tiếp |
+| 1 | Nhân sự — 5 người × 5 tháng = 25 người-tháng | 490.000.000 | 70% | <mark>19,6 triệu đồng/người-tháng, đã gồm chi phí gián tiếp</mark> |
 | 2 | Hạ tầng và bản quyền | 70.000.000 | 10% | Máy chủ vận hành và môi trường kiểm thử 12 tháng, tên miền, SSL, cước dịch vụ SMS/email, công cụ phát triển |
 | 3 | Triển khai, chuyển đổi dữ liệu, đào tạo, tài liệu | 70.000.000 | 10% | Công tác tại chỗ ở 3 cơ sở, tài liệu đào tạo, chi phí in ấn |
-| 4 | Quỹ dự phòng quản lý | 70.000.000 | 10% | Do giám đốc dự án nắm giữ để xử lý các rủi ro R1–R7 |
+| 4 | Quỹ dự phòng quản lý | 70.000.000 | 10% | Do giám đốc dự án nắm giữ để xử lý các rủi ro R1–R8 |
 | | **Tổng cộng** | **700.000.000** | **100%** | |
 
 #### Danh sách bên liên quan chính (Key stakeholder list)
@@ -235,6 +244,26 @@ Tổng kinh phí đã phê duyệt là **700.000.000 VNĐ**, do trung tâm cấp
 | Nhà cung cấp dịch vụ SMS/email | Nhà cung cấp bên ngoài cho kênh thông báo |
 | Nhà cung cấp hạ tầng đám mây | Nhà cung cấp bên ngoài cho môi trường vận hành và kiểm thử |
 
+#### Yêu cầu phê duyệt dự án (Project approval requirements)
+
+**Thế nào là dự án thành công.** Dự án thành công khi năm mục tiêu ở trên (phạm vi, thời gian, chi phí, chất lượng, sự hài lòng của bên liên quan) đạt các tiêu chí đã nêu, và tại thời điểm đóng dự án hệ thống đang được nhân sự trung tâm sử dụng thật hằng ngày chứ không chạy song song với bảng tính cũ.
+
+**Ai quyết định và ai ký duyệt.**
+
+| Hạng mục cần phê duyệt | Người phê duyệt | Bằng chứng phê duyệt |
+| --- | --- | --- |
+| Bản tuyên bố dự án này | Giám đốc trung tâm (nhà tài trợ) | Chữ ký ở phần Phê duyệt của biểu mẫu |
+| Đặc tả yêu cầu (D1) | Quản lý đào tạo và kế toán cho phần nghiệp vụ của mình; nhà tài trợ phê duyệt tổng thể | Đường cơ sở yêu cầu đã ký tại M1 |
+| Đường cơ sở thiết kế (D2) | Giám đốc dự án, có rà soát cùng quản lý đào tạo về mức phù hợp quy trình | Biên bản rà soát thiết kế đã ký tại M2 |
+| Bản phát hành các vòng lặp (D3, D4) | Quản lý đào tạo (F01–F05, F08), kế toán (F06, F07), trưởng bộ phận tư vấn (F02, F09) | Biên bản nghiệm thu demo đã ký tại M3 và M4 |
+| Hoàn tất kiểm thử (D5) | Kỹ sư kiểm thử lập; giám đốc dự án duyệt điều kiện vào UAT | Báo cáo tổng kết kiểm thử được chấp nhận tại M5 |
+| Kết quả UAT và vận hành chính thức | Chủ nghiệp vụ ký phần của mình; nhà tài trợ cho phép go-live | Báo cáo UAT đã ký và văn bản cho phép go-live tại M6 |
+| Dữ liệu đã chuyển đổi (D6) | Kế toán, cho phần đối chiếu với tệp nguồn | Văn bản chấp nhận kết quả đối chiếu, gồm các sai lệch được chấp nhận |
+| Gói bàn giao (D8, D9) | Quản trị CNTT của trung tâm | Biên bản bàn giao đã ký |
+| Đóng dự án (D10) | Giám đốc trung tâm (nhà tài trợ) | Báo cáo tổng kết đã ký |
+
+**Ai nghiệm thu sản phẩm cuối cùng.** Giám đốc trung tâm, với tư cách nhà tài trợ kiêm chủ sở hữu, là người nghiệm thu cuối cùng. Nhà tài trợ không ủy quyền việc nghiệm thu cuối, nhưng dựa trên các văn bản ký duyệt theo từng mảng ở trên, và không được từ chối nghiệm thu vì phạm vi chưa từng nằm trong đường cơ sở.
+
 #### Tiêu chí kết thúc dự án (Project exit criteria)
 
 Dự án được đóng khi thỏa mãn tất cả các điều kiện sau:
@@ -243,7 +272,7 @@ Dự án được đóng khi thỏa mãn tất cả các điều kiện sau:
 2. UAT được ký duyệt với ≥ 95% ca kiểm thử đạt và không còn lỗi mức Nghiêm trọng hoặc Cao.
 3. Hệ thống chạy trên môi trường vận hành của trung tâm, sao lưu được kiểm chứng bằng một lần phục hồi thử thành công.
 4. Dữ liệu vận hành đã chuyển đổi và đối chiếu với tệp nguồn, các sai lệch được kế toán chấp nhận bằng văn bản.
-5. Tối thiểu 80% trong 25 người dùng nghiệp vụ đã được đào tạo, có biên bản đào tạo.
+5. Tối thiểu 80% trong <mark>52 người dùng nghiệp vụ</mark> đã được đào tạo, có biên bản đào tạo.
 6. Mã nguồn, script cơ sở dữ liệu, hướng dẫn sử dụng và hướng dẫn quản trị đã bàn giao và được xác nhận.
 7. Thời hạn bảo hành một tháng kết thúc, không còn lỗi mức Nghiêm trọng hoặc Cao.
 8. Báo cáo tổng kết, bài học kinh nghiệm và quyết toán tài chính được phê duyệt, hóa đơn cuối cùng đã thanh toán.
@@ -252,13 +281,13 @@ Dự án cũng có thể kết thúc sớm theo quyết định của nhà tài 
 
 #### Giám đốc dự án được chỉ định, trách nhiệm và mức thẩm quyền
 
-**Giám đốc dự án:** Nguyễn Văn A, chỉ định toàn thời gian trong suốt 5 tháng.
+**Giám đốc dự án:** <mark>Nguyễn Văn A</mark>, chỉ định toàn thời gian trong suốt 5 tháng.
 
 **Trách nhiệm:** lập kế hoạch, thực thi, giám sát và kết thúc dự án; quản lý phạm vi, tiến độ, chi phí, chất lượng, rủi ro và truyền thông; dẫn dắt đội 5 người; là đầu mối duy nhất với nhà tài trợ và nhân sự trung tâm; báo cáo trạng thái hằng tuần.
 
 **Quyết định nhân sự:** được phân công và điều chuyển công việc trong đội 5 người đã duyệt, duyệt nghỉ phép và quản lý hiệu suất hằng ngày. Được đề nghị thay thế thành viên; quyết định tuyển dụng, chấm dứt và các vấn đề hợp đồng lao động thuộc quản lý trực tuyến của nhà thầu và phải thông báo cho nhà tài trợ.
 
-**Quản lý ngân sách và sai lệch:** được cam kết và chi tiêu trong đường cơ sở đã duyệt, gồm từng giao dịch đơn lẻ tới 20.000.000 VNĐ và sử dụng quỹ dự phòng 70.000.000 VNĐ cho các rủi ro R1–R7. Tự quản lý sai lệch chi phí lũy kế tới 5% đường cơ sở; mọi dự báo vượt quá 5%, mọi lần dùng quỹ dự phòng vượt 40.000.000 VNĐ và mọi thay đổi tổng kinh phí phải trình nhà tài trợ phê duyệt.
+**Quản lý ngân sách và sai lệch:** được cam kết và chi tiêu trong đường cơ sở đã duyệt, gồm từng giao dịch đơn lẻ tới 20.000.000 VNĐ và sử dụng quỹ dự phòng 70.000.000 VNĐ cho các rủi ro R1–R8. Tự quản lý sai lệch chi phí lũy kế tới 5% đường cơ sở; mọi dự báo vượt quá 5%, mọi lần dùng quỹ dự phòng vượt 40.000.000 VNĐ và mọi thay đổi tổng kinh phí phải trình nhà tài trợ phê duyệt.
 
 **Quyết định kỹ thuật:** toàn quyền về kiến trúc, nền tảng công nghệ, thiết kế cơ sở dữ liệu, quy ước lập trình và cách thức triển khai nội bộ, với điều kiện đáp ứng các yêu cầu phi chức năng N01–N08 và các sản phẩm đã thống nhất. Thay đổi ảnh hưởng đến phạm vi người dùng nhìn thấy, tiến độ hoặc chi phí phải qua quy trình quản lý thay đổi và được nhà tài trợ phê duyệt.
 
@@ -266,7 +295,7 @@ Dự án cũng có thể kết thúc sớm theo quyết định của nhà tài 
 
 #### Tên và thẩm quyền của nhà tài trợ
 
-**Nhà tài trợ:** Đỗ Thị Bích Ngọc, chủ sở hữu kiêm Giám đốc trung tâm đào tạo.
+**Nhà tài trợ:** <mark>Đỗ Thị Bích Ngọc</mark>, chủ sở hữu kiêm Giám đốc trung tâm đào tạo.
 
 Nhà tài trợ phê chuẩn dự án và bản tuyên bố dự án này, cấp và giải ngân 700 triệu đồng kinh phí, chỉ định giám đốc dự án và bố trí nhân sự trung tâm tham gia. Nhà tài trợ phê duyệt các thay đổi về phạm vi, tiến độ và ngân sách vượt thẩm quyền của giám đốc dự án, ấn định mức sai lệch chấp nhận được, giải quyết xung đột được trình lên và xung đột giữa các bộ phận, nghiệm thu sản phẩm, cho phép vận hành chính thức và đóng dự án, đồng thời bảo trợ dự án trước nhân sự trung tâm và các trưởng cơ sở.
 
@@ -278,12 +307,12 @@ Nhà tài trợ phê chuẩn dự án và bản tuyên bố dự án này, cấp
 
 <table class="form">
 <tr><td class="label">Project Title:<br>Tên dự án</td><td>Xây dựng và triển khai phần mềm quản lý trung tâm đào tạo — tên sản phẩm <mark>[tên sản phẩm — sẽ quyết định sau]</mark></td><td class="label">Date Prepared:<br>Ngày lập</td><td>02/09/2026</td></tr>
-<tr><td class="label">Project Sponsor:<br>Nhà tài trợ</td><td>Đỗ Thị Bích Ngọc — chủ sở hữu kiêm Giám đốc trung tâm</td><td class="label">Project Customer:<br>Khách hàng</td><td>Đỗ Thị Bích Ngọc — trung tâm đào tạo (3 cơ sở, 1.200 học viên, 35 giáo viên)</td></tr>
-<tr><td class="label">Project Manager:<br>Giám đốc dự án</td><td colspan="3">Nguyễn Văn A — chỉ định toàn thời gian trong suốt 5 tháng thực hiện</td></tr>
+<tr><td class="label">Project Sponsor:<br>Nhà tài trợ</td><td><mark>Đỗ Thị Bích Ngọc — chủ sở hữu kiêm Giám đốc trung tâm</mark></td><td class="label">Project Customer:<br>Khách hàng</td><td><mark>Đỗ Thị Bích Ngọc — trung tâm đào tạo (3 cơ sở, 1.200 học viên, 35 giáo viên)</mark></td></tr>
+<tr><td class="label">Project Manager:<br>Giám đốc dự án</td><td colspan="3"><mark>Nguyễn Văn A</mark> — chỉ định toàn thời gian trong suốt 5 tháng thực hiện</td></tr>
 </table>
 
 <table class="form">
-<tr><td class="label">Project Purpose:<br>Mục đích dự án</td><td>Trung tâm đang vận hành bằng giấy tờ và bảng tính, tốn khoảng 60 giờ công mỗi tháng để nhập trùng dữ liệu, thường xuyên xếp trùng phòng và giáo viên, và để khoảng 8% học phí thu quá hạn. Dự án loại bỏ tổn thất vận hành đó và cung cấp cho giám đốc một góc nhìn duy nhất, cập nhật về tuyển sinh, doanh thu và năng lực giảng dạy trên cả 3 cơ sở, phục vụ kế hoạch mở cơ sở thứ tư năm 2027.</td></tr>
+<tr><td class="label">Project Purpose:<br>Mục đích dự án</td><td>Trung tâm đang vận hành bằng giấy tờ và bảng tính, tốn khoảng <mark>60 giờ công mỗi tháng</mark> để nhập trùng dữ liệu, thường xuyên xếp trùng phòng và giáo viên, và để khoảng <mark>8% học phí thu quá hạn</mark>. Dự án loại bỏ tổn thất vận hành đó và cung cấp cho giám đốc một góc nhìn duy nhất, cập nhật về tuyển sinh, doanh thu và năng lực giảng dạy trên cả 3 cơ sở, phục vụ <mark>kế hoạch mở cơ sở thứ tư năm 2027</mark>.</td></tr>
 
 <tr><td class="label">High-Level Project Description:<br>Mô tả tổng quan</td><td>Phân tích, thiết kế, lập trình, kiểm thử và triển khai ứng dụng web tiếng Việt quản lý toàn bộ chu trình vận hành của trung tâm — khóa học, mở lớp và xếp lịch, học viên và ghi danh, điểm danh, học phí và thanh toán, giáo viên và lương theo giờ dạy, đánh giá, thông báo, báo cáo quản trị — kèm chuyển đổi dữ liệu từ Excel hiện có, đào tạo và bảo hành một tháng. Bàn giao theo lặp: hai vòng lặp xây dựng và một giai đoạn UAT, 5 nhân sự, 5 tháng, 700 triệu đồng.</td></tr>
 
@@ -291,9 +320,9 @@ Nhà tài trợ phê chuẩn dự án và bản tuyên bố dự án này, cấp
 
 <tr><td class="label">Key Deliverables:<br>Sản phẩm bàn giao chính</td><td>D1 Đặc tả yêu cầu đã phê duyệt · D2 Đường cơ sở thiết kế (kiến trúc, cơ sở dữ liệu, giao diện) · D3 Bản phát hành vòng lặp 1 (F01–F05) · D4 Bản phát hành vòng lặp 2 (F06–F11) · D5 Tài liệu và báo cáo tổng kết kiểm thử · D6 Dữ liệu vận hành đã chuyển đổi và đối chiếu · D7 Triển khai vận hành kèm sao lưu · D8 Hướng dẫn sử dụng, hướng dẫn quản trị và nhân sự đã đào tạo · D9 Mã nguồn, script cơ sở dữ liệu, tài liệu kỹ thuật · D10 Báo cáo tổng kết và bài học kinh nghiệm</td></tr>
 
-<tr><td class="label">High-Level Requirements:<br>Yêu cầu mức cao</td><td>Một cơ sở dữ liệu thống nhất, không nhập trùng dữ liệu giữa 11 nhóm chức năng · Chặn trùng lịch phòng, giáo viên và học viên ngay khi tạo lớp, buổi học · Hóa đơn học phí sinh từ học phí khóa học và chính sách ưu đãi, công nợ xem được theo học viên, lớp, cơ sở · Giờ dạy suy ra từ dữ liệu điểm danh và kết xuất được để tính lương · Thông báo tự động về nhắc lịch, vắng mặt, học phí đến hạn và kết quả kèm nhật ký gửi · Phân quyền cho 6 vai trò và truy vết mọi thay đổi dữ liệu tài chính, học viên · Giao diện tiếng Việt dùng được sau nửa ngày đào tạo · Yêu cầu phi chức năng N01–N08 (hiệu năng, sức chứa, an toàn, truy vết, sẵn sàng, dễ dùng, tương thích, bảo trì)</td></tr>
+<tr><td class="label">High-Level Requirements:<br>Yêu cầu mức cao</td><td>Một cơ sở dữ liệu thống nhất, không nhập trùng dữ liệu giữa 11 nhóm chức năng · Chặn trùng lịch phòng, giáo viên và học viên ngay khi tạo lớp, buổi học · Hóa đơn học phí sinh từ học phí khóa học và chính sách ưu đãi, công nợ xem được theo học viên, lớp, cơ sở · Giờ dạy suy ra từ dữ liệu điểm danh và kết xuất được để tính lương · Thông báo tự động về nhắc lịch, vắng mặt, học phí đến hạn và kết quả kèm nhật ký gửi · Phân quyền cho 7 vai trò và truy vết mọi thay đổi dữ liệu tài chính, học viên · Giao diện tiếng Việt dùng được sau nửa ngày đào tạo · Yêu cầu phi chức năng N01–N08 (hiệu năng, sức chứa, an toàn, truy vết, sẵn sàng, dễ dùng, tương thích, bảo trì)</td></tr>
 
-<tr><td class="label">Overall Project Risk:<br>Rủi ro tổng thể</td><td><strong>Trung bình.</strong> Công nghệ và nghiệp vụ đã quen thuộc, nhưng ngân sách và ngày go-live đều cố định, kỳ nghỉ Tết tháng 02/2027 làm mất dự phòng tiến độ. Đội 5 người nhỏ tới mức mất một lập trình viên là đường găng bị đẩy lùi; người nắm quy tắc nghiệp vụ phía khách hàng chỉ tham gia bán thời gian. Bất định lớn nhất: chính sách học phí, ưu đãi và hoàn phí thay đổi. Rủi ro R1–R7 đã nhận diện kèm ứng phó và có quỹ dự phòng 70 triệu đồng.</td></tr>
+<tr><td class="label">Overall Project Risk:<br>Rủi ro tổng thể</td><td><strong>Trung bình.</strong> Công nghệ và nghiệp vụ đã quen thuộc, nhưng ngân sách và thời gian đều cố định, và khung 5 tháng phải chứa cả phần bàn giao <em>lẫn</em> trọn một tháng bảo hành, khiến phân tích, thiết kế và kiểm thử mỗi giai đoạn chỉ còn tối đa một tuần dự phòng. Đội 5 người nhỏ tới mức mất một lập trình viên là đường găng bị đẩy lùi; giám đốc dự án kiêm luôn vai trò phân tích nghiệp vụ; người nắm quy tắc nghiệp vụ phía khách hàng chỉ tham gia bán thời gian. Bất định lớn nhất: chính sách học phí, ưu đãi và hoàn phí thay đổi. Kỳ nghỉ Tết tháng 02/2027 nằm ngay sau ngày đóng dự án và không hấp thụ được khoản trượt nào. Rủi ro R1–R8 đã nhận diện kèm ứng phó và có quỹ dự phòng 70 triệu đồng.</td></tr>
 </table>
 
 <div class="page-of">Page 1 of 4</div>
@@ -309,23 +338,24 @@ Nhà tài trợ phê chuẩn dự án và bản tuyên bố dự án này, cấp
 
 <tr><td class="label">Scope:<br>Phạm vi</td><td>Bàn giao 11 chức năng F01–F11 và 10 sản phẩm D1–D10 cho 3 cơ sở.</td><td>100% F01–F11 được chấp nhận trong UAT; cả 10 sản phẩm được nhà tài trợ ký duyệt; không chức năng nào bị hoãn nếu không có yêu cầu thay đổi đã duyệt.</td></tr>
 
-<tr><td class="label">Time:<br>Thời gian</td><td>Vận hành chính thức trước 29/01/2027 và đóng dự án trước 05/02/2027, trong khung 5 tháng kể từ 14/09/2026.</td><td>Go-live vào hoặc trước 29/01/2027; không mốc M1–M7 nào hoàn thành trễ quá 1 tuần so với đường cơ sở.</td></tr>
+<tr><td class="label">Time:<br>Thời gian</td><td>Vận hành chính thức trước 05/01/2027 và đóng dự án trước 05/02/2027, trong khung 5 tháng kể từ 14/09/2026, với trọn tháng bảo hành nằm bên trong khung đó.</td><td>Go-live vào hoặc trước 05/01/2027; không mốc M1–M7 nào hoàn thành trễ quá 1 tuần so với đường cơ sở; thời hạn bảo hành chạy đủ 31 ngày trước khi đóng dự án.</td></tr>
 
 <tr><td class="label">Cost:<br>Chi phí</td><td>Hoàn thành toàn bộ phạm vi trong 700.000.000 VNĐ đã phê duyệt, gồm phần mềm, triển khai, đào tạo và bảo hành.</td><td>Chi phí cuối ≤ 700.000.000 VNĐ; sai lệch tại mỗi cổng kiểm soát trong ±5% đường cơ sở; báo cáo mức sử dụng quỹ dự phòng hằng tháng.</td></tr>
 
-<tr><td class="label">Other:<br>Khác</td><td><strong>Chất lượng:</strong> hệ thống dùng được cho vận hành hằng ngày ngay từ đầu.<br><br><strong>Sự hài lòng:</strong> nhân sự trung tâm vận hành hằng ngày trên hệ thống thay vì trên bảng tính.</td><td>≥ 95% ca kiểm thử UAT đạt; không còn lỗi Nghiêm trọng/Cao khi go-live; tối đa 5 lỗi Trung bình còn mở, mỗi lỗi có hạn sửa đã thống nhất.<br><br>≥ 80% trong 25 người dùng nghiệp vụ được đào tạo và sử dụng trong tháng đầu; điểm hài lòng trung bình ≥ 4/5; ≥ 90% số lớp có điểm danh trên hệ thống trong tháng bảo hành.</td></tr>
+<tr><td class="label">Other:<br>Khác</td><td><strong>Chất lượng:</strong> hệ thống dùng được cho vận hành hằng ngày ngay từ đầu.<br><br><strong>Sự hài lòng:</strong> nhân sự trung tâm vận hành hằng ngày trên hệ thống thay vì trên bảng tính.</td><td>≥ 95% ca kiểm thử UAT đạt; không còn lỗi Nghiêm trọng/Cao khi go-live; tối đa 5 lỗi Trung bình còn mở, mỗi lỗi có hạn sửa đã thống nhất.<br><br>≥ 80% trong <mark>52 người dùng nghiệp vụ</mark> được đào tạo và sử dụng trong tháng đầu; điểm hài lòng trung bình ≥ 4/5; ≥ 90% số lớp có điểm danh trên hệ thống trong tháng bảo hành.</td></tr>
 </table>
 
 <table class="form">
 <tr><th style="width:72%">Summary Milestones — Mốc chính</th><th style="width:28%">Due Date — Hạn</th></tr>
-<tr><td>M0 — Khởi động dự án; phê duyệt tuyên bố dự án và huy động nhân sự</td><td>14/09/2026</td></tr>
-<tr><td>M1 — Phê duyệt và chốt đường cơ sở đặc tả yêu cầu</td><td>02/10/2026</td></tr>
-<tr><td>M2 — Phê duyệt đường cơ sở thiết kế (kiến trúc, lược đồ CSDL, giao diện)</td><td>23/10/2026</td></tr>
-<tr><td>M3 — Nghiệm thu demo vòng lặp 1: F01–F05</td><td>20/11/2026</td></tr>
-<tr><td>M4 — Nghiệm thu vòng lặp 2, hoàn thành chức năng: F06–F11</td><td>25/12/2026</td></tr>
-<tr><td>M5 — Hoàn tất kiểm thử hệ thống; đạt điều kiện vào UAT</td><td>15/01/2027</td></tr>
-<tr><td>M6 — Ký duyệt UAT, chuyển đổi dữ liệu, vận hành chính thức và bàn giao</td><td>29/01/2027</td></tr>
-<tr><td>M7 — Kết thúc bảo hành; tổng kết và đóng dự án</td><td>05/02/2027</td></tr>
+<tr><td>M0 — Khởi động dự án; phê duyệt tuyên bố dự án và huy động nhân sự</td><td>Thứ 2, 14/09/2026</td></tr>
+<tr><td>M1 — Phê duyệt và chốt đường cơ sở đặc tả yêu cầu</td><td>Thứ 6, 02/10/2026</td></tr>
+<tr><td>M2 — Phê duyệt đường cơ sở thiết kế (kiến trúc, lược đồ CSDL, giao diện)</td><td>Thứ 6, 16/10/2026</td></tr>
+<tr><td>M3 — Nghiệm thu demo vòng lặp 1: F01–F05</td><td>Thứ 6, 13/11/2026</td></tr>
+<tr><td>M4 — Nghiệm thu vòng lặp 2, hoàn thành chức năng: F06–F11</td><td>Thứ 6, 11/12/2026</td></tr>
+<tr><td>M5 — Hoàn tất kiểm thử hệ thống; đạt điều kiện vào UAT</td><td>Thứ 6, 18/12/2026</td></tr>
+<tr><td>M6 — Ký duyệt UAT, chuyển đổi dữ liệu, vận hành chính thức và bàn giao</td><td>Thứ 3, 05/01/2027</td></tr>
+<tr><td>M7 — Kết thúc bảo hành; tổng kết và đóng dự án</td><td>Thứ 6, 05/02/2027</td></tr>
+<tr><td colspan="2" style="font-style:italic">M6 đến M7 là thời hạn bảo hành một tháng. Go-live đặt vào thứ Ba để hệ thống bắt đầu chạy thật với hai ngày làm việc đủ nhân sự.</td></tr>
 </table>
 
 <div class="page-of">Page 2 of 4</div>
@@ -342,27 +372,27 @@ Nhà tài trợ phê chuẩn dự án và bản tuyên bố dự án này, cấp
 
 <table class="form">
 <tr><th style="width:38%">Stakeholder(s) — Bên liên quan</th><th style="width:62%">Role — Vai trò</th></tr>
-<tr><td>Đỗ Thị Bích Ngọc — chủ sở hữu kiêm Giám đốc trung tâm</td><td>Nhà tài trợ: cấp kinh phí, phê duyệt tuyên bố dự án, thay đổi phạm vi và nghiệm thu cuối</td></tr>
+<tr><td><mark>Đỗ Thị Bích Ngọc</mark> — chủ sở hữu kiêm Giám đốc trung tâm</td><td>Nhà tài trợ: cấp kinh phí, phê duyệt tuyên bố dự án, thay đổi phạm vi và nghiệm thu cuối</td></tr>
 <tr><td>Quản lý đào tạo</td><td>Chủ nghiệp vụ khóa học, lớp, xếp lịch, đánh giá; nguồn yêu cầu chính và trưởng nhóm UAT</td></tr>
 <tr><td>Kế toán</td><td>Chủ nghiệp vụ học phí, công nợ, lương theo giờ dạy; tham gia UAT</td></tr>
 <tr><td>Trưởng bộ phận tư vấn / lễ tân</td><td>Chủ nghiệp vụ ghi danh và ghi nhận thanh toán; đại diện người dùng hằng ngày</td></tr>
 <tr><td>Tổ trưởng chuyên môn (đại diện giáo viên)</td><td>Đại diện 35 giáo viên cho màn hình điểm danh, điểm số và giờ dạy</td></tr>
 <tr><td>Học viên và phụ huynh</td><td>Người dùng cuối của lịch học, kết quả, học phí; người nhận thông báo</td></tr>
 <tr><td>Quản trị CNTT của trung tâm</td><td>Tiếp nhận hệ thống khi bàn giao; vận hành tài khoản, sao lưu, hạ tầng về sau</td></tr>
-<tr><td>Nguyễn Văn A — Giám đốc dự án</td><td>Lập kế hoạch, thực thi, kiểm soát dự án; đầu mối duy nhất với nhà tài trợ</td></tr>
+<tr><td><mark>Nguyễn Văn A</mark> — Giám đốc dự án</td><td>Lập kế hoạch, thực thi, kiểm soát dự án; đầu mối duy nhất với nhà tài trợ</td></tr>
 <tr><td>Đội dự án (3 lập trình viên, 1 kiểm thử)</td><td>Phân tích, thiết kế, lập trình, kiểm thử, triển khai, viết tài liệu</td></tr>
 <tr><td>Nhà cung cấp dịch vụ SMS/email</td><td>Nhà cung cấp bên ngoài cho kênh thông báo</td></tr>
 <tr><td>Nhà cung cấp hạ tầng đám mây</td><td>Nhà cung cấp bên ngoài cho môi trường vận hành và kiểm thử</td></tr>
 </table>
 
 <table class="form">
-<tr><td class="label">Project Exit Criteria:<br>Tiêu chí kết thúc</td><td>1. Toàn bộ sản phẩm D1–D10 được nhà tài trợ chấp nhận bằng văn bản. 2. UAT ký duyệt với ≥ 95% ca kiểm thử đạt, không còn lỗi Nghiêm trọng/Cao. 3. Hệ thống chạy trên môi trường vận hành, sao lưu được kiểm chứng bằng phục hồi thử thành công. 4. Dữ liệu đã chuyển đổi và đối chiếu với tệp nguồn, sai lệch được kế toán chấp nhận bằng văn bản. 5. Tối thiểu 80% trong 25 người dùng nghiệp vụ đã được đào tạo, có biên bản. 6. Mã nguồn, script CSDL, hướng dẫn sử dụng và hướng dẫn quản trị đã bàn giao và được xác nhận. 7. Bảo hành một tháng kết thúc, không còn lỗi Nghiêm trọng/Cao. 8. Báo cáo tổng kết, bài học kinh nghiệm và quyết toán được phê duyệt, hóa đơn cuối đã thanh toán.<br><br>Kết thúc sớm theo quyết định của nhà tài trợ (rút kinh phí hoặc mất nhu cầu nghiệp vụ): bàn giao phần đã hoàn thành và đóng dự án kèm báo cáo chấm dứt.</td></tr>
+<tr><td class="label">Project Exit Criteria:<br>Tiêu chí kết thúc</td><td>1. Toàn bộ sản phẩm D1–D10 được nhà tài trợ chấp nhận bằng văn bản. 2. UAT ký duyệt với ≥ 95% ca kiểm thử đạt, không còn lỗi Nghiêm trọng/Cao. 3. Hệ thống chạy trên môi trường vận hành, sao lưu được kiểm chứng bằng phục hồi thử thành công. 4. Dữ liệu đã chuyển đổi và đối chiếu với tệp nguồn, sai lệch được kế toán chấp nhận bằng văn bản. 5. Tối thiểu 80% trong <mark>52 người dùng nghiệp vụ</mark> đã được đào tạo, có biên bản. 6. Mã nguồn, script CSDL, hướng dẫn sử dụng và hướng dẫn quản trị đã bàn giao và được xác nhận. 7. Bảo hành một tháng kết thúc, không còn lỗi Nghiêm trọng/Cao. 8. Báo cáo tổng kết, bài học kinh nghiệm và quyết toán được phê duyệt, hóa đơn cuối đã thanh toán.<br><br>Kết thúc sớm theo quyết định của nhà tài trợ (rút kinh phí hoặc mất nhu cầu nghiệp vụ): bàn giao phần đã hoàn thành và đóng dự án kèm báo cáo chấm dứt.</td></tr>
 </table>
 
 <table class="form">
 <tr><td class="label" colspan="2">Project Manager Authority Level: — Mức thẩm quyền của giám đốc dự án</td></tr>
 <tr><td class="label">Staffing Decisions:<br>Quyết định nhân sự</td><td>Phân công và điều chuyển công việc trong đội 5 người đã duyệt, duyệt nghỉ phép, quản lý hiệu suất hằng ngày. Được đề nghị thay thế thành viên kèm thông báo cho nhà tài trợ; quyết định tuyển dụng, chấm dứt và hợp đồng lao động thuộc quản lý trực tuyến của nhà thầu.</td></tr>
-<tr><td class="label">Budget Management and Variance:<br>Quản lý ngân sách và sai lệch</td><td>Cam kết và chi tiêu trong đường cơ sở đã duyệt, gồm giao dịch đơn lẻ tới 20.000.000 VNĐ và sử dụng quỹ dự phòng 70.000.000 VNĐ cho rủi ro R1–R7. Tự quản lý sai lệch chi phí lũy kế trong ±5% đường cơ sở. Trình nhà tài trợ mọi dự báo vượt 5%, mọi lần dùng dự phòng vượt 40.000.000 VNĐ và mọi thay đổi tổng kinh phí.</td></tr>
+<tr><td class="label">Budget Management and Variance:<br>Quản lý ngân sách và sai lệch</td><td>Cam kết và chi tiêu trong đường cơ sở đã duyệt, gồm giao dịch đơn lẻ tới 20.000.000 VNĐ và sử dụng quỹ dự phòng 70.000.000 VNĐ cho rủi ro R1–R8. Tự quản lý sai lệch chi phí lũy kế trong ±5% đường cơ sở. Trình nhà tài trợ mọi dự báo vượt 5%, mọi lần dùng dự phòng vượt 40.000.000 VNĐ và mọi thay đổi tổng kinh phí.</td></tr>
 </table>
 
 <div class="page-of">Page 3 of 4</div>
@@ -378,16 +408,119 @@ Nhà tài trợ phê chuẩn dự án và bản tuyên bố dự án này, cấp
 
 <tr><td class="label">Conflict Resolution:<br>Giải quyết xung đột</td><td>Xử lý xung đột trong nội bộ đội dự án và giữa đội dự án với nhân sự vận hành của trung tâm, kể cả xung đột ưu tiên về thời gian tham gia của nhân sự. Xung đột vượt ranh giới tổ chức, làm thay đổi phạm vi đã thống nhất, hoặc chưa xử lý được sau 5 ngày làm việc thì trình nhà tài trợ; quyết định của nhà tài trợ là cuối cùng. Tranh chấp với nhà cung cấp bên ngoài xử lý theo hợp đồng dịch vụ tương ứng.</td></tr>
 
-<tr><td class="label">Sponsor Authority:<br>Thẩm quyền nhà tài trợ</td><td>Đỗ Thị Bích Ngọc, chủ sở hữu kiêm Giám đốc trung tâm đào tạo, phê chuẩn dự án và bản tuyên bố dự án này, cấp và giải ngân 700 triệu đồng, chỉ định giám đốc dự án, bố trí nhân sự trung tâm tham gia. Phê duyệt thay đổi phạm vi, tiến độ, ngân sách vượt thẩm quyền của giám đốc dự án; ấn định mức sai lệch chấp nhận được; giải quyết xung đột được trình lên và xung đột giữa các bộ phận; nghiệm thu sản phẩm; cho phép vận hành chính thức và đóng dự án; bảo trợ dự án trước nhân sự và các trưởng cơ sở.</td></tr>
+<tr><td class="label">Sponsor Authority:<br>Thẩm quyền nhà tài trợ</td><td><mark>Đỗ Thị Bích Ngọc</mark>, chủ sở hữu kiêm Giám đốc trung tâm đào tạo, phê chuẩn dự án và bản tuyên bố dự án này, cấp và giải ngân 700 triệu đồng, chỉ định giám đốc dự án, bố trí nhân sự trung tâm tham gia. Phê duyệt thay đổi phạm vi, tiến độ, ngân sách vượt thẩm quyền của giám đốc dự án; ấn định mức sai lệch chấp nhận được; giải quyết xung đột được trình lên và xung đột giữa các bộ phận; nghiệm thu sản phẩm; cho phép vận hành chính thức và đóng dự án; bảo trợ dự án trước nhân sự và các trưởng cơ sở.</td></tr>
 </table>
 
 <table class="form">
 <tr><td class="label" colspan="2">Approvals: — Phê duyệt</td></tr>
 <tr><td style="height:60pt">Project Manager Signature — Chữ ký giám đốc dự án</td><td style="height:60pt">Sponsor or Originator Signature — Chữ ký nhà tài trợ</td></tr>
-<tr><td>Project Manager Name — Họ tên: Nguyễn Văn A</td><td>Sponsor or Originator Name — Họ tên: Đỗ Thị Bích Ngọc</td></tr>
+<tr><td>Project Manager Name — Họ tên: <mark>Nguyễn Văn A</mark></td><td>Sponsor or Originator Name — Họ tên: <mark>Đỗ Thị Bích Ngọc</mark></td></tr>
 <tr><td>Date — Ngày: ______________________</td><td>Date — Ngày: ______________________</td></tr>
 </table>
 
 <div class="page-of">Page 4 of 4</div>
 
 </div>
+
+<div class="pagebreak"></div>
+
+## Phần 3 — Nhật ký prompt
+
+Phần này trả lời yêu cầu số 4 của đề bài: liệt kê mọi phiên bản prompt đã dùng để tạo ra tài liệu này, đánh giá chất lượng kết quả của từng phiên bản, và lý do phải thay thế từng phiên bản.
+
+Quy luật xuyên suốt sáu phiên bản là nhất quán. Những prompt mô tả *tài liệu* cho ra văn bản trôi chảy nhưng sai ở những chỗ kiểm chứng được. Những prompt mô tả *ràng buộc và nguồn tham chiếu* cho ra văn bản kiểm chứng được. Bước tiến lớn nhất đến từ việc yêu cầu soát lỗi theo hướng phản biện, chứ không phải yêu cầu viết thêm nội dung.
+
+### 3.1 Lịch sử phiên bản
+
+<div class="fnlist" markdown="1">
+
+| PB | Mục đích | Chất lượng kết quả | Lý do thay thế |
+| --- | --- | --- | --- |
+| V1 | Có một bản nháp đầu tiên dùng tạm được | Chung chung, không dùng được. Đọc như một chương giáo trình về tuyên bố dự án chứ không phải tuyên bố dự án cho dự án này. | Prompt không có ràng buộc nào của dự án nên không có gì để bám vào |
+| V2 | Neo bản nháp vào đúng các con số của đề bài | Đúng quy mô nhưng chưa có hình hài. Danh sách chức năng xuất hiện và hợp lý. | Cấu trúc do thói quen của mô hình sinh ra, không theo biểu mẫu bắt buộc |
+| V3 | Ép theo cấu trúc của Book of Forms | Đúng cấu trúc nhưng nội dung quá mơ hồ để kiểm chứng. Tiêu chí thành công là tính từ chứ không phải con số. | Tiêu chí mơ hồ thì không chấm được; cần giá trị đo được |
+| V4 | Bắt mọi phát biểu phải đo được và tạo bản tiếng Việt | Chính là phiên bản bị đem đi soát lỗi. Trôi chảy, trông có vẻ đầy đủ, nhưng mâu thuẫn nội bộ. | Sự trôi chảy che mất bốn mâu thuẫn mà không prompt sinh nội dung nào phát hiện được |
+| V5 | Đi tìm lỗi thay vì viết thêm nội dung | Prompt có giá trị cao nhất trong cả bộ. Phát hiện một tiến độ tự mâu thuẫn với chính cam kết bảo hành của nó. | Chỉ soát lỗi; việc sửa vẫn phải yêu cầu riêng |
+| V6 | Áp dụng toàn bộ phát hiện cho cả hai ngôn ngữ cùng lúc | Tạo ra bản 2.0 này | Hiện hành |
+
+</div>
+
+### 3.2 Nội dung các prompt
+
+#### V1 — bản nháp đầu tiên
+
+> Viết một tuyên bố dự án cho dự án phần mềm quản lý trung tâm đào tạo.
+
+**Chất lượng: kém.** Khoảng 600 từ chung chung — "dự án sẽ mang lại giá trị cho các bên liên quan", các mốc đặt tên "Giai đoạn 1" đến "Giai đoạn 4", không có con số nào. Không có nội dung nào đủ cụ thể để có thể đúng hay sai.
+
+**Lý do thay thế:** prompt không nêu ngân sách, thời gian, quy mô nhân sự hay khách hàng. Không có gì để bám vào, kết quả mô tả *khái niệm* tuyên bố dự án thay vì mô tả dự án này.
+
+#### V2 — bổ sung ràng buộc
+
+> Viết tuyên bố dự án cho "Xây dựng và triển khai phần mềm quản lý trung tâm đào tạo". Ngân sách 700 triệu đồng, thời gian 5 tháng, đội 5 người. Khách hàng là một trung tâm đào tạo ngoài giờ tư nhân. Kèm đặc tả yêu cầu có danh sách chức năng và mô tả từng chức năng.
+
+**Chất lượng: khá.** Các con số lan truyền đúng và 11 chức năng F01–F11 xuất hiện ngay ở đây, gần như đã ở dạng cuối — phần này của kết quả giữ nguyên đến bản 2.0 gần như không đổi. Nhưng phần tuyên bố dự án chỉ là một chuỗi tiêu đề phẳng do mô hình tự chọn.
+
+**Lý do thay thế:** đề bài không yêu cầu *một* tuyên bố dự án bất kỳ, mà yêu cầu đúng biểu mẫu trong một cuốn sách được nêu tên. Cấu trúc do mô hình tự nghĩ ra thì không được điểm nào so với biểu mẫu bắt buộc.
+
+#### V3 — áp đặt cấu trúc
+
+> Dùng danh mục thành phần của Bảng 1.1 trong A Project Manager's Book of Forms (ấn bản 3), sau đó tái hiện đúng biểu mẫu PROJECT CHARTER 4 trang và điền vào. Giữ đặc tả yêu cầu là Phần 1 và tuyên bố dự án là Phần 2.
+
+**Chất lượng: tốt về cấu trúc, yếu về nội dung.** Cả danh mục thành phần (2A) lẫn biểu mẫu 4 trang (2B) đều xuất hiện và được tách đúng. Nhưng nội dung vẫn mềm: mục tiêu chất lượng ghi "bàn giao hệ thống chất lượng cao", tiêu chí kết thúc ghi "khách hàng hài lòng".
+
+**Lý do thay thế:** tiêu chí không đo được thì người chấm không đánh giá được, và nó che giấu rủi ro. "Khách hàng hài lòng" không có điều kiện thất bại.
+
+#### V4 — tính đo được và bản tiếng Việt
+
+> Mọi tiêu chí thành công phải là một con số kèm ngưỡng và thời điểm đo. Bổ sung sổ rủi ro kèm biện pháp ứng phó, lịch mốc với ngày thật, và bảng chi phí cộng lại đúng bằng 700 triệu đồng. Sau đó tạo bản tiếng Việt có cấu trúc y hệt — cùng tiêu đề, cùng số dòng bảng, để hai tệp so sánh được với nhau.
+
+**Chất lượng: nhìn bề mặt thì cao, và đây là mục quan trọng nhất trong nhật ký này.** Mọi thứ yêu cầu đều có: ngân sách khớp chính xác (490 + 70 + 70 + 70 = 700), các mốc đều rơi vào thứ Sáu, sổ rủi ro có biện pháp ứng phó thật, và hai tệp ngôn ngữ khớp nhau từng dòng.
+
+Nhưng nó cũng sai ở bốn chỗ mà đọc lại với tư cách *người đọc* thì không thể phát hiện:
+
+1. Tài liệu cam kết bảo hành một tháng nhưng chỉ xếp lịch bảy ngày cho việc đó.
+2. Tài liệu nói có 6 vai trò người dùng nhưng liệt kê 7.
+3. Tài liệu đặt chỉ tiêu đào tạo 25 người dùng nghiệp vụ cho một trung tâm mà chính nó đã cho 35 giáo viên.
+4. Tài liệu quy định 50 người dùng đồng thời cho một hệ thống mà chính bảng vai trò của nó cấp tài khoản cho 1.200 học viên và phụ huynh của họ.
+
+**Lý do thay thế:** đây chính là kiểu lỗi đáng ghi lại. Prompt đã yêu cầu nhất quán nội bộ, và kết quả *trông* nhất quán nội bộ. Prompt sinh nội dung tối ưu cho một tài liệu đọc xuôi tai; nó không đối chiếu một phát biểu ở mục 1.2 với một bảng ở mục 1.3. Hỏi lại cùng prompt đó, hoặc bảo "kiểm tra lại đi", sẽ tái lập đúng những điểm mù cũ vì vẫn là cách đọc đã sinh ra chúng.
+
+#### V5 — soát lỗi thay vì sinh nội dung
+
+> Soát lỗi kỹ tài liệu, ở mức bài tập sinh viên năm 4. Đối chiếu mọi con số với mọi con số khác. Kiểm tra số học của tiến độ so với các khoảng thời gian đã nêu. Liệt kê cái gì mâu thuẫn với cái gì, xếp theo mức độ dễ bị người chấm phát hiện, và nói rõ chỗ nào không kiểm chứng được.
+
+**Chất lượng: prompt giá trị nhất trong cả bộ.** Nó không sinh thêm một dòng nội dung nào, và nó tìm ra cả bốn mâu thuẫn ở trên, cộng thêm một thành phần Bảng 1.1 còn thiếu và hai con số mềm.
+
+Ba yếu tố khiến nó hiệu quả, và ba yếu tố này áp dụng được cho việc khác:
+
+- **Nó hỏi về mâu thuẫn, không hỏi về cải thiện.** "Cải thiện tài liệu này" trả về thêm văn. "Cái gì mâu thuẫn với cái gì" trả về danh sách lỗi.
+- **Nó nêu rõ đối tượng đọc.** "Bài tập năm 4" đặt thước đo ở đúng thứ người chấm thật sự kiểm tra — các phát biểu đếm được, số học, ngày tháng — thay vì ở chuẩn quản lý dự án công nghiệp.
+- **Nó buộc phải thừa nhận chỗ không biết.** Việc hỏi cái gì *không* kiểm chứng được đã làm lộ ra rằng biểu mẫu tuyên bố dự án chưa bao giờ được đối chiếu với cuốn sách — điều vẫn được mặc nhiên coi là đã làm kể từ V3.
+
+**Lý do thay thế:** soát lỗi cho ra phát hiện, không cho ra bản sửa. Việc áp dụng là một bước riêng, cố ý tách rời để các phát hiện được xem xét trước khi viết lại bất cứ thứ gì.
+
+#### V6 — áp dụng các phát hiện
+
+> Sửa hết đi, rồi tinh chỉnh lại.
+
+**Chất lượng: đủ dùng, vì V5 đã làm phần suy nghĩ.** Prompt ngắn được là vì bản soát lỗi mà nó dựa vào đủ cụ thể. Cũng ba chữ đó nhưng đưa ra ngay sau V4, không có bước soát lỗi ở giữa, thì chỉ nhận về một bản viết lại trôi chảy khác của đúng cái tiến độ hỏng đó.
+
+Đã áp dụng ở bản này: lập lại đường cơ sở tiến độ, dời go-live từ 29/01 về 05/01/2027 để tháng bảo hành trở thành thật; sửa 6/7 vai trò ở ba chỗ mỗi ngôn ngữ; đổi cơ sở đào tạo thành 52 người kèm cơ cấu cụ thể; tách N01 thành chỉ số cho nhân sự và chỉ số cho cổng phụ huynh; bổ sung thành phần *yêu cầu phê duyệt dự án* còn thiếu vào mục 2A; và áp dụng quy ước tô nền vàng lên đúng các số liệu tự đặt ra, thay vì tuyên bố quy ước rồi bỏ không dùng.
+
+### 3.3 Bài học rút ra từ chuỗi phiên bản
+
+<div class="fnlist" markdown="1">
+
+| Bài học | Bằng chứng từ nhật ký này |
+| --- | --- |
+| Ràng buộc mạnh hơn chỉ dẫn | V1 sang V2: thêm bốn con số hiệu quả hơn mọi câu "hãy viết chi tiết" |
+| Nêu tên nguồn, đừng mô tả nguồn | V2 sang V3: "Bảng 1.1 của Book of Forms" cho ra đúng cấu trúc ngay lập tức |
+| Đòi ngưỡng, đừng nhận tính từ | V3 sang V4: "một con số kèm ngưỡng và thời điểm đo" loại bỏ mọi tiêu chí không chấm được |
+| Trôi chảy không đồng nghĩa với đúng | V4: bản chỉn chu nhất lại là bản chứa bốn mâu thuẫn |
+| Soát lỗi là việc khác với viết | V5: một lượt tìm ra hết những gì bốn prompt sinh nội dung đã tích tụ |
+| Hỏi xem cái gì chưa kiểm chứng được | V5: làm lộ ra rằng chính biểu mẫu in trong sách chưa được kiểm tra — vẫn còn treo, xem dưới đây |
+
+</div>
+
+**Còn treo.** Biểu mẫu 4 trang ở mục 2B được dựng lại từ danh mục thành phần của tuyên bố dự án, chứ chưa được đọc từng trường từ trang 16–19 của *A Project Manager's Book of Forms*. Cần đối chiếu tập trường của nó với biểu mẫu in trong sách trước khi nộp. Nếu biểu mẫu trong sách có trường mà tài liệu này thiếu thì phải bổ sung; nếu biểu mẫu trong sách không có trường mà tài liệu này thừa thì nên bỏ đi thay vì giữ lại.
