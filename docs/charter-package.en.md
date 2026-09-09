@@ -6,6 +6,7 @@
 **Budget:** 700,000,000 VND (700 million VND)
 **Duration:** 5 months, 14 September 2026 to 5 February 2027 (144 days, 20.6 weeks)
 **Team:** 5 full-time staff, being 1 project manager / business analyst, 3 developers, 1 QA engineer
+**Sponsor:** <mark>Dr. Nguyễn Mạnh Hùng</mark>
 **Customer:** <mark>Đỗ Thị Bích Ngọc, owner and Director of the learning center</mark>
 **Date prepared:** 2 September 2026
 **Document version:** 3.0
@@ -75,7 +76,7 @@ The project delivers the software, deploys it on a cloud server, migrates the ce
 
 | Role | Who they are | What they do with the system |
 | --- | --- | --- |
-| Center Director | Owner and project sponsor | Dashboards, revenue and enrollment reports, approvals |
+| Center Director | Owner of the center, and the project's customer | Dashboards, revenue and enrollment reports, approvals |
 | Academic Manager | Runs the teaching operation | Course catalog, opening classes, scheduling, teacher assignment, assessment |
 | Front-desk / Admissions staff | Reception counter at each branch | Student profiles, enrollment, invoices, recording payments, parent enquiries |
 | Teacher | Teaching staff | Class roster, attendance, scores, own teaching-hour sheet |
@@ -190,6 +191,7 @@ Every assumed figure in this document is listed here. None of them is given by t
 | 13 | Discount and refund rules are confirmed during analysis and frozen at requirement sign-off. |
 | 14 | No public holiday other than the Lunar New Year break affects the schedule materially. |
 | 15 | The commercial product name and the project manager's name are not yet decided. |
+| 16 | The sponsor and the customer are two different people. The sponsor's organisational relationship to the learning center is not stated, because it was not specified; the charter defines his authority rather than his affiliation. Funding is released by the sponsor against the center's capital budget. |
 
 ---
 
@@ -317,13 +319,14 @@ Total **700,000,000 VND**, from the center's <mark>2026 to 2027 capital budget</
 | 4 | Management reserve | 70,000,000 | 10% | Held by the project manager against risks R1 to R10 |
 | | **Total** | **700,000,000** | **100%** | |
 
-**Resources preassigned.** Five full-time staff are committed before planning starts and are not renegotiable: the project manager who also acts as business analyst, three developers, and one QA engineer. <mark>Two of the developers are assigned specifically for prior work on scheduling and billing, and are the pair that builds F04 and F06.</mark> On the customer side the sponsor commits the Academic Manager and the Accountant for at least four hours a week each, one cloud virtual server, and one paid notification gateway account.
+**Resources preassigned.** Five full-time staff are committed before planning starts and are not renegotiable: the project manager who also acts as business analyst, three developers, and one QA engineer. <mark>Two of the developers are assigned specifically for prior work on scheduling and billing, and are the pair that builds F04 and F06.</mark> On the customer side the Center Director commits the Academic Manager and the Accountant for at least four hours a week each, one cloud virtual server, and one paid notification gateway account, and the sponsor holds her to that commitment.
 
 #### Key stakeholder list
 
 | Stakeholder | Role in the project |
 | --- | --- |
-| <mark>Đỗ Thị Bích Ngọc</mark>, Center Director | Sponsor: funds the project, approves the charter and scope changes, gives final acceptance |
+| <mark>Dr. Nguyễn Mạnh Hùng</mark> | Sponsor: authorises the project and this charter, releases the funding, approves scope changes beyond the project manager's authority, gives final acceptance |
+| <mark>Đỗ Thị Bích Ngọc</mark>, owner and Center Director | Customer: owns the business need, commits the center's staff and data to the project, and takes the system into daily operation |
 | Academic Manager | Business owner for courses, classes, scheduling, assessment; main requirement source and UAT lead |
 | Accountant | Business owner for tuition, debt, and payroll; owner of the tuition benefit; UAT participant |
 | Front-desk / Admissions supervisor | Business owner for enrollment and payment recording; represents the daily users |
@@ -341,7 +344,7 @@ Total **700,000,000 VND**, from the center's <mark>2026 to 2027 capital budget</
 
 | To be approved | Approved by | Evidence |
 | --- | --- | --- |
-| This charter | Center Director, as sponsor | Signature on the charter form in section 2B |
+| This charter | <mark>Dr. Nguyễn Mạnh Hùng</mark>, as sponsor | Signature on the charter form in section 2B |
 | Requirement specification (D1) | Academic Manager and Accountant for their areas; sponsor overall | Signed requirement baseline at M1 |
 | Design baseline (D2) | Project Manager, reviewed with the Academic Manager for workflow fit | Signed design review record at M2 |
 | Iteration releases (D3, D4) | Academic Manager, Accountant, and Front-desk supervisor for their functions | Signed demo acceptance record at M3 and M4 |
@@ -349,11 +352,11 @@ Total **700,000,000 VND**, from the center's <mark>2026 to 2027 capital budget</
 | UAT result and go-live | Business owners sign their own areas; sponsor authorises go-live | Signed UAT report and go-live authorisation at M6 |
 | Migrated data (D6) | Accountant, for reconciliation against the source files | Written acceptance of the reconciliation, including accepted differences |
 | Handover package (D8, D9) | Center IT administrator | Signed handover record |
-| Project closure (D10) | Center Director, as sponsor | Signed closeout report |
+| Project closure (D10) | Sponsor, on the Center Director's confirmation that the center is operating on the system | Signed closeout report |
 
 **If UAT does not pass.** A pass rate below 95%, or any open Critical or High defect, means go-live is not authorised. Within two working days the project manager puts three options to the sponsor: correct and re-test with go-live delayed, stating exactly how many days of warranty that costs; go live against a written, sponsor-signed list of accepted defects with fix dates; or go live for part of the scope with the rest deferred to a change request. Without a signed decision from the sponsor, the system does not go live.
 
-**Who accepts the final product.** The Center Director, as sponsor and owner. Final acceptance cannot be delegated, but it rests on the written area sign-offs above, and it cannot be withheld for scope that was never in the baseline.
+**Who accepts the final product.** The sponsor gives final acceptance. It cannot be delegated, but it rests on the written area sign-offs above and on the Center Director's confirmation, as customer, that the center is running its daily operation on the system. Acceptance cannot be withheld for scope that was never in the baseline.
 
 #### Project exit criteria
 
@@ -388,9 +391,13 @@ The sponsor may also close the project early if funding is withdrawn or the busi
 
 #### Name and authority of the sponsor
 
-**Sponsor:** <mark>Đỗ Thị Bích Ngọc, owner and Director of the learning center.</mark>
+**Sponsor:** <mark>Dr. Nguyễn Mạnh Hùng</mark>
 
-The sponsor authorises the project and this charter, provides and releases the 700 million VND, appoints the project manager, and makes the center's staff available. The sponsor approves changes to scope, schedule, and budget beyond the project manager's authority, sets acceptable variance limits, resolves conflicts escalated by the project manager or arising between departments, accepts the deliverables, and authorises go-live and project closure. The sponsor champions the project with the center's staff and with the branch managers.
+**Customer:** <mark>Đỗ Thị Bích Ngọc, owner and Director of the learning center.</mark>
+
+The sponsor and the customer are two different people, and the charter keeps their authority separate. The sponsor authorises the project and this charter, releases the 700 million VND, and appoints the project manager. The sponsor approves changes to scope, schedule, and budget beyond the project manager's authority, sets acceptable variance limits, resolves conflicts escalated by the project manager, accepts the deliverables, and authorises go-live and project closure.
+
+The customer owns the business need and the operation the system will run. The Center Director makes the center's staff and data available, nominates the business owners who sign for their own areas, and confirms at closeout that the center is operating on the system. Where a decision is about what the center needs, it is the customer's; where it is about whether the project continues, is funded, or is accepted, it is the sponsor's. The sponsor champions the project with the center's staff and with the branch managers.
 
 ---
 
@@ -403,10 +410,10 @@ The sponsor authorises the project and this charter, provides and releases the 7
 | Field | Content |
 | --- | --- |
 | **Project Title** | Development and Deployment of a Learning Center Management Software. Product name: <mark>not yet decided</mark> |
-| **Project Sponsor** | <mark>Đỗ Thị Bích Ngọc, owner and Director of the learning center</mark> |
+| **Project Sponsor** | <mark>Dr. Nguyễn Mạnh Hùng</mark> |
 | **Date Prepared** | 2 September 2026 |
 | **Project Manager** | |
-| **Project Customer** | <mark>The learning center: 3 branches, 1,200 active students, 35 teachers</mark> |
+| **Project Customer** | <mark>Đỗ Thị Bích Ngọc, owner and Director of the learning center: 3 branches, 1,200 active students, 35 teachers</mark> |
 
 | Field | Content |
 | --- | --- |
@@ -447,7 +454,8 @@ M6 to M7 is the one-month warranty period. Go-live falls on a Tuesday so that li
 
 | Stakeholder(s) | Role |
 | --- | --- |
-| <mark>Đỗ Thị Bích Ngọc</mark>, owner and Center Director | Sponsor: funds the project, approves the charter and scope changes, gives final acceptance |
+| <mark>Dr. Nguyễn Mạnh Hùng</mark> | Sponsor: authorises the project and this charter, releases the funding, approves scope changes, gives final acceptance |
+| <mark>Đỗ Thị Bích Ngọc</mark>, owner and Center Director | Customer: owns the business need, commits the center's staff and data, takes the system into daily operation |
 | Academic Manager | Business owner for courses, classes, scheduling, assessment; main requirement source and UAT lead |
 | Accountant | Business owner for tuition, debt, and teaching-hour payroll; owner of the tuition benefit; UAT participant |
 | Front-desk / Admissions supervisor | Business owner for enrollment and payment recording; represents the daily users |
@@ -474,14 +482,14 @@ M6 to M7 is the one-month warranty period. Go-live falls on a Tuesday so that li
 | --- | --- |
 | **Technical Decisions** | Full authority over architecture, technology stack, database design, coding standards, tooling, and the internal delivery approach, provided that acceptance criteria A01 to A11 and the agreed deliverables are met. Decides the content of each iteration within the approved scope. Any decision that changes user-visible scope, the schedule, or the cost goes to the sponsor through the change process. |
 | **Conflict Resolution** | Resolves conflicts within the project team and between the team and the center's operational staff, including competing claims on staff availability. Conflicts that cross organisations, alter agreed scope, or remain unresolved after <mark>five working days</mark> are escalated to the sponsor, whose decision is final. Disputes with external suppliers follow the applicable service agreement. |
-| **Sponsor Authority** | <mark>Đỗ Thị Bích Ngọc</mark>, owner and Director of the learning center, authorises the project and this charter, provides and releases the 700,000,000 VND, appoints the project manager, and makes the center's staff available. Approves changes to scope, schedule, and budget beyond the project manager's authority; sets acceptable variance limits; resolves escalated and inter-department conflicts; accepts the deliverables; authorises go-live and project closure; champions the project with the center's staff and branch managers. |
+| **Sponsor Authority** | <mark>Dr. Nguyễn Mạnh Hùng</mark> authorises the project and this charter, releases the 700,000,000 VND, and appoints the project manager. Approves changes to scope, schedule, and budget beyond the project manager's authority; sets acceptable variance limits; resolves conflicts escalated by the project manager; accepts the deliverables; authorises go-live and project closure; champions the project with the center's staff and branch managers. The customer, <mark>Đỗ Thị Bích Ngọc</mark> as owner and Center Director, is a separate authority: she owns the business need, makes the center's staff and data available, nominates the business owners who sign for their own areas, and confirms at closeout that the center is operating on the system. |
 
 **Approvals**
 
 | | Project Manager | Sponsor or Originator |
 | --- | --- | --- |
 | **Signature** | | |
-| **Name** | | <mark>Đỗ Thị Bích Ngọc</mark> |
+| **Name** | | <mark>Dr. Nguyễn Mạnh Hùng</mark> |
 | **Date** | | |
 
 The printed form carries a signature, a name, and a date for the Project Manager and for the Sponsor or Originator. The project manager is <mark>appointed by the sponsor at M0</mark> and is therefore not yet named, so that box is left empty, as are all signature and date boxes, which are completed on signing.

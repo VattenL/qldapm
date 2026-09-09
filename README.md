@@ -44,7 +44,7 @@ The English file is the source of truth.
 - All customer details and figures are assumptions, listed in section 1.6 and highlighted in place.
 - `<mark>` is the only HTML in the file. It renders as a yellow highlight in GitHub, IDE previews, and
   most Markdown viewers, and is used per point 3 of the assignment: it marks content whose correctness
-  cannot be confirmed from the brief. The file carries 64 markers. Content given by the brief (budget,
+  cannot be confirmed from the brief. The file carries 71 markers. Content given by the brief (budget,
   duration, team size) and deliberate design decisions (F01 to F11, A01 to A11) are deliberately not
   marked, because they are choices rather than guesses.
 - An empty box in the Part 2B form means the field cannot be completed until signing, per the same
