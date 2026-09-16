@@ -9,7 +9,7 @@
 **Sponsor:** <mark>Dr. Nguyễn Mạnh Hùng</mark>
 **Customer:** <mark>Đỗ Thị Bích Ngọc, owner and Director of the learning center</mark>
 **Date prepared:** 2 September 2026
-**Document version:** 3.0
+**Document version:** 3.1
 **Prepared by:** ________________________________  (name, student ID, class)
 
 ### How this document is organised
@@ -547,7 +547,8 @@ The pattern across the versions is consistent. Prompts that described the *docum
 | V8 | Cross-check the charter against a second published template | Exposed two content gaps, both filled | Comparison only, no format change |
 | V9 | Read the document as the paying customer, not as a marker | One arithmetic correction and seven additions | Content complete; presentation then rewritten |
 | V10 | Rewrite the English file as clean, pure Markdown | Better prose, and a serious regression: two graded sections deleted | Dropped the filled form and the prompt log, failing assignment points 2, 3 and 4 |
-| V11 | Grade against the brief, then restore what V10 removed | Produced this version | Current |
+| V11 | Grade against the brief, then restore what V10 removed | Produced version 3.0 | Left the team's review comments unanswered |
+| V12 | Answer the team's 26 review comments, add the mobile app, then re-audit | Produced this version 3.1 | Current |
 
 ### 3.2 The prompts
 
@@ -663,7 +664,15 @@ The result read better and scored far worse. Graded against the general requirem
 
 Applied in this version: section 2B restored and, for the first time, written directly from the field list extracted from pages 16 to 19 of the book rather than reconstructed from the element list; Part 3 restored and extended to V11; the yellow convention reapplied across both parts and explained at the top; the project manager name and the signature and date fields left deliberately empty, per the instruction to leave a box empty when its content is not known; the dangling reference to point 3 resolved; and the em dashes, minus signs, and plus-or-minus signs removed to satisfy the project's own writing rules.
 
-**Why current:** the document now answers all four points of the assignment in the prescribed form.
+**Why replaced:** the document answered the brief, but two teammates had left 26 review comments on the shared copy that no version had yet read.
+
+#### V12: answer the review, then re-audit
+
+> Read every review comment on the shared document and treat each one as a requirement: trace it to a change in the source file or to a written reason for not changing. Then add the mobile app the reviewers asked for as a full function, with its own deliverable, acceptance criterion, risk, exception cases, budget line, and effect on the business case, inside the fixed budget and dates. Re-run the audit of V5 on the result.
+
+**Quality: the most content per prompt since V4, and the first version whose changes came from the readers rather than from the writer.** Twenty-six comments from two teammates were answered one by one, in a review file kept with the source, and nine further defects the reviewers had not flagged were recorded alongside. The largest single change was the mobile app, F12. Adding it inside 700,000,000 VND and five months forced a re-cut of the budget, a part-time developer, a new risk, and the admission that earlier versions had never costed the notifications the system itself sends. The warranty grew from one month to six, with the first month inside the project and the rest funded and handed over at closeout, and the acceptance threshold moved from an open-ended 100 percent to 99 percent measured against a test set agreed at M5.
+
+**Why current:** the document now answers the review as well as the brief. The next step belongs to the reviewers: each thread carries a proposed change, and the source file is the only place it is applied.
 
 ### 3.3 What the sequence shows
 
@@ -678,5 +687,6 @@ Applied in this version: section 2B restored and, for the first time, written di
 | Verify against the source, not against a memory of it | V11: the form was finally built from text extracted from pages 16 to 19, not from the element list |
 | A rewrite is not a safe operation | V10: deleted two graded sections while improving the prose, and said nothing |
 | Grade before polishing | V11: a request to clean up would have preserved a failing structure |
+| A review comment is a requirement | V12: each of 26 comments traced to a change or to a written reason, in a review file kept with the source |
 
-**Still open.** Nothing in the English file. The Vietnamese file `charter-package.vi.md` is a translation of version 2.0 and carries none of the changes from V7 onward. If a Vietnamese deliverable is required, it should be retranslated from this file rather than patched.
+**Still open.** The replies to the 26 review comments are posted on the shared document and wait for the reviewers to resolve them. The Vietnamese file `charter-package.vi.md` is a translation of version 2.0 and carries none of the changes from V7 onward. If a Vietnamese deliverable is required, it should be retranslated from this file rather than patched.
