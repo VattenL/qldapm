@@ -110,14 +110,14 @@ Setup, once per machine:
    covers it and the token.
 
 ```bash
-G="uv run --with google-api-python-client,google-auth-oauthlib,markdown tools/gdoc.py"
-$G auth                                                      # browser consent, once
-$G comments --doc DOC_ID                                     # threads with the text each is anchored to
-$G post --doc DOC_ID --review review/2026-09-16-doc-review.json --dry-run
-$G post --doc DOC_ID --review review/2026-09-16-doc-review.json
-$G render --review review/2026-09-16-doc-review.json --out review/2026-09-16-doc-review.md --title "..."
-$G get --doc DOC_ID --out /tmp/doc.json --marks              # structure, and which runs and cells are shaded
-$G import-html --md docs/charter-package.en.md --title "Charter package v3.1"   # new Doc from the source
+gdoc() { uv run --with google-api-python-client,google-auth-oauthlib,markdown tools/gdoc.py "$@"; }
+gdoc auth                                                      # browser consent, once
+gdoc comments --doc DOC_ID                                     # threads with the text each is anchored to
+gdoc post --doc DOC_ID --review review/2026-09-16-doc-review.json --dry-run
+gdoc post --doc DOC_ID --review review/2026-09-16-doc-review.json
+gdoc render --review review/2026-09-16-doc-review.json --out review/2026-09-16-doc-review.md --title "..."
+gdoc get --doc DOC_ID --out /tmp/doc.json --marks              # structure, and which runs and cells are shaded
+gdoc import-html --md docs/charter-package.en.md --title "Charter package v3.1"   # new Doc from the source
 python3 -m unittest tools/test_gdoc.py
 ```
 
