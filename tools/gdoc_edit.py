@@ -239,8 +239,8 @@ def block_requests(tab_id: str, index: int, text: str, specs):
         "fields": "bold,italic,backgroundColor"}})
     reqs.append({"updateParagraphStyle": {
         "range": {"startIndex": index, "endIndex": index + len(text), "tabId": tab_id},
-        "paragraphStyle": {"namedStyleType": "NORMAL_TEXT", "indentStart": {"magnitude": 0, "unit": "PT"}},
-        "fields": "namedStyleType,indentStart"}})
+        "paragraphStyle": {"namedStyleType": "NORMAL_TEXT", "alignment": "START", "indentStart": {"magnitude": 0, "unit": "PT"}},
+        "fields": "namedStyleType,alignment,indentStart"}})
     group_start = None
     for sp in specs:
         rng = {"startIndex": index + sp["start"], "endIndex": index + sp["end"], "tabId": tab_id}
