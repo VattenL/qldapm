@@ -7,6 +7,12 @@ import unittest
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 import gdoc  # noqa: E402
 
+try:
+    import markdown  # noqa: F401
+    HAVE_MARKDOWN = True
+except ImportError:
+    HAVE_MARKDOWN = False
+
 THREADS = {
     "T1": {"id": "T1", "content": "Cao quá", "replies": [{"content": "99 thôi"}]},
     "T2": {"id": "T2", "content": "Bỏ", "replies": []},
@@ -52,6 +58,7 @@ class Validate(unittest.TestCase):
 
 
 class Html(unittest.TestCase):
+    @unittest.skipUnless(HAVE_MARKDOWN, "markdown package not installed; run under uv run --with markdown")
     def test_marks_and_page_breaks(self):
         html = gdoc.md_to_html("#### PROJECT CHARTER, page 2 of 4\n\nA <mark>B</mark>\n\n| a | b |\n| --- | --- |\n| 1 | 2 |", "T")
         self.assertIn('<span style="background-color:#ffff00">B</span>', html)
