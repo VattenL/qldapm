@@ -124,19 +124,29 @@ The twelve functions above describe the system working normally. The cases below
 
 ### 1.2 Project Deliverables
 
-| # | Deliverable | Due at |
-| --- | --- | --- |
-| D1 | Requirement specification, approved and baselined | M1 |
-| D2 | Design baseline: architecture, database schema, UI design | M2 |
-| D3 | Iteration 1 release, F01 to F05 | M3 |
-| D4 | Iteration 2 release, F06 to F12 | M4 |
-| D5 | Test documentation: test plan, test cases, defect log, test summary report | M5 |
-| D6 | Production data migrated and reconciled against the source files | M6 |
-| D7 | Production deployment on the cloud server, with backup configured and a restore tested | M6 |
-| D8 | User manual, administrator and deployment guide, trained staff with a training record | M6 |
-| D9 | Source code, database scripts, and technical documentation handed over | M6 |
-| D10 | First warranty month completed, warranty for months 2 to 6 handed to the support desk, closeout report and lessons learned | M7 |
-| D11 | Mobile app published on Google Play and the App Store under the center's accounts, with store listings, release notes, signing keys, and the API documentation handed over | M6 |
+| # | Deliverable | For | Due at |
+| --- | --- | --- | --- |
+| D1 | Requirement specification, approved and baselined | Customer | M1 |
+| D2 | Design baseline: architecture, API contract, database schema, UI and app design | Customer | M2 |
+| D3 | Iteration 1 release, F01 to F05 | Customer | M3 |
+| D4 | Iteration 2 release, F06 to F12 | Customer | M4 |
+| D5 | Test documentation: test plan, test cases, defect log, test summary report | Customer | M5 |
+| D6 | Production data migrated and reconciled against the source files | Customer | M6 |
+| D7 | Production deployment on the cloud server, with backup configured and a restore tested | Customer | M6 |
+| D8 | User manual, administrator and deployment guide, trained staff with a training record | Customer | M6 |
+| D9 | Source code, database scripts, and technical documentation handed over | Customer | M6 |
+| D10 | First warranty month completed, warranty for months 2 to 6 handed to the support desk, closeout report and lessons learned | Internal | M7 |
+| D11 | Mobile app published on Google Play and the App Store under the center's accounts, with store listings, release notes, signing keys, and the API documentation handed over | Customer | M6 |
+
+The deliverables marked Customer are what the center receives and signs for. The project also produces its own management deliverables, which are internal to the supplier and are reviewed by the sponsor rather than accepted by the customer:
+
+| Internal deliverable | Produced |
+| --- | --- |
+| Project management plan, schedule, and communication plan | M1, updated at each milestone |
+| Weekly status report to the sponsor and the Center Director | Every week from M0 |
+| Risk register with responses and owners | M1, reviewed weekly |
+| Test plan and test cases | M2, completed at M5 as part of D5 |
+| Closeout report and lessons learned | M7, as D10 |
 
 ### 1.3 Product Acceptance Criteria
 
@@ -218,7 +228,7 @@ Every assumed figure in this document is listed here. None of them is given by t
 
 #### Project purpose
 
-The center is run on paper and spreadsheets. That costs about <mark>60 staff-hours a month</mark> in duplicate data entry, causes recurring room and teacher double-booking, and leaves about <mark>8% of tuition</mark> sitting past its due date because nobody has a reliable debt list. The project removes that operational loss and gives the Director one current view of enrollment, revenue, and teaching capacity across three branches, which the center needs before it opens a <mark>fourth branch in 2027</mark>.
+The center is run on paper and spreadsheets. That costs about <mark>60 staff-hours a month</mark> in duplicate data entry, causes recurring room and teacher double-booking, and at any moment about <mark>8% of billed tuition</mark> is past its due date, because nobody holds a reliable list of who owes what. The project removes that operational loss and gives the Director one current view of enrollment, revenue, and teaching capacity across three branches, which the center needs before it opens a <mark>fourth branch in 2027</mark>; opening that branch is outside this project (section 1.4).
 
 **The business case.** The center loses money in three ways today. Two of them can be quantified from the assumptions in section 1.6; the third cannot be quantified from anything the center currently measures, and is therefore left out of the calculation rather than estimated.
 
@@ -267,7 +277,7 @@ A Critical or High defect still open at the end of the first warranty month bloc
 
 #### Key deliverables
 
-D1 to D11 as listed in section 1.2: requirement specification, design baseline, two iteration releases, test documentation, migrated and reconciled data, production deployment with a tested restore, user and administrator documentation with trained staff, source code and technical documentation, the closeout report, and the mobile app published in both stores.
+D1 to D11 as listed in section 1.2, where each is marked as a customer deliverable or an internal one: requirement specification, design baseline, two iteration releases, test documentation, migrated and reconciled data, production deployment with a tested restore, user and administrator documentation with trained staff, source code and technical documentation, the closeout report, and the mobile app published in both stores.
 
 #### High-level requirements
 
@@ -434,15 +444,15 @@ The customer owns the business need and the operation the system will run. The C
 | **Project Sponsor** | <mark>Dr. Nguyễn Mạnh Hùng</mark> |
 | **Date Prepared** | 2 September 2026 |
 | **Project Manager** | |
-| **Project Customer** | <mark>Đỗ Thị Bích Ngọc, owner and Director of the learning center: 3 branches, 1,200 active students, 35 teachers</mark> |
+| **Project Customer** | <mark>Đỗ Thị Bích Ngọc, owner and Director of the learning center</mark> |
 
 | Field | Content |
 | --- | --- |
-| **Project Purpose** | The center operates on paper registers, Excel workbooks, and a group-chat channel. This costs about <mark>60 staff-hours a month</mark> in duplicate data entry, causes recurring room and teacher double-booking, and leaves about <mark>8% of tuition</mark> past its due date because no reliable debt list exists. The project removes that operational loss and gives the Director one current view of enrollment, revenue, and teaching capacity across the three branches, which is a precondition for the <mark>fourth branch planned for 2027</mark>. Quantified business case in section 2A: recurring benefit 90,600,000 VND a year net of notification cost, one-off release 360,000,000 VND, payback in the fifth year. |
+| **Project Purpose** | The center operates on paper registers, Excel workbooks, and a group-chat channel. This costs about <mark>60 staff-hours a month</mark> in duplicate data entry, causes recurring room and teacher double-booking, and at any moment about <mark>8% of billed tuition</mark> is past its due date, because nobody holds a reliable list of who owes what. The project removes that operational loss and gives the Director one current view of enrollment, revenue, and teaching capacity across the three branches, which is a precondition for the <mark>fourth branch planned for 2027</mark>; opening that branch is outside this project (section 1.4). Quantified business case in section 2A: recurring benefit 90,600,000 VND a year net of notification cost, one-off release 360,000,000 VND, payback in the fifth year. |
 | **High-Level Project Description** | Analyse, design, build, test, and deploy a Vietnamese-language web application covering the full operating cycle of the center: courses, classes and scheduling, students and enrollment, attendance, tuition and payments, teachers and teaching-hour payroll, assessment, notification, and management reporting, with a mobile app for parents and teachers on the same API. Includes migration from the current Excel files, staff training, and a six-month warranty from go-live. Iterative delivery: two build iterations, each closing with a demo, then user acceptance testing on the whole system. Five full-time staff plus a part-time mobile developer, five months, 700,000,000 VND. |
 | **Project Boundaries** | **Included:** functions F01 to F12 and the exception behaviour of section 1.1.5, for the school-age learners of the three existing branches; migration of the two most recent terms; deployment on one cloud virtual server with a staging environment; the mobile app published on Google Play and the App Store; training; documentation; a six-month warranty from go-live, the first month inside the project. **Excluded:** staff functions on mobile and offline use of the app; online teaching, video, and e-learning content; payment gateway and e-wallet integration; accounting, tax, and social-insurance integration; attendance hardware and any hardware procurement; multi-tenant operation for other centers; preschool learners; data older than the two most recent terms; support after the warranty month. Project exclusions: subscriptions beyond 12 months, cleaning of the source data, staffing and organisation of the center, operation after handover, parent training beyond the user guide. Adding a fourth branch of this customer is not excluded, since branches are configuration data in F11. The project ends at the closeout meeting after the first warranty month; warranty months 2 to 6 continue after closeout under budget line 5, and operation and hosting pass to the center at handover. |
-| **Key Deliverables** | D1 Approved requirement specification. D2 Design baseline: architecture, database schema, UI design. D3 Iteration 1 release, F01 to F05. D4 Iteration 2 release, F06 to F12. D5 Test documentation and test summary report. D6 Migrated and reconciled production data. D7 Production deployment with backup configured and a restore tested. D8 User manual, administrator and deployment guide, trained staff with a training record. D9 Source code, database scripts, technical documentation. D10 First warranty month completed, closeout report and lessons learned. D11 Mobile app published on Google Play and the App Store. |
-| **High-Level Requirements** | One integrated database, with the same data never entered in two places. Room, teacher, and student timetable conflicts detected and blocked when a class or session is created or moved. Tuition invoices generated from the course fee and the discount policy, with outstanding debt visible per student, class, and branch. Teaching hours derived from recorded attendance and exportable for payroll. Automatic notification of reminders, absence, tuition due, and results, with a delivery log; internal announcements and parent messages in the same channel. Role-based access for the seven roles, with an audit trail on all financial and student data. Vietnamese interface usable after half a day of training. Parents and teachers reach their functions through an Android and iOS app over the same API, and no function is app-only. Acceptance criteria A01 to A12 of section 1.3 met, covering functional completeness, performance, capacity, security, auditability, availability, degraded operation, usability, compatibility, maintainability, data ownership, and the mobile app. |
+| **Key Deliverables** | For the customer: D1 Approved requirement specification. D2 Design baseline: architecture, API contract, database schema, UI and app design. D3 Iteration 1 release, F01 to F05. D4 Iteration 2 release, F06 to F12. D5 Test documentation and test summary report. D6 Migrated and reconciled production data. D7 Production deployment with backup configured and a restore tested. D8 User manual, administrator and deployment guide, trained staff with a training record. D9 Source code, database scripts, technical documentation. D11 Mobile app published on Google Play and the App Store. Internal: D10 First warranty month completed, closeout report and lessons learned, together with the project management plan, schedule, weekly status reports, risk register, and test plan. |
+| **High-Level Requirements** | (1) One integrated database, with the same data never entered in two places. (2) Room, teacher, and student timetable conflicts detected and blocked when a class or session is created or moved. (3) Tuition invoices generated from the course fee and the discount policy, with outstanding debt visible per student, class, and branch. (4) Teaching hours derived from recorded attendance and exportable for payroll. (5) Automatic notification of reminders, absence, tuition due, and results, with a delivery log; internal announcements and parent messages in the same channel. (6) Role-based access for the seven roles, with an audit trail on all financial and student data. (7) Vietnamese interface usable after half a day of training. (8) Parents and teachers reach their functions through an Android and iOS app over the same API, and no function is app-only. (9) The exception behaviour of section 1.1.5 delivered and tested with the same weight as the functions. (10) Acceptance criteria A01 to A12 of section 1.3 met, covering functional completeness, performance, capacity, security, auditability, availability, degraded operation, usability, compatibility, maintainability, data ownership, and the mobile app. |
 | **Overall Project Risk** | **Medium.** Technology and domain are well understood, but budget and end date are both fixed, and the five-month window must contain delivery *and* the first warranty month in full, leaving analysis, design, and test about one week of float each. The core team of five is small enough that losing one developer moves the critical path; the project manager is also the business analyst; the customer staff who own the business rules are only part-time available. Dominant uncertainty: volatility of tuition, discount, and refund policy, which is a management decision of the center. Largest single exposure: go-live itself, with three branches switching over on one day, mid-term, four weeks before the Lunar New Year break, which can absorb no overrun. Risks R1 to R12 carry named responses and are covered by a 28,000,000 VND contingency reserve; the mobile app is kept off the go-live critical path. |
 
 #### PROJECT CHARTER, page 2 of 4
