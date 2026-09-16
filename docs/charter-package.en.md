@@ -144,7 +144,7 @@ The product is accepted when the functions of 1.1.4 and the behaviour of 1.1.5 p
 
 | ID | Category | Criterion |
 | --- | --- | --- |
-| A01 | Functional completeness | 100% of F01 to F12 accepted in UAT; at least 95% of UAT test cases passed; no open Critical or High defect; at most 5 open Medium defects, each with an agreed fix date, and none of them in the tuition, payment, or teaching-hour path |
+| A01 | Functional completeness | All twelve functions F01 to F12 accepted in UAT against the test set agreed and signed at M5; at least 99% of UAT test cases passed, the remainder being defects that do not affect the operation of the system, each logged with an agreed fix date; no open Critical or High defect, and no open defect of any severity in the tuition, payment, or teaching-hour path |
 | A02 | Performance | Staff screens respond within 3 seconds with <mark>52 concurrent staff users</mark>; the parent portal responds within 3 seconds at <mark>300 concurrent sessions</mark>; a report covering one term is produced within 10 seconds; app screens load within 3 seconds on a 4G connection |
 | A03 | Capacity | <mark>5,000 student records, 200 classes per term, and 3 years of session history</mark> without redesign |
 | A04 | Security | HTTPS only; passwords never stored or recoverable in readable form; every request authorised on the server; personal data handled in line with the <mark>Law on Personal Data Protection in force from 1 January 2026</mark>; notification consent recorded per guardian; app session tokens expire, and no personal data is cached unencrypted on the device |
@@ -305,7 +305,7 @@ D1 to D11 as listed in section 1.2: requirement specification, design baseline, 
 
 | Objective area | Objective | Success criteria |
 | --- | --- | --- |
-| Scope | Deliver F01 to F12 and D1 to D11 for the three branches | 100% of F01 to F12 accepted in UAT; all eleven deliverables signed off by the sponsor; no function deferred without an approved change request |
+| Scope | Deliver F01 to F12 and D1 to D11 for the three branches | All twelve functions accepted in UAT against the test set agreed at M5, with at least 99% of test cases passed and the remainder being defects that do not affect operation; all eleven deliverables signed off by the sponsor; no function deferred without an approved change request |
 | Time | Go live by 5 January 2027 and close by 5 February 2027 | Go-live on or before 5 January 2027; no milestone more than 1 week late; the first warranty month runs its full 31 days before closeout |
 | Cost | Deliver the whole scope within 700,000,000 VND | Final cost at or below 700,000,000 VND; variance at each stage gate within plus or minus 5% of baseline; reserve use reported monthly |
 | Quality | A system fit for daily operation from the first day | Acceptance criteria A01 to A12 of section 1.3 met |
@@ -375,7 +375,7 @@ Total **700,000,000 VND**, from the center's <mark>2026 to 2027 capital budget</
 | Handover package (D8, D9) | Center IT administrator | Signed handover record |
 | Project closure (D10) | Sponsor, on the Center Director's confirmation that the center is operating on the system | Signed closeout report |
 
-**If UAT does not pass.** A pass rate below 95%, or any open Critical or High defect, means go-live is not authorised. Within two working days the project manager puts three options to the sponsor: correct and re-test with go-live delayed, stating exactly how many days of warranty that costs; go live against a written, sponsor-signed list of accepted defects with fix dates; or go live for part of the scope with the rest deferred to a change request. Without a signed decision from the sponsor, the system does not go live.
+**If UAT does not pass.** A pass rate below 99%, or any open Critical or High defect, means go-live is not authorised. Within two working days the project manager puts three options to the sponsor: correct and re-test with go-live delayed, stating exactly how many days of warranty that costs; go live against a written, sponsor-signed list of accepted defects with fix dates; or go live for part of the scope with the rest deferred to a change request. Without a signed decision from the sponsor, the system does not go live.
 
 **Who accepts the final product.** The sponsor gives final acceptance. It cannot be delegated, but it rests on the written area sign-offs above and on the Center Director's confirmation, as customer, that the center is running its daily operation on the system. Acceptance cannot be withheld for scope that was never in the baseline.
 
@@ -384,7 +384,7 @@ Total **700,000,000 VND**, from the center's <mark>2026 to 2027 capital budget</
 The project closes when all of the following are true.
 
 1. All deliverables D1 to D11 accepted in writing by the sponsor.
-2. UAT signed off with at least 95% of test cases passed and no open Critical or High defect.
+2. UAT signed off with at least 99% of test cases passed and no open Critical or High defect.
 3. The system running in production with backup verified by a successful restore test, and the mobile app published in both stores.
 4. Production data migrated and reconciled, with any differences accepted in writing by the Accountant.
 5. At least 80% of the <mark>52 staff users</mark> trained, evidenced by the training record.
@@ -449,10 +449,10 @@ The customer owns the business need and the operation the system will run. The C
 
 | | Project Objectives | Success Criteria |
 | --- | --- | --- |
-| **Scope** | Deliver the twelve functions F01 to F12 and the eleven deliverables D1 to D11 for the three branches. | 100% of F01 to F12 accepted in UAT; all eleven deliverables signed off by the sponsor; no function deferred without an approved change request. |
+| **Scope** | Deliver the twelve functions F01 to F12 and the eleven deliverables D1 to D11 for the three branches. | All twelve functions accepted in UAT, measured against the test set agreed and signed at M5, with at least 99% of test cases passed and the remainder being defects that do not affect operation; acceptance cannot be withheld for scope outside the baseline; all eleven deliverables signed off by the sponsor; no function deferred without an approved change request. |
 | **Time** | Go live by <mark>5 January 2027</mark> and close the project by <mark>5 February 2027</mark>, within the five-month window starting <mark>14 September 2026</mark>, with the first warranty month contained inside that window. | Go-live on or before 5 January 2027; no milestone M1 to M7 more than 1 week later than baseline; the first warranty month runs its full 31 days before closeout. |
 | **Cost** | Deliver the whole scope within the preapproved 700,000,000 VND, including software, deployment, migration, training, and warranty. | Final cost at or below 700,000,000 VND; cost variance at each stage gate within plus or minus 5% of baseline; management reserve use reported monthly. |
-| **Other** | **Quality:** a system fit for daily operation from the first day. **Stakeholder satisfaction:** the center runs its daily operation on the system, not on spreadsheets. | At least 95% of UAT test cases passed; no open Critical or High defect at go-live; at most 5 open Medium defects, each with an agreed fix date and none in the tuition, payment, or teaching-hour path. At least 80% of the <mark>52 staff users</mark> trained and active in the first month, including at least 90% of the 17 administrative users and 75% of the 35 teachers; average user satisfaction at least 4 of 5 in the closeout survey; at least 90% of classes with attendance recorded in the system during the first warranty month; at least <mark>70% of guardians with a smartphone</mark> have activated the app by closeout. |
+| **Other** | **Quality:** a system fit for daily operation from the first day. **Stakeholder satisfaction:** the center runs its daily operation on the system, not on spreadsheets. | At least 99% of UAT test cases passed, the remainder being defects that do not affect operation, each with an agreed fix date; no open Critical or High defect at go-live, and none in the tuition, payment, or teaching-hour path. At least 80% of the <mark>52 staff users</mark> trained and active in the first month, including at least 90% of the 17 administrative users and 75% of the 35 teachers; average user satisfaction at least 4 of 5 in the closeout survey; at least 90% of classes with attendance recorded in the system during the first warranty month; at least <mark>70% of guardians with a smartphone</mark> have activated the app by closeout. |
 
 | Summary Milestones | Due Date |
 | --- | --- |
@@ -490,7 +490,7 @@ M6 to M7 is the first month of the six-month warranty; months 2 to 6 run after c
 
 | Field | Content |
 | --- | --- |
-| **Project Exit Criteria** | 1. All deliverables D1 to D11 accepted in writing by the sponsor. 2. UAT signed off with at least 95% of test cases passed and no open Critical or High defect. 3. System running in production with backup verified by a successful restore test, and the mobile app published in both stores. 4. Production data migrated and reconciled, with any differences accepted in writing by the Accountant. 5. At least 80% of the <mark>52 staff users</mark> trained, evidenced by the training record. 6. Source code, database scripts, user manual, and administrator guide handed over and acknowledged. 7. The first warranty month ended with no open Critical or High defect, and warranty months 2 to 6 handed to the supplier's support desk in writing. 8. Paper fallback procedure and full data export both demonstrated to the center and in its hands. 9. A written decision taken on support after the six-month warranty. 10. Closeout report, lessons learned, and final financial reconciliation approved, and the final invoice settled. Early closure by sponsor decision, on withdrawn funding or lost business need, hands over the completed deliverables and closes the project with a termination report. |
+| **Project Exit Criteria** | 1. All deliverables D1 to D11 accepted in writing by the sponsor. 2. UAT signed off with at least 99% of test cases passed and no open Critical or High defect. 3. System running in production with backup verified by a successful restore test, and the mobile app published in both stores. 4. Production data migrated and reconciled, with any differences accepted in writing by the Accountant. 5. At least 80% of the <mark>52 staff users</mark> trained, evidenced by the training record. 6. Source code, database scripts, user manual, and administrator guide handed over and acknowledged. 7. The first warranty month ended with no open Critical or High defect, and warranty months 2 to 6 handed to the supplier's support desk in writing. 8. Paper fallback procedure and full data export both demonstrated to the center and in its hands. 9. A written decision taken on support after the six-month warranty. 10. Closeout report, lessons learned, and final financial reconciliation approved, and the final invoice settled. Early closure by sponsor decision, on withdrawn funding or lost business need, hands over the completed deliverables and closes the project with a termination report. |
 
 | Project Manager Authority Level | |
 | --- | --- |
