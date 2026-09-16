@@ -12,6 +12,7 @@ Subcommands:
     render          Render a review JSON file as Markdown.
     delete-comment  Delete one comment thread, for test comments.
     import-html     Convert a Markdown file to HTML and create a new Google Doc from it.
+    replace         Replace the whole content of an existing Google Doc with the HTML built from Markdown.
 
 Nothing here names a document, a folder, or a repo path; every identifier is an
 argument. The client JSON and the token default to ~/.config/qldapm/ and must
@@ -314,23 +315,46 @@ def md_to_html(md_text: str, title: str) -> str:
     )
 
 
-def cmd_import_html(a, creds):
-    from googleapiclient.http import MediaIoBaseUpload
-
+def build_html(a) -> str:
+    """Cover (Markdown or HTML, by extension) plus the Markdown source, as one HTML page."""
     parts = []
     if a.cover:
-        parts.append(pathlib.Path(a.cover).read_text(encoding="utf-8"))
+        cover = pathlib.Path(a.cover).read_text(encoding="utf-8")
+        parts.append(cover if a.cover.endswith(".html") else cover)
         parts.append('<div style="page-break-before:always"></div>')
     parts.append(pathlib.Path(a.md).read_text(encoding="utf-8"))
     html = md_to_html("\n\n".join(parts), a.title)
     if a.html_out:
         pathlib.Path(a.html_out).write_text(html, encoding="utf-8")
+    return html
+
+
+def cmd_import_html(a, creds):
+    from googleapiclient.http import MediaIoBaseUpload
+
+    html = build_html(a)
     media = MediaIoBaseUpload(io.BytesIO(html.encode("utf-8")), mimetype="text/html", resumable=False)
     body = {"name": a.title, "mimeType": "application/vnd.google-apps.document"}
     if a.parent:
         body["parents"] = [a.parent]
     created = drive(creds).files().create(body=body, media_body=media, fields="id,webViewLink").execute()
     print(created["webViewLink"])
+
+
+def cmd_replace(a, creds):
+    """Overwrite the content of an existing Doc by re-importing HTML. The old content stays in version history."""
+    from googleapiclient.http import MediaIoBaseUpload
+
+    svc = drive(creds)
+    meta = svc.files().get(fileId=a.doc, fields="name,modifiedTime,capabilities(canEdit)").execute()
+    if not meta.get("capabilities", {}).get("canEdit"):
+        sys.exit(f"no edit permission on {meta.get('name')!r}")
+    if a.expect_modified and meta.get("modifiedTime") != a.expect_modified:
+        sys.exit(f"Doc changed since {a.expect_modified}: now {meta.get('modifiedTime')}; re-read before replacing")
+    html = build_html(a)
+    media = MediaIoBaseUpload(io.BytesIO(html.encode("utf-8")), mimetype="text/html", resumable=False)
+    updated = svc.files().update(fileId=a.doc, media_body=media, fields="id,modifiedTime").execute()
+    print("replaced content of", a.doc, "at", updated["modifiedTime"])
 
 
 # ---------------------------------------------------------------- cli
@@ -350,6 +374,9 @@ def main(argv=None):
     s = sub.add_parser("import-html"); s.add_argument("--doc", required=False, help="unused; kept for symmetry")
     s.add_argument("--md", required=True); s.add_argument("--cover"); s.add_argument("--title", required=True)
     s.add_argument("--parent", help="Drive folder id"); s.add_argument("--html-out", help="also write the HTML here")
+    s = sub.add_parser("replace"); s.add_argument("--doc", required=True); s.add_argument("--md", required=True)
+    s.add_argument("--cover"); s.add_argument("--title", required=True); s.add_argument("--html-out", help="also write the HTML here")
+    s.add_argument("--expect-modified", help="abort unless the Doc's modifiedTime equals this value")
 
     a = p.parse_args(argv)
     if a.cmd == "auth":
@@ -359,7 +386,7 @@ def main(argv=None):
     creds = load_creds(pathlib.Path(a.token))
     return {
         "comments": cmd_comments, "get": cmd_get, "post": cmd_post,
-        "delete-comment": cmd_delete_comment, "import-html": cmd_import_html,
+        "delete-comment": cmd_delete_comment, "import-html": cmd_import_html, "replace": cmd_replace,
     }[a.cmd](a, creds)
 
 

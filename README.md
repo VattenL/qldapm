@@ -14,6 +14,9 @@ requirement.md                Team requirement, the same 3 points plus the promp
 review/                       Replies to the team's review comments on the Google Doc, one file per round
 tools/gdoc.py                 Google Docs and Drive API helper: comments, replies, rebuild of the Doc
 tools/test_gdoc.py            Unit tests for the pure parts of the helper
+tools/gdoc_edit.py            Markdown subset parser and index-safe in-place edits (blocks, cells, rows, columns)
+tools/test_gdoc_edit.py       Unit tests for the parser
+tools/apply_review_2026-09-16.py  Applies the version 3.1 content to the team's Doc copy in place, step by step
 docs/assets/style.css         Print stylesheet, only used by the retired PDF pipeline
 build/                        Old HTML and PDF output, retired
 build.py                      Old Markdown to HTML to PDF pipeline, retired
@@ -118,11 +121,14 @@ gdoc post --doc DOC_ID --review review/2026-09-16-doc-review.json
 gdoc render --review review/2026-09-16-doc-review.json --out review/2026-09-16-doc-review.md --title "..."
 gdoc get --doc DOC_ID --out /tmp/doc.json --marks              # structure, and which runs and cells are shaded
 gdoc import-html --md docs/charter-package.en.md --title "Charter package v3.1"   # new Doc from the source
+gdoc replace --doc DOC_ID --md docs/charter-package.en.md --title "..."        # overwrite a Doc's content (version history keeps the old one)
+python3 tools/apply_review_2026-09-16.py --doc DOC_ID --md docs/charter-package.en.md --dry-run   # in-place edits, tabs and comments kept
 python3 -m unittest tools/test_gdoc.py
 ```
 
 `post` is idempotent: a reply or comment whose first line already exists on the Doc is skipped.
-`import-html` always creates a new Doc and never touches the reviewed one; comments are made through the
+`import-html` always creates a new Doc and never touches the reviewed one; `replace` and the apply script edit a
+Doc in place (the apply script re-reads the Doc after every batch and skips steps already applied); comments are made through the
 Drive API because the Docs API comment requests are still in Google's developer preview.
 
 ## History
