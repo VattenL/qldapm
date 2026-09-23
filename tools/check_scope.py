@@ -1,7 +1,7 @@
 """Consistency checks for docs/scope-package.en.md.
 
-The scope package carries a 70-sheet WBS dictionary whose hours and money must roll up to the figures
-the project charter already fixed. That arithmetic cannot be held by hand across 70 sheets, so it is
+The scope package carries a 78-sheet WBS dictionary whose hours and money must roll up to the figures
+the project charter already fixed. That arithmetic cannot be held by hand across 78 sheets, so it is
 checked here instead. The Markdown is the source of truth; this script only reads it.
 
 Usage:
@@ -11,6 +11,7 @@ Exit code 0 when every check passes, 1 otherwise.
 """
 
 import collections
+import datetime
 import pathlib
 import re
 import sys
@@ -19,17 +20,29 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 DEFAULT = ROOT / "docs" / "scope-package.en.md"
 
 RATES = {"PM": 162500, "DEV1": 118750, "DEV2": 118750, "DEV3": 118750, "QA1": 93750, "MOB1": 122500}
-ROLE = {"PM": "PM", "DEV1": "DEV", "DEV2": "DEV", "DEV3": "DEV", "QA1": "QA", "MOB1": "MOB"}
 
 EXPECTED_HOURS = 4400
-EXPECTED_ROLE_HOURS = {"PM": 800, "DEV": 2400, "QA": 800, "MOB": 400}
+EXPECTED_RESOURCE_HOURS = {"PM": 800, "DEV1": 800, "DEV2": 800, "DEV3": 800, "QA1": 800, "MOB1": 400}
 EXPECTED_LABOR = 539_000_000
-EXPECTED_MATERIAL = 161_000_000
+EXPECTED_MATERIAL = 161_000_000          # charter budget lines 2 to 6
+EXPECTED_RESERVE = 28_000_000            # charter budget line 6, held at project level
 EXPECTED_TOTAL = 700_000_000
-EXPECTED_PACKAGES = 70
+EXPECTED_PACKAGES = 78
+
+# The two level-of-effort packages the document declares as exceptions to the 8 to 80 hour rule
+# of docs/wbs_notes.md. Every other work package must sit inside the band.
+MIN_PACKAGE_HOURS = 8
+MAX_PACKAGE_HOURS = 80
+LEVEL_OF_EFFORT = ("1.1.1.3", "1.10.1.1")
 
 CODE = re.compile(r"^\d+(?:\.\d+)*$")
 NUM = re.compile(r"^[\d,]+$")
+
+RESERVE_ROW = "| Contingency reserve, charter budget line 6, held at project level |"
+WEEKDAYS = ("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun")
+MONTHS = ("January", "February", "March", "April", "May", "June", "July", "August", "September",
+          "October", "November", "December")
+DATE = re.compile(r"\b(%s) (\d{1,2}) (%s) (\d{4})\b" % ("|".join(WEEKDAYS), "|".join(MONTHS)))
 
 
 class Report:
@@ -126,6 +139,34 @@ def parse_rtm_deliverables(text):
     return found
 
 
+def parse_reserve(text):
+    """Return the contingency reserve carried as its own line in the Part 2 roll-up table.
+
+    The reserve is money set aside against risk, not work, so it is not a work package and does not
+    appear on any dictionary sheet. It is read from the roll-up instead, and added to the sheet
+    material to reach the charter's budget lines 2 to 6.
+    """
+    block = re.search(r"### Roll-up\n(.*?)\n### ", text, re.S)
+    if not block:
+        return None
+    for raw in block.group(1).splitlines():
+        if raw.startswith(RESERVE_ROW):
+            row = cells(raw)
+            if len(row) == 9:
+                return money(row[7])
+    return None
+
+
+def parse_dates(text):
+    """Return (matched text, weekday name, date) for every 'Fri 2 October 2026' style date."""
+    out = []
+    for m in DATE.finditer(text):
+        day_name, day, month, year = m.groups()
+        out.append((m.group(0), day_name,
+                    datetime.date(int(year), MONTHS.index(month) + 1, int(day))))
+    return out
+
+
 def main(argv):
     path = pathlib.Path(argv[1]) if len(argv) > 1 else DEFAULT
     text = path.read_text(encoding="utf-8")
@@ -168,7 +209,7 @@ def main(argv):
     total_hours = 0
     total_labor = 0
     total_material = 0
-    role_hours = collections.Counter()
+    resource_hours = collections.Counter()
     for s in sheets:
         hours = sum(a[1] for a in s["acts"])
         labor = sum(a[3] for a in s["acts"])
@@ -180,7 +221,7 @@ def main(argv):
                           % (s["code"], res, rate, RATES[res]))
                 rep.check(hrs * rate == line_total,
                           "%s: %s line does not multiply out" % (s["code"], res))
-                role_hours[ROLE[res]] += hrs
+                resource_hours[res] += hrs
         for units, unit_cost, line_total in s["mats"]:
             rep.check(units * unit_cost == line_total,
                       "%s: material line does not multiply out" % s["code"])
@@ -195,23 +236,41 @@ def main(argv):
                       % (s["code"], st_material, material))
             rep.check(st_total == labor + material, "%s: total row does not add up" % s["code"])
         rep.check(s["owner"] in RATES, "%s: owner %r is not a known resource" % (s["code"], s["owner"]))
+        if s["code"] not in LEVEL_OF_EFFORT:
+            rep.check(MIN_PACKAGE_HOURS <= hours <= MAX_PACKAGE_HOURS,
+                      "%s holds %s hours, outside the %s to %s band of docs/wbs_notes.md, and is not "
+                      "one of the declared level-of-effort packages %s"
+                      % (s["code"], hours, MIN_PACKAGE_HOURS, MAX_PACKAGE_HOURS,
+                         ", ".join(LEVEL_OF_EFFORT)))
         total_hours += hours
         total_labor += labor
         total_material += material
-    checked += 6
+    for code in LEVEL_OF_EFFORT:
+        rep.check(code in sheet_codes, "declared level-of-effort package %s has no sheet" % code)
+    checked += 8
 
-    # 4. Roll-up to the charter figures.
+    # 4. Roll-up to the charter figures. The reserve is not work, so it is not on a sheet: it is
+    #    carried as its own line in the Part 2 roll-up and added back here.
+    reserve = parse_reserve(text)
+    rep.check(reserve == EXPECTED_RESERVE,
+              "contingency reserve line in the roll-up is %s, charter budget line 6 is %s"
+              % (reserve, EXPECTED_RESERVE))
     rep.check(total_hours == EXPECTED_HOURS,
               "labor hours total %s, charter basis is %s" % (total_hours, EXPECTED_HOURS))
-    rep.check(dict(role_hours) == EXPECTED_ROLE_HOURS,
-              "hours by role %s, expected %s" % (dict(role_hours), EXPECTED_ROLE_HOURS))
+    rep.check(dict(resource_hours) == EXPECTED_RESOURCE_HOURS,
+              "hours by resource %s, expected %s" % (dict(resource_hours), EXPECTED_RESOURCE_HOURS))
     rep.check(total_labor == EXPECTED_LABOR,
               "labor cost %s, charter budget line 1 is %s" % (total_labor, EXPECTED_LABOR))
-    rep.check(total_material == EXPECTED_MATERIAL,
-              "other cost %s, charter budget lines 2 to 6 are %s" % (total_material, EXPECTED_MATERIAL))
-    rep.check(total_labor + total_material == EXPECTED_TOTAL,
-              "grand total %s, charter budget is %s" % (total_labor + total_material, EXPECTED_TOTAL))
-    checked += 5
+    rep.check(total_material == EXPECTED_MATERIAL - EXPECTED_RESERVE,
+              "other cost on the sheets %s, charter budget lines 2 to 5 are %s"
+              % (total_material, EXPECTED_MATERIAL - EXPECTED_RESERVE))
+    rep.check(total_material + (reserve or 0) == EXPECTED_MATERIAL,
+              "other cost with the reserve %s, charter budget lines 2 to 6 are %s"
+              % (total_material + (reserve or 0), EXPECTED_MATERIAL))
+    rep.check(total_labor + total_material + (reserve or 0) == EXPECTED_TOTAL,
+              "grand total %s, charter budget is %s"
+              % (total_labor + total_material + (reserve or 0), EXPECTED_TOTAL))
+    checked += 7
 
     # 5. Every WBS code cited by the traceability matrix exists.
     for rid, code in parse_rtm_deliverables(text):
@@ -223,21 +282,29 @@ def main(argv):
         for n in range(0 if family == "M" else 1, count + 1):
             ident = "%s%0*d" % (family, width, n)
             rep.check(ident in text, "charter identifier %s is not referenced anywhere" % ident)
-    for family, count in (("BR", 6), ("FR", 12), ("NFR", 12)):
+    for family, count in (("BR", 7), ("FR", 12), ("NFR", 12)):
         for n in range(1, count + 1):
             ident = "%s%02d" % (family, n)
             rep.check(ident in text, "requirement identifier %s is missing" % ident)
     checked += 2
 
-    # 7. Project writing rules.
+    # 7. Every date carries the weekday it actually falls on.
+    dates = parse_dates(text)
+    rep.check(dates, "no dated field found")
+    for shown, day_name, day in dates:
+        rep.check(WEEKDAYS[day.weekday()] == day_name,
+                  "%r is a %s" % (shown, WEEKDAYS[day.weekday()]))
+    checked += 1
+
+    # 8. Project writing rules.
     rep.check("—" not in text, "em dash found; the project writing rules forbid it")
     emoji = re.findall(r"[\U0001F300-\U0001FAFF☀-➿]", text)
     rep.check(not emoji, "emoji found: %s" % sorted(set(emoji)))
     checked += 2
 
-    print("%s: %d work packages, %d control accounts, %d hours, %s VND"
-          % (path.name, len(packages), len(accounts), total_hours,
-             "{:,}".format(total_labor + total_material)))
+    print("%s: %d work packages, %d control accounts, %d hours, %d dates, %s VND"
+          % (path.name, len(packages), len(accounts), total_hours, len(dates),
+             "{:,}".format(total_labor + total_material + (reserve or 0))))
     return rep.done(checked)
 
 

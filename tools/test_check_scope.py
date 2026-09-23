@@ -46,8 +46,19 @@ RTM = """### Requirement Information and Relationship Traceability
 | ID | Requirement | Source | Priority | Category | Business Objective | Deliverable | Verification | Validation |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | FR01 | Something | Director | Must have | Functional | Scope | 1.4.1.1 (D3) | Metric | Technique |
-| FR02 | Something else | Director | Must have | Functional | Scope | 1.5.4.1, 1.9.1.3 (D4, D11) | Metric | Technique |
+| FR02 | Something else | Director | Must have | Functional | Scope | 1.5.4.1, 1.9.1.2 (D4, D11) | Metric | Technique |
 
+"""
+
+ROLLUP = """### Roll-up
+
+| Phase | Control accounts | Work packages | Charter deliverables | Milestone | Labor hours | Labor cost (VND) | Other cost (VND) | Total (VND) |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1.1 Project Management | 1 | 4 | internal | M0 to M7 | 300 | 48,750,000 | 17,700,000 | 66,450,000 |
+| Contingency reserve, charter budget line 6, held at project level | | | | | | | 28,000,000 | 28,000,000 |
+| **Total** | **24** | **78** | **D1 to D11** | **M0 to M7** | **4,400** | **539,000,000** | **161,000,000** | **700,000,000** |
+
+### Coverage check
 """
 
 
@@ -101,12 +112,38 @@ class TestParseRtmDeliverables(unittest.TestCase):
     def test_extracts_every_cited_code(self):
         self.assertEqual(
             check_scope.parse_rtm_deliverables(RTM),
-            [("FR01", "1.4.1.1"), ("FR02", "1.5.4.1"), ("FR02", "1.9.1.3")],
+            [("FR01", "1.4.1.1"), ("FR02", "1.5.4.1"), ("FR02", "1.9.1.2")],
         )
 
     def test_ignores_deliverable_ids_in_brackets(self):
         codes = [code for _, code in check_scope.parse_rtm_deliverables(RTM)]
         self.assertNotIn("D3", codes)
+
+
+class TestParseReserve(unittest.TestCase):
+    def test_reads_the_reserve_line_of_the_rollup(self):
+        self.assertEqual(check_scope.parse_reserve(ROLLUP), 28_000_000)
+
+    def test_missing_rollup_returns_none(self):
+        self.assertIsNone(check_scope.parse_reserve("no roll-up here"))
+
+    def test_reserve_is_not_a_work_package(self):
+        self.assertEqual(check_scope.parse_sheets(ROLLUP), [])
+
+
+class TestParseDates(unittest.TestCase):
+    def test_reads_weekday_and_date(self):
+        found = check_scope.parse_dates("Due <mark>Fri 2 October 2026 to Tue 5 January 2027</mark>")
+        self.assertEqual([f[1] for f in found], ["Fri", "Tue"])
+        self.assertEqual([f[2].isoformat() for f in found], ["2026-10-02", "2027-01-05"])
+
+    def test_weekday_name_can_be_checked_against_the_date(self):
+        (shown, name, day), = check_scope.parse_dates("Fri 2 January 2027")
+        self.assertEqual(shown, "Fri 2 January 2027")
+        self.assertNotEqual(check_scope.WEEKDAYS[day.weekday()], name)
+
+    def test_ignores_dates_without_a_weekday(self):
+        self.assertEqual(check_scope.parse_dates("23 September 2026"), [])
 
 
 class TestReport(unittest.TestCase):
