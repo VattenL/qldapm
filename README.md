@@ -1,6 +1,14 @@
-# Learning Center Management Software: charter package
+# Learning Center Management Software: coursework deliverables
 
-Coursework deliverable. Covers all four points of `requirement.md`. Document version 3.1.
+Two deliverables, both Markdown, both built from the forms in *A Project Manager's Book of Forms*, 3rd edition.
+
+| Deliverable | File | Brief | Version |
+| --- | --- | --- | --- |
+| Charter package | `docs/charter-package.en.md` | `requirement.md`, four points | 3.1 |
+| Scope baseline package | `docs/scope-package.en.md` | `docs/wbs_req.md`, three artifacts | 1.0 |
+
+The second builds on the first: the traceability matrix, the WBS, and the WBS dictionary are derived
+from the requirement specification and the charter, and they cost to the same 700,000,000 VND baseline.
 
 The deliverable is Markdown. The shared Google Doc is a copy of it and is rebuilt from it, not edited by hand.
 
@@ -9,7 +17,9 @@ The deliverable is Markdown. The shared Google Doc is a copy of it and is rebuil
 ```
 docs/charter-package.en.md    English deliverable, the source of truth
 docs/charter-package.vi.md    Vietnamese version, version 2.0, no longer maintained
+docs/scope-package.en.md      Scope baseline deliverable: RTM, WBS, WBS dictionary
 docs/requirements.md          General (course-wide) requirement, 3 points
+docs/wbs_req.md               Scope baseline brief, plus the class notes checked against the sources
 requirement.md                Team requirement, the same 3 points plus the prompt log
 review/                       Replies to the team's review comments on the Google Doc, one file per round
 tools/gdoc.py                 Google Docs and Drive API helper: comments, replies, rebuild of the Doc
@@ -17,6 +27,8 @@ tools/test_gdoc.py            Unit tests for the pure parts of the helper
 tools/gdoc_edit.py            Markdown subset parser and index-safe in-place edits (blocks, cells, rows, columns)
 tools/test_gdoc_edit.py       Unit tests for the parser
 tools/apply_review_2026-09-16.py  Applies the version 3.1 content to the team's Doc copy in place, step by step
+tools/check_scope.py          Consistency checks over docs/scope-package.en.md
+tools/test_check_scope.py     Unit tests for the checker's parsers
 docs/assets/style.css         Print stylesheet, only used by the retired PDF pipeline
 build/                        Old HTML and PDF output, retired
 build.py                      Old Markdown to HTML to PDF pipeline, retired
@@ -97,6 +109,57 @@ Checked and holding as of version 3.1:
   +2.6, so payback falls in year 5. The overdue balance is treated as a stock, not a flow.
 - Function, deliverable, criterion, and risk ranges are F01 to F12, D1 to D11, A01 to A12, R1 to R12
   everywhere outside the historical statements of Part 3.
+
+## Scope baseline package
+
+`docs/scope-package.en.md`, version 1.0. Answers `docs/wbs_req.md` with the three forms it names.
+
+| Brief item | Answered by | Source in the book |
+| --- | --- | --- |
+| Requirements Traceability Matrix | Part 1 and Part 1B | Form 2.7, pages 51 to 55 of the PDF |
+| Work Breakdown Structure | Part 2 | Form 2.9, pages 60 to 62 |
+| WBS Dictionary | Part 3 | Form 2.10, pages 63 to 66 |
+
+- **Part 1** carries 30 requirement rows in three families: BR01 to BR06 from the charter's business
+  case, FR01 to FR12 from the functions, NFR01 to NFR12 from the acceptance criteria. Every row traces
+  to a business objective, a WBS code, a verification metric, and a validation technique. Part 1B is the
+  printed second page, pairing each business requirement with the requirements that implement it.
+- **Part 2** decomposes top-down and by life-cycle phase into 10 major deliverables, 23 control
+  accounts, and 70 work packages, each rolling up to exactly one control account.
+- **Part 3** is one dictionary sheet per work package, 70 of them, each with a single Responsible
+  Person. No review activity is owned by the author of the thing being reviewed.
+
+The hours in Part 3 are effort, not calendar loading. Levelling them is Develop Schedule, PMBOK 6
+section 6.5, which produces the schedule baseline rather than the scope baseline and is out of scope for
+this document.
+
+### What the class notes got wrong
+
+`docs/wbs_req.md` keeps the class notes together with the check of each against PMBOK 6 Figure 5-10 and
+Book of Forms pages 49 to 53. Two do not hold: the charter and the traceability matrix are not inputs to
+5.4 Create WBS, and change requests are outputs of 5.5 and 5.6 only, not of every scope process. The
+document follows the corrected version and says so in its own front matter.
+
+### Verification
+
+Run the checker after editing the scope package. It reads the Markdown and checks nothing else writes it.
+
+```bash
+python tools/check_scope.py           # 23 checks over docs/scope-package.en.md
+python -m unittest tools.test_check_scope
+```
+
+The checker holds the arithmetic that cannot be held by hand across 70 sheets:
+
+- Every activity line multiplies out, and every sheet's total row matches its own rows.
+- Labor rolls up to 4,400 hours and 539,000,000 VND, split PM 800, developers 2,400, QA 800, mobile 400.
+- Other cost rolls up to 161,000,000 VND, and the grand total to 700,000,000 VND, which is charter
+  budget lines 1 to 6.
+- Every WBS code has a parent, every work package sits under a control account, and every work package
+  has exactly one dictionary sheet.
+- Every WBS code cited by the traceability matrix exists in the WBS.
+- F01 to F12, A01 to A12, D1 to D11, M0 to M7, and every BR, FR, and NFR identifier are referenced.
+- No em dash and no emoji, per `CLAUDE.md`.
 
 ## Google Doc
 
