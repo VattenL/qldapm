@@ -31,13 +31,14 @@ START = "## Part 1: Requirements Traceability Matrix"
 LEAD = """## 3: Scope Baseline
 
 **Project Title:** Development and Deployment of a Learning Center Management Software
+
 **Date Prepared:** 23 September 2026
 
-*The scope baseline of PMBOK 6 section 5.4, being the requirements traceability matrix, the work
+The scope baseline of PMBOK 6 section 5.4, being the requirements traceability matrix, the work
 breakdown structure, and the WBS dictionary. Each is reproduced from the form in A Project Manager's
 Book of Forms, 3rd edition, field for field and in the printed field order: form 2.7 for the matrix,
 form 2.9 for the structure, form 2.10 for the dictionary. It continues sections 1 and 2 and takes its
-content from them: the requirement specification of section 1 and the charter of section 2.*
+content from them: the requirement specification of section 1 and the charter of section 2.
 """
 
 METHOD = """#### 3.2.1 Inputs and method
@@ -122,6 +123,40 @@ def split_field_lines(text: str) -> str:
     return re.sub(r"(\*\*Project Title:\*\*[^\n]*)\n(\*\*Date Prepared:\*\*)", r"\1\n\n\2", text)
 
 
+def strip_italic_notes(text: str) -> str:
+    """Drop the wholly italic paragraphs.
+
+    These are the notes naming the form and its printed page, and the Page 1 of 1 markers. They
+    explain the source document to a reader of the repository; the Doc carries the form itself, so
+    they are noise there. Only a paragraph that is italic from its first character to its last is
+    removed, which leaves prose containing **bold** or a mid-sentence emphasis untouched.
+    """
+    out, buf = [], []
+
+    def flush():
+        if not buf:
+            return
+        joined = " ".join(line.strip() for line in buf)
+        italic = (joined.startswith("*") and not joined.startswith("**")
+                  and joined.endswith("*") and not joined.endswith("**"))
+        if not italic:
+            out.extend(buf)
+        buf.clear()
+
+    for line in text.splitlines():
+        s = line.strip()
+        # A heading or a table row ends the paragraph before it. The source puts "*Page 1 of 1*"
+        # directly above the next heading with no blank line, so splitting on blank lines alone
+        # would keep it, or take the heading with it.
+        if not s or s.startswith("#") or s.startswith("|") or s.startswith("```"):
+            flush()
+            out.append(line)
+            continue
+        buf.append(line)
+    flush()
+    return re.sub(r"\n{3,}", "\n\n", "\n".join(out))
+
+
 def renumber(text: str) -> str:
     for old, new in HEADINGS:
         text = text.replace(old, new, 1)
@@ -151,6 +186,7 @@ def build(md: str) -> str:
     body = body[: fence.start()] + STRUCTURE_HEADING + "\n\n" + outline_to_table(fence.group(1)) \
         + "\n" + body[fence.end():]
 
+    body = strip_italic_notes(body)
     body = renumber(body)
     body = body.replace("### 3.2 Work Breakdown Structure",
                         "### 3.2 Work Breakdown Structure\n\n@@METHOD@@", 1)

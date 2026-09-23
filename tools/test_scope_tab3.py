@@ -1,6 +1,7 @@
 """Unit tests for the Doc payload transform and the unit split."""
 
 import pathlib
+import re
 import sys
 import unittest
 
@@ -69,6 +70,44 @@ class TestSplitFieldLines(unittest.TestCase):
         self.assertEqual([b["type"] for b in blocks], ["para", "para"])
 
 
+class TestStripItalicNotes(unittest.TestCase):
+    def test_drops_a_wholly_italic_paragraph(self):
+        md = "keep me\n\n*Form 2.7, page 1 of 2.*\n\nkeep me too"
+        out = scope_tab3.strip_italic_notes(md)
+        self.assertNotIn("Form 2.7", out)
+        self.assertIn("keep me", out)
+        self.assertIn("keep me too", out)
+
+    def test_drops_one_wrapped_across_lines(self):
+        md = "*Form 2.10, one sheet per work package.\nAll fourteen printed fields appear.*\n\nbody"
+        self.assertEqual(scope_tab3.strip_italic_notes(md).strip(), "body")
+
+    def test_drops_page_marker_glued_to_the_next_heading(self):
+        md = "| a | b |\n\n*Page 1 of 1*\n#### 1.1.1.2 Next sheet\n"
+        out = scope_tab3.strip_italic_notes(md)
+        self.assertNotIn("Page 1 of 1", out)
+        self.assertIn("#### 1.1.1.2 Next sheet", out)
+
+    def test_keeps_prose_that_merely_contains_emphasis(self):
+        md = "The structure is decomposed **top-down**, not bottom-up."
+        self.assertEqual(scope_tab3.strip_italic_notes(md).strip(), md)
+
+    def test_keeps_a_bold_only_paragraph(self):
+        md = "**What the hours mean.** The column is an estimate."
+        self.assertEqual(scope_tab3.strip_italic_notes(md).strip(), md)
+
+    def test_leaves_table_rows_alone(self):
+        md = "| *a* | b |\n| --- | --- |\n| c | d |"
+        self.assertEqual(scope_tab3.strip_italic_notes(md).strip(), md)
+
+    def test_payload_has_no_italic_paragraph_left(self):
+        payload = scope_tab3.build(SOURCE.read_text(encoding="utf-8"))
+        paras = [b["text"] for b in gdoc_edit.parse_blocks(payload) if b["type"] == "para"]
+        italic = [s for s in paras if s.startswith("*") and not s.startswith("**")]
+        self.assertEqual(italic, [])
+        self.assertNotIn("Page 1 of 1", payload)
+
+
 class TestRenumber(unittest.TestCase):
     def test_sheet_headings_drop_a_level(self):
         self.assertEqual(scope_tab3.renumber("#### 1.1.1.1 Kickoff"), "##### 1.1.1.1 Kickoff")
@@ -103,13 +142,21 @@ class TestBuild(unittest.TestCase):
         for leaked in ("charter-package.en.md", "docs/", "Part 1", "Part 2", "Part 3"):
             self.assertNotIn(leaked, self.payload)
 
-    def test_every_sheet_is_present(self):
-        self.assertEqual(len(gdoc_tab3.SHEET_HEADING.findall(self.payload)), 71)
+    def test_every_sheet_of_the_source_is_present(self):
+        source = SOURCE.read_text(encoding="utf-8")
+        in_source = len(re.findall(r"^#### 1(?:\.\d+){3} ", source, re.M))
+        self.assertGreater(in_source, 0)
+        self.assertEqual(len(gdoc_tab3.SHEET_HEADING.findall(self.payload)), in_source)
 
     def test_parses_cleanly_for_the_doc_writer(self):
         blocks = gdoc_edit.parse_blocks(self.payload)
         tables = [b for b in blocks if b["type"] == "table"]
-        self.assertEqual(len(tables), 218)
+        source = SOURCE.read_text(encoding="utf-8")
+        body = source[source.index(scope_tab3.START):]
+        body_tables = sum(1 for b in gdoc_edit.parse_blocks(body) if b["type"] == "table")
+        # The transform drops the front matter, turns the fenced WBS outline into one more table,
+        # and loses none of the body's own tables.
+        self.assertEqual(len(tables), body_tables + 1)
         for b in tables:
             self.assertEqual(len({len(r) for r in b["rows"]}), 1, b["rows"][0][:2])
 
@@ -120,30 +167,74 @@ class TestBuild(unittest.TestCase):
 class TestSplitUnits(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.units = gdoc_tab3.split_units(scope_tab3.build(SOURCE.read_text(encoding="utf-8")))
+        cls.payload = scope_tab3.build(SOURCE.read_text(encoding="utf-8"))
+        cls.units = gdoc_tab3.split_units(cls.payload)
 
-    def test_one_opening_unit_plus_one_per_sheet(self):
-        self.assertEqual(len(self.units), 72)
+    def test_one_unit_per_opening_section_plus_one_per_sheet(self):
+        sheets = len(gdoc_tab3.SHEET_HEADING.findall(self.payload))
+        self.assertEqual(len(self.units), len(gdoc_tab3.OPENING) + sheets)
 
-    def test_opening_unit_holds_the_matrix_and_the_structure(self):
-        name, anchor, chunk = self.units[0]
+    def test_opening_units_follow_the_declared_order_and_orientation(self):
+        opening = self.units[:len(gdoc_tab3.OPENING)]
+        self.assertEqual([u[0] for u in opening], [o[0] for o in gdoc_tab3.OPENING])
+        self.assertEqual([u[3] for u in opening], [o[2] for o in gdoc_tab3.OPENING])
+
+    def test_the_lead_carries_no_table(self):
+        _name, anchor, chunk, landscape = self.units[0]
         self.assertEqual(anchor, "3: Scope Baseline")
-        self.assertIn("### 3.1 Requirements Traceability Matrix", chunk)
-        self.assertIn("#### 3.2.2 The structure", chunk)
-        self.assertNotIn("##### 1.1.1.1", chunk)
+        self.assertFalse(landscape)
+        self.assertNotIn("|", chunk)
+
+    def test_the_wide_matrices_are_landscape_and_hold_both_tables(self):
+        name, _anchor, chunk, landscape = self.units[1]
+        self.assertEqual(name, "3.1 matrices")
+        self.assertTrue(landscape)
+        self.assertIn("| ID | Requirement | Source |", chunk)
+        self.assertIn("Inter-requirements traceability matrix", chunk)
+
+    def test_the_outline_section_is_landscape(self):
+        name, _anchor, _chunk, landscape = self.units[2]
+        self.assertEqual(name, "3.2 method and structure")
+        self.assertTrue(landscape)
+
+    def test_only_the_narrow_sections_stay_portrait(self):
+        portrait = [o[0] for o in gdoc_tab3.OPENING if not o[2]]
+        self.assertEqual(portrait, ["lead", "3.2.4 coverage"])
+
+    def test_every_sheet_unit_is_landscape(self):
+        for name, _anchor, _chunk, landscape in self.units[len(gdoc_tab3.OPENING):]:
+            self.assertTrue(landscape, name)
 
     def test_each_phase_heading_is_carried_by_its_first_sheet(self):
-        carried = [c for _n, _a, c in self.units if c.startswith("#### 3.3.")]
+        carried = [c for _n, _a, c, _l in self.units if c.startswith("#### 3.3.")]
         self.assertEqual(len(carried), 10)
 
     def test_anchors_are_whole_headings_not_bare_codes(self):
-        _name, anchor, _chunk = self.units[1]
-        self.assertEqual(anchor, "1.1.1.1 Kickoff and team mobilisation")
+        _name, anchor, _chunk, _l = self.units[len(gdoc_tab3.OPENING)]
+        self.assertRegex(anchor, r"^1(\.\d+){3} \S")
 
     def test_units_reassemble_into_the_payload(self):
-        joined = "".join(c for _n, _a, c in self.units)
-        payload = scope_tab3.build(SOURCE.read_text(encoding="utf-8"))
-        self.assertEqual(joined.split(), payload.split())
+        joined = "".join(c for _n, _a, c, _l in self.units)
+        self.assertEqual(joined.split(), self.payload.split())
+
+
+class TestApplyLayoutRouting(unittest.TestCase):
+    def test_widths_match_the_column_counts_they_are_for(self):
+        self.assertEqual(len(gdoc_tab3.RTM_WIDTHS), 9)
+        self.assertEqual(len(gdoc_tab3.INTER_WIDTHS), 8)
+        self.assertEqual(len(gdoc_tab3.WBS_WIDTHS), 4)
+        self.assertEqual(len(gdoc_tab3.ACTIVITY_WIDTHS), 10)
+
+    def test_widths_fit_a_landscape_page(self):
+        for widths in (gdoc_tab3.RTM_WIDTHS, gdoc_tab3.INTER_WIDTHS,
+                       gdoc_tab3.WBS_WIDTHS, gdoc_tab3.ACTIVITY_WIDTHS):
+            self.assertLessEqual(sum(widths), 698, widths)
+
+    def test_rtm_groups_cover_every_column_exactly_once(self):
+        covered = []
+        for _label, start, span in gdoc_tab3.RTM_GROUPS:
+            covered.extend(range(start, start + span))
+        self.assertEqual(covered, list(range(9)))
 
 
 if __name__ == "__main__":

@@ -38,10 +38,38 @@ import scope_tab3
 # traceability matrix end up the same width as its ID column.
 RTM_WIDTHS = [34, 130, 62, 48, 52, 96, 70, 100, 98]
 INTER_WIDTHS = [40, 160, 55, 80, 40, 160, 55, 80]
-WBS_WIDTHS = [70, 330, 110, 120]
+WBS_WIDTHS = [70, 360, 120, 140]
 ACTIVITY_WIDTHS = [62, 190, 55, 45, 55, 65, 40, 55, 60, 65]
 
 RTM_GROUPS = [("Requirement Information", 0, 5), ("Relationship Traceability", 5, 4)]
+
+
+def sheet_is_sound(doc, tab_n, anchor):
+    """True when the sheet just written has its ten-column activity table, in the right place.
+
+    The Docs API occasionally serves a read that predates the previous write. When that happens the
+    placeholder a table is built over is located at a stale index, and the table is created with the
+    wrong shape and in the wrong position. It is rare, it is not deterministic, and it corrupts the
+    sheet silently, so every sheet is checked before its layout is applied.
+    """
+    _tab_id, content = doc.tab(tab_n)
+    head = ge.find_para(content, lambda s: s.strip() == anchor)
+    if head is None:
+        return False
+    after = [el for el in ge.top_tables(content) if el["startIndex"] > head["startIndex"]]
+    return any(len(ge.table_cells(el)[0]) == 10 for el in after)
+
+
+def drop_from_heading(doc, tab_n, anchor):
+    """Delete a heading and everything after it, so the unit can be written again."""
+    tab_id, content = doc.tab(tab_n)
+    head = ge.find_para(content, lambda s: s.strip() == anchor)
+    if head is None:
+        return False
+    end = content[-1]["endIndex"] - 1
+    if end > head["startIndex"]:
+        doc.delete_range(tab_id, head["startIndex"], end)
+    return True
 
 
 def apply_layout(doc, tab_n, unit_name):
@@ -72,7 +100,7 @@ PHASE_HEADING = re.compile(r"^#### 3\.3\.\d+ ", re.M)
 OPENING = [
     ("lead", "## 3: Scope Baseline", False),
     ("3.1 matrices", "### 3.1 ", True),
-    ("3.2 method and structure", "### 3.2 ", False),
+    ("3.2 method and structure", "### 3.2 ", True),
     ("3.2.3 roll-up", "#### 3.2.3 ", True),
     ("3.2.4 coverage", "#### 3.2.4 ", False),
     ("3.3 dictionary intro", "### 3.3 ", True),
@@ -214,6 +242,15 @@ def main(argv=None):
             tab_id, _content = doc.tab(tab_n)
             doc.batch([gdoc_form.flip(tab_id, start, min(end, end_of_tab(doc, tab_n)), landscape)])
             orientation = landscape
+        if name[:2] == "1." and not sheet_is_sound(doc, tab_n, anchor):
+            print("  retry %-24s written table came back malformed" % name)
+            drop_from_heading(doc, tab_n, anchor)
+            time.sleep(2.0)
+            doc.refresh()
+            doc.insert_markdown(tab_n, end_of_tab(doc, tab_n), chunk)
+            if not sheet_is_sound(doc, tab_n, anchor):
+                raise SystemExit("%s still malformed after one retry; stopping before more damage"
+                                 % name)
         apply_layout(doc, tab_n, name)
         written += 1
         print("  wrote %-24s %-9s (%d of %d, %d API calls)"
