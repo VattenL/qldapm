@@ -3,13 +3,15 @@
 The Doc is a copy of the Markdown, not a second version of it, so this module derives the tab
 content rather than holding its own. It does four things the Doc needs and the repo file does not:
 
-  - drops everything before Part 1, which is guidance for a reader of the repo, not report content;
+  - keeps the source's own front sections that are report content (the Validate Scope note, the
+    reading convention, the inputs, and the decomposition method with its sizing rule) and drops the
+    rest, which is guidance for a reader of the repo;
   - renumbers the headings to continue the Doc's own scheme, where Thẻ 1 carries "1: Requirement
     Specification" and "2: Project Charter";
-  - turns the WBS outline into a table, because the Doc writer in gdoc_edit.py has no fenced code
-    block and would merge the outline into a single paragraph;
-  - folds the inputs and the decomposition method into the WBS section, since the WBS arrives
-    otherwise with no stated method.
+  - rewrites the fenced WBS outline as an ```outline block, which gdoc_edit.py renders as one
+    indented paragraph per line, the shape form 2.9 prints;
+  - folds the inputs and the decomposition method into the WBS section, so the structure arrives
+    with its method stated.
 
 Pure functions only. Nothing here talks to Google; tools/gdoc_tab3.py does that.
 
@@ -41,27 +43,18 @@ form 2.9 for the structure, form 2.10 for the dictionary. It continues sections 
 content from them: the requirement specification of section 1 and the charter of section 2.
 """
 
-METHOD = """#### 3.2.1 Inputs and method
-
-The inputs to Create WBS are the scope management plan, the project scope statement, and the
-requirements documentation, per PMBOK 6 Figure 5-10. The project charter is not a direct input: it is
-an input to Plan Scope Management, Collect Requirements, and Define Scope, and it reaches the structure
-below through the scope statement those processes produce. The traceability matrix of section 3.1 is an
-output of Collect Requirements, not an input here; it is updated later by Validate Scope and Control
-Scope. The scope statement used is section 1 of this report, and the requirements documentation is
-sections 1.1.4, 1.1.5, and 1.3 of it.
-
-The structure is decomposed **top-down**, not assembled bottom-up: the charter fixes the deliverables D1
-to D11 and the milestones M0 to M7 before any work package exists. It is organised **by life-cycle
-phase**, which is one of the four arrangements the book allows on page 49, because the life cycle is
-predictive with two build iterations. Level 2 is the phase, level 3 the control account, level 4 the
-work package, and each work package rolls up to one and only one control account, per page 50. Every
-work package names **one accountable owner**, and review and testing are work packages in their own
-right rather than activities hidden inside the packages they check; no review is owned by the author of
-the thing reviewed.
-"""
+# Front sections of the source kept in the Doc, as (source heading, where it goes, Doc heading).
+# The rest of the front matter describes the repository and is dropped.
+FRONT = [
+    ("### What this document is not", "lead", "#### What this section is not"),
+    ("### Reading convention", "lead", "#### Reading convention"),
+    ("### Inputs actually used", "method", None),
+    ("### Decomposition method", "method", None),
+]
+METHOD_HEADING = "#### 3.2.1 Inputs and method"
 
 STRUCTURE_HEADING = "#### 3.2.2 The structure"
+WBS_PART = "## Part 2: Work Breakdown Structure"
 
 HEADINGS = [
     ("## Part 1: Requirements Traceability Matrix", "### 3.1 Requirements Traceability Matrix"),
@@ -82,35 +75,47 @@ SHEET = re.compile(r"^#### (1(?:\.\d+){3} .+)$")
 OUTLINE_LINE = re.compile(r"^(\d+(?:\.\d+)*)\.?\s+(.+)$")
 
 
-def classify(code, rest):
-    """Return (element, kind, delivers) for one line of the printed WBS outline."""
-    delivers = ""
-    m = re.search(r"\((.+)\)\s*$", rest)
-    if m:
-        delivers = m.group(1)
-        rest = rest[: m.start()].rstrip()
-    if rest.endswith("CA"):
-        return rest[:-2].rstrip(), "Control account", delivers
-    if code.count(".") == 0:
-        return rest, "Project", delivers
-    if "major deliverable" in delivers:
-        return rest, "Major deliverable", delivers.replace("major deliverable", "").strip(" ,")
-    return rest, "Work package", delivers
+def front_section(md: str, heading: str) -> str:
+    """Body of one front section of the source, up to the next heading or rule."""
+    m = re.search(r"^%s$" % re.escape(heading), md, re.M)
+    if not m:
+        raise SystemExit("front section %r not found; the source file has changed shape" % heading)
+    body = md[m.end():]
+    stop = re.search(r"^(#{2,3} |---$)", body, re.M)
+    return unwrap_items(body[: stop.start()] if stop else body).strip()
 
 
-def outline_to_table(block: str) -> str:
-    """Turn the fenced WBS outline into a pipe table the Doc writer can render."""
-    rows = ["| Code | Element | Type | Delivers |", "| --- | --- | --- | --- |"]
+def unwrap_items(text: str) -> str:
+    """Join the hard-wrapped continuation lines of list items onto their item.
+
+    The Doc writer reads a list item as one line; an indented continuation would otherwise become a
+    separate paragraph after the list.
+    """
+    out = []
+    for line in text.splitlines():
+        if out and line.startswith("  ") and line.strip() and out[-1].lstrip().startswith("- "):
+            out[-1] = out[-1].rstrip() + " " + line.strip()
+        else:
+            out.append(line)
+    return "\n".join(out)
+
+
+def outline_line(code: str, rest: str) -> str:
+    """One line of the printed outline: code, element, and what it delivers, single-spaced."""
+    rest = re.sub(r"\s{2,}", " ", rest).strip()
+    if rest.endswith(" CA"):
+        rest = rest[:-3] + " (control account)"
+    return "%s%s  %s" % ("  " * code.count("."), code, rest)
+
+
+def outline_block(block: str) -> str:
+    """Rewrite the fenced WBS outline as an outline block for the Doc writer."""
+    rows = ["```outline"]
     for raw in block.splitlines():
-        line = raw.strip()
-        if not line:
-            continue
-        m = OUTLINE_LINE.match(line)
-        if not m:
-            continue
-        code, rest = m.group(1), m.group(2).strip()
-        element, kind, delivers = classify(code, rest)
-        rows.append("| %s | %s | %s | %s |" % (code, element, kind, delivers))
+        m = OUTLINE_LINE.match(raw.strip())
+        if m:
+            rows.append(outline_line(m.group(1), m.group(2)))
+    rows.append("```")
     return "\n".join(rows)
 
 
@@ -183,22 +188,30 @@ def build(md: str) -> str:
     fence = re.search(r"```\n(.*?)```\n", body, re.S)
     if not fence:
         raise SystemExit("WBS outline fence not found")
-    body = body[: fence.start()] + STRUCTURE_HEADING + "\n\n" + outline_to_table(fence.group(1)) \
-        + "\n" + body[fence.end():]
+    body = body[: fence.start()] + outline_block(fence.group(1)) + "\n\n" + body[fence.end():]
+    # The structure heading goes above the form's own header fields, which sit before the fence.
+    body = body.replace(WBS_PART, WBS_PART + "\n\n" + STRUCTURE_HEADING, 1)
 
     body = strip_italic_notes(body)
     body = renumber(body)
     body = body.replace("### 3.2 Work Breakdown Structure",
                         "### 3.2 Work Breakdown Structure\n\n@@METHOD@@", 1)
     body = split_field_lines(body)
-    out = LEAD + "\n" + body
-    out = out.replace("@@METHOD@@", METHOD.strip())
+    lead, method = [LEAD.strip()], [METHOD_HEADING]
+    for heading, where, doc_heading in FRONT:
+        text = front_section(md, heading)
+        (lead if where == "lead" else method).extend(([doc_heading] if doc_heading else []) + [text])
+    out = "\n\n".join(lead) + "\n\n" + body
+    out = out.replace("@@METHOD@@", "\n\n".join(method))
     # The report refers to its own sections, not to the repository layout.
     for old, new in (
+        ("`charter-package.en.md` Part 2A and 2B", "section 2"),
+        ("This document therefore", "This section therefore"),
         ("`charter-package.en.md` sections", "sections"),
         ("charter-package.en.md", "sections 1 and 2 of this report"),
-        ("is not in this document", "is not in this report"),
+        ("not in this document", "not in this report"),
         ("which is what this document covers", "which is what this section covers"),
+        ("which are what this document covers", "which are what this section covers"),
     ):
         out = out.replace(old, new)
     # Headings were renumbered above, so any "Part N" left is a cross-reference in body text.

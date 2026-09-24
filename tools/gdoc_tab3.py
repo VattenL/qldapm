@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 """Write the scope baseline into a third tab of the team's Google Doc.
 
-The Docs API cannot create a tab, so the empty tab must exist before this runs: open the Doc, use the
-tab panel on the left, add a tab, and name it. This script only fills it, and never touches the other
-tabs. It does not use 'gdoc.py replace', which re-imports the whole file through Drive and would
+The target tab is found by title; with --create it is added through the Docs API when missing. This
+script only fills that tab, and never touches the other tabs. It does not use 'gdoc.py replace', which re-imports the whole file through Drive and would
 collapse the Doc to a single tab, destroying Thẻ 1 and Thẻ 2.
 
 The payload is derived from docs/scope-package.en.md by tools/scope_tab3.py; nothing is authored here.
@@ -38,7 +37,6 @@ import scope_tab3
 # traceability matrix end up the same width as its ID column.
 RTM_WIDTHS = [34, 130, 62, 48, 52, 96, 70, 100, 98]
 INTER_WIDTHS = [40, 160, 55, 80, 40, 160, 55, 80]
-WBS_WIDTHS = [70, 360, 120, 140]
 ACTIVITY_WIDTHS = [62, 190, 55, 45, 55, 65, 40, 55, 60, 65]
 
 RTM_GROUPS = [("Requirement Information", 0, 5), ("Relationship Traceability", 5, 4)]
@@ -79,9 +77,6 @@ def apply_layout(doc, tab_n, unit_name):
                              groups=RTM_GROUPS, widths=RTM_WIDTHS, ncols=9)
         gdoc_form.apply_form(doc, tab_n, "ID", "INTER-REQUIREMENTS TRACEABILITY MATRIX",
                              widths=INTER_WIDTHS, ncols=8)
-    elif unit_name == "3.2 method and structure":
-        gdoc_form.apply_form(doc, tab_n, "Code", "WORK BREAKDOWN STRUCTURE",
-                             widths=WBS_WIDTHS, ncols=4)
     elif unit_name[:2] == "1.":
         tab_id, content = doc.tab(tab_n)
         table_el = gdoc_form.find_table(content, "ID", ncols=10, last=True)
@@ -154,8 +149,7 @@ def tab_index_by_title(doc, title: str):
     have = ", ".join(repr(t[0]) for t in doc.tabs())
     raise SystemExit(
         "no tab named %r in this Doc; tabs present: %s\n"
-        "The Docs API cannot create tabs. Add an empty tab in the Docs UI and name it %r, then run "
-        "this again." % (title, have, title))
+        "Run again with --create to add it." % (title, have))
 
 
 def tab_headings(doc, tab_n: int):
@@ -184,6 +178,7 @@ def main(argv=None):
     p.add_argument("--tab", default="Thẻ 3")
     p.add_argument("--md", default=str(ROOT / "docs" / "scope-package.en.md"))
     p.add_argument("--token", default=os.path.join(DEFAULT_DIR, "token.json"))
+    p.add_argument("--create", action="store_true", help="add the tab when the Doc has none by that title")
     p.add_argument("--clear", action="store_true",
                    help="empty the target tab before writing; only that tab is touched")
     p.add_argument("--limit", type=int, default=0, help="write at most this many units")
@@ -210,6 +205,10 @@ def main(argv=None):
 
     creds = gdoc.load_creds(pathlib.Path(a.token))
     doc = ge.Doc(gdoc.docs(creds), a.doc)
+    if a.create and a.tab.strip() not in [t[0].strip() for t in doc.tabs()]:
+        doc.batch([{"addDocumentTab": {"tabProperties": {"title": a.tab}}}])
+        doc.refresh()
+        print("  created tab %r" % a.tab)
     tab_n = tab_index_by_title(doc, a.tab)
     print("writing into tab %d (%r) of %r" % (tab_n, a.tab, a.doc))
 

@@ -54,6 +54,24 @@ class Blocks(unittest.TestCase):
         self.assertEqual(heading["updateParagraphStyle"]["range"]["endIndex"], 12)
 
 
+class Outline(unittest.TestCase):
+    MD = "Intro.\n\n```outline\n1  Project\n  1.1  Requirements\n    1.1.1  Elicitation\n```\n\nAfter."
+
+    def test_parsed_with_depth_and_bounded_by_the_fence(self):
+        blocks = ge.parse_blocks(self.MD)
+        self.assertEqual([b["type"] for b in blocks], ["para", "outline", "para"])
+        self.assertEqual(blocks[1]["items"], [(0, "1  Project"), (1, "1.1  Requirements"),
+                                              (2, "1.1.1  Elicitation")])
+
+    def test_each_line_is_a_paragraph_indented_by_depth(self):
+        text, specs, _ = ge.compose_blocks(ge.parse_blocks(self.MD))
+        self.assertEqual(text.count("\n"), 5)
+        indents = [r["updateParagraphStyle"]["paragraphStyle"]["indentStart"]["magnitude"]
+                   for r in ge.block_requests("t", 1, text, specs)
+                   if "updateParagraphStyle" in r and r["updateParagraphStyle"]["fields"].startswith("indentStart,")]
+        self.assertEqual(indents, [0, ge.OUTLINE_INDENT, 2 * ge.OUTLINE_INDENT])
+
+
 class Helpers(unittest.TestCase):
     MD = "## A\ntext\n### B\n| Field | Content |\n| --- | --- |\n| **X** | one |\n| F12 | Mobile | Actor | Desc |\n## C\n"
 

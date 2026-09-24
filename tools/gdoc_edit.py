@@ -15,6 +15,8 @@ import re
 YELLOW = {"color": {"rgbColor": {"red": 1.0, "green": 1.0, "blue": 0.0}}}
 NAMED_HEADING = {1: "HEADING_1", 2: "HEADING_2", 3: "HEADING_3", 4: "HEADING_4", 5: "HEADING_5"}
 PLACEHOLDER = "@@TABLE{}@@"
+# Points of left indent per outline level; the printed WBS steps each level in by about a quarter inch.
+OUTLINE_INDENT = 18
 
 # ------------------------------------------------------------------ inline markdown
 
@@ -85,6 +87,19 @@ def parse_blocks(md: str):
             blocks.append({"type": "hr"})
             i += 1
             continue
+        if s.startswith("```"):
+            # A fenced block, used for the numbered outline printed on forms 2.9 and 2.29: one
+            # paragraph per line, indented by its depth. Depth is the leading spaces divided by two.
+            items = []
+            i += 1
+            while i < len(lines) and lines[i].strip() != "```":
+                if lines[i].strip():
+                    depth = (len(lines[i]) - len(lines[i].lstrip(" "))) // 2
+                    items.append((depth, lines[i].strip()))
+                i += 1
+            i += 1
+            blocks.append({"type": "outline", "items": items})
+            continue
         if s.startswith("|"):
             rows, header = [], False
             while i < len(lines) and lines[i].strip().startswith("|"):
@@ -117,7 +132,7 @@ def parse_blocks(md: str):
             blocks.append({"type": "quote", "text": " ".join(parts)})
             continue
         parts = []
-        while i < len(lines) and lines[i].strip() and not re.match(r"^(#{1,5}\s|\||- |\d+\.\s|> |---$)", lines[i].strip()):
+        while i < len(lines) and lines[i].strip() and not re.match(r"^(#{1,5}\s|\||- |\d+\.\s|> |---$|```)", lines[i].strip()):
             parts.append(lines[i].strip())
             i += 1
         blocks.append({"type": "para", "text": " ".join(parts)})
@@ -222,6 +237,10 @@ def compose_blocks(blocks):
                 plain, styles = parse_inline(item)
                 add(plain, styles, t, level=k)  # level marks position in the group
             specs[-1]["group_end"] = True
+        elif t == "outline":
+            for depth, item in b["items"]:
+                plain, styles = parse_inline(item)
+                add(plain, styles, "outline", level=depth)
         elif t == "table":
             tables.append(b)
             add(PLACEHOLDER.format(len(tables) - 1), [], "placeholder")
@@ -250,6 +269,11 @@ def block_requests(tab_id: str, index: int, text: str, specs):
         elif sp["kind"] == "quote":
             reqs.append({"updateParagraphStyle": {"range": rng, "paragraphStyle": {"indentStart": {"magnitude": 36, "unit": "PT"}}, "fields": "indentStart"}})
             reqs.append({"updateTextStyle": {"range": rng, "textStyle": {"italic": True}, "fields": "italic"}})
+        elif sp["kind"] == "outline":
+            reqs.append({"updateParagraphStyle": {"range": rng, "paragraphStyle": {
+                "indentStart": {"magnitude": OUTLINE_INDENT * sp["level"], "unit": "PT"},
+                "spaceAbove": {"magnitude": 6 if sp["level"] <= 1 else 0, "unit": "PT"}},
+                "fields": "indentStart,spaceAbove"}})
         elif sp["kind"] in ("bullets", "numbered"):
             if group_start is None:
                 group_start = sp["start"]

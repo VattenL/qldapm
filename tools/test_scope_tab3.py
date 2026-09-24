@@ -25,38 +25,41 @@ OUTLINE = """1.        Learning Center Management Software
 """
 
 
-class TestClassify(unittest.TestCase):
-    def test_project(self):
-        self.assertEqual(scope_tab3.classify("1", "Learning Center Management Software"),
-                         ("Learning Center Management Software", "Project", ""))
-
-    def test_major_deliverable_keeps_only_what_it_delivers(self):
-        self.assertEqual(scope_tab3.classify("1.2", "Requirements (major deliverable, D1, M1)"),
-                         ("Requirements", "Major deliverable", "D1, M1"))
-
-    def test_control_account_flag_is_stripped_from_the_name(self):
-        self.assertEqual(scope_tab3.classify("1.1.1", "Project Governance CA"),
-                         ("Project Governance", "Control account", ""))
-
-    def test_work_package(self):
-        self.assertEqual(scope_tab3.classify("1.1.1.1", "Kickoff and team mobilisation"),
-                         ("Kickoff and team mobilisation", "Work package", ""))
-
-
-class TestOutlineToTable(unittest.TestCase):
+class TestOutlineBlock(unittest.TestCase):
     def setUp(self):
-        self.rows = scope_tab3.outline_to_table(OUTLINE).splitlines()
+        self.block = scope_tab3.outline_block(OUTLINE)
+        self.items = gdoc_edit.parse_blocks(self.block)[0]["items"]
 
-    def test_header_and_row_count(self):
-        self.assertEqual(self.rows[0], "| Code | Element | Type | Delivers |")
-        self.assertEqual(len(self.rows), 2 + 7)
+    def test_is_one_outline_block_for_the_doc_writer(self):
+        blocks = gdoc_edit.parse_blocks(self.block)
+        self.assertEqual([b["type"] for b in blocks], ["outline"])
 
-    def test_every_row_has_four_columns(self):
-        for row in self.rows[2:]:
-            self.assertEqual(len(gdoc_edit._split_row(row)), 4, row)
+    def test_one_line_per_element_and_blank_lines_dropped(self):
+        self.assertEqual(len(self.items), 7)
 
-    def test_blank_lines_are_dropped(self):
-        self.assertNotIn("|  |  |  |  |", self.rows)
+    def test_depth_follows_the_code(self):
+        self.assertEqual([d for d, _ in self.items], [0, 1, 2, 3, 1, 2, 3])
+
+    def test_padding_is_collapsed_and_annotation_kept(self):
+        self.assertEqual(self.items[4][1], "1.2  Requirements (major deliverable, D1, M1)")
+
+    def test_control_account_marker_is_spelled_out(self):
+        self.assertEqual(self.items[2][1], "1.1.1  Project Governance (control account)")
+
+
+class TestFrontSection(unittest.TestCase):
+    MD = "### Keep\n\nBody line one\nline two.\n\n- item one\n  continued\n- item two\n\n### Next\n\nNo."
+
+    def test_stops_at_the_next_heading(self):
+        body = scope_tab3.front_section(self.MD, "### Keep")
+        self.assertIn("line two.", body)
+        self.assertNotIn("No.", body)
+
+    def test_list_continuations_join_their_item(self):
+        body = scope_tab3.front_section(self.MD, "### Keep")
+        self.assertIn("- item one continued", body)
+        items = [b for b in gdoc_edit.parse_blocks(body) if b["type"] == "bullets"][0]["items"]
+        self.assertEqual(items, ["item one continued", "item two"])
 
 
 class TestSplitFieldLines(unittest.TestCase):
@@ -126,9 +129,33 @@ class TestBuild(unittest.TestCase):
     def setUpClass(cls):
         cls.payload = scope_tab3.build(SOURCE.read_text(encoding="utf-8"))
 
-    def test_front_matter_is_gone(self):
-        for dropped in ("How this document is organised", "Reading convention", "Decomposition method"):
+    def test_repository_front_matter_is_gone(self):
+        for dropped in ("How this document is organised", "second deliverable of the coursework"):
             self.assertNotIn(dropped, self.payload)
+
+    def test_report_front_matter_is_kept(self):
+        # Audit E9: the Doc lacked the legend, the Validate Scope note, and the method with its
+        # sizing rule, which the dictionary sheets cite.
+        for kept in ("#### Reading convention", "#### What this section is not", "Validate Scope (5.5)",
+                     "**Top-down.**", "**Work package sizing.**", "between 8 and 80 hours"):
+            self.assertIn(kept, self.payload)
+
+    def test_method_states_the_level_the_outline_uses(self):
+        self.assertIn("level 2 holds here: the ten major deliverables", self.payload)
+        self.assertNotIn("Level 2 is the phase", self.payload)
+
+    def test_wbs_is_an_outline_not_a_table(self):
+        # Audit E8: form 2.9 prints an indented numbered outline.
+        blocks = gdoc_edit.parse_blocks(self.payload)
+        outlines = [b for b in blocks if b["type"] == "outline"]
+        self.assertEqual(len(outlines), 1)
+        self.assertEqual(outlines[0]["items"][0][0], 0)
+        self.assertNotIn("| Code | Element | Type | Delivers |", self.payload)
+
+    def test_structure_heading_precedes_its_form_fields(self):
+        at = self.payload.index("#### 3.2.2 The structure")
+        self.assertLess(at, self.payload.index("**Project Title:**", at))
+        self.assertLess(self.payload.index("**Project Title:**", at), self.payload.index("```outline"))
 
     def test_starts_at_the_doc_section_heading(self):
         self.assertTrue(self.payload.startswith("## 3: Scope Baseline"))
@@ -154,8 +181,8 @@ class TestBuild(unittest.TestCase):
         source = SOURCE.read_text(encoding="utf-8")
         body = source[source.index(scope_tab3.START):]
         body_tables = sum(1 for b in gdoc_edit.parse_blocks(body) if b["type"] == "table")
-        # The transform drops the front matter, turns the fenced WBS outline into one more table,
-        # and loses none of the body's own tables.
+        # The transform adds the inputs table from the front matter, renders the WBS as an outline
+        # rather than a table, and loses none of the body's own tables.
         self.assertEqual(len(tables), body_tables + 1)
         for b in tables:
             self.assertEqual(len({len(r) for r in b["rows"]}), 1, b["rows"][0][:2])
@@ -222,12 +249,11 @@ class TestApplyLayoutRouting(unittest.TestCase):
     def test_widths_match_the_column_counts_they_are_for(self):
         self.assertEqual(len(gdoc_tab3.RTM_WIDTHS), 9)
         self.assertEqual(len(gdoc_tab3.INTER_WIDTHS), 8)
-        self.assertEqual(len(gdoc_tab3.WBS_WIDTHS), 4)
         self.assertEqual(len(gdoc_tab3.ACTIVITY_WIDTHS), 10)
 
     def test_widths_fit_a_landscape_page(self):
         for widths in (gdoc_tab3.RTM_WIDTHS, gdoc_tab3.INTER_WIDTHS,
-                       gdoc_tab3.WBS_WIDTHS, gdoc_tab3.ACTIVITY_WIDTHS):
+                       gdoc_tab3.ACTIVITY_WIDTHS):
             self.assertLessEqual(sum(widths), 698, widths)
 
     def test_rtm_groups_cover_every_column_exactly_once(self):
