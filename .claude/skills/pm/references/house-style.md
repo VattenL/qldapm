@@ -36,6 +36,12 @@ in one pass.
   major parts is the exception, since the charter already uses it.
 - Field labels keep the book's capitalisation and wording exactly. The content
   beside them is ordinary sentence case.
+- Dates: `2 September 2026`. No leading zero, month in full, one style per
+  document. A weekday prefix (`Mon 14 September 2026`) only if every date in
+  that table has one.
+- Use the project's terms exactly as the budget defines them: the 28,000,000
+  VND line is a **contingency reserve**, never a management reserve; the
+  sponsor and the customer are named separately and never share a role word.
 
 ## File layout
 
@@ -71,3 +77,14 @@ stakeholders.
 If a fact contradicts what the new form needs, report the contradiction instead
 of silently choosing one. Two documents that disagree is a finding, not a
 formatting problem.
+
+The scope package, `docs/scope-package.en.md`, holds the RTM (2.7), WBS (2.9)
+and 78-sheet WBS dictionary (2.10). Its totals are fixed by the charter and
+`tools/check_scope.py` enforces them: 4,400 hours, 539,000,000 VND labor,
+161,000,000 VND other cost, 700,000,000 VND in all. Resource codes are PM, DEV1
+to DEV3, QA1 and MOB1. `docs/wbs_req.md` is the brief for that package and
+records which class notes were checked against the book.
+
+When the Markdown changes, the Google Doc is regenerated from it with
+`tools/gdoc.py` or `tools/gdoc_edit.py`, never hand-edited: hand edits are how
+the Doc fell 108 paragraphs behind its source.

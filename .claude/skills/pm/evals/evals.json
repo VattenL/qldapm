@@ -1,0 +1,67 @@
+{
+  "skill_name": "pm",
+  "evals": [
+    {
+      "id": 1,
+      "eval_name": "audit-charter-and-scope",
+      "prompt": "Audit docs/charter-package.en.md and docs/scope-package.en.md before we push them to the Google Doc for grading. I want every contradiction between the two, every place they break the printed forms in the Book of Forms, and anything a grader would pick on. Write the audit as Markdown. Don't fix anything yet.",
+      "expected_output": "An audit report split into errors and warnings with locations and quoted evidence, catching the known live defects in the sources.",
+      "files": [
+        "docs/charter-package.en.md",
+        "docs/scope-package.en.md"
+      ],
+      "assertions": [
+        "Flags the mixed or abbreviated date formats (e.g. 'Mon 14 Sep 2026' against '14 September 2026')",
+        "Flags literal <br> inside WBS dictionary cells of the scope package",
+        "Flags the RTM Source 'Center Director, sponsor' as merging sponsor and customer",
+        "Flags the Cost success criterion saying 'management reserve' while the budget line is a contingency reserve",
+        "Flags that every RTM requirement is 'Must have', so Priority carries no information",
+        "Flags BR03 Source differing between the RTM and the Inter-RTM",
+        "Flags notes placed inside the printed charter form (under milestones or Approvals)",
+        "Flags the 'fourteen elements of Table 1.1' count (the table lists 13)",
+        "Flags the contents line 'V1 to V11' while the prompt log runs to V12",
+        "Flags the business case applying 70% activation to all guardians instead of 70% of the 80% with smartphones",
+        "Flags the part-time mobile developer loaded above full time or working after M5",
+        "Report separates errors from warnings and gives a location for each finding",
+        "docs/ left unmodified"
+      ]
+    },
+    {
+      "id": 2,
+      "eval_name": "stakeholder-register-1-3",
+      "prompt": "tao cho nhom form 1.3 Stakeholder Register tu charter, dung dung form trong sach nhe. English content.",
+      "expected_output": "A form 1.3 Stakeholder Register in Markdown with the printed columns in order, stakeholders drawn from the charter, sponsor and customer kept distinct, no invented contact details.",
+      "files": [
+        "docs/charter-package.en.md"
+      ],
+      "assertions": [
+        "Printed columns Name, Position/Role, Contact Information, Requirements, Expectations, Classification appear in printed order",
+        "Sponsor and customer are on separate rows and the sponsor row carries no owner, Director or Customer wording",
+        "Project manager name is left empty, not invented",
+        "No invented contact details (no phone numbers or email addresses)",
+        "Includes the app store operators or push provider that risk R12 depends on",
+        "Classification values are highlighted as assumed or left empty, not stated as fact",
+        "check_consistency.py reports no errors on the output together with the charter's facts",
+        "Date prepared written in full without a leading zero"
+      ]
+    },
+    {
+      "id": 3,
+      "eval_name": "risk-register-2-32",
+      "prompt": "Pull the risks out of the charter into a proper 2.32 Risk Register document. Keep the R numbers. We have not scored probability or impact yet.",
+      "expected_output": "A form 2.32 Risk Register in Markdown with every printed column, all of R1 to R12, unscored cells left empty or marked, contingency reserve named correctly.",
+      "files": [
+        "docs/charter-package.en.md"
+      ],
+      "assertions": [
+        "All risks R1 to R12 present with their charter numbers",
+        "check_fidelity.py finds every printed 2.32 label",
+        "Probability, impact and score cells are empty or [TBD], no invented numbers",
+        "Responses carried over from the charter rather than rewritten",
+        "Product or Project type from the charter preserved",
+        "Contingency reserve never called management reserve",
+        "check_consistency.py reports no errors on the output"
+      ]
+    }
+  ]
+}

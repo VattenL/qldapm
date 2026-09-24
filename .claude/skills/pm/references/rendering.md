@@ -38,6 +38,20 @@ column, exactly as printed, in printed order.
 | **High-Level Project Description** | |
 ```
 
+The vertical table keeps printed reading order even where the printed form sets
+two fields side by side (1.1 page 1 pairs Project Sponsor with Date Prepared and
+Project Manager with Project Customer; 2.10 pairs Work Package Name with Code of
+Accounts, Description of Work with Assumptions and Constraints, Milestones with
+Due Dates). The pairing is layout, and it is applied at render time by
+`tools/gdoc_form.py` and `md_to_docx.py`. Reading order for a pair is left then
+right.
+
+A cell holds one paragraph. `<br>` does not survive the push to the Google Doc
+(it arrived as literal text 23 times), and Markdown cannot put a list in a
+cell, so a list inside a cell is written inline: `(1) ... (2) ... (3) ...`.
+
+Only content is highlighted. `<mark>` never wraps a bold label or a heading.
+
 An empty right cell means the value is genuinely not known yet. That is a real
 state in this repo, not an oversight, and the charter uses it for the project
 manager's name because the sponsor appoints the PM at M0.
@@ -58,6 +72,12 @@ items, one per printed box, in printed order:
 - [ ] Project processes
 - [x] Project documents
 ```
+
+Nothing goes inside the form that the printed form does not print: no note
+under the milestone table, no explanation under Approvals, no extra title
+heading. Put the explanation in a short italic paragraph before the form's
+first page heading. Signature blocks copy the printed columns exactly; for 1.1
+that is two, Project Manager and Sponsor or Originator.
 
 ## `log`
 
@@ -88,7 +108,9 @@ definitions) because the grid is meaningless without it.
 ## `outline`
 
 A numbered decomposition (2.9 WBS, 2.29 RBS). Use a nested ordered list, not a
-table, so the hierarchy survives editing:
+table: the printed form is an indented outline, and a Code | Element | Type
+table was rejected as a different form. Number in the order the work happens,
+and never append a late package at the end of a branch out of sequence:
 
 ```markdown
 1. Learning Center Management Software
