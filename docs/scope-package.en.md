@@ -89,7 +89,7 @@ inside a single construction package.
 
 **Work package sizing.** Every work package holds between 8 and 80 hours of effort and is controlled
 inside a single milestone gate, which is the reporting period used for work-package control; the
-weekly status report of 1.1.1.3 is a progress report, not the control period. Four packages sit
+weekly status report of 1.1.1.3 is a progress report, not the control period. Three packages sit
 outside that rule, and they are named here rather than left to be found. 1.1.1.3 weekly status
 reporting at 120 hours and 1.10.1.1 first warranty month support at 400 hours are level-of-effort
 packages that run for the whole of their period by nature and cannot be cut into 80-hour pieces
@@ -157,7 +157,7 @@ Part 2 and the charter deliverable in brackets.
 | FR10 | Reports and management dashboard (F10) | Center Director | Must have | Functional | BR04 | 1.5.3.1, 1.5.3.3 (D4) | One term's report produced within 10 seconds; figures match the underlying records | Director runs every report unaided in UAT |
 | FR11 | System administration and audit (F11) | System Administrator | Must have | Functional | Quality: A05 met; BR07 | 1.5.3.2 (D4) | Every financial and student write appears in the audit log with user and timestamp | System Administrator samples the log against a scripted set of changes |
 | FR12 | Android and iOS application for parents and teachers (F12) | Student / Parent, Teacher | Must have | Functional | BR05; Stakeholder satisfaction: <mark>70% of guardians with a smartphone</mark> activated by closeout | 1.4.4.1, 1.5.4.1, 1.5.4.3, 1.9.1.2 (D3, D4, D11) | Every F12 function within 3 taps; push delivery recorded in the F09 log | Parents and teachers use the application during the pilot and the first warranty month |
-| NFR01 | Functional completeness in UAT (A01) | Center Director, sponsor | Must have | Acceptance | Scope: no function deferred without an approved change request; BR07 | 1.6.2.2, 1.8.3.2 (D5) | UAT pass rate at or above 99%; defect log shows no open Critical or High | UAT sign-off by the sponsor at M6 against the test set agreed at M5 |
+| NFR01 | Functional completeness in UAT (A01) | Center Director | Must have | Acceptance | Scope: no function deferred without an approved change request; BR07 | 1.6.2.2, 1.8.3.2 (D5) | UAT pass rate at or above 99%; defect log shows no open Critical or High | UAT sign-off by the sponsor at M6 against the test set agreed at M5 |
 | NFR02 | Performance thresholds (A02) | Center Director | Must have | Performance | Quality: A02 met | 1.6.1.3 (D5) | Load test report shows the 95th percentile inside each threshold | Load test witnessed by the System Administrator before UAT entry |
 | NFR03 | Capacity without redesign (A03) | System Administrator | Must have | Capacity | Quality: A03 met | 1.6.1.3 (D5) | Capacity test loads the stated volumes and the performance thresholds still hold | Same load test run, at the stated data volume |
 | NFR04 | Security and personal-data protection (A04) | System Administrator | Must have | Security | Quality: A04 met; BR07 | 1.3.1.1, 1.6.1.4 (D2, D5) | Security test finds no unauthorised access path and no readable stored password | Security test report reviewed and accepted before UAT entry |
@@ -375,9 +375,9 @@ and no hours; it is carried as its own line below the phases and is drawn only t
 control of 1.1.1.4.
 
 The hours are effort, not calendar loading. Several packages inside a phase run in parallel, and
-four packages are exceptions to the sizing rule stated in the decomposition method: 1.1.1.3 and
-1.10.1.1 are level of effort and exceed 80 hours, 1.1.1.4 is exactly 80, and 1.9.1.1 crosses the M2
-gate because of Apple's four-week enrolment lead time. Levelling that effort across the calendar is
+three packages are exceptions to the sizing rule stated in the decomposition method: 1.1.1.3 and
+1.10.1.1 are level of effort and exceed 80 hours, and 1.9.1.1 crosses the M2 gate because of Apple's
+four-week enrolment lead time; 1.1.1.4, at exactly 80 hours, is inside the rule. Levelling that effort across the calendar is
 Develop Schedule, PMBOK 6 section 6.5, which produces the schedule baseline rather than the scope
 baseline and is therefore not in this document; it is the work of package 1.1.1.2.
 
@@ -518,7 +518,7 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Responsible Person | PM |
 | Description of Work | Produce the weekly status report to the sponsor and the Center Director for the whole project, run the milestone gate reviews at M1 to M7, and carry escalations within two working days. |
 | Assumptions and Constraints | Declared level of effort: the package runs the full 21 weeks by nature and is one of the two exceptions to the 8 to 80 hour rule. <mark>First-pass estimate, re-baselined at M1.</mark> |
-| Milestones | 1. Weekly report issued every week from M0<br>2. Gate review held at each of M1 to M7 |
+| Milestones | 1. Weekly report issued every week from M0; 2. Gate review held at each of M1 to M7 |
 | Due Dates | <mark>Mon 14 September 2026 to Fri 5 February 2027, weekly</mark> |
 
 | ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
@@ -547,7 +547,7 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Responsible Person | PM |
 | Description of Work | Maintain the risk register R1 to R12 with owners and responses, run the issue log, and raise change requests into Perform Integrated Change Control with their impact assessed against the reserve. |
 | Assumptions and Constraints | Change requests are outputs of the controlling processes 5.5 and 5.6, so this package raises and tracks them once the project is executing. <mark>First-pass estimate, re-baselined at M1.</mark> |
-| Milestones | 1. Risk register baselined at M1<br>2. Weekly risk review from M1 |
+| Milestones | 1. Risk register baselined at M1; 2. Weekly risk review from M1 |
 | Due Dates | <mark>Mon 14 September 2026 to Fri 5 February 2027, weekly</mark> |
 
 | ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
@@ -607,7 +607,7 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Responsible Person | PM |
 | Description of Work | Draft the twelve functions of charter 1.1.4 with a description and a primary actor for each, and walk the draft through with the business owner of each area. |
 | Assumptions and Constraints | Tuition, discount, and refund rules are frozen at M1 with written sign-off, the charter response to risk R2. <mark>First-pass estimate, re-baselined at M1.</mark> |
-| Milestones | 1. Draft specification circulated<br>2. Business walkthrough complete |
+| Milestones | 1. Draft specification circulated; 2. Business walkthrough complete |
 | Due Dates | <mark>Thu 17 September 2026 to Tue 29 September 2026</mark> |
 
 | ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
@@ -748,7 +748,7 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Responsible Person | PM |
 | Description of Work | Present the specification to the sponsor and the Center Director, obtain written sign-off, and baseline it. |
 | Assumptions and Constraints | A slip here moves every downstream milestone, which is why it is a gate rather than a review. <mark>First-pass estimate, re-baselined at M1.</mark> |
-| Milestones | 1. M1 requirement specification approved and baselined<br>2. D1 delivered |
+| Milestones | 1. M1 requirement specification approved and baselined; 2. D1 delivered |
 | Due Dates | <mark>Fri 2 October 2026; M1 on Fri 2 October 2026</mark> |
 
 | ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
@@ -803,7 +803,7 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Responsible Person | DEV2 |
 | Description of Work | Prove the email and SMS gateway behind a single interface before the design baseline, including the delivery-state callback and the low-credit alert, and evaluate a second provider as fallback. |
 | Assumptions and Constraints | This is the charter response to risk R5; gateway credit for development is charged to 1.5.2.2. <mark>First-pass estimate, re-baselined at M1.</mark> |
-| Milestones | 1. Gateway proof of concept accepted<br>2. Fallback provider identified |
+| Milestones | 1. Gateway proof of concept accepted; 2. Fallback provider identified |
 | Due Dates | <mark>Mon 21 September 2026 to Fri 2 October 2026</mark> |
 
 | ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
@@ -1117,7 +1117,7 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Responsible Person | PM |
 | Description of Work | Present the architecture, schema, API contract, interface designs, and test plan to the customer, obtain acceptance, and baseline the design. |
 | Assumptions and Constraints | Acceptance is a gate: construction does not begin against an unaccepted design. <mark>First-pass estimate, re-baselined at M1.</mark> |
-| Milestones | 1. M2 design baseline approved, including the API contract and the application design<br>2. D2 delivered |
+| Milestones | 1. M2 design baseline approved, including the API contract and the application design; 2. D2 delivered |
 | Due Dates | <mark>Fri 16 October 2026; M2 on Fri 16 October 2026</mark> |
 
 | ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
@@ -1314,7 +1314,7 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Responsible Person | DEV1 |
 | Description of Work | Build the conflict half of F04 per charter 1.1.4: detect and block conflicts on room, on teacher, and on class time at the moment a class or session is created or moved. |
 | Assumptions and Constraints | Timeboxed and reviewed at the M3 demo, which is the charter response to risk R7. <mark>First-pass estimate, re-baselined at M1.</mark> |
-| Milestones | 1. Conflict test set passed<br>2. Reviewed at the iteration 1 demo |
+| Milestones | 1. Conflict test set passed; 2. Reviewed at the iteration 1 demo |
 | Due Dates | <mark>Mon 19 October 2026 to Fri 13 November 2026</mark> |
 
 | ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
@@ -1400,7 +1400,7 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Responsible Person | PM |
 | Description of Work | Demonstrate F01 to F05 and the application alpha from 1.4.4.1 to the customer, record the acceptance decision, and close the iteration. |
 | Assumptions and Constraints | The M3 milestone releases the 25% payment tranche against the signed acceptance record. <mark>First-pass estimate, re-baselined at M1.</mark> |
-| Milestones | 1. M3 iteration 1 demo accepted, F01 to F05, with the application alpha<br>2. D3 delivered |
+| Milestones | 1. M3 iteration 1 demo accepted, F01 to F05, with the application alpha; 2. D3 delivered |
 | Due Dates | <mark>Fri 13 November 2026; M3 on Fri 13 November 2026</mark> |
 
 | ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
@@ -1884,7 +1884,7 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Responsible Person | PM |
 | Description of Work | Demonstrate F06 to F12 to the customer, record the acceptance decision, and declare the system feature complete. |
 | Assumptions and Constraints | The M4 milestone releases the 30% payment tranche against the signed acceptance record. <mark>First-pass estimate, re-baselined at M1.</mark> |
-| Milestones | 1. M4 iteration 2 accepted, feature complete, F06 to F12<br>2. D4 delivered |
+| Milestones | 1. M4 iteration 2 accepted, feature complete, F06 to F12; 2. D4 delivered |
 | Due Dates | <mark>Fri 11 December 2026; M4 on Fri 11 December 2026</mark> |
 
 | ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
@@ -2164,7 +2164,7 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Responsible Person | QA1 |
 | Description of Work | Agree the user acceptance test set with the business owners, consolidate the defect log kept by the test packages into one project log with its trend report, and write the test summary report. |
 | Assumptions and Constraints | The charter requires the UAT test set to be agreed and signed at M5, and acceptance is measured against that set and nothing else. <mark>First-pass estimate, re-baselined at M1.</mark> |
-| Milestones | 1. UAT test set agreed and signed at M5<br>2. D5 test documentation complete |
+| Milestones | 1. UAT test set agreed and signed at M5; 2. D5 test documentation complete |
 | Due Dates | <mark>Mon 14 December 2026 to Fri 18 December 2026</mark> |
 
 | ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
@@ -2223,7 +2223,7 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Responsible Person | DEV1 |
 | Description of Work | Analyse the center's Excel workbooks and paper registers for the two most recent terms, assess data quality at M1, and draft the cleansing and mapping rules the migration scripts implement. |
 | Assumptions and Constraints | The center cleans the source files before M5, per charter assumption 11, and the rules are confirmed before the trial run. <mark>First-pass estimate, re-baselined at M1.</mark> |
-| Milestones | 1. Data quality assessed at M1<br>2. Cleansing and mapping rules drafted |
+| Milestones | 1. Data quality assessed at M1; 2. Cleansing and mapping rules drafted |
 | Due Dates | <mark>Mon 28 September 2026 to Fri 2 October 2026</mark> |
 
 | ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
@@ -2398,7 +2398,7 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Responsible Person | DEV3 |
 | Description of Work | Deploy the accepted release to production, pilot F01 to F06 at one branch for the two weeks before go-live, switch all three branches over, and keep the spreadsheets in parallel for two weeks afterwards. |
 | Assumptions and Constraints | <mark>8,000,000 VND of go-live support</mark> from charter budget line 4 covers the switchover weekend and on-site presence at the three branches. <mark>First-pass estimate, re-baselined at M1.</mark> |
-| Milestones | 1. Pilot at one branch complete<br>2. M6 go-live<br>3. D7 delivered |
+| Milestones | 1. Pilot at one branch complete; 2. M6 go-live; 3. D7 delivered |
 | Due Dates | <mark>Mon 21 December 2026 to Tue 5 January 2027; M6 on Tue 5 January 2027</mark> |
 
 | ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
@@ -2459,7 +2459,7 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Responsible Person | PM |
 | Description of Work | Train the center's staff by role in half-day sessions at the three branches and keep the training record, and write, train, and rehearse the paper fallback and catch-up procedure before go-live. |
 | Assumptions and Constraints | <mark>52 staff users, being 35 teachers and 17 administrative staff</mark>; training delivery of 12,000,000 VND and travel of 3,000,000 VND from charter budget lines 4 and 3. <mark>First-pass estimate, re-baselined at M1.</mark> |
-| Milestones | 1. Training complete at all three branches<br>2. Fallback rehearsed before go-live<br>3. D8 delivered |
+| Milestones | 1. Training complete at all three branches; 2. Fallback rehearsed before go-live; 3. D8 delivered |
 | Due Dates | <mark>Mon 21 December 2026 to Tue 5 January 2027</mark> |
 
 | ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
@@ -2518,7 +2518,7 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Responsible Person | QA1 |
 | Description of Work | Run user acceptance testing with the business owners against the test set agreed at M5, record the result per test case, and obtain the sign-off that gates go-live. |
 | Assumptions and Constraints | Acceptance is measured against the agreed set: at least 99% of cases passed and no open Critical or High defect. <mark>First-pass estimate, re-baselined at M1.</mark> |
-| Milestones | 1. UAT sign-off obtained<br>2. M6 UAT signed off, go-live and handover |
+| Milestones | 1. UAT sign-off obtained; 2. M6 UAT signed off, go-live and handover |
 | Due Dates | <mark>Mon 21 December 2026 to Tue 5 January 2027; M6 on Tue 5 January 2027</mark> |
 
 | ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
@@ -2548,7 +2548,7 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Responsible Person | DEV3 |
 | Description of Work | Open the Google Play and Apple Developer accounts in the center's name, configure the signing keys and their custody, and hand the credentials to the center's System Administrator. |
 | Assumptions and Constraints | <mark>Apple Developer 2,600,000 VND a year and Google Play 700,000 VND once</mark>, from charter budget line 2. The package crosses the M2 gate only because Apple's enrolment of a legal entity takes up to <mark>four weeks</mark> and is outside the project's control; MOB1 is not mobilised until after M2, so the M1 enrolment is DEV3's work. <mark>First-pass estimate, re-baselined at M1.</mark> |
-| Milestones | 1. Store accounts active<br>2. Signing keys in the center's custody |
+| Milestones | 1. Store accounts active; 2. Signing keys in the center's custody |
 | Due Dates | <mark>Fri 2 October 2026 to Fri 30 October 2026</mark> |
 
 | ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
@@ -2578,7 +2578,7 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Responsible Person | MOB1 |
 | Description of Work | Prepare the Vietnamese store listings, screenshots, privacy declarations, release notes, and versioning, submit to both stores at M5, and answer the store review until the application is live. |
 | Assumptions and Constraints | <mark>A store review takes at most one week</mark>; go-live does not depend on the application and a store slip of up to two weeks after M6 is absorbed without moving M6. <mark>First-pass estimate, re-baselined at M1.</mark> |
-| Milestones | 1. Application submitted at M5<br>2. Application live in both stores at M6<br>3. D11 delivered |
+| Milestones | 1. Application submitted at M5; 2. Application live in both stores at M6; 3. D11 delivered |
 | Due Dates | <mark>Mon 7 December 2026 to Tue 5 January 2027</mark> |
 
 | ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
@@ -2611,7 +2611,7 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Responsible Person | PM |
 | Description of Work | Deliver the first warranty month inside the project: correct defects against the accepted baseline to the charter response targets, run the second restore drill, support the two-week parallel run, and report the overdue percentage to the Director. |
 | Assumptions and Constraints | Declared level of effort: the package runs the whole warranty month with the full team and is the second exception to the 8 to 80 hour rule. <mark>First-pass estimate, re-baselined at M1.</mark> |
-| Milestones | 1. Parallel running ended after two weeks<br>2. Second restore drill complete<br>3. First warranty month complete, part of D10 |
+| Milestones | 1. Parallel running ended after two weeks; 2. Second restore drill complete; 3. First warranty month complete, part of D10 |
 | Due Dates | <mark>Wed 6 January 2027 to Fri 5 February 2027</mark> |
 
 | ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
@@ -2642,7 +2642,7 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Responsible Person | PM |
 | Description of Work | Hand warranty months 2 to 6 to the supplier's support desk with the defect history, the known issues, the response targets, and the escalation path, funded from charter budget line 5. |
 | Assumptions and Constraints | <mark>Months 2 to 6 run after closeout at about 0.35 full-time equivalent, 35,000,000 VND, to 5 July 2027.</mark> <mark>First-pass estimate, re-baselined at M1.</mark> |
-| Milestones | 1. Warranty handover accepted by the support desk<br>2. D10 warranty handover delivered |
+| Milestones | 1. Warranty handover accepted by the support desk; 2. D10 warranty handover delivered |
 | Due Dates | <mark>Mon 1 February 2027 to Fri 5 February 2027</mark> |
 
 | ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
@@ -2672,7 +2672,7 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Responsible Person | PM |
 | Description of Work | Write the closeout report covering scope against D1 to D11, cost against the baseline, reserve use, the final risk position, the measured overdue percentage, the lessons learned, and the written decision on support after the warranty of charter exit criterion 9. Hold the closeout meeting, obtain final acceptance with the final financial reconciliation and invoice of exit criterion 10, and close the project. |
 | Assumptions and Constraints | The report states the actual overdue percentage rather than the target, which is the charter's own test of whether the benefit appeared. <mark>First-pass estimate, re-baselined at M1.</mark> |
-| Milestones | 1. D10 closeout report and lessons learned delivered<br>2. M7 first warranty month complete, warranty handover, project closeout |
+| Milestones | 1. D10 closeout report and lessons learned delivered; 2. M7 first warranty month complete, warranty handover, project closeout |
 | Due Dates | <mark>Mon 25 January 2027 to Fri 5 February 2027</mark> |
 
 | ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
