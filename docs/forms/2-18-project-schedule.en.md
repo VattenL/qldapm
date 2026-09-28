@@ -8,7 +8,7 @@
 built from the scope baseline: every row of page 1 is a line of the WBS in
 `scope-package.en.md` Part 2, and every work package start and finish is the Due Dates field of its
 WBS dictionary sheet in Part 3. Summary rows for the project, the major deliverables and the control
-accounts run from the earliest start to the latest finish below them. Page 2 carries the charter's
+accounts run from the earliest start to the latest finish below them. Page 1 opens with the milestones as 0-day rows, and Duration counts working days, Monday to Friday, with no public holiday removed. Page 2 carries the charter's
 summary milestones M0 to M7; its Indicator column is the printed chart's icon column, and every milestone reads Fixed date because the charter milestone dates are fixed and not renegotiated in planning (dictionary sheet 1.1.1.2). The Resource Name column is what the printed chart writes next to each
 bar: the work package's Responsible Person first, then every other resource with hours on that
 sheet. <mark>Highlighted</mark> dates are first-pass estimates that are re-baselined at M1, as the
@@ -22,121 +22,129 @@ project runs from Mon 14 September 2026 to Fri 5 February 2027. The dates are no
 
 ![Gantt chart of the 78 work packages, with milestone gates M0 to M7](../assets/2-18-gantt-chart.png)
 
-| ID | WBS | Task Name | Start | Finish | Resource Name |
-| --- | --- | --- | --- | --- | --- |
-| 1 | **1** | **Learning Center Management Software** | <mark>Mon 14 September 2026</mark> | <mark>Fri 5 February 2027</mark> |  |
-| 2 | **1.1** | **Project Management** | <mark>Mon 14 September 2026</mark> | <mark>Fri 5 February 2027</mark> |  |
-| 3 | **1.1.1** | **Project Governance** | <mark>Mon 14 September 2026</mark> | <mark>Fri 5 February 2027</mark> |  |
-| 4 | 1.1.1.1 | Kickoff and team mobilisation | <mark>Mon 14 September 2026</mark> | <mark>Fri 18 September 2026</mark> | PM |
-| 5 | 1.1.1.2 | Project management plan and schedule baseline | <mark>Mon 21 September 2026</mark> | <mark>Fri 2 October 2026</mark> | PM |
-| 6 | 1.1.1.3 | Weekly status reporting and sponsor governance | <mark>Mon 14 September 2026</mark> | <mark>Fri 5 February 2027</mark> | PM |
-| 7 | 1.1.1.4 | Risk, issue, and change control | <mark>Mon 14 September 2026</mark> | <mark>Fri 5 February 2027</mark> | PM |
-| 8 | **1.2** | **Requirements** | <mark>Mon 14 September 2026</mark> | <mark>Fri 2 October 2026</mark> |  |
-| 9 | **1.2.1** | **Elicitation** | <mark>Mon 14 September 2026</mark> | <mark>Wed 30 September 2026</mark> |  |
-| 10 | 1.2.1.1 | Stakeholder workshops and current-process study | <mark>Mon 14 September 2026</mark> | <mark>Tue 22 September 2026</mark> | PM |
-| 11 | 1.2.1.2 | Functional requirements specification, F01 to F12 | <mark>Thu 17 September 2026</mark> | <mark>Tue 29 September 2026</mark> | PM |
-| 12 | 1.2.1.3 | Nonfunctional requirements specification, A01 to A12 | <mark>Wed 23 September 2026</mark> | <mark>Tue 29 September 2026</mark> | PM, DEV3 |
-| 13 | 1.2.1.4 | Exception and failure behaviour catalogue | <mark>Thu 24 September 2026</mark> | <mark>Wed 30 September 2026</mark> | PM, DEV3 |
-| 14 | **1.2.2** | **Requirements Baseline** | <mark>Mon 28 September 2026</mark> | <mark>Fri 2 October 2026</mark> |  |
-| 15 | 1.2.2.1 | Requirements traceability matrix | <mark>Mon 28 September 2026</mark> | <mark>Wed 30 September 2026</mark> | PM, QA1 |
-| 16 | 1.2.2.2 | Requirements peer review and rework | <mark>Wed 30 September 2026</mark> | <mark>Thu 1 October 2026</mark> | QA1, DEV3, PM |
-| 17 | 1.2.2.3 | Requirements acceptance and baseline | <mark>Fri 2 October 2026</mark> | <mark>Fri 2 October 2026</mark> | PM |
-| 18 | **1.2.3** | **Technical Preparation** | <mark>Mon 14 September 2026</mark> | <mark>Fri 2 October 2026</mark> |  |
-| 19 | 1.2.3.1 | Repository, coding convention, and build pipeline | <mark>Mon 14 September 2026</mark> | <mark>Fri 2 October 2026</mark> | DEV1 |
-| 20 | 1.2.3.2 | Notification gateway proof of concept | <mark>Mon 21 September 2026</mark> | <mark>Fri 2 October 2026</mark> | DEV2 |
-| 21 | 1.2.3.3 | Cross-platform framework proof | <mark>Mon 21 September 2026</mark> | <mark>Fri 2 October 2026</mark> | DEV3 |
-| 22 | 1.2.3.4 | User interface prototype for business validation | <mark>Mon 21 September 2026</mark> | <mark>Fri 2 October 2026</mark> | DEV2 |
-| 23 | 1.2.3.5 | Development and test environment provisioning | <mark>Mon 14 September 2026</mark> | <mark>Fri 2 October 2026</mark> | DEV1 |
-| 24 | **1.3** | **Design** | <mark>Mon 5 October 2026</mark> | <mark>Fri 16 October 2026</mark> |  |
-| 25 | **1.3.1** | **Solution Design** | <mark>Mon 5 October 2026</mark> | <mark>Thu 15 October 2026</mark> |  |
-| 26 | 1.3.1.1 | Architecture, security, and personal-data design | <mark>Mon 5 October 2026</mark> | <mark>Fri 9 October 2026</mark> | DEV3, PM |
-| 27 | 1.3.1.2 | Database schema design | <mark>Mon 5 October 2026</mark> | <mark>Mon 12 October 2026</mark> | DEV1, DEV3 |
-| 28 | 1.3.1.3 | Server API contract | <mark>Mon 5 October 2026</mark> | <mark>Mon 12 October 2026</mark> | DEV2 |
-| 29 | 1.3.1.4 | Web user interface design | <mark>Wed 7 October 2026</mark> | <mark>Wed 14 October 2026</mark> | DEV1 |
-| 30 | 1.3.1.5 | Mobile application design | <mark>Thu 8 October 2026</mark> | <mark>Thu 15 October 2026</mark> | DEV3 |
-| 31 | **1.3.2** | **Design Assurance** | <mark>Mon 5 October 2026</mark> | <mark>Fri 16 October 2026</mark> |  |
-| 32 | 1.3.2.1 | Design review and rework | <mark>Tue 13 October 2026</mark> | <mark>Thu 15 October 2026</mark> | QA1, DEV2, PM |
-| 33 | 1.3.2.2 | Test plan and test strategy | <mark>Mon 5 October 2026</mark> | <mark>Thu 15 October 2026</mark> | QA1, PM |
-| 34 | 1.3.2.3 | Design baseline acceptance | <mark>Fri 16 October 2026</mark> | <mark>Fri 16 October 2026</mark> | PM |
-| 35 | **1.4** | **Construction Iteration 1** | <mark>Mon 19 October 2026</mark> | <mark>Fri 13 November 2026</mark> |  |
-| 36 | **1.4.1** | **Core Platform** | <mark>Mon 19 October 2026</mark> | <mark>Fri 13 November 2026</mark> |  |
-| 37 | 1.4.1.1 | F01 Authentication and access control | <mark>Mon 19 October 2026</mark> | <mark>Fri 13 November 2026</mark> | DEV3 |
-| 38 | 1.4.1.2 | F02 Student profile and guardian records | <mark>Mon 19 October 2026</mark> | <mark>Fri 13 November 2026</mark> | DEV2 |
-| 39 | 1.4.1.3 | F03 Course and curriculum catalog | <mark>Mon 19 October 2026</mark> | <mark>Fri 13 November 2026</mark> | DEV3 |
-| 40 | 1.4.1.4 | F02 Enrollment, transfer, reservation, and withdrawal | <mark>Mon 19 October 2026</mark> | <mark>Fri 13 November 2026</mark> | DEV2 |
-| 41 | **1.4.2** | **Scheduling and Attendance** | <mark>Mon 19 October 2026</mark> | <mark>Fri 13 November 2026</mark> |  |
-| 42 | 1.4.2.1 | F04 Class opening, session calendar, and postponement | <mark>Mon 19 October 2026</mark> | <mark>Fri 13 November 2026</mark> | DEV1 |
-| 43 | 1.4.2.2 | F05 Attendance and make-up sessions | <mark>Mon 19 October 2026</mark> | <mark>Fri 13 November 2026</mark> | DEV2 |
-| 44 | 1.4.2.3 | F04 Room, teacher, and class-time conflict detection | <mark>Mon 19 October 2026</mark> | <mark>Fri 13 November 2026</mark> | DEV1 |
-| 45 | **1.4.3** | **Iteration 1 Assurance** | <mark>Mon 2 November 2026</mark> | <mark>Fri 13 November 2026</mark> |  |
-| 46 | 1.4.3.1 | Iteration 1 code review and rework | <mark>Mon 9 November 2026</mark> | <mark>Fri 13 November 2026</mark> | QA1, DEV1, DEV3 |
-| 47 | 1.4.3.2 | Iteration 1 testing, core platform | <mark>Mon 2 November 2026</mark> | <mark>Fri 13 November 2026</mark> | QA1 |
-| 48 | 1.4.3.3 | Iteration 1 demo and acceptance | <mark>Fri 13 November 2026</mark> | <mark>Fri 13 November 2026</mark> | PM, QA1 |
-| 49 | 1.4.3.4 | Iteration 1 testing, scheduling and attendance | <mark>Mon 2 November 2026</mark> | <mark>Fri 13 November 2026</mark> | QA1 |
-| 50 | **1.4.4** | **Mobile Application Alpha** | <mark>Mon 19 October 2026</mark> | <mark>Fri 13 November 2026</mark> |  |
-| 51 | 1.4.4.1 | Application alpha, parent schedule, attendance, and scores | <mark>Mon 19 October 2026</mark> | <mark>Fri 13 November 2026</mark> | MOB1 |
-| 52 | **1.5** | **Construction Iteration 2** | <mark>Mon 16 November 2026</mark> | <mark>Fri 11 December 2026</mark> |  |
-| 53 | **1.5.1** | **Finance** | <mark>Mon 16 November 2026</mark> | <mark>Fri 11 December 2026</mark> |  |
-| 54 | 1.5.1.1 | F06 Invoicing, discounts, and aged debt | <mark>Mon 16 November 2026</mark> | <mark>Fri 11 December 2026</mark> | DEV2 |
-| 55 | 1.5.1.2 | F07 Teacher records and teaching-hour payroll | <mark>Mon 16 November 2026</mark> | <mark>Fri 11 December 2026</mark> | DEV2 |
-| 56 | 1.5.1.3 | F06 Payments, receipts, and unmatched payments | <mark>Mon 16 November 2026</mark> | <mark>Fri 11 December 2026</mark> | DEV2 |
-| 57 | **1.5.2** | **Academic and Communication** | <mark>Mon 16 November 2026</mark> | <mark>Fri 11 December 2026</mark> |  |
-| 58 | 1.5.2.1 | F08 Assessment, progress reports, and course evaluation | <mark>Mon 16 November 2026</mark> | <mark>Fri 11 December 2026</mark> | DEV3 |
-| 59 | 1.5.2.2 | F09 Notification and internal communication | <mark>Mon 16 November 2026</mark> | <mark>Fri 11 December 2026</mark> | DEV3 |
-| 60 | **1.5.3** | **Management and Administration** | <mark>Mon 16 November 2026</mark> | <mark>Fri 11 December 2026</mark> |  |
-| 61 | 1.5.3.1 | F10 Financial reports and export | <mark>Mon 16 November 2026</mark> | <mark>Fri 11 December 2026</mark> | DEV1 |
-| 62 | 1.5.3.2 | F11 System administration and audit | <mark>Mon 16 November 2026</mark> | <mark>Fri 11 December 2026</mark> | DEV1 |
-| 63 | 1.5.3.3 | F10 Enrollment, fill rate, and workload reports | <mark>Mon 16 November 2026</mark> | <mark>Fri 11 December 2026</mark> | DEV1 |
-| 64 | **1.5.4** | **Mobile Application** | <mark>Mon 16 November 2026</mark> | <mark>Fri 11 December 2026</mark> |  |
-| 65 | 1.5.4.1 | Parent tuition, messages, and requests | <mark>Mon 16 November 2026</mark> | <mark>Fri 11 December 2026</mark> | MOB1 |
-| 66 | 1.5.4.2 | Push notification integration | <mark>Mon 30 November 2026</mark> | <mark>Fri 11 December 2026</mark> | MOB1, DEV3 |
-| 67 | 1.5.4.3 | Teacher journeys | <mark>Mon 16 November 2026</mark> | <mark>Fri 11 December 2026</mark> | MOB1 |
-| 68 | 1.5.4.4 | Offline behaviour and release build | <mark>Mon 16 November 2026</mark> | <mark>Fri 11 December 2026</mark> | MOB1 |
-| 69 | **1.5.5** | **Iteration 2 Assurance** | <mark>Mon 30 November 2026</mark> | <mark>Fri 11 December 2026</mark> |  |
-| 70 | 1.5.5.1 | Iteration 2 code review and rework | <mark>Mon 7 December 2026</mark> | <mark>Fri 11 December 2026</mark> | QA1, DEV1 |
-| 71 | 1.5.5.2 | Iteration 2 testing, finance and administration | <mark>Mon 30 November 2026</mark> | <mark>Fri 11 December 2026</mark> | QA1 |
-| 72 | 1.5.5.3 | Iteration 2 acceptance, feature complete | <mark>Fri 11 December 2026</mark> | <mark>Fri 11 December 2026</mark> | PM, QA1 |
-| 73 | 1.5.5.4 | Iteration 2 testing, academic, notification, and mobile | <mark>Mon 30 November 2026</mark> | <mark>Fri 11 December 2026</mark> | QA1 |
-| 74 | **1.6** | **Quality Assurance and Test** | <mark>Mon 14 December 2026</mark> | <mark>Fri 18 December 2026</mark> |  |
-| 75 | **1.6.1** | **System Test** | <mark>Mon 14 December 2026</mark> | <mark>Fri 18 December 2026</mark> |  |
-| 76 | 1.6.1.1 | System test execution, web, end-to-end scenarios | <mark>Mon 14 December 2026</mark> | <mark>Fri 18 December 2026</mark> | QA1 |
-| 77 | 1.6.1.2 | System test execution, Android and iOS | <mark>Mon 14 December 2026</mark> | <mark>Fri 18 December 2026</mark> | QA1 |
-| 78 | 1.6.1.3 | Performance and capacity test | <mark>Mon 14 December 2026</mark> | <mark>Fri 18 December 2026</mark> | QA1, DEV3 |
-| 79 | 1.6.1.4 | Security test | <mark>Mon 14 December 2026</mark> | <mark>Fri 18 December 2026</mark> | QA1, DEV3 |
-| 80 | 1.6.1.5 | Defect fixing, scheduling, reporting, and administration | <mark>Mon 14 December 2026</mark> | <mark>Fri 18 December 2026</mark> | DEV1 |
-| 81 | 1.6.1.6 | System test execution, web, exception and failure behaviour | <mark>Mon 14 December 2026</mark> | <mark>Fri 18 December 2026</mark> | QA1 |
-| 82 | 1.6.1.7 | Defect fixing, enrollment, tuition, and payroll | <mark>Mon 14 December 2026</mark> | <mark>Fri 18 December 2026</mark> | DEV2 |
-| 83 | 1.6.1.8 | Defect fixing, catalog, assessment, notification, and platform, with regression | <mark>Mon 14 December 2026</mark> | <mark>Fri 18 December 2026</mark> | DEV3, QA1 |
-| 84 | **1.6.2** | **Test Documentation** | <mark>Mon 14 December 2026</mark> | <mark>Fri 18 December 2026</mark> |  |
-| 85 | 1.6.2.1 | UAT test set, defect log, and test summary report | <mark>Mon 14 December 2026</mark> | <mark>Fri 18 December 2026</mark> | QA1 |
-| 86 | 1.6.2.2 | UAT entry criteria review | <mark>Fri 18 December 2026</mark> | <mark>Fri 18 December 2026</mark> | PM, QA1 |
-| 87 | **1.7** | **Data Migration** | <mark>Mon 28 September 2026</mark> | <mark>Tue 5 January 2027</mark> |  |
-| 88 | **1.7.1** | **Migration** | <mark>Mon 28 September 2026</mark> | <mark>Tue 5 January 2027</mark> |  |
-| 89 | 1.7.1.1 | Source data analysis and cleansing rules | <mark>Mon 28 September 2026</mark> | <mark>Fri 2 October 2026</mark> | DEV1, PM |
-| 90 | 1.7.1.2 | Migration scripts and trial run | <mark>Mon 21 December 2026</mark> | <mark>Thu 31 December 2026</mark> | DEV1, QA1 |
-| 91 | 1.7.1.3 | Production migration and reconciliation report | <mark>Mon 4 January 2027</mark> | <mark>Tue 5 January 2027</mark> | DEV1, QA1 |
-| 92 | 1.7.1.4 | Accountant acceptance of the reconciliation | <mark>Tue 5 January 2027</mark> | <mark>Tue 5 January 2027</mark> | PM, QA1 |
-| 93 | **1.8** | **Deployment and Handover** | <mark>Mon 19 October 2026</mark> | <mark>Tue 5 January 2027</mark> |  |
-| 94 | **1.8.1** | **Production Environment** | <mark>Mon 19 October 2026</mark> | <mark>Tue 5 January 2027</mark> |  |
-| 95 | 1.8.1.1 | Cloud server and staging provisioning | <mark>Mon 19 October 2026</mark> | <mark>Fri 23 October 2026</mark> | DEV3 |
-| 96 | 1.8.1.2 | Backup configuration and restore drill | <mark>Mon 21 December 2026</mark> | <mark>Tue 5 January 2027</mark> | DEV3, QA1 |
-| 97 | 1.8.1.3 | Production deployment and go-live | <mark>Mon 21 December 2026</mark> | <mark>Tue 5 January 2027</mark> | DEV3, PM |
-| 98 | **1.8.2** | **Training and Documentation** | <mark>Mon 14 December 2026</mark> | <mark>Tue 5 January 2027</mark> |  |
-| 99 | 1.8.2.1 | User, administrator, and deployment documentation | <mark>Mon 14 December 2026</mark> | <mark>Tue 5 January 2027</mark> | DEV2, PM |
-| 100 | 1.8.2.2 | Staff training, paper fallback procedure, and rehearsal | <mark>Mon 21 December 2026</mark> | <mark>Tue 5 January 2027</mark> | PM, QA1 |
-| 101 | **1.8.3** | **Handover** | <mark>Mon 21 December 2026</mark> | <mark>Tue 5 January 2027</mark> |  |
-| 102 | 1.8.3.1 | Source code, database scripts, and technical documentation handover | <mark>Mon 28 December 2026</mark> | <mark>Tue 5 January 2027</mark> | DEV2, PM |
-| 103 | 1.8.3.2 | User acceptance testing execution and sign-off | <mark>Mon 21 December 2026</mark> | <mark>Tue 5 January 2027</mark> | QA1, PM |
-| 104 | **1.9** | **Mobile Application Release** | <mark>Fri 2 October 2026</mark> | <mark>Tue 5 January 2027</mark> |  |
-| 105 | **1.9.1** | **Store Release** | <mark>Fri 2 October 2026</mark> | <mark>Tue 5 January 2027</mark> |  |
-| 106 | 1.9.1.1 | Store accounts and signing keys | <mark>Fri 2 October 2026</mark> | <mark>Fri 30 October 2026</mark> | DEV3, PM |
-| 107 | 1.9.1.2 | Store listings, submission, and review response | <mark>Mon 7 December 2026</mark> | <mark>Tue 5 January 2027</mark> | MOB1, PM |
-| 108 | **1.10** | **Warranty and Closeout** | <mark>Wed 6 January 2027</mark> | <mark>Fri 5 February 2027</mark> |  |
-| 109 | **1.10.1** | **Warranty** | <mark>Wed 6 January 2027</mark> | <mark>Fri 5 February 2027</mark> |  |
-| 110 | 1.10.1.1 | First warranty month support | <mark>Wed 6 January 2027</mark> | <mark>Fri 5 February 2027</mark> | PM, DEV1, DEV2, DEV3, QA1 |
-| 111 | 1.10.1.2 | Warranty handover to the support desk | <mark>Mon 1 February 2027</mark> | <mark>Fri 5 February 2027</mark> | PM, DEV3, QA1 |
-| 112 | **1.10.2** | **Closeout** | <mark>Mon 25 January 2027</mark> | <mark>Fri 5 February 2027</mark> |  |
-| 113 | 1.10.2.1 | Closeout report, lessons learned, and final acceptance | <mark>Mon 25 January 2027</mark> | <mark>Fri 5 February 2027</mark> | PM |
+| ID | WBS | Task Name | Duration | Start | Finish | Resource Name |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 |  | M0 Project kickoff, charter approved, team mobilised | 0 days | <mark>Mon 14 September 2026</mark> | <mark>Mon 14 September 2026</mark> |  |
+| 2 |  | M1 Requirement specification approved and baselined | 0 days | <mark>Fri 2 October 2026</mark> | <mark>Fri 2 October 2026</mark> |  |
+| 3 |  | M2 Design baseline approved, including the API contract and the app design | 0 days | <mark>Fri 16 October 2026</mark> | <mark>Fri 16 October 2026</mark> |  |
+| 4 |  | M3 Iteration 1 demo accepted, F01 to F05, with the app alpha | 0 days | <mark>Fri 13 November 2026</mark> | <mark>Fri 13 November 2026</mark> |  |
+| 5 |  | M4 Iteration 2 accepted, feature complete, F06 to F12 | 0 days | <mark>Fri 11 December 2026</mark> | <mark>Fri 11 December 2026</mark> |  |
+| 6 |  | M5 System test complete on web, Android, and iOS | 0 days | <mark>Fri 18 December 2026</mark> | <mark>Fri 18 December 2026</mark> |  |
+| 7 |  | M6 UAT signed off, data migrated, go-live and handover | 0 days | <mark>Tue 5 January 2027</mark> | <mark>Tue 5 January 2027</mark> |  |
+| 8 |  | M7 First warranty month complete, warranty handover, project closeout | 0 days | <mark>Fri 5 February 2027</mark> | <mark>Fri 5 February 2027</mark> |  |
+| 9 | **1** | **Learning Center Management Software** | 105 days | <mark>Mon 14 September 2026</mark> | <mark>Fri 5 February 2027</mark> |  |
+| 10 | **1.1** | **Project Management** | 105 days | <mark>Mon 14 September 2026</mark> | <mark>Fri 5 February 2027</mark> |  |
+| 11 | **1.1.1** | **Project Governance** | 105 days | <mark>Mon 14 September 2026</mark> | <mark>Fri 5 February 2027</mark> |  |
+| 12 | 1.1.1.1 | Kickoff and team mobilisation | 5 days | <mark>Mon 14 September 2026</mark> | <mark>Fri 18 September 2026</mark> | PM |
+| 13 | 1.1.1.2 | Project management plan and schedule baseline | 10 days | <mark>Mon 21 September 2026</mark> | <mark>Fri 2 October 2026</mark> | PM |
+| 14 | 1.1.1.3 | Weekly status reporting and sponsor governance | 105 days | <mark>Mon 14 September 2026</mark> | <mark>Fri 5 February 2027</mark> | PM |
+| 15 | 1.1.1.4 | Risk, issue, and change control | 105 days | <mark>Mon 14 September 2026</mark> | <mark>Fri 5 February 2027</mark> | PM |
+| 16 | **1.2** | **Requirements** | 15 days | <mark>Mon 14 September 2026</mark> | <mark>Fri 2 October 2026</mark> |  |
+| 17 | **1.2.1** | **Elicitation** | 13 days | <mark>Mon 14 September 2026</mark> | <mark>Wed 30 September 2026</mark> |  |
+| 18 | 1.2.1.1 | Stakeholder workshops and current-process study | 7 days | <mark>Mon 14 September 2026</mark> | <mark>Tue 22 September 2026</mark> | PM |
+| 19 | 1.2.1.2 | Functional requirements specification, F01 to F12 | 9 days | <mark>Thu 17 September 2026</mark> | <mark>Tue 29 September 2026</mark> | PM |
+| 20 | 1.2.1.3 | Nonfunctional requirements specification, A01 to A12 | 5 days | <mark>Wed 23 September 2026</mark> | <mark>Tue 29 September 2026</mark> | PM, DEV3 |
+| 21 | 1.2.1.4 | Exception and failure behaviour catalogue | 5 days | <mark>Thu 24 September 2026</mark> | <mark>Wed 30 September 2026</mark> | PM, DEV3 |
+| 22 | **1.2.2** | **Requirements Baseline** | 5 days | <mark>Mon 28 September 2026</mark> | <mark>Fri 2 October 2026</mark> |  |
+| 23 | 1.2.2.1 | Requirements traceability matrix | 3 days | <mark>Mon 28 September 2026</mark> | <mark>Wed 30 September 2026</mark> | PM, QA1 |
+| 24 | 1.2.2.2 | Requirements peer review and rework | 2 days | <mark>Wed 30 September 2026</mark> | <mark>Thu 1 October 2026</mark> | QA1, DEV3, PM |
+| 25 | 1.2.2.3 | Requirements acceptance and baseline | 1 day | <mark>Fri 2 October 2026</mark> | <mark>Fri 2 October 2026</mark> | PM |
+| 26 | **1.2.3** | **Technical Preparation** | 15 days | <mark>Mon 14 September 2026</mark> | <mark>Fri 2 October 2026</mark> |  |
+| 27 | 1.2.3.1 | Repository, coding convention, and build pipeline | 15 days | <mark>Mon 14 September 2026</mark> | <mark>Fri 2 October 2026</mark> | DEV1 |
+| 28 | 1.2.3.2 | Notification gateway proof of concept | 10 days | <mark>Mon 21 September 2026</mark> | <mark>Fri 2 October 2026</mark> | DEV2 |
+| 29 | 1.2.3.3 | Cross-platform framework proof | 10 days | <mark>Mon 21 September 2026</mark> | <mark>Fri 2 October 2026</mark> | DEV3 |
+| 30 | 1.2.3.4 | User interface prototype for business validation | 10 days | <mark>Mon 21 September 2026</mark> | <mark>Fri 2 October 2026</mark> | DEV2 |
+| 31 | 1.2.3.5 | Development and test environment provisioning | 15 days | <mark>Mon 14 September 2026</mark> | <mark>Fri 2 October 2026</mark> | DEV1 |
+| 32 | **1.3** | **Design** | 10 days | <mark>Mon 5 October 2026</mark> | <mark>Fri 16 October 2026</mark> |  |
+| 33 | **1.3.1** | **Solution Design** | 9 days | <mark>Mon 5 October 2026</mark> | <mark>Thu 15 October 2026</mark> |  |
+| 34 | 1.3.1.1 | Architecture, security, and personal-data design | 5 days | <mark>Mon 5 October 2026</mark> | <mark>Fri 9 October 2026</mark> | DEV3, PM |
+| 35 | 1.3.1.2 | Database schema design | 6 days | <mark>Mon 5 October 2026</mark> | <mark>Mon 12 October 2026</mark> | DEV1, DEV3 |
+| 36 | 1.3.1.3 | Server API contract | 6 days | <mark>Mon 5 October 2026</mark> | <mark>Mon 12 October 2026</mark> | DEV2 |
+| 37 | 1.3.1.4 | Web user interface design | 6 days | <mark>Wed 7 October 2026</mark> | <mark>Wed 14 October 2026</mark> | DEV1 |
+| 38 | 1.3.1.5 | Mobile application design | 6 days | <mark>Thu 8 October 2026</mark> | <mark>Thu 15 October 2026</mark> | DEV3 |
+| 39 | **1.3.2** | **Design Assurance** | 10 days | <mark>Mon 5 October 2026</mark> | <mark>Fri 16 October 2026</mark> |  |
+| 40 | 1.3.2.1 | Design review and rework | 3 days | <mark>Tue 13 October 2026</mark> | <mark>Thu 15 October 2026</mark> | QA1, DEV2, PM |
+| 41 | 1.3.2.2 | Test plan and test strategy | 9 days | <mark>Mon 5 October 2026</mark> | <mark>Thu 15 October 2026</mark> | QA1, PM |
+| 42 | 1.3.2.3 | Design baseline acceptance | 1 day | <mark>Fri 16 October 2026</mark> | <mark>Fri 16 October 2026</mark> | PM |
+| 43 | **1.4** | **Construction Iteration 1** | 20 days | <mark>Mon 19 October 2026</mark> | <mark>Fri 13 November 2026</mark> |  |
+| 44 | **1.4.1** | **Core Platform** | 20 days | <mark>Mon 19 October 2026</mark> | <mark>Fri 13 November 2026</mark> |  |
+| 45 | 1.4.1.1 | F01 Authentication and access control | 20 days | <mark>Mon 19 October 2026</mark> | <mark>Fri 13 November 2026</mark> | DEV3 |
+| 46 | 1.4.1.2 | F02 Student profile and guardian records | 20 days | <mark>Mon 19 October 2026</mark> | <mark>Fri 13 November 2026</mark> | DEV2 |
+| 47 | 1.4.1.3 | F03 Course and curriculum catalog | 20 days | <mark>Mon 19 October 2026</mark> | <mark>Fri 13 November 2026</mark> | DEV3 |
+| 48 | 1.4.1.4 | F02 Enrollment, transfer, reservation, and withdrawal | 20 days | <mark>Mon 19 October 2026</mark> | <mark>Fri 13 November 2026</mark> | DEV2 |
+| 49 | **1.4.2** | **Scheduling and Attendance** | 20 days | <mark>Mon 19 October 2026</mark> | <mark>Fri 13 November 2026</mark> |  |
+| 50 | 1.4.2.1 | F04 Class opening, session calendar, and postponement | 20 days | <mark>Mon 19 October 2026</mark> | <mark>Fri 13 November 2026</mark> | DEV1 |
+| 51 | 1.4.2.2 | F05 Attendance and make-up sessions | 20 days | <mark>Mon 19 October 2026</mark> | <mark>Fri 13 November 2026</mark> | DEV2 |
+| 52 | 1.4.2.3 | F04 Room, teacher, and class-time conflict detection | 20 days | <mark>Mon 19 October 2026</mark> | <mark>Fri 13 November 2026</mark> | DEV1 |
+| 53 | **1.4.3** | **Iteration 1 Assurance** | 10 days | <mark>Mon 2 November 2026</mark> | <mark>Fri 13 November 2026</mark> |  |
+| 54 | 1.4.3.1 | Iteration 1 code review and rework | 5 days | <mark>Mon 9 November 2026</mark> | <mark>Fri 13 November 2026</mark> | QA1, DEV1, DEV3 |
+| 55 | 1.4.3.2 | Iteration 1 testing, core platform | 10 days | <mark>Mon 2 November 2026</mark> | <mark>Fri 13 November 2026</mark> | QA1 |
+| 56 | 1.4.3.3 | Iteration 1 demo and acceptance | 1 day | <mark>Fri 13 November 2026</mark> | <mark>Fri 13 November 2026</mark> | PM, QA1 |
+| 57 | 1.4.3.4 | Iteration 1 testing, scheduling and attendance | 10 days | <mark>Mon 2 November 2026</mark> | <mark>Fri 13 November 2026</mark> | QA1 |
+| 58 | **1.4.4** | **Mobile Application Alpha** | 20 days | <mark>Mon 19 October 2026</mark> | <mark>Fri 13 November 2026</mark> |  |
+| 59 | 1.4.4.1 | Application alpha, parent schedule, attendance, and scores | 20 days | <mark>Mon 19 October 2026</mark> | <mark>Fri 13 November 2026</mark> | MOB1 |
+| 60 | **1.5** | **Construction Iteration 2** | 20 days | <mark>Mon 16 November 2026</mark> | <mark>Fri 11 December 2026</mark> |  |
+| 61 | **1.5.1** | **Finance** | 20 days | <mark>Mon 16 November 2026</mark> | <mark>Fri 11 December 2026</mark> |  |
+| 62 | 1.5.1.1 | F06 Invoicing, discounts, and aged debt | 20 days | <mark>Mon 16 November 2026</mark> | <mark>Fri 11 December 2026</mark> | DEV2 |
+| 63 | 1.5.1.2 | F07 Teacher records and teaching-hour payroll | 20 days | <mark>Mon 16 November 2026</mark> | <mark>Fri 11 December 2026</mark> | DEV2 |
+| 64 | 1.5.1.3 | F06 Payments, receipts, and unmatched payments | 20 days | <mark>Mon 16 November 2026</mark> | <mark>Fri 11 December 2026</mark> | DEV2 |
+| 65 | **1.5.2** | **Academic and Communication** | 20 days | <mark>Mon 16 November 2026</mark> | <mark>Fri 11 December 2026</mark> |  |
+| 66 | 1.5.2.1 | F08 Assessment, progress reports, and course evaluation | 20 days | <mark>Mon 16 November 2026</mark> | <mark>Fri 11 December 2026</mark> | DEV3 |
+| 67 | 1.5.2.2 | F09 Notification and internal communication | 20 days | <mark>Mon 16 November 2026</mark> | <mark>Fri 11 December 2026</mark> | DEV3 |
+| 68 | **1.5.3** | **Management and Administration** | 20 days | <mark>Mon 16 November 2026</mark> | <mark>Fri 11 December 2026</mark> |  |
+| 69 | 1.5.3.1 | F10 Financial reports and export | 20 days | <mark>Mon 16 November 2026</mark> | <mark>Fri 11 December 2026</mark> | DEV1 |
+| 70 | 1.5.3.2 | F11 System administration and audit | 20 days | <mark>Mon 16 November 2026</mark> | <mark>Fri 11 December 2026</mark> | DEV1 |
+| 71 | 1.5.3.3 | F10 Enrollment, fill rate, and workload reports | 20 days | <mark>Mon 16 November 2026</mark> | <mark>Fri 11 December 2026</mark> | DEV1 |
+| 72 | **1.5.4** | **Mobile Application** | 20 days | <mark>Mon 16 November 2026</mark> | <mark>Fri 11 December 2026</mark> |  |
+| 73 | 1.5.4.1 | Parent tuition, messages, and requests | 20 days | <mark>Mon 16 November 2026</mark> | <mark>Fri 11 December 2026</mark> | MOB1 |
+| 74 | 1.5.4.2 | Push notification integration | 10 days | <mark>Mon 30 November 2026</mark> | <mark>Fri 11 December 2026</mark> | MOB1, DEV3 |
+| 75 | 1.5.4.3 | Teacher journeys | 20 days | <mark>Mon 16 November 2026</mark> | <mark>Fri 11 December 2026</mark> | MOB1 |
+| 76 | 1.5.4.4 | Offline behaviour and release build | 20 days | <mark>Mon 16 November 2026</mark> | <mark>Fri 11 December 2026</mark> | MOB1 |
+| 77 | **1.5.5** | **Iteration 2 Assurance** | 10 days | <mark>Mon 30 November 2026</mark> | <mark>Fri 11 December 2026</mark> |  |
+| 78 | 1.5.5.1 | Iteration 2 code review and rework | 5 days | <mark>Mon 7 December 2026</mark> | <mark>Fri 11 December 2026</mark> | QA1, DEV1 |
+| 79 | 1.5.5.2 | Iteration 2 testing, finance and administration | 10 days | <mark>Mon 30 November 2026</mark> | <mark>Fri 11 December 2026</mark> | QA1 |
+| 80 | 1.5.5.3 | Iteration 2 acceptance, feature complete | 1 day | <mark>Fri 11 December 2026</mark> | <mark>Fri 11 December 2026</mark> | PM, QA1 |
+| 81 | 1.5.5.4 | Iteration 2 testing, academic, notification, and mobile | 10 days | <mark>Mon 30 November 2026</mark> | <mark>Fri 11 December 2026</mark> | QA1 |
+| 82 | **1.6** | **Quality Assurance and Test** | 5 days | <mark>Mon 14 December 2026</mark> | <mark>Fri 18 December 2026</mark> |  |
+| 83 | **1.6.1** | **System Test** | 5 days | <mark>Mon 14 December 2026</mark> | <mark>Fri 18 December 2026</mark> |  |
+| 84 | 1.6.1.1 | System test execution, web, end-to-end scenarios | 5 days | <mark>Mon 14 December 2026</mark> | <mark>Fri 18 December 2026</mark> | QA1 |
+| 85 | 1.6.1.2 | System test execution, Android and iOS | 5 days | <mark>Mon 14 December 2026</mark> | <mark>Fri 18 December 2026</mark> | QA1 |
+| 86 | 1.6.1.3 | Performance and capacity test | 5 days | <mark>Mon 14 December 2026</mark> | <mark>Fri 18 December 2026</mark> | QA1, DEV3 |
+| 87 | 1.6.1.4 | Security test | 5 days | <mark>Mon 14 December 2026</mark> | <mark>Fri 18 December 2026</mark> | QA1, DEV3 |
+| 88 | 1.6.1.5 | Defect fixing, scheduling, reporting, and administration | 5 days | <mark>Mon 14 December 2026</mark> | <mark>Fri 18 December 2026</mark> | DEV1 |
+| 89 | 1.6.1.6 | System test execution, web, exception and failure behaviour | 5 days | <mark>Mon 14 December 2026</mark> | <mark>Fri 18 December 2026</mark> | QA1 |
+| 90 | 1.6.1.7 | Defect fixing, enrollment, tuition, and payroll | 5 days | <mark>Mon 14 December 2026</mark> | <mark>Fri 18 December 2026</mark> | DEV2 |
+| 91 | 1.6.1.8 | Defect fixing, catalog, assessment, notification, and platform, with regression | 5 days | <mark>Mon 14 December 2026</mark> | <mark>Fri 18 December 2026</mark> | DEV3, QA1 |
+| 92 | **1.6.2** | **Test Documentation** | 5 days | <mark>Mon 14 December 2026</mark> | <mark>Fri 18 December 2026</mark> |  |
+| 93 | 1.6.2.1 | UAT test set, defect log, and test summary report | 5 days | <mark>Mon 14 December 2026</mark> | <mark>Fri 18 December 2026</mark> | QA1 |
+| 94 | 1.6.2.2 | UAT entry criteria review | 1 day | <mark>Fri 18 December 2026</mark> | <mark>Fri 18 December 2026</mark> | PM, QA1 |
+| 95 | **1.7** | **Data Migration** | 72 days | <mark>Mon 28 September 2026</mark> | <mark>Tue 5 January 2027</mark> |  |
+| 96 | **1.7.1** | **Migration** | 72 days | <mark>Mon 28 September 2026</mark> | <mark>Tue 5 January 2027</mark> |  |
+| 97 | 1.7.1.1 | Source data analysis and cleansing rules | 5 days | <mark>Mon 28 September 2026</mark> | <mark>Fri 2 October 2026</mark> | DEV1, PM |
+| 98 | 1.7.1.2 | Migration scripts and trial run | 9 days | <mark>Mon 21 December 2026</mark> | <mark>Thu 31 December 2026</mark> | DEV1, QA1 |
+| 99 | 1.7.1.3 | Production migration and reconciliation report | 2 days | <mark>Mon 4 January 2027</mark> | <mark>Tue 5 January 2027</mark> | DEV1, QA1 |
+| 100 | 1.7.1.4 | Accountant acceptance of the reconciliation | 1 day | <mark>Tue 5 January 2027</mark> | <mark>Tue 5 January 2027</mark> | PM, QA1 |
+| 101 | **1.8** | **Deployment and Handover** | 57 days | <mark>Mon 19 October 2026</mark> | <mark>Tue 5 January 2027</mark> |  |
+| 102 | **1.8.1** | **Production Environment** | 57 days | <mark>Mon 19 October 2026</mark> | <mark>Tue 5 January 2027</mark> |  |
+| 103 | 1.8.1.1 | Cloud server and staging provisioning | 5 days | <mark>Mon 19 October 2026</mark> | <mark>Fri 23 October 2026</mark> | DEV3 |
+| 104 | 1.8.1.2 | Backup configuration and restore drill | 12 days | <mark>Mon 21 December 2026</mark> | <mark>Tue 5 January 2027</mark> | DEV3, QA1 |
+| 105 | 1.8.1.3 | Production deployment and go-live | 12 days | <mark>Mon 21 December 2026</mark> | <mark>Tue 5 January 2027</mark> | DEV3, PM |
+| 106 | **1.8.2** | **Training and Documentation** | 17 days | <mark>Mon 14 December 2026</mark> | <mark>Tue 5 January 2027</mark> |  |
+| 107 | 1.8.2.1 | User, administrator, and deployment documentation | 17 days | <mark>Mon 14 December 2026</mark> | <mark>Tue 5 January 2027</mark> | DEV2, PM |
+| 108 | 1.8.2.2 | Staff training, paper fallback procedure, and rehearsal | 12 days | <mark>Mon 21 December 2026</mark> | <mark>Tue 5 January 2027</mark> | PM, QA1 |
+| 109 | **1.8.3** | **Handover** | 12 days | <mark>Mon 21 December 2026</mark> | <mark>Tue 5 January 2027</mark> |  |
+| 110 | 1.8.3.1 | Source code, database scripts, and technical documentation handover | 7 days | <mark>Mon 28 December 2026</mark> | <mark>Tue 5 January 2027</mark> | DEV2, PM |
+| 111 | 1.8.3.2 | User acceptance testing execution and sign-off | 12 days | <mark>Mon 21 December 2026</mark> | <mark>Tue 5 January 2027</mark> | QA1, PM |
+| 112 | **1.9** | **Mobile Application Release** | 68 days | <mark>Fri 2 October 2026</mark> | <mark>Tue 5 January 2027</mark> |  |
+| 113 | **1.9.1** | **Store Release** | 68 days | <mark>Fri 2 October 2026</mark> | <mark>Tue 5 January 2027</mark> |  |
+| 114 | 1.9.1.1 | Store accounts and signing keys | 21 days | <mark>Fri 2 October 2026</mark> | <mark>Fri 30 October 2026</mark> | DEV3, PM |
+| 115 | 1.9.1.2 | Store listings, submission, and review response | 22 days | <mark>Mon 7 December 2026</mark> | <mark>Tue 5 January 2027</mark> | MOB1, PM |
+| 116 | **1.10** | **Warranty and Closeout** | 23 days | <mark>Wed 6 January 2027</mark> | <mark>Fri 5 February 2027</mark> |  |
+| 117 | **1.10.1** | **Warranty** | 23 days | <mark>Wed 6 January 2027</mark> | <mark>Fri 5 February 2027</mark> |  |
+| 118 | 1.10.1.1 | First warranty month support | 23 days | <mark>Wed 6 January 2027</mark> | <mark>Fri 5 February 2027</mark> | PM, DEV1, DEV2, DEV3, QA1 |
+| 119 | 1.10.1.2 | Warranty handover to the support desk | 5 days | <mark>Mon 1 February 2027</mark> | <mark>Fri 5 February 2027</mark> | PM, DEV3, QA1 |
+| 120 | **1.10.2** | **Closeout** | 10 days | <mark>Mon 25 January 2027</mark> | <mark>Fri 5 February 2027</mark> |  |
+| 121 | 1.10.2.1 | Closeout report, lessons learned, and final acceptance | 10 days | <mark>Mon 25 January 2027</mark> | <mark>Fri 5 February 2027</mark> | PM |
 
 ```mermaid
 gantt

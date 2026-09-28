@@ -170,14 +170,37 @@ def mermaid_milestones(milestones):
     return "\n".join(out)
 
 
-def gantt_table(rows):
-    out = ["| ID | WBS | Task Name | Start | Finish | Resource Name |",
-           "| --- | --- | --- | --- | --- | --- |"]
-    for i, r in enumerate(rows, 1):
-        name = "**%s**" % r["name"] if r["summary"] else r["name"]
-        wbs = "**%s**" % r["code"] if r["summary"] else r["code"]
-        out.append("| %d | %s | %s | <mark>%s</mark> | <mark>%s</mark> | %s |"
-                   % (i, wbs, name, fmt(r["start"]), fmt(r["finish"]), r["resource"]))
+def duration(start, finish, milestone=False):
+    n = 0 if milestone else len(workdays(start, finish))
+    return "%d day%s" % (n, "" if n == 1 else "s")
+
+
+def short_name(name):
+    return name.split(";")[0]
+
+
+def page1_rows(rows, milestones):
+    """The Gantt view: the charter milestones as 0-day rows first, then the WBS."""
+    out = [dict(kind="milestone", code="", name="%s %s" % (mid, short_name(name)), level=1,
+                start=day, finish=day, label="%s %s" % (mid, short_name(name)))
+           for mid, name, day in milestones]
+    for r in rows:
+        out.append(dict(kind="summary" if r["summary"] else "task", code=r["code"], name=r["name"],
+                        level=r["level"], start=r["start"], finish=r["finish"],
+                        label=r["name"] if r["summary"] else r["resource"]))
+    return out
+
+
+def gantt_table(rows, milestones):
+    out = ["| ID | WBS | Task Name | Duration | Start | Finish | Resource Name |",
+           "| --- | --- | --- | --- | --- | --- | --- |"]
+    resource = {r["code"]: r["resource"] for r in rows}
+    for i, r in enumerate(page1_rows(rows, milestones), 1):
+        bold = "**%s**" if r["kind"] == "summary" else "%s"
+        out.append("| %d | %s | %s | %s | <mark>%s</mark> | <mark>%s</mark> | %s |"
+                   % (i, bold % r["code"] if r["code"] else "", bold % r["name"],
+                      duration(r["start"], r["finish"], r["kind"] == "milestone"),
+                      fmt(r["start"]), fmt(r["finish"]), resource.get(r["code"], "")))
     return "\n".join(out)
 
 
@@ -188,88 +211,145 @@ def milestone_table(milestones):
     return "\n".join(out)
 
 
-def draw_gantt(rows, milestones, path):
+def draw_sheet(items, columns, title, path, gates=()):
+    """Draw a scheduling-tool style view: a task grid on the left, the timescale and bars on the right.
+
+    items: dicts with kind (summary, task, milestone), level, start, finish, label.
+    columns: (header, width in inches, align, function of (index, item) returning the cell text).
+    """
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.dates as mdates
     import matplotlib.pyplot as plt
+    from matplotlib.patches import Polygon, Rectangle
 
-    ink, muted, grid = "#0b0b0b", "#52514e", "#e4e3de"
-    bar, summary = "#2a78d6", "#3a3935"
+    ink, muted, rule, head = "#1f1f1f", "#5a5a5a", "#d4d4d4", "#ececec"
+    bar, summary, diamond, gate = "#8db4e2", "#3c3c3c", "#1f1f1f", "#b0b0b0"
+    row_h, head_rows, fs = 0.24, 2, 7.5
     one = datetime.timedelta(days=1)
-    start = min(r["start"] for r in rows) - datetime.timedelta(days=3)
-    finish = max(r["finish"] for r in rows) + datetime.timedelta(days=14)
 
-    fig, ax = plt.subplots(figsize=(16, 0.19 * len(rows) + 1.6), dpi=150)
-    for i, r in enumerate(rows):
-        x0, width = mdates.date2num(r["start"]), (r["finish"] - r["start"] + one).days
-        if r["summary"]:
-            ax.barh(i, width, left=x0, height=0.28, color=summary)
-            for x in (x0, x0 + width):
-                ax.plot([x], [i + 0.08], marker="v", color=summary, markersize=4)
+    first = min(i["start"] for i in items)
+    first -= datetime.timedelta(days=first.weekday() + 7)
+    last = max(i["finish"] for i in items) + datetime.timedelta(days=35)
+    chart_w = max(10.0, (last - first).days * 0.085)
+    table_w = sum(c[1] for c in columns)
+    n = len(items)
+    height = (n + head_rows) * row_h + 0.6
+    fig = plt.figure(figsize=(table_w + chart_w + 0.4, height), dpi=130)
+    fig.patch.set_facecolor("white")
+    W, H = table_w + chart_w + 0.4, height
+
+    def axes(x0, w):
+        ax = fig.add_axes([x0 / W, 0.2 / H, w / W, (height - 0.6) / H])
+        ax.set_ylim(n - 0.5, -head_rows - 0.5)
+        for side in ax.spines.values():
+            side.set_visible(False)
+        ax.set_xticks([])
+        ax.set_yticks([])
+        return ax
+
+    fig.text(0.5, 1 - 0.28 / H, title, ha="center", va="center", fontsize=13, color=ink)
+
+    grid = axes(0.2, table_w)
+    grid.set_xlim(0, table_w)
+    grid.add_patch(Rectangle((0, -head_rows - 0.5), table_w, head_rows, color=head, zorder=0))
+    x = 0.0
+    for header, width, align, cell in columns:
+        grid.text(x + 0.06, -head_rows / 2 - 0.5, header, va="center", fontsize=fs, color=ink,
+                  weight="bold")
+        for i, item in enumerate(items):
+            text = cell(i, item)
+            weight = "bold" if item["kind"] == "summary" else "normal"
+            if header == "Task Name":
+                text = "   " * (item["level"] - 1) + text
+            tx = x + width - 0.06 if align == "right" else x + 0.06
+            grid.text(tx, i, text, va="center", ha=align, fontsize=fs, color=ink, weight=weight)
+        grid.plot([x, x], [-head_rows - 0.5, n - 0.5], color=rule, linewidth=0.6)
+        x += width
+    grid.plot([x, x], [-head_rows - 0.5, n - 0.5], color=muted, linewidth=0.9)
+    for i in range(-head_rows, n + 1):
+        grid.plot([0, table_w], [i - 0.5, i - 0.5], color=rule, linewidth=0.5)
+
+    chart = axes(0.2 + table_w, chart_w)
+    x0, x1 = mdates.date2num(first), mdates.date2num(last)
+    chart.set_xlim(x0, x1)
+    chart.add_patch(Rectangle((x0, -head_rows - 0.5), x1 - x0, head_rows, color=head, zorder=0))
+    chart.plot([x0, x1], [-1.5, -1.5], color=rule, linewidth=0.6)
+    chart.plot([x0, x1], [-0.5, -0.5], color=muted, linewidth=0.9)
+    week = first
+    while week <= last:
+        wx = mdates.date2num(week)
+        chart.plot([wx, wx], [-1.5, n - 0.5], color=rule, linewidth=0.5, linestyle=(0, (1, 2)),
+                   zorder=0)
+        chart.text(wx + 0.4, -1.0, "%d/%d" % (week.day, week.month), va="center", fontsize=6.5,
+                   color=muted)
+        week += datetime.timedelta(days=7)
+    month = first.replace(day=1)
+    while month <= last:
+        mx = max(mdates.date2num(month), x0)
+        chart.plot([mx, mx], [-2.5, -1.5], color=rule, linewidth=0.6)
+        if x1 - mx > 14:
+            chart.text(mx + 0.5, -2.0, "%s %d" % (MONTHS[month.month - 1], month.year),
+                       va="center", fontsize=7, color=ink)
+        month = (month + datetime.timedelta(days=32)).replace(day=1)
+    for day in gates:
+        gx = mdates.date2num(day) + 0.5
+        chart.plot([gx, gx], [-0.5, n - 0.5], color=gate, linewidth=0.8, zorder=0)
+
+    for i, item in enumerate(items):
+        s = mdates.date2num(item["start"])
+        e = mdates.date2num(item["finish"] + one)
+        if item["kind"] == "milestone":
+            m = s + 0.5
+            chart.add_patch(Polygon([(m - 1.3, i), (m, i - 0.3), (m + 1.3, i), (m, i + 0.3)],
+                                    color=diamond, zorder=3))
+            # A label that would run past the timescale goes on the left of its diamond.
+            fits = m + 2.0 + len(item["label"]) * 0.075 / 0.085 < x1
+            chart.text(m + 2.0 if fits else m - 2.0, i, item["label"], va="center",
+                       ha="left" if fits else "right", fontsize=fs, color=ink, weight="bold")
+        elif item["kind"] == "summary":
+            chart.add_patch(Rectangle((s, i - 0.22), e - s, 0.14, color=summary, zorder=3))
+            for ex in (s, e):
+                chart.plot([ex, ex], [i - 0.22, i + 0.12], color=summary, linewidth=1.2, zorder=3)
+            chart.text(e + 1.2, i, item["label"], va="center", fontsize=fs, color=ink,
+                       weight="bold")
         else:
-            ax.barh(i, width, left=x0, height=0.56, color=bar, edgecolor="white", linewidth=0.5)
-            ax.text(x0 + width + 0.6, i, r["resource"], va="center", fontsize=6, color=muted)
-    for mid, _, day in milestones:
-        x = mdates.date2num(day) + 0.5
-        ax.axvline(x, color=muted, linewidth=0.8, linestyle=(0, (3, 3)), zorder=0)
-        ax.text(x, -1.3, mid, ha="center", va="bottom", fontsize=7, color=ink, weight="bold")
+            chart.add_patch(Rectangle((s, i - 0.25), e - s, 0.5, color=bar, zorder=3))
+            chart.text(e + 1.0, i, item["label"], va="center", fontsize=fs - 0.5, color=ink)
 
-    labels = ["%s%s  %s" % ("   " * (r["level"] - 1), r["code"], r["name"]) for r in rows]
-    ax.set_yticks(range(len(rows)))
-    ax.set_yticklabels(labels, fontsize=6.5, color=ink)
-    for tick, r in zip(ax.get_yticklabels(), rows):
-        if r["summary"]:
-            tick.set_fontweight("bold")
-    ax.set_ylim(len(rows) - 0.4, -1.8)
-    ax.set_xlim(mdates.date2num(start), mdates.date2num(finish))
-    ax.xaxis.set_major_locator(mdates.WeekdayLocator(byweekday=mdates.MO))
-    ax.xaxis.set_major_formatter(mdates.DateFormatter("%d %b"))
-    ax.xaxis.tick_top()
-    ax.tick_params(axis="x", labelsize=6.5, colors=muted, rotation=90)
-    ax.tick_params(axis="y", length=0)
-    ax.grid(axis="x", color=grid, linewidth=0.5)
-    ax.set_axisbelow(True)
-    for side in ax.spines.values():
-        side.set_visible(False)
-    ax.set_title("Gantt Chart", fontsize=12, color=ink, pad=34)
-    fig.tight_layout()
     path.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(path, facecolor="white")
     plt.close(fig)
 
 
-def draw_milestones(milestones, path):
-    import matplotlib
-    matplotlib.use("Agg")
-    import matplotlib.dates as mdates
-    import matplotlib.pyplot as plt
+def short_date(day):
+    return "%s %d %s %d" % (day.strftime("%a"), day.day, MONTHS[day.month - 1][:3], day.year)
 
-    ink, muted, grid, mark = "#0b0b0b", "#52514e", "#e4e3de", "#3a3935"
-    fig, ax = plt.subplots(figsize=(12, 0.42 * len(milestones) + 1.4), dpi=150)
-    for i, (mid, name, day) in enumerate(milestones):
-        x = mdates.date2num(day)
-        ax.plot([x], [i], marker="D", markersize=8, color=mark)
-        ax.text(x + 2, i, "%d/%d" % (day.day, day.month), va="center", fontsize=8, color=muted)
-    ax.set_yticks(range(len(milestones)))
-    ax.set_yticklabels(["%s  %s" % (mid, name.split(";")[0])
-                        for mid, name, _ in milestones], fontsize=8, color=ink)
-    ax.set_ylim(len(milestones) - 0.5, -0.7)
-    days = [d for _, _, d in milestones]
-    ax.set_xlim(mdates.date2num(min(days)) - 7, mdates.date2num(max(days)) + 14)
-    ax.xaxis.set_major_locator(mdates.MonthLocator())
-    ax.xaxis.set_major_formatter(mdates.DateFormatter("%b %Y"))
-    ax.xaxis.tick_top()
-    ax.tick_params(axis="x", labelsize=8, colors=muted)
-    ax.tick_params(axis="y", length=0)
-    ax.grid(axis="x", color=grid, linewidth=0.6)
-    ax.set_axisbelow(True)
-    for side in ax.spines.values():
-        side.set_visible(False)
-    ax.set_title("Milestone Chart", fontsize=12, color=ink, pad=24)
-    fig.tight_layout()
-    fig.savefig(path, facecolor="white")
-    plt.close(fig)
+
+def draw_gantt(rows, milestones, path):
+    items = page1_rows(rows, milestones)
+    columns = [
+        ("ID", 0.4, "right", lambda i, it: str(i + 1)),
+        ("WBS", 0.7, "left", lambda i, it: it["code"]),
+        ("Task Name", 4.9, "left", lambda i, it: it["name"]),
+        ("Duration", 0.8, "left",
+         lambda i, it: duration(it["start"], it["finish"], it["kind"] == "milestone")),
+        ("Start", 1.3, "left", lambda i, it: short_date(it["start"])),
+        ("Finish", 1.3, "left", lambda i, it: short_date(it["finish"])),
+    ]
+    draw_sheet(items, columns, "Gantt Chart", path, gates=[d for _, _, d in milestones])
+
+
+def draw_milestones(milestones, path):
+    items = [dict(kind="milestone", level=1, start=day, finish=day,
+                  name="%s %s" % (mid, short_name(name)), label="%d/%d" % (day.day, day.month))
+             for mid, name, day in milestones]
+    columns = [
+        ("ID", 0.4, "right", lambda i, it: str(i + 1)),
+        ("Task Name", 4.6, "left", lambda i, it: it["name"]),
+        ("Finish", 1.3, "left", lambda i, it: short_date(it["finish"])),
+    ]
+    draw_sheet(items, columns, "Milestone Chart", path)
 
 
 def render(rows, milestones, prepared):
@@ -294,7 +374,7 @@ def render(rows, milestones, prepared):
 built from the scope baseline: every row of page 1 is a line of the WBS in
 `scope-package.en.md` Part 2, and every work package start and finish is the Due Dates field of its
 WBS dictionary sheet in Part 3. Summary rows for the project, the major deliverables and the control
-accounts run from the earliest start to the latest finish below them. Page 2 carries the charter's
+accounts run from the earliest start to the latest finish below them. Page 1 opens with the milestones as 0-day rows, and Duration counts working days, Monday to Friday, with no public holiday removed. Page 2 carries the charter's
 summary milestones M0 to M7; its Indicator column is the printed chart's icon column, and every milestone reads Fixed date because the charter milestone dates are fixed and not renegotiated in planning (dictionary sheet 1.1.1.2). The Resource Name column is what the printed chart writes next to each
 bar: the work package's Responsible Person first, then every other resource with hours on that
 sheet. <mark>Highlighted</mark> dates are first-pass estimates that are re-baselined at M1, as the
@@ -308,7 +388,7 @@ project runs from {fmt(first)} to {fmt(last)}. {levelling}*
 
 ![Gantt chart of the 78 work packages, with milestone gates M0 to M7](../assets/{GANTT_PNG.name})
 
-{gantt_table(rows)}
+{gantt_table(rows, milestones)}
 
 {mermaid_gantt(rows, milestones)}
 
