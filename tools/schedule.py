@@ -37,7 +37,7 @@ HISTOGRAM_PNG = ASSETS / "2-18-resource-histogram.png"
 SHORT_MONTH = {m[:3]: m for m in MONTHS}
 CHARTER_DATE = re.compile(r"\b(Mon|Tue|Wed|Thu|Fri|Sat|Sun) (\d{1,2}) ([A-Z][a-z]{2}) (\d{4})\b")
 PEOPLE = ("PM", "DEV1", "DEV2", "DEV3", "QA1", "MOB1")
-ROWS_PER_PAGE = 95
+ROWS_PER_PAGE = 60
 INCHES_PER_DAY = 0.06   # width of one calendar day on the timescale
 
 

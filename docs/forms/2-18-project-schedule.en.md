@@ -13,7 +13,7 @@ helps MOB1, and QA1 or DEV3 help the project manager with requirements work, as 
 response to risk R9 already provides; 97 activities are divided, and their rows name both
 people with their hours. Governance and acceptance packages are never divided. Work may start up to
 5 working days before the gate that releases it, which is fast tracking (6.5.2.6). Page 1 is the Gantt
-chart in 4 parts: the milestones at their levelled forecast as 0-day rows, then the WBS, each work
+chart in 7 parts: the milestones at their levelled forecast as 0-day rows, then the WBS, each work
 package with its activities below it; Duration counts working days. Page 2 is the milestone chart,
 each milestone at its levelled forecast beside its charter date. <mark>Highlighted</mark> dates are
 the levelled forecast. The forecast moves M6 and M7 past the dates the charter imposes, so
@@ -28,13 +28,19 @@ from Mon 14 September 2026 to Mon 22 March 2027.*
 
 #### PROJECT SCHEDULE, page 1 of 2
 
-![Gantt chart, part 1 of 4](../assets/2-18-gantt-chart-1.png)
+![Gantt chart, part 1 of 7](../assets/2-18-gantt-chart-1.png)
 
-![Gantt chart, part 2 of 4](../assets/2-18-gantt-chart-2.png)
+![Gantt chart, part 2 of 7](../assets/2-18-gantt-chart-2.png)
 
-![Gantt chart, part 3 of 4](../assets/2-18-gantt-chart-3.png)
+![Gantt chart, part 3 of 7](../assets/2-18-gantt-chart-3.png)
 
-![Gantt chart, part 4 of 4](../assets/2-18-gantt-chart-4.png)
+![Gantt chart, part 4 of 7](../assets/2-18-gantt-chart-4.png)
+
+![Gantt chart, part 5 of 7](../assets/2-18-gantt-chart-5.png)
+
+![Gantt chart, part 6 of 7](../assets/2-18-gantt-chart-6.png)
+
+![Gantt chart, part 7 of 7](../assets/2-18-gantt-chart-7.png)
 
 | ID | WBS | Task Name | Duration | Start | Finish | Resource Name |
 | --- | --- | --- | --- | --- | --- | --- |

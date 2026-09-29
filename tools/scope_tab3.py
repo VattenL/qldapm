@@ -209,6 +209,7 @@ def build(md: str) -> str:
         ("This document therefore", "This section therefore"),
         ("`charter-package.en.md` sections", "sections"),
         ("charter-package.en.md", "sections 1 and 2 of this report"),
+        ("`forms/2-18-project-schedule.en.md`", "section 4"),
         ("not in this document", "not in this report"),
         ("which is what this document covers", "which is what this section covers"),
         ("which are what this document covers", "which are what this section covers"),

@@ -181,33 +181,32 @@ pair, which is how the printed form carries a one-to-many relationship.*
 
 | ID | Business Requirement | Priority | Source | ID | Technical Requirement | Priority | Source |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| BR01 | Data held once and entered once | Must have | Center Director | FR02 | Student profile and enrollment on one shared record | Must have | Front-desk staff |
-| BR01 | Data held once and entered once | Must have | Center Director | FR03 | Versioned course catalog as the single definition | Must have | Academic Manager |
-| BR01 | Data held once and entered once | Must have | Center Director | NFR11 | Complete open-format export owned by the center | Must have | Center Director |
-| BR02 | No double-booked room, teacher, or student | Must have | Academic Manager | FR04 | Conflict detection at creation and at move time | Must have | Academic Manager |
-| BR02 | No double-booked room, teacher, or student | Must have | Academic Manager | NFR02 | Conflict check inside the 3 second screen budget | Must have | Center Director |
-| BR03 | Overdue tuition visible and falling to <mark>3%</mark> | Must have | Accountant | FR06 | Invoicing, payment recording, and the aged debt list | Must have | Accountant |
-| BR03 | Overdue tuition visible and falling to <mark>3%</mark> | Must have | Accountant | FR09 | Tuition due and overdue notifications with a log | Must have | Front-desk staff |
-| BR03 | Overdue tuition visible and falling to <mark>3%</mark> | Must have | Accountant | NFR05 | Audit log over every financial write | Must have | Accountant |
-| BR04 | Cross-branch visibility without a spreadsheet | Must have | Center Director | FR10 | Reports filterable by period, branch, and course | Must have | Center Director |
-| BR04 | Cross-branch visibility without a spreadsheet | Must have | Center Director | NFR02 | One term's report inside 10 seconds | Must have | Center Director |
-| BR04 | Cross-branch visibility without a spreadsheet | Must have | Center Director | NFR03 | <mark>3 years</mark> of history held without redesign | Must have | System Administrator |
-| BR05 | Notification cost held down | Must have | Center Director | FR12 | Application as the push channel over the same API | Must have | Student / Parent |
-| BR05 | Notification cost held down | Must have | Center Director | NFR12 | Push delivery logged with SMS fallback inside 4 hours | Must have | Center Director |
-| BR06 | Payroll derived from delivered sessions | Must have | Accountant | FR05 | Attendance as the single record of what was taught | Must have | Teacher |
-| BR06 | Payroll derived from delivered sessions | Must have | Accountant | FR07 | Monthly teaching-hour sheet and payroll export | Must have | Accountant |
-| BR06 | Payroll derived from delivered sessions | Must have | Accountant | NFR05 | Audit trail over the sheet and its approval | Must have | Accountant |
-| BR07 | The center operates on the system, data in its own hands | Must have | Center Director | FR01 | Seven roles, each seeing only its own work | Must have | System Administrator |
-| BR07 | The center operates on the system, data in its own hands | Must have | Center Director | FR08 | Assessment and progress reporting inside the system | Must have | Teacher |
-| BR07 | The center operates on the system, data in its own hands | Must have | Center Director | FR11 | Reference data and configuration in the center's hands | Must have | System Administrator |
-| BR07 | The center operates on the system, data in its own hands | Must have | Center Director | NFR01 | All twelve functions accepted in UAT | Must have | Center Director |
-| BR07 | The center operates on the system, data in its own hands | Must have | Center Director | NFR04 | Personal data handled lawfully from day one | Must have | System Administrator |
-| BR07 | The center operates on the system, data in its own hands | Must have | Center Director | NFR06 | Nightly backup and a proven restore | Must have | System Administrator |
-| BR07 | The center operates on the system, data in its own hands | Must have | Center Director | NFR07 | Paper fallback rehearsed before go-live | Must have | Academic Manager |
-| BR07 | The center operates on the system, data in its own hands | Must have | Center Director | NFR08 | Daily tasks after half a day of training | Must have | Front-desk staff |
-| BR07 | The center operates on the system, data in its own hands | Must have | Center Director | NFR09 | Usable on the browsers and devices the staff own | Must have | System Administrator |
-| BR07 | The center operates on the system, data in its own hands | Must have | Center Director | NFR10 | Deployable and maintainable without the supplier | Must have | System Administrator |
-
+| BR01 | Data held once and entered once | Must have | Center Director | FR02 | Student profile, enrollment, transfer, and withdrawal (F02) | Must have | Front-desk staff |
+| BR01 | Data held once and entered once | Must have | Center Director | FR03 | Versioned course and curriculum catalog (F03) | Must have | Academic Manager |
+| BR01 | Data held once and entered once | Must have | Center Director | NFR11 | Data ownership and open-format export (A11) | Must have | Center Director |
+| BR02 | No double-booked room, teacher, or student | Must have | Academic Manager | FR04 | Class opening, scheduling, and conflict detection (F04) | Must have | Academic Manager |
+| BR02 | No double-booked room, teacher, or student | Must have | Academic Manager | NFR02 | Performance thresholds (A02) | Must have | Center Director |
+| BR03 | Overdue tuition visible and falling to <mark>3%</mark> | Must have | Accountant, Center Director | FR06 | Tuition, invoicing, payments, and debt tracking (F06) | Must have | Front-desk staff, Accountant |
+| BR03 | Overdue tuition visible and falling to <mark>3%</mark> | Must have | Accountant, Center Director | FR09 | Notification and internal communication (F09) | Must have | Front-desk staff |
+| BR03 | Overdue tuition visible and falling to <mark>3%</mark> | Must have | Accountant, Center Director | NFR05 | Auditability of financial and student writes (A05) | Must have | Accountant |
+| BR04 | Cross-branch visibility without a spreadsheet | Must have | Center Director | FR10 | Reports and management dashboard (F10) | Must have | Center Director |
+| BR04 | Cross-branch visibility without a spreadsheet | Must have | Center Director | NFR02 | Performance thresholds (A02) | Must have | Center Director |
+| BR04 | Cross-branch visibility without a spreadsheet | Must have | Center Director | NFR03 | Capacity without redesign (A03) | Must have | System Administrator |
+| BR05 | Notification cost held down | Must have | Center Director | FR12 | Android and iOS application for parents and teachers (F12) | Must have | Student / Parent, Teacher |
+| BR05 | Notification cost held down | Must have | Center Director | NFR12 | Mobile application published in both stores (A12) | Must have | Center Director |
+| BR06 | Payroll derived from delivered sessions | Must have | Accountant | FR05 | Attendance and make-up sessions (F05) | Must have | Teacher |
+| BR06 | Payroll derived from delivered sessions | Must have | Accountant | FR07 | Teacher records and teaching-hour payroll (F07) | Must have | Accountant |
+| BR06 | Payroll derived from delivered sessions | Must have | Accountant | NFR05 | Auditability of financial and student writes (A05) | Must have | Accountant |
+| BR07 | The center runs its daily operation on the system from go-live, with the data in its own hands | Must have | Center Director | FR01 | Authentication and role-based access control (F01) | Must have | System Administrator |
+| BR07 | The center runs its daily operation on the system from go-live, with the data in its own hands | Must have | Center Director | FR08 | Assessment, progress reports, and course evaluation (F08) | Must have | Teacher |
+| BR07 | The center runs its daily operation on the system from go-live, with the data in its own hands | Must have | Center Director | FR11 | System administration and audit (F11) | Must have | System Administrator |
+| BR07 | The center runs its daily operation on the system from go-live, with the data in its own hands | Must have | Center Director | NFR01 | Functional completeness in UAT (A01) | Must have | Center Director |
+| BR07 | The center runs its daily operation on the system from go-live, with the data in its own hands | Must have | Center Director | NFR04 | Security and personal-data protection (A04) | Must have | System Administrator |
+| BR07 | The center runs its daily operation on the system from go-live, with the data in its own hands | Must have | Center Director | NFR06 | Availability, backup, and restore (A06) | Must have | System Administrator |
+| BR07 | The center runs its daily operation on the system from go-live, with the data in its own hands | Must have | Center Director | NFR07 | Degraded operation and paper fallback (A07) | Must have | Academic Manager |
+| BR07 | The center runs its daily operation on the system from go-live, with the data in its own hands | Must have | Center Director | NFR08 | Usability in Vietnamese after half a day of training (A08) | Must have | Front-desk staff, Teacher |
+| BR07 | The center runs its daily operation on the system from go-live, with the data in its own hands | Must have | Center Director | NFR09 | Browser and device compatibility (A09) | Must have | System Administrator |
+| BR07 | The center runs its daily operation on the system from go-live, with the data in its own hands | Must have | Center Director | NFR10 | Maintainability and handover (A10) | Must have | System Administrator |
 ---
 
 ## Part 2: Work Breakdown Structure
@@ -379,7 +378,8 @@ three packages are exceptions to the sizing rule stated in the decomposition met
 1.10.1.1 are level of effort and exceed 80 hours, and 1.9.1.1 crosses the M2 gate because of Apple's
 four-week enrolment lead time; 1.1.1.4, at exactly 80 hours, is inside the rule. Levelling that effort across the calendar is
 Develop Schedule, PMBOK 6 section 6.5, which produces the schedule baseline rather than the scope
-baseline and is therefore not in this document; it is the work of package 1.1.1.2.
+baseline; it is the work of package 1.1.1.2, and its result is the project schedule, form 2.18, in
+`forms/2-18-project-schedule.en.md`.
 
 Phase 1.2 carries a Technical Preparation control account that the charter's own risk responses
 require before M2: the notification gateway proof for risk R5, the cross-platform framework proof
@@ -421,6 +421,9 @@ the elements the book lists for the dictionary on page 52, and it carries the on
 Seventy-eight sheets follow, one for each work package of Part 2, grouped by phase. The Description
 of Work field cites the charter rather than restating it, which page 53 of the book expressly
 permits: the dictionary may reference other documents and sections rather than repeat them.
+Responsible Person is not a box on the printed form. It is one of the elements the book lists for
+the dictionary on page 52, and it carries the one-owner rule, so each sheet adds it to the printed
+boxes.
 
 **What the tag on every sheet means.** Each sheet carries one highlighted sentence in its
 Assumptions and Constraints field. It means this, in full, once rather than on every sheet: the
@@ -431,8 +434,10 @@ up to are the charter figures and are not themselves estimates.
 **What the hours mean.** The Labor Hours column is an **effort** estimate, not a calendar loading.
 The milestone dates in the Due Dates field are the charter's gates, and several packages run in
 parallel inside them. Levelling the effort across the calendar is Develop Schedule, PMBOK 6 section
-6.5, which is not part of the scope baseline and is not in this document; it happens in work package
-1.1.1.2. The totals are fixed by the charter and the sheets roll up to them exactly:
+6.5, which is not part of the scope baseline; it happens in work package 1.1.1.2, and the levelled
+dates are in the project schedule, form 2.18, in `forms/2-18-project-schedule.en.md`. The dates on
+these sheets stay the charter's until the sponsor decides the change request that schedule raises.
+The totals are fixed by the charter and the sheets roll up to them exactly:
 
 | | Hours | Rate (VND/h) | Amount (VND) |
 | --- | ---: | ---: | ---: |
