@@ -38,6 +38,7 @@ SHORT_MONTH = {m[:3]: m for m in MONTHS}
 CHARTER_DATE = re.compile(r"\b(Mon|Tue|Wed|Thu|Fri|Sat|Sun) (\d{1,2}) ([A-Z][a-z]{2}) (\d{4})\b")
 PEOPLE = ("PM", "DEV1", "DEV2", "DEV3", "QA1", "MOB1")
 ROWS_PER_PAGE = 95
+INCHES_PER_DAY = 0.06   # width of one calendar day on the timescale
 
 
 def parse_outline(text):
@@ -168,7 +169,7 @@ def draw_sheet(items, columns, title, path, x_range, gates=(), baseline=None):
     one = datetime.timedelta(days=1)
 
     first, last = x_range
-    chart_w = max(10.0, (last - first).days * 0.085)
+    chart_w = max(8.0, (last - first).days * INCHES_PER_DAY)
     table_w = sum(c[1] for c in columns)
     n = len(items)
     height = (n + head_rows) * row_h + 0.6
@@ -233,6 +234,22 @@ def draw_sheet(items, columns, title, path, x_range, gates=(), baseline=None):
         gx = mdates.date2num(day) + 0.5
         chart.plot([gx, gx], [-0.5, n - 0.5], color=gate, linewidth=0.8, zorder=0)
 
+    def side_label(right, left, i, text, size, weight):
+        """Label right of a mark; left of it when that would run past the timescale; inside
+        the bar's end, on a white backing, when neither side has room."""
+        per_char = 0.0085 if weight == "bold" else 0.0075
+        width_days = len(text) * size * per_char / INCHES_PER_DAY
+        if right + width_days < x1:
+            chart.text(right, i, text, va="center", ha="left", fontsize=size, color=ink,
+                       weight=weight)
+        elif left - width_days > x0:
+            chart.text(left, i, text, va="center", ha="right", fontsize=size, color=ink,
+                       weight=weight)
+        else:
+            chart.text(right - 3.0, i, text, va="center",
+                       ha="right", fontsize=size, color=ink, weight=weight, zorder=4,
+                       bbox=dict(facecolor="white", edgecolor="none", pad=0.6))
+
     def diamond_at(m, i, filled):
         chart.add_patch(Polygon([(m - 1.3, i), (m, i - 0.3), (m + 1.3, i), (m, i + 0.3)],
                                 facecolor=diamond if filled else "white", edgecolor=diamond,
@@ -249,28 +266,30 @@ def draw_sheet(items, columns, title, path, x_range, gates=(), baseline=None):
                     chart.plot([b, m], [i, i], color=gate, linewidth=0.8, zorder=2)
                 diamond_at(b, i, False)
             diamond_at(m, i, True)
-            fits = m + 2.0 + len(item["label"]) * 0.075 / 0.085 < x1
-            chart.text(m + 2.0 if fits else m - 2.0, i, item["label"], va="center",
-                       ha="left" if fits else "right", fontsize=fs, color=ink, weight="bold")
+            side_label(m + 2.0, m - 2.0, i, item["label"], fs, "bold")
         elif item["kind"] == "summary":
             chart.add_patch(Rectangle((s, i - 0.22), e - s, 0.14, color=summary, zorder=3))
             for ex in (s, e):
                 chart.plot([ex, ex], [i - 0.22, i + 0.12], color=summary, linewidth=1.2, zorder=3)
-            chart.text(e + 1.2, i, item["label"], va="center", fontsize=fs, color=ink,
-                       weight="bold")
+            side_label(e + 1.2, s - 1.2, i, item["label"], fs, "bold")
         else:
             chart.add_patch(Rectangle((s, i - 0.25), e - s, 0.5, color=bar, zorder=3))
-            chart.text(e + 1.0, i, item["label"], va="center", fontsize=fs - 0.5, color=ink)
+            side_label(e + 1.0, s - 1.0, i, item["label"], fs - 0.5, "normal")
 
     path.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(path, facecolor="white")
     plt.close(fig)
 
 
+def month_end(day):
+    """The timescale stops at the end of the month the last bar ends in."""
+    return (day.replace(day=28) + datetime.timedelta(days=4)).replace(day=1) - datetime.timedelta(days=1)
+
+
 def x_range_of(items):
     first = min(i["start"] for i in items)
     first -= datetime.timedelta(days=first.weekday() + 7)
-    return first, max(i["finish"] for i in items) + datetime.timedelta(days=35)
+    return first, month_end(max(i["finish"] for i in items))
 
 
 def draw_gantt(pages, forecast, x_range):
@@ -308,7 +327,7 @@ def draw_milestones(milestones, forecast, path):
     ]
     first = min(list(baseline.values()) + [i["start"] for i in items])
     x_range = (first - datetime.timedelta(days=first.weekday() + 7),
-               max(i["finish"] for i in items) + datetime.timedelta(days=28))
+               month_end(max(i["finish"] for i in items)))
     draw_sheet(items, columns, "Milestone Chart: hollow diamond at the charter date, filled at "
                "the levelled forecast", path, x_range, baseline=baseline)
 
