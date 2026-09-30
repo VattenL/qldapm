@@ -89,11 +89,11 @@ inside a single construction package.
 
 **Work package sizing.** Every work package holds between 8 and 80 hours of effort and is controlled
 inside a single milestone gate, which is the reporting period used for work-package control; the
-weekly status report of 1.1.1.3 is a progress report, not the control period. Three packages sit
-outside that rule, and they are named here rather than left to be found. 1.1.1.3 weekly status
+weekly status report of 1.1.1.2 is a progress report, not the control period. Three packages sit
+outside that rule, and they are named here rather than left to be found. 1.1.1.2 weekly status
 reporting at 120 hours and 1.10.1.1 first warranty month support at 400 hours are level-of-effort
 packages that run for the whole of their period by nature and cannot be cut into 80-hour pieces
-without inventing work that is not there. 1.1.1.4 is exactly 80 and therefore inside the rule.
+without inventing work that is not there. 1.1.1.3 is exactly 80 and therefore inside the rule.
 1.9.1.1 store accounts and signing keys is inside the hour rule at 22 hours but crosses the M2 gate,
 because Apple's enrolment of a legal entity takes up to four weeks and that wait is outside the
 project's control.
@@ -138,37 +138,37 @@ Part 2 and the charter deliverable in brackets.
 
 | ID | Requirement | Source | Priority | Category | Business Objective | Deliverable | Verification | Validation |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| BR01 | Data held once and entered once | Center Director | Must have | Business | Cut duplicate data entry from <mark>60 to 15 staff-hours a month</mark>, 32,400,000 VND a year | 1.4.1.4, 1.7.1.3 (D3, D6) | Staff time log over one month after go-live shows 15 hours or fewer of re-entry | Director confirms against the closeout report, measured in the first warranty month |
-| BR02 | No double-booked room, teacher, or student | Academic Manager | Must have | Business | Remove double-booking at source; not quantified in the business case | 1.4.2.3 (D3) | Zero conflicting bookings accepted in the UAT conflict test set | Academic Manager runs the conflict scenarios in UAT |
-| BR03 | Overdue tuition visible and falling to <mark>3%</mark> | Accountant, Center Director | Must have | Business | Release <mark>360,000,000 VND</mark> once, save <mark>36,000,000 VND</mark> a year of carrying cost and <mark>36,000,000 VND</mark> of write-off | 1.5.1.1, 1.5.1.3 (D4) | Aged debt report shows the overdue percentage monthly; stated in the closeout report | Accountant reconciles the report against the bank and the invoice ledger |
-| BR04 | Cross-branch visibility without a spreadsheet | Center Director | Must have | Business | One current cross-branch view, needed before the <mark>fourth branch in 2027</mark> | 1.5.3.1, 1.5.3.3 (D4) | Every F10 report filterable by period, branch, and course, produced within 10 seconds | Director uses the dashboard unaided in UAT |
-| BR05 | Notification cost held down | Center Director | Must have | Business | Hold notification cost at <mark>13,800,000 VND</mark> a year through push rather than <mark>46,100,000 VND</mark> on SMS alone | 1.5.4.2, 1.5.2.2 (D4, D11) | F09 delivery log shows the channel mix; push share at least <mark>70% of guardians with a smartphone</mark> | Accountant checks the gateway invoice for the first warranty month |
-| BR06 | Payroll derived from delivered sessions | Accountant | Must have | Business | Remove the payroll rework and the disputes it causes; not separately quantified | 1.5.1.2 (D4) | Monthly sheet reconciles to the attendance records with zero manual adjustment rows | Accountant approves one full month close during the warranty month |
-| BR07 | The center runs its daily operation on the system from go-live, with the data in its own hands | Center Director | Must have | Business | The stakeholder-satisfaction objective and the exit criteria of the charter | 1.8.3.2, 1.10.2.1 (D8, D9, D10) | Training record, handover record, and the closeout report together evidence the exit criteria | Center Director confirms at closeout that the center operates on the system |
+| BR01 | Data held once and entered once | Center Director | Must have | Business | Cut duplicate data entry from <mark>60 to 15 staff-hours a month</mark>, 32,400,000 VND a year | 1.4.1.3, 1.7.1.3 (D3, D6) | Staff time log over one month after go-live shows 15 hours or fewer of re-entry | Director confirms against the closeout report, measured in the first warranty month |
+| BR02 | No double-booked room, teacher, or student | Academic Manager | Must have | Business | Remove double-booking at source; not quantified in the business case | 1.4.2.2 (D3) | Zero conflicting bookings accepted in the UAT conflict test set | Academic Manager runs the conflict scenarios in UAT |
+| BR03 | Overdue tuition visible and falling to <mark>3%</mark> | Accountant, Center Director | Must have | Business | Release <mark>360,000,000 VND</mark> once, save <mark>36,000,000 VND</mark> a year of carrying cost and <mark>36,000,000 VND</mark> of write-off | 1.5.1.1, 1.5.1.2 (D4) | Aged debt report shows the overdue percentage monthly; stated in the closeout report | Accountant reconciles the report against the bank and the invoice ledger |
+| BR04 | Cross-branch visibility without a spreadsheet | Center Director | Must have | Business | One current cross-branch view, needed before the <mark>fourth branch in 2027</mark> | 1.5.3.1, 1.5.3.2 (D4) | Every F10 report filterable by period, branch, and course, produced within 10 seconds | Director uses the dashboard unaided in UAT |
+| BR05 | Notification cost held down | Center Director | Must have | Business | Hold notification cost at <mark>13,800,000 VND</mark> a year through push rather than <mark>46,100,000 VND</mark> on SMS alone | 1.5.4.4, 1.5.2.2 (D4, D11) | F09 delivery log shows the channel mix; push share at least <mark>70% of guardians with a smartphone</mark> | Accountant checks the gateway invoice for the first warranty month |
+| BR06 | Payroll derived from delivered sessions | Accountant | Must have | Business | Remove the payroll rework and the disputes it causes; not separately quantified | 1.5.1.3 (D4) | Monthly sheet reconciles to the attendance records with zero manual adjustment rows | Accountant approves one full month close during the warranty month |
+| BR07 | The center runs its daily operation on the system from go-live, with the data in its own hands | Center Director | Must have | Business | The stakeholder-satisfaction objective and the exit criteria of the charter | 1.8.3.1, 1.10.2.1 (D8, D9, D10) | Training record, handover record, and the closeout report together evidence the exit criteria | Center Director confirms at closeout that the center operates on the system |
 | FR01 | Authentication and role-based access control (F01) | System Administrator | Must have | Functional | Quality: A04 met | 1.4.1.1 (D3) | Each role reaches only its own screens and data in the UAT permission matrix | UAT script run by the System Administrator across all seven roles |
-| FR02 | Student profile, enrollment, transfer, and withdrawal (F02) | Front-desk staff | Must have | Functional | Scope: F01 to F12 accepted; BR01 | 1.4.1.2, 1.4.1.4 (D3) | Enrollment refused in both refusal cases; refund figure matches the policy worked example | Front-desk staff enroll, transfer, and withdraw a test cohort in UAT |
-| FR03 | Versioned course and curriculum catalog (F03) | Academic Manager | Must have | Functional | Scope: F01 to F12 accepted | 1.4.1.3 (D3) | A course edit leaves the definition of an opened class unchanged | Academic Manager edits a course that has open classes in UAT |
-| FR04 | Class opening, scheduling, and conflict detection (F04) | Academic Manager | Must have | Functional | BR02 | 1.4.2.1, 1.4.2.3 (D3) | Every conflict case in the test set is blocked at creation or at move time | Academic Manager runs the conflict scenarios; pilot branch uses it for two weeks before M6 |
-| FR05 | Attendance and make-up sessions (F05) | Teacher | Must have | Functional | Stakeholder satisfaction: <mark>90% of classes</mark> with attendance recorded in the first warranty month | 1.4.2.2 (D3) | Attendance rate figures match a hand count for a sample class over one month | Teachers mark real sessions during the pilot at one branch |
-| FR06 | Tuition, invoicing, payments, and debt tracking (F06) | Front-desk staff, Accountant | Must have | Functional | BR03 | 1.5.1.1, 1.5.1.3 (D4) | Invoice totals match the policy worked examples; the aged debt list ties to the invoice ledger | Accountant reconciles one term of test invoices and payments in UAT |
-| FR07 | Teacher records and teaching-hour payroll (F07) | Accountant | Must have | Functional | BR06 | 1.5.1.2 (D4) | Monthly sheet reconciles to attendance with zero manual adjustment rows | Accountant closes one test month end to end |
+| FR02 | Student profile, enrollment, transfer, and withdrawal (F02) | Front-desk staff | Must have | Functional | Scope: F01 to F12 accepted; BR01 | 1.4.1.2, 1.4.1.3 (D3) | Enrollment refused in both refusal cases; refund figure matches the policy worked example | Front-desk staff enroll, transfer, and withdraw a test cohort in UAT |
+| FR03 | Versioned course and curriculum catalog (F03) | Academic Manager | Must have | Functional | Scope: F01 to F12 accepted | 1.4.1.4 (D3) | A course edit leaves the definition of an opened class unchanged | Academic Manager edits a course that has open classes in UAT |
+| FR04 | Class opening, scheduling, and conflict detection (F04) | Academic Manager | Must have | Functional | BR02 | 1.4.2.1, 1.4.2.2 (D3) | Every conflict case in the test set is blocked at creation or at move time | Academic Manager runs the conflict scenarios; pilot branch uses it for two weeks before M6 |
+| FR05 | Attendance and make-up sessions (F05) | Teacher | Must have | Functional | Stakeholder satisfaction: <mark>90% of classes</mark> with attendance recorded in the first warranty month | 1.4.2.3 (D3) | Attendance rate figures match a hand count for a sample class over one month | Teachers mark real sessions during the pilot at one branch |
+| FR06 | Tuition, invoicing, payments, and debt tracking (F06) | Front-desk staff, Accountant | Must have | Functional | BR03 | 1.5.1.1, 1.5.1.2 (D4) | Invoice totals match the policy worked examples; the aged debt list ties to the invoice ledger | Accountant reconciles one term of test invoices and payments in UAT |
+| FR07 | Teacher records and teaching-hour payroll (F07) | Accountant | Must have | Functional | BR06 | 1.5.1.3 (D4) | Monthly sheet reconciles to attendance with zero manual adjustment rows | Accountant closes one test month end to end |
 | FR08 | Assessment, progress reports, and course evaluation (F08) | Teacher | Must have | Functional | Scope: F01 to F12 accepted; BR07 | 1.5.2.1 (D4) | Final results match the course rule for every pass and fail boundary case | Academic Manager checks one completed course in UAT |
 | FR09 | Notification and internal communication (F09) | Front-desk staff | Must have | Functional | BR03; BR05 | 1.5.2.2 (D4) | Every message carries a delivery state; failures carry a reason and are retried | Front-desk staff send each of the seven event types in UAT |
-| FR10 | Reports and management dashboard (F10) | Center Director | Must have | Functional | BR04 | 1.5.3.1, 1.5.3.3 (D4) | One term's report produced within 10 seconds; figures match the underlying records | Director runs every report unaided in UAT |
-| FR11 | System administration and audit (F11) | System Administrator | Must have | Functional | Quality: A05 met; BR07 | 1.5.3.2 (D4) | Every financial and student write appears in the audit log with user and timestamp | System Administrator samples the log against a scripted set of changes |
-| FR12 | Android and iOS application for parents and teachers (F12) | Student / Parent, Teacher | Must have | Functional | BR05; Stakeholder satisfaction: <mark>70% of guardians with a smartphone</mark> activated by closeout | 1.4.4.1, 1.5.4.1, 1.5.4.3, 1.9.1.2 (D3, D4, D11) | Every F12 function within 3 taps; push delivery recorded in the F09 log | Parents and teachers use the application during the pilot and the first warranty month |
-| NFR01 | Functional completeness in UAT (A01) | Center Director | Must have | Acceptance | Scope: no function deferred without an approved change request; BR07 | 1.6.2.2, 1.8.3.2 (D5) | UAT pass rate at or above 99%; defect log shows no open Critical or High | UAT sign-off by the sponsor at M6 against the test set agreed at M5 |
-| NFR02 | Performance thresholds (A02) | Center Director | Must have | Performance | Quality: A02 met | 1.6.1.3 (D5) | Load test report shows the 95th percentile inside each threshold | Load test witnessed by the System Administrator before UAT entry |
-| NFR03 | Capacity without redesign (A03) | System Administrator | Must have | Capacity | Quality: A03 met | 1.6.1.3 (D5) | Capacity test loads the stated volumes and the performance thresholds still hold | Same load test run, at the stated data volume |
-| NFR04 | Security and personal-data protection (A04) | System Administrator | Must have | Security | Quality: A04 met; BR07 | 1.3.1.1, 1.6.1.4 (D2, D5) | Security test finds no unauthorised access path and no readable stored password | Security test report reviewed and accepted before UAT entry |
-| NFR05 | Auditability of financial and student writes (A05) | Accountant | Must have | Auditability | Quality: A05 met | 1.5.3.2 (D4) | Log entries cannot be altered through any interface; retention is <mark>3 years</mark> | Accountant and System Administrator attempt an edit in UAT and fail |
+| FR10 | Reports and management dashboard (F10) | Center Director | Must have | Functional | BR04 | 1.5.3.1, 1.5.3.2 (D4) | One term's report produced within 10 seconds; figures match the underlying records | Director runs every report unaided in UAT |
+| FR11 | System administration and audit (F11) | System Administrator | Must have | Functional | Quality: A05 met; BR07 | 1.5.3.3 (D4) | Every financial and student write appears in the audit log with user and timestamp | System Administrator samples the log against a scripted set of changes |
+| FR12 | Android and iOS application for parents and teachers (F12) | Student / Parent, Teacher | Must have | Functional | BR05; Stakeholder satisfaction: <mark>70% of guardians with a smartphone</mark> activated by closeout | 1.4.4.1, 1.5.4.1, 1.5.4.2, 1.9.1.2 (D3, D4, D11) | Every F12 function within 3 taps; push delivery recorded in the F09 log | Parents and teachers use the application during the pilot and the first warranty month |
+| NFR01 | Functional completeness in UAT (A01) | Center Director | Must have | Acceptance | Scope: no function deferred without an approved change request; BR07 | 1.6.2.2, 1.8.3.1 (D5) | UAT pass rate at or above 99%; defect log shows no open Critical or High | UAT sign-off by the sponsor at M6 against the test set agreed at M5 |
+| NFR02 | Performance thresholds (A02) | Center Director | Must have | Performance | Quality: A02 met | 1.6.1.4 (D5) | Load test report shows the 95th percentile inside each threshold | Load test witnessed by the System Administrator before UAT entry |
+| NFR03 | Capacity without redesign (A03) | System Administrator | Must have | Capacity | Quality: A03 met | 1.6.1.4 (D5) | Capacity test loads the stated volumes and the performance thresholds still hold | Same load test run, at the stated data volume |
+| NFR04 | Security and personal-data protection (A04) | System Administrator | Must have | Security | Quality: A04 met; BR07 | 1.3.1.1, 1.6.1.5 (D2, D5) | Security test finds no unauthorised access path and no readable stored password | Security test report reviewed and accepted before UAT entry |
+| NFR05 | Auditability of financial and student writes (A05) | Accountant | Must have | Auditability | Quality: A05 met | 1.5.3.3 (D4) | Log entries cannot be altered through any interface; retention is <mark>3 years</mark> | Accountant and System Administrator attempt an edit in UAT and fail |
 | NFR06 | Availability, backup, and restore (A06) | System Administrator | Must have | Availability | Quality: A06 met; BR07 | 1.8.1.2 (D7) | Restore drill completes inside 4 hours from a backup no more than 24 hours old | Restore drill witnessed by the System Administrator, twice |
 | NFR07 | Degraded operation and paper fallback (A07) | Academic Manager | Must have | Continuity | Quality: A07 met; BR07 | 1.8.2.2 (D8) | Rehearsal record signed, with the catch-up entry reconciled afterwards | Rehearsal run at one branch before M6 |
 | NFR08 | Usability in Vietnamese after half a day of training (A08) | Front-desk staff, Teacher | Must have | Usability | Stakeholder satisfaction: <mark>80% of the 52 staff users</mark> trained and active; BR07 | 1.3.1.4, 1.8.2.2 (D2, D8) | Click count measured on each of the three paths; training record shows the half-day format | Staff perform their daily tasks unaided the day after training |
 | NFR09 | Browser and device compatibility (A09) | System Administrator | Must have | Compatibility | Quality: A09 met; BR07 | 1.6.1.1, 1.6.1.2 (D5) | Test matrix covers every listed browser and both application platforms | Cross-browser and device test run before UAT entry |
-| NFR10 | Maintainability and handover (A10) | System Administrator | Must have | Maintainability | Quality: A10 met; BR07 | 1.8.2.1, 1.8.3.1 (D8, D9) | Handover checklist complete; a third party can deploy from the guide alone | System Administrator deploys to staging following only the guide |
-| NFR11 | Data ownership and open-format export (A11) | Center Director | Must have | Data ownership | Quality: A11 met | 1.5.3.2 (D4) | Export runs to completion from the administrator screen and opens in a standard tool | System Administrator produces the export unaided in UAT |
-| NFR12 | Mobile application published in both stores (A12) | Center Director | Must have | Mobile | Quality: A12 met; BR05 | 1.9.1.2, 1.5.4.2 (D11) | Store listings live; fallback timer verified in the delivery log | Guardians install from the public store listing during the pilot |
+| NFR10 | Maintainability and handover (A10) | System Administrator | Must have | Maintainability | Quality: A10 met; BR07 | 1.8.2.1, 1.8.3.2 (D8, D9) | Handover checklist complete; a third party can deploy from the guide alone | System Administrator deploys to staging following only the guide |
+| NFR11 | Data ownership and open-format export (A11) | Center Director | Must have | Data ownership | Quality: A11 met | 1.5.3.3 (D4) | Export runs to completion from the administrator screen and opens in a standard tool | System Administrator produces the export unaided in UAT |
+| NFR12 | Mobile application published in both stores (A12) | Center Director | Must have | Mobile | Quality: A12 met; BR05 | 1.9.1.2, 1.5.4.4 (D11) | Store listings live; fallback timer verified in the delivery log | Guardians install from the public store listing during the pilot |
 
 ### Part 1B: Inter-Requirements Traceability Matrix
 
@@ -226,9 +226,9 @@ work package.*
 1.1       Project Management                                      (major deliverable)
   1.1.1     Project Governance                                    CA
     1.1.1.1   Kickoff and team mobilisation
-    1.1.1.2   Project management plan and schedule baseline
-    1.1.1.3   Weekly status reporting and sponsor governance
-    1.1.1.4   Risk, issue, and change control
+    1.1.1.2   Weekly status reporting and sponsor governance
+    1.1.1.3   Risk, issue, and change control
+    1.1.1.4   Project management plan and schedule baseline
 
 1.2       Requirements                                            (major deliverable, D1, M1)
   1.2.1     Elicitation                                           CA
@@ -242,10 +242,10 @@ work package.*
     1.2.2.3   Requirements acceptance and baseline
   1.2.3     Technical Preparation                                 CA
     1.2.3.1   Repository, coding convention, and build pipeline
-    1.2.3.2   Notification gateway proof of concept
-    1.2.3.3   Cross-platform framework proof
-    1.2.3.4   User interface prototype for business validation
-    1.2.3.5   Development and test environment provisioning
+    1.2.3.2   Development and test environment provisioning
+    1.2.3.3   Notification gateway proof of concept
+    1.2.3.4   Cross-platform framework proof
+    1.2.3.5   User interface prototype for business validation
 
 1.3       Design                                                  (major deliverable, D2, M2)
   1.3.1     Solution Design                                       CA
@@ -255,59 +255,59 @@ work package.*
     1.3.1.4   Web user interface design
     1.3.1.5   Mobile application design
   1.3.2     Design Assurance                                      CA
-    1.3.2.1   Design review and rework
-    1.3.2.2   Test plan and test strategy
+    1.3.2.1   Test plan and test strategy
+    1.3.2.2   Design review and rework
     1.3.2.3   Design baseline acceptance
 
 1.4       Construction Iteration 1                                (major deliverable, D3, M3)
   1.4.1     Core Platform                                         CA
     1.4.1.1   F01 Authentication and access control
     1.4.1.2   F02 Student profile and guardian records
-    1.4.1.3   F03 Course and curriculum catalog
-    1.4.1.4   F02 Enrollment, transfer, reservation, and withdrawal
+    1.4.1.3   F02 Enrollment, transfer, reservation, and withdrawal
+    1.4.1.4   F03 Course and curriculum catalog
   1.4.2     Scheduling and Attendance                             CA
     1.4.2.1   F04 Class opening, session calendar, and postponement
-    1.4.2.2   F05 Attendance and make-up sessions
-    1.4.2.3   F04 Room, teacher, and class-time conflict detection
+    1.4.2.2   F04 Room, teacher, and class-time conflict detection
+    1.4.2.3   F05 Attendance and make-up sessions
   1.4.3     Iteration 1 Assurance                                 CA
-    1.4.3.1   Iteration 1 code review and rework
-    1.4.3.2   Iteration 1 testing, core platform
-    1.4.3.3   Iteration 1 demo and acceptance
-    1.4.3.4   Iteration 1 testing, scheduling and attendance
+    1.4.3.1   Iteration 1 testing, core platform
+    1.4.3.2   Iteration 1 testing, scheduling and attendance
+    1.4.3.3   Iteration 1 code review and rework
+    1.4.3.4   Iteration 1 demo and acceptance
   1.4.4     Mobile Application Alpha                              CA
     1.4.4.1   Application alpha, parent schedule, attendance, and scores
 
 1.5       Construction Iteration 2                                (major deliverable, D4, M4)
   1.5.1     Finance                                               CA
     1.5.1.1   F06 Invoicing, discounts, and aged debt
-    1.5.1.2   F07 Teacher records and teaching-hour payroll
-    1.5.1.3   F06 Payments, receipts, and unmatched payments
+    1.5.1.2   F06 Payments, receipts, and unmatched payments
+    1.5.1.3   F07 Teacher records and teaching-hour payroll
   1.5.2     Academic and Communication                            CA
     1.5.2.1   F08 Assessment, progress reports, and course evaluation
     1.5.2.2   F09 Notification and internal communication
   1.5.3     Management and Administration                         CA
     1.5.3.1   F10 Financial reports and export
-    1.5.3.2   F11 System administration and audit
-    1.5.3.3   F10 Enrollment, fill rate, and workload reports
+    1.5.3.2   F10 Enrollment, fill rate, and workload reports
+    1.5.3.3   F11 System administration and audit
   1.5.4     Mobile Application                                    CA
     1.5.4.1   Parent tuition, messages, and requests
-    1.5.4.2   Push notification integration
-    1.5.4.3   Teacher journeys
-    1.5.4.4   Offline behaviour and release build
+    1.5.4.2   Teacher journeys
+    1.5.4.3   Offline behaviour and release build
+    1.5.4.4   Push notification integration
   1.5.5     Iteration 2 Assurance                                 CA
-    1.5.5.1   Iteration 2 code review and rework
-    1.5.5.2   Iteration 2 testing, finance and administration
-    1.5.5.3   Iteration 2 acceptance, feature complete
-    1.5.5.4   Iteration 2 testing, academic, notification, and mobile
+    1.5.5.1   Iteration 2 testing, finance and administration
+    1.5.5.2   Iteration 2 testing, academic, notification, and mobile
+    1.5.5.3   Iteration 2 code review and rework
+    1.5.5.4   Iteration 2 acceptance, feature complete
 
 1.6       Quality Assurance and Test                              (major deliverable, D5, M5)
   1.6.1     System Test                                           CA
     1.6.1.1   System test execution, web, end-to-end scenarios
     1.6.1.2   System test execution, Android and iOS
-    1.6.1.3   Performance and capacity test
-    1.6.1.4   Security test
-    1.6.1.5   Defect fixing, scheduling, reporting, and administration
-    1.6.1.6   System test execution, web, exception and failure behaviour
+    1.6.1.3   System test execution, web, exception and failure behaviour
+    1.6.1.4   Performance and capacity test
+    1.6.1.5   Security test
+    1.6.1.6   Defect fixing, scheduling, reporting, and administration
     1.6.1.7   Defect fixing, enrollment, tuition, and payroll
     1.6.1.8   Defect fixing, catalog, assessment, notification, and platform, with regression
   1.6.2     Test Documentation                                    CA
@@ -330,8 +330,8 @@ work package.*
     1.8.2.1   User, administrator, and deployment documentation
     1.8.2.2   Staff training, paper fallback procedure, and rehearsal
   1.8.3     Handover                                              CA
-    1.8.3.1   Source code, database scripts, and technical documentation handover
-    1.8.3.2   User acceptance testing execution and sign-off
+    1.8.3.1   User acceptance testing execution and sign-off
+    1.8.3.2   Source code, database scripts, and technical documentation handover
 
 1.9       Mobile Application Release                              (major deliverable, D11, M6)
   1.9.1     Store Release                                         CA
@@ -372,14 +372,14 @@ budget line 1 of the charter exactly. The other-cost column carries charter budg
 is allocated to the work package that spends it, except budget line 6. A reserve is money set aside
 against risk, not work to be performed, so it is not a work package and has no owner, no activity,
 and no hours; it is carried as its own line below the phases and is drawn only through the change
-control of 1.1.1.4.
+control of 1.1.1.3.
 
 The hours are effort, not calendar loading. Several packages inside a phase run in parallel, and
-three packages are exceptions to the sizing rule stated in the decomposition method: 1.1.1.3 and
+three packages are exceptions to the sizing rule stated in the decomposition method: 1.1.1.2 and
 1.10.1.1 are level of effort and exceed 80 hours, and 1.9.1.1 crosses the M2 gate because of Apple's
-four-week enrolment lead time; 1.1.1.4, at exactly 80 hours, is inside the rule. Levelling that effort across the calendar is
+four-week enrolment lead time; 1.1.1.3, at exactly 80 hours, is inside the rule. Levelling that effort across the calendar is
 Develop Schedule, PMBOK 6 section 6.5, which produces the schedule baseline rather than the scope
-baseline and is therefore not in this document; it is the work of package 1.1.1.2.
+baseline and is therefore not in this document; it is the work of package 1.1.1.4.
 
 Phase 1.2 carries a Technical Preparation control account that the charter's own risk responses
 require before M2: the notification gateway proof for risk R5, the cross-platform framework proof
@@ -393,22 +393,22 @@ have nowhere to live.
 | Charter item | Where the WBS delivers it |
 | --- | --- |
 | F01 | 1.4.1.1 |
-| F02 | 1.4.1.2 profile, 1.4.1.4 enrollment |
-| F03 | 1.4.1.3 |
-| F04 | 1.4.2.1 scheduling, 1.4.2.3 conflict detection |
-| F05 | 1.4.2.2 |
-| F06 | 1.5.1.1 invoicing, 1.5.1.3 payments |
-| F07 | 1.5.1.2 |
+| F02 | 1.4.1.2 profile, 1.4.1.3 enrollment |
+| F03 | 1.4.1.4 |
+| F04 | 1.4.2.1 scheduling, 1.4.2.2 conflict detection |
+| F05 | 1.4.2.3 |
+| F06 | 1.5.1.1 invoicing, 1.5.1.2 payments |
+| F07 | 1.5.1.3 |
 | F08 | 1.5.2.1 |
-| F09 | 1.5.2.2, with push in 1.5.4.2 |
-| F10 | 1.5.3.1 financial, 1.5.3.3 academic |
-| F11 | 1.5.3.2 |
-| F12 | 1.4.4.1, 1.5.4.1, 1.5.4.3, 1.5.4.4, released by 1.9.1.2 |
-| A01 to A12 | Verified across 1.6.1.1 to 1.6.1.8 and accepted in 1.8.3.2 |
-| D1 to D11 | D1 1.2.2.3; D2 1.3.2.3; D3 1.4.3.3; D4 1.5.5.3; D5 1.6.2.1; D6 1.7.1.4; D7 1.8.1.3; D8 1.8.2.2; D9 1.8.3.1; D10 1.10.1.1, 1.10.1.2, 1.10.2.1; D11 1.9.1.2 |
-| M0 to M7 | 1.1.1.1, 1.2.2.3, 1.3.2.3, 1.4.3.3, 1.5.5.3, 1.6.2.2, 1.8.3.2, 1.10.2.1 |
-| 1.1.5 exception behaviour | Built inside the function package that owns it, tested in 1.4.3.2, 1.4.3.4, 1.5.5.2, 1.5.5.4, and 1.6.1.6, and rehearsed in 1.8.2.2 |
-| R1 to R12 responses | Owned by 1.1.1.4. R1 1.6.2.1 and 1.8.3.2; R2 1.2.1.2; R3 1.1.1.3; R4 1.4.3.1, 1.5.5.1, 1.2.3.1; R5 1.2.3.2; R6 1.7.1.1; R7 1.4.2.1 and 1.4.2.3; R8 1.8.1.3; R9 1.2.2.2 and 1.3.2.2; R10 1.8.1.3; R11 1.10.1.1; R12 1.2.3.3 and 1.9.1.1 |
+| F09 | 1.5.2.2, with push in 1.5.4.4 |
+| F10 | 1.5.3.1 financial, 1.5.3.2 academic |
+| F11 | 1.5.3.3 |
+| F12 | 1.4.4.1, 1.5.4.1, 1.5.4.2, 1.5.4.3, released by 1.9.1.2 |
+| A01 to A12 | Verified across 1.6.1.1 to 1.6.1.8 and accepted in 1.8.3.1 |
+| D1 to D11 | D1 1.2.2.3; D2 1.3.2.3; D3 1.4.3.4; D4 1.5.5.4; D5 1.6.2.1; D6 1.7.1.4; D7 1.8.1.3; D8 1.8.2.2; D9 1.8.3.2; D10 1.10.1.1, 1.10.1.2, 1.10.2.1; D11 1.9.1.2 |
+| M0 to M7 | 1.1.1.1, 1.2.2.3, 1.3.2.3, 1.4.3.4, 1.5.5.4, 1.6.2.2, 1.8.3.1, 1.10.2.1 |
+| 1.1.5 exception behaviour | Built inside the function package that owns it, tested in 1.4.3.1, 1.4.3.2, 1.5.5.1, 1.5.5.2, and 1.6.1.3, and rehearsed in 1.8.2.2 |
+| R1 to R12 responses | Owned by 1.1.1.3. R1 1.6.2.1 and 1.8.3.1; R2 1.2.1.2; R3 1.1.1.2; R4 1.4.3.3, 1.5.5.3, 1.2.3.1; R5 1.2.3.3; R6 1.7.1.1; R7 1.4.2.1 and 1.4.2.2; R8 1.8.1.3; R9 1.2.2.2 and 1.3.2.1; R10 1.8.1.3; R11 1.10.1.1; R12 1.2.3.4 and 1.9.1.1 |
 
 ---
 
@@ -432,7 +432,7 @@ up to are the charter figures and are not themselves estimates.
 The milestone dates in the Due Dates field are the charter's gates, and several packages run in
 parallel inside them. Levelling the effort across the calendar is Develop Schedule, PMBOK 6 section
 6.5, which is not part of the scope baseline and is not in this document; it happens in work package
-1.1.1.2. The totals are fixed by the charter and the sheets roll up to them exactly:
+1.1.1.4. The totals are fixed by the charter and the sheets roll up to them exactly:
 
 | | Hours | Rate (VND/h) | Amount (VND) |
 | --- | ---: | ---: | ---: |
@@ -478,43 +478,14 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Agreement Information | Supplier contract for the 700,000,000 VND scope, signed before M0. |
 
 *Page 1 of 1*
-#### 1.1.1.2 Project management plan and schedule baseline
-
-| Field | Content |
-| --- | --- |
-| Project Title | Development and Deployment of a Learning Center Management Software |
-| Date Prepared | 23 September 2026 |
-| Work Package Name | Project management plan and schedule baseline |
-| Code of Accounts | 1.1.1.2 |
-| Responsible Person | PM |
-| Description of Work | Produce the project management plan, the schedule baseline against M0 to M7, the resource plan, and the communication plan, and have the sponsor accept them. |
-| Assumptions and Constraints | The charter milestone dates are fixed and are not renegotiated here. <mark>First-pass estimate, re-baselined at M1.</mark> |
-| Milestones | 1. Project management plan accepted by the sponsor |
-| Due Dates | <mark>Mon 21 September 2026 to Fri 2 October 2026</mark> |
-
-| ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
-| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1.1.1.2-A1 | Schedule baseline and resource plan | PM | 24 | 162,500 | 3,900,000 | | | | 3,900,000 |
-| 1.1.1.2-A2 | Communication and stakeholder plan | PM | 16 | 162,500 | 2,600,000 | | | | 2,600,000 |
-| 1.1.1.2-A3 | Baseline review and acceptance | PM | 20 | 162,500 | 3,250,000 | | | | 3,250,000 |
-| | **Work package total** | | **60** | | **9,750,000** | | | **0** | **9,750,000** |
-
-| Field | Content |
-| --- | --- |
-| Quality Requirements | Every charter milestone appears in the schedule with an owner and a predecessor. |
-| Acceptance Criteria | Sponsor accepts the plan in writing before the requirement baseline at M1. |
-| Technical Information | Resource levelling of the effort estimates in this dictionary happens here, in Develop Schedule, not in the WBS. |
-| Agreement Information |  |
-
-*Page 1 of 1*
-#### 1.1.1.3 Weekly status reporting and sponsor governance
+#### 1.1.1.2 Weekly status reporting and sponsor governance
 
 | Field | Content |
 | --- | --- |
 | Project Title | Development and Deployment of a Learning Center Management Software |
 | Date Prepared | 23 September 2026 |
 | Work Package Name | Weekly status reporting and sponsor governance |
-| Code of Accounts | 1.1.1.3 |
+| Code of Accounts | 1.1.1.2 |
 | Responsible Person | PM |
 | Description of Work | Produce the weekly status report to the sponsor and the Center Director for the whole project, run the milestone gate reviews at M1 to M7, and carry escalations within two working days. |
 | Assumptions and Constraints | Declared level of effort: the package runs the full 21 weeks by nature and is one of the two exceptions to the 8 to 80 hour rule. <mark>First-pass estimate, re-baselined at M1.</mark> |
@@ -523,9 +494,9 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 
 | ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1.1.1.3-A1 | Weekly status report, 21 weeks | PM | 84 | 162,500 | 13,650,000 | | | | 13,650,000 |
-| 1.1.1.3-A2 | Milestone gate reviews M1 to M7 | PM | 24 | 162,500 | 3,900,000 | | | | 3,900,000 |
-| 1.1.1.3-A3 | Sponsor escalations and decision log | PM | 12 | 162,500 | 1,950,000 | | | | 1,950,000 |
+| 1.1.1.2-A1 | Weekly status report, 21 weeks | PM | 84 | 162,500 | 13,650,000 | | | | 13,650,000 |
+| 1.1.1.2-A2 | Milestone gate reviews M1 to M7 | PM | 24 | 162,500 | 3,900,000 | | | | 3,900,000 |
+| 1.1.1.2-A3 | Sponsor escalations and decision log | PM | 12 | 162,500 | 1,950,000 | | | | 1,950,000 |
 | | **Work package total** | | **120** | | **19,500,000** | | | **0** | **19,500,000** |
 
 | Field | Content |
@@ -536,14 +507,14 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Agreement Information |  |
 
 *Page 1 of 1*
-#### 1.1.1.4 Risk, issue, and change control
+#### 1.1.1.3 Risk, issue, and change control
 
 | Field | Content |
 | --- | --- |
 | Project Title | Development and Deployment of a Learning Center Management Software |
 | Date Prepared | 23 September 2026 |
 | Work Package Name | Risk, issue, and change control |
-| Code of Accounts | 1.1.1.4 |
+| Code of Accounts | 1.1.1.3 |
 | Responsible Person | PM |
 | Description of Work | Maintain the risk register R1 to R12 with owners and responses, run the issue log, and raise change requests into Perform Integrated Change Control with their impact assessed against the reserve. |
 | Assumptions and Constraints | Change requests are outputs of the controlling processes 5.5 and 5.6, so this package raises and tracks them once the project is executing. <mark>First-pass estimate, re-baselined at M1.</mark> |
@@ -552,16 +523,45 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 
 | ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1.1.1.4-A1 | Maintain the risk register R1 to R12 | PM | 32 | 162,500 | 5,200,000 | | | | 5,200,000 |
-| 1.1.1.4-A2 | Weekly risk and issue review | PM | 24 | 162,500 | 3,900,000 | | | | 3,900,000 |
-| 1.1.1.4-A3 | Raise and track change requests | PM | 24 | 162,500 | 3,900,000 | | | | 3,900,000 |
+| 1.1.1.3-A1 | Maintain the risk register R1 to R12 | PM | 32 | 162,500 | 5,200,000 | | | | 5,200,000 |
+| 1.1.1.3-A2 | Weekly risk and issue review | PM | 24 | 162,500 | 3,900,000 | | | | 3,900,000 |
+| 1.1.1.3-A3 | Raise and track change requests | PM | 24 | 162,500 | 3,900,000 | | | | 3,900,000 |
 | | **Work package total** | | **80** | | **13,000,000** | | | **0** | **13,000,000** |
 
 | Field | Content |
 | --- | --- |
 | Quality Requirements | Every risk carries an owner and a response; every change request carries an impact assessment. |
 | Acceptance Criteria | Sponsor accepts the risk register at M1 and the closeout risk position at M7. |
-| Technical Information | Change requests draw on the 28,000,000 VND contingency reserve held at project level in the roll-up of Part 2. The R4 pairing on scheduling and tuition is delivered through the cross-reviews in 1.4.3.1 and 1.5.5.1 and the shared repository of 1.2.3.1. |
+| Technical Information | Change requests draw on the 28,000,000 VND contingency reserve held at project level in the roll-up of Part 2. The R4 pairing on scheduling and tuition is delivered through the cross-reviews in 1.4.3.3 and 1.5.5.3 and the shared repository of 1.2.3.1. |
+| Agreement Information |  |
+
+*Page 1 of 1*
+#### 1.1.1.4 Project management plan and schedule baseline
+
+| Field | Content |
+| --- | --- |
+| Project Title | Development and Deployment of a Learning Center Management Software |
+| Date Prepared | 23 September 2026 |
+| Work Package Name | Project management plan and schedule baseline |
+| Code of Accounts | 1.1.1.4 |
+| Responsible Person | PM |
+| Description of Work | Produce the project management plan, the schedule baseline against M0 to M7, the resource plan, and the communication plan, and have the sponsor accept them. |
+| Assumptions and Constraints | The charter milestone dates are fixed and are not renegotiated here. <mark>First-pass estimate, re-baselined at M1.</mark> |
+| Milestones | 1. Project management plan accepted by the sponsor |
+| Due Dates | <mark>Mon 21 September 2026 to Fri 2 October 2026</mark> |
+
+| ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
+| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 1.1.1.4-A1 | Schedule baseline and resource plan | PM | 24 | 162,500 | 3,900,000 | | | | 3,900,000 |
+| 1.1.1.4-A2 | Communication and stakeholder plan | PM | 16 | 162,500 | 2,600,000 | | | | 2,600,000 |
+| 1.1.1.4-A3 | Baseline review and acceptance | PM | 20 | 162,500 | 3,250,000 | | | | 3,250,000 |
+| | **Work package total** | | **60** | | **9,750,000** | | | **0** | **9,750,000** |
+
+| Field | Content |
+| --- | --- |
+| Quality Requirements | Every charter milestone appears in the schedule with an owner and a predecessor. |
+| Acceptance Criteria | Sponsor accepts the plan in writing before the requirement baseline at M1. |
+| Technical Information | Resource levelling of the effort estimates in this dictionary happens here, in Develop Schedule, not in the WBS. |
 | Agreement Information |  |
 
 *Page 1 of 1*
@@ -648,7 +648,7 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | --- | --- |
 | Quality Requirements | Every criterion is a measurable threshold, not a judgement. |
 | Acceptance Criteria | Each criterion has a named verification method before the baseline at M1. |
-| Technical Information | The thresholds become the test targets for 1.6.1.3 and 1.6.1.4. |
+| Technical Information | The thresholds become the test targets for 1.6.1.4 and 1.6.1.5. |
 | Agreement Information |  |
 
 *Page 1 of 1*
@@ -676,7 +676,7 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | --- | --- |
 | Quality Requirements | Every function has its failure behaviour written before the baseline. |
 | Acceptance Criteria | Academic Manager and Accountant confirm the operational cases in their areas. |
-| Technical Information | The catalogue is the source of the negative test cases in 1.4.3.2, 1.5.5.2, and 1.6.1.6. |
+| Technical Information | The catalogue is the source of the negative test cases in 1.4.3.1, 1.5.5.1, and 1.6.1.3. |
 | Agreement Information |  |
 
 *Page 1 of 1*
@@ -774,7 +774,7 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Code of Accounts | 1.2.3.1 |
 | Responsible Person | DEV1 |
 | Description of Work | Stand up the source repository, the branching and coding convention that acceptance criterion A10 requires, and the build and test pipeline, so that construction starts against a working pipeline rather than building one. |
-| Assumptions and Constraints | The environments themselves are provisioned in 1.2.3.5, and staging in 1.8.1.1. <mark>First-pass estimate, re-baselined at M1.</mark> |
+| Assumptions and Constraints | The environments themselves are provisioned in 1.2.3.2, and staging in 1.8.1.1. <mark>First-pass estimate, re-baselined at M1.</mark> |
 | Milestones | 1. Pipeline green on an empty build |
 | Due Dates | <mark>Mon 14 September 2026 to Fri 2 October 2026</mark> |
 
@@ -788,18 +788,45 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | --- | --- |
 | Quality Requirements | A commit runs the build and the test suite without manual steps. |
 | Acceptance Criteria | Every developer builds and runs the system locally and on the test environment before M2, and on staging before the M3 demo. |
-| Technical Information | The coding convention is the one handed over in 1.8.3.1; the shared repository is part of the charter response to risk R4. |
+| Technical Information | The coding convention is the one handed over in 1.8.3.2; the shared repository is part of the charter response to risk R4. |
 | Agreement Information |  |
 
 *Page 1 of 1*
-#### 1.2.3.2 Notification gateway proof of concept
+#### 1.2.3.2 Development and test environment provisioning
+
+| Field | Content |
+| --- | --- |
+| Project Title | Development and Deployment of a Learning Center Management Software |
+| Date Prepared | 23 September 2026 |
+| Work Package Name | Development and test environment provisioning |
+| Code of Accounts | 1.2.3.2 |
+| Responsible Person | DEV1 |
+| Description of Work | Provision the development and test environments that the team builds and tests against from the first iteration. |
+| Assumptions and Constraints | Staging and production are provisioned later in 1.8.1.1, on the same cloud provider. <mark>First-pass estimate, re-baselined at M1.</mark> |
+| Milestones | 1. Development and test environments available |
+| Due Dates | <mark>Mon 14 September 2026 to Fri 2 October 2026</mark> |
+
+| ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
+| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 1.2.3.2-A1 | Development and test environment provisioning | DEV1 | 28 | 118,750 | 3,325,000 | | | | 3,325,000 |
+| | **Work package total** | | **28** | | **3,325,000** | | | **0** | **3,325,000** |
+
+| Field | Content |
+| --- | --- |
+| Quality Requirements | Both environments match the target configuration of the architecture design. |
+| Acceptance Criteria | Every developer runs the build on the test environment before M2. |
+| Technical Information | Provisioned under the supplier's account until the production accounts are opened in 1.8.1.1. |
+| Agreement Information |  |
+
+*Page 1 of 1*
+#### 1.2.3.3 Notification gateway proof of concept
 
 | Field | Content |
 | --- | --- |
 | Project Title | Development and Deployment of a Learning Center Management Software |
 | Date Prepared | 23 September 2026 |
 | Work Package Name | Notification gateway proof of concept |
-| Code of Accounts | 1.2.3.2 |
+| Code of Accounts | 1.2.3.3 |
 | Responsible Person | DEV2 |
 | Description of Work | Prove the email and SMS gateway behind a single interface before the design baseline, including the delivery-state callback and the low-credit alert, and evaluate a second provider as fallback. |
 | Assumptions and Constraints | This is the charter response to risk R5; gateway credit for development is charged to 1.5.2.2. <mark>First-pass estimate, re-baselined at M1.</mark> |
@@ -808,9 +835,9 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 
 | ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1.2.3.2-A1 | Gateway integration behind a single interface | DEV2 | 48 | 118,750 | 5,700,000 | | | | 5,700,000 |
-| 1.2.3.2-A2 | Delivery-state callback and low-credit alert | DEV2 | 20 | 118,750 | 2,375,000 | | | | 2,375,000 |
-| 1.2.3.2-A3 | Second provider evaluation | DEV2 | 12 | 118,750 | 1,425,000 | | | | 1,425,000 |
+| 1.2.3.3-A1 | Gateway integration behind a single interface | DEV2 | 48 | 118,750 | 5,700,000 | | | | 5,700,000 |
+| 1.2.3.3-A2 | Delivery-state callback and low-credit alert | DEV2 | 20 | 118,750 | 2,375,000 | | | | 2,375,000 |
+| 1.2.3.3-A3 | Second provider evaluation | DEV2 | 12 | 118,750 | 1,425,000 | | | | 1,425,000 |
 | | **Work package total** | | **80** | | **9,500,000** | | | **0** | **9,500,000** |
 
 | Field | Content |
@@ -821,14 +848,14 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Agreement Information | Gateway provider terms reviewed; the contract is signed by the center, not the supplier. |
 
 *Page 1 of 1*
-#### 1.2.3.3 Cross-platform framework proof
+#### 1.2.3.4 Cross-platform framework proof
 
 | Field | Content |
 | --- | --- |
 | Project Title | Development and Deployment of a Learning Center Management Software |
 | Date Prepared | 23 September 2026 |
 | Work Package Name | Cross-platform framework proof |
-| Code of Accounts | 1.2.3.3 |
+| Code of Accounts | 1.2.3.4 |
 | Responsible Person | DEV3 |
 | Description of Work | Prove the chosen cross-platform framework on Android and iOS, covering push registration, secure token storage, and the read-only last-synced view, so the platform half of risk R12 closes before any application code is committed. |
 | Assumptions and Constraints | <mark>One cross-platform codebase, Flutter or React Native</mark>, chosen here and fixed for the project. <mark>First-pass estimate, re-baselined at M1.</mark> |
@@ -837,8 +864,8 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 
 | ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1.2.3.3-A1 | Framework spike on Android and iOS | DEV3 | 24 | 118,750 | 2,850,000 | | | | 2,850,000 |
-| 1.2.3.3-A2 | Push registration and secure token storage | DEV3 | 16 | 118,750 | 1,900,000 | | | | 1,900,000 |
+| 1.2.3.4-A1 | Framework spike on Android and iOS | DEV3 | 24 | 118,750 | 2,850,000 | | | | 2,850,000 |
+| 1.2.3.4-A2 | Push registration and secure token storage | DEV3 | 16 | 118,750 | 1,900,000 | | | | 1,900,000 |
 | | **Work package total** | | **40** | | **4,750,000** | | | **0** | **4,750,000** |
 
 | Field | Content |
@@ -849,14 +876,14 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Agreement Information |  |
 
 *Page 1 of 1*
-#### 1.2.3.4 User interface prototype for business validation
+#### 1.2.3.5 User interface prototype for business validation
 
 | Field | Content |
 | --- | --- |
 | Project Title | Development and Deployment of a Learning Center Management Software |
 | Date Prepared | 23 September 2026 |
 | Work Package Name | User interface prototype for business validation |
-| Code of Accounts | 1.2.3.4 |
+| Code of Accounts | 1.2.3.5 |
 | Responsible Person | DEV2 |
 | Description of Work | Build a clickable prototype of the enrollment, attendance, and payment screens so the business owners validate the interface against their daily work before the design is baselined. |
 | Assumptions and Constraints | The prototype is throwaway and is not the basis of the delivered interface. <mark>First-pass estimate, re-baselined at M1.</mark> |
@@ -865,8 +892,8 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 
 | ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1.2.3.4-A1 | Clickable prototype of the three daily paths | DEV2 | 28 | 118,750 | 3,325,000 | | | | 3,325,000 |
-| 1.2.3.4-A2 | Walkthrough with front-desk staff and teachers | DEV2 | 12 | 118,750 | 1,425,000 | | | | 1,425,000 |
+| 1.2.3.5-A1 | Clickable prototype of the three daily paths | DEV2 | 28 | 118,750 | 3,325,000 | | | | 3,325,000 |
+| 1.2.3.5-A2 | Walkthrough with front-desk staff and teachers | DEV2 | 12 | 118,750 | 1,425,000 | | | | 1,425,000 |
 | | **Work package total** | | **40** | | **4,750,000** | | | **0** | **4,750,000** |
 
 | Field | Content |
@@ -874,33 +901,6 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Quality Requirements | The three daily paths are walked by the people who will use them, not by the project team. |
 | Acceptance Criteria | Prototype findings folded into the web interface design in 1.3.1.4. |
 | Technical Information | Serves the three-click rule of acceptance criterion A08. |
-| Agreement Information |  |
-
-*Page 1 of 1*
-#### 1.2.3.5 Development and test environment provisioning
-
-| Field | Content |
-| --- | --- |
-| Project Title | Development and Deployment of a Learning Center Management Software |
-| Date Prepared | 23 September 2026 |
-| Work Package Name | Development and test environment provisioning |
-| Code of Accounts | 1.2.3.5 |
-| Responsible Person | DEV1 |
-| Description of Work | Provision the development and test environments that the team builds and tests against from the first iteration. |
-| Assumptions and Constraints | Staging and production are provisioned later in 1.8.1.1, on the same cloud provider. <mark>First-pass estimate, re-baselined at M1.</mark> |
-| Milestones | 1. Development and test environments available |
-| Due Dates | <mark>Mon 14 September 2026 to Fri 2 October 2026</mark> |
-
-| ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
-| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1.2.3.5-A1 | Development and test environment provisioning | DEV1 | 28 | 118,750 | 3,325,000 | | | | 3,325,000 |
-| | **Work package total** | | **28** | | **3,325,000** | | | **0** | **3,325,000** |
-
-| Field | Content |
-| --- | --- |
-| Quality Requirements | Both environments match the target configuration of the architecture design. |
-| Acceptance Criteria | Every developer runs the build on the test environment before M2. |
-| Technical Information | Provisioned under the supplier's account until the production accounts are opened in 1.8.1.1. |
 | Agreement Information |  |
 
 *Page 1 of 1*
@@ -930,7 +930,7 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Field | Content |
 | --- | --- |
 | Quality Requirements | Every request authorised on the server; no design that stores a recoverable password. |
-| Acceptance Criteria | Accepted at the design baseline in 1.3.2.3 and verified by the security test in 1.6.1.4. |
+| Acceptance Criteria | Accepted at the design baseline in 1.3.2.3 and verified by the security test in 1.6.1.5. |
 | Technical Information | Serves NFR04 and NFR11 of the traceability matrix. |
 | Agreement Information |  |
 
@@ -960,7 +960,7 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | --- | --- |
 | Quality Requirements | No entity holds data that another entity also owns. |
 | Acceptance Criteria | Accepted at 1.3.2.3 and proven by the trial migration in 1.7.1.2. |
-| Technical Information | Schema documentation is part of the handover in 1.8.3.1. |
+| Technical Information | Schema documentation is part of the handover in 1.8.3.2. |
 | Agreement Information |  |
 
 *Page 1 of 1*
@@ -987,8 +987,8 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Field | Content |
 | --- | --- |
 | Quality Requirements | Every endpoint is documented before it is built. |
-| Acceptance Criteria | Accepted at 1.3.2.3; the API documentation is handed over in 1.8.3.1. |
-| Technical Information | The contract is the interface the notification gateway of 1.2.3.2 sits behind. |
+| Acceptance Criteria | Accepted at 1.3.2.3; the API documentation is handed over in 1.8.3.2. |
+| Technical Information | The contract is the interface the notification gateway of 1.2.3.3 sits behind. |
 | Agreement Information |  |
 
 *Page 1 of 1*
@@ -1001,7 +1001,7 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Work Package Name | Web user interface design |
 | Code of Accounts | 1.3.1.4 |
 | Responsible Person | DEV1 |
-| Description of Work | Design the Vietnamese web interface for the staff roles, folding in the prototype findings from 1.2.3.4, with attendance, payment recording, and enrollment each within three clicks of the home screen. |
+| Description of Work | Design the Vietnamese web interface for the staff roles, folding in the prototype findings from 1.2.3.5, with attendance, payment recording, and enrollment each within three clicks of the home screen. |
 | Assumptions and Constraints | Staff use the web application from a desktop browser and the interface is Vietnamese only. <mark>First-pass estimate, re-baselined at M1.</mark> |
 | Milestones | 1. Web interface design accepted into the design baseline |
 | Due Dates | <mark>Wed 7 October 2026 to Wed 14 October 2026</mark> |
@@ -1029,7 +1029,7 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Work Package Name | Mobile application design |
 | Code of Accounts | 1.3.1.5 |
 | Responsible Person | DEV3 |
-| Description of Work | Design the parent and teacher application on the framework proven in 1.2.3.3, so that the application design sits inside the M2 baseline as the charter requires. |
+| Description of Work | Design the parent and teacher application on the framework proven in 1.2.3.4, so that the application design sits inside the M2 baseline as the charter requires. |
 | Assumptions and Constraints | <mark>The mobile developer joins after M2, so DEV3 designs the application and hands the design over at mobilisation.</mark> <mark>First-pass estimate, re-baselined at M1.</mark> |
 | Milestones | 1. Application design accepted into the design baseline |
 | Due Dates | <mark>Thu 8 October 2026 to Thu 15 October 2026</mark> |
@@ -1048,43 +1048,14 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Agreement Information |  |
 
 *Page 1 of 1*
-#### 1.3.2.1 Design review and rework
-
-| Field | Content |
-| --- | --- |
-| Project Title | Development and Deployment of a Learning Center Management Software |
-| Date Prepared | 23 September 2026 |
-| Work Package Name | Design review and rework |
-| Code of Accounts | 1.3.2.1 |
-| Responsible Person | QA1 |
-| Description of Work | Review the architecture, schema, API contract, and interface designs against the requirement baseline, cross-review between developers who did not write them, and rework against the findings. |
-| Assumptions and Constraints | No designer reviews their own design. <mark>First-pass estimate, re-baselined at M1.</mark> |
-| Milestones | 1. Design review findings closed |
-| Due Dates | <mark>Tue 13 October 2026 to Thu 15 October 2026</mark> |
-
-| ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
-| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1.3.2.1-A1 | Design review against the requirement baseline | QA1 | 16 | 93,750 | 1,500,000 | | | | 1,500,000 |
-| 1.3.2.1-A2 | Cross-review of the schema and architecture | DEV2 | 20 | 118,750 | 2,375,000 | | | | 2,375,000 |
-| 1.3.2.1-A3 | Rework coordination and finding closure | PM | 16 | 162,500 | 2,600,000 | | | | 2,600,000 |
-| | **Work package total** | | **52** | | **6,475,000** | | | **0** | **6,475,000** |
-
-| Field | Content |
-| --- | --- |
-| Quality Requirements | Every requirement in the baseline maps to something in the design. |
-| Acceptance Criteria | Finding list closed before the baseline gate at M2. |
-| Technical Information |  |
-| Agreement Information |  |
-
-*Page 1 of 1*
-#### 1.3.2.2 Test plan and test strategy
+#### 1.3.2.1 Test plan and test strategy
 
 | Field | Content |
 | --- | --- |
 | Project Title | Development and Deployment of a Learning Center Management Software |
 | Date Prepared | 23 September 2026 |
 | Work Package Name | Test plan and test strategy |
-| Code of Accounts | 1.3.2.2 |
+| Code of Accounts | 1.3.2.1 |
 | Responsible Person | QA1 |
 | Description of Work | Write the test plan and strategy across unit, integration, system, performance, capacity, security, and acceptance testing on web, Android, and iOS, with entry and exit criteria and the defect severity definitions the warranty terms depend on. |
 | Assumptions and Constraints | The QA engineer writes from the requirement baseline as second reader, the charter response to risk R9. <mark>First-pass estimate, re-baselined at M1.</mark> |
@@ -1093,9 +1064,9 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 
 | ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1.3.2.2-A1 | Test plan across all levels and platforms | QA1 | 48 | 93,750 | 4,500,000 | | | | 4,500,000 |
-| 1.3.2.2-A2 | Entry and exit criteria and severity definitions | QA1 | 16 | 93,750 | 1,500,000 | | | | 1,500,000 |
-| 1.3.2.2-A3 | Test plan approval with the sponsor | PM | 8 | 162,500 | 1,300,000 | | | | 1,300,000 |
+| 1.3.2.1-A1 | Test plan across all levels and platforms | QA1 | 48 | 93,750 | 4,500,000 | | | | 4,500,000 |
+| 1.3.2.1-A2 | Entry and exit criteria and severity definitions | QA1 | 16 | 93,750 | 1,500,000 | | | | 1,500,000 |
+| 1.3.2.1-A3 | Test plan approval with the sponsor | PM | 8 | 162,500 | 1,300,000 | | | | 1,300,000 |
 | | **Work package total** | | **72** | | **7,300,000** | | | **0** | **7,300,000** |
 
 | Field | Content |
@@ -1103,6 +1074,35 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Quality Requirements | Severity definitions match the charter warranty response targets. |
 | Acceptance Criteria | Accepted at 1.3.2.3; the plan is part of D5. |
 | Technical Information | The UAT test set is agreed later at M5 in 1.6.2.1 against this plan. |
+| Agreement Information |  |
+
+*Page 1 of 1*
+#### 1.3.2.2 Design review and rework
+
+| Field | Content |
+| --- | --- |
+| Project Title | Development and Deployment of a Learning Center Management Software |
+| Date Prepared | 23 September 2026 |
+| Work Package Name | Design review and rework |
+| Code of Accounts | 1.3.2.2 |
+| Responsible Person | QA1 |
+| Description of Work | Review the architecture, schema, API contract, and interface designs against the requirement baseline, cross-review between developers who did not write them, and rework against the findings. |
+| Assumptions and Constraints | No designer reviews their own design. <mark>First-pass estimate, re-baselined at M1.</mark> |
+| Milestones | 1. Design review findings closed |
+| Due Dates | <mark>Tue 13 October 2026 to Thu 15 October 2026</mark> |
+
+| ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
+| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 1.3.2.2-A1 | Design review against the requirement baseline | QA1 | 16 | 93,750 | 1,500,000 | | | | 1,500,000 |
+| 1.3.2.2-A2 | Cross-review of the schema and architecture | DEV2 | 20 | 118,750 | 2,375,000 | | | | 2,375,000 |
+| 1.3.2.2-A3 | Rework coordination and finding closure | PM | 16 | 162,500 | 2,600,000 | | | | 2,600,000 |
+| | **Work package total** | | **52** | | **6,475,000** | | | **0** | **6,475,000** |
+
+| Field | Content |
+| --- | --- |
+| Quality Requirements | Every requirement in the baseline maps to something in the design. |
+| Acceptance Criteria | Finding list closed before the baseline gate at M2. |
+| Technical Information |  |
 | Agreement Information |  |
 
 *Page 1 of 1*
@@ -1172,7 +1172,7 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Work Package Name | F02 Student profile and guardian records |
 | Code of Accounts | 1.4.1.2 |
 | Responsible Person | DEV2 |
-| Description of Work | Build the profile half of F02 per charter 1.1.4: the student profile with personal data, guardian and contact details, source, and notes. Enrollment and its refusal rules are carried by 1.4.1.4. |
+| Description of Work | Build the profile half of F02 per charter 1.1.4: the student profile with personal data, guardian and contact details, source, and notes. Enrollment and its refusal rules are carried by 1.4.1.3. |
 | Assumptions and Constraints | Guardian consent for notification is recorded on the profile, per acceptance criterion A04. <mark>First-pass estimate, re-baselined at M1.</mark> |
 | Milestones | 1. F02 profile demonstrated at the iteration 1 demo |
 | Due Dates | <mark>Mon 19 October 2026 to Fri 13 November 2026</mark> |
@@ -1190,42 +1190,14 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Agreement Information |  |
 
 *Page 1 of 1*
-#### 1.4.1.3 F03 Course and curriculum catalog
-
-| Field | Content |
-| --- | --- |
-| Project Title | Development and Deployment of a Learning Center Management Software |
-| Date Prepared | 23 September 2026 |
-| Work Package Name | F03 Course and curriculum catalog |
-| Code of Accounts | 1.4.1.3 |
-| Responsible Person | DEV3 |
-| Description of Work | Build F03 per charter 1.1.4: course code, level, session count and length, standard fee, prerequisite, and syllabus, versioned so that an edit leaves already-opened classes unchanged. |
-| Assumptions and Constraints | Course versioning is a hard requirement: without it historical classes change when a fee is edited. <mark>First-pass estimate, re-baselined at M1.</mark> |
-| Milestones | 1. F03 demonstrated at the iteration 1 demo |
-| Due Dates | <mark>Mon 19 October 2026 to Fri 13 November 2026</mark> |
-
-| ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
-| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1.4.1.3-A1 | Course, level, fee, and syllabus records | DEV3 | 32 | 118,750 | 3,800,000 | | | | 3,800,000 |
-| 1.4.1.3-A2 | Course versioning and its effect on classes | DEV3 | 28 | 118,750 | 3,325,000 | | | | 3,325,000 |
-| | **Work package total** | | **60** | | **7,125,000** | | | **0** | **7,125,000** |
-
-| Field | Content |
-| --- | --- |
-| Quality Requirements | An edit to a course leaves every already-opened class untouched. |
-| Acceptance Criteria | Academic Manager edits a course with open classes and the classes do not move. |
-| Technical Information | Course versions are the input to class generation in 1.4.2.1. |
-| Agreement Information |  |
-
-*Page 1 of 1*
-#### 1.4.1.4 F02 Enrollment, transfer, reservation, and withdrawal
+#### 1.4.1.3 F02 Enrollment, transfer, reservation, and withdrawal
 
 | Field | Content |
 | --- | --- |
 | Project Title | Development and Deployment of a Learning Center Management Software |
 | Date Prepared | 23 September 2026 |
 | Work Package Name | F02 Enrollment, transfer, reservation, and withdrawal |
-| Code of Accounts | 1.4.1.4 |
+| Code of Accounts | 1.4.1.3 |
 | Responsible Person | DEV2 |
 | Description of Work | Build the enrollment half of F02 per charter 1.1.4: enrollment into an open class, transfer, seat reservation, and withdrawal with a refund calculation, refusing a full class or a timetable collision. |
 | Assumptions and Constraints | The refund rules are those frozen at M1, and a withdrawal is a proposal until the Accountant approves it. <mark>First-pass estimate, re-baselined at M1.</mark> |
@@ -1234,8 +1206,8 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 
 | ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1.4.1.4-A1 | Enrollment, transfer, reservation, and withdrawal | DEV2 | 40 | 118,750 | 4,750,000 | | | | 4,750,000 |
-| 1.4.1.4-A2 | Refusal rules for full class and collision | DEV2 | 20 | 118,750 | 2,375,000 | | | | 2,375,000 |
+| 1.4.1.3-A1 | Enrollment, transfer, reservation, and withdrawal | DEV2 | 40 | 118,750 | 4,750,000 | | | | 4,750,000 |
+| 1.4.1.3-A2 | Refusal rules for full class and collision | DEV2 | 20 | 118,750 | 2,375,000 | | | | 2,375,000 |
 | | **Work package total** | | **60** | | **7,125,000** | | | **0** | **7,125,000** |
 
 | Field | Content |
@@ -1243,6 +1215,34 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Quality Requirements | Both refusal cases are enforced by the server, not only by the screen. |
 | Acceptance Criteria | A test cohort is enrolled, transferred, and withdrawn without a manual correction. |
 | Technical Information | Serves BR01 and FR02; the refund proposal path is shared with 1.5.1.1. |
+| Agreement Information |  |
+
+*Page 1 of 1*
+#### 1.4.1.4 F03 Course and curriculum catalog
+
+| Field | Content |
+| --- | --- |
+| Project Title | Development and Deployment of a Learning Center Management Software |
+| Date Prepared | 23 September 2026 |
+| Work Package Name | F03 Course and curriculum catalog |
+| Code of Accounts | 1.4.1.4 |
+| Responsible Person | DEV3 |
+| Description of Work | Build F03 per charter 1.1.4: course code, level, session count and length, standard fee, prerequisite, and syllabus, versioned so that an edit leaves already-opened classes unchanged. |
+| Assumptions and Constraints | Course versioning is a hard requirement: without it historical classes change when a fee is edited. <mark>First-pass estimate, re-baselined at M1.</mark> |
+| Milestones | 1. F03 demonstrated at the iteration 1 demo |
+| Due Dates | <mark>Mon 19 October 2026 to Fri 13 November 2026</mark> |
+
+| ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
+| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 1.4.1.4-A1 | Course, level, fee, and syllabus records | DEV3 | 32 | 118,750 | 3,800,000 | | | | 3,800,000 |
+| 1.4.1.4-A2 | Course versioning and its effect on classes | DEV3 | 28 | 118,750 | 3,325,000 | | | | 3,325,000 |
+| | **Work package total** | | **60** | | **7,125,000** | | | **0** | **7,125,000** |
+
+| Field | Content |
+| --- | --- |
+| Quality Requirements | An edit to a course leaves every already-opened class untouched. |
+| Acceptance Criteria | Academic Manager edits a course with open classes and the classes do not move. |
+| Technical Information | Course versions are the input to class generation in 1.4.2.1. |
 | Agreement Information |  |
 
 *Page 1 of 1*
@@ -1255,7 +1255,7 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Work Package Name | F04 Class opening, session calendar, and postponement |
 | Code of Accounts | 1.4.2.1 |
 | Responsible Person | DEV1 |
-| Description of Work | Build the scheduling half of F04 per charter 1.1.4: class opening from a course version, generation of the whole session calendar, room and teacher assignment, and recalculation on postponement. Conflict detection is carried by 1.4.2.3. |
+| Description of Work | Build the scheduling half of F04 per charter 1.1.4: class opening from a course version, generation of the whole session calendar, room and teacher assignment, and recalculation on postponement. Conflict detection is carried by 1.4.2.2. |
 | Assumptions and Constraints | The charter assigns this to the developer with prior scheduling experience and builds it first, timeboxed, which is the response to risk R7. <mark>First-pass estimate, re-baselined at M1.</mark> |
 | Milestones | 1. F04 scheduling demonstrated at the iteration 1 demo |
 | Due Dates | <mark>Mon 19 October 2026 to Fri 13 November 2026</mark> |
@@ -1274,43 +1274,14 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Agreement Information |  |
 
 *Page 1 of 1*
-#### 1.4.2.2 F05 Attendance and make-up sessions
-
-| Field | Content |
-| --- | --- |
-| Project Title | Development and Deployment of a Learning Center Management Software |
-| Date Prepared | 23 September 2026 |
-| Work Package Name | F05 Attendance and make-up sessions |
-| Code of Accounts | 1.4.2.2 |
-| Responsible Person | DEV2 |
-| Description of Work | Build F05 per charter 1.1.4: attendance marking in four states with remarks, make-up registration, attendance rate per student and per class, the late-entry stamp, and the daily exception list. |
-| Assumptions and Constraints | A month containing missing attendance cannot be closed for payroll, which is what ties this package to 1.5.1.2. <mark>First-pass estimate, re-baselined at M1.</mark> |
-| Milestones | 1. F05 demonstrated at the iteration 1 demo |
-| Due Dates | <mark>Mon 19 October 2026 to Fri 13 November 2026</mark> |
-
-| ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
-| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1.4.2.2-A1 | Attendance marking, states, and remarks | DEV2 | 30 | 118,750 | 3,562,500 | | | | 3,562,500 |
-| 1.4.2.2-A2 | Make-up sessions and attendance rate reporting | DEV2 | 24 | 118,750 | 2,850,000 | | | | 2,850,000 |
-| 1.4.2.2-A3 | Late-entry stamping and daily exception list | DEV2 | 16 | 118,750 | 1,900,000 | | | | 1,900,000 |
-| | **Work package total** | | **70** | | **8,312,500** | | | **0** | **8,312,500** |
-
-| Field | Content |
-| --- | --- |
-| Quality Requirements | A late entry is stamped as late with the name of whoever entered it. |
-| Acceptance Criteria | Attendance figures match a hand count for a sample class over one month. |
-| Technical Information | Attendance is the only source of teaching hours in 1.5.1.2. |
-| Agreement Information |  |
-
-*Page 1 of 1*
-#### 1.4.2.3 F04 Room, teacher, and class-time conflict detection
+#### 1.4.2.2 F04 Room, teacher, and class-time conflict detection
 
 | Field | Content |
 | --- | --- |
 | Project Title | Development and Deployment of a Learning Center Management Software |
 | Date Prepared | 23 September 2026 |
 | Work Package Name | F04 Room, teacher, and class-time conflict detection |
-| Code of Accounts | 1.4.2.3 |
+| Code of Accounts | 1.4.2.2 |
 | Responsible Person | DEV1 |
 | Description of Work | Build the conflict half of F04 per charter 1.1.4: detect and block conflicts on room, on teacher, and on class time at the moment a class or session is created or moved. |
 | Assumptions and Constraints | Timeboxed and reviewed at the M3 demo, which is the charter response to risk R7. <mark>First-pass estimate, re-baselined at M1.</mark> |
@@ -1319,7 +1290,7 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 
 | ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1.4.2.3-A1 | Room, teacher, and class-time conflict detection | DEV1 | 60 | 118,750 | 7,125,000 | | | | 7,125,000 |
+| 1.4.2.2-A1 | Room, teacher, and class-time conflict detection | DEV1 | 60 | 118,750 | 7,125,000 | | | | 7,125,000 |
 | | **Work package total** | | **60** | | **7,125,000** | | | **0** | **7,125,000** |
 
 | Field | Content |
@@ -1330,43 +1301,43 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Agreement Information |  |
 
 *Page 1 of 1*
-#### 1.4.3.1 Iteration 1 code review and rework
+#### 1.4.2.3 F05 Attendance and make-up sessions
 
 | Field | Content |
 | --- | --- |
 | Project Title | Development and Deployment of a Learning Center Management Software |
 | Date Prepared | 23 September 2026 |
-| Work Package Name | Iteration 1 code review and rework |
-| Code of Accounts | 1.4.3.1 |
-| Responsible Person | QA1 |
-| Description of Work | Review the iteration 1 code against the design and the coding convention and rework against the findings. Nobody reviews their own code, so the package is owned by the QA engineer rather than by an author. |
-| Assumptions and Constraints | Review is a work package of its own so the effort stays visible and cannot be dropped when a build runs late. <mark>First-pass estimate, re-baselined at M1.</mark> |
-| Milestones | 1. Iteration 1 review findings closed |
-| Due Dates | <mark>Mon 9 November 2026 to Fri 13 November 2026</mark> |
+| Work Package Name | F05 Attendance and make-up sessions |
+| Code of Accounts | 1.4.2.3 |
+| Responsible Person | DEV2 |
+| Description of Work | Build F05 per charter 1.1.4: attendance marking in four states with remarks, make-up registration, attendance rate per student and per class, the late-entry stamp, and the daily exception list. |
+| Assumptions and Constraints | A month containing missing attendance cannot be closed for payroll, which is what ties this package to 1.5.1.3. <mark>First-pass estimate, re-baselined at M1.</mark> |
+| Milestones | 1. F05 demonstrated at the iteration 1 demo |
+| Due Dates | <mark>Mon 19 October 2026 to Fri 13 November 2026</mark> |
 
 | ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1.4.3.1-A1 | Review of F01, F02, and F03 | DEV1 | 20 | 118,750 | 2,375,000 | | | | 2,375,000 |
-| 1.4.3.1-A2 | Review of F04 and F05 and rework | DEV3 | 40 | 118,750 | 4,750,000 | | | | 4,750,000 |
-| 1.4.3.1-A3 | Review against the test plan | QA1 | 20 | 93,750 | 1,875,000 | | | | 1,875,000 |
-| | **Work package total** | | **80** | | **9,000,000** | | | **0** | **9,000,000** |
+| 1.4.2.3-A1 | Attendance marking, states, and remarks | DEV2 | 30 | 118,750 | 3,562,500 | | | | 3,562,500 |
+| 1.4.2.3-A2 | Make-up sessions and attendance rate reporting | DEV2 | 24 | 118,750 | 2,850,000 | | | | 2,850,000 |
+| 1.4.2.3-A3 | Late-entry stamping and daily exception list | DEV2 | 16 | 118,750 | 1,900,000 | | | | 1,900,000 |
+| | **Work package total** | | **70** | | **8,312,500** | | | **0** | **8,312,500** |
 
 | Field | Content |
 | --- | --- |
-| Quality Requirements | No author reviews their own work; every finding is closed or explicitly accepted. |
-| Acceptance Criteria | Finding list closed before the M3 demo. |
-| Technical Information | Part of the charter response to risk R4; the coding convention is the one set in 1.2.3.1. |
+| Quality Requirements | A late entry is stamped as late with the name of whoever entered it. |
+| Acceptance Criteria | Attendance figures match a hand count for a sample class over one month. |
+| Technical Information | Attendance is the only source of teaching hours in 1.5.1.3. |
 | Agreement Information |  |
 
 *Page 1 of 1*
-#### 1.4.3.2 Iteration 1 testing, core platform
+#### 1.4.3.1 Iteration 1 testing, core platform
 
 | Field | Content |
 | --- | --- |
 | Project Title | Development and Deployment of a Learning Center Management Software |
 | Date Prepared | 23 September 2026 |
 | Work Package Name | Iteration 1 testing, core platform |
-| Code of Accounts | 1.4.3.2 |
+| Code of Accounts | 1.4.3.1 |
 | Responsible Person | QA1 |
 | Description of Work | Author the test cases for F01 to F03 from the requirement baseline and execute unit and integration testing on them, including the exception cases that belong to them. |
 | Assumptions and Constraints | Testing is against the requirement baseline of M1, not against what was built. <mark>First-pass estimate, re-baselined at M1.</mark> |
@@ -1375,10 +1346,10 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 
 | ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1.4.3.2-A1 | Test case authoring for F01 to F03 | QA1 | 12 | 93,750 | 1,125,000 | | | | 1,125,000 |
-| 1.4.3.2-A2 | Unit and integration execution | QA1 | 32 | 93,750 | 3,000,000 | | | | 3,000,000 |
-| 1.4.3.2-A3 | Exception case execution | QA1 | 10 | 93,750 | 937,500 | | | | 937,500 |
-| 1.4.3.2-A4 | Defect logging and retest | QA1 | 8 | 93,750 | 750,000 | | | | 750,000 |
+| 1.4.3.1-A1 | Test case authoring for F01 to F03 | QA1 | 12 | 93,750 | 1,125,000 | | | | 1,125,000 |
+| 1.4.3.1-A2 | Unit and integration execution | QA1 | 32 | 93,750 | 3,000,000 | | | | 3,000,000 |
+| 1.4.3.1-A3 | Exception case execution | QA1 | 10 | 93,750 | 937,500 | | | | 937,500 |
+| 1.4.3.1-A4 | Defect logging and retest | QA1 | 8 | 93,750 | 750,000 | | | | 750,000 |
 | | **Work package total** | | **62** | | **5,812,500** | | | **0** | **5,812,500** |
 
 | Field | Content |
@@ -1389,53 +1360,25 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Agreement Information |  |
 
 *Page 1 of 1*
-#### 1.4.3.3 Iteration 1 demo and acceptance
-
-| Field | Content |
-| --- | --- |
-| Project Title | Development and Deployment of a Learning Center Management Software |
-| Date Prepared | 23 September 2026 |
-| Work Package Name | Iteration 1 demo and acceptance |
-| Code of Accounts | 1.4.3.3 |
-| Responsible Person | PM |
-| Description of Work | Demonstrate F01 to F05 and the application alpha from 1.4.4.1 to the customer, record the acceptance decision, and close the iteration. |
-| Assumptions and Constraints | The M3 milestone releases the 25% payment tranche against the signed acceptance record. <mark>First-pass estimate, re-baselined at M1.</mark> |
-| Milestones | 1. M3 iteration 1 demo accepted, F01 to F05, with the application alpha; 2. D3 delivered |
-| Due Dates | <mark>Fri 13 November 2026; M3 on Fri 13 November 2026</mark> |
-
-| ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
-| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1.4.3.3-A1 | Demo preparation and delivery | PM | 30 | 162,500 | 4,875,000 | | | | 4,875,000 |
-| 1.4.3.3-A2 | Acceptance walkthrough against the iteration scope | QA1 | 20 | 93,750 | 1,875,000 | | | | 1,875,000 |
-| | **Work package total** | | **50** | | **6,750,000** | | | **0** | **6,750,000** |
-
-| Field | Content |
-| --- | --- |
-| Quality Requirements | The demo runs on staging with migrated sample data, not on a developer machine. |
-| Acceptance Criteria | Signed acceptance record of D3. |
-| Technical Information | Scheduling is reviewed here specifically, as the charter response to risk R7 requires. |
-| Agreement Information | Acceptance record releases the M3 payment tranche. |
-
-*Page 1 of 1*
-#### 1.4.3.4 Iteration 1 testing, scheduling and attendance
+#### 1.4.3.2 Iteration 1 testing, scheduling and attendance
 
 | Field | Content |
 | --- | --- |
 | Project Title | Development and Deployment of a Learning Center Management Software |
 | Date Prepared | 23 September 2026 |
 | Work Package Name | Iteration 1 testing, scheduling and attendance |
-| Code of Accounts | 1.4.3.4 |
+| Code of Accounts | 1.4.3.2 |
 | Responsible Person | QA1 |
-| Description of Work | Execute unit and integration testing on F04 and F05 against the cases written in 1.3.2.2 and the exception catalogue of 1.2.1.4. |
+| Description of Work | Execute unit and integration testing on F04 and F05 against the cases written in 1.3.2.1 and the exception catalogue of 1.2.1.4. |
 | Assumptions and Constraints | The conflict test set is the measure for F04 and is run in full. <mark>First-pass estimate, re-baselined at M1.</mark> |
 | Milestones | 1. Scheduling and attendance test cycle complete |
 | Due Dates | <mark>Mon 2 November 2026 to Fri 13 November 2026</mark> |
 
 | ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1.4.3.4-A1 | Unit and integration execution | QA1 | 32 | 93,750 | 3,000,000 | | | | 3,000,000 |
-| 1.4.3.4-A2 | Exception case execution | QA1 | 10 | 93,750 | 937,500 | | | | 937,500 |
-| 1.4.3.4-A3 | Defect logging and retest | QA1 | 8 | 93,750 | 750,000 | | | | 750,000 |
+| 1.4.3.2-A1 | Unit and integration execution | QA1 | 32 | 93,750 | 3,000,000 | | | | 3,000,000 |
+| 1.4.3.2-A2 | Exception case execution | QA1 | 10 | 93,750 | 937,500 | | | | 937,500 |
+| 1.4.3.2-A3 | Defect logging and retest | QA1 | 8 | 93,750 | 750,000 | | | | 750,000 |
 | | **Work package total** | | **50** | | **4,687,500** | | | **0** | **4,687,500** |
 
 | Field | Content |
@@ -1444,6 +1387,63 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Acceptance Criteria | No open Critical or High defect in F04 and F05 at the M3 demo. |
 | Technical Information | Defects go into the single project defect log consolidated in 1.6.2.1. |
 | Agreement Information |  |
+
+*Page 1 of 1*
+#### 1.4.3.3 Iteration 1 code review and rework
+
+| Field | Content |
+| --- | --- |
+| Project Title | Development and Deployment of a Learning Center Management Software |
+| Date Prepared | 23 September 2026 |
+| Work Package Name | Iteration 1 code review and rework |
+| Code of Accounts | 1.4.3.3 |
+| Responsible Person | QA1 |
+| Description of Work | Review the iteration 1 code against the design and the coding convention and rework against the findings. Nobody reviews their own code, so the package is owned by the QA engineer rather than by an author. |
+| Assumptions and Constraints | Review is a work package of its own so the effort stays visible and cannot be dropped when a build runs late. <mark>First-pass estimate, re-baselined at M1.</mark> |
+| Milestones | 1. Iteration 1 review findings closed |
+| Due Dates | <mark>Mon 9 November 2026 to Fri 13 November 2026</mark> |
+
+| ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
+| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 1.4.3.3-A1 | Review of F01, F02, and F03 | DEV1 | 20 | 118,750 | 2,375,000 | | | | 2,375,000 |
+| 1.4.3.3-A2 | Review of F04 and F05 and rework | DEV3 | 40 | 118,750 | 4,750,000 | | | | 4,750,000 |
+| 1.4.3.3-A3 | Review against the test plan | QA1 | 20 | 93,750 | 1,875,000 | | | | 1,875,000 |
+| | **Work package total** | | **80** | | **9,000,000** | | | **0** | **9,000,000** |
+
+| Field | Content |
+| --- | --- |
+| Quality Requirements | No author reviews their own work; every finding is closed or explicitly accepted. |
+| Acceptance Criteria | Finding list closed before the M3 demo. |
+| Technical Information | Part of the charter response to risk R4; the coding convention is the one set in 1.2.3.1. |
+| Agreement Information |  |
+
+*Page 1 of 1*
+#### 1.4.3.4 Iteration 1 demo and acceptance
+
+| Field | Content |
+| --- | --- |
+| Project Title | Development and Deployment of a Learning Center Management Software |
+| Date Prepared | 23 September 2026 |
+| Work Package Name | Iteration 1 demo and acceptance |
+| Code of Accounts | 1.4.3.4 |
+| Responsible Person | PM |
+| Description of Work | Demonstrate F01 to F05 and the application alpha from 1.4.4.1 to the customer, record the acceptance decision, and close the iteration. |
+| Assumptions and Constraints | The M3 milestone releases the 25% payment tranche against the signed acceptance record. <mark>First-pass estimate, re-baselined at M1.</mark> |
+| Milestones | 1. M3 iteration 1 demo accepted, F01 to F05, with the application alpha; 2. D3 delivered |
+| Due Dates | <mark>Fri 13 November 2026; M3 on Fri 13 November 2026</mark> |
+
+| ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
+| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 1.4.3.4-A1 | Demo preparation and delivery | PM | 30 | 162,500 | 4,875,000 | | | | 4,875,000 |
+| 1.4.3.4-A2 | Acceptance walkthrough against the iteration scope | QA1 | 20 | 93,750 | 1,875,000 | | | | 1,875,000 |
+| | **Work package total** | | **50** | | **6,750,000** | | | **0** | **6,750,000** |
+
+| Field | Content |
+| --- | --- |
+| Quality Requirements | The demo runs on staging with migrated sample data, not on a developer machine. |
+| Acceptance Criteria | Signed acceptance record of D3. |
+| Technical Information | Scheduling is reviewed here specifically, as the charter response to risk R7 requires. |
+| Agreement Information | Acceptance record releases the M3 payment tranche. |
 
 *Page 1 of 1*
 #### 1.4.4.1 Application alpha, parent schedule, attendance, and scores
@@ -1469,7 +1469,7 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Field | Content |
 | --- | --- |
 | Quality Requirements | Every alpha function within three taps; no personal data cached unencrypted on the device. |
-| Acceptance Criteria | Alpha demonstrated at the M3 demo in 1.4.3.3. |
+| Acceptance Criteria | Alpha demonstrated at the M3 demo in 1.4.3.4. |
 | Technical Information | Built against the design of 1.3.1.5 and the API contract of 1.3.1.3. |
 | Agreement Information |  |
 
@@ -1485,7 +1485,7 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Work Package Name | F06 Invoicing, discounts, and aged debt |
 | Code of Accounts | 1.5.1.1 |
 | Responsible Person | DEV2 |
-| Description of Work | Build the invoicing half of F06 per charter 1.1.4: invoice generation from the course fee, the four discount policies, installment plans, and the aged debt list per student, class, and branch. Payments are carried by 1.5.1.3. |
+| Description of Work | Build the invoicing half of F06 per charter 1.1.4: invoice generation from the course fee, the four discount policies, installment plans, and the aged debt list per student, class, and branch. Payments are carried by 1.5.1.2. |
 | Assumptions and Constraints | The rules are those frozen at M1, and the charter assigns this to the developer with prior billing experience. <mark>First-pass estimate, re-baselined at M1.</mark> |
 | Milestones | 1. F06 invoicing demonstrated at the iteration 2 review |
 | Due Dates | <mark>Mon 16 November 2026 to Fri 11 December 2026</mark> |
@@ -1504,42 +1504,14 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Agreement Information |  |
 
 *Page 1 of 1*
-#### 1.5.1.2 F07 Teacher records and teaching-hour payroll
-
-| Field | Content |
-| --- | --- |
-| Project Title | Development and Deployment of a Learning Center Management Software |
-| Date Prepared | 23 September 2026 |
-| Work Package Name | F07 Teacher records and teaching-hour payroll |
-| Code of Accounts | 1.5.1.2 |
-| Responsible Person | DEV2 |
-| Description of Work | Build F07 per charter 1.1.4: teacher profiles and rates, the monthly teaching-hour sheet aggregated from delivered sessions, allowances and deductions, the approval workflow, and the Excel export. |
-| Assumptions and Constraints | Hours are credited to whoever actually taught, and the person who recorded the attendance never approves the sheet. <mark>First-pass estimate, re-baselined at M1.</mark> |
-| Milestones | 1. F07 demonstrated at the iteration 2 review |
-| Due Dates | <mark>Mon 16 November 2026 to Fri 11 December 2026</mark> |
-
-| ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
-| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1.5.1.2-A1 | Teacher records, rates, and the monthly sheet | DEV2 | 18 | 118,750 | 2,137,500 | | | | 2,137,500 |
-| 1.5.1.2-A2 | Sheet workflow, approval separation, and export | DEV2 | 12 | 118,750 | 1,425,000 | | | | 1,425,000 |
-| | **Work package total** | | **30** | | **3,562,500** | | | **0** | **3,562,500** |
-
-| Field | Content |
-| --- | --- |
-| Quality Requirements | A month containing missing attendance cannot be closed. |
-| Acceptance Criteria | Accountant closes one test month with zero manual adjustment rows. |
-| Technical Information | Reads attendance from F05 only; there is no second entry path for teaching hours. |
-| Agreement Information |  |
-
-*Page 1 of 1*
-#### 1.5.1.3 F06 Payments, receipts, and unmatched payments
+#### 1.5.1.2 F06 Payments, receipts, and unmatched payments
 
 | Field | Content |
 | --- | --- |
 | Project Title | Development and Deployment of a Learning Center Management Software |
 | Date Prepared | 23 September 2026 |
 | Work Package Name | F06 Payments, receipts, and unmatched payments |
-| Code of Accounts | 1.5.1.3 |
+| Code of Accounts | 1.5.1.2 |
 | Responsible Person | DEV2 |
 | Description of Work | Build the payment half of F06 per charter 1.1.4: cash and bank-transfer recording, receipts, the outstanding balance, the unmatched payment list, credits, and reversing entries. |
 | Assumptions and Constraints | No overdue reminder is sent to a student with an unmatched payment on file, per charter 1.1.5. <mark>First-pass estimate, re-baselined at M1.</mark> |
@@ -1548,8 +1520,8 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 
 | ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1.5.1.3-A1 | Payment recording, receipts, and balance | DEV2 | 40 | 118,750 | 4,750,000 | | | | 4,750,000 |
-| 1.5.1.3-A2 | Unmatched payments, credits, and reversing entries | DEV2 | 20 | 118,750 | 2,375,000 | | | | 2,375,000 |
+| 1.5.1.2-A1 | Payment recording, receipts, and balance | DEV2 | 40 | 118,750 | 4,750,000 | | | | 4,750,000 |
+| 1.5.1.2-A2 | Unmatched payments, credits, and reversing entries | DEV2 | 20 | 118,750 | 2,375,000 | | | | 2,375,000 |
 | | **Work package total** | | **60** | | **7,125,000** | | | **0** | **7,125,000** |
 
 | Field | Content |
@@ -1557,6 +1529,34 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Quality Requirements | A receipt is never deleted; a reversal posts a reversing entry and both stay in the audit log. |
 | Acceptance Criteria | Accountant reconciles one term of test payments, including an overpayment and a reversal. |
 | Technical Information | Carries the unmatched transfer, overpayment, and reversal exception cases of charter 1.1.5. |
+| Agreement Information |  |
+
+*Page 1 of 1*
+#### 1.5.1.3 F07 Teacher records and teaching-hour payroll
+
+| Field | Content |
+| --- | --- |
+| Project Title | Development and Deployment of a Learning Center Management Software |
+| Date Prepared | 23 September 2026 |
+| Work Package Name | F07 Teacher records and teaching-hour payroll |
+| Code of Accounts | 1.5.1.3 |
+| Responsible Person | DEV2 |
+| Description of Work | Build F07 per charter 1.1.4: teacher profiles and rates, the monthly teaching-hour sheet aggregated from delivered sessions, allowances and deductions, the approval workflow, and the Excel export. |
+| Assumptions and Constraints | Hours are credited to whoever actually taught, and the person who recorded the attendance never approves the sheet. <mark>First-pass estimate, re-baselined at M1.</mark> |
+| Milestones | 1. F07 demonstrated at the iteration 2 review |
+| Due Dates | <mark>Mon 16 November 2026 to Fri 11 December 2026</mark> |
+
+| ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
+| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 1.5.1.3-A1 | Teacher records, rates, and the monthly sheet | DEV2 | 18 | 118,750 | 2,137,500 | | | | 2,137,500 |
+| 1.5.1.3-A2 | Sheet workflow, approval separation, and export | DEV2 | 12 | 118,750 | 1,425,000 | | | | 1,425,000 |
+| | **Work package total** | | **30** | | **3,562,500** | | | **0** | **3,562,500** |
+
+| Field | Content |
+| --- | --- |
+| Quality Requirements | A month containing missing attendance cannot be closed. |
+| Acceptance Criteria | Accountant closes one test month with zero manual adjustment rows. |
+| Technical Information | Reads attendance from F05 only; there is no second entry path for teaching hours. |
 | Agreement Information |  |
 
 *Page 1 of 1*
@@ -1599,7 +1599,7 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Code of Accounts | 1.5.2.2 |
 | Responsible Person | DEV3 |
 | Description of Work | Build F09 per charter 1.1.4: email and SMS from templates for the seven events, manual and scheduled sending, the delivery log with retry and failure reasons, the low-credit alert, announcements, the class notice board, and parent messages. |
-| Assumptions and Constraints | Built against the gateway interface proven in 1.2.3.2; <mark>4,000,000 VND of development and test gateway credit</mark> from charter budget line 2 is spent here. <mark>First-pass estimate, re-baselined at M1.</mark> |
+| Assumptions and Constraints | Built against the gateway interface proven in 1.2.3.3; <mark>4,000,000 VND of development and test gateway credit</mark> from charter budget line 2 is spent here. <mark>First-pass estimate, re-baselined at M1.</mark> |
 | Milestones | 1. F09 demonstrated at the iteration 2 review |
 | Due Dates | <mark>Mon 16 November 2026 to Fri 11 December 2026</mark> |
 
@@ -1615,7 +1615,7 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | --- | --- |
 | Quality Requirements | No failed notification is dropped without a record. |
 | Acceptance Criteria | Front-desk staff send each of the seven event types and every message carries a delivery state. |
-| Technical Information | Push becomes the third channel when 1.5.4.2 lands; SMS stays the fallback. |
+| Technical Information | Push becomes the third channel when 1.5.4.4 lands; SMS stays the fallback. |
 | Agreement Information | Gateway credit purchased under the center's own account with the provider. |
 
 *Page 1 of 1*
@@ -1628,7 +1628,7 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Work Package Name | F10 Financial reports and export |
 | Code of Accounts | 1.5.3.1 |
 | Responsible Person | DEV1 |
-| Description of Work | Build the financial half of F10 per charter 1.1.4: revenue and collection by period and branch, outstanding debt, and the filters and Excel and PDF export used by every F10 report. Academic reporting is carried by 1.5.3.3. |
+| Description of Work | Build the financial half of F10 per charter 1.1.4: revenue and collection by period and branch, outstanding debt, and the filters and Excel and PDF export used by every F10 report. Academic reporting is carried by 1.5.3.2. |
 | Assumptions and Constraints | Reports read the same records the operational screens write; there is no separate reporting copy. <mark>First-pass estimate, re-baselined at M1.</mark> |
 | Milestones | 1. F10 financial reporting demonstrated at the iteration 2 review |
 | Due Dates | <mark>Mon 16 November 2026 to Fri 11 December 2026</mark> |
@@ -1647,43 +1647,14 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Agreement Information |  |
 
 *Page 1 of 1*
-#### 1.5.3.2 F11 System administration and audit
-
-| Field | Content |
-| --- | --- |
-| Project Title | Development and Deployment of a Learning Center Management Software |
-| Date Prepared | 23 September 2026 |
-| Work Package Name | F11 System administration and audit |
-| Code of Accounts | 1.5.3.2 |
-| Responsible Person | DEV1 |
-| Description of Work | Build F11 per charter 1.1.4: reference data and configuration, backup triggering and restore, the audit log over every financial and student write, and the complete data export the center runs itself. |
-| Assumptions and Constraints | The audit log cannot be edited through any interface and is retained for <mark>3 years</mark>. <mark>First-pass estimate, re-baselined at M1.</mark> |
-| Milestones | 1. F11 demonstrated at the iteration 2 review |
-| Due Dates | <mark>Mon 16 November 2026 to Fri 11 December 2026</mark> |
-
-| ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
-| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1.5.3.2-A1 | Reference data and configuration screens | DEV1 | 20 | 118,750 | 2,375,000 | | | | 2,375,000 |
-| 1.5.3.2-A2 | Audit log over financial and student writes | DEV1 | 18 | 118,750 | 2,137,500 | | | | 2,137,500 |
-| 1.5.3.2-A3 | Administrator data export in an open format | DEV1 | 12 | 118,750 | 1,425,000 | | | | 1,425,000 |
-| | **Work package total** | | **50** | | **5,937,500** | | | **0** | **5,937,500** |
-
-| Field | Content |
-| --- | --- |
-| Quality Requirements | Acceptance criteria A05 and A11; an attempt to edit the log fails from every interface. |
-| Acceptance Criteria | System Administrator produces the export unaided and fails to alter a log entry. |
-| Technical Information | Serves NFR05 and NFR11 of the traceability matrix. |
-| Agreement Information |  |
-
-*Page 1 of 1*
-#### 1.5.3.3 F10 Enrollment, fill rate, and workload reports
+#### 1.5.3.2 F10 Enrollment, fill rate, and workload reports
 
 | Field | Content |
 | --- | --- |
 | Project Title | Development and Deployment of a Learning Center Management Software |
 | Date Prepared | 23 September 2026 |
 | Work Package Name | F10 Enrollment, fill rate, and workload reports |
-| Code of Accounts | 1.5.3.3 |
+| Code of Accounts | 1.5.3.2 |
 | Responsible Person | DEV1 |
 | Description of Work | Build the academic half of F10 per charter 1.1.4: new and retained student counts, class fill rate, teacher workload and teaching hours, and attendance rate. |
 | Assumptions and Constraints | These are the reports the fourth-branch decision rests on. <mark>First-pass estimate, re-baselined at M1.</mark> |
@@ -1692,7 +1663,7 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 
 | ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1.5.3.3-A1 | Enrollment, retention, fill rate, and workload | DEV1 | 34 | 118,750 | 4,037,500 | | | | 4,037,500 |
+| 1.5.3.2-A1 | Enrollment, retention, fill rate, and workload | DEV1 | 34 | 118,750 | 4,037,500 | | | | 4,037,500 |
 | | **Work package total** | | **34** | | **4,037,500** | | | **0** | **4,037,500** |
 
 | Field | Content |
@@ -1700,6 +1671,35 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Quality Requirements | Every figure ties to the underlying enrollment and attendance records. |
 | Acceptance Criteria | Director runs the reports unaided in UAT. |
 | Technical Information | Uses the filters and the export built in 1.5.3.1. |
+| Agreement Information |  |
+
+*Page 1 of 1*
+#### 1.5.3.3 F11 System administration and audit
+
+| Field | Content |
+| --- | --- |
+| Project Title | Development and Deployment of a Learning Center Management Software |
+| Date Prepared | 23 September 2026 |
+| Work Package Name | F11 System administration and audit |
+| Code of Accounts | 1.5.3.3 |
+| Responsible Person | DEV1 |
+| Description of Work | Build F11 per charter 1.1.4: reference data and configuration, backup triggering and restore, the audit log over every financial and student write, and the complete data export the center runs itself. |
+| Assumptions and Constraints | The audit log cannot be edited through any interface and is retained for <mark>3 years</mark>. <mark>First-pass estimate, re-baselined at M1.</mark> |
+| Milestones | 1. F11 demonstrated at the iteration 2 review |
+| Due Dates | <mark>Mon 16 November 2026 to Fri 11 December 2026</mark> |
+
+| ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
+| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 1.5.3.3-A1 | Reference data and configuration screens | DEV1 | 20 | 118,750 | 2,375,000 | | | | 2,375,000 |
+| 1.5.3.3-A2 | Audit log over financial and student writes | DEV1 | 18 | 118,750 | 2,137,500 | | | | 2,137,500 |
+| 1.5.3.3-A3 | Administrator data export in an open format | DEV1 | 12 | 118,750 | 1,425,000 | | | | 1,425,000 |
+| | **Work package total** | | **50** | | **5,937,500** | | | **0** | **5,937,500** |
+
+| Field | Content |
+| --- | --- |
+| Quality Requirements | Acceptance criteria A05 and A11; an attempt to edit the log fails from every interface. |
+| Acceptance Criteria | System Administrator produces the export unaided and fails to alter a log entry. |
+| Technical Information | Serves NFR05 and NFR11 of the traceability matrix. |
 | Agreement Information |  |
 
 *Page 1 of 1*
@@ -1731,42 +1731,14 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Agreement Information |  |
 
 *Page 1 of 1*
-#### 1.5.4.2 Push notification integration
-
-| Field | Content |
-| --- | --- |
-| Project Title | Development and Deployment of a Learning Center Management Software |
-| Date Prepared | 23 September 2026 |
-| Work Package Name | Push notification integration |
-| Code of Accounts | 1.5.4.2 |
-| Responsible Person | MOB1 |
-| Description of Work | Add push as the third F09 channel: device registration, delivery of the F09 events, delivery state in the same log, and SMS fallback four hours after a failed push on tuition messages. |
-| Assumptions and Constraints | <mark>Push service on the free tier</mark>, per charter budget line 2. <mark>First-pass estimate, re-baselined at M1.</mark> |
-| Milestones | 1. Push channel demonstrated at the iteration 2 review |
-| Due Dates | <mark>Mon 30 November 2026 to Fri 11 December 2026</mark> |
-
-| ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
-| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1.5.4.2-A1 | Device registration and push delivery | MOB1 | 40 | 122,500 | 4,900,000 | | | | 4,900,000 |
-| 1.5.4.2-A2 | Server-side channel selection and fallback timer | DEV3 | 20 | 118,750 | 2,375,000 | | | | 2,375,000 |
-| | **Work package total** | | **60** | | **7,275,000** | | | **0** | **7,275,000** |
-
-| Field | Content |
-| --- | --- |
-| Quality Requirements | Push delivery state is logged exactly as email and SMS are; the fallback timer is four hours. |
-| Acceptance Criteria | A failed push produces an SMS within four hours in the test log. |
-| Technical Information | This is what holds notification cost at the business case figure rather than the SMS-only figure. |
-| Agreement Information |  |
-
-*Page 1 of 1*
-#### 1.5.4.3 Teacher journeys
+#### 1.5.4.2 Teacher journeys
 
 | Field | Content |
 | --- | --- |
 | Project Title | Development and Deployment of a Learning Center Management Software |
 | Date Prepared | 23 September 2026 |
 | Work Package Name | Teacher journeys |
-| Code of Accounts | 1.5.4.3 |
+| Code of Accounts | 1.5.4.2 |
 | Responsible Person | MOB1 |
 | Description of Work | Build the teacher journeys of F12 per charter 1.1.4: today's sessions and rosters, attendance marking while online, score entry, the teaching-hour sheet, and class announcements. |
 | Assumptions and Constraints | Attendance marking and payment confirmation are disabled while offline, per charter 1.1.5. <mark>First-pass estimate, re-baselined at M1.</mark> |
@@ -1775,8 +1747,8 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 
 | ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1.5.4.3-A1 | Today's sessions, rosters, and attendance marking | MOB1 | 44 | 122,500 | 5,390,000 | | | | 5,390,000 |
-| 1.5.4.3-A2 | Score entry, teaching-hour sheet, and announcements | MOB1 | 36 | 122,500 | 4,410,000 | | | | 4,410,000 |
+| 1.5.4.2-A1 | Today's sessions, rosters, and attendance marking | MOB1 | 44 | 122,500 | 5,390,000 | | | | 5,390,000 |
+| 1.5.4.2-A2 | Score entry, teaching-hour sheet, and announcements | MOB1 | 36 | 122,500 | 4,410,000 | | | | 4,410,000 |
 | | **Work package total** | | **80** | | **9,800,000** | | | **0** | **9,800,000** |
 
 | Field | Content |
@@ -1787,14 +1759,14 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Agreement Information |  |
 
 *Page 1 of 1*
-#### 1.5.4.4 Offline behaviour and release build
+#### 1.5.4.3 Offline behaviour and release build
 
 | Field | Content |
 | --- | --- |
 | Project Title | Development and Deployment of a Learning Center Management Software |
 | Date Prepared | 23 September 2026 |
 | Work Package Name | Offline behaviour and release build |
-| Code of Accounts | 1.5.4.4 |
+| Code of Accounts | 1.5.4.3 |
 | Responsible Person | MOB1 |
 | Description of Work | Build the offline and degraded-state behaviour with the read-only last-synced view, and produce the store-ready release build with signing and internal distribution. |
 | Assumptions and Constraints | The application does not queue attendance or payments while offline; it shows the last synced data read-only, per charter 1.4. <mark>First-pass estimate, re-baselined at M1.</mark> |
@@ -1803,8 +1775,8 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 
 | ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1.5.4.4-A1 | Offline behaviour with last-synced view | MOB1 | 40 | 122,500 | 4,900,000 | | | | 4,900,000 |
-| 1.5.4.4-A2 | Store-ready release build and distribution | MOB1 | 26 | 122,500 | 3,185,000 | | | | 3,185,000 |
+| 1.5.4.3-A1 | Offline behaviour with last-synced view | MOB1 | 40 | 122,500 | 4,900,000 | | | | 4,900,000 |
+| 1.5.4.3-A2 | Store-ready release build and distribution | MOB1 | 26 | 122,500 | 3,185,000 | | | | 3,185,000 |
 | | **Work package total** | | **66** | | **8,085,000** | | | **0** | **8,085,000** |
 
 | Field | Content |
@@ -1815,42 +1787,42 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Agreement Information |  |
 
 *Page 1 of 1*
-#### 1.5.5.1 Iteration 2 code review and rework
+#### 1.5.4.4 Push notification integration
 
 | Field | Content |
 | --- | --- |
 | Project Title | Development and Deployment of a Learning Center Management Software |
 | Date Prepared | 23 September 2026 |
-| Work Package Name | Iteration 2 code review and rework |
-| Code of Accounts | 1.5.5.1 |
-| Responsible Person | QA1 |
-| Description of Work | Review the iteration 2 code against the design, the coding convention, and the money-path rules, and rework against the findings. The tuition and payroll code is reviewed by a developer who did not write it. |
-| Assumptions and Constraints | The money path carries the tightest acceptance rule in the charter, so it is reviewed here and again in the system test. <mark>First-pass estimate, re-baselined at M1.</mark> |
-| Milestones | 1. Iteration 2 review findings closed |
-| Due Dates | <mark>Mon 7 December 2026 to Fri 11 December 2026</mark> |
+| Work Package Name | Push notification integration |
+| Code of Accounts | 1.5.4.4 |
+| Responsible Person | MOB1 |
+| Description of Work | Add push as the third F09 channel: device registration, delivery of the F09 events, delivery state in the same log, and SMS fallback four hours after a failed push on tuition messages. |
+| Assumptions and Constraints | <mark>Push service on the free tier</mark>, per charter budget line 2. <mark>First-pass estimate, re-baselined at M1.</mark> |
+| Milestones | 1. Push channel demonstrated at the iteration 2 review |
+| Due Dates | <mark>Mon 30 November 2026 to Fri 11 December 2026</mark> |
 
 | ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1.5.5.1-A1 | Cross-review of the tuition and payroll code | DEV1 | 20 | 118,750 | 2,375,000 | | | | 2,375,000 |
-| 1.5.5.1-A2 | Review against the test plan and money path | QA1 | 40 | 93,750 | 3,750,000 | | | | 3,750,000 |
-| | **Work package total** | | **60** | | **6,125,000** | | | **0** | **6,125,000** |
+| 1.5.4.4-A1 | Device registration and push delivery | MOB1 | 40 | 122,500 | 4,900,000 | | | | 4,900,000 |
+| 1.5.4.4-A2 | Server-side channel selection and fallback timer | DEV3 | 20 | 118,750 | 2,375,000 | | | | 2,375,000 |
+| | **Work package total** | | **60** | | **7,275,000** | | | **0** | **7,275,000** |
 
 | Field | Content |
 | --- | --- |
-| Quality Requirements | No author reviews their own code; no finding on the money path is left open. |
-| Acceptance Criteria | Finding list closed before the M4 acceptance. |
-| Technical Information | Part of the charter response to risk R4, pairing on scheduling and tuition. |
+| Quality Requirements | Push delivery state is logged exactly as email and SMS are; the fallback timer is four hours. |
+| Acceptance Criteria | A failed push produces an SMS within four hours in the test log. |
+| Technical Information | This is what holds notification cost at the business case figure rather than the SMS-only figure. |
 | Agreement Information |  |
 
 *Page 1 of 1*
-#### 1.5.5.2 Iteration 2 testing, finance and administration
+#### 1.5.5.1 Iteration 2 testing, finance and administration
 
 | Field | Content |
 | --- | --- |
 | Project Title | Development and Deployment of a Learning Center Management Software |
 | Date Prepared | 23 September 2026 |
 | Work Package Name | Iteration 2 testing, finance and administration |
-| Code of Accounts | 1.5.5.2 |
+| Code of Accounts | 1.5.5.1 |
 | Responsible Person | QA1 |
 | Description of Work | Author the test cases for F06, F07, F10, and F11 and execute unit and integration testing on them, including the money-path exception cases. |
 | Assumptions and Constraints | No open defect of any severity is tolerated in the tuition, payment, or teaching-hour path. <mark>First-pass estimate, re-baselined at M1.</mark> |
@@ -1859,10 +1831,10 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 
 | ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1.5.5.2-A1 | Test case authoring for F06, F07, F10, F11 | QA1 | 12 | 93,750 | 1,125,000 | | | | 1,125,000 |
-| 1.5.5.2-A2 | Unit and integration execution | QA1 | 30 | 93,750 | 2,812,500 | | | | 2,812,500 |
-| 1.5.5.2-A3 | Money-path exception case execution | QA1 | 12 | 93,750 | 1,125,000 | | | | 1,125,000 |
-| 1.5.5.2-A4 | Defect logging and retest | QA1 | 8 | 93,750 | 750,000 | | | | 750,000 |
+| 1.5.5.1-A1 | Test case authoring for F06, F07, F10, F11 | QA1 | 12 | 93,750 | 1,125,000 | | | | 1,125,000 |
+| 1.5.5.1-A2 | Unit and integration execution | QA1 | 30 | 93,750 | 2,812,500 | | | | 2,812,500 |
+| 1.5.5.1-A3 | Money-path exception case execution | QA1 | 12 | 93,750 | 1,125,000 | | | | 1,125,000 |
+| 1.5.5.1-A4 | Defect logging and retest | QA1 | 8 | 93,750 | 750,000 | | | | 750,000 |
 | | **Work package total** | | **62** | | **5,812,500** | | | **0** | **5,812,500** |
 
 | Field | Content |
@@ -1873,42 +1845,14 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Agreement Information |  |
 
 *Page 1 of 1*
-#### 1.5.5.3 Iteration 2 acceptance, feature complete
-
-| Field | Content |
-| --- | --- |
-| Project Title | Development and Deployment of a Learning Center Management Software |
-| Date Prepared | 23 September 2026 |
-| Work Package Name | Iteration 2 acceptance, feature complete |
-| Code of Accounts | 1.5.5.3 |
-| Responsible Person | PM |
-| Description of Work | Demonstrate F06 to F12 to the customer, record the acceptance decision, and declare the system feature complete. |
-| Assumptions and Constraints | The M4 milestone releases the 30% payment tranche against the signed acceptance record. <mark>First-pass estimate, re-baselined at M1.</mark> |
-| Milestones | 1. M4 iteration 2 accepted, feature complete, F06 to F12; 2. D4 delivered |
-| Due Dates | <mark>Fri 11 December 2026; M4 on Fri 11 December 2026</mark> |
-
-| ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
-| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1.5.5.3-A1 | Demo preparation and delivery | PM | 30 | 162,500 | 4,875,000 | | | | 4,875,000 |
-| 1.5.5.3-A2 | Feature-complete walkthrough against F01 to F12 | QA1 | 20 | 93,750 | 1,875,000 | | | | 1,875,000 |
-| | **Work package total** | | **50** | | **6,750,000** | | | **0** | **6,750,000** |
-
-| Field | Content |
-| --- | --- |
-| Quality Requirements | Feature complete means every function is present and testable, not that every defect is closed. |
-| Acceptance Criteria | Signed acceptance record of D4. |
-| Technical Information |  |
-| Agreement Information | Acceptance record releases the M4 payment tranche. |
-
-*Page 1 of 1*
-#### 1.5.5.4 Iteration 2 testing, academic, notification, and mobile
+#### 1.5.5.2 Iteration 2 testing, academic, notification, and mobile
 
 | Field | Content |
 | --- | --- |
 | Project Title | Development and Deployment of a Learning Center Management Software |
 | Date Prepared | 23 September 2026 |
 | Work Package Name | Iteration 2 testing, academic, notification, and mobile |
-| Code of Accounts | 1.5.5.4 |
+| Code of Accounts | 1.5.5.2 |
 | Responsible Person | QA1 |
 | Description of Work | Execute unit and integration testing on F08, F09, and F12 on the web and on both mobile platforms, including their exception cases. |
 | Assumptions and Constraints | The application is tested on real devices, using the two test phones bought in 1.6.1.2. <mark>First-pass estimate, re-baselined at M1.</mark> |
@@ -1917,9 +1861,9 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 
 | ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1.5.5.4-A1 | Execution on web and both mobile platforms | QA1 | 30 | 93,750 | 2,812,500 | | | | 2,812,500 |
-| 1.5.5.4-A2 | Exception case execution | QA1 | 12 | 93,750 | 1,125,000 | | | | 1,125,000 |
-| 1.5.5.4-A3 | Defect logging and retest | QA1 | 8 | 93,750 | 750,000 | | | | 750,000 |
+| 1.5.5.2-A1 | Execution on web and both mobile platforms | QA1 | 30 | 93,750 | 2,812,500 | | | | 2,812,500 |
+| 1.5.5.2-A2 | Exception case execution | QA1 | 12 | 93,750 | 1,125,000 | | | | 1,125,000 |
+| 1.5.5.2-A3 | Defect logging and retest | QA1 | 8 | 93,750 | 750,000 | | | | 750,000 |
 | | **Work package total** | | **50** | | **4,687,500** | | | **0** | **4,687,500** |
 
 | Field | Content |
@@ -1928,6 +1872,62 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Acceptance Criteria | Feature-complete criteria met for F08, F09, and F12 at M4. |
 | Technical Information | Defects go into the single project defect log consolidated in 1.6.2.1. |
 | Agreement Information |  |
+
+*Page 1 of 1*
+#### 1.5.5.3 Iteration 2 code review and rework
+
+| Field | Content |
+| --- | --- |
+| Project Title | Development and Deployment of a Learning Center Management Software |
+| Date Prepared | 23 September 2026 |
+| Work Package Name | Iteration 2 code review and rework |
+| Code of Accounts | 1.5.5.3 |
+| Responsible Person | QA1 |
+| Description of Work | Review the iteration 2 code against the design, the coding convention, and the money-path rules, and rework against the findings. The tuition and payroll code is reviewed by a developer who did not write it. |
+| Assumptions and Constraints | The money path carries the tightest acceptance rule in the charter, so it is reviewed here and again in the system test. <mark>First-pass estimate, re-baselined at M1.</mark> |
+| Milestones | 1. Iteration 2 review findings closed |
+| Due Dates | <mark>Mon 7 December 2026 to Fri 11 December 2026</mark> |
+
+| ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
+| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 1.5.5.3-A1 | Cross-review of the tuition and payroll code | DEV1 | 20 | 118,750 | 2,375,000 | | | | 2,375,000 |
+| 1.5.5.3-A2 | Review against the test plan and money path | QA1 | 40 | 93,750 | 3,750,000 | | | | 3,750,000 |
+| | **Work package total** | | **60** | | **6,125,000** | | | **0** | **6,125,000** |
+
+| Field | Content |
+| --- | --- |
+| Quality Requirements | No author reviews their own code; no finding on the money path is left open. |
+| Acceptance Criteria | Finding list closed before the M4 acceptance. |
+| Technical Information | Part of the charter response to risk R4, pairing on scheduling and tuition. |
+| Agreement Information |  |
+
+*Page 1 of 1*
+#### 1.5.5.4 Iteration 2 acceptance, feature complete
+
+| Field | Content |
+| --- | --- |
+| Project Title | Development and Deployment of a Learning Center Management Software |
+| Date Prepared | 23 September 2026 |
+| Work Package Name | Iteration 2 acceptance, feature complete |
+| Code of Accounts | 1.5.5.4 |
+| Responsible Person | PM |
+| Description of Work | Demonstrate F06 to F12 to the customer, record the acceptance decision, and declare the system feature complete. |
+| Assumptions and Constraints | The M4 milestone releases the 30% payment tranche against the signed acceptance record. <mark>First-pass estimate, re-baselined at M1.</mark> |
+| Milestones | 1. M4 iteration 2 accepted, feature complete, F06 to F12; 2. D4 delivered |
+| Due Dates | <mark>Fri 11 December 2026; M4 on Fri 11 December 2026</mark> |
+
+| ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
+| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 1.5.5.4-A1 | Demo preparation and delivery | PM | 30 | 162,500 | 4,875,000 | | | | 4,875,000 |
+| 1.5.5.4-A2 | Feature-complete walkthrough against F01 to F12 | QA1 | 20 | 93,750 | 1,875,000 | | | | 1,875,000 |
+| | **Work package total** | | **50** | | **6,750,000** | | | **0** | **6,750,000** |
+
+| Field | Content |
+| --- | --- |
+| Quality Requirements | Feature complete means every function is present and testable, not that every defect is closed. |
+| Acceptance Criteria | Signed acceptance record of D4. |
+| Technical Information |  |
+| Agreement Information | Acceptance record releases the M4 payment tranche. |
 
 *Page 1 of 1*
 ### Phase 1.6 Quality Assurance and Test
@@ -1941,7 +1941,7 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Work Package Name | System test execution, web, end-to-end scenarios |
 | Code of Accounts | 1.6.1.1 |
 | Responsible Person | QA1 |
-| Description of Work | Execute the end-to-end system test of the web application across F01 to F12 on staging with migrated sample data, against the test plan accepted at M2. Exception behaviour is carried by 1.6.1.6. |
+| Description of Work | Execute the end-to-end system test of the web application across F01 to F12 on staging with migrated sample data, against the test plan accepted at M2. Exception behaviour is carried by 1.6.1.3. |
 | Assumptions and Constraints | System test starts once the system is feature complete at M4 and runs against staging, not against developer machines. <mark>First-pass estimate, re-baselined at M1.</mark> |
 | Milestones | 1. Web end-to-end test cycle complete |
 | Due Dates | <mark>Mon 14 December 2026 to Fri 18 December 2026</mark> |
@@ -1988,14 +1988,41 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Agreement Information |  |
 
 *Page 1 of 1*
-#### 1.6.1.3 Performance and capacity test
+#### 1.6.1.3 System test execution, web, exception and failure behaviour
+
+| Field | Content |
+| --- | --- |
+| Project Title | Development and Deployment of a Learning Center Management Software |
+| Date Prepared | 23 September 2026 |
+| Work Package Name | System test execution, web, exception and failure behaviour |
+| Code of Accounts | 1.6.1.3 |
+| Responsible Person | QA1 |
+| Description of Work | Execute the fourteen exception and failure cases of charter 1.1.5 against the web application on staging. |
+| Assumptions and Constraints | Exception behaviour is tested with the same weight as the functions themselves. <mark>First-pass estimate, re-baselined at M1.</mark> |
+| Milestones | 1. Exception behaviour test cycle complete |
+| Due Dates | <mark>Mon 14 December 2026 to Fri 18 December 2026</mark> |
+
+| ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
+| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 1.6.1.3-A1 | Exception and failure behaviour execution | QA1 | 36 | 93,750 | 3,375,000 | | | | 3,375,000 |
+| | **Work package total** | | **36** | | **3,375,000** | | | **0** | **3,375,000** |
+
+| Field | Content |
+| --- | --- |
+| Quality Requirements | Every one of the fourteen exception cases is executed, not a sample of them. |
+| Acceptance Criteria | Exit criteria of the test plan met for the exception behaviour. |
+| Technical Information | The cases come from the catalogue written in 1.2.1.4. |
+| Agreement Information |  |
+
+*Page 1 of 1*
+#### 1.6.1.4 Performance and capacity test
 
 | Field | Content |
 | --- | --- |
 | Project Title | Development and Deployment of a Learning Center Management Software |
 | Date Prepared | 23 September 2026 |
 | Work Package Name | Performance and capacity test |
-| Code of Accounts | 1.6.1.3 |
+| Code of Accounts | 1.6.1.4 |
 | Responsible Person | QA1 |
 | Description of Work | Load test the staff screens, the parent portal, the term report, and the application screens at the stated concurrency and data volume, and report the 95th percentile against each threshold. |
 | Assumptions and Constraints | <mark>52 concurrent staff users, 300 concurrent parent sessions, 5,000 student records, 200 classes per term, and 3 years of history</mark>, from charter criteria A02 and A03. <mark>First-pass estimate, re-baselined at M1.</mark> |
@@ -2004,8 +2031,8 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 
 | ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1.6.1.3-A1 | Load and capacity test execution | QA1 | 40 | 93,750 | 3,750,000 | | | | 3,750,000 |
-| 1.6.1.3-A2 | Test data generation at the stated volumes | DEV3 | 20 | 118,750 | 2,375,000 | | | | 2,375,000 |
+| 1.6.1.4-A1 | Load and capacity test execution | QA1 | 40 | 93,750 | 3,750,000 | | | | 3,750,000 |
+| 1.6.1.4-A2 | Test data generation at the stated volumes | DEV3 | 20 | 118,750 | 2,375,000 | | | | 2,375,000 |
 | | **Work package total** | | **60** | | **6,125,000** | | | **0** | **6,125,000** |
 
 | Field | Content |
@@ -2016,14 +2043,14 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Agreement Information |  |
 
 *Page 1 of 1*
-#### 1.6.1.4 Security test
+#### 1.6.1.5 Security test
 
 | Field | Content |
 | --- | --- |
 | Project Title | Development and Deployment of a Learning Center Management Software |
 | Date Prepared | 23 September 2026 |
 | Work Package Name | Security test |
-| Code of Accounts | 1.6.1.4 |
+| Code of Accounts | 1.6.1.5 |
 | Responsible Person | QA1 |
 | Description of Work | Test endpoint authorisation against the role matrix, password storage, HTTPS-only transport, consent recording, token expiry, and device caching, per charter criterion A04. |
 | Assumptions and Constraints | A finding here blocks UAT entry rather than being carried into the warranty month. <mark>First-pass estimate, re-baselined at M1.</mark> |
@@ -2032,26 +2059,26 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 
 | ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1.6.1.4-A1 | Authorisation and transport testing | QA1 | 20 | 93,750 | 1,875,000 | | | | 1,875,000 |
-| 1.6.1.4-A2 | Credential, consent, token, and storage checks | DEV3 | 20 | 118,750 | 2,375,000 | | | | 2,375,000 |
+| 1.6.1.5-A1 | Authorisation and transport testing | QA1 | 20 | 93,750 | 1,875,000 | | | | 1,875,000 |
+| 1.6.1.5-A2 | Credential, consent, token, and storage checks | DEV3 | 20 | 118,750 | 2,375,000 | | | | 2,375,000 |
 | | **Work package total** | | **40** | | **4,250,000** | | | **0** | **4,250,000** |
 
 | Field | Content |
 | --- | --- |
 | Quality Requirements | Acceptance criterion A04; no unauthorised access path found. |
 | Acceptance Criteria | Report reviewed and accepted before UAT entry at M5. |
-| Technical Information | The audit log built in 1.5.3.2 is checked here for tamper resistance. |
+| Technical Information | The audit log built in 1.5.3.3 is checked here for tamper resistance. |
 | Agreement Information |  |
 
 *Page 1 of 1*
-#### 1.6.1.5 Defect fixing, scheduling, reporting, and administration
+#### 1.6.1.6 Defect fixing, scheduling, reporting, and administration
 
 | Field | Content |
 | --- | --- |
 | Project Title | Development and Deployment of a Learning Center Management Software |
 | Date Prepared | 23 September 2026 |
 | Work Package Name | Defect fixing, scheduling, reporting, and administration |
-| Code of Accounts | 1.6.1.5 |
+| Code of Accounts | 1.6.1.6 |
 | Responsible Person | DEV1 |
 | Description of Work | Fix the system, performance, and security test defects in the scheduling, reporting, and administration areas, which this developer owns. |
 | Assumptions and Constraints | Sized from the defect rate assumed in the test plan and the first thing re-estimated if the rate differs. <mark>First-pass estimate, re-baselined at M1.</mark> |
@@ -2060,7 +2087,7 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 
 | ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1.6.1.5-A1 | Defect fixing in scheduling, reporting, administration | DEV1 | 80 | 118,750 | 9,500,000 | | | | 9,500,000 |
+| 1.6.1.6-A1 | Defect fixing in scheduling, reporting, administration | DEV1 | 80 | 118,750 | 9,500,000 | | | | 9,500,000 |
 | | **Work package total** | | **80** | | **9,500,000** | | | **0** | **9,500,000** |
 
 | Field | Content |
@@ -2068,33 +2095,6 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Quality Requirements | No fix is signed off by the person who wrote it; verification runs in 1.6.1.8. |
 | Acceptance Criteria | UAT entry criteria met for these areas at M5. |
 | Technical Information |  |
-| Agreement Information |  |
-
-*Page 1 of 1*
-#### 1.6.1.6 System test execution, web, exception and failure behaviour
-
-| Field | Content |
-| --- | --- |
-| Project Title | Development and Deployment of a Learning Center Management Software |
-| Date Prepared | 23 September 2026 |
-| Work Package Name | System test execution, web, exception and failure behaviour |
-| Code of Accounts | 1.6.1.6 |
-| Responsible Person | QA1 |
-| Description of Work | Execute the fourteen exception and failure cases of charter 1.1.5 against the web application on staging. |
-| Assumptions and Constraints | Exception behaviour is tested with the same weight as the functions themselves. <mark>First-pass estimate, re-baselined at M1.</mark> |
-| Milestones | 1. Exception behaviour test cycle complete |
-| Due Dates | <mark>Mon 14 December 2026 to Fri 18 December 2026</mark> |
-
-| ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
-| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1.6.1.6-A1 | Exception and failure behaviour execution | QA1 | 36 | 93,750 | 3,375,000 | | | | 3,375,000 |
-| | **Work package total** | | **36** | | **3,375,000** | | | **0** | **3,375,000** |
-
-| Field | Content |
-| --- | --- |
-| Quality Requirements | Every one of the fourteen exception cases is executed, not a sample of them. |
-| Acceptance Criteria | Exit criteria of the test plan met for the exception behaviour. |
-| Technical Information | The cases come from the catalogue written in 1.2.1.4. |
 | Agreement Information |  |
 
 *Page 1 of 1*
@@ -2134,7 +2134,7 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Work Package Name | Defect fixing, catalog, assessment, notification, and platform, with regression |
 | Code of Accounts | 1.6.1.8 |
 | Responsible Person | DEV3 |
-| Description of Work | Fix the defects in the catalog, assessment, notification, and platform areas, and run the regression cycle that verifies every fix batch from 1.6.1.5, 1.6.1.7, and this package. |
+| Description of Work | Fix the defects in the catalog, assessment, notification, and platform areas, and run the regression cycle that verifies every fix batch from 1.6.1.6, 1.6.1.7, and this package. |
 | Assumptions and Constraints | The regression cycle is run by the QA engineer, never by the developer who wrote the fix. <mark>First-pass estimate, re-baselined at M1.</mark> |
 | Milestones | 1. Regression cycle clean at UAT entry |
 | Due Dates | <mark>Mon 14 December 2026 to Fri 18 December 2026</mark> |
@@ -2149,7 +2149,7 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | --- | --- |
 | Quality Requirements | No open Critical or High defect, and none of any severity in the money path. |
 | Acceptance Criteria | UAT entry criteria met at M5. |
-| Technical Information | The regression suite is handed over with the source code in 1.8.3.1. |
+| Technical Information | The regression suite is handed over with the source code in 1.8.3.2. |
 | Agreement Information |  |
 
 *Page 1 of 1*
@@ -2178,7 +2178,7 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | --- | --- |
 | Quality Requirements | Every function and every exception case has at least one test case in the set. |
 | Acceptance Criteria | Signed acceptance record of D5, with the test set attached. |
-| Technical Information | Test case authoring itself sits in 1.4.3.2 and 1.5.5.2, next to the code it covers. |
+| Technical Information | Test case authoring itself sits in 1.4.3.1 and 1.5.5.1, next to the code it covers. |
 | Agreement Information | Signed test set is attached to the acceptance record of D5. |
 
 *Page 1 of 1*
@@ -2479,42 +2479,14 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Agreement Information |  |
 
 *Page 1 of 1*
-#### 1.8.3.1 Source code, database scripts, and technical documentation handover
-
-| Field | Content |
-| --- | --- |
-| Project Title | Development and Deployment of a Learning Center Management Software |
-| Date Prepared | 23 September 2026 |
-| Work Package Name | Source code, database scripts, and technical documentation handover |
-| Code of Accounts | 1.8.3.1 |
-| Responsible Person | DEV2 |
-| Description of Work | Hand over the source code, the database scripts, the schema and API documentation, the regression suite, the coding convention, and repository access, so that the center is not locked to the supplier after the warranty. |
-| Assumptions and Constraints | Handover is to the center's System Administrator and is complete at go-live, not at closeout. <mark>First-pass estimate, re-baselined at M1.</mark> |
-| Milestones | 1. D9 handover complete |
-| Due Dates | <mark>Mon 28 December 2026 to Tue 5 January 2027</mark> |
-
-| ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
-| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1.8.3.1-A1 | Handover pack assembly and repository transfer | DEV2 | 20 | 118,750 | 2,375,000 | | | | 2,375,000 |
-| 1.8.3.1-A2 | Handover walkthrough with the administrator | PM | 4 | 162,500 | 650,000 | | | | 650,000 |
-| | **Work package total** | | **24** | | **3,025,000** | | | **0** | **3,025,000** |
-
-| Field | Content |
-| --- | --- |
-| Quality Requirements | Handover checklist complete; nothing on it is marked to follow. |
-| Acceptance Criteria | Signed acceptance record of D9. |
-| Technical Information | Signing keys for the mobile application are handed over separately in 1.9.1.1. |
-| Agreement Information | Handover record filed with the supplier contract. |
-
-*Page 1 of 1*
-#### 1.8.3.2 User acceptance testing execution and sign-off
+#### 1.8.3.1 User acceptance testing execution and sign-off
 
 | Field | Content |
 | --- | --- |
 | Project Title | Development and Deployment of a Learning Center Management Software |
 | Date Prepared | 23 September 2026 |
 | Work Package Name | User acceptance testing execution and sign-off |
-| Code of Accounts | 1.8.3.2 |
+| Code of Accounts | 1.8.3.1 |
 | Responsible Person | QA1 |
 | Description of Work | Run user acceptance testing with the business owners against the test set agreed at M5, record the result per test case, and obtain the sign-off that gates go-live. |
 | Assumptions and Constraints | Acceptance is measured against the agreed set: at least 99% of cases passed and no open Critical or High defect. <mark>First-pass estimate, re-baselined at M1.</mark> |
@@ -2523,8 +2495,8 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 
 | ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1.8.3.2-A1 | UAT execution with the business owners | QA1 | 24 | 93,750 | 2,250,000 | | | | 2,250,000 |
-| 1.8.3.2-A2 | Acceptance decision and sign-off with sponsor | PM | 8 | 162,500 | 1,300,000 | | | | 1,300,000 |
+| 1.8.3.1-A1 | UAT execution with the business owners | QA1 | 24 | 93,750 | 2,250,000 | | | | 2,250,000 |
+| 1.8.3.1-A2 | Acceptance decision and sign-off with sponsor | PM | 8 | 162,500 | 1,300,000 | | | | 1,300,000 |
 | | **Work package total** | | **32** | | **3,550,000** | | | **0** | **3,550,000** |
 
 | Field | Content |
@@ -2533,6 +2505,34 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | Acceptance Criteria | Sponsor signs the acceptance record; a failed UAT puts the three charter options to the sponsor within two working days. |
 | Technical Information | This is the Validate Scope point of the project. |
 | Agreement Information | Sign-off releases the final 25% payment tranche. |
+
+*Page 1 of 1*
+#### 1.8.3.2 Source code, database scripts, and technical documentation handover
+
+| Field | Content |
+| --- | --- |
+| Project Title | Development and Deployment of a Learning Center Management Software |
+| Date Prepared | 23 September 2026 |
+| Work Package Name | Source code, database scripts, and technical documentation handover |
+| Code of Accounts | 1.8.3.2 |
+| Responsible Person | DEV2 |
+| Description of Work | Hand over the source code, the database scripts, the schema and API documentation, the regression suite, the coding convention, and repository access, so that the center is not locked to the supplier after the warranty. |
+| Assumptions and Constraints | Handover is to the center's System Administrator and is complete at go-live, not at closeout. <mark>First-pass estimate, re-baselined at M1.</mark> |
+| Milestones | 1. D9 handover complete |
+| Due Dates | <mark>Mon 28 December 2026 to Tue 5 January 2027</mark> |
+
+| ID | Activity | Resource | Labor Hours | Labor Rate | Labor Total | Material Units | Material Cost | Material Total | Total Cost |
+| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| 1.8.3.2-A1 | Handover pack assembly and repository transfer | DEV2 | 20 | 118,750 | 2,375,000 | | | | 2,375,000 |
+| 1.8.3.2-A2 | Handover walkthrough with the administrator | PM | 4 | 162,500 | 650,000 | | | | 650,000 |
+| | **Work package total** | | **24** | | **3,025,000** | | | **0** | **3,025,000** |
+
+| Field | Content |
+| --- | --- |
+| Quality Requirements | Handover checklist complete; nothing on it is marked to follow. |
+| Acceptance Criteria | Signed acceptance record of D9. |
+| Technical Information | Signing keys for the mobile application are handed over separately in 1.9.1.1. |
+| Agreement Information | Handover record filed with the supplier contract. |
 
 *Page 1 of 1*
 ### Phase 1.9 Mobile Application Release
@@ -2594,7 +2594,7 @@ parallel inside them. Levelling the effort across the calendar is Develop Schedu
 | --- | --- |
 | Quality Requirements | Acceptance criterion A12; the declarations match what the application collects and every F12 function is within three taps in the published build. |
 | Acceptance Criteria | Signed acceptance record of D11. |
-| Technical Information | The build submitted is the release build produced in 1.5.4.4. |
+| Technical Information | The build submitted is the release build produced in 1.5.4.3. |
 | Agreement Information | Applications published under the center's store accounts. |
 
 *Page 1 of 1*

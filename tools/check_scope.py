@@ -33,7 +33,7 @@ EXPECTED_PACKAGES = 78
 # of docs/wbs_notes.md. Every other work package must sit inside the band.
 MIN_PACKAGE_HOURS = 8
 MAX_PACKAGE_HOURS = 80
-LEVEL_OF_EFFORT = ("1.1.1.3", "1.10.1.1")
+LEVEL_OF_EFFORT = ("1.1.1.2", "1.10.1.1")
 
 CODE = re.compile(r"^\d+(?:\.\d+)*$")
 NUM = re.compile(r"^[\d,]+$")

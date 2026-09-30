@@ -21,7 +21,7 @@ Kept from the current dictionary dates, as relations rather than dates:
     package is placed last and finishes with the last work due at its gate.
 
 Level of effort:
-    1.1.1.3 and 1.1.1.4 run from M0 to M7 and are spread evenly over every working day. Warranty
+    1.1.1.2 and 1.1.1.3 run from M0 to M7 and are spread evenly over every working day. Warranty
     support, 1.10.1.1, is spread evenly over the warranty month and     keeps its estimated hours.
 
 Usage:
