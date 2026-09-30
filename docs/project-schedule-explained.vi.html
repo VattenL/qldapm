@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lịch dự án 2.18</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  color-scheme: light;
+  --bg: #f3f5f8;
+  --surface: #fbfcfd;
+  --ink: #18202c;
+  --ink-2: #414b5a;
+  --muted: #697386;
+  --rule: #d9dee6;
+  --rule-soft: #e8ecf1;
+  --accent: #1f5bb8;
+  --mark: #fff1a8;
+  --charter: #eb6834;
+  --forecast: #2a78d6;
+  --connector: #b9c1cc;
+  --code-bg: #eaeef3;
+  --sans: "Be Vietnam Pro", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #0f1319;
+    --surface: #151a22;
+    --ink: #e7ebf1;
+    --ink-2: #c3cad5;
+    --muted: #97a1b1;
+    --rule: #2b323d;
+    --rule-soft: #1f252e;
+    --accent: #86aaf0;
+    --mark: #5a4d12;
+    --charter: #d95926;
+    --forecast: #3987e5;
+    --connector: #4a5361;
+    --code-bg: #1e242d;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0f1319;
+  --surface: #151a22;
+  --ink: #e7ebf1;
+  --ink-2: #c3cad5;
+  --muted: #97a1b1;
+  --rule: #2b323d;
+  --rule-soft: #1f252e;
+  --accent: #86aaf0;
+  --mark: #5a4d12;
+  --charter: #d95926;
+  --forecast: #3987e5;
+  --connector: #4a5361;
+  --code-bg: #1e242d;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 16px/1.65 var(--sans);
+  padding-inline: 16px;
+  padding-block: 0 64px;
+}
+.wrap { max-width: 880px; margin: 0 auto; }
+header.top {
+  padding-block: 48px 28px;
+  border-bottom: 1px solid var(--rule);
+  display: grid;
+  gap: 14px;
+}
+.eyebrow {
+  font: 500 12px/1.3 var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+h1 {
+  font: 700 clamp(30px, 5vw, 44px)/1.12 var(--sans);
+  letter-spacing: -0.02em;
+  margin: 0;
+  text-wrap: balance;
+}
+.lede { font-size: 18px; color: var(--ink-2); max-width: 64ch; margin: 0; }
+h2 {
+  font: 700 24px/1.25 var(--sans);
+  letter-spacing: -0.01em;
+  margin: 0;
+  text-wrap: balance;
+}
+h3 { font: 600 17px/1.35 var(--sans); margin: 0; }
+section { padding-block: 40px 8px; display: grid; gap: 16px; }
+section > p, section > ul, section > ol { margin: 0; max-width: 68ch; }
+p { margin: 0; }
+code, .mono { font-family: var(--mono); font-size: 0.88em; }
+code { background: var(--code-bg); padding: 1px 5px; border-radius: 4px; }
+mark { background: var(--mark); color: inherit; padding: 0 2px; border-radius: 2px; }
+a { color: var(--accent); }
+a:focus-visible, [tabindex]:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+.fact { background: var(--surface); padding: 16px 18px; display: grid; gap: 4px; align-content: start; }
+.fact .k { font: 500 12px/1.3 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.fact .v { font: 600 22px/1.2 var(--sans); font-variant-numeric: tabular-nums; }
+.fact .s { font-size: 14px; color: var(--ink-2); }
+
+.steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; counter-reset: step; max-width: 72ch; }
+.steps li {
+  counter-increment: step;
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 4px 14px;
+  padding-block: 14px;
+  border-top: 1px solid var(--rule-soft);
+}
+.steps li::before {
+  content: counter(step, decimal-leading-zero);
+  font: 500 14px/1.6 var(--mono);
+  color: var(--accent);
+  grid-row: span 2;
+}
+.steps li p { color: var(--ink-2); }
+
+.tbl-wrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: 8px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+th, td { padding: 9px 12px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--rule-soft); }
+th { font: 600 12px/1.3 var(--mono); letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); background: var(--surface); }
+tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+td.date { white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+.gantt-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+.col-card { border: 1px solid var(--rule); border-radius: 8px; padding: 14px 16px; background: var(--surface); display: grid; gap: 6px; align-content: start; }
+.col-card .name { font: 500 14px/1.3 var(--mono); color: var(--accent); }
+.col-card p { font-size: 15px; color: var(--ink-2); }
+
+.figure { border: 1px solid var(--rule); border-radius: 8px; background: var(--surface); padding: 16px 16px 12px; display: grid; gap: 10px; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 14px; color: var(--ink-2); align-items: center; }
+.legend span { display: inline-flex; align-items: center; gap: 8px; }
+.chart-scroll { overflow-x: auto; position: relative; }
+.chart-scroll svg { display: block; width: 100%; min-width: 600px; height: auto; }
+.caption { font-size: 13.5px; color: var(--muted); }
+.tip {
+  position: absolute;
+  pointer-events: none;
+  background: var(--ink);
+  color: var(--surface);
+  font: 400 13px/1.45 var(--sans);
+  padding: 8px 10px;
+  border-radius: 6px;
+  max-width: 260px;
+  box-shadow: 0 4px 14px rgb(0 0 0 / 0.18);
+}
+.tip b { font-weight: 600; }
+
+.note {
+  border-left: 3px solid var(--accent);
+  padding: 4px 0 4px 16px;
+  color: var(--ink-2);
+  max-width: 68ch;
+}
+.cols2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+.cols2 > div { display: grid; gap: 8px; align-content: start; }
+ul.plain { padding-left: 20px; margin: 0; display: grid; gap: 6px; }
+footer { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--rule); font-size: 14px; color: var(--muted); }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <div class="eyebrow">Form 2.18 · PMBOK 6, mục 6.5 Develop Schedule · tab 4 của báo cáo</div>
+  <h1>Lịch dự án 2.18: lịch được làm ra thế nào và đọc ra sao</h1>
+  <p class="lede">Tab 4 của báo cáo là Project Schedule của dự án <i>Development and Deployment of a Learning Center Management Software</i>. Lịch này không gõ tay: một công cụ lấy từng activity trong WBS dictionary, xếp vào giờ làm việc của từng người sao cho không ai quá 8 giờ một ngày, rồi vẽ ra Gantt chart và milestone chart theo mẫu của sách.</p>
+  <div class="facts" aria-label="Các con số chính">
+    <div class="fact"><span class="k">Go-live (M6)</span><span class="v"><mark>17/02/2027</mark></span><span class="s">Charter đặt 05/01/2027, trễ 31 ngày làm việc</span></div>
+    <div class="fact"><span class="k">Closeout (M7)</span><span class="v"><mark>22/03/2027</mark></span><span class="s">Charter đặt 05/02/2027</span></div>
+    <div class="fact"><span class="k">Khối lượng</span><span class="v">4,400 giờ</span><span class="s">78 work package, 183 activity, không đổi estimate nào</span></div>
+    <div class="fact"><span class="k">Quá tải</span><span class="v">0 ngày</span><span class="s">Không ai quá 8 giờ/ngày hay 40 giờ/tuần</span></div>
+  </div>
+</header>
+
+<section id="tab4">
+  <h2>Tab 4 gồm những gì</h2>
+  <p>Form 2.18 trong sách (trang 78 đến 81) là hai trang hình: trang 1 là Gantt chart, trang 2 là milestone chart. Tab 4 giữ đúng hai trang đó.</p>
+  <div class="cols2">
+    <div>
+      <h3>PROJECT SCHEDULE, page 1 of 2</h3>
+      <p>Gantt chart chia thành 4 ảnh vì có 304 dòng: 8 dòng milestone, 35 dòng tổng (dự án, 10 phase, 24 control account), 78 work package và 183 activity. Dưới ảnh là bảng cùng nội dung để đọc và tra.</p>
+    </div>
+    <div>
+      <h3>PROJECT SCHEDULE, page 2 of 2</h3>
+      <p>Milestone chart M0 đến M7: mỗi mốc có ngày charter (kim cương rỗng) và ngày dự báo sau khi xếp lịch (kim cương đặc), kèm bảng.</p>
+    </div>
+  </div>
+  <p class="note">Hai phần trước đây nằm cuối tab 4 là <b>Resource loading after levelling</b> và <b>4.2 Change Request</b>. Chúng đã được chuyển sang cuối tab "Thẻ 2" (tab nháp), vì yêu cầu lần này chỉ cần Gantt chart. Trang này vẫn giải thích cả hai, vì chúng là bằng chứng và hệ quả của lịch.</p>
+</section>
+
+<section id="inputs">
+  <h2>Lịch lấy dữ liệu từ đâu</h2>
+  <p>Mọi con số trong lịch đều đến từ hai tài liệu đã có, không có gì nhập tay:</p>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Lấy gì</th><th>Từ đâu</th></tr></thead>
+      <tbody>
+        <tr><td>Activity, người làm, số giờ</td><td>Bảng activity của 78 sheet WBS dictionary (mục 3.3). Ví dụ <code>1.2.1.1-A1</code> Workshops with the seven roles, PM, 24 giờ.</td></tr>
+        <tr><td>Gate mở và gate phải xong của mỗi gói</td><td>Trường Due Dates của từng sheet, so với ngày M0 đến M7.</td></tr>
+        <tr><td>Ngày M0 đến M7</td><td>Summary milestone schedule của charter (mục 2).</td></tr>
+        <tr><td>Rate theo người</td><td>Rate mix của charter, 160 giờ/tháng: PM 162,500; developer 118,750; QA 93,750; mobile 122,500 VND/giờ.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Công cụ là <code>tools/level.py</code> (xếp lịch) và <code>tools/schedule.py</code> (vẽ Gantt, milestone chart, histogram và viết file <code>docs/forms/2-18-project-schedule.en.md</code>). Muốn đổi lịch thì sửa tài liệu nguồn rồi chạy lại, không sửa tay file kết quả.</p>
+</section>
+
+<section id="method">
+  <h2>Cách xếp lịch</h2>
+  <p>Hai kỹ thuật của PMBOK 6 mục 6.5.2 được dùng: resource leveling (6.5.2.3) và fast tracking (6.5.2.6). Không dùng crashing và không cắt estimate. Các bước theo đúng thứ tự công cụ chạy:</p>
+  <ol class="steps">
+    <li><h3>Dựng lịch làm việc</h3><p>Tối đa 8 giờ một ngày làm việc, bỏ thứ Bảy, Chủ nhật và ngày 01/01/2027. Tết Nguyên đán 2027 không có trong lịch, vì charter chỉ ghi ngày bắt đầu (06/02/2027) mà không ghi kéo dài bao lâu (assumption 8).</p></li>
+    <li><h3>Giữ lại quan hệ, không giữ ngày</h3><p>Mỗi gói giữ gate mở ra nó và gate nó phải xong trước, lấy từ Due Dates. Trong cùng một control account, gói nào xong trước khi gói kia bắt đầu thì vẫn đi trước. Ngày cụ thể thì được xếp lại.</p></li>
+    <li><h3>Xếp từng gói theo thứ tự ưu tiên</h3><p>Gói kickoff (giữ M0) đi đầu. Sau đó theo gate mở, rồi theo gate phải xong, rồi theo ngày bắt đầu trong dictionary. Gói quản trị có float thì nhường cho việc quyết định gate. Gói nghiệm thu (gói "giữ" một gate) xếp sau cùng và kết thúc cùng lúc với việc cuối cùng của gate đó.</p></li>
+    <li><h3>Chia activity cho người thứ hai khi xong sớm hơn</h3><p>Người phụ nhận tối đa một nửa activity. Developer giúp nhau và giúp QA1; DEV3 giúp MOB1; QA1 hoặc DEV3 giúp PM phần requirement, đúng như response của charter cho risk R9. Gói quản trị (1.1) và gói nghiệm thu không bao giờ chia. Kết quả: 97 activity được chia, dòng của chúng ghi cả hai người kèm số giờ.</p></li>
+    <li><h3>Fast tracking tối đa 5 ngày</h3><p>Một gói được bắt đầu sớm tới 5 ngày làm việc trước gate mở ra nó. Sách ghi rõ cách này có thể gây rework, và change request cũng nhắc lại điều đó.</p></li>
+    <li><h3>Gate dịch theo công việc</h3><p>M0 cố định. Mỗi gate sau rơi vào ngày việc cuối cùng đến hạn ở gate đó kết thúc. M7 bằng M6 cộng đủ 31 ngày của tháng bảo hành đầu tiên, hoặc muộn hơn nếu việc closeout kéo dài.</p></li>
+    <li><h3>Việc level-of-effort trải đều</h3><p>1.1.1.3 (weekly status) và 1.1.1.4 (risk, issue, change control) trải đều mọi ngày làm việc từ M0 đến M7. Warranty support 1.10.1.1 trải đều trong tháng bảo hành và giữ nguyên số giờ ước tính.</p></li>
+  </ol>
+</section>
+
+<section id="gantt">
+  <h2>Đọc Gantt chart</h2>
+  <div class="gantt-cols">
+    <div class="col-card"><span class="name">ID</span><p>Số thứ tự dòng, 1 đến 304, như ID của Microsoft Project.</p></div>
+    <div class="col-card"><span class="name">WBS</span><p>Mã WBS. Dòng in đậm là tổng (phase, control account, work package). Mã có đuôi <code>-A1</code>, <code>-A2</code> là activity của work package đó. 8 dòng đầu là milestone nên để trống.</p></div>
+    <div class="col-card"><span class="name">Task Name</span><p>Tên phase, control account, work package hoặc activity, thụt lề theo cấp.</p></div>
+    <div class="col-card"><span class="name">Duration</span><p>Số ngày làm việc từ Start đến Finish. Milestone là 0 days. Đây là thời gian lịch, không phải số giờ công.</p></div>
+    <div class="col-card"><span class="name">Start, Finish</span><p>Ngày dự báo sau khi xếp lịch, tô vàng theo quy ước của bài: là dự báo, chưa được sponsor duyệt.</p></div>
+    <div class="col-card"><span class="name">Resource Name</span><p>Người làm. Activity được chia thì ghi cả hai người kèm giờ, ví dụ <span class="mono">PM 6.5 h, QA1 3.5 h</span>.</p></div>
+  </div>
+  <p>Phần hình bên phải: thanh đen có móc hai đầu là dòng tổng, thanh xanh là activity, hình kim cương là milestone. Trục trên chia theo tháng và theo tuần. Không có mũi tên phụ thuộc: activity list (2.12) và network diagram (2.15) chưa được lập, nên quan hệ duy nhất được giữ là gate và thứ tự trong control account (bước 02).</p>
+</section>
+
+<section id="milestones">
+  <h2>Milestone chart: charter và dự báo</h2>
+  <p>Mỗi mốc có hai ngày. Khoảng cách giữa hai kim cương là độ trễ, tính bằng ngày làm việc. M0 cố định nên chỉ có một ngày.</p>
+  <div class="figure">
+    <div class="legend" aria-hidden="true">
+      <span><svg width="16" height="16" viewBox="-8 -8 16 16"><path d="M0,-6 L6,0 L0,6 L-6,0 Z" fill="var(--surface)" stroke="var(--charter)" stroke-width="2"/></svg>Ngày trong charter</span>
+      <span><svg width="16" height="16" viewBox="-8 -8 16 16"><path d="M0,-6 L6,0 L0,6 L-6,0 Z" fill="var(--forecast)"/></svg>Dự báo sau khi xếp lịch</span>
+    </div>
+    <div class="chart-scroll" id="chart-host">
+      <svg id="ms-chart" role="img" aria-labelledby="ms-title" viewBox="0 0 760 330">
+        <title id="ms-title">Ngày charter và ngày dự báo của các mốc M0 đến M7, từ tháng 9/2026 đến tháng 4/2027</title>
+      </svg>
+      <div class="tip" id="tip" hidden></div>
+    </div>
+    <p class="caption">Rê chuột hoặc dùng phím Tab lên từng kim cương để xem ngày. Bảng bên dưới có đủ số liệu.</p>
+  </div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Mốc</th><th>Nội dung</th><th>Charter</th><th>Dự báo</th><th class="num">Trễ (ngày LV)</th></tr></thead>
+      <tbody id="ms-table"></tbody>
+    </table>
+  </div>
+</section>
+
+<section id="why">
+  <h2>Vì sao ngày bị dịch</h2>
+  <p>Ngày trong charter không đủ người để làm. Nếu trải estimate đúng theo ngày của dictionary thì có 32 person-week vượt 40 giờ. Nặng nhất là QA1 với 276 giờ trong tuần 14/12/2026, và PM với 124 giờ trong tuần 28/09/2026. Khi xếp lại để ai cũng trong 40 giờ/tuần thì ngày kết thúc dịch 31 ngày làm việc, dù đã chia việc và fast tracking.</p>
+  <p>Nút thắt là PM, người cũng kiêm business analyst: kickoff, project management plan và ít nhất một nửa phần requirement dồn khoảng 260 giờ trước M1. Đây chính là risk R9 của charter. M5 dịch nhiều nhất (35 ngày làm việc), vì system test giờ mới có đủ thời gian cho số giờ của nó. Theo charter, system test chỉ có một tuần cho 556 giờ.</p>
+  <p class="note">Lịch này <b>chưa phải baseline</b>. Risk R8 của charter bắt buộc báo sponsor khi go-live dự báo trễ quá 15/01/2027. Change request (form 3.3, nay ở tab nháp) là bước báo đó: đề nghị dời mốc và thêm khoảng <mark>152,000,000 VND</mark> nhân sự (1.55 person-month). Cho tới khi sponsor quyết, charter và dictionary giữ nguyên ngày cũ.</p>
+</section>
+
+<section id="loading">
+  <h2>Bằng chứng: tải theo người sau khi xếp lịch</h2>
+  <p>Bảng này nằm ngoài form in sẵn. Nó chứng minh việc xếp lịch đúng: tuần nặng nhất của mỗi người đúng 40 giờ, không vượt.</p>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Người</th><th class="num">Giờ đã xếp</th><th class="num">Số tuần có việc</th><th>Tuần cao nhất</th><th class="num">Giờ tuần đó</th></tr></thead>
+      <tbody>
+        <tr><td>PM</td><td class="num">655.1</td><td class="num">28</td><td class="date">14/09/2026</td><td class="num">40</td></tr>
+        <tr><td>DEV1</td><td class="num">874</td><td class="num">26</td><td class="date">14/09/2026</td><td class="num">40</td></tr>
+        <tr><td>DEV2</td><td class="num">920</td><td class="num">26</td><td class="date">14/09/2026</td><td class="num">40</td></tr>
+        <tr><td>DEV3</td><td class="num">857.4</td><td class="num">26</td><td class="date">14/09/2026</td><td class="num">40</td></tr>
+        <tr><td>QA1</td><td class="num">769.5</td><td class="num">27</td><td class="date">14/09/2026</td><td class="num">40</td></tr>
+        <tr><td>MOB1</td><td class="num">324</td><td class="num">11</td><td class="date">09/11/2026</td><td class="num">40</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Tổng là 4,400 giờ, bằng đúng estimate của dictionary. Giờ của từng người khác với phân bổ ban đầu (PM 800, mỗi developer 800, QA 800, mobile 400), vì người phụ đã nhận một phần activity của người khác.</p>
+</section>
+
+<section id="limits">
+  <h2>Những điều cần biết khi dùng lịch này</h2>
+  <ul class="plain">
+    <li><b>Tết chưa có trong lịch.</b> Dự báo đi qua kỳ nghỉ Tết 2027. Nếu Tết lấy mất 5 ngày làm việc thì mọi thứ sau đó dịch thêm khoảng một tuần và tốn thêm khoảng <mark>24,500,000 VND</mark>.</li>
+    <li><b>Closeout kết thúc trước M7.</b> Trên Gantt, gói 1.10.2.1 xong ngày 17/02/2027, trong khi M7 là 22/03/2027 vì M7 phải chờ hết tháng bảo hành. Đây là cách công cụ xếp gói closeout, có từ bản đầu, chưa sửa.</li>
+    <li><b>MOB1 bắt đầu 4 ngày làm việc trước M2</b> (06/11/2026), trong khi charter ghi "joins after M2". Đây là hệ quả của fast tracking và đã được ghi trong change request.</li>
+    <li><b>Không có mũi tên phụ thuộc</b>, vì 2.12 và 2.15 chưa lập.</li>
+  </ul>
+</section>
+
+<section id="v2">
+  <h2>Khác biệt ở branch schedule-v2</h2>
+  <p>Branch <code>schedule-v2</code> đánh số lại mã WBS theo thứ tự làm việc (34 trên 78 gói đổi mã). Khi hai gói bằng nhau về mọi tiêu chí khác, công cụ dùng mã WBS để quyết gói nào xếp trước, nên đổi mã cũng làm lịch đổi theo: 209 trên 304 dòng Gantt khác đi, go-live thành <mark>16/02/2027</mark> (trễ 30 ngày làm việc), closeout thành <mark>19/03/2027</mark>, và change request thành khoảng <mark>147,000,000 VND</mark> (1.5 person-month). Doc hiện vẫn dùng bản trên trang này. Chi tiết ở <code>review/2026-09-30-schedule-v2.md</code>.</p>
+</section>
+
+<footer>
+  Số liệu lấy từ <code>docs/forms/2-18-project-schedule.en.md</code> và <code>docs/forms/3-3-change-request.en.md</code> ở branch <code>schedule</code> (ngày chuẩn bị 29/09/2026), trùng với tab 4 của báo cáo. Ngày tô vàng là dự báo, chưa được duyệt.
+</footer>
+
+</div>
+<script>
+(function () {
+  var MS = [
+    { m: "M0", name: "Project kickoff, charter approved, team mobilised", ch: "2026-09-14", fc: "2026-09-14", slip: 0, fixed: true },
+    { m: "M1", name: "Requirement specification approved and baselined", ch: "2026-10-02", fc: "2026-10-28", slip: 18 },
+    { m: "M2", name: "Design baseline approved, including the API contract and the app design", ch: "2026-10-16", fc: "2026-11-12", slip: 19 },
+    { m: "M3", name: "Iteration 1 demo accepted, F01 to F05, with the app alpha", ch: "2026-11-13", fc: "2026-12-10", slip: 19 },
+    { m: "M4", name: "Iteration 2 accepted, feature complete, F06 to F12", ch: "2026-12-11", fc: "2027-01-13", slip: 22 },
+    { m: "M5", name: "System test complete on web, Android, and iOS; UAT entry criteria met; app submitted to both stores", ch: "2026-12-18", fc: "2027-02-08", slip: 35 },
+    { m: "M6", name: "UAT signed off, data migrated, go-live and handover; app live in both stores", ch: "2027-01-05", fc: "2027-02-17", slip: 31 },
+    { m: "M7", name: "First warranty month complete, warranty handover, project closeout", ch: "2027-02-05", fc: "2027-03-22", slip: 31 }
+  ];
+  var DOW = ["CN", "T2", "T3", "T4", "T5", "T6", "T7"];
+  function d(s) { var p = s.split("-"); return new Date(Date.UTC(+p[0], +p[1] - 1, +p[2])); }
+  function vn(s) { var x = d(s); return DOW[x.getUTCDay()] + " " + String(x.getUTCDate()).padStart(2, "0") + "/" + String(x.getUTCMonth() + 1).padStart(2, "0") + "/" + x.getUTCFullYear(); }
+
+  // Table view
+  var tb = document.getElementById("ms-table");
+  MS.forEach(function (r) {
+    var tr = document.createElement("tr");
+    tr.innerHTML = "<td class='mono'>" + r.m + "</td><td>" + r.name + "</td><td class='date'>" + vn(r.ch) +
+      "</td><td class='date'>" + (r.fixed ? vn(r.fc) : "<mark>" + vn(r.fc) + "</mark>") +
+      "</td><td class='num'>" + (r.fixed ? "cố định" : "+" + r.slip) + "</td>";
+    tb.appendChild(tr);
+  });
+
+  // Chart
+  var svg = document.getElementById("ms-chart");
+  var NS = "http://www.w3.org/2000/svg";
+  var W = 760, L = 52, R = 104, T = 34, ROW = 36;
+  var x0 = d("2026-09-01").getTime(), x1 = d("2027-04-01").getTime();
+  function X(s) { return L + (d(s).getTime() - x0) / (x1 - x0) * (W - L - R); }
+  function el(tag, attrs, parent) {
+    var e = document.createElementNS(NS, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    (parent || svg).appendChild(e);
+    return e;
+  }
+  var H = T + ROW * MS.length + 8;
+  svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+  var months = ["2026-09-01", "2026-10-01", "2026-11-01", "2026-12-01", "2027-01-01", "2027-02-01", "2027-03-01", "2027-04-01"];
+  months.forEach(function (m, i) {
+    var x = X(m);
+    el("line", { x1: x, x2: x, y1: T - 8, y2: H - 6, stroke: "var(--rule)", "stroke-width": 1 });
+    if (i < months.length - 1) {
+      var mid = (x + X(months[i + 1])) / 2, dt = d(m);
+      var t = el("text", { x: mid, y: T - 16, "text-anchor": "middle", fill: "var(--muted)", "font-size": 12, "font-family": "var(--mono)" });
+      t.textContent = "T" + (dt.getUTCMonth() + 1) + (dt.getUTCMonth() === 0 || i === 0 ? "/" + String(dt.getUTCFullYear()).slice(2) : "");
+    }
+  });
+  var tip = document.getElementById("tip"), host = document.getElementById("chart-host");
+  function show(evtTarget, html) {
+    tip.innerHTML = html; tip.hidden = false;
+    var hb = host.getBoundingClientRect(), b = evtTarget.getBoundingClientRect();
+    var left = b.left - hb.left + host.scrollLeft + b.width / 2 - tip.offsetWidth / 2;
+    left = Math.max(host.scrollLeft + 4, Math.min(left, host.scrollLeft + host.clientWidth - tip.offsetWidth - 4));
+    tip.style.left = left + "px";
+    tip.style.top = (b.top - hb.top - tip.offsetHeight - 8) + "px";
+  }
+  function hide() { tip.hidden = true; }
+  function diamond(cx, cy, filled, colour, label, html) {
+    var g = el("g", { tabindex: 0, role: "img", "aria-label": label, style: "cursor:default" });
+    el("circle", { cx: cx, cy: cy, r: 13, fill: "transparent" }, g);
+    el("path", { d: "M" + cx + "," + (cy - 8) + " L" + (cx + 8) + "," + cy + " L" + cx + "," + (cy + 8) + " L" + (cx - 8) + "," + cy + " Z",
+      fill: filled ? colour : "var(--surface)", stroke: filled ? "var(--surface)" : colour, "stroke-width": 2 }, g);
+    g.addEventListener("mouseenter", function () { show(g, html); });
+    g.addEventListener("mouseleave", hide);
+    g.addEventListener("focus", function () { show(g, html); });
+    g.addEventListener("blur", hide);
+    return g;
+  }
+  MS.forEach(function (r, i) {
+    var y = T + ROW * i + ROW / 2;
+    el("line", { x1: L, x2: W - R, y1: y, y2: y, stroke: "var(--rule-soft)", "stroke-width": 1 });
+    var lab = el("text", { x: 8, y: y + 4, fill: "var(--ink)", "font-size": 13, "font-weight": 600, "font-family": "var(--mono)" });
+    lab.textContent = r.m;
+    var xc = X(r.ch), xf = X(r.fc);
+    if (!r.fixed) el("line", { x1: xc + 9, x2: xf - 9, y1: y, y2: y, stroke: "var(--connector)", "stroke-width": 2 });
+    if (!r.fixed) diamond(xc, y, false, "var(--charter)", r.m + " charter " + vn(r.ch),
+      "<b>" + r.m + "</b> theo charter<br>" + vn(r.ch));
+    diamond(xf, y, true, "var(--forecast)", r.m + (r.fixed ? " cố định " : " dự báo ") + vn(r.fc),
+      "<b>" + r.m + "</b> " + (r.fixed ? "cố định" : "dự báo sau xếp lịch") + "<br>" + vn(r.fc) + (r.fixed ? "" : "<br>Trễ " + r.slip + " ngày làm việc"));
+    var s = el("text", { x: W - R + 12, y: y + 4, fill: r.slip === 35 ? "var(--ink)" : "var(--ink-2)", "font-size": 12.5, "font-weight": r.slip === 35 ? 600 : 400, "font-family": "var(--mono)" });
+    s.textContent = r.fixed ? "cố định" : "+" + r.slip + " ngày LV";
+  });
+})();
+</script>
+</body>
+</html>
