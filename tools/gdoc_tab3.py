@@ -77,6 +77,13 @@ def apply_layout(doc, tab_n, unit_name):
                              groups=RTM_GROUPS, widths=RTM_WIDTHS, ncols=9)
         gdoc_form.apply_form(doc, tab_n, "ID", "INTER-REQUIREMENTS TRACEABILITY MATRIX",
                              widths=INTER_WIDTHS, ncols=8)
+    elif unit_name == "3.2 method and structure":
+        # Form 2.9 starts on its own page, so its title bar is never left alone at the foot of one.
+        tab_id, content = doc.tab(tab_n)
+        head = ge.find_para(content, lambda s: s.strip() == "3.2.2 The structure")
+        doc.batch([{"updateParagraphStyle": {
+            "range": {"startIndex": head["startIndex"], "endIndex": head["endIndex"], "tabId": tab_id},
+            "paragraphStyle": {"pageBreakBefore": True}, "fields": "pageBreakBefore"}}])
     elif unit_name[:2] == "1.":
         tab_id, content = doc.tab(tab_n)
         table_el = gdoc_form.find_table(content, "ID", ncols=10, last=True)

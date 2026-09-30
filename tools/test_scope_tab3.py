@@ -26,25 +26,45 @@ OUTLINE = """1.        Learning Center Management Software
 
 
 class TestOutlineBlock(unittest.TestCase):
-    def setUp(self):
-        self.block = scope_tab3.outline_block(OUTLINE)
-        self.items = gdoc_edit.parse_blocks(self.block)[0]["items"]
+    FIELDS = "**Project Title:** A project\t**Date Prepared:** 1 January 2026"
 
-    def test_is_one_outline_block_for_the_doc_writer(self):
+    def setUp(self):
+        self.block = scope_tab3.outline_block(OUTLINE, self.FIELDS)
+        self.items = gdoc_edit.parse_blocks(self.block)[0]["items"]
+        self.outline = self.items[2:-1]
+
+    def test_is_one_form_box_for_the_doc_writer(self):
         blocks = gdoc_edit.parse_blocks(self.block)
-        self.assertEqual([b["type"] for b in blocks], ["outline"])
+        self.assertEqual([b["type"] for b in blocks], ["box"])
+
+    def test_box_carries_the_printed_frame(self):
+        self.assertEqual(self.items[0][1], "!title WORK BREAKDOWN STRUCTURE")
+        self.assertEqual(self.items[1][1], "!fields " + self.FIELDS)
+        self.assertEqual(self.items[-1][1], "!page Page 1 of 1")
 
     def test_one_line_per_element_and_blank_lines_dropped(self):
-        self.assertEqual(len(self.items), 7)
+        self.assertEqual(len(self.outline), 7)
 
     def test_depth_follows_the_code(self):
-        self.assertEqual([d for d, _ in self.items], [0, 1, 2, 3, 1, 2, 3])
+        self.assertEqual([d for d, _ in self.outline], [0, 1, 2, 3, 1, 2, 3])
+
+    def test_codes_carry_the_closing_dot_the_book_prints(self):
+        self.assertEqual(self.outline[0][1], "1.  Learning Center Management Software")
+        self.assertEqual(self.outline[3][1], "1.1.1.1.  Kickoff and team mobilisation")
 
     def test_padding_is_collapsed_and_annotation_kept(self):
-        self.assertEqual(self.items[4][1], "1.2  Requirements (major deliverable, D1, M1)")
+        self.assertEqual(self.outline[4][1], "1.2.  Requirements (major deliverable, D1, M1)")
 
     def test_control_account_marker_is_spelled_out(self):
-        self.assertEqual(self.items[2][1], "1.1.1  Project Governance (control account)")
+        self.assertEqual(self.outline[2][1], "1.1.1.  Project Governance (control account)")
+
+    def test_composes_into_the_cell_without_a_trailing_empty_paragraph(self):
+        text, specs = gdoc_edit.compose_box(self.items)
+        self.assertFalse(text.endswith("\n"))
+        self.assertEqual([sp["kind"] for sp in specs][:2], ["title", "fields"])
+        self.assertEqual(specs[-1]["kind"], "page")
+        self.assertEqual(text.splitlines()[0], "WORK BREAKDOWN STRUCTURE")
+        self.assertIn("Project Title: A project\tDate Prepared: 1 January 2026", text)
 
 
 class TestFrontSection(unittest.TestCase):
@@ -108,7 +128,7 @@ class TestStripItalicNotes(unittest.TestCase):
         paras = [b["text"] for b in gdoc_edit.parse_blocks(payload) if b["type"] == "para"]
         italic = [s for s in paras if s.startswith("*") and not s.startswith("**")]
         self.assertEqual(italic, [])
-        self.assertNotIn("Page 1 of 1", payload)
+        self.assertNotIn("*Page 1 of 1*", payload)
 
 
 class TestRenumber(unittest.TestCase):
@@ -147,15 +167,18 @@ class TestBuild(unittest.TestCase):
     def test_wbs_is_an_outline_not_a_table(self):
         # Audit E8: form 2.9 prints an indented numbered outline.
         blocks = gdoc_edit.parse_blocks(self.payload)
-        outlines = [b for b in blocks if b["type"] == "outline"]
-        self.assertEqual(len(outlines), 1)
-        self.assertEqual(outlines[0]["items"][0][0], 0)
+        boxes = [b for b in blocks if b["type"] == "box"]
+        self.assertEqual(len(boxes), 1)
+        self.assertEqual(boxes[0]["items"][2], (0, "1.  Learning Center Management Software"))
+        self.assertFalse([b for b in blocks if b["type"] == "outline"])
         self.assertNotIn("| Code | Element | Type | Delivers |", self.payload)
 
     def test_structure_heading_precedes_its_form_fields(self):
+        # The form's header fields sit inside its frame, not as loose paragraphs above it.
         at = self.payload.index("#### 3.2.2 The structure")
-        self.assertLess(at, self.payload.index("**Project Title:**", at))
-        self.assertLess(self.payload.index("**Project Title:**", at), self.payload.index("```outline"))
+        box = self.payload.index("```form", at)
+        self.assertLess(box, self.payload.index("!fields **Project Title:**", at))
+        self.assertNotIn("**Project Title:**", self.payload[at:box])
 
     def test_starts_at_the_doc_section_heading(self):
         self.assertTrue(self.payload.startswith("## 3: Scope Baseline"))

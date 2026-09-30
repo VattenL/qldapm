@@ -90,6 +90,9 @@ def parse_blocks(md: str):
         if s.startswith("```"):
             # A fenced block, used for the numbered outline printed on forms 2.9 and 2.29: one
             # paragraph per line, indented by its depth. Depth is the leading spaces divided by two.
+            # A ```form fence puts the same lines inside a one-cell table, the frame the book prints
+            # around a form; its "!title", "!fields" and "!page" lines are the form's own furniture.
+            info = s[3:].strip()
             items = []
             i += 1
             while i < len(lines) and lines[i].strip() != "```":
@@ -98,7 +101,7 @@ def parse_blocks(md: str):
                     items.append((depth, lines[i].strip()))
                 i += 1
             i += 1
-            blocks.append({"type": "outline", "items": items})
+            blocks.append({"type": "box" if info == "form" else "outline", "items": items})
             continue
         if s.startswith("|"):
             rows, header = [], False
@@ -241,7 +244,7 @@ def compose_blocks(blocks):
             for depth, item in b["items"]:
                 plain, styles = parse_inline(item)
                 add(plain, styles, "outline", level=depth)
-        elif t == "table":
+        elif t in ("table", "box"):
             tables.append(b)
             add(PLACEHOLDER.format(len(tables) - 1), [], "placeholder")
         elif t == "hr":
@@ -283,6 +286,89 @@ def block_requests(tab_id: str, index: int, text: str, specs):
                     "range": {"startIndex": index + group_start, "endIndex": index + sp["end"], "tabId": tab_id},
                     "bulletPreset": preset}})
                 group_start = None
+    return reqs
+
+
+BOX_MARKERS = ("!title ", "!fields ", "!page ")
+BOX_FONT_PT = 10
+DARK = {"color": {"rgbColor": {"red": 0.25, "green": 0.25, "blue": 0.27}}}
+WHITE = {"color": {"rgbColor": {"red": 1.0, "green": 1.0, "blue": 1.0}}}
+
+
+def compose_box(items):
+    """Text and paragraph specs for the inside of a ```form box.
+
+    The text has no final newline: the cell already ends in one, so the last line takes it over
+    instead of leaving an empty paragraph at the foot of the form.
+    """
+    text, specs, pos = [], [], 0
+    for depth, raw in items:
+        kind = "line"
+        for marker in BOX_MARKERS:
+            if raw.startswith(marker):
+                kind, raw = marker.strip("! "), raw[len(marker):]
+        plain, styles = parse_inline(raw)
+        line = plain + "\n"
+        specs.append({"start": pos, "end": pos + len(line), "kind": kind, "level": depth,
+                      "styles": styles})
+        text.append(line)
+        pos += len(line)
+    return "".join(text)[:-1], specs
+
+
+def box_requests(tab_id: str, index: int, text: str, specs):
+    """Requests filling an empty cell at index with a composed box, styled as the printed form."""
+    end = index + len(text)
+    reqs = [{"insertText": {"location": {"index": index, "tabId": tab_id}, "text": text}}]
+    reqs.append({"updateTextStyle": {
+        "range": {"startIndex": index, "endIndex": end, "tabId": tab_id},
+        "textStyle": {"bold": False, "italic": False, "backgroundColor": {}},
+        "fields": "bold,italic,backgroundColor"}})
+    reqs.append({"updateParagraphStyle": {
+        "range": {"startIndex": index, "endIndex": end + 1, "tabId": tab_id},
+        "paragraphStyle": {"namedStyleType": "NORMAL_TEXT", "alignment": "START",
+                           "indentStart": {"magnitude": 0, "unit": "PT"},
+                           "indentFirstLine": {"magnitude": 0, "unit": "PT"}},
+        "fields": "namedStyleType,alignment,indentStart,indentFirstLine"}})
+    # The printed form sets its body smaller than running text; at 10pt the Project Title and
+    # Date Prepared line fits on one line of a landscape page, as the book prints it.
+    reqs.append({"updateTextStyle": {
+        "range": {"startIndex": index, "endIndex": end, "tabId": tab_id},
+        "textStyle": {"fontSize": {"magnitude": BOX_FONT_PT, "unit": "PT"}},
+        "fields": "fontSize"}})
+    for sp in specs:
+        a, b = index + sp["start"], index + sp["end"]
+        rng = {"startIndex": a, "endIndex": b, "tabId": tab_id}
+        text_rng = {"startIndex": a, "endIndex": min(b - 1, end), "tabId": tab_id}
+        reqs += style_requests(tab_id, a, sp["styles"])
+        if sp["kind"] == "title":
+            reqs.append({"updateParagraphStyle": {"range": rng, "paragraphStyle": {
+                "alignment": "CENTER", "shading": {"backgroundColor": DARK},
+                "spaceAbove": {"magnitude": 4, "unit": "PT"},
+                "spaceBelow": {"magnitude": 4, "unit": "PT"}},
+                "fields": "alignment,shading.backgroundColor,spaceAbove,spaceBelow"}})
+            reqs.append({"updateTextStyle": {"range": text_rng, "textStyle": {
+                "bold": True, "foregroundColor": WHITE,
+                "fontSize": {"magnitude": 16, "unit": "PT"}},
+                "fields": "bold,foregroundColor,fontSize"}})
+        elif sp["kind"] == "fields":
+            reqs.append({"updateParagraphStyle": {"range": rng, "paragraphStyle": {
+                "spaceAbove": {"magnitude": 6, "unit": "PT"},
+                "spaceBelow": {"magnitude": 12, "unit": "PT"}},
+                "fields": "spaceAbove,spaceBelow"}})
+        elif sp["kind"] == "page":
+            reqs.append({"updateParagraphStyle": {"range": rng, "paragraphStyle": {
+                "alignment": "CENTER", "spaceAbove": {"magnitude": 18, "unit": "PT"}},
+                "fields": "alignment,spaceAbove"}})
+            reqs.append({"updateTextStyle": {"range": text_rng, "textStyle": {"bold": True},
+                                             "fields": "bold"}})
+        else:
+            # Inside a table cell the first line takes indentFirstLine on its own, so both are set.
+            indent = {"magnitude": OUTLINE_INDENT * sp["level"], "unit": "PT"}
+            reqs.append({"updateParagraphStyle": {"range": rng, "paragraphStyle": {
+                "indentStart": indent, "indentFirstLine": indent,
+                "spaceAbove": {"magnitude": 6 if sp["level"] <= 1 else 0, "unit": "PT"}},
+                "fields": "indentStart,indentFirstLine,spaceAbove"}})
     return reqs
 
 
@@ -440,8 +526,30 @@ class Doc:
         self.batch(block_requests(tab_id, index, text, specs))
         end_index = index + len(text)
         for k in range(len(tables) - 1, -1, -1):
-            end_index += self._materialise_table(tab_n, PLACEHOLDER.format(k), tables[k])
+            if tables[k]["type"] == "box":
+                end_index += self._materialise_box(tab_n, PLACEHOLDER.format(k), tables[k])
+            else:
+                end_index += self._materialise_table(tab_n, PLACEHOLDER.format(k), tables[k])
         return end_index
+
+    def _materialise_box(self, tab_n: int, placeholder: str, box) -> int:
+        """Replace the placeholder paragraph with a one-cell table holding the box. Returns the growth."""
+        tab_id, content = self.tab(tab_n)
+        ph = find_para(content, lambda t: t == placeholder)
+        before_len = content[-1]["endIndex"]
+        self.batch([{"insertTable": {"rows": 1, "columns": 1,
+                                     "location": {"index": ph["startIndex"], "tabId": tab_id}}}])
+        tab_id, content = self.tab(tab_n)
+        ph = find_para(content, lambda t: t == placeholder)
+        table_el = next(el for el in reversed(top_tables(content)) if el["endIndex"] <= ph["startIndex"])
+        start, _end = cell_range(table_cells(table_el)[0][0])
+        text, specs = compose_box(box["items"])
+        # The placeholder sits after the table, so deleting it first leaves the cell index valid.
+        reqs = [{"deleteContentRange": {"range": {"startIndex": ph["startIndex"], "endIndex": ph["endIndex"], "tabId": tab_id}}}]
+        reqs += box_requests(tab_id, start, text, specs)
+        self.batch(reqs)
+        after_len = self.content(tab_n)[-1]["endIndex"]
+        return after_len - before_len
 
     def _materialise_table(self, tab_n: int, placeholder: str, table_block) -> int:
         """Replace the placeholder paragraph with a filled table. Returns the index growth."""

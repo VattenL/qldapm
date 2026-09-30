@@ -8,8 +8,10 @@ content rather than holding its own. It does four things the Doc needs and the r
     rest, which is guidance for a reader of the repo;
   - renumbers the headings to continue the Doc's own scheme, where Thẻ 1 carries "1: Requirement
     Specification" and "2: Project Charter";
-  - rewrites the fenced WBS outline as an ```outline block, which gdoc_edit.py renders as one
-    indented paragraph per line, the shape form 2.9 prints;
+  - rewrites the fenced WBS outline, with the Project Title and Date Prepared above it, as a
+    ```form block, which gdoc_edit.py renders as form 2.9 prints it: one framed box holding the
+    title bar, the two header fields on one line, one indented paragraph per element, and the
+    page number;
   - folds the inputs and the decomposition method into the WBS section, so the structure arrives
     with its method stated.
 
@@ -101,22 +103,28 @@ def unwrap_items(text: str) -> str:
 
 
 def outline_line(code: str, rest: str) -> str:
-    """One line of the printed outline: code, element, and what it delivers, single-spaced."""
+    """One line of the printed outline: code with the book's closing dot, element, single-spaced."""
     rest = re.sub(r"\s{2,}", " ", rest).strip()
     if rest.endswith(" CA"):
         rest = rest[:-3] + " (control account)"
-    return "%s%s  %s" % ("  " * code.count("."), code, rest)
+    return "%s%s.  %s" % ("  " * code.count("."), code, rest)
 
 
-def outline_block(block: str) -> str:
-    """Rewrite the fenced WBS outline as an outline block for the Doc writer."""
-    rows = ["```outline"]
+def outline_block(block: str, fields: str = "") -> str:
+    """Rewrite the fenced WBS outline as form 2.9 for the Doc writer: one framed box holding the
+    title bar, the Project Title and Date Prepared line, the outline, and the page number."""
+    rows = ["```form", "!title WORK BREAKDOWN STRUCTURE"]
+    if fields:
+        rows.append("!fields " + fields)
     for raw in block.splitlines():
         m = OUTLINE_LINE.match(raw.strip())
         if m:
             rows.append(outline_line(m.group(1), m.group(2)))
-    rows.append("```")
+    rows += ["!page Page 1 of 1", "```"]
     return "\n".join(rows)
+
+
+FORM_FIELDS = re.compile(r"(\*\*Project Title:\*\*[^\n]*)\n(\*\*Date Prepared:\*\*[^\n]*)\n\s*$")
 
 
 def split_field_lines(text: str) -> str:
@@ -188,7 +196,15 @@ def build(md: str) -> str:
     fence = re.search(r"```\n(.*?)```\n", body, re.S)
     if not fence:
         raise SystemExit("WBS outline fence not found")
-    body = body[: fence.start()] + outline_block(fence.group(1)) + "\n\n" + body[fence.end():]
+    # The two header fields printed above the outline move inside the form's frame, on one line.
+    head = body[: fence.start()]
+    fields = FORM_FIELDS.search(head)
+    if not fields:
+        raise SystemExit("Project Title and Date Prepared not found above the WBS outline")
+    head = head[: fields.start()]
+    # Spaces, not a tab: the Doc's default tab stops can push Date Prepared onto a second line.
+    line = "%s      %s" % (fields.group(1), fields.group(2))
+    body = head + outline_block(fence.group(1), line) + "\n\n" + body[fence.end():]
     # The structure heading goes above the form's own header fields, which sit before the fence.
     body = body.replace(WBS_PART, WBS_PART + "\n\n" + STRUCTURE_HEADING, 1)
 
@@ -203,7 +219,12 @@ def build(md: str) -> str:
         (lead if where == "lead" else method).extend(([doc_heading] if doc_heading else []) + [text])
     out = "\n\n".join(lead) + "\n\n" + body
     out = out.replace("@@METHOD@@", "\n\n".join(method))
-    # The report refers to its own sections, not to the repository layout.
+    out = doc_references(out)
+    return out.rstrip() + "\n"
+
+
+def doc_references(out: str) -> str:
+    """Rewrite references to the repository layout as references to the report's own sections."""
     for old, new in (
         ("`charter-package.en.md` Part 2A and 2B", "section 2"),
         ("This document therefore", "This section therefore"),
@@ -220,7 +241,7 @@ def build(md: str) -> str:
     out = re.sub(r"\bPart(\s+)([123])\b", lambda m: "section%s3.%s" % (m.group(1), m.group(2)), out)
     if re.search(r"\bPart [123]", out):
         raise SystemExit("unconverted cross-reference to a repo Part heading")
-    return out.rstrip() + "\n"
+    return out
 
 
 def main(argv=None):
