@@ -11,6 +11,9 @@ PDF page = printed book page + 11.
 - **Blank pages** hold the printed form itself. These are the authority on field
   names and field order.
 - **Kind** decides how the form becomes Markdown. See `rendering.md`.
+- **`fields/<form>.json`** holds the printed labels of each blank page, already
+  transcribed: title block, blocks in order, grouped headers, banks and
+  side-by-side pairs. Take labels from there rather than re-reading the page.
 
 | Form | Name | Printed title | Group | Kind | Prose pages | Blank pages |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -103,3 +106,21 @@ PDF page = printed book page + 11.
   RISK RATING; **4.8** prints as CONTRACT CLOSEOUT; **4.9** prints as FORMAL
   ACCEPTANCE FORM. The extractor reports both names.
 - **6.3 Release Plan** is the one form with no `Page N of M` footer.
+- **Title block.** Most forms print `Project Title` and `Date Prepared`. 2.4,
+  2.5, 2.11, 2.33, 2.37 and 2.38 print `Date` instead of `Date Prepared`; 6.3
+  prints `Project Name` and no date; 2.3 and 2.18 print no title block (both
+  are worked samples rather than blank forms, and their sample content must
+  not be copied). Several forms print more on the title lines: 1.1, 3.6,
+  4.1, 4.2, 4.4 to 4.8 and 5.2. 2.7, 2.21 and 2.31 print the title block
+  again on page 2. `fields/<form>.json` `title_block` is exact.
+- **Grouped header rows** span several columns of one table: 2.7 page 1
+  (Requirement Information, Relationship Traceability), 2.10 (Labor, Material),
+  2.32 (Impact, in both banks) and 2.36 (Impact, Revised Impact). Written as
+  `Group: Label`; see `rendering.md`. On 2.17 and 2.21 page 1 a group spans a
+  whole sub-table and is that table's caption, written like the headings 2.23
+  and 2.26 print above their tables.
+- **Banks.** 2.32, 2.36 and 3.1 print their columns in two banks, one above
+  the other; bank 2 prints no ID column in any of them.
+- **No ID column.** Registers whose printed table does not start with an ID:
+  1.3 (Name), 1.4 (Name or Role), 2.14 (Milestone), 6.4 (Start). Do not add
+  one.

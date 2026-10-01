@@ -1,0 +1,86 @@
+{
+  "form": "2.10",
+  "name": "WBS Dictionary",
+  "printed_title": "WBS DICTIONARY",
+  "kind": "fields",
+  "page_count": 1,
+  "title_block": [
+    "Project Title",
+    "Date Prepared"
+  ],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 66,
+      "blocks": [
+        {
+          "type": "fields",
+          "labels": [
+            "Work Package Name",
+            "Code of Accounts",
+            "Description of Work",
+            "Assumptions and Constraints",
+            "Milestones",
+            "Due Dates"
+          ]
+        },
+        {
+          "type": "table",
+          "bank": 1,
+          "columns": [
+            "ID",
+            "Activity",
+            "Resource",
+            {
+              "group": "Labor",
+              "columns": [
+                "Hours",
+                "Rate",
+                "Total"
+              ]
+            },
+            {
+              "group": "Material",
+              "columns": [
+                "Units",
+                "Cost",
+                "Total"
+              ]
+            },
+            "Total Cost"
+          ],
+          "row_labels": []
+        },
+        {
+          "type": "fields",
+          "labels": [
+            "Quality Requirements",
+            "Acceptance Criteria",
+            "Technical Information",
+            "Agreement Information"
+          ]
+        }
+      ]
+    }
+  ],
+  "pairs": [
+    [
+      "Project Title",
+      "Date Prepared"
+    ],
+    [
+      "Work Package Name",
+      "Code of Accounts"
+    ],
+    [
+      "Description of Work",
+      "Assumptions and Constraints"
+    ],
+    [
+      "Milestones",
+      "Due Dates"
+    ]
+  ],
+  "legend": "",
+  "notes": "Landscape page, one sheet per work package. The Milestones box prints numbered lines \"1.\", \"2.\", \"3.\" under its label; Due Dates beside it is an open box. The cost table prints a two-tier header: \"Labor\" spans Hours, Rate, Total and \"Material\" spans Units, Cost, Total; ID, Activity, Resource and Total Cost span both header rows. Total prints twice, once per group. The prose table 2.10 (PDF 65) says \"Code of account\" and \"Team resource\" and has no entries for Description of Work or Assumptions and Constraints; the blank form wins. The prose bullet list (PDF 63) mentions a \"Responsible organization or person\", which the blank form does not print, so do not add it."
+}

@@ -1,0 +1,21 @@
+{
+  "form": "3.1",
+  "name": "Issue Log",
+  "printed_title": "ISSUE LOG",
+  "kind": "log",
+  "page_count": 1,
+  "title_block": ["Project Title", "Date Prepared"],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 178,
+      "blocks": [
+        {"type": "table", "bank": 1, "columns": ["Issue ID", "Type", "Issue Description", "Priority", "Impact on Objectives"], "row_labels": []},
+        {"type": "table", "bank": 2, "columns": ["Responsible Party", "Status", "Res. Date", "Final Resolution", "Comments"], "row_labels": []}
+      ]
+    }
+  ],
+  "pairs": [["Project Title", "Date Prepared"]],
+  "legend": "",
+  "notes": "Portrait page with two banks of seven blank rows each; bank 2 continues the same issue records as bank 1, so row N of bank 2 belongs to row N of bank 1. The prose table (Table 3.1) calls the first column ID and the date column Resolution date; the blank form prints Issue ID and the abbreviation Res. Date, and the blank form wins."
+}

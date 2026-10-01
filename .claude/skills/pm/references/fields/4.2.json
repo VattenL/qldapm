@@ -1,0 +1,45 @@
+{
+  "form": "4.2",
+  "name": "Project Status Report",
+  "printed_title": "PROJECT STATUS REPORT",
+  "kind": "fields",
+  "page_count": 4,
+  "title_block": ["Project Title", "Date Prepared", "Project Manager", "Sponsor"],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 209,
+      "blocks": [
+        {"type": "fields", "labels": ["Accomplishments for This Reporting Period", "Accomplishments Planned but Not Completed This Reporting Period", "Root Cause of Variances"]}
+      ]
+    },
+    {
+      "page": 2,
+      "pdf_page": 210,
+      "blocks": [
+        {"type": "fields", "labels": ["Impact to Upcoming Milestones or Project Due Date", "Planned Corrective or Preventive Action", "Funds Spent This Reporting Period", "Root Cause of Variances"]}
+      ]
+    },
+    {
+      "page": 3,
+      "pdf_page": 211,
+      "blocks": [
+        {"type": "fields", "labels": ["Impact to Overall Budget or Contingency Funds", "Planned Corrective or Preventive Action", "Accomplishments Planned for Next Reporting Period", "Costs Planned for Next Reporting Period"]}
+      ]
+    },
+    {
+      "page": 4,
+      "pdf_page": 212,
+      "blocks": [
+        {"type": "text", "text": "New Risks Identified"},
+        {"type": "table", "bank": 1, "columns": ["Risk"], "row_labels": []},
+        {"type": "text", "text": "Issues"},
+        {"type": "table", "bank": 1, "columns": ["Issue"], "row_labels": []},
+        {"type": "fields", "labels": ["Comments"]}
+      ]
+    }
+  ],
+  "pairs": [["Project Title", "Date Prepared"], ["Project Manager", "Sponsor"]],
+  "legend": "",
+  "notes": "The title block has two lines: Project Title with Date Prepared, then Project Manager with Sponsor. Root Cause of Variances and Planned Corrective or Preventive Action each print twice with identical wording. The form does not say which variance each copy covers; Table 4.2 describes the first pair (pages 1 and 2) as schedule variances, work not accomplished as scheduled, and the second pair (pages 2 and 3) as cost variances, expenditure over or under plan, which also matches where each copy sits (after the accomplishment boxes, then after Funds Spent This Reporting Period). The accomplishment boxes print numbered lines: 1 to 6 for Accomplishments for This Reporting Period, 1 to 4 for Accomplishments Planned but Not Completed This Reporting Period, 1 to 4 for Accomplishments Planned for Next Reporting Period. New Risks Identified and Issues are headings over a bordered box whose top cell prints Risk: (or Issue:) with one blank cell below it. The prose table (Table 4.2) has no Project Manager or Sponsor element and names the second root cause Root cause of variance (singular); the blank form prints Root Cause of Variances both times, and the blank form wins."
+}

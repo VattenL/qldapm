@@ -1,0 +1,29 @@
+{
+  "form": "2.40",
+  "name": "Stakeholder Engagement Plan",
+  "printed_title": "STAKEHOLDER ENGAGEMENT PLAN",
+  "kind": "fields",
+  "page_count": 2,
+  "title_block": ["Project Title", "Date Prepared"],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 171,
+      "blocks": [
+        {"type": "table", "bank": 1, "columns": ["Stakeholder", "Unaware", "Resistant", "Neutral", "Supportive", "Leading"], "row_labels": []},
+        {"type": "fields", "labels": ["Pending Stakeholder Changes", "Stakeholder Relationships"]}
+      ]
+    },
+    {
+      "page": 2,
+      "pdf_page": 172,
+      "blocks": [
+        {"type": "text", "text": "Stakeholder Engagement Approach"},
+        {"type": "table", "bank": 1, "columns": ["Stakeholder", "Approach"], "row_labels": []}
+      ]
+    }
+  ],
+  "pairs": [["Project Title", "Date Prepared"]],
+  "legend": "C = Current level of engagement D = Desired level of engagement",
+  "notes": "Landscape pages. The title block prints on page 1 only. The engagement assessment table prints eight blank rows with no heading above it, and the legend prints directly beneath it, before Pending Stakeholder Changes, as two items on one line (C = Current level of engagement, then D = Desired level of engagement). A text block directly before a table is that table's printed heading. Stakeholder Engagement Approach prints eight blank rows. The prose Table 2.36 says Stakeholder engagement assessment matrix, Stakeholder changes, Interrelationships and Stakeholder engagement approach, where the blank form prints no heading over the assessment table, Pending Stakeholder Changes, Stakeholder Relationships and Stakeholder Engagement Approach; the blank form wins."
+}

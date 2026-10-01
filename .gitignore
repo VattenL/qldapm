@@ -3,3 +3,5 @@ client_secret*.json
 __pycache__/
 *.pyc
 .venv/
+.claude/skills/pm-workspace/
+.pytest_cache/

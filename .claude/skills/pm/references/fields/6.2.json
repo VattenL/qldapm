@@ -1,0 +1,20 @@
+{
+  "form": "6.2",
+  "name": "Product Backlog",
+  "printed_title": "PRODUCT BACKLOG",
+  "kind": "log",
+  "page_count": 1,
+  "title_block": ["Project Title", "Date Prepared"],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 254,
+      "blocks": [
+        {"type": "table", "bank": 1, "columns": ["ID", "Summary Description", "Priority", "Story", "Status"], "row_labels": []}
+      ]
+    }
+  ],
+  "pairs": [["Project Title", "Date Prepared"]],
+  "legend": "",
+  "notes": "Landscape page. The table prints 15 blank rows."
+}

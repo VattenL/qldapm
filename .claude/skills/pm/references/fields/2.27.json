@@ -1,0 +1,52 @@
+{
+  "form": "2.27",
+  "name": "Team Charter",
+  "printed_title": "TEAM CHARTER",
+  "kind": "fields",
+  "page_count": 2,
+  "title_block": [
+    "Project Title",
+    "Date Prepared"
+  ],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 122,
+      "blocks": [
+        {
+          "type": "fields",
+          "labels": [
+            "Team Values and Principles",
+            "Meeting Guidelines",
+            "Communication Guidelines",
+            "Decision-Making Process"
+          ]
+        }
+      ]
+    },
+    {
+      "page": 2,
+      "pdf_page": 123,
+      "blocks": [
+        {
+          "type": "fields",
+          "labels": [
+            "Conflict Resolution Process",
+            "Other Agreements"
+          ]
+        },
+        {
+          "type": "signatures",
+          "columns": [
+            "Signature",
+            "Date"
+          ],
+          "rows": []
+        }
+      ]
+    }
+  ],
+  "pairs": [["Project Title", "Date Prepared"]],
+  "legend": "",
+  "notes": "Every label prints with a trailing colon, dropped here. Team Values and Principles, Meeting Guidelines and Communication Guidelines each print a box with five numbered lines ('1.' to '5.'); Decision-Making Process, Conflict Resolution Process and Other Agreements are open boxes. The signature block is two ruled columns headed 'Signature:' and 'Date:' with nine blank lines each, one per team member, and no printed signer names, so columns holds the two printed headings and rows is empty. Page 2 has the title bar but no Project Title / Date Prepared line."
+}

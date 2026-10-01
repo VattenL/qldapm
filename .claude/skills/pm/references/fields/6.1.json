@@ -1,0 +1,23 @@
+{
+  "form": "6.1",
+  "name": "Product Vision",
+  "printed_title": "PRODUCT VISION",
+  "kind": "narrative",
+  "page_count": 1,
+  "title_block": ["Project Title", "Date Prepared"],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 252,
+      "blocks": [
+        {"type": "text", "text": "We are developing this product for ____."},
+        {"type": "text", "text": "To respond to the following need(s):"},
+        {"type": "text", "text": "This product responds to those needs by providing the following:"},
+        {"type": "text", "text": "Customers will buy this product because:"}
+      ]
+    }
+  ],
+  "pairs": [["Project Title", "Date Prepared"]],
+  "legend": "",
+  "notes": "Portrait page. The four sentence stems print verbatim; ____ marks the printed blank line, which is followed by a full stop. Under To respond to the following need(s) the form prints 3 empty bullets; under This product responds to those needs by providing the following, 4 empty bullets; under Customers will buy this product because, 4 empty bullets. Prose Table 6.1 lists Target customer, Needs, Product and key attributes, Key benefit; on the blank form these map to the four stems in that order and are not printed as labels."
+}

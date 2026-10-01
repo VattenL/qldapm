@@ -1,0 +1,49 @@
+{
+  "form": "2.8",
+  "name": "Project Scope Statement",
+  "printed_title": "PROJECT SCOPE STATEMENT",
+  "kind": "fields",
+  "page_count": 2,
+  "title_block": [
+    "Project Title",
+    "Date Prepared"
+  ],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 58,
+      "blocks": [
+        {
+          "type": "fields",
+          "labels": [
+            "Project Scope Description",
+            "Project Deliverables",
+            "Product Acceptance Criteria",
+            "Project Exclusions"
+          ]
+        }
+      ]
+    },
+    {
+      "page": 2,
+      "pdf_page": 59,
+      "blocks": [
+        {
+          "type": "fields",
+          "labels": [
+            "Project Constraints",
+            "Project Assumptions"
+          ]
+        }
+      ]
+    }
+  ],
+  "pairs": [
+    [
+      "Project Title",
+      "Date Prepared"
+    ]
+  ],
+  "legend": "",
+  "notes": "Page 2 repeats the title bar but prints no Project Title / Date Prepared header, and its two labels print without a trailing colon. The prose table 2.8 (PDF 57) describes only the four page 1 elements; Project Constraints and Project Assumptions appear only on the blank page 2."
+}

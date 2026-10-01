@@ -1,0 +1,36 @@
+{
+  "form": "2.1",
+  "name": "Project Management Plan",
+  "printed_title": "PROJECT MANAGEMENT PLAN",
+  "kind": "fields",
+  "page_count": 2,
+  "title_block": ["Project Title", "Date Prepared"],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 34,
+      "blocks": [
+        {"type": "text", "text": "Project Life Cycle"},
+        {"type": "table", "bank": 1, "columns": ["Phase", "Key Activities", "Key Deliverables"], "row_labels": []},
+        {"type": "table", "bank": 1, "columns": ["Phase", "Reviews", "Entry Criteria", "Exit Criteria"], "row_labels": []},
+        {"type": "text", "text": "Development Approaches"},
+        {"type": "table", "bank": 1, "columns": ["Deliverable", "Development Approach"], "row_labels": []},
+        {"type": "text", "text": "Subsidiary Management Plans"},
+        {"type": "table", "bank": 1, "columns": ["Name", "Comment"], "row_label_column": true, "row_labels": ["Scope", "Time", "Cost", "Quality", "Resource", "Communications", "Risk", "Procurement", "Stakeholder", "Other Plans"]}
+      ]
+    },
+    {
+      "page": 2,
+      "pdf_page": 35,
+      "blocks": [
+        {"type": "text", "text": "Variance Thresholds"},
+        {"type": "fields", "labels": ["Scope Variance Threshold", "Scope Baseline Management", "Schedule Variance Threshold", "Schedule Baseline Management", "Cost Variance Threshold", "Cost Baseline Management"]},
+        {"type": "text", "text": "Baselines"},
+        {"type": "text", "text": "Attach all project baselines."}
+      ]
+    }
+  ],
+  "pairs": [["Project Title", "Date Prepared"], ["Scope Variance Threshold", "Scope Baseline Management"], ["Schedule Variance Threshold", "Schedule Baseline Management"], ["Cost Variance Threshold", "Cost Baseline Management"]],
+  "legend": "",
+  "notes": "Project Life Cycle, Development Approaches, Subsidiary Management Plans, Variance Thresholds and Baselines are section headings with no box of their own; each is followed by the tables or boxes listed after it. Project Life Cycle has two separate tables, both keyed by Phase (5 blank rows each); keep them as two tables in printed order. Deliverable/Development Approach prints 6 blank rows. In the Subsidiary Management Plans table the row labels Scope through Other Plans are printed in the Name column, with Comment blank. Variance Thresholds is a 3 by 2 grid of large boxes with the label inside the top of each box: threshold on the left, baseline management on the right. Attach all project baselines. is printed instruction text under the Baselines heading, not a field. The prose table (Table 2.1) lists Key reviews for the phase; the blank form column is Reviews."
+}

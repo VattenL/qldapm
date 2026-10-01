@@ -49,18 +49,69 @@
       "id": 3,
       "eval_name": "risk-register-2-32",
       "prompt": "Pull the risks out of the charter into a proper 2.32 Risk Register document. Keep the R numbers. We have not scored probability or impact yet.",
-      "expected_output": "A form 2.32 Risk Register in Markdown with every printed column, all of R1 to R12, unscored cells left empty or marked, contingency reserve named correctly.",
+      "expected_output": "A form 2.32 Risk Register in Markdown: both printed banks as two tables with the grouped Impact headers written as 'Impact: Scope' and so on, R1 to R12 with the charter's own risk and response wording, unscored cells empty, no added columns, printed title block, and both checkers passing.",
       "files": [
         "docs/charter-package.en.md"
       ],
       "assertions": [
-        "All risks R1 to R12 present with their charter numbers",
-        "check_fidelity.py finds every printed 2.32 label",
-        "Probability, impact and score cells are empty or [TBD], no invented numbers",
-        "Responses carried over from the charter rather than rewritten",
-        "Product or Project type from the charter preserved",
-        "Contingency reserve never called management reserve",
-        "check_consistency.py reports no errors on the output"
+        "The form is two tables in printed order: the bank 1 header row is exactly '| ID | Risk Statement | Owner | Probability | Impact: Scope | Impact: Quality | Impact: Schedule | Impact: Cost | Score | Response |' and the bank 2 header row is exactly '| Revised Probability | Impact: Scope | Impact: Quality | Impact: Schedule | Impact: Cost | Revised Score | Responsible Party | Actions | Status | Comments |'",
+        "'python3 .claude/skills/pm/scripts/check_fidelity.py <output> 2.32' prints '22/22 printed labels present in printed order', exits 0, and lists no unprinted labels (so no Type, ID-in-bank-2 or other added column)",
+        "Bank 1 has exactly 12 body rows with R1 to R12 in order in the ID column, and bank 2 has exactly 12 body rows",
+        "Every Risk Statement cell equals the Risk text of the same ID in docs/charter-package.en.md lines 301 to 312 character for character, ignoring <mark> tags",
+        "Every Response cell equals the Response text of the same ID in docs/charter-package.en.md lines 301 to 312 character for character, ignoring <mark> tags",
+        "In every row, Probability, the four bank 1 Impact columns, Score, Revised Probability, the four bank 2 Impact columns and Revised Score are empty or '[TBD]': no number and no rating word such as High, Medium or Low",
+        "Owner and Responsible Party cells are empty, or every filled one is wrapped in <mark>, since the charter names no risk owner",
+        "Each risk's charter Type is kept outside an added column (in Comments or in the italic paragraph above the form) and matches the charter: R1, R2, R6, R10 and R11 Product, the other seven Project",
+        "The title block is exactly the two lines '**Project Title:**' and '**Date Prepared:**' with values, and the file has no '**Project:**', '**Date prepared:**' or '**Source:**' line",
+        "The italic paragraph above the form cites PDF page 141 together with printed page 130",
+        "The text 'management reserve' does not appear in the output",
+        "'python3 .claude/skills/pm/scripts/check_consistency.py <output> docs/charter-package.en.md docs/scope-package.en.md --report <output>' exits 0 and reports 0 errors"
+      ]
+    },
+    {
+      "id": 4,
+      "eval_name": "held-out-audit-2-18-schedule",
+      "prompt": "We're about to push docs/forms/2-18-project-schedule.en.md into the schedule tab of the team's Google Doc. Audit it first against the charter, the scope package and form 2.18 in the book. I want errors and warnings with locations and the evidence. Don't change any file.",
+      "expected_output": "An audit report in the audit-template shape that finds the sequencing, calendar, milestone-text, resource-hours and citation defects verified in the generated 2.18 form, none of which is described in references/review-lessons.md, and that does not report the correctly computed durations as wrong.",
+      "files": [
+        "docs/forms/2-18-project-schedule.en.md",
+        "docs/charter-package.en.md",
+        "docs/scope-package.en.md"
+      ],
+      "assertions": [
+        "Flags that closeout comes before the warranty month it closes: 1.10.2.1 'Closeout report, lessons learned, and final acceptance' runs 'Mon 15 February 2027' to 'Wed 17 February 2027' (2-18 lines 348 to 350), before 1.10.1.1 'First warranty month support' starts on 'Thu 18 February 2027' (line 337) and about five weeks before M7 'First warranty month complete, warranty handover, project closeout' on 'Mon 22 March 2027' (line 54)",
+        "Flags go-live before UAT completes: 1.8.1.3-A2 'Production deployment and switchover' finishes 'Mon 15 February 2027' (line 304) while 1.8.3.2-A1 'UAT execution with the business owners' runs to 'Wed 17 February 2027' (line 321), against the charter rule that a UAT below 99% 'means go-live is not authorised' (charter line 388)",
+        "Flags that 1.8.3.2-A2 'Acceptance decision and sign-off with sponsor' ('Fri 12 February 2027' to 'Mon 15 February 2027', line 322) finishes before the UAT execution it signs off ends on 'Wed 17 February 2027' (line 321)",
+        "Flags that 1.7.1.4-A1 'Reconciliation walkthrough and written acceptance' on 'Wed 10 February 2027' (line 292) comes before 1.7.1.3-A2 'Reconciliation report production' on 'Fri 12 February 2027' (line 289), so the Accountant accepts a report that does not exist yet",
+        "Flags that 1.9.1.2-A5 'Listing review with the Director' on 'Thu 10 December 2026' to 'Fri 11 December 2026' (line 334) comes a month before 1.9.1.2-A1 'Listing copy, screenshots, and privacy declarations' on 'Mon 11 January 2027' to 'Tue 12 January 2027' (line 330)",
+        "Flags that work and milestones are booked inside the Lunar New Year break that charter assumption 8 starts on '6 February 2027' (charter line 208) and that 'can absorb no overrun' (charter line 193), for example M5 on 'Mon 8 February 2027' (line 52) or go-live and UAT from 10 to 17 February 2027, rather than accepting the reading paragraph's note that the break is left out of the calendar",
+        "Flags that page 1 shortens the M5 and M6 names ('M5 System test complete on web, Android, and iOS', 'M6 UAT signed off, data migrated, go-live and handover', lines 52 and 53) while page 2 (lines 468 and 469) and the charter (lines 333 and 334) add '; UAT entry criteria met; app submitted to both stores' and '; app live in both stores'",
+        "Flags that the levelled hours per person in the Resource loading table (for example 'DEV2 | 920', line 486; PM 655.1, MOB1 324) differ from the hours the cost estimate prices, 'Labor hours by resource: PM 800, DEV1 800, DEV2 800, DEV3 800, QA1 800, MOB1 400' (scope-package line 368), so the schedule and the 539,000,000 VND labor baseline no longer describe the same assignment (at the same rates the levelled hours cost 533,138,125 VND)",
+        "Flags the line 5 citation '**Source:** ... form 2.18, pages 78 to 81': either as a bold label the printed form does not carry, or because the pages are printed pages given without saying so (the blank form is PDF pages 91 to 92, printed pages 80 to 81)",
+        "The report separates errors from warnings and gives each finding a file:line location and quoted text from the documents",
+        "Does not report any Duration value or any summary row's Start or Finish as wrong: all 304 Gantt rows count working days correctly with weekends and 1 January 2027 excluded, and every summary row spans exactly its children",
+        "docs/ left unmodified"
+      ]
+    },
+    {
+      "id": 5,
+      "eval_name": "blank-template-4-2",
+      "prompt": "give me a blank 4.2 Project Status Report for the team, we'll fill it in every week",
+      "expected_output": "A blank form 4.2 in Markdown: four printed pages with their headings, the four-label title block, every printed box in printed order including the repeated Root Cause of Variances and Planned Corrective or Preventive Action, nothing filled in, and the fidelity check passing.",
+      "files": [],
+      "assertions": [
+        "The output is a Markdown file named 4-2-project-status-report.en.md",
+        "It has exactly four page headings, in order: '#### PROJECT STATUS REPORT, page 1 of 4', '#### PROJECT STATUS REPORT, page 2 of 4', '#### PROJECT STATUS REPORT, page 3 of 4', '#### PROJECT STATUS REPORT, page 4 of 4'",
+        "Under the page 1 heading the title block is the four lines '**Project Title:**', '**Date Prepared:**', '**Project Manager:**', '**Sponsor:**' in that order, each with no value, and the file has no '**Project:**', '**Date prepared:**' or '**Source:**' line",
+        "'python3 .claude/skills/pm/scripts/check_fidelity.py <output> 4.2' prints '20/20 printed labels present in printed order', exits 0, and lists no unprinted labels",
+        "'Root Cause of Variances' appears as a label on page 1 and again on page 2, and 'Planned Corrective or Preventive Action' on page 2 and again on page 3, each spelled exactly as printed (not merged, not renamed to schedule or cost variances)",
+        "Page 4 has the bold line '**New Risks Identified**' above a one-column table headed 'Risk', the bold line '**Issues**' above a one-column table headed 'Issue', then a 'Comments' box; neither table has an added column such as ID, Owner, Status or Due Date",
+        "Every value is empty: no project title, person name, date, amount, percentage or project ID (R1, F01, M1, D1, WBS codes) appears anywhere below the page 1 heading",
+        "No field the form does not print is added (no Overall Status, RAG, Reporting Period, Schedule Status, Cost Status or Key Metrics label)",
+        "An italic paragraph before the first page heading cites PDF pages 209 to 212 together with printed pages 198 to 201",
+        "'uv run --with python-docx .claude/skills/pm/scripts/md_to_docx.py <output>' exits 0 and writes a .docx",
+        "'python3 .claude/skills/pm/scripts/check_consistency.py <output>' reports 0 errors and 0 warnings",
+        "The output contains no em dash, en dash or emoji"
       ]
     }
   ]
