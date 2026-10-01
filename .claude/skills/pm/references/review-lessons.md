@@ -111,9 +111,18 @@ allocation, and the last dated work against the stated end.
 
 **Stated counts match the list.** "Fourteen elements of Table 1.1" when the table
 lists 13 (audit E11); "one of the two exceptions" when the text said four
-(E7). Count the thing before writing the number, and name the source of any
-item that does not come from the book (the 14th element, Project approval
-requirements, is PMBOK 6 section 4.1.3.1).
+(E7). Count the thing before writing the number, and name which list you
+counted. The book has two lists for the charter and they differ: the bullet
+list at the start of section 1.1 (PDF page 13, printed page 2) has 14 items and
+includes Project approval requirements, between Key stakeholder list and
+Project exit criteria; Table 1.1 (PDF pages 14 to 15) has 13 rows and the
+printed form (PDF pages 16 to 19) has no such field, only the Approvals
+signature block. So the charter's 14th section in 2A does come from the book.
+Audit E11 is half wrong for this reason: "Table 1.1 lists 13 elements" is
+right, but "Project approval requirements ... comes from PMBOK 6 section
+4.1.3.1, not from the book" is not. The correct wording is "13 elements in
+Table 1.1; Project approval requirements is in the book's section 1.1 list
+(printed page 2) but not in Table 1.1 or on the form".
 
 **A rule that is cited is stated.** "Exceptions to the sizing rule" in a Doc that
 never states the 8 to 80 hour rule (audit E7). If a section relies on a rule,
@@ -196,9 +205,27 @@ to the form (thread AAACG0ldthw). What that meant in practice:
   Name beside Code of Accounts, Description of Work beside Assumptions and
   Constraints, Milestones beside Due Dates, and a two-tier Labor / Material
   header (audit W9). The Markdown keeps a vertical Field | Content table in
-  printed reading order; `tools/gdoc_form.py` and `scripts/md_to_docx.py`
-  apply the pairing and group headers at render time. Do not invent a pairing
-  the form does not print.
+  printed reading order; `scripts/md_to_docx.py` applies the side-by-side
+  pairing when it renders the .docx, from the `pairs` list in
+  `references/fields/<form>.json`. `tools/gdoc_form.py` does not pair fields:
+  in the Google Doc it draws title bars, column widths, landscape pages and
+  group header rows, the last only when the caller passes them (as
+  `tools/gdoc_tab3.py` does for 2.7). Do not invent a pairing the form does
+  not print.
+- **Printed group headers are kept, not flattened into new labels.** 2.32
+  prints Impact over Scope, Quality, Schedule and Cost in both banks; 2.7 prints
+  Requirement Information and Relationship Traceability; 2.10 prints Labor and
+  Material. Two runs of the skill flattened 2.32 into two different invented
+  spellings ("Impact Scope", "Impact: Scope"). Use the one convention in
+  `rendering.md`: `Impact: Scope`.
+- **No column the form does not print.** A register gets an ID column only if
+  its printed form has one: 1.3 Stakeholder Register starts with Name, and an
+  earlier run that added `ID` / `S01`... to it added a field. Bank 2 of 2.32
+  and of 3.1 prints no ID either.
+- **The title block uses the printed labels.** `Project Title` and `Date
+  Prepared` on most forms, `Date` on 2.4, 2.5, 2.11, 2.33, 2.37 and 2.38,
+  `Project Name` alone on 6.3, and nothing on 2.3 and 2.18. `Project:` and
+  `Date prepared:` are not printed labels.
 - **Exactly the printed signature blocks.** 1.1 Approvals has two columns,
   Project Manager and Sponsor or Originator, each with Signature, Name, Date.
   A third Customer column is wrong (New 5). **[script]**
@@ -246,10 +273,22 @@ flags leading zeros, abbreviated months, and mixed styles within a file.
   (New 9). New assumptions introduced by a change (16 sponsor and customer are
   distinct, 17 rate basis, 18 app adoption, 19 SMS and hosting costs) must be
   added in the same change.
-- **The Doc is regenerated from the source, not edited by hand.** Hand edits left
-  the Doc 108 paragraphs behind its source and kept an obsolete tab alive
-  (audit E3, E9, W14). Change `docs/*.md`, then push with `tools/gdoc.py` or
-  `tools/gdoc_edit.py`.
+- **What reaches the Doc is what the generator emits, so audit the generator's
+  output.** Tab 3 of the Doc was 108 paragraphs behind
+  `docs/scope-package.en.md` (audit E9) and showed the WBS as a table (E8).
+  The cause was not hand editing: the version of `tools/scope_tab3.py` that
+  built the tab said in its own docstring that it "drops everything before
+  Part 1" and "turns the WBS outline into a table". That lost the decomposition
+  method, so the sizing rule the Doc cites was never stated in it (E7).
+  Regenerating from source with that version reproduces both faults. Commit
+  ff3cbb0 (25 September) changed the generator to keep the reading
+  convention, the "What this document is not" note, the inputs and the
+  decomposition method, and to emit the WBS as an outline; it still drops the
+  rest of the front matter, including the team-size note. Before a push,
+  build the payload (`python3 tools/scope_tab3.py --out <scratch>/tab3.md`)
+  and audit it as well as the source. Change `docs/*.md` and push with
+  `tools/gdoc.py` or `tools/gdoc_edit.py`; do not hand-edit the Doc, and
+  remove an obsolete tab rather than leave it alive (audit E3, W14).
 - **Stakeholders include every party a risk depends on.** R12 depends on Apple,
   Google and the push provider, none of whom was listed (audit W5).
 - **Team size read against the brief is an interpretation**, and the note that

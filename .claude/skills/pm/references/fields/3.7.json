@@ -1,0 +1,53 @@
+{
+  "form": "3.7",
+  "name": "Team Performance Assessment",
+  "printed_title": "TEAM PERFORMANCE ASSESSMENT",
+  "kind": "fields",
+  "page_count": 3,
+  "title_block": ["Project Title", "Date Prepared"],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 197,
+      "blocks": [
+        {"type": "text", "text": "Technical Performance"},
+        {"type": "checkboxes", "label": "Scope", "options": ["Exceeds Expectations", "Meets Expectations", "Needs Improvement"]},
+        {"type": "fields", "labels": ["Comments"]},
+        {"type": "checkboxes", "label": "Quality", "options": ["Exceeds Expectations", "Meets Expectations", "Needs Improvement"]},
+        {"type": "fields", "labels": ["Comments"]},
+        {"type": "checkboxes", "label": "Schedule", "options": ["Exceeds Expectations", "Meets Expectations", "Needs Improvement"]},
+        {"type": "fields", "labels": ["Comments"]},
+        {"type": "checkboxes", "label": "Cost", "options": ["Exceeds Expectations", "Meets Expectations", "Needs Improvement"]},
+        {"type": "fields", "labels": ["Comments"]}
+      ]
+    },
+    {
+      "page": 2,
+      "pdf_page": 198,
+      "blocks": [
+        {"type": "text", "text": "Interpersonal Competency"},
+        {"type": "checkboxes", "label": "Communication", "options": ["Exceeds Expectations", "Meets Expectations", "Needs Improvement"]},
+        {"type": "fields", "labels": ["Comments"]},
+        {"type": "checkboxes", "label": "Collaboration", "options": ["Exceeds Expectations", "Meets Expectations", "Needs Improvement"]},
+        {"type": "fields", "labels": ["Comments"]},
+        {"type": "checkboxes", "label": "Conflict Management", "options": ["Exceeds Expectations", "Meets Expectations", "Needs Improvement"]},
+        {"type": "fields", "labels": ["Comments"]},
+        {"type": "checkboxes", "label": "Decision Making", "options": ["Exceeds Expectations", "Meets Expectations", "Needs Improvement"]},
+        {"type": "fields", "labels": ["Comments"]}
+      ]
+    },
+    {
+      "page": 3,
+      "pdf_page": 199,
+      "blocks": [
+        {"type": "checkboxes", "label": "Team Morale", "options": ["Exceeds Expectations", "Meets Expectations", "Needs Improvement"]},
+        {"type": "fields", "labels": ["Comments"]},
+        {"type": "text", "text": "Areas for Development"},
+        {"type": "table", "bank": 1, "columns": ["Area", "Approach", "Actions"], "row_labels": []}
+      ]
+    }
+  ],
+  "pairs": [["Project Title", "Date Prepared"]],
+  "legend": "",
+  "notes": "The text blocks Technical Performance, Interpersonal Competency and Areas for Development are printed section headings with no box of their own. Each rated item on pages 1 and 2 prints as a bordered row (bold item name, then three rating boxes) with its Comments box joined directly under it; on page 3 the Team Morale row and its Comments box print as two separate bordered boxes with a gap between them. The Areas for Development table has five blank rows. Disagreements with the prose, where the blank form wins: Table 3.7 describes Team morale only as a narrative, while the blank form also gives it the three rating boxes; the prose bullet list names Team characteristics with Morale and Cohesiveness, while the form prints only Team Morale and has no Cohesiveness item."
+}

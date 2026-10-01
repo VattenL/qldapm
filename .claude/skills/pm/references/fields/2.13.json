@@ -1,0 +1,69 @@
+{
+  "form": "2.13",
+  "name": "Activity Attributes",
+  "printed_title": "ACTIVITY ATTRIBUTES",
+  "kind": "fields",
+  "page_count": 1,
+  "title_block": [
+    "Project Title",
+    "Date Prepared"
+  ],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 75,
+      "blocks": [
+        {
+          "type": "fields",
+          "labels": [
+            "ID",
+            "Activity",
+            "Description of Work"
+          ]
+        },
+        {
+          "type": "table",
+          "bank": 1,
+          "columns": [
+            "Predecessors",
+            "Relationship",
+            "Lead or Lag",
+            "Successor",
+            "Relationship",
+            "Lead or Lag"
+          ],
+          "row_labels": []
+        },
+        {
+          "type": "fields",
+          "labels": [
+            "Number and Type of Team Resources Required",
+            "Skill Requirements",
+            "Required Resources",
+            "Type of Effort",
+            "Location of Performance",
+            "Imposed Dates or Other Constraints",
+            "Assumptions"
+          ]
+        }
+      ]
+    }
+  ],
+  "pairs": [
+    [
+      "Project Title",
+      "Date Prepared"
+    ],
+    [
+      "ID",
+      "Activity"
+    ],
+    [
+      "Number and Type of Team Resources Required",
+      "Skill Requirements",
+      "Required Resources"
+    ]
+  ],
+  "legend": "",
+  "notes": "Landscape page, one sheet per activity. ID is a narrow box beside Activity on the first row. The logic table prints one blank row; \"Predecessors\" is plural and \"Successor\" singular as printed, and Relationship and Lead or Lag each print twice. Number and Type of Team Resources Required, Skill Requirements and Required Resources print as three boxes side by side, so that entry in pairs has three members. The prose table 2.13 (PDF 74) lists Imposed dates and Constraints as separate elements and Location of performance before Type of effort; the blank form prints one box \"Imposed Dates or Other Constraints\" and Type of Effort before Location of Performance, which wins. The prose also names elements the blank does not print under those words: \"Predecessor and successor activities\", \"Logical relationships\" and \"Leads and lags\" appear on the blank as the Predecessors, Relationship, Lead or Lag, Successor columns; \"Team resources and skill levels\" appears as the two boxes Number and Type of Team Resources Required and Skill Requirements; \"Required physical resources\" appears as Required Resources. Use the printed labels."
+}

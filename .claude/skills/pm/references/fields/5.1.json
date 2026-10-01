@@ -1,0 +1,35 @@
+{
+  "form": "5.1",
+  "name": "Lessons Learned Summary",
+  "printed_title": "LESSONS LEARNED SUMMARY",
+  "kind": "fields",
+  "page_count": 2,
+  "title_block": ["Project Title", "Date Prepared"],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 244,
+      "blocks": [
+        {"type": "text", "text": "Project Performance Analysis"},
+        {"type": "table", "bank": 1, "columns": ["What Worked Well", "What Can Be Improved"], "row_labels": ["Requirements definition and management", "Scope definition and management", "Schedule development and control", "Cost estimating and control", "Quality planning and control", "Physical resource planning and control", "Team planning, development, and performance", "Communications management", "Reporting", "Risk management", "Procurement planning and management", "Stakeholder engagement", "Process improvement information", "Product-specific information", "Other"]}
+      ]
+    },
+    {
+      "page": 2,
+      "pdf_page": 245,
+      "blocks": [
+        {"type": "text", "text": "Risks and Issues"},
+        {"type": "table", "bank": 1, "columns": ["Risk or Issue Description", "Response", "Comments"], "row_labels": []},
+        {"type": "text", "text": "Quality Defects"},
+        {"type": "table", "bank": 1, "columns": ["Defect Description", "Resolution", "Comments"], "row_labels": []},
+        {"type": "text", "text": "Vendor Management"},
+        {"type": "table", "bank": 1, "columns": ["Vendor", "Issue", "Resolution", "Comments"], "row_labels": []},
+        {"type": "text", "text": "Other"},
+        {"type": "table", "bank": 1, "columns": ["Areas of Exceptional Performance", "Areas for Improvement"], "row_labels": []}
+      ]
+    }
+  ],
+  "pairs": [["Project Title", "Date Prepared"]],
+  "legend": "",
+  "notes": "Page 1 is portrait, page 2 is landscape. The text blocks are printed section headings over each table, not fillable fields. On page 1 the row-label column has no printed header and the row labels keep the printed sentence case. Each page 2 table prints 3 blank rows. The heading Other prints twice: as the last row label on page 1 and as a section heading on page 2. Prose Table 5.1 heads the second column What Can be Improved (lowercase be); the blank form prints What Can Be Improved."
+}

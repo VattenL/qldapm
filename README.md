@@ -20,6 +20,7 @@ docs/charter-package.vi.md    Vietnamese version, version 2.0, no longer maintai
 docs/scope-package.en.md      Scope baseline deliverable: RTM, WBS, WBS dictionary
 docs/requirements.md          General (course-wide) requirement, 3 points
 docs/wbs_req.md               Scope baseline brief, plus the class notes checked against the sources
+docs/pm-skill-guide.md        How the team uses the pm skill; docs/pm-skill-guide.vi.md in Vietnamese
 requirement.md                Team requirement, the same 3 points plus the prompt log
 review/                       Replies to the team's review comments on the Google Doc, one file per round
 tools/gdoc.py                 Google Docs and Drive API helper: comments, replies, rebuild of the Doc
@@ -160,6 +161,23 @@ The checker holds the arithmetic that cannot be held by hand across 70 sheets:
 - Every WBS code cited by the traceability matrix exists in the WBS.
 - F01 to F12, A01 to A12, D1 to D11, M0 to M7, and every BR, FR, and NFR identifier are referenced.
 - No em dash and no emoji, per `CLAUDE.md`.
+
+## PM skill
+
+`.claude/skills/pm/` is a Claude Code skill that produces, checks and audits forms from the Book of
+Forms for this project. Ask for a form by number or name in Claude Code at the repo root, or type
+`/pm 2.32`. It scaffolds the printed form into `docs/forms/`, fills it from the charter and scope
+packages, marks assumed values with `<mark>`, and runs the fidelity and consistency checks.
+
+Guide for the team: `docs/pm-skill-guide.md`, in Vietnamese `docs/pm-skill-guide.vi.md`. It covers
+the prompts, the end-to-end path to `.docx` or the Doc, the house rules, all 66 forms, a command cheat
+sheet and troubleshooting.
+
+```bash
+python3 .claude/skills/pm/scripts/new_form.py 2.32 --out -              # blank printed form as Markdown
+python3 .claude/skills/pm/scripts/check_fidelity.py docs/forms/<file>.md <form>
+uv run --with pytest --with python-docx pytest -q .claude/skills/pm/scripts
+```
 
 ## Google Doc
 

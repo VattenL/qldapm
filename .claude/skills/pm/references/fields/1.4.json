@@ -1,0 +1,20 @@
+{
+  "form": "1.4",
+  "name": "Stakeholder Analysis",
+  "printed_title": "STAKEHOLDER ANALYSIS",
+  "kind": "log",
+  "page_count": 1,
+  "title_block": ["Project Title", "Date Prepared"],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 27,
+      "blocks": [
+        {"type": "table", "bank": 1, "columns": ["Name or Role", "Interest", "Influence", "Attitude"], "row_labels": []}
+      ]
+    }
+  ],
+  "pairs": [["Project Title", "Date Prepared"]],
+  "legend": "",
+  "notes": "Landscape page. The table prints 5 blank rows. The blank form prints only this table; it has no power/interest grid or other chart."
+}

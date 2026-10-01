@@ -1,0 +1,32 @@
+{
+  "form": "4.5",
+  "name": "Risk Audit",
+  "printed_title": "RISK AUDIT",
+  "kind": "fields",
+  "page_count": 2,
+  "title_block": ["Project Title", "Date Prepared", "Project Auditor", "Audit Date"],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 222,
+      "blocks": [
+        {"type": "text", "text": "Risk Event Audit"},
+        {"type": "table", "bank": 1, "columns": ["Event", "Cause", "Response", "Comment"], "row_labels": []},
+        {"type": "text", "text": "Risk Response Audit"},
+        {"type": "table", "bank": 1, "columns": ["Event", "Response", "Successful", "Actions to Improve"], "row_labels": []},
+        {"type": "text", "text": "Risk Management Process Audit"},
+        {"type": "table", "bank": 1, "columns": ["Process", "Followed", "Tools and Techniques Used"], "row_label_column": true, "row_labels": ["Plan Risk Management", "Identify Risks", "Perform Qualitative Assessment", "Perform Quantitative Assessment", "Plan Risk Responses", "Monitor and Control Risks"]}
+      ]
+    },
+    {
+      "page": 2,
+      "pdf_page": 223,
+      "blocks": [
+        {"type": "fields", "labels": ["Description of Good Practices to Share", "Description of Areas for Improvement"]}
+      ]
+    }
+  ],
+  "pairs": [["Project Title", "Date Prepared"], ["Project Auditor", "Audit Date"]],
+  "legend": "",
+  "notes": "Portrait pages. The text blocks on page 1 are printed section headings over each table, not fillable fields. Risk Event Audit and Risk Response Audit each print 4 blank rows. In the Risk Management Process Audit table the first column is headed Process and its row_labels are the printed process names in that column. Prose Table 4.5 names the processes differently from the blank form: Plan risk management, Identify risks, Perform qualitative risk analysis, Perform quantitative risk analysis, Plan risk responses, Control risks (blank: Perform Qualitative Assessment, Perform Quantitative Assessment, Monitor and Control Risks); the blank form wins. Page 2 prints the two fields as headings over large boxes."
+}

@@ -1,0 +1,21 @@
+{
+  "form": "2.39",
+  "name": "Source Selection Criteria",
+  "printed_title": "SOURCE SELECTION CRITERIA",
+  "kind": "log",
+  "page_count": 1,
+  "title_block": ["Project Title", "Date Prepared"],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 168,
+      "blocks": [
+        {"type": "table", "bank": 1, "columns": ["", "1", "2", "3", "4", "5"], "row_labels": ["Criterion 1", "Criterion 2", "Criterion 3", "Criterion 4", "Criterion 5"]},
+        {"type": "table", "bank": 1, "columns": ["", "Weight", "Candidate 1 Rating", "Candidate 1 Score", "Candidate 2 Rating", "Candidate 2 Score", "Candidate 3 Rating", "Candidate 3 Score"], "row_labels": ["Criterion 1", "Criterion 2", "Criterion 3", "Criterion 4", "Criterion 5", "Totals"]}
+      ]
+    }
+  ],
+  "pairs": [["Project Title", "Date Prepared"]],
+  "legend": "",
+  "notes": "Landscape page with two separate grids and no headings above them; the second grid is a separate table that repeats the criterion rows, not a continuation bank. In a table, the first entry of columns is the row-label column and an empty string means the header cell is printed blank. The first grid's columns 1 to 5 are rating levels, each cell describing what that rating means for the criterion. In the second grid each candidate header prints on two lines (Candidate 1 over Rating, and so on). Shading in the second grid: Rating cells for Criterion 1 to 5 are light grey and Score cells dark grey; in the Totals row the three Rating cells print solid black, blocked out with no entry space, while the Weight cell and the three Score cells print white and are left blank for entry. The prose Table 2.35 calls the elements Criteria, Weight, Candidate rating, Candidate score and Total where the blank form prints Criterion 1 to 5, Weight, Candidate N Rating, Candidate N Score and Totals; the blank form wins."
+}

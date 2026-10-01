@@ -1,0 +1,27 @@
+{
+  "form": "2.2",
+  "name": "Change Management Plan",
+  "printed_title": "CHANGE MANAGEMENT PLAN",
+  "kind": "fields",
+  "page_count": 1,
+  "title_block": ["Project Title", "Date Prepared"],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 38,
+      "blocks": [
+        {"type": "fields", "labels": ["Change Management Approach"]},
+        {"type": "text", "text": "Definitions of Change"},
+        {"type": "fields", "labels": ["Schedule change", "Budget change", "Scope change", "Project document changes"]},
+        {"type": "text", "text": "Change Control Board"},
+        {"type": "table", "bank": 1, "columns": ["Name", "Role", "Responsibility", "Authority"], "row_labels": []},
+        {"type": "text", "text": "Change Control Process"},
+        {"type": "table", "bank": 1, "columns": [], "row_labels": ["Change request submittal", "Change request tracking", "Change request review", "Change request disposition"]},
+        {"type": "text", "text": "Attach relevant forms used in the change control process."}
+      ]
+    }
+  ],
+  "pairs": [["Project Title", "Date Prepared"]],
+  "legend": "",
+  "notes": "Definitions of Change, Change Control Board and Change Control Process are headings with no box of their own. Under Definitions of Change, Schedule change, Budget change, Scope change and Project document changes are printed in sentence case with a colon inside the top-left of four stacked full-width boxes. The Change Control Board table prints 5 blank rows. The Change Control Process table prints no column headings: each row is a narrow cell holding the printed row label and a wide blank cell to its right. Attach relevant forms used in the change control process. is printed instruction text at the foot of the page. The prose table (Table 2.2) calls the last process row Change request outcome; the blank form prints Change request disposition. The prose also writes Schedule Change, Budget Change, Scope Change and Project Document Change in title case where the blank form prints Schedule change, Budget change, Scope change and Project document changes."
+}

@@ -1,0 +1,37 @@
+{
+  "form": "2.12",
+  "name": "Activity List",
+  "printed_title": "ACTIVITY LIST",
+  "kind": "log",
+  "page_count": 1,
+  "title_block": [
+    "Project Title",
+    "Date Prepared"
+  ],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 72,
+      "blocks": [
+        {
+          "type": "table",
+          "bank": 1,
+          "columns": [
+            "ID",
+            "Activity",
+            "Description of Work"
+          ],
+          "row_labels": []
+        }
+      ]
+    }
+  ],
+  "pairs": [
+    [
+      "Project Title",
+      "Date Prepared"
+    ]
+  ],
+  "legend": "",
+  "notes": "The prose table 2.12 (PDF 71) says \"Activity name\"; the blank form prints \"Activity\", which wins."
+}

@@ -1,0 +1,24 @@
+{
+  "form": "2.3",
+  "name": "Project Roadmap",
+  "printed_title": "PROJECT ROADMAP",
+  "kind": "chart",
+  "page_count": 1,
+  "title_block": [],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 40,
+      "blocks": [
+        {"type": "fields", "labels": ["Approach"]},
+        {"type": "text", "text": "Life Cycle Phases"},
+        {"type": "picture", "description": "A staircase of horizontal phase bars, one per life cycle phase, each starting where the previous one ends, laid left to right on the same time axis as the timeline below."},
+        {"type": "text", "text": "Timeline"},
+        {"type": "picture", "description": "A horizontal time axis marked in quarters with a project start date at the left edge and the project target end date at the right. Inside a frame, work periods are drawn as shaded bars labelled with a name and date range, stacked in lanes where they overlap. Milestones and reviews are drawn as markers on the edges of the frame with callout labels and dates: triangles for reviews, diamonds for milestones and approvals."}
+      ]
+    }
+  ],
+  "pairs": [],
+  "legend": "",
+  "notes": "Landscape page. Unlike most forms, the printed page is a filled sample, not a blank form: it has no title block and no blank boxes. The only printed headings are Approach, Life Cycle Phases and Timeline; everything else on the page (the Waterfall phases approach text, the phase names Origination, Development, QC and Edit, Exposure, Finalize, and all bar labels and dates from Jun 2 '14 to Dec 31 '16) is sample content from the book's own example project and must not be copied into a project document. The prose page lists the elements a roadmap should show: Project life cycle phases, Major deliverables or events, Significant milestones, Timing and types of reviews; these are not printed as labels on the form page. Triangle and diamond marker meanings are inferred from the sample (reviews are triangles, milestones and approvals are diamonds); the page prints no key."
+}

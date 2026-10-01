@@ -1,0 +1,24 @@
+{
+  "form": "3.6",
+  "name": "Quality Audit",
+  "printed_title": "QUALITY AUDIT",
+  "kind": "fields",
+  "page_count": 1,
+  "title_block": ["Project Title", "Date Prepared", "Project Auditor", "Audit Date"],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 194,
+      "blocks": [
+        {"type": "checkboxes", "label": "Area Audited", "options": ["Project processes", "Project documents", "Product documents", "Product documentation", "Quality management plan", "Defect/deficiency repair", "Organizational policies and procedures"]},
+        {"type": "fields", "labels": ["Good Practices from Similar Projects", "Areas for Improvement"]},
+        {"type": "text", "text": "Deficiencies or Defects"},
+        {"type": "table", "bank": 1, "columns": ["ID", "Defect", "Action", "Responsible Party", "Due Date"], "row_labels": []},
+        {"type": "fields", "labels": ["Comments"]}
+      ]
+    }
+  ],
+  "pairs": [["Project Title", "Date Prepared"], ["Project Auditor", "Audit Date"]],
+  "legend": "",
+  "notes": "The title block has two lines: Project Title with Date Prepared, then Project Auditor with Audit Date. The Area Audited boxes print in a bordered two-column grid read row by row, seven boxes with the eighth cell (bottom right) left empty. The text block Deficiencies or Defects is the printed heading of the table under it, which has four blank rows. The prose table (Table 3.6) lists no Project Auditor or Audit Date. The prose bullet list of audit areas differs from the printed boxes, and the blank form wins: prose Product requirements versus printed Product documents, prose Defect or deficiency repair versus printed Defect/deficiency repair, prose Compliance with organizational policies and procedures versus printed Organizational policies and procedures, prose Compliance with the quality management plan versus printed Quality management plan."
+}

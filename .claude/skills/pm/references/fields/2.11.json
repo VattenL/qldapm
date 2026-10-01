@@ -1,0 +1,45 @@
+{
+  "form": "2.11",
+  "name": "Schedule Management Plan",
+  "printed_title": "SCHEDULE MANAGEMENT PLAN",
+  "kind": "fields",
+  "page_count": 1,
+  "title_block": [
+    "Project Title",
+    "Date"
+  ],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 69,
+      "blocks": [
+        {
+          "type": "fields",
+          "labels": [
+            "Schedule Methodology",
+            "Scheduling Tools",
+            "Level of Accuracy",
+            "Units of Measure",
+            "Variance Thresholds",
+            "Schedule Reporting and Format",
+            "Organizational Procedure Links",
+            "Schedule Updates"
+          ]
+        }
+      ]
+    }
+  ],
+  "pairs": [
+    [
+      "Project Title",
+      "Date"
+    ],
+    [
+      "Level of Accuracy",
+      "Units of Measure",
+      "Variance Thresholds"
+    ]
+  ],
+  "legend": "",
+  "notes": "The header prints \"Date\", not \"Date Prepared\". Level of Accuracy, Units of Measure and Variance Thresholds print as three boxes side by side on one row, so that entry in pairs has three members, left to right. The prose table 2.11 (PDF 68) says \"Scheduling tool(s)\"; the blank form prints \"Scheduling Tools\", which wins."
+}

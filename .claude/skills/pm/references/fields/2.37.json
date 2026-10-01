@@ -1,0 +1,36 @@
+{
+  "form": "2.37",
+  "name": "Procurement Management Plan",
+  "printed_title": "PROCUREMENT MANAGEMENT PLAN",
+  "kind": "fields",
+  "page_count": 2,
+  "title_block": ["Project Title", "Date"],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 161,
+      "blocks": [
+        {"type": "text", "text": "Procurement Integration"},
+        {"type": "table", "bank": 1, "columns": ["Area", "Integration Approach"], "row_label_column": true, "row_labels": ["Scope", "Schedule", "Documentation", "Risk", "Reporting"]},
+        {"type": "text", "text": "Timing of Key Procurement Activities"},
+        {"type": "table", "bank": 1, "columns": ["Date", "Activity"], "row_labels": []},
+        {"type": "text", "text": "Performance Metrics"},
+        {"type": "table", "bank": 1, "columns": ["Item", "Metric", "Measurement Method"], "row_labels": []}
+      ]
+    },
+    {
+      "page": 2,
+      "pdf_page": 162,
+      "blocks": [
+        {"type": "text", "text": "Roles, Responsibility, and Authority"},
+        {"type": "table", "bank": 1, "columns": ["Role", "Responsibility", "Authority"], "row_labels": []},
+        {"type": "text", "text": "Assumptions and Constraints"},
+        {"type": "table", "bank": 1, "columns": ["Category", "Assumption/Constraint"], "row_labels": []},
+        {"type": "fields", "labels": ["Legal Jurisdiction and Currency", "Independent Estimates", "Risk Management", "Prequalified Sellers"]}
+      ]
+    }
+  ],
+  "pairs": [["Project Title", "Date"]],
+  "legend": "",
+  "notes": "The title block prints Date, not Date Prepared, and appears on page 1 only. A text block directly before a table is that table's printed heading. Procurement Integration has fixed rows Scope, Schedule, Documentation, Risk and Reporting under the Area column. Timing of Key Procurement Activities and Performance Metrics print six blank rows each; Roles, Responsibility, and Authority and Assumptions and Constraints print four. Prequalified Sellers has no box: it prints four numbered lines, 1. to 4., under its heading. The prose Table 2.33 says Timing, Roles, responsibilities, and authority, and Prequalified sellers where the blank form prints Timing of Key Procurement Activities, Roles, Responsibility, and Authority (singular Responsibility), and Prequalified Sellers; the blank form wins."
+}

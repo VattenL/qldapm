@@ -1,0 +1,39 @@
+{
+  "form": "4.1",
+  "name": "Team Member Status Report",
+  "printed_title": "TEAM MEMBER STATUS REPORT",
+  "kind": "fields",
+  "page_count": 3,
+  "title_block": ["Project Title", "Date Prepared", "Team Member", "Role"],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 204,
+      "blocks": [
+        {"type": "fields", "labels": ["Activities Planned for This Reporting Period", "Activities Accomplished This Reporting Period", "Activities Planned but Not Accomplished This Reporting Period"]}
+      ]
+    },
+    {
+      "page": 2,
+      "pdf_page": 205,
+      "blocks": [
+        {"type": "fields", "labels": ["Root Cause of Activity Variances", "Funds Spent This Reporting Period", "Funds Planned to Be Spent This Reporting Period", "Root Cause of Cost Variances", "Quality Variances Identified This Period", "Planned Corrective or Preventive Action"]}
+      ]
+    },
+    {
+      "page": 3,
+      "pdf_page": 206,
+      "blocks": [
+        {"type": "fields", "labels": ["Activities Planned for Next Reporting Period", "Costs Planned for Next Reporting Period"]},
+        {"type": "text", "text": "New Risks Identified"},
+        {"type": "table", "bank": 1, "columns": ["Risk"], "row_labels": []},
+        {"type": "text", "text": "New Issues Identified"},
+        {"type": "table", "bank": 1, "columns": ["Issue"], "row_labels": []},
+        {"type": "fields", "labels": ["Comments"]}
+      ]
+    }
+  ],
+  "pairs": [["Project Title", "Date Prepared"], ["Team Member", "Role"]],
+  "legend": "",
+  "notes": "The title block has two lines: Project Title with Date Prepared, then Team Member with Role. The activity boxes print numbered lines: 1 to 6 for Activities Planned for This Reporting Period, 1 to 6 for Activities Accomplished This Reporting Period, 1 to 4 for Activities Planned but Not Accomplished This Reporting Period, 1 to 5 for Activities Planned for Next Reporting Period. New Risks Identified and New Issues Identified are headings over a bordered box whose top cell is labelled Risk (or Issue) with one blank cell below it. Disagreements with the prose table (Table 4.1), where the blank form wins: the prose says Activities planned this reporting period where the form prints Activities Planned for This Reporting Period; the prose lists Root cause of variances twice where the form prints Root Cause of Activity Variances and Root Cause of Cost Variances; the prose misprints Planned corrective of preventive action; the prose says Issues where the form prints New Issues Identified; the prose has no Team Member or Role element."
+}

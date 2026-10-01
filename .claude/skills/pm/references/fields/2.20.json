@@ -1,0 +1,40 @@
+{
+  "form": "2.20",
+  "name": "Cost Estimates",
+  "printed_title": "ACTIVITY COST ESTIMATES",
+  "kind": "log",
+  "page_count": 1,
+  "title_block": [
+    "Project Title",
+    "Date Prepared"
+  ],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 98,
+      "blocks": [
+        {
+          "type": "table",
+          "bank": 1,
+          "columns": [
+            "WBS ID",
+            "Resource",
+            "Labor Costs",
+            "Physical Costs",
+            "Reserve",
+            "Estimate",
+            "Method",
+            "Assumptions/Constraints",
+            "Basis of Estimates",
+            "Range",
+            "Confidence Level"
+          ],
+          "row_labels": []
+        }
+      ]
+    }
+  ],
+  "pairs": [["Project Title", "Date Prepared"]],
+  "legend": "",
+  "notes": "Landscape page; the printed title bar reads ACTIVITY COST ESTIMATES while the index name is Cost Estimates. Header cells wrap onto two lines ('WBS / ID', 'Labor / Costs', 'Assumptions/ / Constraints'); the labels here join them. The prose table (Table 2.18) differs from the blank form: it says 'ID' where the form prints 'WBS ID', and lists 'Basis of estimates' before 'Method' where the form prints Method, Assumptions/Constraints, then Basis of Estimates. The blank form order wins."
+}

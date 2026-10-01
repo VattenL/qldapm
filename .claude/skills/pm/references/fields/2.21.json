@@ -1,0 +1,102 @@
+{
+  "form": "2.21",
+  "name": "Cost Estimating Worksheet",
+  "printed_title": "COST ESTIMATING WORKSHEET",
+  "kind": "log",
+  "page_count": 2,
+  "title_block": [
+    "Project Title",
+    "Date Prepared"
+  ],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 102,
+      "blocks": [
+        {
+          "type": "table",
+          "bank": 1,
+          "columns": [
+            {
+              "group": "Parametric Estimates",
+              "columns": [
+                "ID",
+                "Cost Variable",
+                "Cost per Unit",
+                "Number of Units",
+                "Cost Estimate"
+              ]
+            }
+          ],
+          "row_labels": []
+        },
+        {
+          "type": "table",
+          "bank": 1,
+          "columns": [
+            {
+              "group": "Analogous Estimates",
+              "columns": [
+                "ID",
+                "Previous Activity",
+                "Previous Cost",
+                "Current Activity",
+                "Multiplier",
+                "Cost Estimate"
+              ]
+            }
+          ],
+          "row_labels": []
+        },
+        {
+          "type": "table",
+          "bank": 1,
+          "columns": [
+            {
+              "group": "Three-Point Estimates",
+              "columns": [
+                "ID",
+                "Optimistic Cost",
+                "Most Likely Cost",
+                "Pessimistic Cost",
+                "Weighting Equation",
+                "Expected Cost Estimate"
+              ]
+            }
+          ],
+          "row_labels": []
+        }
+      ]
+    },
+    {
+      "page": 2,
+      "pdf_page": 103,
+      "printed_title": "BOTTOM-UP COST ESTIMATING WORKSHEET",
+      "title_block": true,
+      "blocks": [
+        {
+          "type": "table",
+          "bank": 1,
+          "columns": [
+            "ID",
+            "Labor Hours",
+            "Labor Rate",
+            "Total Labor",
+            "Material",
+            "Supplies",
+            "Equipment",
+            "Travel",
+            "Other Direct Costs",
+            "Indirect Costs",
+            "Reserve",
+            "Estimate"
+          ],
+          "row_labels": []
+        }
+      ]
+    }
+  ],
+  "pairs": [["Project Title", "Date Prepared"]],
+  "legend": "",
+  "notes": "Page 1 (portrait) holds three independent tables inside one frame, each under a full-width heading row (Parametric Estimates, Analogous Estimates, Three-Point Estimates); they are separate tables with their own records, not banks of one table, so each is bank 1. Page 2 is landscape and prints its own title bar, BOTTOM-UP COST ESTIMATING WORKSHEET, and repeats the Project Title and Date Prepared line. pdftotext reads page 2 in lower case ('Project title', 'labor', 'iD'); the rendered page shows title case as recorded here. The prose (Table 2.19) heads the third group 'Three-point estimate (Beta distribution)' and names the last column 'Expected cost'; the blank form prints 'Three-Point Estimates' and 'Expected Cost Estimate', which win. In the analogous group the prose says 'Cost Estimate' as printed. The page 2 prose (Table 2.20) lists the same twelve elements in sentence case."
+}

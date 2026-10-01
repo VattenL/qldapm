@@ -1,0 +1,49 @@
+{
+  "form": "2.31",
+  "name": "Risk Management Plan",
+  "printed_title": "RISK MANAGEMENT PLAN",
+  "kind": "fields",
+  "page_count": 4,
+  "title_block": ["Project Title", "Date Prepared"],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 135,
+      "blocks": [
+        {"type": "fields", "labels": ["Strategy", "Methodology"]},
+        {"type": "text", "text": "Roles and Responsibilities"},
+        {"type": "table", "bank": 1, "columns": ["Role", "Responsibility"], "row_labels": []},
+        {"type": "fields", "labels": ["Risk Categories", "Risk Management Funding", "Contingency Protocols"]}
+      ]
+    },
+    {
+      "page": 2,
+      "pdf_page": 136,
+      "title_block": true,
+      "blocks": [
+        {"type": "fields", "labels": ["Frequency and Timing", "Stakeholder Risk Tolerances", "Risk Tracking and Audit"]}
+      ]
+    },
+    {
+      "page": 3,
+      "pdf_page": 137,
+      "blocks": [
+        {"type": "text", "text": "Definitions of Probability"},
+        {"type": "table", "bank": 1, "columns": ["", ""], "row_labels": ["Very High", "High", "Medium", "Low", "Very Low"]},
+        {"type": "text", "text": "Definitions of Impact by Objective"},
+        {"type": "table", "bank": 1, "columns": ["", "Scope", "Quality", "Time", "Cost"], "row_labels": ["Very High", "High", "Medium", "Low", "Very Low"]}
+      ]
+    },
+    {
+      "page": 4,
+      "pdf_page": 138,
+      "blocks": [
+        {"type": "text", "text": "Probability and Impact Matrix"},
+        {"type": "table", "bank": 1, "columns": ["", "Very Low", "Low", "Medium", "High", "Very High"], "row_labels": ["Very High", "High", "Medium", "Low", "Very Low"]}
+      ]
+    }
+  ],
+  "pairs": [["Project Title", "Date Prepared"]],
+  "legend": "",
+  "notes": "The Project Title / Date Prepared line prints on pages 1 and 2 only; pages 3 and 4 go straight from the title bar to the body. A text block directly before a table is the printed heading of that table, not a box of its own. In a table, the first entry of columns is the row-label column and an empty string means the header cell is printed blank. Roles and Responsibilities prints four rows numbered 1. to 4. in both the Role and Responsibility cells. Definitions of Probability is a two-column grid with no header row: printed level on the left, blank definition box on the right. Definitions of Impact by Objective prints Time, not Schedule, as the third objective. The page 4 Probability and Impact Matrix prints its column labels (Very Low to Very High) in a row beneath the grid, with a blank corner cell at bottom left; no axis titles are printed, so neither axis is named Probability or Impact on the form. The prose Table 2.28 says Stakeholder risk appetite where the blank form prints Stakeholder Risk Tolerances, and the prose table has no separate Contingency Protocols element (it folds contingency into Risk management funding); the blank form wins."
+}

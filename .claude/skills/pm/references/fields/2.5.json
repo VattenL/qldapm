@@ -1,0 +1,27 @@
+{
+  "form": "2.5",
+  "name": "Requirements Management Plan",
+  "printed_title": "REQUIREMENTS MANAGEMENT PLAN",
+  "kind": "fields",
+  "page_count": 2,
+  "title_block": ["Project Title", "Date"],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 46,
+      "blocks": [
+        {"type": "fields", "labels": ["Collection", "Analysis", "Categories", "Documentation", "Prioritization"]}
+      ]
+    },
+    {
+      "page": 2,
+      "pdf_page": 47,
+      "blocks": [
+        {"type": "fields", "labels": ["Metrics", "Traceability Structure", "Tracking", "Reporting", "Validation", "Configuration Management"]}
+      ]
+    }
+  ],
+  "pairs": [["Project Title", "Date"]],
+  "legend": "",
+  "notes": "The title block prints Date, not Date Prepared. The prose table (printed as TABLE 2.4, Elements of the Requirements Management Plan) prefixes every element with Requirements (Requirements collection, Requirements traceability, and so on); the blank form prints the short labels, which win."
+}

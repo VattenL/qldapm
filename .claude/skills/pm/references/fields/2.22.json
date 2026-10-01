@@ -1,0 +1,26 @@
+{
+  "form": "2.22",
+  "name": "Cost Baseline",
+  "printed_title": "COST BASELINE",
+  "kind": "chart",
+  "page_count": 1,
+  "title_block": [
+    "Project Title",
+    "Date Prepared"
+  ],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 105,
+      "blocks": [
+        {
+          "type": "picture",
+          "description": "S-curve line chart of cumulative cost over time. Vertical axis is unlabelled, gridlines at 0, 2,000, 4,000, 6,000, 8,000, 10,000, 12,000 and 14,000. Horizontal axis is unlabelled, periods 1 to 7. A single sample line rises slowly from about 500 at period 1, steeply through periods 3 to 5 (about 11,500), and flattens near 13,300 at period 7."
+        }
+      ]
+    }
+  ],
+  "pairs": [["Project Title", "Date Prepared"]],
+  "legend": "",
+  "notes": "Landscape page. The form prints no legend, axis titles or Document Element table; the curve and the numbers are sample values, not fields. The prose says the chart is called an S-curve."
+}

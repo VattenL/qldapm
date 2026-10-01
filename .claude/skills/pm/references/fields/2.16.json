@@ -1,0 +1,38 @@
+{
+  "form": "2.16",
+  "name": "Duration Estimates",
+  "printed_title": "DURATION ESTIMATES",
+  "kind": "log",
+  "page_count": 1,
+  "title_block": [
+    "Project Title",
+    "Date Prepared"
+  ],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 83,
+      "blocks": [
+        {
+          "type": "table",
+          "bank": 1,
+          "columns": [
+            "ID",
+            "Activity Description",
+            "Effort Hours",
+            "Duration Estimate"
+          ],
+          "row_labels": []
+        }
+      ]
+    }
+  ],
+  "pairs": [
+    [
+      "Project Title",
+      "Date Prepared"
+    ]
+  ],
+  "legend": "",
+  "notes": "The blank form prints \"Activity  Description\" with a wide gap between the words; it is one column, recorded here with a single space. pdftotext returns lowercase text for this page (\"Project title\", \"iD\", \"activity Description\") because of the font encoding; the page image shows title case. The prose table 2.15 (PDF 82) says \"Duration estimates\"; the blank form prints \"Duration Estimate\", which wins."
+}

@@ -1,0 +1,37 @@
+{
+  "form": "2.34",
+  "name": "Probability and Impact Assessment",
+  "printed_title": "PROBABILITY AND IMPACT RISK RATING",
+  "kind": "matrix",
+  "page_count": 2,
+  "title_block": ["Project Title", "Date Prepared"],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 151,
+      "blocks": [
+        {"type": "text", "text": "Scope Impact"},
+        {"type": "table", "bank": 1, "columns": ["", ""], "row_labels": ["Very High", "High", "Medium", "Low", "Very Low"]},
+        {"type": "text", "text": "Quality Impact"},
+        {"type": "table", "bank": 1, "columns": ["", ""], "row_labels": ["Very High", "High", "Medium", "Low", "Very Low"]},
+        {"type": "text", "text": "Schedule Impact"},
+        {"type": "table", "bank": 1, "columns": ["", ""], "row_labels": ["Very High", "High", "Medium", "Low", "Very Low"]}
+      ]
+    },
+    {
+      "page": 2,
+      "pdf_page": 152,
+      "blocks": [
+        {"type": "text", "text": "Cost Impact"},
+        {"type": "table", "bank": 1, "columns": ["", ""], "row_labels": ["Very High", "High", "Medium", "Low", "Very Low"]},
+        {"type": "text", "text": "Probability"},
+        {"type": "table", "bank": 1, "columns": ["", ""], "row_labels": ["Very High", "High", "Medium", "Low", "Very Low"]},
+        {"type": "text", "text": "Risk Rating"},
+        {"type": "table", "bank": 1, "columns": ["", ""], "row_labels": ["High", "Medium", "Low"]}
+      ]
+    }
+  ],
+  "pairs": [["Project Title", "Date Prepared"]],
+  "legend": "",
+  "notes": "The printed title bar is PROBABILITY AND IMPACT RISK RATING, not the section name. The title block prints on page 1 only. The form is six labelled definition tables, each with no header row: printed level on the left, one blank definition box on the right. A text block directly before a table is that table's printed heading. Although forms-index.md gives kind matrix, nothing crosses probability with impact on this form; it renders as six two-column label and definition tables. The prose Table 2.31 calls the elements Scope impact, Quality impact, Schedule impact, Cost impact, Probability and Risk rating, matching the blank form apart from capitalisation."
+}

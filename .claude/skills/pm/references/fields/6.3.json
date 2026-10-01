@@ -1,0 +1,22 @@
+{
+  "form": "6.3",
+  "name": "Release Plan",
+  "printed_title": "RELEASE PLAN",
+  "kind": "chart",
+  "page_count": 1,
+  "title_block": ["Project Name"],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 256,
+      "blocks": [
+        {"type": "fields", "labels": ["Release Goal"]},
+        {"type": "table", "bank": 1, "columns": ["Sprint 1", "Sprint 2", "Sprint 3", "Sprint 4"], "row_labels": ["Team 1", "Team 2", "Team 3", "Team 4"]},
+        {"type": "picture", "description": "Swim-lane release plan: columns are Sprint 1 to Sprint 4 left to right, lanes are Team 1 to Team 4 top to bottom (lane labels printed rotated). Each cell holds one to three sticky notes labelled User Story, shaded in up to four tones of grey to show the category of the story."}
+      ]
+    }
+  ],
+  "pairs": [],
+  "legend": "This diagram assumes that different shades notes indicate different categories of user stories.",
+  "notes": "Landscape page. The title block prints Project Name, not Project Title, and there is no Date Prepared. The page prints no Page 1 of 1 footer. Release Goal is the first full-width row of the grid and prints with placeholder text: Release Goal: Describe the goal of the release in this space. The User Story notes are sample content showing layout; their number per cell is illustrative, not a field. The legend is printed below the grid and keeps the printed wording shades notes. Prose Table 6.3 lists Release dates and User stories; the blank form prints no release date field, only the sprint columns."
+}

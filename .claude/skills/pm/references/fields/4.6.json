@@ -1,0 +1,34 @@
+{
+  "form": "4.6",
+  "name": "Contractor Status Report",
+  "printed_title": "CONTRACTOR STATUS REPORT",
+  "kind": "fields",
+  "page_count": 3,
+  "title_block": ["Project Title", "Date Prepared", "Vendor", "Contract #"],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 226,
+      "blocks": [
+        {"type": "fields", "labels": ["Scope Performance This Reporting Period", "Quality Performance This Reporting Period", "Schedule Performance This Reporting Period"]}
+      ]
+    },
+    {
+      "page": 2,
+      "pdf_page": 227,
+      "blocks": [
+        {"type": "fields", "labels": ["Cost Performance This Reporting Period", "Forecast Performance for Future Reporting Periods", "Claims or Disputes", "Risks"]}
+      ]
+    },
+    {
+      "page": 3,
+      "pdf_page": 228,
+      "blocks": [
+        {"type": "fields", "labels": ["Planned Corrective or Preventive Action", "Issues", "Comments"]}
+      ]
+    }
+  ],
+  "pairs": [["Project Title", "Date Prepared"], ["Vendor", "Contract #"]],
+  "legend": "",
+  "notes": "Portrait pages. Every field prints as a heading over a large box. The title block (Project Title, Date Prepared, Vendor, Contract #) prints only on page 1. Prose Table 4.6 matches the blank form apart from capitalisation; the prose bullet list says Forecasted performance and Preventive or corrective action, the blank form prints Forecast Performance for Future Reporting Periods and Planned Corrective or Preventive Action."
+}

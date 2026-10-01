@@ -1,0 +1,53 @@
+{
+  "form": "2.30",
+  "name": "Communications Management Plan",
+  "printed_title": "COMMUNICATIONS MANAGEMENT PLAN",
+  "kind": "fields",
+  "page_count": 1,
+  "title_block": [
+    "Project Title",
+    "Date Prepared"
+  ],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 131,
+      "blocks": [
+        {
+          "type": "table",
+          "bank": 1,
+          "columns": [
+            "Stakeholder",
+            "Information",
+            "Method",
+            "Timing or Frequency",
+            "Sender"
+          ],
+          "row_labels": []
+        },
+        {
+          "type": "table",
+          "bank": 1,
+          "columns": [
+            "Assumptions",
+            "Constraints"
+          ],
+          "row_labels": []
+        },
+        {
+          "type": "fields",
+          "labels": [
+            "Glossary of Terms or Acronyms"
+          ]
+        },
+        {
+          "type": "text",
+          "text": "Attach relevant communication diagrams or flowcharts."
+        }
+      ]
+    }
+  ],
+  "pairs": [["Project Title", "Date Prepared"]],
+  "legend": "",
+  "notes": "Landscape page. The Assumptions / Constraints table is a separate two-column table with its own four rows, not a second bank of the stakeholder table. The prose (Table 2.27) differs from the blank form: 'Stakeholder communication requirements' (form: Stakeholder), 'Method or media' (form: Method), 'Time frame and frequency' (form: Timing or Frequency), one element 'Communication constraints or assumptions' (form: separate Assumptions and Constraints columns, Assumptions first), and 'Glossary of common terminology' (form: Glossary of Terms or Acronyms). The blank form wins. Although the form is mostly tables, forms-index.md gives its kind as fields."
+}

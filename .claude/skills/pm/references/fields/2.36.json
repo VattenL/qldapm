@@ -1,0 +1,23 @@
+{
+  "form": "2.36",
+  "name": "Risk Data Sheet",
+  "printed_title": "RISK DATA SHEET",
+  "kind": "log",
+  "page_count": 1,
+  "title_block": ["Project Title", "Date Prepared"],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 157,
+      "blocks": [
+        {"type": "fields", "labels": ["Risk ID", "Risk Description", "Status", "Risk Cause"]},
+        {"type": "table", "bank": 1, "columns": ["Probability", {"group": "Impact", "columns": ["Scope", "Quality", "Schedule", "Cost"]}, "Score", "Responses"], "row_labels": []},
+        {"type": "table", "bank": 2, "columns": ["Revised Probability", {"group": "Revised Impact", "columns": ["Scope", "Quality", "Schedule", "Cost"]}, "Revised Score", "Responsible Party", "Actions"], "row_labels": []},
+        {"type": "fields", "labels": ["Secondary Risks", "Residual Risk", "Contingency Plan", "Contingency Funds", "Contingency Time", "Fallback Plans", "Comments"]}
+      ]
+    }
+  ],
+  "pairs": [["Project Title", "Date Prepared"], ["Risk ID", "Risk Description"], ["Status", "Risk Cause"], ["Contingency Plan", "Contingency Funds"]],
+  "legend": "",
+  "notes": "Landscape page, one sheet per risk. Every labelled box prints its label inside the top-left of the box with a trailing colon (dropped here). Risk ID and Status sit in a narrow left column beside the wide Risk Description and Risk Cause boxes. The two tables each print a header and a single blank row; bank 2 continues the same risk below bank 1, with the group header printed as Revised Impact (unlike 2.32, which prints Impact in both banks). Contingency Plan is a tall box on the left; Contingency Funds and Contingency Time are stacked one above the other in the right-hand column beside it, so Contingency Time also sits beside Contingency Plan. Although forms-index.md gives kind log, the form holds one record, not a register. The prose Table 2.32 misspells Responses as Reponses, and calls Impact a single element; the blank form wins."
+}

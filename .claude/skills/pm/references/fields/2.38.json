@@ -1,0 +1,24 @@
+{
+  "form": "2.38",
+  "name": "Procurement Strategy",
+  "printed_title": "PROCUREMENT STRATEGY",
+  "kind": "fields",
+  "page_count": 1,
+  "title_block": ["Project Title", "Date"],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 165,
+      "blocks": [
+        {"type": "fields", "labels": ["Delivery Method"]},
+        {"type": "checkboxes", "label": "Contract Type", "options": ["FFP", "FPIF", "FP-EPA", "CPFF", "CPIF", "CPAF", "T&M", "Other"]},
+        {"type": "table", "bank": 1, "columns": ["Incentive or Award Fee", "Criteria"], "row_labels": []},
+        {"type": "text", "text": "Procurement Life Cycle"},
+        {"type": "table", "bank": 1, "columns": ["Phase", "Entry Criteria", "Key Deliverables or Milestones", "Exit Criteria", "Knowledge Transfer"], "row_labels": []}
+      ]
+    }
+  ],
+  "pairs": [["Project Title", "Date"]],
+  "legend": "",
+  "notes": "Landscape page. The title block prints Date, not Date Prepared. The eight Contract Type checkboxes print on one line; the Incentive or Award Fee table directly under them belongs to the Contract Type section and prints four blank rows. A text block directly before a table is that table's printed heading. Procurement Life Cycle prints six blank rows. The prose Table 2.34 says Delivery methods (with Professional services and Construction services sub-elements), Contract types and Procurement phases, where the blank form prints a single Delivery Method box, Contract Type and Procurement Life Cycle; the blank form wins. The prose table expands the contract-type abbreviations (FFP, Firm Fixed Price; FPIF, Fixed Price with Incentive Fee; FP-EPA, Fixed Price with Economic Price Adjustment; CPFF, Cost Plus Fixed Fee; CPIF, Cost Plus Incentive Fee; CPAF, Cost Plus Award Fee; T&M, Time and Materials), but the blank form prints only the abbreviations."
+}

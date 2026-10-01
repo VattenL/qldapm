@@ -1,0 +1,107 @@
+{
+  "form": "2.26",
+  "name": "Resource Management Plan",
+  "printed_title": "RESOURCE MANAGEMENT PLAN",
+  "kind": "fields",
+  "page_count": 2,
+  "title_block": [
+    "Project Title",
+    "Date Prepared"
+  ],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 118,
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Team Member Identification and Estimates"
+        },
+        {
+          "type": "table",
+          "bank": 1,
+          "columns": [
+            "Role",
+            "Number",
+            "Skill Level"
+          ],
+          "row_labels": []
+        },
+        {
+          "type": "fields",
+          "labels": [
+            "Staff Acquisition",
+            "Staff Release"
+          ]
+        },
+        {
+          "type": "text",
+          "text": "Roles, Responsibilities, and Authority"
+        },
+        {
+          "type": "table",
+          "bank": 1,
+          "columns": [
+            "Role",
+            "Responsibility",
+            "Authority"
+          ],
+          "row_labels": []
+        },
+        {
+          "type": "fields",
+          "labels": [
+            "Project Organizational Structure"
+          ]
+        }
+      ]
+    },
+    {
+      "page": 2,
+      "pdf_page": 119,
+      "blocks": [
+        {
+          "type": "fields",
+          "labels": [
+            "Training Requirements",
+            "Rewards and Recognition",
+            "Team Development"
+          ]
+        },
+        {
+          "type": "text",
+          "text": "Physical Resource Identification and Estimates"
+        },
+        {
+          "type": "table",
+          "bank": 1,
+          "columns": [
+            "Resource",
+            "Amount",
+            "Grade"
+          ],
+          "row_labels": []
+        },
+        {
+          "type": "fields",
+          "labels": [
+            "Resource Acquisition",
+            "Resource Management"
+          ]
+        }
+      ]
+    }
+  ],
+  "pairs": [
+    [
+      "Project Title",
+      "Date Prepared"
+    ],
+    [
+      "Staff Acquisition",
+      "Staff Release"
+    ]
+  ],
+  "legend": "",
+  "notes": "A text block directly before a table is that table's printed heading: Team Member Identification and Estimates, Roles, Responsibilities, and Authority, and Physical Resource Identification and Estimates each print as a label above a three-column box, not as a header cell inside it; each box prints six numbered lines ('1.' to '6.') in every column. Staff Acquisition and Staff Release print as two boxes side by side. 'Staff Release:' prints with a colon and 'Staff Acquisition' without one; colons are dropped here. Page 2 has the title bar but no Project Title / Date Prepared line. The prose (Table 2.24) differs from the blank form: it lists Team member identification, Team member acquisition, Team member management, Project organizational chart, Roles and responsibilities (with Role, Authority, Responsibility, Qualifications, Competencies), Training requirements, Rewards and recognition, Team development, Physical resource identification, Physical resource acquisition and Physical resource management. The blank form prints Team Member Identification and Estimates (Role, Number, Skill Level), Staff Acquisition and Staff Release, Roles, Responsibilities, and Authority with no Qualifications or Competencies columns, Project Organizational Structure, Physical Resource Identification and Estimates (Resource, Amount, Grade), Resource Acquisition and Resource Management; the blank form wins."
+}

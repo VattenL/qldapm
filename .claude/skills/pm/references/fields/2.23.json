@@ -1,0 +1,81 @@
+{
+  "form": "2.23",
+  "name": "Quality Management Plan",
+  "printed_title": "QUALITY MANAGEMENT PLAN",
+  "kind": "fields",
+  "page_count": 2,
+  "title_block": [
+    "Project Title",
+    "Date Prepared"
+  ],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 108,
+      "blocks": [
+        {
+          "type": "fields",
+          "labels": [
+            "Quality Standards"
+          ]
+        },
+        {
+          "type": "text",
+          "text": "Quality Objectives"
+        },
+        {
+          "type": "table",
+          "bank": 1,
+          "columns": [
+            "Metric or Specification",
+            "Measure"
+          ],
+          "row_labels": []
+        },
+        {
+          "type": "text",
+          "text": "Quality Roles and Responsibilities"
+        },
+        {
+          "type": "table",
+          "bank": 1,
+          "columns": [
+            "Roles",
+            "Responsibilities"
+          ],
+          "row_labels": []
+        }
+      ]
+    },
+    {
+      "page": 2,
+      "pdf_page": 109,
+      "blocks": [
+        {
+          "type": "text",
+          "text": "Deliverables and Processes Subject to Quality Review"
+        },
+        {
+          "type": "table",
+          "bank": 1,
+          "columns": [
+            "Deliverables",
+            "Processes"
+          ],
+          "row_labels": []
+        },
+        {
+          "type": "fields",
+          "labels": [
+            "Quality Management Approach",
+            "Quality Control Approach",
+            "Applicable Quality Procedures"
+          ]
+        }
+      ]
+    }
+  ],
+  "pairs": [["Project Title", "Date Prepared"]],
+  "legend": "",
+  "notes": "Labels print without colons. A text block directly before a table is that table's printed heading: Quality Objectives, Quality Roles and Responsibilities, and Deliverables and Processes Subject to Quality Review each print as a label above a two-column box, not as a header cell inside it. Quality Objectives prints four numbered rows ('1.' to '4.' in both cells); Quality Roles and Responsibilities prints three numbered rows ('1.' to '3.'); Deliverables and Processes is one tall blank row. Page 2 has the title bar but no Project Title / Date Prepared line. The prose (Table 2.21) names the same elements in sentence case."
+}

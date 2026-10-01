@@ -1,0 +1,37 @@
+{
+  "form": "2.14",
+  "name": "Milestone List",
+  "printed_title": "MILESTONE LIST",
+  "kind": "log",
+  "page_count": 1,
+  "title_block": [
+    "Project Title",
+    "Date Prepared"
+  ],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 77,
+      "blocks": [
+        {
+          "type": "table",
+          "bank": 1,
+          "columns": [
+            "Milestone",
+            "Milestone Description",
+            "Type"
+          ],
+          "row_labels": []
+        }
+      ]
+    }
+  ],
+  "pairs": [
+    [
+      "Project Title",
+      "Date Prepared"
+    ]
+  ],
+  "legend": "",
+  "notes": "No ID column is printed. The prose table 2.14 (PDF 76) says \"Milestone name\"; the blank form prints \"Milestone\", which wins."
+}
