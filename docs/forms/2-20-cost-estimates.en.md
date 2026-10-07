@@ -1,87 +1,105 @@
 # 2.20 Activity Cost Estimates
 
 **Project:** Development and Deployment of a Learning Center Management Software
-**Date prepared:** 7 October 2026
+**Date prepared:** 8 October 2026
 **Source:** A Project Manager's Book of Forms, 3rd edition, form 2.20, pages 85 to 87, and form 2.21, pages 88 to 92
 
-The cost estimate of PMBOK 6 section 7.2 Estimate Costs [1]: what each control account of the WBS costs in people, in physical resources, and in software, with the basis of every figure. Its inputs are the ones Figure 7-4 names: the scope baseline (the WBS and the hours of the WBS dictionary), the project schedule (the levelled calendar of form 2.18), the resource requirements (the resource on each dictionary activity), and the risk register of the charter, through its contingency reserve. Its outputs are this form, its basis of estimates in form 2.21 and in the references at the end, and the updates it proposes to the assumption log and the risk register.
+The cost estimate of PMBOK 6 section 7.2 Estimate Costs [1]: what each control account of the WBS costs in people, in physical resources, and in software, with the basis of every figure. Its inputs are the ones the book lists for form 2.20 [2]. The scope baseline gives the WBS and the hours of the WBS dictionary, less the work the scope change request defers; the project schedule is the levelling of form 2.18 run on that reduced work; the resource requirements are the resource on each dictionary activity; the risk register of the charter is carried through its contingency reserve. There is no separate cost or quality management plan: the rules below stand in for the first, and the test plan of 1.3.2.1 and the criteria A01 to A12 set the test hours the dictionary already carries. There is no lessons learned register yet, which is also why the analogous section of form 2.21 is empty. Its outputs are this form, its basis of estimates in form 2.21 and the references, and the updates it proposes to the scope baseline, the resource requirements, the assumption log, and the risk register, which the scope change request `3-3-change-request-scope.en.md` carries.
 
-This is an estimate, not a budget. Determine Budget, PMBOK 6 process 7.3, adds the estimates up period by period into the cost baseline of form 2.22, and is done once the sponsor has decided on the figures below; the earned value formulas of Table 7-1 belong to Control Costs, process 7.4, and need that baseline first. Neither is in this document.
+This is an estimate, not a budget. Determine Budget, PMBOK 6 process 7.3, adds the estimates up period by period into the cost baseline of form 2.22, and its funding limit reconciliation, section 7.3.2.5, is where an estimate is compared with the money available [1]. The charter makes 700,000,000 VND available, and the team set a target of 650,000,000 to keep a margin under it. The full scope cannot meet it, 900,165,000 VND under the same rules, so the scope and the way the work is staffed were reduced until it could; the change request puts that reduction to the sponsor. The earned value formulas of PMBOK 6 Table 7-1 belong to Control Costs, process 7.4, and need the baseline first. Neither is in this document.
 
 ### Rules of the estimate
 
-*Three fields of form 2.19 Cost Management Plan [2] govern how every figure below is written. The project has no separate cost management plan, so they are stated here.*
+*Three fields of form 2.19 Cost Management Plan [2] govern how every figure below is written. The project has no separate cost management plan, so they are stated here, followed by the supplier's company rules, which decide what is and is not a project cost, and the scope this estimate covers.*
 
 | Field | Content |
 | --- | --- |
-| **Units of Measure** | Labor in hours of effort, and in person-months of 160 hours where people are paid by the month, the charter's own conversion. Physical and software resources in their selling unit: seat-month, machine-month, user-month, message, build minute, server-month, or the item. Money in VND; prices in US dollars converted at 26,170 VND per USD, the Vietcombank selling rate of October 2026 [6]. |
-| **Level of Precision** | Hourly rates rounded to the nearest 1,000 VND, and every amount to the nearest 1,000 VND. Unit prices are kept as published. |
-| **Level of Accuracy** | At initiation the charter's figure was a rough order of magnitude, -25% to +75% in PMBOK 6 terms [1]. This estimate is bottom-up over the 78 work packages with published prices, but the people are not yet hired and their seniority is not known, so its accuracy is stated per row as a range from the optimistic to the pessimistic inputs rather than as one percentage, and it is re-estimated when the team is hired. |
+| **Units of Measure** | Labor in hours of effort, and in person-months of 160 hours, the charter's own conversion. Physical and software resources in their selling unit: seat-month, server-month, or the item. Money in VND; prices in US dollars converted at 26,170 VND per USD, the Vietcombank selling rate of October 2026 [6]. |
+| **Level of Precision** | Hourly rates and every amount to the nearest 1,000 VND; hours to one decimal. Unit prices are kept as published, and the parametric worksheet multiplies them by the most likely quantity. |
+| **Level of Accuracy** | -30% to +40% around the estimate, the range from the optimistic to the pessimistic inputs. That is inside the -25% to +75% PMBOK 6 gives for a rough order of magnitude and wider than the -5% to +10% of a definitive estimate [1]. The hours carry the cone of uncertainty at requirements complete [14]; the estimate is redone at M1, when the requirements are baselined. |
 
-*Reading convention. Form 2.20 is filled at control account level, one row for each of the 24 control accounts of the WBS and one for the project, which the book permits, since its ID is "the WBS ID or activity ID" [2]; form 2.21 shows the work behind each row. The Resource column names the three kinds of resource the estimate covers: human, physical, and software. Labor is costed from the hours of the WBS dictionary and nothing else, 4,680 hours in all: the dictionary's 4,400 and 280 hours of support desk for warranty months 2 to 6, which the dictionary carries as a lump sum. An hour costs the monthly gross salary plus the employer's contributions, 21.5% for social, health, and unemployment insurance [4] and 2% union fee [5], divided by 160 hours. The salary is not one figure but three, the ITviec medians for 1 to 2, 3 to 4, and 5 to 8 years of experience [3], weighted (O + 4M + P) / 6 as PMBOK 6 section 7.2.2.5 gives, with <mark>3 to 4 years as the most likely seniority</mark>; every three-point row of form 2.21 uses that one weighting, which is why its Weighting Equation column repeats; developers are priced as full-stack, since the team has no separate front-end or back-end developer. The estimate is that expected value, and the Range is what the row costs at the optimistic and the pessimistic inputs. Prices are taken as published: goods bought at retail include VAT, cloud and software services exclude it; the difference is under 3,000,000 VND and is left in. Confidence Level reads Medium where the rates are survey medians for a team not yet hired at a known seniority and the prices are published, and Low for an allowance carried from the charter or a reserve that is a percentage rather than a risk analysis. Reference numbers in square brackets point to the list at the end. <mark>Highlighted</mark> content is a choice or a quantity that no source confirms. The analogous section of form 2.21 is empty, because the supplier has no record of a previous similar project to scale from. Every figure is generated by `tools/cost_estimate.py` from `scope-package.en.md` and the prices it lists; change those and rerun it rather than editing this file.*
+**Company rules.** The supplier keeps its own costs low without passing them to its staff:
+
+1. Remote-first: the team works from home and meets at the center's branches for workshops, demos, and acceptance, so no desk is rented.
+2. Staff bring their own laptops, with no allowance for wear.
+3. Free tiers wherever they are enough: GitHub Free [7]; a paid seat only for the months it is used.
+4. Paperless: manuals and guides are delivered in the application and as files, not printed.
+5. Timesheets: the project is charged for the hours its people book on it. In weeks without project work they work on the supplier's other projects or training, and the supplier pays them in full either way; no one's pay depends on this project's hours.
+6. Every statutory contribution is charged with the hour. The 13th-month salary, the market's practice [15], is paid in full by the supplier from its own revenue and is not charged to projects.
+7. No overtime is planned; the levelled schedule keeps every person inside a 40-hour week.
+8. The supplier's shared costs (management, human resources, accounting) and its margin are not charged to the project.
+
+**Scope of this estimate.** F07 teacher payroll, F08 assessment and progress reports, and F12 the mobile app are deferred to a second project: the 12 work packages 1.2.3.4, 1.3.1.5, 1.4.4.1, 1.5.1.3, 1.5.2.1, 1.5.4.1, 1.5.4.2, 1.5.4.3, 1.5.4.4, 1.6.1.2, 1.9.1.1, 1.9.1.2, 684 dictionary hours. The packages that specify, design, test, or fix named build work keep the share of their hours that the build work kept bears to all of it, and two packages are made leaner:
+
+| Work package | Dictionary hours | Hours kept | Share | Why |
+| --- | ---: | ---: | ---: | --- |
+| 1.1.1.2 Weekly status reporting and sponsor governance | 120 | 60 | 50% | status reports fortnightly instead of weekly |
+| 1.2.1.2 Functional requirements specification, F01 to F12 | 72 | 44.4 | 62% | with the build work it covers |
+| 1.3.1.2 Database schema design | 76 | 66.3 | 87% | with the build work it covers |
+| 1.3.1.3 Server API contract | 52 | 32.1 | 62% | with the build work it covers |
+| 1.3.1.4 Web user interface design | 28 | 24.4 | 87% | with the build work it covers |
+| 1.5.5.1 Iteration 2 testing, finance and administration | 62 | 55.8 | 90% | with the build work it covers |
+| 1.5.5.2 Iteration 2 testing, academic, notification, and mobile | 50 | 7.2 | 14% | with the build work it covers |
+| 1.5.5.3 Iteration 2 code review and rework | 60 | 27.7 | 46% | with the build work it covers |
+| 1.6.1.7 Defect fixing, enrollment, tuition, and payroll | 80 | 70.4 | 88% | with the build work it covers |
+| 1.6.1.8 Defect fixing, catalog, assessment, notification, and platform, with regression | 80 | 55.4 | 69% | with the build work it covers |
+| 1.10.1.1 First warranty month support | 400 | 160 | 40% | a support rota in the first warranty month instead of the whole team on call |
+
+That leaves 3,239.6 of the 4,400 dictionary hours, 74%.
+
+*Reading convention. Form 2.20 is filled at control account level, one row for each of the 21 control accounts the reduced scope keeps and one project-level row for the reserve, which the book permits, since its ID is "the WBS ID or activity ID" [2]; form 2.21 shows the work behind each row. The Resource column names the three kinds of resource the estimate covers: human, physical, and software. An hour costs the gross monthly salary plus the employer's contributions, 21.5% for social, health, and unemployment insurance [4] and 2% union fee [5], divided by 160 hours; the salary is the ITviec median for 1 to 2 years of experience [3], <mark>the seniority every role is costed at</mark>, and developers are priced as full-stack, since the team has no separate front-end or back-end developer. The rates are single figures, and the uncertainty sits in the hours: each control account's hours are the most likely value, 0.67 and 1.5 times them the optimistic and pessimistic, the cone of uncertainty at requirements complete [14], weighted (O + 4M + P) / 6 as PMBOK 6 section 7.2.2.5 gives, which is 1.0283 times the hours; every three-point row of form 2.21 uses that one weighting, which is why its Weighting Equation column repeats. The warranty support desk is an allocation and is not weighted. The project is charged by timesheet (company rule 5), so a row is the cost of its effort and there is no row for paid time without project work. Range is what a row costs at the optimistic and the pessimistic inputs, and the total's range is 449,726,000 to 905,316,000, taken with every row moving together; one standard deviation, (P - O) / 6, is 75,932,000, so the estimate plus one standard deviation, 721,941,000, is about the 84th percentile. Every amount excludes VAT, which the supplier deducts as input tax [16]. Confidence Level reads Medium where the rates are survey medians and the prices are published, and Low for an allowance carried from the charter and for a reserve that is a percentage rather than a risk analysis. Reference numbers in square brackets point to the list at the end. <mark>Highlighted</mark> content is a choice or a quantity that no source confirms. Every figure is generated by `tools/cost_estimate.py` from `scope-package.en.md`, the levelling of `tools/level.py`, and the prices it lists; change those and rerun it rather than editing this file.*
 
 #### ACTIVITY COST ESTIMATES, page 1 of 1
 
 | Field | Content |
 | --- | --- |
 | **Project Title** | Development and Deployment of a Learning Center Management Software |
-| **Date Prepared** | 7 October 2026 |
+| **Date Prepared** | 8 October 2026 |
 
 | WBS ID | Resource | Labor Costs | Physical Costs | Reserve | Estimate | Method | Assumptions/Constraints | Basis of Estimates | Range | Confidence Level |
 | --- | --- | ---: | ---: | ---: | ---: | --- | --- | --- | --- | --- |
-| 1.1.1 Project Governance | Human: PM 300 h. Physical: Workspace, fixed coworking desks; Laptops, six. Software: GitHub Team, repository and build; Figma Professional, one full seat. | 108,300,000 | 108,989,000 |  | 217,289,000 | Bottom-up; three-point rate; parametric prices. | A desk, a laptop, and a GitHub seat for every person-month booked, 27.5 in all, at a <mark>coworking space the supplier rents</mark>. <mark>Figma bought as an annual plan although the design work needs about two months</mark>. | PM 300 h at 361,000 VND/h [3][4][5]. Workspace, fixed coworking desks 85,938,000 [17][18]. Laptops, six 16,290,000 [19][20]. GitHub Team, repository and build 2,399,000 [9][6]. Figma Professional, one full seat 4,362,000 [10][11][6]. | 132,220,000 to 304,904,000 | Medium |
-| 1.2.1 Elicitation | Human: PM 168 h; DEV3 24 h. | 66,816,000 | 0 |  | 66,816,000 | Bottom-up; three-point rate. | Hours as the dictionary sheets give them. | PM 168 h at 361,000 VND/h; DEV 24 h at 257,000 VND/h [3][4][5]. | 42,408,000 to 81,672,000 | Medium |
-| 1.2.2 Requirements Baseline | Human: PM 32 h; DEV3 12 h; QA1 40 h. | 22,116,000 | 0 |  | 22,116,000 | Bottom-up; three-point rate. | Hours as the dictionary sheets give them. | PM 32 h at 361,000 VND/h; DEV 12 h at 257,000 VND/h; QA 40 h at 187,000 VND/h [3][4][5]. | 14,804,000 to 27,156,000 | Medium |
-| 1.2.3 Technical Preparation | Human: DEV1 100 h, DEV2 120 h, DEV3 40 h. | 66,820,000 | 0 |  | 66,820,000 | Bottom-up; three-point rate. | Hours as the dictionary sheets give them; the gateway and framework proofs use free tiers. | DEV 260 h at 257,000 VND/h [3][4][5]. | 40,820,000 to 83,980,000 | Medium |
-| 1.3.1 Solution Design | Human: PM 16 h; DEV1 80 h, DEV2 52 h, DEV3 112 h. | 68,484,000 | 0 |  | 68,484,000 | Bottom-up; three-point rate. | Hours as the dictionary sheets give them; design work runs on the Figma seat of 1.1.1. | PM 16 h at 361,000 VND/h; DEV 244 h at 257,000 VND/h [3][4][5]. | 41,988,000 to 85,852,000 | Medium |
-| 1.3.2 Design Assurance | Human: PM 44 h; DEV2 20 h; QA1 80 h. | 35,984,000 | 0 |  | 35,984,000 | Bottom-up; three-point rate. | Hours as the dictionary sheets give them. | PM 44 h at 361,000 VND/h; DEV 20 h at 257,000 VND/h; QA 80 h at 187,000 VND/h [3][4][5]. | 24,380,000 to 44,220,000 | Medium |
-| 1.4.1 Core Platform | Human: DEV2 90 h, DEV3 120 h. | 53,970,000 | 0 |  | 53,970,000 | Bottom-up; three-point rate. | Hours as the dictionary sheets give them. | DEV 210 h at 257,000 VND/h [3][4][5]. | 32,970,000 to 67,830,000 | Medium |
-| 1.4.2 Scheduling and Attendance | Human: DEV1 140 h, DEV2 70 h. | 53,970,000 | 0 |  | 53,970,000 | Bottom-up; three-point rate. | Hours as the dictionary sheets give them. | DEV 210 h at 257,000 VND/h [3][4][5]. | 32,970,000 to 67,830,000 | Medium |
-| 1.4.3 Iteration 1 Assurance | Human: PM 30 h; DEV1 20 h, DEV3 40 h; QA1 152 h. | 54,674,000 | 0 |  | 54,674,000 | Bottom-up; three-point rate. | Hours as the dictionary sheets give them. | PM 30 h at 361,000 VND/h; DEV 60 h at 257,000 VND/h; QA 152 h at 187,000 VND/h [3][4][5]. | 37,448,000 to 67,540,000 | Medium |
-| 1.4.4 Mobile Application Alpha | Human: MOB1 80 h. | 18,800,000 | 0 |  | 18,800,000 | Bottom-up; three-point rate. | The mobile developer is on a labor contract for the hours booked, not for idle weeks. | MOB 80 h at 235,000 VND/h [3][4][5]. | 17,760,000 to 23,040,000 | Medium |
-| 1.5.1 Finance | Human: DEV2 160 h. | 41,120,000 | 0 |  | 41,120,000 | Bottom-up; three-point rate. | Hours as the dictionary sheets give them. | DEV 160 h at 257,000 VND/h [3][4][5]. | 25,120,000 to 51,680,000 | Medium |
-| 1.5.2 Academic and Communication | Human: DEV3 140 h. Software: SMS test messages. | 35,980,000 | 3,833,000 |  | 39,813,000 | Bottom-up; three-point rate; parametric prices. | <mark>5,000 test messages</mark> through the gateway; production messages are paid by the center under charter assumption 12. | DEV 140 h at 257,000 VND/h [3][4][5]. SMS test messages 3,833,000 [16]. | 24,980,000 to 49,220,000 | Medium |
-| 1.5.3 Management and Administration | Human: DEV1 140 h. | 35,980,000 | 0 |  | 35,980,000 | Bottom-up; three-point rate. | Hours as the dictionary sheets give them. | DEV 140 h at 257,000 VND/h [3][4][5]. | 21,980,000 to 45,220,000 | Medium |
-| 1.5.4 Mobile Application | Human: DEV3 20 h; MOB1 256 h. Software: Codemagic macOS build minutes. | 65,300,000 | 4,040,000 |  | 69,340,000 | Bottom-up; three-point rate; parametric prices. | <mark>1,500 macOS build minutes</mark>, since iOS builds need macOS and no team laptop is a Mac. | DEV 20 h at 257,000 VND/h; MOB 256 h at 235,000 VND/h [3][4][5]. Codemagic macOS build minutes 4,040,000 [12][6]. | 61,837,000 to 87,646,000 | Medium |
-| 1.5.5 Iteration 2 Assurance | Human: PM 30 h; DEV1 20 h; QA1 172 h. | 48,134,000 | 0 |  | 48,134,000 | Bottom-up; three-point rate. | Hours as the dictionary sheets give them. | PM 30 h at 361,000 VND/h; DEV 20 h at 257,000 VND/h; QA 172 h at 187,000 VND/h [3][4][5]. | 33,948,000 to 59,220,000 | Medium |
-| 1.6.1 System Test | Human: DEV1 80 h, DEV2 80 h, DEV3 100 h; QA1 240 h. Physical: Test phones, Galaxy A06 new and iPhone 13 used. | 111,700,000 | 11,456,000 |  | 123,156,000 | Bottom-up; three-point rate; parametric prices. | Both phones bought outright for the project at retail price, VAT included. | DEV 260 h at 257,000 VND/h; QA 240 h at 187,000 VND/h [3][4][5]. Test phones, Galaxy A06 new and iPhone 13 used 11,456,000 [21][22]. | 85,519,000 to 151,219,000 | Medium |
-| 1.6.2 Test Documentation | Human: PM 20 h; QA1 36 h. | 13,952,000 | 0 |  | 13,952,000 | Bottom-up; three-point rate. | Hours as the dictionary sheets give them. | PM 20 h at 361,000 VND/h; QA 36 h at 187,000 VND/h [3][4][5]. | 9,604,000 to 17,080,000 | Medium |
-| 1.7.1 Migration | Human: PM 20 h; DEV1 120 h; QA1 20 h; External data-entry support. | 53,800,000 | 0 |  | 53,800,000 | Bottom-up; three-point rate; allowance. | Data-entry support kept at the charter's allowance; <mark>no published price was used, and the quantity of hours is not known</mark>. | PM 20 h at 361,000 VND/h; DEV 120 h at 257,000 VND/h; QA 20 h at 187,000 VND/h [3][4][5]. External data-entry support 12,000,000, allowance; at the Region I minimum wage of 25,500 VND an hour it buys about 470 hours [23]. | 38,220,000 to 64,160,000 | Medium; low for the allowances |
-| 1.8.1 Production Environment | Human: PM 8 h; DEV3 64 h; QA1 8 h. Physical: Go-live support and on-site presence. Software: Cloud server and staging, 12 months; Domain .vn first year and TLS certificate. | 20,832,000 | 32,696,000 |  | 53,528,000 | Bottom-up; three-point rate; parametric prices; allowance. | Cloud prices exclude VAT; the certificate is free. Go-live support kept at the charter's allowance, <mark>not checked against a published price</mark>. | PM 8 h at 361,000 VND/h; DEV 64 h at 257,000 VND/h; QA 8 h at 187,000 VND/h [3][4][5]. Cloud server and staging, 12 months 23,988,000 [13]. Domain .vn first year and TLS certificate 708,000 [14][15]. Go-live support and on-site presence 8,000,000, allowance. | 45,438,000 to 60,020,000 | Medium; low for the allowances |
-| 1.8.2 Training and Documentation | Human: PM 40 h; DEV2 16 h; QA1 8 h. Physical: Documentation production and printing; Training delivery, venue, and materials; Travel to the three branches. | 20,048,000 | 25,000,000 |  | 45,048,000 | Bottom-up; three-point rate; allowance. | Printing, training, and travel kept at the charter's allowances; <mark>not checked against a published price</mark>, since page counts, venues, and distances are not known. | PM 40 h at 361,000 VND/h; DEV 16 h at 257,000 VND/h; QA 8 h at 187,000 VND/h [3][4][5]. Documentation production and printing 10,000,000, allowance. Training delivery, venue, and materials 12,000,000, allowance. Travel to the three branches 3,000,000, allowance. | 37,824,000 to 49,608,000 | Medium; low for the allowances |
-| 1.8.3 Handover | Human: PM 12 h; DEV2 20 h; QA1 24 h. | 13,960,000 | 0 |  | 13,960,000 | Bottom-up; three-point rate. | Hours as the dictionary sheets give them. | PM 12 h at 361,000 VND/h; DEV 20 h at 257,000 VND/h; QA 24 h at 187,000 VND/h [3][4][5]. | 9,236,000 to 17,260,000 | Medium |
-| 1.9.1 Store Release | Human: PM 10 h; DEV3 16 h; MOB1 64 h. Software: Apple Developer Program and Google Play. | 22,762,000 | 3,245,000 |  | 26,007,000 | Bottom-up; three-point rate; parametric prices. | Store accounts in the center's name, paid by the project for the first year. | PM 10 h at 361,000 VND/h; DEV 16 h at 257,000 VND/h; MOB 64 h at 235,000 VND/h [3][4][5]. Apple Developer Program and Google Play 3,245,000 [7][8][6]. | 22,265,000 to 31,245,000 | Medium |
-| 1.10.1 Warranty | Human: PM 40 h; DEV1 100 h, DEV2 172 h, DEV3 112 h; QA1 20 h; support desk 280 h. | 188,828,000 | 0 |  | 188,828,000 | Bottom-up; three-point rate. | Warranty months 2 to 6 at <mark>0.35 FTE</mark>, charter budget line 5, costed as developer hours rather than as the charter's lump sum. | PM 40 h at 361,000 VND/h; DEV 384 h at 257,000 VND/h; QA 20 h at 187,000 VND/h; DEV 280 h at 257,000 VND/h [3][4][5]. | 116,228,000 to 236,672,000 | Medium |
-| 1.10.2 Closeout | Human: PM 30 h. | 10,830,000 | 0 |  | 10,830,000 | Bottom-up; three-point rate. | Hours as the dictionary sheets give them. | PM 30 h at 361,000 VND/h [3][4][5]. | 6,900,000 to 13,200,000 | Medium |
-| 1 Project | Contingency reserve, charter budget line 6 |  |  | 28,000,000 | 28,000,000 | Reserve analysis [1]. | Held at project level and drawn only through change control against risks R1 to R12. <mark>Not re-derived</mark>: the register carries no probability or impact to derive it from. At the charter's 4% of the new estimate it would be 56,897,000. | Charter budget line 6. | 28,000,000 | Low |
-| **Total** |  | **1,233,160,000** | **189,259,000** | **28,000,000** | **1,450,419,000** |  |  | 4,680 labor hours. | **984,867,000 to 1,815,474,000** | About 50% at the estimate and about 84% at 1,588,853,000, one standard deviation of 138,434,000 above it, the rows taken to move together. 700,000,000 is 5.4 standard deviations below the estimate. |
+| 1.1.1 Project Governance | Human: PM 240 h. Software: GitHub Free, 0; Figma Professional, one full seat. | 56,764,000 | 1,047,000 |  | 57,811,000 | Bottom-up; parametric rate; three-point hours; parametric prices. | Remote-first, staff on their own laptops, GitHub Free: company rules 1 to 3. <mark>Figma paid for the two design months only</mark>. <mark>Scaled</mark>: 1.1.1.2 to 50%, status reports fortnightly instead of weekly. | PM 240 h, 246.8 weighted at 230,000 VND/h [3][4][5][14]. Figma Professional, one full seat 1,047,000 [8][9][6]. | 38,031,000 to 83,847,000 | Medium |
+| 1.2.1 Elicitation | Human: PM 140.4 h; DEV3 24 h. | 37,084,000 | 0 |  | 37,084,000 | Bottom-up; parametric rate; three-point hours. | Hours as the dictionary sheets give them. <mark>Scaled</mark>: 1.2.1.2 to 62%, with the build work it covers. | PM 140.4 h, 144.4 weighted at 230,000 VND/h; DEV 24 h, 24.7 weighted at 157,000 VND/h [3][4][5][14]. | 24,162,000 to 54,093,000 | Medium |
+| 1.2.2 Requirements Baseline | Human: PM 32 h; DEV3 12 h; QA1 40 h. | 15,224,000 | 0 |  | 15,224,000 | Bottom-up; parametric rate; three-point hours. | Hours as the dictionary sheets give them. | PM 32 h, 32.9 weighted at 230,000 VND/h; DEV 12 h, 12.3 weighted at 157,000 VND/h; QA 40 h, 41.1 weighted at 139,000 VND/h [3][4][5][14]. | 9,918,000 to 22,206,000 | Medium |
+| 1.2.3 Technical Preparation | Human: DEV1 100 h, DEV2 120 h. Software: Staging server. | 35,519,000 | 5,593,000 |  | 41,112,000 | Bottom-up; parametric rate; three-point hours; parametric prices. | The gateway proof uses a free tier. A staging server <mark>from the development environment to closeout</mark>; production runs on the center's server. Deferred: 1.2.3.4 Cross-platform framework proof. | DEV 220 h, 226.2 weighted at 157,000 VND/h [3][4][5][14]. Staging server 5,593,000 [10]. | 28,735,000 to 57,403,000 | Medium |
+| 1.3.1 Solution Design | Human: PM 16 h; DEV1 69.8 h, DEV2 32.1 h, DEV3 80.9 h. | 33,292,000 | 0 |  | 33,292,000 | Bottom-up; parametric rate; three-point hours. | Design work runs on the Figma seat of 1.1.1. Deferred: 1.3.1.5 Mobile application design. <mark>Scaled</mark>: 1.3.1.2 to 87%, with the build work it covers; 1.3.1.3 to 62%, with the build work it covers; 1.3.1.4 to 87%, with the build work it covers. | PM 16 h, 16.5 weighted at 230,000 VND/h; DEV 182.8 h, 187.9 weighted at 157,000 VND/h [3][4][5][14]. | 21,692,000 to 48,562,000 | Medium |
+| 1.3.2 Design Assurance | Human: PM 44 h; DEV2 20 h; QA1 80 h. | 25,071,000 | 0 |  | 25,071,000 | Bottom-up; parametric rate; three-point hours. | Hours as the dictionary sheets give them. | PM 44 h, 45.2 weighted at 230,000 VND/h; DEV 20 h, 20.6 weighted at 157,000 VND/h; QA 80 h, 82.3 weighted at 139,000 VND/h [3][4][5][14]. | 16,334,000 to 36,570,000 | Medium |
+| 1.4.1 Core Platform | Human: DEV2 90 h, DEV3 120 h. | 33,904,000 | 0 |  | 33,904,000 | Bottom-up; parametric rate; three-point hours. | Hours as the dictionary sheets give them. | DEV 210 h, 215.9 weighted at 157,000 VND/h [3][4][5][14]. | 22,090,000 to 49,455,000 | Medium |
+| 1.4.2 Scheduling and Attendance | Human: DEV1 140 h, DEV2 70 h. | 33,904,000 | 0 |  | 33,904,000 | Bottom-up; parametric rate; three-point hours. | Hours as the dictionary sheets give them. | DEV 210 h, 215.9 weighted at 157,000 VND/h [3][4][5][14]. | 22,090,000 to 49,455,000 | Medium |
+| 1.4.3 Iteration 1 Assurance | Human: PM 30 h; DEV1 20 h, DEV3 40 h; QA1 152 h. | 38,510,000 | 0 |  | 38,510,000 | Bottom-up; parametric rate; three-point hours. | Hours as the dictionary sheets give them. | PM 30 h, 30.9 weighted at 230,000 VND/h; DEV 60 h, 61.7 weighted at 157,000 VND/h; QA 152 h, 156.3 weighted at 139,000 VND/h [3][4][5][14]. | 25,090,000 to 56,172,000 | Medium |
+| 1.5.1 Finance | Human: DEV2 130 h. | 20,988,000 | 0 |  | 20,988,000 | Bottom-up; parametric rate; three-point hours. | Hours as the dictionary sheets give them. Deferred: 1.5.1.3 F07 Teacher records and teaching-hour payroll. | DEV 130 h, 133.7 weighted at 157,000 VND/h [3][4][5][14]. | 13,675,000 to 30,615,000 | Medium |
+| 1.5.2 Academic and Communication | Human: DEV3 60 h. | 9,687,000 | 0 |  | 9,687,000 | Bottom-up; parametric rate; three-point hours. | Test messages go through the center's own gateway account, which the charter says the center provides. Deferred: 1.5.2.1 F08 Assessment, progress reports, and course evaluation. | DEV 60 h, 61.7 weighted at 157,000 VND/h [3][4][5][14]. | 6,311,000 to 14,130,000 | Medium |
+| 1.5.3 Management and Administration | Human: DEV1 140 h. | 22,603,000 | 0 |  | 22,603,000 | Bottom-up; parametric rate; three-point hours. | Hours as the dictionary sheets give them. | DEV 140 h, 144 weighted at 157,000 VND/h [3][4][5][14]. | 14,727,000 to 32,970,000 | Medium |
+| 1.5.5 Iteration 2 Assurance | Human: PM 30 h; DEV1 9.2 h; QA1 101.4 h. | 23,085,000 | 0 |  | 23,085,000 | Bottom-up; parametric rate; three-point hours. | Hours as the dictionary sheets give them. <mark>Scaled</mark>: 1.5.5.1 to 90%, with the build work it covers; 1.5.5.2 to 14%, with the build work it covers; 1.5.5.3 to 46%, with the build work it covers. | PM 30 h, 30.9 weighted at 230,000 VND/h; DEV 9.2 h, 9.5 weighted at 157,000 VND/h; QA 101.4 h, 104.3 weighted at 139,000 VND/h [3][4][5][14]. | 15,041,000 to 33,673,000 | Medium |
+| 1.6.1 System Test | Human: DEV1 80 h, DEV2 70.4 h, DEV3 81.5 h; QA1 173.8 h. | 62,295,000 | 0 |  | 62,295,000 | Bottom-up; parametric rate; three-point hours. | Web system test only. Deferred: 1.6.1.2 System test execution, Android and iOS. <mark>Scaled</mark>: 1.6.1.7 to 88%, with the build work it covers; 1.6.1.8 to 69%, with the build work it covers. | DEV 231.9 h, 238.5 weighted at 157,000 VND/h; QA 173.8 h, 178.8 weighted at 139,000 VND/h [3][4][5][14]. | 40,588,000 to 90,869,000 | Medium |
+| 1.6.2 Test Documentation | Human: PM 20 h; QA1 36 h. | 9,876,000 | 0 |  | 9,876,000 | Bottom-up; parametric rate; three-point hours. | Hours as the dictionary sheets give them. | PM 20 h, 20.6 weighted at 230,000 VND/h; QA 36 h, 37 weighted at 139,000 VND/h [3][4][5][14]. | 6,435,000 to 14,406,000 | Medium |
+| 1.7.1 Migration | Human: PM 20 h; DEV1 120 h; QA1 20 h. | 26,963,000 | 0 |  | 26,963,000 | Bottom-up; parametric rate; three-point hours. | The center enters and cleans its own source data, as risk R6 and the project exclusions say; <mark>the migration scripts keep their dictionary hours</mark>. | PM 20 h, 20.6 weighted at 230,000 VND/h; DEV 120 h, 123.4 weighted at 157,000 VND/h; QA 20 h, 20.6 weighted at 139,000 VND/h [3][4][5][14]. | 17,568,000 to 39,330,000 | Medium |
+| 1.8.1 Production Environment | Human: PM 8 h; DEV3 64 h; QA1 8 h. Physical: Go-live support and on-site presence. Software: Domain .vn first year and TLS certificate. | 13,369,000 | 8,708,000 |  | 22,077,000 | Bottom-up; parametric rate; three-point hours; parametric prices; allowance. | The certificate is free; production runs on the center's server. Go-live support kept at the charter's allowance, <mark>not checked against a published price</mark>. | PM 8 h, 8.2 weighted at 230,000 VND/h; DEV 64 h, 65.8 weighted at 157,000 VND/h; QA 8 h, 8.2 weighted at 139,000 VND/h [3][4][5][14]. Domain .vn first year and TLS certificate 708,000 [11][12]. Go-live support and on-site presence 8,000,000, allowance. | 17,160,000 to 29,500,000 | Medium; low for the allowances |
+| 1.8.2 Training and Documentation | Human: PM 40 h; DEV2 16 h; QA1 8 h. Physical: Training delivery, venue, and materials; Travel to the three branches. | 13,188,000 | 15,000,000 |  | 28,188,000 | Bottom-up; parametric rate; three-point hours; allowance. | Manuals delivered in the application and as files (company rule 4). Training and travel kept at the charter's allowances, <mark>not checked against a published price</mark>, since venues and distances are not known. | PM 40 h, 41.1 weighted at 230,000 VND/h; DEV 16 h, 16.5 weighted at 157,000 VND/h; QA 8 h, 8.2 weighted at 139,000 VND/h [3][4][5][14]. Training delivery, venue, and materials 12,000,000, allowance. Travel to the three branches 3,000,000, allowance. | 23,592,000 to 34,236,000 | Medium; low for the allowances |
+| 1.8.3 Handover | Human: PM 12 h; DEV2 20 h; QA1 24 h. | 9,498,000 | 0 |  | 9,498,000 | Bottom-up; parametric rate; three-point hours. | Hours as the dictionary sheets give them. | PM 12 h, 12.3 weighted at 230,000 VND/h; DEV 20 h, 20.6 weighted at 157,000 VND/h; QA 24 h, 24.7 weighted at 139,000 VND/h [3][4][5][14]. | 6,188,000 to 13,854,000 | Medium |
+| 1.10.1 Warranty | Human: PM 25.6 h; DEV1 40 h, DEV2 68.8 h, DEV3 56.8 h; QA1 12.8 h; support desk 160 h. | 59,741,000 | 0 |  | 59,741,000 | Bottom-up; parametric rate; three-point hours. | Warranty months 2 to 6 at <mark>0.2 FTE for the web system</mark>, costed as developer hours rather than as the charter's lump sum; an allocation, so not weighted. <mark>Scaled</mark>: 1.10.1.1 to 40%, a support rota in the first warranty month instead of the whole team on call. | PM 25.6 h, 26.3 weighted at 230,000 VND/h; DEV 165.6 h, 170.3 weighted at 157,000 VND/h; QA 12.8 h, 13.2 weighted at 139,000 VND/h; DEV 160 h at 157,000 VND/h [3][4][5][14]. | 47,676,000 to 75,620,000 | Medium |
+| 1.10.2 Closeout | Human: PM 30 h. | 7,096,000 | 0 |  | 7,096,000 | Bottom-up; parametric rate; three-point hours. | Hours as the dictionary sheets give them. | PM 30 h, 30.9 weighted at 230,000 VND/h [3][4][5][14]. | 4,623,000 to 10,350,000 | Medium |
+| 1 Project, contingency reserve | Contingency reserve, charter budget line 6 |  |  | 28,000,000 | 28,000,000 | Reserve analysis [1]. | Held at project level and drawn only through change control against risks R1 to R12. <mark>Not re-derived</mark>: the register carries no probability or impact to derive it from. At the charter's 4% of the new estimate it would be 24,720,000. | Charter budget line 6. | 28,000,000 | Low |
+| **Total** |  | **587,661,000** | **30,348,000** | **28,000,000** | **646,009,000** |  |  | 3,239.6 hours of work and 160 support desk hours. | **449,726,000 to 905,316,000** | Medium |
 
 #### COST ESTIMATING WORKSHEET, page 1 of 2
 
 | Field | Content |
 | --- | --- |
 | **Project Title** | Development and Deployment of a Learning Center Management Software |
-| **Date Prepared** | 7 October 2026 |
+| **Date Prepared** | 8 October 2026 |
 
 **Parametric Estimates**
 
 | ID | Cost Variable | Cost per Unit | Number of Units | Cost Estimate |
 | --- | --- | ---: | ---: | ---: |
-| PM | Labor hour, project manager and business analyst | 361,000 | 800 | 288,800,000 |
-| DEV1 DEV2 DEV3 | Labor hour, developer | 257,000 | 2,400 | 616,800,000 |
-| 1.10.1.2 | Labor hour, warranty support desk, developer | 257,000 | 280 | 71,960,000 |
-| QA1 | Labor hour, QA engineer | 187,000 | 800 | 149,600,000 |
-| MOB1 | Labor hour, mobile developer, part time | 235,000 | 400 | 94,000,000 |
-| 1.1.1.1-A5 | Seat-month of a fixed coworking desk | 3,125,000 | 27.5 | 85,938,000 |
-| 1.1.1.1-A5 | Machine-month of a laptop | 592,361 | 27.5 | 16,290,000 |
-| 1.1.1.1-A4 | User-month of GitHub Team | 87,233 | 27.5 | 2,399,000 |
-| 1.1.1.1-A4 | Figma seat, annual plan, or two months as the optimistic case | 4,361,667 | 1 | 4,362,000 |
-| 1.5.2.2-A4 | SMS message | 767 | 5,000 | 3,833,000 |
-| 1.5.4.3 | Codemagic macOS build minute | 2,486 | 1,625 | 4,040,000 |
-| 1.6.1.2-A3 | Pair of test phones | 11,455,667 | 1 | 11,456,000 |
-| 1.8.1.1-A3 | Month of a production and a staging server | 1,999,000 | 12 | 23,988,000 |
-| 1.8.1.1-A4 | Domain .vn and TLS certificate, first year | 708,333 | 1 | 708,000 |
-| 1.9.1.1-A4 | US dollar of store fees | 26,170 | 124 | 3,245,000 |
+| PM | Labor hour, project manager and business analyst | 230,000 | 688 | 158,242,000 |
+| DEV1 DEV2 DEV3 | Labor hour, developer | 157,000 | 1,895.5 | 297,598,000 |
+| 1.10.1.2 | Labor hour, warranty support desk, developer | 157,000 | 160 | 25,120,000 |
+| QA1 | Labor hour, QA engineer | 139,000 | 656.1 | 91,197,000 |
+| 1.1.1.1-A4 | Seat-month of Figma Professional, billed monthly | 523,400 | 2 | 1,047,000 |
+| 1.2.3.2 | Month of a T1.Base 05 staging server | 799,000 | 7 | 5,593,000 |
+| 1.8.1.1-A4 | Domain .vn and TLS certificate, first year | 450,000 | 1 | 450,000 |
 
 **Analogous Estimates**
 
@@ -94,17 +112,9 @@ This is an estimate, not a budget. Determine Budget, PMBOK 6 process 7.3, adds t
 
 | ID | Optimistic Cost | Most Likely Cost | Pessimistic Cost | Weighting Equation | Expected Cost Estimate |
 | --- | ---: | ---: | ---: | --- | ---: |
-| PM, person-month | 36,865,000 | 59,774,000 | 70,420,000 | (O + 4M + P) / 6 | 57,730,000 |
-| DEV1 DEV2 DEV3, person-month | 25,132,000 | 42,608,000 | 51,623,000 | (O + 4M + P) / 6 | 41,198,000 |
-| QA1, person-month | 22,230,000 | 30,134,000 | 36,741,000 | (O + 4M + P) / 6 | 29,918,000 |
-| MOB1, person-month | 35,568,000 | 35,877,000 | 46,127,000 | (O + 4M + P) / 6 | 37,534,000 |
-| 1.1.1.1-A5, Workspace, fixed coworking desks | 48,125,000 | 82,500,000 | 137,500,000 | (O + 4M + P) / 6 | 85,938,000 |
-| 1.1.1.1-A5, Laptops, six | 14,048,000 | 14,048,000 | 27,500,000 | (O + 4M + P) / 6 | 16,290,000 |
-| 1.1.1.1-A4, GitHub Team, repository and build | 0 | 2,879,000 | 2,879,000 | (O + 4M + P) / 6 | 2,399,000 |
-| 1.1.1.1-A4, Figma Professional, one full seat | 1,047,000 | 5,025,000 | 5,025,000 | (O + 4M + P) / 6 | 4,362,000 |
-| 1.5.2.2-A4, SMS test messages | 3,000,000 | 4,000,000 | 4,000,000 | (O + 4M + P) / 6 | 3,833,000 |
-| 1.5.4.3, Codemagic macOS build minutes | 1,865,000 | 3,729,000 | 7,458,000 | (O + 4M + P) / 6 | 4,040,000 |
-| 1.6.1.2-A3, Test phones, Galaxy A06 new and iPhone 13 used | 11,339,000 | 11,339,000 | 12,039,000 | (O + 4M + P) / 6 | 11,456,000 |
+| PM, labor hours, 688 h | 106,022,000 | 158,242,000 | 237,363,000 | (O + 4M + P) / 6 | 162,725,000 |
+| DEV1 DEV2 DEV3, labor hours, 1,895.5 h | 199,390,000 | 297,598,000 | 446,396,000 | (O + 4M + P) / 6 | 306,030,000 |
+| QA1, labor hours, 656.1 h | 61,102,000 | 91,197,000 | 136,795,000 | (O + 4M + P) / 6 | 93,781,000 |
 | 1.8.1.1-A4, Domain .vn first year and TLS certificate | 450,000 | 450,000 | 2,000,000 | (O + 4M + P) / 6 | 708,000 |
 
 #### BOTTOM-UP COST ESTIMATING WORKSHEET, page 2 of 2
@@ -112,145 +122,139 @@ This is an estimate, not a budget. Determine Budget, PMBOK 6 process 7.3, adds t
 | Field | Content |
 | --- | --- |
 | **Project Title** | Development and Deployment of a Learning Center Management Software |
-| **Date Prepared** | 7 October 2026 |
+| **Date Prepared** | 8 October 2026 |
 
 | ID | Labor Hours | Labor Rate | Total Labor | Material | Supplies | Equipment | Travel | Other Direct Costs | Indirect Costs | Reserve | Estimate |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1.1.1 PM 300 h | 300 | 361,000 | 108,300,000 |  |  |  |  |  |  |  | 108,300,000 |
-| 1.1.1.1-A5 Workspace, fixed coworking desks |  |  |  |  |  |  |  |  | 85,938,000 |  | 85,938,000 |
-| 1.1.1.1-A5 Laptops, six |  |  |  |  |  | 16,290,000 |  |  |  |  | 16,290,000 |
-| 1.1.1.1-A4 GitHub Team, repository and build |  |  |  |  |  |  |  | 2,399,000 |  |  | 2,399,000 |
-| 1.1.1.1-A4 Figma Professional, one full seat |  |  |  |  |  |  |  | 4,362,000 |  |  | 4,362,000 |
-| 1.2.1 PM 168 h | 168 | 361,000 | 60,648,000 |  |  |  |  |  |  |  | 60,648,000 |
-| 1.2.1 DEV3 24 h | 24 | 257,000 | 6,168,000 |  |  |  |  |  |  |  | 6,168,000 |
-| 1.2.2 PM 32 h | 32 | 361,000 | 11,552,000 |  |  |  |  |  |  |  | 11,552,000 |
-| 1.2.2 DEV3 12 h | 12 | 257,000 | 3,084,000 |  |  |  |  |  |  |  | 3,084,000 |
-| 1.2.2 QA1 40 h | 40 | 187,000 | 7,480,000 |  |  |  |  |  |  |  | 7,480,000 |
-| 1.2.3 DEV1 100 h, DEV2 120 h, DEV3 40 h | 260 | 257,000 | 66,820,000 |  |  |  |  |  |  |  | 66,820,000 |
-| 1.3.1 PM 16 h | 16 | 361,000 | 5,776,000 |  |  |  |  |  |  |  | 5,776,000 |
-| 1.3.1 DEV1 80 h, DEV2 52 h, DEV3 112 h | 244 | 257,000 | 62,708,000 |  |  |  |  |  |  |  | 62,708,000 |
-| 1.3.2 PM 44 h | 44 | 361,000 | 15,884,000 |  |  |  |  |  |  |  | 15,884,000 |
-| 1.3.2 DEV2 20 h | 20 | 257,000 | 5,140,000 |  |  |  |  |  |  |  | 5,140,000 |
-| 1.3.2 QA1 80 h | 80 | 187,000 | 14,960,000 |  |  |  |  |  |  |  | 14,960,000 |
-| 1.4.1 DEV2 90 h, DEV3 120 h | 210 | 257,000 | 53,970,000 |  |  |  |  |  |  |  | 53,970,000 |
-| 1.4.2 DEV1 140 h, DEV2 70 h | 210 | 257,000 | 53,970,000 |  |  |  |  |  |  |  | 53,970,000 |
-| 1.4.3 PM 30 h | 30 | 361,000 | 10,830,000 |  |  |  |  |  |  |  | 10,830,000 |
-| 1.4.3 DEV1 20 h, DEV3 40 h | 60 | 257,000 | 15,420,000 |  |  |  |  |  |  |  | 15,420,000 |
-| 1.4.3 QA1 152 h | 152 | 187,000 | 28,424,000 |  |  |  |  |  |  |  | 28,424,000 |
-| 1.4.4 MOB1 80 h | 80 | 235,000 | 18,800,000 |  |  |  |  |  |  |  | 18,800,000 |
-| 1.5.1 DEV2 160 h | 160 | 257,000 | 41,120,000 |  |  |  |  |  |  |  | 41,120,000 |
-| 1.5.2 DEV3 140 h | 140 | 257,000 | 35,980,000 |  |  |  |  |  |  |  | 35,980,000 |
-| 1.5.2.2-A4 SMS test messages |  |  |  |  |  |  |  | 3,833,000 |  |  | 3,833,000 |
-| 1.5.3 DEV1 140 h | 140 | 257,000 | 35,980,000 |  |  |  |  |  |  |  | 35,980,000 |
-| 1.5.4 DEV3 20 h | 20 | 257,000 | 5,140,000 |  |  |  |  |  |  |  | 5,140,000 |
-| 1.5.4 MOB1 256 h | 256 | 235,000 | 60,160,000 |  |  |  |  |  |  |  | 60,160,000 |
-| 1.5.4.3 Codemagic macOS build minutes |  |  |  |  |  |  |  | 4,040,000 |  |  | 4,040,000 |
-| 1.5.5 PM 30 h | 30 | 361,000 | 10,830,000 |  |  |  |  |  |  |  | 10,830,000 |
-| 1.5.5 DEV1 20 h | 20 | 257,000 | 5,140,000 |  |  |  |  |  |  |  | 5,140,000 |
-| 1.5.5 QA1 172 h | 172 | 187,000 | 32,164,000 |  |  |  |  |  |  |  | 32,164,000 |
-| 1.6.1 DEV1 80 h, DEV2 80 h, DEV3 100 h | 260 | 257,000 | 66,820,000 |  |  |  |  |  |  |  | 66,820,000 |
-| 1.6.1 QA1 240 h | 240 | 187,000 | 44,880,000 |  |  |  |  |  |  |  | 44,880,000 |
-| 1.6.1.2-A3 Test phones, Galaxy A06 new and iPhone 13 used |  |  |  |  |  | 11,456,000 |  |  |  |  | 11,456,000 |
-| 1.6.2 PM 20 h | 20 | 361,000 | 7,220,000 |  |  |  |  |  |  |  | 7,220,000 |
-| 1.6.2 QA1 36 h | 36 | 187,000 | 6,732,000 |  |  |  |  |  |  |  | 6,732,000 |
-| 1.7.1 PM 20 h | 20 | 361,000 | 7,220,000 |  |  |  |  |  |  |  | 7,220,000 |
-| 1.7.1 DEV1 120 h | 120 | 257,000 | 30,840,000 |  |  |  |  |  |  |  | 30,840,000 |
-| 1.7.1 QA1 20 h | 20 | 187,000 | 3,740,000 |  |  |  |  |  |  |  | 3,740,000 |
-| 1.7.1.2-A4 External data-entry support |  |  | 12,000,000 |  |  |  |  |  |  |  | 12,000,000 |
-| 1.8.1 PM 8 h | 8 | 361,000 | 2,888,000 |  |  |  |  |  |  |  | 2,888,000 |
-| 1.8.1 DEV3 64 h | 64 | 257,000 | 16,448,000 |  |  |  |  |  |  |  | 16,448,000 |
-| 1.8.1 QA1 8 h | 8 | 187,000 | 1,496,000 |  |  |  |  |  |  |  | 1,496,000 |
-| 1.8.1.1-A3 Cloud server and staging, 12 months |  |  |  |  |  |  |  | 23,988,000 |  |  | 23,988,000 |
+| 1.1.1 PM 240 h | 246.8 | 230,000 | 56,764,000 |  |  |  |  |  |  |  | 56,764,000 |
+| 1.1.1.1-A4 Figma Professional, one full seat |  |  |  |  |  |  |  | 1,047,000 |  |  | 1,047,000 |
+| 1.2.1 PM 140.4 h | 144.4 | 230,000 | 33,209,000 |  |  |  |  |  |  |  | 33,209,000 |
+| 1.2.1 DEV3 24 h | 24.7 | 157,000 | 3,875,000 |  |  |  |  |  |  |  | 3,875,000 |
+| 1.2.2 PM 32 h | 32.9 | 230,000 | 7,569,000 |  |  |  |  |  |  |  | 7,569,000 |
+| 1.2.2 DEV3 12 h | 12.3 | 157,000 | 1,937,000 |  |  |  |  |  |  |  | 1,937,000 |
+| 1.2.2 QA1 40 h | 41.1 | 139,000 | 5,718,000 |  |  |  |  |  |  |  | 5,718,000 |
+| 1.2.3 DEV1 100 h, DEV2 120 h | 226.2 | 157,000 | 35,519,000 |  |  |  |  |  |  |  | 35,519,000 |
+| 1.2.3.2 Staging server |  |  |  |  |  |  |  | 5,593,000 |  |  | 5,593,000 |
+| 1.3.1 PM 16 h | 16.5 | 230,000 | 3,784,000 |  |  |  |  |  |  |  | 3,784,000 |
+| 1.3.1 DEV1 69.8 h, DEV2 32.1 h, DEV3 80.9 h | 187.9 | 157,000 | 29,508,000 |  |  |  |  |  |  |  | 29,508,000 |
+| 1.3.2 PM 44 h | 45.2 | 230,000 | 10,407,000 |  |  |  |  |  |  |  | 10,407,000 |
+| 1.3.2 DEV2 20 h | 20.6 | 157,000 | 3,229,000 |  |  |  |  |  |  |  | 3,229,000 |
+| 1.3.2 QA1 80 h | 82.3 | 139,000 | 11,435,000 |  |  |  |  |  |  |  | 11,435,000 |
+| 1.4.1 DEV2 90 h, DEV3 120 h | 215.9 | 157,000 | 33,904,000 |  |  |  |  |  |  |  | 33,904,000 |
+| 1.4.2 DEV1 140 h, DEV2 70 h | 215.9 | 157,000 | 33,904,000 |  |  |  |  |  |  |  | 33,904,000 |
+| 1.4.3 PM 30 h | 30.9 | 230,000 | 7,096,000 |  |  |  |  |  |  |  | 7,096,000 |
+| 1.4.3 DEV1 20 h, DEV3 40 h | 61.7 | 157,000 | 9,687,000 |  |  |  |  |  |  |  | 9,687,000 |
+| 1.4.3 QA1 152 h | 156.3 | 139,000 | 21,727,000 |  |  |  |  |  |  |  | 21,727,000 |
+| 1.5.1 DEV2 130 h | 133.7 | 157,000 | 20,988,000 |  |  |  |  |  |  |  | 20,988,000 |
+| 1.5.2 DEV3 60 h | 61.7 | 157,000 | 9,687,000 |  |  |  |  |  |  |  | 9,687,000 |
+| 1.5.3 DEV1 140 h | 144 | 157,000 | 22,603,000 |  |  |  |  |  |  |  | 22,603,000 |
+| 1.5.5 PM 30 h | 30.9 | 230,000 | 7,096,000 |  |  |  |  |  |  |  | 7,096,000 |
+| 1.5.5 DEV1 9.2 h | 9.5 | 157,000 | 1,488,000 |  |  |  |  |  |  |  | 1,488,000 |
+| 1.5.5 QA1 101.4 h | 104.3 | 139,000 | 14,501,000 |  |  |  |  |  |  |  | 14,501,000 |
+| 1.6.1 DEV1 80 h, DEV2 70.4 h, DEV3 81.5 h | 238.5 | 157,000 | 37,446,000 |  |  |  |  |  |  |  | 37,446,000 |
+| 1.6.1 QA1 173.8 h | 178.8 | 139,000 | 24,849,000 |  |  |  |  |  |  |  | 24,849,000 |
+| 1.6.2 PM 20 h | 20.6 | 230,000 | 4,730,000 |  |  |  |  |  |  |  | 4,730,000 |
+| 1.6.2 QA1 36 h | 37 | 139,000 | 5,146,000 |  |  |  |  |  |  |  | 5,146,000 |
+| 1.7.1 PM 20 h | 20.6 | 230,000 | 4,730,000 |  |  |  |  |  |  |  | 4,730,000 |
+| 1.7.1 DEV1 120 h | 123.4 | 157,000 | 19,374,000 |  |  |  |  |  |  |  | 19,374,000 |
+| 1.7.1 QA1 20 h | 20.6 | 139,000 | 2,859,000 |  |  |  |  |  |  |  | 2,859,000 |
+| 1.8.1 PM 8 h | 8.2 | 230,000 | 1,892,000 |  |  |  |  |  |  |  | 1,892,000 |
+| 1.8.1 DEV3 64 h | 65.8 | 157,000 | 10,333,000 |  |  |  |  |  |  |  | 10,333,000 |
+| 1.8.1 QA1 8 h | 8.2 | 139,000 | 1,144,000 |  |  |  |  |  |  |  | 1,144,000 |
 | 1.8.1.1-A4 Domain .vn first year and TLS certificate |  |  |  |  |  |  |  | 708,000 |  |  | 708,000 |
 | 1.8.1.3-A4 Go-live support and on-site presence |  |  |  |  |  |  | 8,000,000 |  |  |  | 8,000,000 |
-| 1.8.2 PM 40 h | 40 | 361,000 | 14,440,000 |  |  |  |  |  |  |  | 14,440,000 |
-| 1.8.2 DEV2 16 h | 16 | 257,000 | 4,112,000 |  |  |  |  |  |  |  | 4,112,000 |
-| 1.8.2 QA1 8 h | 8 | 187,000 | 1,496,000 |  |  |  |  |  |  |  | 1,496,000 |
-| 1.8.2.1-A5 Documentation production and printing |  |  |  |  | 10,000,000 |  |  |  |  |  | 10,000,000 |
+| 1.8.2 PM 40 h | 41.1 | 230,000 | 9,461,000 |  |  |  |  |  |  |  | 9,461,000 |
+| 1.8.2 DEV2 16 h | 16.5 | 157,000 | 2,583,000 |  |  |  |  |  |  |  | 2,583,000 |
+| 1.8.2 QA1 8 h | 8.2 | 139,000 | 1,144,000 |  |  |  |  |  |  |  | 1,144,000 |
 | 1.8.2.2-A4 Training delivery, venue, and materials |  |  |  |  | 12,000,000 |  |  |  |  |  | 12,000,000 |
 | 1.8.2.2-A5 Travel to the three branches |  |  |  |  |  |  | 3,000,000 |  |  |  | 3,000,000 |
-| 1.8.3 PM 12 h | 12 | 361,000 | 4,332,000 |  |  |  |  |  |  |  | 4,332,000 |
-| 1.8.3 DEV2 20 h | 20 | 257,000 | 5,140,000 |  |  |  |  |  |  |  | 5,140,000 |
-| 1.8.3 QA1 24 h | 24 | 187,000 | 4,488,000 |  |  |  |  |  |  |  | 4,488,000 |
-| 1.9.1 PM 10 h | 10 | 361,000 | 3,610,000 |  |  |  |  |  |  |  | 3,610,000 |
-| 1.9.1 DEV3 16 h | 16 | 257,000 | 4,112,000 |  |  |  |  |  |  |  | 4,112,000 |
-| 1.9.1 MOB1 64 h | 64 | 235,000 | 15,040,000 |  |  |  |  |  |  |  | 15,040,000 |
-| 1.9.1.1-A4 Apple Developer Program and Google Play |  |  |  |  |  |  |  | 3,245,000 |  |  | 3,245,000 |
-| 1.10.1 PM 40 h | 40 | 361,000 | 14,440,000 |  |  |  |  |  |  |  | 14,440,000 |
-| 1.10.1 DEV1 100 h, DEV2 172 h, DEV3 112 h | 384 | 257,000 | 98,688,000 |  |  |  |  |  |  |  | 98,688,000 |
-| 1.10.1 QA1 20 h | 20 | 187,000 | 3,740,000 |  |  |  |  |  |  |  | 3,740,000 |
-| 1.10.1 support desk 280 h | 280 | 257,000 | 71,960,000 |  |  |  |  |  |  |  | 71,960,000 |
-| 1.10.2 PM 30 h | 30 | 361,000 | 10,830,000 |  |  |  |  |  |  |  | 10,830,000 |
+| 1.8.3 PM 12 h | 12.3 | 230,000 | 2,838,000 |  |  |  |  |  |  |  | 2,838,000 |
+| 1.8.3 DEV2 20 h | 20.6 | 157,000 | 3,229,000 |  |  |  |  |  |  |  | 3,229,000 |
+| 1.8.3 QA1 24 h | 24.7 | 139,000 | 3,431,000 |  |  |  |  |  |  |  | 3,431,000 |
+| 1.10.1 PM 25.6 h | 26.3 | 230,000 | 6,055,000 |  |  |  |  |  |  |  | 6,055,000 |
+| 1.10.1 DEV1 40 h, DEV2 68.8 h, DEV3 56.8 h | 170.3 | 157,000 | 26,736,000 |  |  |  |  |  |  |  | 26,736,000 |
+| 1.10.1 QA1 12.8 h | 13.2 | 139,000 | 1,830,000 |  |  |  |  |  |  |  | 1,830,000 |
+| 1.10.1 support desk 160 h | 160 | 157,000 | 25,120,000 |  |  |  |  |  |  |  | 25,120,000 |
+| 1.10.2 PM 30 h | 30.9 | 230,000 | 7,096,000 |  |  |  |  |  |  |  | 7,096,000 |
 | 1 Contingency reserve |  |  |  |  |  |  |  |  |  | 28,000,000 | 28,000,000 |
-| **Total** | **4,680** |  | **1,233,160,000** |  | **22,000,000** | **27,746,000** | **11,000,000** | **42,575,000** | **85,938,000** | **28,000,000** | **1,450,419,000** |
+| **Total** | **3,491.4** |  | **587,661,000** |  | **12,000,000** |  | **11,000,000** | **7,348,000** |  | **28,000,000** | **646,009,000** |
 
 ---
 
 ### Paid time without booked work
 
-The estimate above pays for the hours the WBS needs. The people who work them are paid by the month, and a month in which someone has little booked work costs the same as a full one. Whether that idle time is a project cost depends on whether the person can be released when there is no work, and the charter answers that for most of the team: the five full-time staff are "committed before planning starts and are not renegotiable", so they stay on the payroll for the whole schedule. The part-time mobile developer is the exception and is paid for the hours booked, which the estimate already does.
+None is charged. The charter commits the five full-time staff to the project "before planning starts" and makes them "not renegotiable"; company rule 5 keeps that commitment, since each of them is available to the project whenever its schedule needs them, and charges the project only for the hours they book. The levelled schedule of the reduced work runs 5.63 months, 14 September 2026 to 1 March 2027, 901.5 hours a person; the rest of each person's time is the supplier's, spent on its other projects or training and paid by it:
 
-Each of the five has 800 hours in the dictionary, 5 person-months at 160 hours. How long they are paid depends on which calendar holds:
+| Person | Hours booked, weighted | Hours in the levelled window | Hours the supplier carries |
+| --- | ---: | ---: | ---: |
+| PM | 707.5 | 901.5 | 194 |
+| DEV1 | 739.4 | 901.5 | 162.1 |
+| DEV2 | 655.3 | 901.5 | 246.2 |
+| DEV3 | 554.5 | 901.5 | 347 |
+| QA1 | 674.7 | 901.5 | 226.8 |
 
-| Calendar | Window | Months on payroll | Booked months | Paid without booked work | Cost |
-| --- | --- | ---: | ---: | --- | ---: |
-| Charter | 14 September 2026 to 5 February 2027 | 4.84 | 5.00 | None; 0.16 months short | 0 |
-| Levelled schedule, form 2.18 | 14 September 2026 to 19 March 2027 | 6.24 | 5.00 | <mark>1.24 months each</mark> | 285,527,000 |
-
-Months on payroll count part months by working days. The charter's window holds 4.84 months, so 800 hours a person do not fit in it, which is the same finding the levelled schedule reached. If the sponsor accepts the levelled dates of change request 3.3, each of the five is paid 1.24 months for which the WBS books no work: 261,938,000 of labor at their expected monthly cost, and 23,589,000 for their desks, laptops, and GitHub seats over the same months, 285,527,000 in all. That figure is not in the form, because it belongs to a schedule decision rather than to the work of any control account. There are three ways to avoid paying it: lend the five to other work of the supplier in the weeks they are not booked, which the charter's commitment rules out unless the sponsor waives it; keep the charter's dates, which the levelling showed the hours do not fit; or accept it as the cost of the later end date.
+Had the five been paid by the month over that window instead, as the estimate of 7 October 2026 assumed, the project would carry those hours too.
 
 ### Estimate against the charter: for the team to decide
 
-This estimate does not change the charter, the scope package, or their checker, which still hold the 700,000,000 VND baseline. The difference is reported here for the team and the sponsor, because choosing between the options below is their decision.
+This estimate does not change the charter, the scope package, or their checker, which still hold the full scope and the 700,000,000 VND baseline. The reduction goes to the sponsor in `3-3-change-request-scope.en.md`, because deferring functions is the sponsor's decision.
 
-| Line | Charter (VND) | This estimate (VND) | Difference (VND) |
+| Charter budget line | Charter (VND) | This estimate (VND) | Difference (VND) |
 | --- | ---: | ---: | ---: |
-| Labor, with warranty months 2 to 6 and outsourced data entry | 586,000,000 | 1,233,160,000 | 647,160,000 |
-| Physical and software | 86,000,000 | 189,259,000 | 103,259,000 |
+| Personnel | 539,000,000 | 562,541,000 | 23,541,000 |
+| Infrastructure, licences, store accounts | 42,000,000 | 7,348,000 | -34,652,000 |
+| Facilities, equipment, travel | 14,000,000 | 3,000,000 | -11,000,000 |
+| Deployment, migration, training, documentation | 42,000,000 | 20,000,000 | -22,000,000 |
+| Warranty and support, months 2 to 6 | 35,000,000 | 25,120,000 | -9,880,000 |
 | Contingency reserve | 28,000,000 | 28,000,000 | 0 |
-| **Total** | **700,000,000** | **1,450,419,000** | **750,419,000** |
+| **Total** | **700,000,000** | **646,009,000** | **-53,991,000** |
 
-With the idle months of the levelled schedule the estimate is 1,735,946,000, 1,035,946,000 above the charter.
+Where the difference comes from, in the order it arises:
 
-Where the difference comes from:
+| Step | Amount (VND) | Running total (VND) |
+| --- | ---: | ---: |
+| Charter total | 700,000,000 | 700,000,000 |
+| Work deferred or made leaner, 3,239.6 of the 4,400 dictionary hours kept, at the charter's rate mix | -140,596,000 | 559,404,000 |
+| The hours kept at the market median for 1 to 2 years instead of the charter's rate mix (assumption 17) | 148,632,000 | 708,036,000 |
+| The same hours weighted for the cone of uncertainty | 15,505,000 | 723,541,000 |
+| Warranty months 2 to 6, 160 hours at a developer's rate instead of the lump sum | -9,880,000 | 713,661,000 |
+| Physical and software: the charter's lines 2 to 4 less what is deferred, what moves to the center, and what the company rules remove | -67,652,000 | 646,009,000 |
 
-1. **The charter's rate mix is a junior team.** Assumption 17 costs a developer at 19,000,000 VND a month fully loaded, which is about 15,385,000 gross once the employer's 23.5% is taken out. ITviec puts a full-stack developer with 1 to 2 years at 20,350,000 and with 3 to 4 years at 34,500,000 [3]. The same holds for the other roles: a project manager at 26,000,000 loaded is below the median for 1 to 2 years. Even with every role at the 1 to 2 year median, labor comes to 816,760,000, against 586,000,000 in the charter.
-2. **Workspace was nearly free in the charter.** 9,000,000 for workspace and laptops together for 27.5 seat-months is 327,000 a seat-month; coworking desks cost 1,750,000 to 5,000,000 [17][18].
-3. **Warranty months 2 to 6** were a lump sum of 35,000,000 for 0.35 FTE over five months; at a developer's rate that is 71,960,000.
+What the charter funded that this estimate does not charge:
 
-What the team can do, each with what it costs:
+| Item | Amount (VND) | Why it is not a project cost |
+| --- | ---: | --- |
+| Production server, 12 months | 14,400,000 | the center provides the cloud virtual server (charter, Resources preassigned) [10] |
+| Development and test gateway credits | 4,000,000 | the center provides and pays its gateway account (same place, and assumption 12); the charter's own figure [13] |
+| Documentation printing | 10,000,000 | company rule 4, paperless; the charter's allowance |
+| External data entry | 12,000,000 | the center enters and cleans its own source data, as risk R6 and the project exclusions say; the charter's allowance |
+| Workspace |  | company rule 1, remote-first |
+| Laptops |  | company rule 2, staff bring their own |
+| GitHub Team |  | company rule 3, GitHub Free |
+| Weeks without project work |  | company rule 5, timesheets |
+| 13th-month salary |  | company rule 6, paid by the supplier |
 
-1. Raise the budget through a change request to the sponsor, at the estimate, or at 1,735,946,000 if the levelled schedule is accepted with the team kept on.
-2. Hire at the 1 to 2 year level and keep the hours, which brings labor to 816,760,000; the hours of the dictionary were not estimated for a junior team, so this moves the risk from cost to schedule and quality.
-3. Reduce the scope through a change request, for example the mobile app F12, which carries 94,000,000 of mobile developer hours and its own build, store, and test costs.
-4. Put the team in the supplier's own office, so that the workspace becomes the supplier's overhead rather than a project cost; that removes 85,938,000 from the estimate but not from the supplier's books.
+The production server and the gateway credits are costs the charter itself places on the center, and the change request asks the sponsor to confirm that and correct budget line 2, which also funds them. The store accounts leave with F12.
 
-Proposed updates to other documents, not made here: assumption 17 replaced by the rates of form 2.21 page 1 and their source; a new project risk in the register, that the budget does not cover the team at market rates, with this estimate as its evidence; and charter assumption 12, that the center pays for its gateway account, confirmed for test messages as well.
+Proposed updates to other documents, carried by the change request and not made here: the scope reduction in the charter, the WBS, the dictionary, and the traceability matrix; assumption 17 replaced by the rates of form 2.21 page 1 and their source; the company rules added to the assumptions; new project risks, that a team costed at 1 to 2 years needs more hours than the dictionary gives, and that the weighted hours overrun the levelled window; budget line 2 and the Resources preassigned paragraph made to agree on hosting and the gateway account.
 
 ### References
 
 All web pages read on 7 October 2026. Prices are as the page showed them that day.
 
-1. PMI. *A Guide to the Project Management Body of Knowledge, 6th edition, chapter 7 Project Cost Management: 7.2 Estimate Costs, 7.2.2.5 three-point estimating, 7.2.2.6 reserve analysis, 7.2.3.2 basis of estimates*. PMBOK6_and_Agile_Practice_Guide.pdf in the team repository, pages 240 to 247. Used: Process, techniques, beta formula, contents of the basis of estimates.
-2. C. S. Dionisio. *A Project Manager's Book of Forms, 3rd edition, forms 2.19 Cost Management Plan, 2.20 Cost Estimates, 2.21 Cost Estimating Worksheet*. pages 82 to 92. Used: Printed fields of both forms; the rules table takes three fields of form 2.19.
-3. ITviec. *Vietnam IT Salary and Recruitment Market Report 2025-2026, 1,839 respondents surveyed in 2025, monthly median salary by position and years of experience*. https://itviec.com/report/vietnam-it-salary-and-recruitment-market. Used: Project Leader/Manager 29.85, 48.4, 58.45; Full-stack Developer 20.35, 34.5, 41.8; QA-QC 18, 24.4, 29.75; Mobile Developer 28.8, 29.05, 37.35 million VND for 1 to 2, 3 to 4, 5 to 8 years.
+1. PMI. *A Guide to the Project Management Body of Knowledge, 6th edition, chapter 7 Project Cost Management: 7.2 Estimate Costs, 7.2.2.5 three-point estimating, 7.2.2.6 reserve analysis, 7.2.3.2 basis of estimates, and 7.3.2.5 funding limit reconciliation*. PMBOK6_and_Agile_Practice_Guide.pdf in the team repository. Used: Process, inputs and outputs, techniques, beta formula, contents of the basis of estimates, accuracy ranges, reconciliation of the estimate with a funding limit.
+2. C. S. Dionisio. *A Project Manager's Book of Forms, 3rd edition, forms 2.19 Cost Management Plan, 2.20 Cost Estimates, 2.21 Cost Estimating Worksheet, 3.3 Change Request*. pages 82 to 92 and 170 to 174. Used: Printed fields of the forms; the rules table takes three fields of form 2.19.
+3. ITviec. *Vietnam IT Salary and Recruitment Market Report 2025-2026, 1,839 respondents surveyed in 2025, monthly median salary by position and years of experience*. https://itviec.com/report/vietnam-it-salary-and-recruitment-market. Used: Medians for 1 to 2 years: Project Leader/Manager 29.85, Full-stack Developer 20.35, QA-QC 18, Mobile Developer 28.8 million VND a month; for 3 to 4 years, priced only as an alternative in the change request: 48.4, 34.5, 24.4, 29.05.
 4. MISA AMIS. *Ty le dong BHXH 2026, published 18 September 2026, citing the Law on Social Insurance 2024 and Decree 158/2025/ND-CP*. https://amis.misa.vn/?p=292831. Used: Employer share 21.5%: retirement 14, sickness 3, accident 0.5, health 3, unemployment 1; contribution ceiling 50,600,000 VND a month from 1 July 2026.
 5. Thu Vien Phap Luat. *Quy dinh ve kinh phi cong doan 2%, Law on Trade Unions 2024, article 29, point b of clause 1*. https://thuvienphapluat.vn/ma-so-thue/phap-luat-thue/quy-dinh-ve-kinh-phi-cong-doan-2-o-van-ban-nao-49584-225246.html. Used: Union fee 2% of the payroll on which social insurance is paid, due whether or not a union exists.
 6. Vietnam.vn. *Ti gia USD hom nay 5.10: Vietcombank ban ra 26.170 dong/USD*. https://www.vietnam.vn/ti-gia-usd-hom-nay-5-10-vietcombank-ban-ra-26-170-dong-usd. Used: 26,170 VND per USD, the rate every dollar price here is converted at.
-7. Apple. *Apple Developer Program enrollment*. https://developer.apple.com/programs/enroll/. Used: 99 USD per membership year.
-8. Google. *Play Console Help, register for a developer account*. https://support.google.com/googleplay/android-developer/answer/6112435. Used: 25 USD one-time registration fee.
-9. GitHub. *Pricing*. https://github.com/pricing. Used: Team 4 USD per user a month for the first 12 months; Free 0 USD.
-10. Figma. *Pricing*. https://www.figma.com/pricing/. Used: Professional plan, full seat 16 USD a month.
-11. CostBench. *Figma pricing 2026*. https://costbench.com/software/design/figma/. Used: Professional full seat 16 USD a month billed annually, 20 USD billed monthly.
-12. Codemagic. *Billing and pricing documentation*. https://docs.codemagic.io/billing/pricing/. Used: Pay as you go, macOS M2 virtual machine 0.095 USD a build minute.
-13. WHTop. *Viettel IDC plans T2.Gen 02 and T1.Base 05, updated 20 April 2026*. https://www.whtop.com/plans/viettelidc.com.vn/147281 and https://www.whtop.com/plans/viettelidc.com.vn/147277. Used: 4 vCPU, 8 GB: T2.Gen 02 at 1,200,000 VND a month, 80 GB SSD; T1.Base 05 at 799,000 VND a month, 40 GB SSD; VAT not included.
-14. VnEconomy. *Ten mien .vn cap 2 mot ky tu co phi duy tri len toi 40 trieu dong/nam, on Circular 20/2023/TT-BTC*. https://vneconomy.vn/ten-mien-vn-cap-2-mot-ky-tu-co-phi-duy-tri-len-toi-40-trieu-dong-nam.htm. Used: .vn second-level domain: registration 100,000 VND once, maintenance 350,000 VND a year.
-15. Let's Encrypt. *About Let's Encrypt*. https://letsencrypt.org/about/. Used: TLS certificates free of charge, renewed automatically.
-16. Advertising Vietnam. *5 sai lam pho bien khi trien khai SMS brandname cho chuoi ban le*. https://advertisingvietnam.com/article/5-sai-lam-pho-bien-khi-trien-khai-sms-brandname-cho-chuoi-ban-le. Used: SMS brandname 600 to 800 VND a message.
-17. Replus. *Gia thue coworking space 2026, published 13 May 2026*. https://replus.com.vn/gia-thue-coworking-space/. Used: Fixed desk 1,750,000 to 5,000,000 VND a month.
-18. ICAD Vietnam. *Top 13 coworking space Ha Noi, published 31 October 2024*. https://icadvietnam.vn/coworking-space-ha-noi/. Used: Fixed desk per person a month at ten spaces, from 1,000,000 to 5,000,000 VND, median 2,975,000.
-19. FPT Shop. *HP 250 G10 i5-1334U, 16 GB, 512 GB SSD*. https://fptshop.com.vn/may-tinh-xach-tay/hp-250-g10-i5-1334u-b3wa8at. Used: 18,390,000 VND, VAT included.
-20. Mytour. *Top 6 reliable PC and laptop rental services in Hanoi*. https://mytour.vn/en/blog/bai-viet/top-6-reliable-pc-and-laptop-rental-services-in-hanoi.html. Used: Laptop rental 600,000 to 1,000,000 VND a machine a month.
-21. Viettablet. *Samsung Galaxy A06 4 GB, 64 GB*. https://www.viettablet.com/samsung-galaxy-a06. Used: 2,249,000 VND, official, VAT included.
-22. Dien Thoai Vui. *iPhone 13 cu*. https://dienthoaivui.com.vn/may-doi-tra/dien-thoai-cu/iphone-13-cu/. Used: iPhone 13 128 GB used: 9,090,000 VND scratched, 9,790,000 VND good condition, VAT included.
-23. Thu Vien Phap Luat. *Nghi dinh luong toi thieu vung 2026 la Nghi dinh nao, on Decree 293/2025/ND-CP*. https://thuvienphapluat.vn/hoi-dap-phap-luat/nghi-dinh-luong-toi-thieu-vung-2026-la-nghi-dinh-nao-138076681.html. Used: Region I minimum wage 5,310,000 VND a month, 25,500 VND an hour, from 1 January 2026.
+7. GitHub. *Pricing*. https://github.com/pricing. Used: Free plan for organizations: unlimited private repositories and collaborators, 2,000 Actions minutes a month, 0 USD.
+8. Figma. *Pricing*. https://www.figma.com/pricing/. Used: Professional plan, full seat.
+9. CostBench. *Figma pricing 2026*. https://costbench.com/software/design/figma/. Used: Professional full seat 16 USD a month billed annually, 20 USD billed monthly.
+10. WHTop. *Viettel IDC plans T2.Gen 02 and T1.Base 05, updated 20 April 2026*. https://www.whtop.com/plans/viettelidc.com.vn/147281 and https://www.whtop.com/plans/viettelidc.com.vn/147277. Used: T1.Base 05 at 799,000 VND a month for staging; T2.Gen 02 at 1,200,000 VND a month for production, which the center provides; VAT not included.
+11. VnEconomy. *Ten mien .vn cap 2 mot ky tu co phi duy tri len toi 40 trieu dong/nam, on Circular 20/2023/TT-BTC*. https://vneconomy.vn/ten-mien-vn-cap-2-mot-ky-tu-co-phi-duy-tri-len-toi-40-trieu-dong-nam.htm. Used: .vn second-level domain: registration 100,000 VND once, maintenance 350,000 VND a year.
+12. Let's Encrypt. *About Let's Encrypt*. https://letsencrypt.org/about/. Used: TLS certificates free of charge, renewed automatically.
+13. Advertising Vietnam. *5 sai lam pho bien khi trien khai SMS brandname cho chuoi ban le*. https://advertisingvietnam.com/article/5-sai-lam-pho-bien-khi-trien-khai-sms-brandname-cho-chuoi-ban-le. Used: SMS brandname 600 to 800 VND a message.
+14. S. McConnell. *Software Development's Cone of Uncertainty, Construx best practices white paper, version 1, January 2010*. https://www.construx.com/wp-content/uploads/2019/02/CxWhitePaper_ConeOfUncertainty.pdf. Used: Figure 1: estimates by skilled estimators fall within 0.67x to 1.5x of the outcome at Requirements Complete, 0.5x to 2x at Approved Product Definition.
+15. VnExpress. *Nganh IT am tham thuong Tet*. https://vnexpress.net/nganh-it-am-tham-thuong-tet-3529076.html. Used: A 13th-month salary is common practice at IT employers in Viet Nam.
+16. MISA. *Khau tru thue GTGT la gi? Dieu kien khau tru thue GTGT dau vao moi nhat, on the Law on VAT 48/2024/QH15, article 14*. https://sme.misa.vn/345365/khau-tru-thue-gtgt/. Used: A business on the deduction method deducts the input VAT on goods and services it uses for taxable business.
