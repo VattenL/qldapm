@@ -567,11 +567,11 @@ def build(hours):
         "Charter budget line 6.", vnd(RESERVE), "Low"])
     rows.append([
         "**Total**", "", "**%s**" % vnd(lab), "**%s**" % vnd(phys), "**%s**" % vnd(RESERVE),
-        "**%s**" % vnd(total), "", "", "%s labor hours." % vnd(total_hours),
-        "**%s to %s**" % (vnd(low), vnd(high)),
-        "About 50%% at the estimate and about 84%% at %s, one standard deviation of %s above it, the rows taken to move together. "
-        "%s is %.1f standard deviations below the estimate." % (
-            vnd(p84), vnd(sigma), vnd(CHARTER_TOTAL), -z700)])
+        "**%s**" % vnd(total), "", "",
+        "%s labor hours. About 50%% confidence at the estimate and about 84%% at %s, one standard "
+        "deviation of %s above it, the rows taken to move together; %s is %.1f standard deviations "
+        "below the estimate." % (vnd(total_hours), vnd(p84), vnd(sigma), vnd(CHARTER_TOTAL), -z700),
+        "**%s to %s**" % (vnd(low), vnd(high)), "About 50%"])
     w(table(["WBS ID", "Resource", "Labor Costs", "Physical Costs", "Reserve", "Estimate", "Method",
              "Assumptions/Constraints", "Basis of Estimates", "Range", "Confidence Level"], rows,
             right=(2, 3, 4, 5)))
