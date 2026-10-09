@@ -2,7 +2,7 @@
 
 **Project:** Development and Deployment of a Learning Center Management Software
 **Date prepared:** 8 October 2026
-**Source:** A Project Manager's Book of Forms, 3rd edition, form 2.20, pages 85 to 87, and form 2.21, pages 88 to 92
+**Source:** A Project Manager's Book of Forms, 3rd edition, form 2.20, PDF pages 96 to 98 (printed pages 85 to 87), and form 2.21, PDF pages 99 to 103 (printed pages 88 to 92)
 
 The cost estimate of PMBOK 6 section 7.2 Estimate Costs [1]: what each control account of the WBS costs in people, in physical resources, and in software, with the basis of every figure. Its inputs are the ones the book lists for form 2.20 [2]. The scope baseline gives the WBS and the hours of the WBS dictionary, less the work the scope change request defers; the project schedule is the levelling of form 2.18 run on that reduced work; the resource requirements are the resource on each dictionary activity; the risk register of the charter is carried through its contingency reserve. There is no separate cost or quality management plan: the rules below stand in for the first, and the test plan of 1.3.2.1 and the criteria A01 to A12 set the test hours the dictionary already carries. There is no lessons learned register yet, which is also why the analogous section of form 2.21 is empty. Its outputs are this form, its basis of estimates in form 2.21 and the references, and the updates it proposes to the scope baseline, the resource requirements, the assumption log, and the risk register, which the scope change request `3-3-change-request-scope.en.md` carries.
 
@@ -193,7 +193,7 @@ None is charged. The charter commits the five full-time staff to the project "be
 | DEV3 | 554.5 | 901.5 | 347 |
 | QA1 | 674.7 | 901.5 | 226.8 |
 
-Had the five been paid by the month over that window instead, as the estimate of 7 October 2026 assumed, the project would carry those hours too.
+Had the five been paid by the month over that window instead, the option the estimate of 7 October 2026 priced separately, the project would carry those hours too.
 
 ### Estimate against the charter: for the team to decide
 
@@ -243,7 +243,7 @@ Proposed updates to other documents, carried by the change request and not made 
 All web pages read on 7 October 2026. Prices are as the page showed them that day.
 
 1. PMI. *A Guide to the Project Management Body of Knowledge, 6th edition, chapter 7 Project Cost Management: 7.2 Estimate Costs, 7.2.2.5 three-point estimating, 7.2.2.6 reserve analysis, 7.2.3.2 basis of estimates, and 7.3.2.5 funding limit reconciliation*. PMBOK6_and_Agile_Practice_Guide.pdf in the team repository. Used: Process, inputs and outputs, techniques, beta formula, contents of the basis of estimates, accuracy ranges, reconciliation of the estimate with a funding limit.
-2. C. S. Dionisio. *A Project Manager's Book of Forms, 3rd edition, forms 2.19 Cost Management Plan, 2.20 Cost Estimates, 2.21 Cost Estimating Worksheet, 3.3 Change Request*. pages 82 to 92 and 170 to 174. Used: Printed fields of the forms; the rules table takes three fields of form 2.19.
+2. C. S. Dionisio. *A Project Manager's Book of Forms, 3rd edition, forms 2.19 Cost Management Plan, 2.20 Cost Estimates, 2.21 Cost Estimating Worksheet, 3.3 Change Request*. PDF pages 93 to 103 and 181 to 185 (printed pages 82 to 92 and 170 to 174). Used: Printed fields of the forms; the rules table takes three fields of form 2.19.
 3. ITviec. *Vietnam IT Salary and Recruitment Market Report 2025-2026, 1,839 respondents surveyed in 2025, monthly median salary by position and years of experience*. https://itviec.com/report/vietnam-it-salary-and-recruitment-market. Used: Medians for 1 to 2 years: Project Leader/Manager 29.85, Full-stack Developer 20.35, QA-QC 18, Mobile Developer 28.8 million VND a month; for 3 to 4 years, priced only as an alternative in the change request: 48.4, 34.5, 24.4, 29.05.
 4. MISA AMIS. *Ty le dong BHXH 2026, published 18 September 2026, citing the Law on Social Insurance 2024 and Decree 158/2025/ND-CP*. https://amis.misa.vn/?p=292831. Used: Employer share 21.5%: retirement 14, sickness 3, accident 0.5, health 3, unemployment 1; contribution ceiling 50,600,000 VND a month from 1 July 2026.
 5. Thu Vien Phap Luat. *Quy dinh ve kinh phi cong doan 2%, Law on Trade Unions 2024, article 29, point b of clause 1*. https://thuvienphapluat.vn/ma-so-thue/phap-luat-thue/quy-dinh-ve-kinh-phi-cong-doan-2-o-van-ban-nao-49584-225246.html. Used: Union fee 2% of the payroll on which social insurance is paid, due whether or not a union exists.

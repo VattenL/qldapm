@@ -56,6 +56,9 @@ CHARTER_LINES = [   # charter budget lines 1 to 6
     ("Warranty and support, months 2 to 6", 35_000_000), ("Contingency reserve", 28_000_000)]
 CHARTER_RATE = {"PM": 162_500, "DEV": 118_750, "QA": 93_750, "MOB": 122_500}   # assumption 17, per hour
 RESERVE = 28_000_000
+# Form 2.20 of 7 October 2026 (commit 6056c43), salary beta weighted over 1 to 8 years: the estimate,
+# and the estimate with the five paid through the levelled window.
+OCT7_ESTIMATE, OCT7_WITH_IDLE = 1_450_419_000, 1_735_946_000
 HOURS_PER_MONTH = 160
 FX = 26_170                      # VND per USD, Vietcombank selling rate [fx]
 CAP = 50_600_000                 # contribution ceiling from 1 July 2026 [bhxh]
@@ -106,7 +109,7 @@ REFS = [
      "Process, inputs and outputs, techniques, beta formula, contents of the basis of estimates, "
      "accuracy ranges, reconciliation of the estimate with a funding limit"),
     ("C. S. Dionisio", "A Project Manager's Book of Forms, 3rd edition, forms 2.19 Cost Management Plan, "
-     "2.20 Cost Estimates, 2.21 Cost Estimating Worksheet, 3.3 Change Request", "pages 82 to 92 and 170 to 174",
+     "2.20 Cost Estimates, 2.21 Cost Estimating Worksheet, 3.3 Change Request", "PDF pages 93 to 103 and 181 to 185 (printed pages 82 to 92 and 170 to 174)",
      "Printed fields of the forms; the rules table takes three fields of form 2.19"),
     ("ITviec", "Vietnam IT Salary and Recruitment Market Report 2025-2026, 1,839 respondents surveyed in "
      "2025, monthly median salary by position and years of experience",
@@ -720,8 +723,8 @@ def build(est, full):
     w("")
     w("**Project:** %s" % TITLE)
     w("**Date prepared:** %s" % DATE)
-    w("**Source:** A Project Manager's Book of Forms, 3rd edition, form 2.20, pages 85 to 87, and "
-      "form 2.21, pages 88 to 92")
+    w("**Source:** A Project Manager's Book of Forms, 3rd edition, form 2.20, PDF pages 96 to 98 "
+      "(printed pages 85 to 87), and form 2.21, PDF pages 99 to 103 (printed pages 88 to 92)")
     w("")
     w("The cost estimate of PMBOK 6 section 7.2 Estimate Costs %s: what each control account of the WBS "
       "costs in people, in physical resources, and in software, with the basis of every figure. Its "
@@ -959,8 +962,8 @@ def build(est, full):
             [[p, hrs(est.booked(p, None)), hrs(est.capacity), hrs(est.bench_hours(p))] for p in FULL_TIME],
             right=(1, 2, 3)))
     w("")
-    w("Had the five been paid by the month over that window instead, as the estimate of 7 October 2026 "
-      "assumed, the project would carry those hours too.")
+    w("Had the five been paid by the month over that window instead, the option the estimate of 7 October 2026 "
+      "priced separately, the project would carry those hours too.")
     w("")
 
     # ---- variance
@@ -1028,7 +1031,7 @@ def build(est, full):
 # ---------------------------------------------------------------- change request
 
 def boxes(w, title, checked):
-    w(title)
+    w("**%s**" % title)
     w("")
     for name in ("Increase", "Decrease", "Modify"):
         w("- [%s] %s" % ("x" if name == checked else " ", name))
@@ -1047,7 +1050,7 @@ def build_cr(est, full, senior):
     w("")
     w("**Project:** %s" % TITLE)
     w("**Date prepared:** %s" % DATE)
-    w("**Source:** A Project Manager's Book of Forms, 3rd edition, form 3.3, pages 170 to 174")
+    w("**Source:** A Project Manager's Book of Forms, 3rd edition, form 3.3, PDF pages 181 to 185 (printed pages 170 to 174)")
     w("")
     w("*Reading convention. This request carries the cost estimate of form 2.20, "
       "`2-20-cost-estimates.en.md`, to the sponsor through Perform Integrated Change Control, PMBOK 6 "
@@ -1065,7 +1068,7 @@ def build_cr(est, full, senior):
     w(table(["Field", "Content"], [["**Project Title**", TITLE], ["**Date Prepared**", DATE],
                                    ["**Requestor**", "Project Manager"]]))
     w("")
-    w("**Category:**")
+    w("**Category**")
     w("")
     for name, on in (("Scope", True), ("Quality", True), ("Requirements", True), ("Cost", True),
                      ("Schedule", True), ("Documents", True)):
@@ -1093,15 +1096,17 @@ def build_cr(est, full, senior):
              vnd(est.rates["QA"].rate), vnd(total), lines, vnd(CHARTER_TOTAL - total))],
         ["**Justification for Proposed Change**",
          "Estimated bottom-up from the WBS dictionary at market rates, the full scope costs %s VND under the "
-         "same company rules and the same 1 to 2 year team, and %s VND with the team at 3 to 4 years and "
-         "paid by the month, as estimated on 7 October 2026. Both exceed the funding limit, and the 28,000,000 "
-         "VND contingency reserve cannot absorb either. Funding limit reconciliation leaves two courses: more "
+         "same company rules and the same 1 to 2 year team, and %s VND with the team at 3 to 4 years, "
+         "paid by the month through the levelled window; the estimate of 7 October 2026, with the salary "
+         "weighted over 1 to 8 years, was %s VND, and %s with the months paid without booked work. All "
+         "exceed the funding limit, and the 28,000,000 "
+         "VND contingency reserve cannot absorb any of them. Funding limit reconciliation leaves two courses: more "
          "money or less work. This request takes the second. The functions deferred are the ones the "
          "center can run without for a term: teacher payroll stays on its current spreadsheet, progress "
          "reports stay manual, and guardians keep SMS and the web portal. F10, the Director's view of "
          "revenue and fill rate, is kept, because it is the charter's main reason for the project. The "
          "reduced work costs %s VND, %s to %s at the optimistic and pessimistic inputs, %s hours instead of "
-         "%s." % (vnd(full.total()), vnd(senior.total()), vnd(total), vnd(est.low), vnd(est.high),
+         "%s." % (vnd(full.total()), vnd(senior.total()), vnd(OCT7_ESTIMATE), vnd(OCT7_WITH_IDLE), vnd(total), vnd(est.low), vnd(est.high),
                   hrs(est.hours), vnd(est.dictionary_hours))],
     ]))
     w("")
@@ -1118,7 +1123,7 @@ def build_cr(est, full, senior):
     w(table(["Field", "Content"], [["**Description**",
         "A01 covers nine functions; A12 and the app parts of A02 and A09 leave. Iteration 2 code review "
         "and defect fixing shrink with the build work they cover. The team is costed at 1 to 2 years, so "
-        "the same hours may yield more defects; the 99%% UAT threshold of A01 is unchanged."]]))
+        "the same hours may yield more defects; the 99% UAT threshold of A01 is unchanged."]]))
     w("")
     w("#### CHANGE REQUEST, page 2 of 3")
     w("")
@@ -1142,7 +1147,7 @@ def build_cr(est, full, senior):
         "change request of %s; the gates are re-baselined in form 2.18." % (
             long_date(est.m7), long_date(full.m7), SCHEDULE_CR_DATE)]]))
     w("")
-    w("Stakeholder Impact")
+    w("**Stakeholder Impact**")
     w("")
     w("- [x] High risk")
     w("- [ ] Low risk")
@@ -1171,8 +1176,8 @@ def build_cr(est, full, senior):
          "baseline, form 2.22."],
         ["**Comments**",
          "Alternatives weighed, each priced the same way. (1) The full scope under these rules: %s VND, "
-         "over the funding limit. (2) The full scope at 3 to 4 years, paid by the month: %s VND, the "
-         "estimate of 7 October 2026, which would need the budget raised. (3) Keeping the team at 3 to 4 "
+         "over the funding limit. (2) The full scope at 3 to 4 years, paid by the month: %s VND, which "
+         "would need the budget raised. (3) Keeping the team at 3 to 4 "
          "years on the reduced scope: %s VND, over the target. (4) Deferring F10 as well: rejected, because "
          "it is the charter's main reason for the project. The main risk of this request is the team's "
          "seniority: the dictionary hours were not estimated for a team at 1 to 2 years, and if their hours "
@@ -1196,7 +1201,7 @@ def build_cr(est, full, senior):
 
 
 def estimates(hours):
-    """The estimate, the full scope under the same rules, and the estimate of 7 October 2026."""
+    """The estimate, the full scope under the same rules, and the full scope at 3 to 4 years paid by the month."""
     est = Estimate(hours)
     full = Estimate(hours, drop=(), lean=False, desk=CHARTER_DESK_HOURS)
     senior = Estimate(hours, drop=(), lean=False, rates=SENIOR_RATES, desk=CHARTER_DESK_HOURS,
@@ -1220,7 +1225,7 @@ def main(argv=None):
     if a.cr_out != "-":
         pathlib.Path(a.cr_out).write_text(build_cr(est, full, senior), encoding="utf-8")
         print("wrote %s" % a.cr_out)
-    print("total %s (%s to %s), %s hours, full scope same rules %s, 7 October estimate %s, M7 %s" % (
+    print("total %s (%s to %s), %s hours, full scope same rules %s, full scope at 3 to 4 years %s, M7 %s" % (
         vnd(est.total()), vnd(est.low), vnd(est.high), hrs(est.hours), vnd(full.total()),
         vnd(senior.total()), est.m7), file=sys.stderr)
     return 0
