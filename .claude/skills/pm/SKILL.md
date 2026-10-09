@@ -86,6 +86,14 @@ and sections 3 to 6 when the form carries numbers, scope boundaries, money or
 success criteria. Reading all of it for a one-page register costs time and adds
 nothing.
 
+A management plan form (2.1, 2.2, 2.4, 2.5, 2.11, 2.19, 2.23, 2.26, 2.30,
+2.31, 2.37, 2.40) is the output of a PMBOK 6 planning process, and the PMBOK section
+lists what the plan carries, which can be more than the form prints. Read that
+chapter in `PMBOK6_and_Agile_Practice_Guide.pdf` (PDF page = printed page +
+39). For quality (2.23, 2.24, 3.6), `references/pmbok-quality.md` already maps
+chapter 8 onto the forms and lists where the project's quality facts live; for
+another knowledge area, write the same kind of note after reading the chapter.
+
 The facts live in `docs/charter-package.en.md` (form 1.1 in Part 2B, the ID
 families, budget, risks, milestones, assumptions 1 to 19) and
 `docs/scope-package.en.md` (2.7, 2.9, 2.10). Read the Markdown directly; the
@@ -332,6 +340,7 @@ google-api-python-client,google-auth-oauthlib,markdown`.
 | `references/rendering.md` | How each kind becomes Markdown, and why |
 | `references/house-style.md` | Marking rules, dates, forbidden terms, where the project's facts live |
 | `references/review-lessons.md` | What the team's reviewers caught, and how to check for it |
+| `references/pmbok-quality.md` | PMBOK 6 chapter 8 mapped onto forms 2.23, 2.24 and 3.6: page map, terms, where the quality facts live, traps |
 | `references/audit-template.md` | Shape and rules of an audit report: errors, warnings, location, evidence, decision |
 | `scripts/extract_form.py` | Form text from the PDF; `--fields` prints the spec, `--alignment`, `--tailoring`, `--prose` |
 | `scripts/new_form.py` | Blank Markdown form from the spec in the rendering.md shapes; `--out`, `--rows`, `--force` |
