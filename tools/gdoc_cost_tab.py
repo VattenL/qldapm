@@ -407,11 +407,43 @@ def lay_out_change(doc, tab_n):
         footer_line(doc, tab_n, "Page %d of 3" % n)
 
 
-def finish(doc, tab_n):
-    """Headings in Arial; each line that introduces a table kept with it; and the tab's closing empty
-    paragraph removed, or shrunk where a table ends the tab, so that it cannot open a blank page."""
-    tab_id, content = doc.tab(tab_n)
+def spacing(content, tab_id):
+    """The Doc's normal style puts no space between paragraphs, and the blank line between two
+    Markdown paragraphs does not survive the insert, so paragraphs ran into each other and into the
+    table above them. A plain paragraph gets space below it, and space above it after a table or a
+    list; a short label over the line of check boxes under it stays close to it; the list items and
+    the "Page N of M" lines under the forms keep no space."""
+    def plain(el):
+        par = el.get("paragraph")
+        if not par or "bullet" in par:
+            return False
+        style = par.get("paragraphStyle", {}).get("namedStyleType", "NORMAL_TEXT")
+        text = ge.para_text(el).strip()
+        return style == "NORMAL_TEXT" and text and not re.match(r"^Page \d+ of \d+$", text)
+
     reqs = []
+    for k, el in enumerate(content):
+        if not plain(el):
+            continue
+        prev = content[k - 1] if k else {}
+        after_block = "table" in prev or "bullet" in prev.get("paragraph", {})
+        nxt = content[k + 1] if k + 1 < len(content) else {}
+        boxes = ge.para_text(nxt) if "paragraph" in nxt else ""
+        label = len(ge.para_text(el).strip()) < 40 and (BOX in boxes or TICKED in boxes)
+        reqs.append({"updateParagraphStyle": {
+            "range": {"startIndex": el["startIndex"], "endIndex": el["endIndex"], "tabId": tab_id},
+            "paragraphStyle": {"spaceAbove": {"magnitude": 8 if after_block else 0, "unit": "PT"},
+                               "spaceBelow": {"magnitude": 2 if label else 8, "unit": "PT"}},
+            "fields": "spaceAbove,spaceBelow"}})
+    return reqs
+
+
+def finish(doc, tab_n):
+    """Paragraph spacing; headings in Arial; each line that introduces a table kept with it; and the
+    tab's closing empty paragraph removed, or shrunk where a table ends the tab, so that it cannot open
+    a blank page. Safe to run again on a tab it has finished."""
+    tab_id, content = doc.tab(tab_n)
+    reqs = spacing(content, tab_id)
     for k, el in enumerate(content):
         style = el.get("paragraph", {}).get("paragraphStyle", {})
         if style.get("namedStyleType", "").startswith("HEADING"):
@@ -430,7 +462,9 @@ def finish(doc, tab_n):
     doc.batch(reqs)
     tab_id, content = doc.tab(tab_n)
     last, before = content[-1], content[-2]
-    if "paragraph" in before and ge.para_text(last).strip() == "":
+    if ge.para_text(last).strip():
+        return
+    if "paragraph" in before:
         # The closing newline of the paragraph before goes; that paragraph becomes the last one and
         # takes the last paragraph's style, so its own alignment is set again.
         align = before["paragraph"].get("paragraphStyle", {}).get("alignment", "START")
@@ -478,6 +512,8 @@ def main(argv=None):
                    help="empty this tab first; only this tab is touched")
     p.add_argument("--dry-run", action="store_true")
     p.add_argument("--preview", default="", help="write the tab text to this file and stop")
+    p.add_argument("--finish", action="store_true",
+                   help="run only the closing pass, spacing and headings, on a tab written before")
     a = p.parse_args(argv)
 
     text = build()
@@ -501,6 +537,10 @@ def main(argv=None):
     if a.tab not in names:
         raise SystemExit("no tab %r in this Doc; tabs present: %s" % (a.tab, names))
     tab_n = names.index(a.tab)
+    if a.finish:
+        finish(doc, tab_n)
+        print("finished, %d API calls" % doc.calls)
+        return 0
     tab_id, content = doc.tab(tab_n)
     if a.clear and content[-1]["endIndex"] > 2:
         doc.delete_range(tab_id, 1, content[-1]["endIndex"] - 1)
