@@ -452,9 +452,12 @@ def finish(doc, tab_n):
                 "textStyle": {"weightedFontFamily": {"fontFamily": "Arial"}}, "fields": "weightedFontFamily"}})
         if "table" not in el:
             continue
-        for prev in reversed(content[max(0, k - 3):k]):
-            text = ge.para_text(prev).strip() if "paragraph" in prev else ""
-            if not text or len(text) > 200 or re.match(r"^Page \d+ of \d+$", text):
+        # The insert leaves an empty paragraph just above each table; it is kept with the table too.
+        for prev in reversed(content[max(0, k - 4):k]):
+            if "paragraph" not in prev:
+                break
+            text = ge.para_text(prev).strip()
+            if re.match(r"^Page \d+ of \d+$", text) or (len(text) > 200 and not text.endswith(":")):
                 break
             reqs.append({"updateParagraphStyle": {
                 "range": {"startIndex": prev["startIndex"], "endIndex": prev["endIndex"], "tabId": tab_id},
