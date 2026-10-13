@@ -10,7 +10,11 @@ What the Doc needs and the repo file does not:
   - each printed page is laid out as the book prints it: the dark title bar, the Project Title and
     Date Prepared line on page 1 only, each printed heading as a grey row over its box, labelled
     boxes without the Field | Content header, and "Page N of 2" under the page;
-  - page 2 starts on a new page.
+  - the tables are set in the 10pt face of the cost tab's prose tables; a table that runs over a page
+    repeats its grey heading and column header, and a row short enough to fit on one page stays on one;
+  - headings are in Arial, and the tab ends on its last line rather than on an empty paragraph;
+  - the form starts on a new page, so that its title bar is not left at the foot of the reading
+    convention's page, and page 2 starts on a new page.
 
 Run with:
     python3 tools/gdoc_quality_tab.py --doc DOC_ID --dry-run
@@ -45,6 +49,8 @@ CAPTIONS = ["Quality Objectives", "Quality Roles and Responsibilities",
 # Points, for a portrait page with the Doc's one-inch margins, about 468pt of usable width; one entry
 # per table of the form, in printed order.
 WIDTHS = [[130, 338], [150, 318], [150, 318], [234, 234], [130, 338]]
+# Rows each table repeats on a page it runs onto: the grey heading and the column header.
+PINNED = [0, 2, 2, 0, 0]
 
 REWRITES = [
     ("the charter and the scope package as committed on 30 September 2026",
@@ -97,20 +103,29 @@ def lay_out(doc, tab_n, date):
     for k in range(len(WIDTHS) - 1, -1, -1):
         start = starts()[k]
         tab_id, table_el = layout._table(doc, tab_n, start)
-        doc.batch(gdoc_form.column_widths(tab_id, table_el, WIDTHS[k]))
+        doc.batch(gdoc_form.column_widths(tab_id, table_el, WIDTHS[k])
+                  + [layout.font_size(tab_id, table_el, layout.TEXT)])
         if 1 <= k <= 3:
             layout.full_row(doc, tab_n, start, 0, "**%s**" % CAPTIONS[k - 1], background=gdoc_form.GREY)
         if k == 0:
             layout.full_row(doc, tab_n, start, 0,
-                            "**Project Title:** %s          **Date Prepared:** %s" % (PROJECT, date))
+                            # A no-break space keeps "Date Prepared" on one line when the line wraps.
+                            "**Project Title:** %s          **Date\u00a0Prepared:** %s" % (PROJECT, date))
         if k in (0, 3):
             layout.full_row(doc, tab_n, start, 0, "**%s**" % TITLE, background=gdoc_form.DARK, center=True)
             layout.whiten_title(doc, tab_n, start)
+        layout.keep_rows(doc, tab_n, start, PINNED[k])
     for footer in ("Page 1 of 2", "Page 2 of 2"):
         layout.footer_line(doc, tab_n, footer)
     tab_id, content = doc.tab(tab_n)
     el = ge.find_para(content, lambda t: t.strip() == "Page 1 of 2")
     doc.batch([{"insertPageBreak": {"location": {"index": el["endIndex"] - 1, "tabId": tab_id}}}])
+    tab_id, content = doc.tab(tab_n)
+    el = ge.find_para(content, lambda t: t.strip() == "6.1 Quality Management Plan")
+    doc.batch([{"updateParagraphStyle": {
+        "range": {"startIndex": el["startIndex"], "endIndex": el["endIndex"], "tabId": tab_id},
+        "paragraphStyle": {"pageBreakBefore": True}, "fields": "pageBreakBefore"}}])
+    layout.finish(doc, tab_n)
 
 
 def main(argv=None):
