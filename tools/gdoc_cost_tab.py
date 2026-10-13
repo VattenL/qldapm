@@ -12,9 +12,14 @@ here. What the Doc needs and the repo files do not:
     Date Prepared line under it, the grey label over each part of form 2.21, the column header, and
     "Page N of M" under the grid; the Field | Content header table of the Markdown is folded into the
     Project Title line;
-  - form 3.3 follows as section 5.7, laid out as the schedule change request of section 4.2: its check
-    boxes become one line of boxes per printed group, and its Field | Content headers are dropped;
-  - the tab is landscape and each printed page starts on a new page.
+  - form 3.3 follows as section 5.7 under the same dark title bar: its check boxes become one line of
+    boxes per printed group, its Field | Content headers are dropped, and its page headings become the
+    "Page N of 3" line under each printed page;
+  - a grid that runs over a page repeats its header rows, a row short enough to fit on one page is kept
+    on one page, and the line that introduces a table is kept with it;
+  - headings are set in Arial like the body, since the Doc's own heading styles are Times New Roman;
+  - the tab is landscape, and each form opens a page: sections 5.2, 5.3 and 5.7, the bottom-up
+    worksheet, and pages 2 and 3 of the change request.
 
 Run with:
     python tools/gdoc_cost_tab.py --doc DOC_ID --dry-run
@@ -44,6 +49,10 @@ TAB = "5: Cost Estimation"
 TITLE = "Development and Deployment of a Learning Center Management Software"
 PAGE = "@@PAGE {}@@"
 SMALL = 8
+# Tables of prose, outside the printed grids.
+TEXT = 10
+# A row with more text than this in one cell may need more than a page, so it is allowed to break.
+LONG = 1200
 # The two widest grids carry eleven and twelve columns of money; at 8pt a 13-digit amount breaks.
 TINY = {"ACTIVITY COST ESTIMATES": 7, "BOTTOM-UP COST ESTIMATING WORKSHEET": 7}
 PADDING = 2
@@ -93,8 +102,13 @@ WIDTHS = {
     "Step": [400, 120, 128],
     "Item": [200, 100, 348],
 }
+CHANGE_WIDTH = [160, 488]
+# Header rows each grid repeats on a page it runs onto: the title bar, the Project Title line, and the
+# column header; a part of form 2.21 repeats its grey label and column header.
+PINNED = {"ACTIVITY COST ESTIMATES": 3, "BOTTOM-UP COST ESTIMATING WORKSHEET": 3}
 FORM_WIDTHS = {
-    "ACTIVITY COST ESTIMATES": [50, 76, 58, 52, 46, 58, 44, 78, 88, 54, 42],
+    # Wide enough for "Assumptions/Constraints", "Confidence" and "Communication" at 7pt bold.
+    "ACTIVITY COST ESTIMATES": [56, 70, 54, 50, 46, 54, 42, 92, 84, 52, 48],
     "Parametric Estimates": [80, 250, 100, 90, 120],
     "Analogous Estimates": [80, 140, 90, 140, 70, 120],
     "Three-Point Estimates": [170, 90, 90, 90, 100, 100],
@@ -173,6 +187,12 @@ def build_change() -> str:
     m = re.match(r"^\*Reading convention\. (.*?)\*\n", body, re.S)
     body = "#### Reading convention\n\n" + m.group(1) + "\n" + body[m.end():]
     body = checkboxes(body).replace("| Field | Content |\n| --- | --- |\n", "")
+    for n in (1, 2, 3):
+        heading = "#### CHANGE REQUEST, page %d of 3\n" % n
+        if body.count(heading) != 1:
+            raise SystemExit("expected the heading %r once" % heading.strip())
+        body = body.replace(heading, PAGE.format("Page %d of 3" % (n - 1)) + "\n" if n > 1 else "")
+    body = body.rstrip() + "\n\n" + PAGE.format("Page 3 of 3")
     return "### 5.7 Change Request\n\n" + body.strip() + "\n"
 
 
@@ -252,14 +272,38 @@ def full_row(doc, tab_n, start_index, row, text, background=None, center=False):
                                              "fields": "alignment"}}])
 
 
+def font_size(tab_id, table_el, size):
+    """The face size of every cell. The range stops one short of the table's end index: up to the end
+    index, the size also lands on the first character of the paragraph after the table."""
+    return {"updateTextStyle": {
+        "range": {"startIndex": table_el["startIndex"], "endIndex": table_el["endIndex"] - 1, "tabId": tab_id},
+        "textStyle": {"fontSize": {"magnitude": size, "unit": "PT"}}, "fields": "fontSize"}}
+
+
+def keep_rows(doc, tab_n, start_index, pinned=0):
+    """Repeat the first `pinned` rows on every page the table runs onto, and keep each row that is
+    short enough on one page."""
+    tab_id, table_el = _table(doc, tab_n, start_index)
+    rows = ge.table_cells(table_el)
+    where = {"index": table_el["startIndex"], "tabId": tab_id}
+    short = [n for n, row in enumerate(rows) if max(len(ge.cell_text(c)) for c in row) < LONG]
+    reqs = []
+    if pinned:
+        reqs.append({"pinTableHeaderRows": {"tableStartLocation": where, "pinnedHeaderRowsCount": pinned}})
+    if short:
+        reqs.append({"updateTableRowStyle": {"tableStartLocation": where, "rowIndices": short,
+                                             "tableRowStyle": {"preventOverflow": True},
+                                             "fields": "preventOverflow"}})
+    if reqs:
+        doc.batch(reqs)
+
+
 def small_text(doc, tab_n, start_index, header_rows, size=SMALL):
     """The printed forms set their grids in a small face with tight cells; the header rows are bold."""
     tab_id, table_el = _table(doc, tab_n, start_index)
     rows = ge.table_cells(table_el)
     pad = {"magnitude": PADDING, "unit": "PT"}
-    reqs = [{"updateTextStyle": {
-        "range": {"startIndex": table_el["startIndex"], "endIndex": table_el["endIndex"], "tabId": tab_id},
-        "textStyle": {"fontSize": {"magnitude": size, "unit": "PT"}}, "fields": "fontSize"}},
+    reqs = [font_size(tab_id, table_el, size),
         {"updateTableCellStyle": {
             "tableRange": {"tableCellLocation": {"tableStartLocation": {"index": table_el["startIndex"],
                                                                         "tabId": tab_id},
@@ -295,10 +339,12 @@ def lay_out_page(doc, tab_n, title, footer, date, after):
             tab_id, table_el = _table(doc, tab_n, start)
             doc.batch(gdoc_form.column_widths(tab_id, table_el, FORM_WIDTHS[part]))
             small_text(doc, tab_n, start, 2)
+            keep_rows(doc, tab_n, start, 2)
         first = starts[0]
         full_row(doc, tab_n, first, 0, project)
         full_row(doc, tab_n, first, 0, "**%s**" % title, background=gdoc_form.DARK, center=True)
         whiten_title(doc, tab_n, first)
+        keep_rows(doc, tab_n, first, 4)
     else:
         start = starts[0]
         tab_id, table_el = _table(doc, tab_n, start)
@@ -307,6 +353,7 @@ def lay_out_page(doc, tab_n, title, footer, date, after):
         full_row(doc, tab_n, start, 0, project)
         full_row(doc, tab_n, start, 0, "**%s**" % title, background=gdoc_form.DARK, center=True)
         whiten_title(doc, tab_n, start)
+        keep_rows(doc, tab_n, start, PINNED.get(title, 0))
     footer_line(doc, tab_n, footer)
 
 
@@ -339,23 +386,87 @@ def other_tables(doc, tab_n):
         first = ge.cell_text(ge.table_cells(el)[0][0]).strip()
         if first in WIDTHS:
             doc.batch(gdoc_form.column_widths(tab_id, el, WIDTHS[first]))
-            small_text(doc, tab_n, el["startIndex"], 1)
+            small_text(doc, tab_n, el["startIndex"], 1, TEXT)
+            keep_rows(doc, tab_n, el["startIndex"], 1)
             tab_id, content = doc.tab(tab_n)
 
 
+def lay_out_change(doc, tab_n):
+    """Form 3.3: the dark title bar over its first box, the widths and face of the prose tables, and
+    the "Page N of 3" line under each printed page."""
+    tab_id, content = doc.tab(tab_n)
+    head = ge.find_para(content, lambda t: t.strip() == "5.7 Change Request")
+    starts = [el["startIndex"] for el in ge.top_tables(content) if el["startIndex"] > head["startIndex"]]
+    for start in reversed(starts):
+        tab_id, table_el = _table(doc, tab_n, start)
+        doc.batch(gdoc_form.column_widths(tab_id, table_el, CHANGE_WIDTH) + [font_size(tab_id, table_el, TEXT)])
+        keep_rows(doc, tab_n, start)
+    full_row(doc, tab_n, starts[0], 0, "**CHANGE REQUEST**", background=gdoc_form.DARK, center=True)
+    whiten_title(doc, tab_n, starts[0])
+    for n in (1, 2, 3):
+        footer_line(doc, tab_n, "Page %d of 3" % n)
+
+
+def finish(doc, tab_n):
+    """Headings in Arial; each line that introduces a table kept with it; and the tab's closing empty
+    paragraph removed, or shrunk where a table ends the tab, so that it cannot open a blank page."""
+    tab_id, content = doc.tab(tab_n)
+    reqs = []
+    for k, el in enumerate(content):
+        style = el.get("paragraph", {}).get("paragraphStyle", {})
+        if style.get("namedStyleType", "").startswith("HEADING"):
+            reqs.append({"updateTextStyle": {
+                "range": {"startIndex": el["startIndex"], "endIndex": el["endIndex"] - 1, "tabId": tab_id},
+                "textStyle": {"weightedFontFamily": {"fontFamily": "Arial"}}, "fields": "weightedFontFamily"}})
+        if "table" not in el:
+            continue
+        for prev in reversed(content[max(0, k - 3):k]):
+            text = ge.para_text(prev).strip() if "paragraph" in prev else ""
+            if not text or len(text) > 200 or re.match(r"^Page \d+ of \d+$", text):
+                break
+            reqs.append({"updateParagraphStyle": {
+                "range": {"startIndex": prev["startIndex"], "endIndex": prev["endIndex"], "tabId": tab_id},
+                "paragraphStyle": {"keepWithNext": True}, "fields": "keepWithNext"}})
+    doc.batch(reqs)
+    tab_id, content = doc.tab(tab_n)
+    last, before = content[-1], content[-2]
+    if "paragraph" in before and ge.para_text(last).strip() == "":
+        # The closing newline of the paragraph before goes; that paragraph becomes the last one and
+        # takes the last paragraph's style, so its own alignment is set again.
+        align = before["paragraph"].get("paragraphStyle", {}).get("alignment", "START")
+        doc.batch([{"deleteContentRange": {"range": {"startIndex": before["endIndex"] - 1,
+                                                     "endIndex": before["endIndex"], "tabId": tab_id}}}])
+        tab_id, content = doc.tab(tab_n)
+        el = content[-1]
+        doc.batch([{"updateParagraphStyle": {
+            "range": {"startIndex": el["startIndex"], "endIndex": el["endIndex"], "tabId": tab_id},
+            "paragraphStyle": {"alignment": align}, "fields": "alignment"}}])
+    else:
+        doc.batch([{"updateTextStyle": {
+            "range": {"startIndex": last["startIndex"], "endIndex": last["endIndex"], "tabId": tab_id},
+            "textStyle": {"fontSize": {"magnitude": 1, "unit": "PT"}}, "fields": "fontSize"}},
+            {"updateParagraphStyle": {
+                "range": {"startIndex": last["startIndex"], "endIndex": last["endIndex"], "tabId": tab_id},
+                "paragraphStyle": {"spaceAbove": {"magnitude": 0, "unit": "PT"},
+                                   "spaceBelow": {"magnitude": 0, "unit": "PT"}},
+                "fields": "spaceAbove,spaceBelow"}}])
+
+
 def page_breaks(doc, tab_n):
-    """Each section from 5.2 to 5.7 opens a page; page 2 of form 2.21 gets a hard break after page 1."""
+    """Each form opens a page: sections 5.2, 5.3 and 5.7 by their headings, and page 2 of form 2.21 and
+    pages 2 and 3 of form 3.3 by a hard break after the page before. Sections 5.4 to 5.6 follow on."""
     tab_id, content = doc.tab(tab_n)
     reqs = []
     for el in ge.top_paragraphs(content):
-        if re.match(r"^5\.[2-7] ", ge.para_text(el).strip()):
+        if re.match(r"^5\.[237] ", ge.para_text(el).strip()):
             reqs.append({"updateParagraphStyle": {
                 "range": {"startIndex": el["startIndex"], "endIndex": el["endIndex"], "tabId": tab_id},
                 "paragraphStyle": {"pageBreakBefore": True}, "fields": "pageBreakBefore"}})
     doc.batch(reqs)
-    tab_id, content = doc.tab(tab_n)
-    el = ge.find_para(content, lambda t: t.strip() == "Page 1 of 2")
-    doc.batch([{"insertPageBreak": {"location": {"index": el["endIndex"] - 1, "tabId": tab_id}}}])
+    for footer in ("Page 2 of 3", "Page 1 of 3", "Page 1 of 2"):
+        tab_id, content = doc.tab(tab_n)
+        el = ge.find_para(content, lambda t: t.strip() == footer)
+        doc.batch([{"insertPageBreak": {"location": {"index": el["endIndex"] - 1, "tabId": tab_id}}}])
 
 
 def main(argv=None):
@@ -410,7 +521,9 @@ def main(argv=None):
         lay_out_page(doc, tab_n, title, footer, date.strip(), start)
         print("  laid out %s, %s" % (title, footer))
     other_tables(doc, tab_n)
+    lay_out_change(doc, tab_n)
     page_breaks(doc, tab_n)
+    finish(doc, tab_n)
     print("done, %d API calls" % doc.calls)
     return 0
 
