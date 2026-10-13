@@ -444,6 +444,7 @@ def finish(doc, tab_n):
     a blank page. Safe to run again on a tab it has finished."""
     tab_id, content = doc.tab(tab_n)
     reqs = spacing(content, tab_id)
+    kept = set()
     for k, el in enumerate(content):
         style = el.get("paragraph", {}).get("paragraphStyle", {})
         if style.get("namedStyleType", "").startswith("HEADING"):
@@ -452,16 +453,25 @@ def finish(doc, tab_n):
                 "textStyle": {"weightedFontFamily": {"fontFamily": "Arial"}}, "fields": "weightedFontFamily"}})
         if "table" not in el:
             continue
-        # The insert leaves an empty paragraph just above each table; it is kept with the table too.
+        # The line just above the table, past the empty paragraph the insert leaves there, and the
+        # label over a line of check boxes; going further back chains a whole list onto the table.
+        keep = []
         for prev in reversed(content[max(0, k - 4):k]):
-            if "paragraph" not in prev:
+            text = ge.para_text(prev).strip() if "paragraph" in prev else None
+            if text is None or re.match(r"^Page \d+ of \d+$", text):
                 break
-            text = ge.para_text(prev).strip()
-            if re.match(r"^Page \d+ of \d+$", text) or (len(text) > 200 and not text.endswith(":")):
+            keep.append(prev)
+            if text and not (BOX in text or TICKED in text):
                 break
+        kept.update(prev["startIndex"] for prev in keep)
+    # Set on every normal paragraph, true or false, so that a pass run again undoes an earlier one;
+    # headings keep with the next line by their own style and are left alone.
+    for el in content:
+        style = el.get("paragraph", {}).get("paragraphStyle", {})
+        if "paragraph" in el and style.get("namedStyleType", "NORMAL_TEXT") == "NORMAL_TEXT":
             reqs.append({"updateParagraphStyle": {
-                "range": {"startIndex": prev["startIndex"], "endIndex": prev["endIndex"], "tabId": tab_id},
-                "paragraphStyle": {"keepWithNext": True}, "fields": "keepWithNext"}})
+                "range": {"startIndex": el["startIndex"], "endIndex": el["endIndex"], "tabId": tab_id},
+                "paragraphStyle": {"keepWithNext": el["startIndex"] in kept}, "fields": "keepWithNext"}})
     doc.batch(reqs)
     tab_id, content = doc.tab(tab_n)
     last, before = content[-1], content[-2]
