@@ -8,7 +8,9 @@ do not:
   - references to repo files become references to the Doc's own sections;
   - the Mermaid blocks are dropped, since the charts come as images;
   - form 3.3's check boxes become one line of boxes per printed group, as the form prints them;
-  - the tab is landscape, and each printed page starts on a new page.
+  - the tab is landscape, and each printed page starts on a new page;
+  - the two tables get set column widths, the small face, a header row repeated on each page, and
+    rows that do not split.
 
 Images: the Docs API inserts an image only from a URL it can fetch, so each chart is uploaded to the
 user's Drive, readable by link for the moment of insertion, and deleted once the Doc holds its own
@@ -31,7 +33,9 @@ import time
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 
+import gdoc_cost_tab as layout
 import gdoc_edit as ge
+import gdoc_form
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 FORMS = ROOT / "docs" / "forms"
@@ -43,6 +47,13 @@ TAB = "4: Project Schedule"
 IMAGE = "@@IMAGE {}@@"
 # Usable area of a landscape Letter page with the Doc's one-inch margins, in points.
 MAX_W, MAX_H = 648, 468
+# Points across the 648pt of a landscape page, keyed by the first two header cells. Evenly spread
+# columns gave the task names a seventh of the width and the Gantt table 36 pages.
+TABLE_WIDTHS = {
+    ("ID", "WBS"): [28, 70, 194, 50, 104, 104, 98],
+    ("ID", "Indicator"): [28, 150, 370, 100],
+}
+SMALL = 8
 BOX, TICKED = "☐", "☒"
 
 REWRITES = [
@@ -256,6 +267,27 @@ def page_breaks(doc, tab_n):
     doc.batch(reqs)
 
 
+def lay_out_tables(doc, tab_n):
+    """Column widths, the small face of the printed form, a header row repeated on every page the
+    table runs onto, and rows kept whole."""
+    tab_id, content = doc.tab(tab_n)
+    for el in ge.top_tables(content):
+        head = tuple(ge.cell_text(c).strip() for c in ge.table_cells(el)[0][:2])
+        if head not in TABLE_WIDTHS:
+            continue
+        doc.batch(gdoc_form.column_widths(tab_id, el, TABLE_WIDTHS[head]))
+        layout.small_text(doc, tab_n, el["startIndex"], 1, SMALL)
+        layout.keep_rows(doc, tab_n, el["startIndex"], 1)
+        tab_id, table_el = layout._table(doc, tab_n, el["startIndex"])
+        pad = {"magnitude": 1, "unit": "PT"}
+        doc.batch([{"updateTableCellStyle": {
+            "tableRange": {"tableCellLocation": {"tableStartLocation": {"index": el["startIndex"], "tabId": tab_id},
+                                                 "rowIndex": 0, "columnIndex": 0},
+                           "rowSpan": table_el["table"]["rows"], "columnSpan": table_el["table"]["columns"]},
+            "tableCellStyle": {"paddingTop": pad, "paddingBottom": pad}, "fields": "paddingTop,paddingBottom"}}])
+        print("  laid out the table headed %s | %s" % head)
+
+
 def main(argv=None):
     p = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     p.add_argument("--doc", required=True)
@@ -265,6 +297,8 @@ def main(argv=None):
     p.add_argument("--clear", action="store_true",
                    help="empty this tab first; it carries no comment threads of its own")
     p.add_argument("--dry-run", action="store_true")
+    p.add_argument("--layout", action="store_true",
+                   help="only lay out the tables of a tab written before")
     p.add_argument("--schedule-only", action="store_true",
                    help="section 4.1 only, without the change request and the resource loading")
     a = p.parse_args(argv)
@@ -291,6 +325,10 @@ def main(argv=None):
         names = [t[0].strip() for t in doc.tabs()]
         print("  created tab %r" % a.tab)
     tab_n = names.index(a.tab)
+    if a.layout:
+        lay_out_tables(doc, tab_n)
+        print("done, %d API calls" % doc.calls)
+        return 0
     tab_id, content = doc.tab(tab_n)
     if a.clear and content[-1]["endIndex"] > 2:
         doc.delete_range(tab_id, 1, content[-1]["endIndex"] - 1)
@@ -305,6 +343,7 @@ def main(argv=None):
         print("  wrote unit %d of %d (%d API calls)" % (k, len(parts), doc.calls))
         time.sleep(0.5)
     page_breaks(doc, tab_n)
+    lay_out_tables(doc, tab_n)
     place_images(doc, gdoc.drive(creds), tab_n)
     print("done, %d API calls" % doc.calls)
     return 0
