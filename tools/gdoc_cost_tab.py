@@ -18,6 +18,7 @@ here. What the Doc needs and the repo files do not:
   - a grid that runs over a page repeats its header rows, a row short enough to fit on one page is kept
     on one page, and the line that introduces a table is kept with it;
   - headings are set in Arial like the body, since the Doc's own heading styles are Times New Roman;
+  - the numbered items of a box, "(1) ... (2) ...", each start a line of their own;
   - the tab is landscape, and each form opens a page: sections 5.2, 5.3 and 5.7, the bottom-up
     worksheet, and pages 2 and 3 of the change request.
 
@@ -438,10 +439,47 @@ def spacing(content, tab_id):
     return reqs
 
 
+NUMBERED = re.compile(r"(?<=[.;:]) (?=\(\d{1,2}\) )")
+
+
+def number_lines(doc, tab_n):
+    """A Markdown cell holds one line, so the numbered items of a box, "(1) ... (2) ...", arrive run
+    together. Each item after the first starts a line of its own: the space before "(n)" that follows
+    the end of the item before becomes a paragraph break. Once broken there is no such space left, so
+    a pass run again changes nothing."""
+    tab_id, content = doc.tab(tab_n)
+    spaces = []
+
+    def walk(elements):
+        for el in elements:
+            if "table" in el:
+                for row in el["table"]["tableRows"]:
+                    for cell in row["tableCells"]:
+                        walk(cell["content"])
+            elif "paragraph" in el:
+                chars = []
+                for run in el["paragraph"]["elements"]:
+                    if "textRun" in run:
+                        chars += [(run["startIndex"] + k, c) for k, c in enumerate(run["textRun"]["content"])]
+                text = "".join(c for _, c in chars)
+                spaces.extend(chars[m.start()][0] for m in NUMBERED.finditer(text))
+
+    walk(content)
+    reqs = []
+    for index in sorted(spaces, reverse=True):
+        reqs += [{"deleteContentRange": {"range": {"startIndex": index, "endIndex": index + 1, "tabId": tab_id}}},
+                 {"insertText": {"location": {"index": index, "tabId": tab_id}, "text": "\n"}}]
+    if reqs:
+        doc.batch(reqs)
+    return len(spaces)
+
+
 def finish(doc, tab_n):
-    """Paragraph spacing; headings in Arial; each line that introduces a table kept with it; and the
-    tab's closing empty paragraph removed, or shrunk where a table ends the tab, so that it cannot open
-    a blank page. Safe to run again on a tab it has finished."""
+    """Numbered items on lines of their own; paragraph spacing; headings in Arial; each line that
+    introduces a table kept with it; and the tab's closing empty paragraph removed, or shrunk where a
+    table ends the tab, so that it cannot open a blank page. Safe to run again on a tab it has
+    finished."""
+    number_lines(doc, tab_n)
     tab_id, content = doc.tab(tab_n)
     reqs = spacing(content, tab_id)
     kept = set()
