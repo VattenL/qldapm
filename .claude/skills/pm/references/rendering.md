@@ -70,11 +70,14 @@ blank line between them. The labels vary and are not interchangeable:
   labels as the first `Field | Content` table, and a regenerated 1.1 matches
   that.
 
-Do not write `**Project:**` or `**Date prepared:**` in a form; those are not
-printed labels. The bold key/value block under the H1 of
+Do not write `**Project:**`, `**Date prepared:**` or `**Source:**` in a form;
+those are not printed labels. The bold key/value block under the H1 of
 `docs/charter-package.en.md` (`**Project:**`, `**Budget:**`, `**Date
-prepared:**` and so on) is that document's own metadata, not a form, which is
-why its labels differ.
+prepared:**` and so on) is that package's own metadata, not a form, which is
+why its labels differ; `house-style.md` (File layout) gives the same rule. A
+generated form follows it too: the three bold lines `tools/schedule.py` writes
+at the top of 2.18, which prints no title block, are a finding against the
+generator.
 
 The citation is not part of the form. It goes in the italic paragraph above the
 title block, together with any reading convention, and cites the PDF page of
@@ -122,6 +125,24 @@ Doc.
 A cell holds one paragraph. `<br>` does not survive the push to the Google Doc
 (it arrived as literal text 23 times), and Markdown cannot put a list in a
 cell, so a list inside a cell is written inline: `(1) ... (2) ... (3) ...`.
+
+**Boxes with numbered lines.** Some boxes print numbered lines (4.2's three
+accomplishment boxes print 1 to 6, 1 to 4 and 1 to 4; 4.1, 2.10 Milestones,
+2.27 and 2.37 do the same; the spec's notes say which). The box stays one
+cell and its entries are written inline, `(1) ... (2) ...`, as many as there
+are entries, which may be more or fewer than the printed lines. A blank form
+leaves the cell empty: no `(1) (2) (3)` placeholders, since a placeholder is a
+value. `new_form.py` adds one sentence saying this to the italic paragraph of
+every form whose notes mention numbered lines. Where the numbered lines are
+the rows of a table (2.26), the table keeps one row per entry.
+
+**A printed box with a one-word heading cell.** Where the form prints a box
+whose top cell is a label and whose body is one blank cell (4.1 and 4.2 print
+`Risk:` under New Risks Identified and `Issue:` under Issues), the box is a
+one-column table headed with that label, and each entry is a row. A blank form
+gives it the printed row count from the spec's notes, or 3 where the notes
+give none, so the shape is visible; the bold line above it is the printed
+heading.
 
 Only content is highlighted. `<mark>` never wraps a bold label or a heading.
 
@@ -236,6 +257,24 @@ acceptance criteria, `F01`-`F12` for functions, `D1`-`D11` for deliverables,
 1 to 19 without a letter, so the ID column of 1.2 Assumption Log holds `1` to
 `19`; `A01` is an acceptance criterion, never an assumption.
 
+**Source data with no printed column.** A source sometimes carries a column
+the form does not print, such as the charter's Type (Product or Project) on
+its risk register. Do not add the column. Put the value in the nearest printed
+free-text field of the same record (Comments on 2.32 and 3.1), written the same
+way in every row (`Charter type: Product.`), and say once in the italic
+paragraph where it went. If the form has no free-text field, name the source
+column in the italic paragraph and leave the data in the source.
+
+**One source column for two printed ones.** 2.32 prints Response in bank 1
+and Actions in bank 2; the charter has one Response column. Copy the source's
+response verbatim into Response and do not split it, because one ID, one text
+matters more than the split. Actions takes only what a document states as
+actions for that risk (the work packages the scope package's coverage check
+assigns to the response, cited as such); otherwise it is empty. Status is
+`Open`, plain, for every risk no document records as closed (see
+`house-style.md`, Judgement columns), and the italic paragraph says why, which
+also answers the uniform-column check.
+
 If the printed form has no ID column, do not add one. 1.3 Stakeholder Register
 starts with Name, 1.4 Stakeholder Analysis with Name or Role, 2.14 Milestone
 List with Milestone, 6.4 Retrospective with Start. The first printed column is
@@ -254,6 +293,19 @@ bank 1, which is how the printed page reads. Splitting is better than a
 20-column table nobody can read, and it matches how the page is printed. If a
 reviewer asks for the ID repeated in bank 2, that is a tailoring: do it, and
 say so once in the italic paragraph before the form.
+
+## What the Doc pipeline parses
+
+`tools/gdoc_edit.py` (`parse_blocks`, `parse_inline`), which every Doc writer
+in `tools/` goes through, understands: headings `#` to `#####` (a `######`
+heading is a paragraph of literal hashes); paragraphs; `- ` bullets and `1. `
+numbered items, one level only, since indentation is dropped; `> ` quotes;
+pipe tables; `---`; fenced blocks, each line a paragraph indented by its
+leading spaces (the WBS outline goes through this); and inline `**bold**`,
+`*italic*`, `` `code` `` and `<mark>`. Anything else, `<br>` and other HTML,
+entities, images in Markdown syntax, nested list indentation, arrives as
+literal text or loses its structure. `tools/gdoc_schedule_tab.py` replaces
+each chart with an `@@IMAGE <file>@@` line that it later swaps for the image.
 
 ## `matrix`
 

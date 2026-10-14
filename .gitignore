@@ -5,3 +5,4 @@ __pycache__/
 .venv/
 .claude/skills/pm-workspace/
 .pytest_cache/
+.DS_Store

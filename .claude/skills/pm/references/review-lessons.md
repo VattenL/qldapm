@@ -10,7 +10,9 @@ reader notices and a generator does not.
 Read this file before generating a form that reuses project facts, and before
 any audit. Each lesson says what went wrong, why a reviewer cares, and how to
 check it. `scripts/check_consistency.py` automates the ones marked **[script]**;
-the rest need reading.
+the rest need reading. The lessons are patterns to check for, not a record of
+what has been fixed: several of the examples quoted here are still in the
+sources, so an audit reports them again if it finds them.
 
 ## Contents
 
@@ -42,11 +44,25 @@ reviewer stop, because authority to accept deliverables depends on who is who.
   **[script]**
 - A stakeholder table lists them on two rows with separate roles.
 
+**Stakeholders include every party a risk, a budget line or an assumption
+depends on.** R12 depends on Apple and Google, whose store review can reject
+the app, and budget line 2 pays Apple Developer, Google Play and a push
+service, yet neither of the charter's two key stakeholder lists names any of
+them (audit W5). So a stakeholder register (1.3, 1.4) is built from the
+charter's stakeholder list *plus* every external party named in the risk
+register, the budget lines and the assumptions, each on its own row. Copying
+the charter's list alone repeats the gap. **[script]** warns when a party in
+the External party table of `house-style.md` is named elsewhere but has no row.
+
 **One person, one name, everywhere.** The old tab named the PM "Ngô Hải Đăng" on
 page 1 and "Nguyễn Văn A" in the stakeholder table. Now the PM is deliberately
-unnamed (assumption 15: the sponsor appoints the PM at M0), so the name box, the
-stakeholder row and the signature block are all empty, in all three places.
-(Thread AAACG0ldth8; New 1.)
+unnamed (assumption 15: the sponsor appoints the PM at M0), so the name is
+empty in all three places: the Project Manager box of 1.1, the signature
+block, and the stakeholder row. The row itself stays. A register whose first
+column is Name (1.3, 1.4) may write the position, `Project Manager`, in the
+Name cell, since Table 1.3 lets a position stand in for a name, with
+`<mark>name to be assigned by the sponsor at M0</mark>` beside it; it never
+writes a person's name. (Thread AAACG0ldth8; New 1.)
 
 **A field holds the value, not a description of it.** Reviewers struck
 "- owner and Director of the learning center" after a sponsor's name and "- sponsor
@@ -191,7 +207,11 @@ months 2 to 6 on budget line 5 (thread AAACG0ldtiY).
 - **A column where every row holds the same value carries no information.**
   All 31 requirements "Must have" makes Priority useless (audit W7). Either
   grade them or say once, above the table, why they are uniform. **[script]**
-  flags uniform columns.
+  flags a uniform column unless a sentence in the text above the table, in
+  the same part, names the value together with the column or with "every" or
+  "all" ("Every requirement is Must have: ..."). An audit that finds the
+  reason stated names it under What passed, with its line, so the reader
+  knows the column was checked; it is a warning only if the reason is weak.
 
 ## 7. Form layout fidelity
 
@@ -289,8 +309,8 @@ flags leading zeros, abbreviated months, and mixed styles within a file.
   and audit it as well as the source. Change `docs/*.md` and push with
   `tools/gdoc.py` or `tools/gdoc_edit.py`; do not hand-edit the Doc, and
   remove an obsolete tab rather than leave it alive (audit E3, W14).
-- **Stakeholders include every party a risk depends on.** R12 depends on Apple,
-  Google and the push provider, none of whom was listed (audit W5).
+- **Stakeholders include every party a risk depends on.** Now under section 1,
+  People and roles, so that it is read for every stakeholder form.
 - **Team size read against the brief is an interpretation**, and the note that
   explains it must travel with the document (audit W1).
 
