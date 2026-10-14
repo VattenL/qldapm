@@ -17,6 +17,7 @@ copy.
 Run with:
     python3 tools/gdoc_schedule_tab.py --doc DOC_ID --dry-run
     python3 tools/gdoc_schedule_tab.py --doc DOC_ID --create
+    python3 tools/gdoc_schedule_tab.py --doc DOC_ID --clear --schedule-only   # 4.1 only, as the Doc keeps it
 """
 
 from __future__ import annotations
@@ -51,14 +52,16 @@ REWRITES = [
      "than editing this file.",
      "The form is generated from sections 2 and 3 by the team's scheduling script, and is\n"
      "regenerated from them rather than edited here."),
+]
+CHANGE_REWRITES = [
     ("form 2.18, `2-18-project-schedule.en.md`,", "form 2.18 in section 4.1,"),
-    ("The figures come from\n`tools/level.py` run on 29 September 2026 against the scope package and "
-     "the charter as they stand.",
-     "The figures come from\nthe levelling run of 29 September 2026 against sections 2 and 3 as they "
-     "stand."),
     ("Check\nboxes are marked `[x]` where they apply.",
      "A ticked\nbox, %s, marks what applies." % TICKED),
 ]
+# The levelling run is named by its date, which changes each time the schedule is levelled again.
+LEVEL_RUN = (re.compile(r"The figures come from\n`tools/level\.py` run on (\d+ \w+ \d{4}) against the scope "
+                        r"package and the charter as they stand\."),
+             "The figures come from\nthe levelling run of \\1 against sections 2 and 3 as they stand.")
 
 
 def body_of(md: str) -> tuple[str, str]:
@@ -96,10 +99,14 @@ def checkboxes(body: str) -> str:
     return "\n".join(out)
 
 
-def build() -> str:
+def build(schedule_only: bool = False) -> str:
+    """The tab text. With schedule_only, section 4.1 alone: the team keeps the change request and the
+    resource loading in a draft tab of their own, so they are left out of this one."""
     date, sched = body_of(SCHEDULE.read_text(encoding="utf-8"))
     _, change = body_of(CHANGE.read_text(encoding="utf-8"))
-    text = "\n".join([
+    if schedule_only:
+        sched = sched[:sched.index("### Resource loading after levelling")].rstrip() + "\n"
+    parts = [
         "## %s" % TAB,
         "",
         "**Project Title:** Development and Deployment of a Learning Center Management Software",
@@ -114,12 +121,17 @@ def build() -> str:
         "### 4.1 Project Schedule",
         "",
         reading_note(sched),
-        "",
-        "### 4.2 Change Request",
-        "",
-        reading_note(checkboxes(change)),
-    ])
-    for old, new in REWRITES:
+    ]
+    rewrites = list(REWRITES)
+    if not schedule_only:
+        parts += ["", "### 4.2 Change Request", "", reading_note(checkboxes(change))]
+        rewrites += CHANGE_REWRITES
+    text = "\n".join(parts)
+    if not schedule_only:
+        text, n = LEVEL_RUN[0].subn(LEVEL_RUN[1], text)
+        if n != 1:
+            raise SystemExit("expected the levelling run named once in the change request")
+    for old, new in rewrites:
         if old not in text:
             raise SystemExit("expected text not found, the source has changed: %r" % old[:60])
         text = text.replace(old, new)
@@ -253,9 +265,11 @@ def main(argv=None):
     p.add_argument("--clear", action="store_true",
                    help="empty this tab first; it carries no comment threads of its own")
     p.add_argument("--dry-run", action="store_true")
+    p.add_argument("--schedule-only", action="store_true",
+                   help="section 4.1 only, without the change request and the resource loading")
     a = p.parse_args(argv)
 
-    text = build()
+    text = build(a.schedule_only)
     parts = units(text)
     tables = sum(1 for u in parts for b in ge.parse_blocks(u) if b["type"] == "table")
     print("payload: %d characters, %d units, %d tables, %d images"

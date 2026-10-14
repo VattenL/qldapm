@@ -24,6 +24,7 @@ Responsible Person is not on the printed form and is left out; the Resource colu
 Usage:
     python tools/dict_summary.py --md docs/scope-package.en.md --preview out.md
     python tools/dict_summary.py --md docs/scope-package.en.md --doc DOC_ID --tab "dict rút gọn"
+    python tools/dict_summary.py --doc DOC_ID --tab "3: Scope Baseline" --section "3.3 WBS Dictionary"
 """
 
 from __future__ import annotations
@@ -39,6 +40,7 @@ import time
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 
 import gdoc_edit as ge  # noqa: E402
+import gdoc_form  # noqa: E402
 import scope_tab3  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -353,12 +355,20 @@ def text_requests(tab_id, index, paragraphs, font_pt=None):
     return reqs, len(text)
 
 
-def write_intro(w, prepared, n_ca, n_wp):
+def write_intro(w, prepared, n_ca, n_wp, section=""):
+    """The heading and the reading convention, into an empty tab; or, with `section`, under that
+    heading at the end of a tab that holds other sections, after a section break of its own so the
+    landscape pages do not turn the section before them."""
     tab_id, content = w.read()
-    if len("".join(ge.para_text(e) for e in content if "paragraph" in e).strip()):
+    if section:
+        if any("paragraph" in e and ge.para_text(e).strip() == section for e in content):
+            return False
+        w.batch([gdoc_form.section_break(tab_id, content[-1]["endIndex"] - 1, True)])
+        tab_id, content = w.read()
+    elif len("".join(ge.para_text(e) for e in content if "paragraph" in e).strip()):
         return False
     md = "\n\n".join([
-        "## WBS Dictionary, control account level",
+        ("### %s" % section) if section else "## WBS Dictionary, control account level",
         "**Project Title:** %s" % TITLE,
         "**Date Prepared:** %s" % prepared,
         "#### Reading convention",
@@ -506,6 +516,9 @@ def main(argv=None):
     p.add_argument("--tab", default="dict rút gọn")
     p.add_argument("--token", default=os.path.join(DEFAULT_DIR, "token.json"))
     p.add_argument("--limit", type=int, default=0)
+    p.add_argument("--section", default="",
+                   help="write under this heading, appended to a tab that holds other sections, "
+                        "as \"3.3 WBS Dictionary\" in the scope tab")
     a = p.parse_args(argv)
 
     md = pathlib.Path(a.md).read_text(encoding="utf-8")
@@ -523,7 +536,7 @@ def main(argv=None):
     import gdoc
 
     w = Writer(gdoc.docs(gdoc.load_creds(pathlib.Path(a.token))), a.doc, a.tab)
-    if write_intro(w, a.prepared, len(records), n_wp):
+    if write_intro(w, a.prepared, len(records), n_wp, a.section):
         print("  wrote the heading and the reading convention")
     written = 0
     for k, rec in enumerate(records, 1):
