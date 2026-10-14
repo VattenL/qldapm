@@ -89,7 +89,7 @@ charter adds a supplier.
 | External party | Written as | Why |
 | --- | --- | --- |
 | Apple, operator of the App Store | Apple; App Store | R12 store review, budget line 2 Apple Developer account, A12 |
-| Google, operator of Google Play | Google Play | R12 store review, budget line 2 Google Play account, A12 |
+| Google, operator of Google Play | Google Play; Google | R12 store review, budget line 2 Google Play account, A12 |
 | Push notification service | push service; push provider; push notification service | budget line 2 push service, BR05 push delivery |
 | SMS and email gateway provider | gateway provider; SMS gateway; email gateway | R5, assumption 12 |
 | Cloud hosting provider | hosting provider; cloud provider | budget line 2 cloud server, assumption 7 |

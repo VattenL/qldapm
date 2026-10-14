@@ -220,6 +220,26 @@ class Region(unittest.TestCase):
         self.assertTrue(cf.check(md, Positions.FORM, section="Draft").failed)
         self.assertFalse(cf.check(md, Positions.FORM, section="Final").failed)
 
+    def test_end_option_stops_the_section(self):
+        md = "# Notes\n\n## Final\n\n**Cost:** 1\n**Risk Owner:** 2\n\n### Roll-up\n\n| Hours | Amount |\n| --- | --- |\n"
+        whole = cf.check(md, Positions.FORM, section="Final")
+        self.assertEqual([c.text for c, _ in whole.extra], ["Hours", "Amount"])
+        cut = cf.check(md, Positions.FORM, section="Final", until="Roll-up")
+        self.assertEqual(cut.extra, [])
+        self.assertFalse(cut.failed)
+
+    def test_heading_labels_with_a_section_number(self):
+        md = "# Package\n\n## Part 1: Scope\n\n### 1.1 Cost\n\ntext\n\n### 1.2 Risk Owner\n\ntext\n\n### 1.3 Notes\n"
+        result = cf.check(md, Positions.FORM, section="Part 1:")
+        self.assertFalse(result.failed)
+        self.assertEqual(result.extra, [])  # a heading that is not a printed label is not reported
+
+    def test_plain_first_cell_of_a_field_table_is_a_label(self):
+        md = "# 9.1 Test\n\n" + table(["Field", "Content"], [["Cost", "1"], ["Owner", "x"], ["Risk Owner", "2"]])
+        result = cf.check(md, Positions.FORM)
+        self.assertFalse(result.failed)
+        self.assertEqual([c.text for c, _ in result.extra], ["Owner"])
+
 
     def test_page_with_its_own_title_bar_stays_in_the_form(self):
         md = ("# Package\n\n**ID** before the form\n\n### 2.7\n\n"
