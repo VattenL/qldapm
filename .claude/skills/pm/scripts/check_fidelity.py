@@ -20,14 +20,26 @@ missing or out-of-order label; unprinted labels are reported only.
 
     check_fidelity.py docs/forms/2-32-risk-register.en.md 2.32
     check_fidelity.py docs/scope-package.en.md 2.9 --section "Part 2:" --end "Roll-up"
+    check_fidelity.py docs/scope-package.en.md 2.7 --section "Part 1B" --page 2 --flattened
     check_fidelity.py --list 2.32
+
+--flattened accepts a grouped header written without its colon: the child label alone
+("Category" for "Requirement Information: Category", only when no other group has that
+child) or the group and child joined by a space ("Labor Rate" for "Labor: Rate", as the
+2.10 sheets write it). The accepted labels are listed and are not reported as unprinted.
+--ignore-tables skips the headers of a table none of whose labels the form prints, the document's own
+table inside a free-text box (a roles table in 2.8); it counts the tables skipped, and a table that
+carries any printed label is still the form's and still reported.
+--page N checks only the labels of printed page N of a form with several pages, for a
+document that writes one page apart (the 2.7 second page in Part 1B); a later page's
+repeated title block is not required, since the project writes it once.
 """
 
 import argparse
 import json
 import re
 import sys
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 
 from new_form import underlying_header
@@ -74,11 +86,12 @@ SHAPES = {
 
 @dataclass
 class Cand:
-    """One label position found in the Markdown."""
+    """One label position found in the Markdown; table is the header line of the table it sits in."""
     text: str
     cls: str
     line: int
     structural: bool = False
+    table: int = 0
 
 
 def fail(message):
@@ -123,14 +136,16 @@ def table_slots(block, where):
     return out + label_slots(header, where, "header") + rows
 
 
-def blocks(spec):
-    """The expected labels as (where, slots) pairs in printed order."""
+def blocks(spec, only_page=None):
+    """The expected labels as (where, slots) pairs in printed order; only_page keeps one printed page."""
     out = []
-    if spec["title_block"]:
+    if spec["title_block"] and only_page in (None, 1):
         out.append(("title block", label_slots(spec["title_block"], "title block", "title")))
     for page in spec["pages"]:
         n = page["page"]
-        if n > 1 and page.get("title_block") and spec["title_block"]:
+        if only_page is not None and n != only_page:
+            continue
+        if n > 1 and page.get("title_block") and spec["title_block"] and only_page is None:
             where = "page %d, title block" % n
             out.append((where, label_slots(spec["title_block"], where, "title")))
         for block in page["blocks"]:
@@ -158,8 +173,8 @@ def blocks(spec):
     return out
 
 
-def expected(spec):
-    return [s for _, slots in blocks(spec) for s in slots if s.checked]
+def expected(spec, only_page=None):
+    return [s for _, slots in blocks(spec, only_page) for s in slots if s.checked]
 
 
 def all_labels(spec):
@@ -264,16 +279,17 @@ def scan(lines, start, end, printed=frozenset()):
         if s.startswith("|") and i + 1 < end and SEPARATOR.match(lines[i + 1].strip()):
             header = [norm(c) for c in cells(s)]
             structural = tuple(header) in STRUCTURAL
-            found += [Cand(c, "label", i + 1, structural) for c in header if c]
+            found += [Cand(c, "label", i + 1, structural, i + 1) for c in header if c]
+            top = i + 1
             i += 2
             while i < end and lines[i].strip().startswith("|"):
                 first = cells(lines[i])[0]
                 m = BOLD_CELL.match(re.sub(r"</?mark>", "", first).strip())
                 if m and norm(m.group(1)):
-                    found.append(Cand(norm(m.group(1)), "label", i + 1))
+                    found.append(Cand(norm(m.group(1)), "label", i + 1, table=top))
                 elif structural and norm(first):
                     # A Field | Content table holds a label in every first cell, bold or not.
-                    found.append(Cand(norm(first), "label", i + 1))
+                    found.append(Cand(norm(first), "label", i + 1, table=top))
                 i += 1
             continue
         h = HEADING.match(s)
@@ -330,18 +346,38 @@ class Result:
     extra: list
     start: int
     end: int
+    flattened: list = field(default_factory=list)
+    ignored: int = 0  # tables inside boxes skipped by --ignore-tables
 
     @property
     def failed(self):
         return bool(self.missing or self.disorder)
 
 
-def check(markdown, spec, section=None, until=None):
+def flat_spellings(spec):
+    """{group: {child: [spellings]}} of the printed grouped headers, preferred first: the group and child joined
+    by a space, then the child alone when no other group has it."""
+    groups = {}
+    for p in spec["pages"]:
+        for b in p["blocks"]:
+            if b["type"] == "table":
+                for col in b["columns"]:
+                    if isinstance(col, dict):
+                        groups.setdefault(col["group"], []).extend(col["columns"])
+    count = {}
+    for children in groups.values():
+        for child in set(children):
+            count[child] = count.get(child, 0) + 1
+    return {group: {child: ["%s %s" % (group, child)] + ([child] if count[child] == 1 else [])
+                    for child in children} for group, children in groups.items()}
+
+
+def check(markdown, spec, section=None, until=None, flat_groups=False, only_page=None, ignore_tables=False):
     lines = markdown.splitlines()
     start, end = region(lines, spec, section, until)
     printed = all_labels(spec)
     found, plain = scan(lines, start, end, printed)
-    exp = expected(spec)
+    exp = expected(spec, only_page)
     pairs = align(exp, found)
     used = set(pairs.values())
 
@@ -368,23 +404,52 @@ def check(markdown, spec, section=None, until=None):
             note = "written %s on line %d" % (shape, near.line)
         missing.append((slot, note))
 
+    flattened, accepted = [], set()
+    if flat_groups:
+        # A grouped header written without its colon, as its child label alone ("Category" for
+        # "Requirement Information: Category") or as group and child joined ("Labor Rate"): reported
+        # on its own line, and not a failure.
+        spellings = flat_spellings(spec)
+        labels = {c.text for c in found if c.cls == "label"}
+        kept = []
+        for slot, note in missing:
+            group, _, child = slot.text.partition(": ") if slot.shape == "header" else ("", "", "")
+            hit = next((x for x in spellings.get(group, {}).get(child, []) if x in labels), None)
+            if hit:
+                flattened.append((slot, note))
+                accepted.add(hit)
+            else:
+                kept.append((slot, note))
+        missing = kept
+
     placeholders = any(not s.checked and s.shape != "skip" for _, b in blocks(spec) for s in b)
     by_loose = {loose(t): t for t in printed}
+    # A table none of whose labels the form prints is the document's own table inside a free-text box
+    # (a roles table in 2.8, say); its headers are content, not labels the form lacks.
+    own = {c.table for c in found if c.table and (c.text in printed or c.text in accepted)}
+    boxed = {c.table for c in found if c.table and c.table not in own and not c.structural}
     extra = []
     for k, c in enumerate(found):
-        if k in used or c.structural or c.text in printed:
+        if k in used or c.structural or c.text in printed or c.text in accepted:
+            continue
+        if ignore_tables and c.table in boxed:
             continue
         if placeholders and c.cls == "label" and lines[c.line - 1].lstrip().startswith("|"):
             continue
         note = by_loose.get(loose(c.text))
         extra.append((c, "printed as %r" % note if note else ""))
-    return Result(len(exp), missing, disorder, extra, start, end)
+    return Result(len(exp), missing, disorder, extra, start, end, [slot for slot, _ in flattened],
+                  len(boxed & {c.table for c in found if c.table}) if ignore_tables else 0)
 
 
 def report(result, spec, name):
     ok = result.total - len(result.missing) - len(result.disorder)
     print("%s %s, %s lines %d to %d" % (spec["form"], spec["name"], name, result.start + 1, result.end))
     print("%d/%d printed labels present in printed order" % (ok, result.total))
+    if result.flattened:
+        print("grouped headers written without the colon (%d), accepted by --flattened:" % len(result.flattened))
+        for slot in result.flattened:
+            print("  %s: %s" % (slot.where, slot.text))
     if result.missing:
         print("missing (%d):" % len(result.missing))
         for slot, note in result.missing:
@@ -393,6 +458,9 @@ def report(result, spec, name):
         print("out of printed order (%d):" % len(result.disorder))
         for slot, line in result.disorder:
             print("  %s: %s (line %d)" % (slot.where, slot.text, line))
+    if result.ignored:
+        print("%d table(s) inside boxes ignored by --ignore-tables: none of their labels is printed, so their "
+              "headers are content (name them in the reading paragraph)" % result.ignored)
     if result.extra:
         # One line per distinct label, so 78 dictionary sheets do not print one label 78 times.
         groups = {}
@@ -431,6 +499,15 @@ def main(argv=None):
     ap.add_argument("--section", help="check only the part under the first heading containing this text")
     ap.add_argument("--end", metavar="TEXT",
                     help="with --section, stop at the first later heading containing this text")
+    ap.add_argument("--flattened", action="store_true",
+                    help="accept a grouped header written as its child label alone and list those labels; for "
+                         "the project's RTM in the scope package, which flattens the printed group header")
+    ap.add_argument("--ignore-tables", action="store_true",
+                    help="do not report the headers of a table none of whose labels the form prints: the "
+                         "document's own table inside a free-text box (a roles table in 2.8)")
+    ap.add_argument("--page", type=int, metavar="N",
+                    help="check only the labels of printed page N of the form (a later page's repeated title "
+                         "block is not required)")
     ap.add_argument("--fields", type=Path, default=FIELDS, help=argparse.SUPPRESS)
     args = ap.parse_args(argv)
     spec = load_spec(args.form, args.fields)
@@ -441,7 +518,10 @@ def main(argv=None):
         ap.error("a Markdown file is required unless --list is given")
     if args.end and not args.section:
         ap.error("--end needs --section")
-    result = check(args.markdown.read_text(encoding="utf-8"), spec, args.section, args.end)
+    if args.page is not None and not 1 <= args.page <= spec["page_count"]:
+        ap.error("%s has %d printed page%s" % (spec["form"], spec["page_count"], "" if spec["page_count"] == 1 else "s"))
+    result = check(args.markdown.read_text(encoding="utf-8"), spec, args.section, args.end, args.flattened,
+                   args.page, args.ignore_tables)
     report(result, spec, args.markdown.name)
     return 1 if result.failed else 0
 

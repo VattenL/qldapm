@@ -5,25 +5,25 @@
       "id": 1,
       "eval_name": "audit-charter-and-scope",
       "prompt": "Audit docs/charter-package.en.md and docs/scope-package.en.md before we push them to the Google Doc for grading. I want every contradiction between the two, every place they break the printed forms in the Book of Forms, and anything a grader would pick on. Write the audit as Markdown. Don't fix anything yet.",
-      "expected_output": "An audit report split into errors and warnings with locations and quoted evidence, catching the known live defects in the sources.",
+      "expected_output": "An audit report split into errors and warnings with locations and quoted evidence, catching the defects that exist in the sources on the day and stating, for each scan that finds nothing, that it was run and found nothing.",
       "files": [
         "docs/charter-package.en.md",
         "docs/scope-package.en.md"
       ],
       "assertions": [
         "Flags the mixed or abbreviated date formats (e.g. 'Mon 14 Sep 2026' against '14 September 2026')",
-        "Flags literal <br> inside WBS dictionary cells of the scope package",
-        "Flags the RTM Source 'Center Director, sponsor' as merging sponsor and customer",
+        "Reports the result of a scan for literal <br> (or any HTML other than <mark>) in the WBS dictionary cells of the scope package: flags each hit with its location, or lists the scan under a heading for scans that found nothing, with the count 0 (a zero count is a pass when no such text exists in the files; a scan that is not mentioned fails)",
+        "Reports the result of a scan for a sponsor and customer merged in one cell or phrase, such as an RTM Source 'Center Director, sponsor': flags each merged cell with its location, or lists the scan under a heading for scans that found nothing (a pass when no such cell exists; a scan that is not mentioned fails)",
         "Flags the Cost success criterion saying 'management reserve' while the budget line is a contingency reserve",
-        "Flags that every RTM requirement is 'Must have', so Priority carries no information",
-        "Flags BR03 Source differing between the RTM and the Inter-RTM",
+        "Flags that every RTM requirement is 'Must have' (31 rows in Part 1, 26 in Part 1B), so Priority carries no information, as a warning even though a sentence above the table explains it; it quotes that sentence and says what would close the warning (the form's own rule makes the value constant, or the team grades the rows)",
+        "Compares each requirement ID across RTM Part 1 and the Inter-RTM Part 1B for Source and Priority (the id-conflict check) and flags every difference with both locations, or lists the comparison under a heading for scans that found nothing and says the IDs agree (for example BR03 Source in both)",
         "Flags notes placed inside the printed charter form (under milestones or Approvals)",
         "Flags the 'fourteen elements of Table 1.1' count (the table lists 13)",
         "Flags the contents line 'V1 to V11' while the prompt log runs to V12",
         "Flags the business case applying 70% activation to all guardians instead of 70% of the 80% with smartphones",
         "Flags the part-time mobile developer loaded above full time or working after M5",
         "Report separates errors from warnings and gives a location for each finding",
-        "docs/ left unmodified"
+        "No new change under docs/ since the start of the run: compare 'git status --short docs' and the hash of each file under docs/ before and after (docs/pm-skill-guide.md and docs/pm-skill-guide.vi.md may already differ from the last commit before the run and are not a change by the run)"
       ]
     },
     {
@@ -90,7 +90,7 @@
         "Flags the line 5 citation '**Source:** ... form 2.18, pages 78 to 81': either as a bold label the printed form does not carry, or because the pages are printed pages given without saying so (the blank form is PDF pages 91 to 92, printed pages 80 to 81)",
         "The report separates errors from warnings and gives each finding a file:line location and quoted text from the documents",
         "Does not report any Duration value or any summary row's Start or Finish as wrong: all 304 Gantt rows count working days correctly with weekends and 1 January 2027 excluded, and every summary row spans exactly its children",
-        "docs/ left unmodified"
+        "No new change under docs/ since the start of the run: compare 'git status --short docs' and the hash of each file under docs/ before and after (docs/pm-skill-guide.md and docs/pm-skill-guide.vi.md may already differ from the last commit before the run and are not a change by the run)"
       ]
     },
     {
@@ -112,6 +112,109 @@
         "'uv run --with python-docx .claude/skills/pm/scripts/md_to_docx.py <output>' exits 0 and writes a .docx",
         "'python3 .claude/skills/pm/scripts/check_consistency.py <output>' reports 0 errors and 0 warnings",
         "The output contains no em dash, en dash or emoji"
+      ]
+    },
+    {
+      "id": 6,
+      "eval_name": "schedule-slip-mobile-decision",
+      "prompt": "The mobile application work (WBS 1.5.4, done by the part-time mobile developer, due for M5 where the app is submitted to both stores) is now forecast two weeks late. The web go-live is not affected yet. What are my options, which of them are allowed, and which documents do I have to update? I do not want an answer that just says the estimate was wrong.",
+      "expected_output": "A decision recommendation in the decisions.md format: the situation read from the charter, scope package and 2.18, options that are PMBOK 6 schedule techniques with their trade-offs and with the already-used ones recognised, the reserve and authority limits taken from the charter, the change request route to the sponsor, and the forms to update from form_graph.py --impact. No estimate is shortened and no file is written.",
+      "files": [
+        "docs/charter-package.en.md",
+        "docs/scope-package.en.md",
+        "docs/forms/2-18-project-schedule.en.md",
+        "docs/forms/3-3-change-request.en.md"
+      ],
+      "assertions": [
+        "The answer follows references/decisions.md: it names the situation (mobile package 1.5.4 two weeks behind the M5 submission milestone, charter date Fri 18 December 2026), a constraint check, an options table, one recommendation, what the team must decide and who decides, forms to update, and citations",
+        "Measures before fixing: it either runs 'python3 .claude/skills/pm/scripts/pm_calc.py evm' on PV, EV, AC and BAC figures the user supplies, or says that PV and EV for 1.5.4 are needed to state SV and SPI; it invents no PV, EV, AC, SV or SPI figure",
+        "Names schedule compression from PMBOK 6 section 6.5.2.6, printed page 215 (PDF page 254), with crashing (adds resources on the critical path, costs more, 'does not always produce a viable alternative') and fast tracking (overlap, rework and risk) each with its trade-off",
+        "Says that crashing and fast tracking are partly used up already: the 2.18 reading paragraph fast tracks each phase by up to 5 working days and divides 97 activities so that DEV3 helps MOB1, so more of either is not a fresh option",
+        "Uses the resource facts of the repo: MOB1 is part time for 2.5 person-months, joins after M2 and leaves after M5 (charter assumptions and milestone notes), and the scope package prices 400 hours at 122,500 VND per hour (49,000,000 VND); keeping MOB1 past M5 or adding hours is a cost and resource change, not free",
+        "Names resource leveling or the other resource optimization technique of PMBOK 6 section 6.5.2.3, printed page 211 (PDF page 250), and says leveling can change the critical path, or states that it cannot tell without the network",
+        "States that the 28,000,000 VND contingency reserve (budget line 6, inside the cost baseline) is drawn only against risks R1 to R12 through change control; keeps apart the charter's two 20,000,000 VND limits (a single transaction up to 20,000,000 VND, and reserve use beyond 20,000,000 VND goes to the sponsor, both marked assumed in the charter) and the 5% forecast overrun that goes to the sponsor; it says 'contingency reserve' and never 'management reserve' for this money, and notes that the charter's form 2B Cost criterion still says 'management reserve' as a wording conflict",
+        "Reads R12 from the charter: go-live does not depend on the app and an app slip of up to two weeks after M6 is absorbed without moving M6; it also notes that the charter Time success criterion says no milestone more than 1 week late, so it flags the tension as a sponsor decision rather than choosing a reading",
+        "Notes that docs/forms/3-3-change-request.en.md is a pending, unapproved request to re-baseline M1 to M7 (disposition empty), that the levelled 2.18 dates are forecasts and not baselines, and that the slip is therefore measured against the charter milestone date; it does not silently overwrite or duplicate that request",
+        "Offers no option that shortens an estimate, trims durations to fit the date or hides the slip; any 'less scope' option is labelled a scope baseline change that needs a change request (PMBOK 6 section 6.5.2.2, printed page 210, PDF page 249)",
+        "States the route when the constraints cannot all hold: a change request 3.3 to the sponsor (Category Schedule and Cost, Impacts of Change with Increase, Decrease or Modify), then 3.4 Change Log and 3.2 Decision Log, and says the PM's own authority is not enough",
+        "The forms to update come from 'python3 .claude/skills/pm/scripts/form_graph.py --impact 2.18 --depth 1' and include 2.32 Risk Register, 2.14 Milestone List, 2.22 Cost Baseline, 4.2 Project Status Report and 4.3 Variance Analysis; it quotes the count line of that run (the 2.18 run, not the 3.3 run), marks 1.1 and 2.8 (charter-package.en.md, whose Part 1 is form 2.8), 2.9 and 2.10 (scope-package.en.md) and 3.3 (forms/3-3-change-request.en.md, a pending request) as existing in docs/, marks 1.2, 2.14 and 2.32 as stand-in sections of charter-package.en.md (content held in the package, not separate forms) and every other form as one to create later, and names no form the output does not list",
+        "Does not present float, a critical path or a slip absorbed by float as a finding when the answer has no stated dependency for 1.5.4: it asks for the predecessor and successors of 1.5.4 or runs cpm only on a chain labelled 'assumed' and lists the missing dependency among the open questions",
+        "Quotes the charter's R12 allowance (an app slip of up to two weeks after M6) together with the Time criterion on the same gate, says the allowance names a cause (store review or framework) and the user's slip has not been shown to have that cause, and leaves the choice of reading to the sponsor in the 3.3",
+        "Every book claim carries both page numbers (PDF and printed), for example 'PMBOK 6 section 6.5.2.6, printed page 215 (PDF page 254)'",
+        "No new change under docs/ since the start of the run (compare file hashes and 'git status --short docs' before and after; the two guide files may already differ from the last commit), and the answer contains no em dash, en dash or emoji"
+      ]
+    },
+    {
+      "id": 7,
+      "eval_name": "earned-value-status-4-4",
+      "prompt": "Cumulative figures at the end of this reporting period, in VND: BAC 700,000,000; PV 280,000,000; EV 252,000,000; AC 294,000,000. Give me the earned value status and a forecast at completion, say what goes in form 4.4 and what I have to tell the sponsor. The figures are test numbers; do not round them in a way that makes the status look better.",
+      "expected_output": "An earned value status computed with pm_calc.py evm (CV, SV, CPI, SPI, percentages, three EACs, VAC, ETC, TCPI), worded as Table 7-1 words it, mapped onto the printed fields of form 4.4 with the empty columns left empty, compared with the charter's 5% limit, with the choice of EAC left as a justified judgment.",
+      "files": [
+        "docs/charter-package.en.md"
+      ],
+      "assertions": [
+        "The numbers match 'python3 .claude/skills/pm/scripts/pm_calc.py evm --bac 700000000 --pv 280000000 --ev 252000000 --ac 294000000': CV = -42,000,000 and SV = -28,000,000 (VND)",
+        "CPI = EV / AC = 0.857 (0.8571) and SPI = EV / PV = 0.90",
+        "Percent planned 40, percent earned 36 and percent spent 42, from PV / BAC, EV / BAC and AC / BAC as form 4.4 Table 4.4 prints them (Book of Forms form 4.4, PDF page 218 (printed page 207))",
+        "Status wording follows PMBOK 6 Table 7-1, printed page 267 (PDF page 306): over planned cost, behind schedule, and the TCPI of 1.10 (1.1034) as harder to complete; it does not say 'over budget' as the book's status",
+        "Gives three EACs with their stated assumptions: BAC / CPI = 816,666,667 (VAC -116,666,667, assumes the cumulative CPI continues), AC + (BAC - EV) = 742,000,000 (VAC -42,000,000, assumes the rest is done at the budgeted rate), and AC + (BAC - EV) / (CPI x SPI) = 874,740,741 (VAC -174,740,741), citing PMBOK 6 section 7.4.2.2, printed pages 264 to 265 (PDF pages 303 to 304)",
+        "Shows the formulas used (CV = EV - AC, SV = EV - PV, CPI = EV / AC, SPI = EV / PV, TCPI = (BAC - EV) / (BAC - AC)) with PMBOK 6 section 7.4.2.2, printed page 262 (PDF page 301) or Table 7-1, and labels any figure the books do not print a formula for (such as a percent variance) as not stated in the book",
+        "Maps the results onto form 4.4 using its printed labels from 'extract_form.py 4.4 --fields': Budget at Completion (BAC), Overall Status, Planned value (PV), Earned value (EV), Actual cost (AC), Schedule variance (SV), Cost variance (CV), Schedule performance index (SPI), Cost performance index (CPI), Percent planned, Percent earned, Percent spent, EAC w/CPI [BAC/CPI], EAC w/ CPI*SPI [AC + ((BAC - EV)/(CPI*SPI))], Selected EAC, Justification, and Explanation, and To complete performance index (TCPI)",
+        "The figures go in the Current Period Cumulative column only; the Current Reporting Period and Past Period Cumulative columns stay empty because the prompt gives no period figures, and the answer says so instead of inventing them",
+        "Points out that the 742,000,000 EAC (AC + (BAC - EV)) is not one of the two EAC rows the blank form prints, so it goes in the Selected EAC explanation if used; it also says the book gives no rule for choosing the EAC beyond whether the CPI will stay the same or both indexes affect the rest, so the choice is the PM's with a written justification",
+        "Leaves Root Cause of Schedule Variance, Schedule Impact, Root Cause of Cost Variance and Budget Impact for the team to supply or asks for them; it states no cause for the variance as fact",
+        "Compares the forecast overrun with the charter: the project manager manages cumulative cost variance up to 5% of baseline and escalates any forecast overrun beyond 5% (35,000,000 VND of 700,000,000); every EAC above is more than 35,000,000 over (42,000,000 is 6.0%, 116,666,667 is 16.7%, 174,740,741 is 25.0%), so it goes to the sponsor, with the percent basis (of BAC) stated",
+        "Does not offer the 28,000,000 VND contingency reserve as covering the overrun without sizing it, and calls it contingency reserve, not management reserve; a baseline change or a funding increase is routed to the sponsor through change request 3.3, not absorbed or hidden",
+        "Does not recommend cutting the remaining estimate or assuming the CPI will recover to fit 700,000,000; the 742,000,000 variant is described as accepting the variance to date and as needing risk analysis support if improvement is assumed",
+        "Cites both page numbers for each book claim, with no section-only citation, no pointer to a note instead of pages and no 'the book prints no X' without 'not stated in the book' and its pages ('python3 .claude/skills/pm/scripts/check_pages.py' on the answer reports 0 errors and 0 warnings), and writes no file; the answer contains no em dash, en dash or emoji"
+      ]
+    },
+    {
+      "id": 8,
+      "eval_name": "risk-response-r5-gateway",
+      "prompt": "R5 from the charter has happened: the notification gateway is unstable in testing and the provider has just raised its price. What should we do about it, and exactly what do I write in the risk register and the decision log? I do not know who owns the risk, so do not make that up.",
+      "expected_output": "A risk response recommendation for R5 that reads the charter's own response, names the PMBOK 6 section 11.5 strategies with their trade-offs, treats the money as contingency reserve within the charter limits, gives proposed text for form 2.32 and form 3.2 using their printed fields, leaves the owner and the scores empty, and lists the other documents from form_graph.py --impact 2.32.",
+      "files": [
+        "docs/charter-package.en.md"
+      ],
+      "assertions": [
+        "Quotes or closely restates the charter's R5 row: 'Notification gateway unstable or unexpectedly priced', Type Project, response 'Isolate it behind one interface; prove it with a proof of concept before M2; keep a second provider as fallback' (charter risk register, line 305), and treats R5 as a risk that has occurred, not as a new risk",
+        "Says R5 has become an issue to record in 3.1 Issue Log (an issue can arise from a risk event that has occurred, Book of Forms form 3.1, PDF page 176 (printed page 165)) and that the register entry stays in 2.32: its Status takes the book's values open or closed (Book of Forms form 2.32, PDF page 140 (printed page 129)) and stays open while the response is carried out, with Actions or Comments recording that it occurred and pointing to the 3.1 entry; closing it is the PM's decision, recorded in 3.2",
+        "Names the threat strategies of PMBOK 6 section 11.5.2.4 with the stated trade-off of each: escalate on printed page 442 (PDF page 481); avoid, transfer, mitigate and accept on printed page 443 (PDF page 482); the strategy table has the five strategies as its rows (do nothing and the change request route may sit on separate lines under it); it classifies the parts of the charter's response with the book's wording and does not invent a strategy name: the book's avoid text includes 'isolate the project objectives from the risk's impact', so isolating the gateway behind one interface is labelled avoid (isolate), not mitigate; its mitigate text includes prototypes, more tests and redundancy, so the proof of concept is labelled mitigate; it labels the second provider as a contingent response or fallback plan (PMBOK 6 section 11.5.2.6, printed page 445 (PDF page 484); Book of Forms form 2.36, PDF page 156 (printed page 145))",
+        "Says what triggers the fallback (the second provider) is not set by the charter and the book gives no numeric trigger, so the risk owner or team defines and tracks it (PMBOK 6 section 11.5.2.6, printed page 445 (PDF page 484)); it lists the trigger as an open question, never states that the trigger has fired, and does not invent a threshold",
+        "Treats any extra cost as drawn from the 28,000,000 VND contingency reserve (budget line 6, inside the cost baseline, drawn by the project manager only against risks R1 to R12 through change control), says the project manager's limit is 20,000,000 VND per reserve use with anything beyond it going to the sponsor, and never calls this reserve 'management reserve'",
+        "Does not repeat the charter Cost success criterion wording 'management reserve use reported monthly' as correct; it either uses 'contingency reserve' or flags that wording as inconsistent with budget line 6",
+        "Says a response that changes the cost or schedule baseline (a paid second provider, a re-plan) is a change request 3.3 to the sponsor (PMBOK 6 section 11.5.3.1, printed page 447 (PDF page 486)), and says in words that the route is not to trim an estimate to pay for it",
+        "Gives proposed text for form 2.32 using its printed labels (ID, Risk Statement, Owner, Probability, Impact, Score, Response, Revised Probability, Revised Score, Responsible Party, Actions, Status, Comments), keeping the R5 Risk Statement exactly as the charter writes it",
+        "Leaves Owner and Responsible Party empty or marked [TBD] and asks the team who owns R5; it names no person or role as owner (not the PM, not DEV1) except as an explicitly labelled proposal for the team to confirm, since the charter names no risk owner",
+        "Leaves Probability, the Impact columns, Score, Revised Probability and Revised Score empty or [TBD], or asks for them; it invents no number and no High, Medium or Low rating, and if it offers pm_calc.py risk-score it says the inputs must come from the team's own scales in 2.31 and 2.34",
+        "Gives a proposed form 3.2 Decision Log row with the printed columns ID, Category, Decision, Responsible Party, Date, Comments, where Comments carries the alternatives considered, the reason and the impact (Book of Forms form 3.2, PDF page 179 (printed page 168); blank form PDF page 180 (printed page 169)), and leaves Responsible Party and Date for the team",
+        "Lists the documents from 'python3 .claude/skills/pm/scripts/form_graph.py --impact 2.32 --depth 1', pasted or quoted from the output, including 2.36 Risk Data Sheet, 2.33 Risk Report, 2.22 Cost Baseline, 2.18 Project Schedule, 4.2 Project Status Report, 3.1 Issue Log and 3.3 Change Request, with that run's own count line ('4 of 26 forms exist in docs/'); marks 1.1 and 2.8 (charter-package.en.md), 2.18 (forms/2-18-project-schedule.en.md) and 3.3 (forms/3-3-change-request.en.md, a pending request) as existing in docs/ and 1.2 as a stand-in section of charter-package.en.md; it names no form the output does not list (for example 3.4 or 2.30), and drops none that it lists",
+        "Cites both page numbers for each book claim, with the strategies on the right pages (escalate printed page 442 (PDF page 481); avoid, transfer, mitigate, accept printed page 443 (PDF page 482)), writes no file under docs/ (no new change since the start of the run), and the answer contains no em dash, en dash or emoji"
+      ]
+    },
+    {
+      "id": 9,
+      "eval_name": "which-form-new-function-vi",
+      "prompt": "khach hang muon them chuc nang moi thi ghi vao dau? giai thich ngan gon cho nhom, va noi ro phai cap nhat nhung form nao khac",
+      "expected_output": "A Vietnamese answer: the request is written on 3.3 Change Request, then logged in 3.4 Change Log, decided by the sponsor, with the scope baseline (2.8, 2.9, 2.10) and 2.7 updated only after approval, the change control path in order, the alternatives recorded in 3.2, and the documents to recheck from form_graph.py.",
+      "files": [
+        "docs/charter-package.en.md",
+        "docs/scope-package.en.md"
+      ],
+      "assertions": [
+        "The answer is written in Vietnamese with its diacritics, the user's language, while form numbers and printed labels (Change Request, Change Log, Detailed Description of Proposed Change) stay as the book prints them and every form it names carries its English title beside the number (for example 2.7 Requirements Traceability Matrix, 2.2 Change Management Plan), with the Vietnamese in brackets",
+        "Names 3.3 Change Request first and then 3.4 Change Log, in that order, with Book of Forms form 3.3, PDF pages 181 to 182 (printed pages 170 to 171) and form 3.4, PDF pages 186 to 187 (printed pages 175 to 176); blank-form pages, if cited, are given separately (3.3 PDF pages 183 to 185 (printed pages 172 to 174); 3.4 PDF page 188 (printed page 177))",
+        "Says the new function is not written straight into the requirements matrix 2.7, the scope statement, the WBS or the WBS dictionary: once the scope is baselined every request goes through change control, and the baseline documents change only after approval (PMBOK 6 section 4.6, printed page 115 (PDF page 154))",
+        "Says who decides from the charter: the charter names no change control board, and changes to user-visible scope, schedule or cost go to the sponsor through the change process (charter Project Manager authority, 'Technical decisions'); it does not invent a board or a different approver",
+        "Names the documents the change reaches: 2.7 Requirements Traceability Matrix, and the scope baseline made of 2.8 Project Scope Statement, 2.9 Work Breakdown Structure and 2.10 WBS Dictionary (Book of Forms form 2.9, PDF page 60 (printed page 49)), plus 1.1 Project Boundaries 'Included: functions F01 to F12' and, when work is added, 2.18 Project Schedule and the cost documents",
+        "Points to where those documents live in this repo: docs/scope-package.en.md (Part 1 is 2.7, Part 2 is 2.9, Part 3 is 2.10) and docs/charter-package.en.md (1.1), and says they are updated after approval, not before",
+        "Lists what 3.3 prints for impacts: the five Impacts of Change areas (Scope, Quality, Requirements, Cost, Schedule), each marked Increase, Decrease or Modify with a Description, and, apart from them, Stakeholder Impact (High risk, Low risk, Medium risk) with Project Documents; it names Category Scope and Requirements for a new function, plus Cost and Schedule where they change",
+        "Gives the change control path as a numbered list of eight steps in this order: trigger, request on 3.3, impact analysis (time, cost, resources, risk), decision (approve, defer or reject, with Justification on page 3 of 3.3), record in 3.4 (the book opens the row at submission with Status open or pending and completes it at the decision, Book of Forms form 3.4, PDF page 186 (printed page 175); the team writes the row once the decision is made, stated as a convention and with no false reason), tell the requester, implement, update the affected documents (PMBOK 6 section 4.6, printed pages 113 to 120 (PDF pages 152 to 159); section 4.6 ends on printed page 120 and 4.7 Close Project starts on printed page 121, PDF page 160)",
+        "Says to record the alternatives considered and the reason in 3.2 Decision Log Comments, and does not call 3.2 a PMBOK document (the book says it is not an explicit PMBOK document)",
+        "Pastes or shows the result of 'python3 .claude/skills/pm/scripts/form_graph.py --impact 3.3 --depth 1' or '--impact 2.7 --depth 1' with that run's count line, and states that 3.3 provides to 2.2 Change Management Plan and 3.4 Change Log and to the external change control board node even though 2.2 and 3.4 are not in docs/, that 2.7 lists change requests as a recipient (2.7 provides to 3.3), and that the charter names no change control board (the sponsor decides what the charter gives the sponsor)",
+        "Does not say 'add it to the product backlog 6.2' as the answer for this predictive, baselined project, and does not propose absorbing the function by cutting other estimates; if cost or schedule cannot hold the route is 3.3 to the sponsor",
+        "Cites both page numbers for each book claim (in Vietnamese as 'trang in N (trang PDF M)', accepted by check_pages.py), writes no file, and the answer contains no em dash, en dash or emoji"
       ]
     }
   ]

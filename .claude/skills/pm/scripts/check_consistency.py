@@ -9,6 +9,9 @@ Usage:
     python3 check_consistency.py docs/forms/<file>.md docs/charter-package.en.md \\
         docs/scope-package.en.md --report docs/forms/<file>.md
 
+The words charter and scope stand for docs/charter-package.en.md and docs/scope-package.en.md when no file of
+that name exists.
+
 Pass every document of a deliverable together: ID families defined in one file
 (risks in the charter) are referenced from another (the RTM), a range is only
 stale relative to the definitions pooled across all files given, and a section
@@ -22,11 +25,25 @@ in one line and not shown, so a clean new form exits 0 even when its sources
 still carry errors. --report may be repeated; given without a value it reports
 on the first path. A report path that is not among the paths is added to them.
 
+--audit also reports a uniform column that the text above its table explains (a reason does not make a
+constant column informative); use it when reviewing documents.
+
+--group prints one line per check and level (count, files, first location and message, the next lines) instead of
+one line per finding, since one defect often shows as a finding for every date or citation it touches.
+--show-context, with --report, also lists the findings left out as already in the context files, each with
+the heading it sits under, so they can be checked for any that touch the table under review.
+--today YYYY-MM-DD checks every Date Prepared against that day: one dated after it is an error, one before it a
+warning to confirm the content was last checked on that date (off unless the day is given).
+
+A stated count ("all fourteen elements of Table 1.1") is compared with the table or list printed straight
+after it, and the same count elsewhere in the file is reported with it.
+
 Exit code 1 when any shown error is found, 0 when only warnings or nothing,
 2 for a usage error such as a missing file.
 """
 
 import argparse
+import datetime
 import json
 import os
 import re
@@ -57,6 +74,10 @@ SECTION_REF = re.compile(r"(?:\b(?:[Ss]ections?|Parts?) +|\u00a7 *)(\d+(?:\.\d+)
 # Words just before a reference that send it to another document: the book, PMBOK, a file name
 # or a code span (file names are written in backticks), or the charter.
 EXTERNAL_REF = re.compile(r"(?:PMBOK|Guide|\.md|the book|book's|`)\W*(?:[\w-]+\W+){0,3}$", re.I)
+# The same, when a page citation sits between the document and the section ("PMBOK 6, printed page 442,
+# section 11.5.2.1"): any clause that names the book, PMBOK or the Guide before the reference.
+EXTERNAL_CLAUSE = re.compile(r"\b(?:PMBOK|the Guide|Book of Forms|Agile Practice Guide|the book)\b", re.I)
+CLAUSE_START = re.compile(r"(?<=[.;:!?])\s+(?=\S)")
 CHARTER_REF = re.compile(r"\bcharter(?:'s)?\W+(?:[\w-]+\W+){0,3}$", re.I)
 # The same, written after the reference: "Part 2 of `docs/scope-package.en.md`", "section 1.6 of the
 # charter", "section 4.1.3.1 of the PMBOK Guide". File names in code spans are blanked to spaces
@@ -78,7 +99,7 @@ ID_HEADERS = ("id", "#", "code", "risk id", "req id", "req. id", "requirement id
 # Columns that say what an ID is. Status, dates, actions and comments change over time and differ
 # between a register and its history by design, so they are not compared.
 IDENTITY = {"source", "name", "requirement", "risk statement", "description", "deliverable",
-            "business requirement", "technical requirement"}
+            "business requirement", "technical requirement", "priority"}
 MERGED_ROLE = re.compile(
     r"Director,?\s+(?:and\s+)?sponsor|sponsor,?\s+(?:and\s+)?(?:owner|(?:Center\s+)?Director)"
     r"|sponsor of the (?:learning )?center", re.I)
@@ -96,6 +117,19 @@ STAKEHOLDER_KEYS = ("name", "name or role", "stakeholder", "stakeholder(s)")
 NEAR_END = 2
 # Below three members a family is too small to tell a subset from a stale range.
 MIN_FAMILY = 3
+NUMBER_WORDS = {w: i for i, w in enumerate(
+    "zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen "
+    "seventeen eighteen nineteen twenty".split())}
+NUMBER_WORDS.update({"twenty-one": 21, "twenty-two": 22, "twenty-three": 23, "twenty-four": 24,
+                     "twenty-five": 25, "thirty": 30})
+COUNT_NOUNS = ("elements|risks|milestones|rows|functions|deliverables|requirements|criteria|assumptions|"
+               "stakeholders|work packages|activities|phases|columns|fields|constraints|exclusions|roles|"
+               "forms|steps|items|sections|findings|cases")
+# "all fourteen elements", "13 rows", "twelve functions F01 to F12": a number, up to two words, a noun
+# that names things a list holds.
+COUNT_CLAIM = re.compile(r"\b(?:all|the|these|those|every one of the)\s+(\d{1,3}|%s)\s+(?:[\w'-]+\s+){0,2}?(%s)\b"
+                         % ("|".join(NUMBER_WORDS), COUNT_NOUNS), re.I)
+LIST_ITEM = re.compile(r"^(\s*)(?:[-*+]|\d+[.)])\s+\S")
 # A short table often has one value throughout for a good reason; from eight rows on, a column
 # with one value is more likely a default nobody revisited.
 MIN_ROWS_FOR_UNIFORM = 8
@@ -209,8 +243,16 @@ def longest_form():
     return most
 
 
+RULE = re.compile(r"^\s*(?:-{3,}|\*{3,}|_{3,})\s*$")
+
+
 def check_markup(path, lines, labels, out):
-    for n, line in lines:
+    for i, (n, line) in enumerate(lines):
+        if RULE.match(line) and i and lines[i - 1][1].lstrip().startswith("|") and lines[i - 1][0] == n - 1:
+            out.append(Finding("error", "table-rule", path, n,
+                               "a horizontal rule directly under a table row is read as a table row by the Doc "
+                               "generator and arrives as a stray '---' cell; leave a blank line between the "
+                               "table and the rule"))
         for m in HTML_TAG.finditer(line):
             if m.group(1).lower() != "mark":
                 out.append(Finding("error", "html", path, n,
@@ -365,7 +407,8 @@ def check_section_refs(path, lines, numbers_by_path, charters, out):
     for n, line in lines:
         for m in SECTION_REF.finditer(line):
             ref, before, after = m.group(1), line[max(0, m.start() - 30):m.start()], line[m.end():m.end() + 40]
-            if EXTERNAL_REF.search(before) or EXTERNAL_AFTER.search(after):
+            clause = CLAUSE_START.split(line[:m.start()])[-1]
+            if EXTERNAL_REF.search(before) or EXTERNAL_AFTER.search(after) or EXTERNAL_CLAUSE.search(clause):
                 continue
             if CHARTER_REF.search(before) or CHARTER_AFTER.search(after):
                 if charters and ref not in in_charter:
@@ -378,8 +421,9 @@ def check_section_refs(path, lines, numbers_by_path, charters, out):
             elsewhere = [p for p, numbers in numbers_by_path.items() if p != path and ref in numbers]
             if elsewhere:
                 out.append(Finding("warning", "section-ref", path, n,
-                                   "section %s is not here but in %s; name the document it means"
-                                   % (ref, " and ".join(elsewhere))))
+                                   "section %s is not here but in %s; name the document it means, for example "
+                                   "'section %s of the charter' or 'section %s of `scope-package.en.md`'"
+                                   % (ref, " and ".join(elsewhere), ref, ref)))
             else:
                 out.append(Finding("error", "section-ref", path, n,
                                    "refers to section %s, which is not a heading in any file given" % ref))
@@ -453,11 +497,63 @@ def check_form_notes(path, lines, labels, out):
                                "text inside the printed form that the form does not print; move it before the form"))
 
 
-def check_tables(path, lines, out, id_values):
+NOTE_WORDS = 150
+
+
+def check_note_length(path, lines, out):
+    """The italic paragraphs above a form carry the citation and what a reader needs (the copy used, differences,
+    added rows, empty cells, the PM mark). A long one is a note nobody reads (review-lessons.md, One person,
+    one name: a few sentences, not 280 words). A paragraph is the run of consecutive non-blank lines, so a
+    note wrapped over many lines counts as one. The limit is the skill's, not the book's."""
+    first = next((i for i, (_n, line) in enumerate(lines) if FORM_PAGE.match(line)), None)
+    if first is None:
+        return
+    paragraph = []
+    for n, line in lines[:first] + [(0, "")]:
+        text = line.strip()
+        if text:
+            paragraph.append((n, text))
+            continue
+        if paragraph:
+            joined = " ".join(t for _n, t in paragraph)
+            if len(joined) > 2 and joined.startswith("*") and not joined.startswith("**") and joined.endswith("*"):
+                count = len(joined.split())
+                if count > NOTE_WORDS:
+                    out.append(Finding("warning", "note-length", path, paragraph[0][0],
+                                       "the italic note above the form is %d words; keep it to the citation, the copy "
+                                       "used, differences, added rows, empty cells and the PM mark (about %d words at "
+                                       "most) and put questions in the reply" % (count, NOTE_WORDS)))
+        paragraph = []
+
+
+DATE_PREPARED = re.compile(r"\bDate prepared\b", re.I)
+
+
+def check_date_prepared(path, lines, today, out):
+    """Date Prepared against today. After today is impossible; before today is a lead to confirm."""
+    if today is None:
+        return
+    for n, line in lines:
+        if not DATE_PREPARED.search(line):
+            continue
+        m = FULL_DATE.search(line[DATE_PREPARED.search(line).end():])
+        if not m:
+            continue
+        day = datetime.date(int(m.group(4)), MONTHS.index(m.group(3)) + 1, int(m.group(2)))
+        if day > today:
+            out.append(Finding("error", "date-prepared", path, n,
+                               "Date Prepared %s is after today (%s)" % (m.group(0), today.isoformat())))
+        elif day < today:
+            out.append(Finding("warning", "date-prepared", path, n,
+                               "Date Prepared %s is %d day(s) before today (%s); confirm the content was last checked "
+                               "on that date, or update it" % (m.group(0), (today - day).days, today.isoformat())))
+
+
+def check_tables(path, lines, out, id_values, audit=False):
     for start, header, rows in tables(lines):
         names = [plain(h) for h in header]
         check_totals(path, names, rows, out)
-        check_uniform(path, start, names, rows, out, prose_above(lines, start))
+        check_uniform(path, start, names, rows, out, prose_above(lines, start), audit)
         collect_id_values(path, names, rows, id_values)
 
 
@@ -540,21 +636,135 @@ def explains(prose, name, value):
     return False
 
 
-def check_uniform(path, start, names, rows, out, prose=""):
+def check_uniform(path, start, names, rows, out, prose="", audit=False):
     """A text column with one value in every row of a long table carries no information, unless
-    the text above the table says why (rendering.md: say it once, above the table)."""
+    the text above the table says why (rendering.md: say it once, above the table). With audit,
+    an explained column is still reported: a reason does not make a constant column informative,
+    so the reviewer decides whether the form's own rule makes it constant."""
     data = [r for _, r in rows if total_column(r) is None]
     if len(data) < MIN_ROWS_FOR_UNIFORM:
         return
     for col, name in enumerate(names[1:], 1):
         values = {plain(r[col]) for r in data if col < len(r)}
         value = next(iter(values)) if len(values) == 1 else ""
-        if not value or number(value) is not None or explains(prose, name, value):
+        if not value or number(value) is not None:
+            continue
+        if explains(prose, name, value):
+            if audit:
+                out.append(Finding("warning", "uniform-column", path, start,
+                                   "column '%s' (column %d) holds '%s' in every one of %d rows; the text above the "
+                                   "table gives a reason, but the column still separates nothing; confirm that the "
+                                   "form's own rule makes it constant, or grade the values"
+                                   % (name, col + 1, value, len(data))))
             continue
         out.append(Finding("warning", "uniform-column", path, start,
-                           "every one of %d rows has %s (column %d) '%s'; grade the values, or say "
+                           "column '%s' (column %d) holds '%s' in every one of %d rows; grade the values, or say "
                            "once in the text above the table why every row has it"
-                           % (len(data), name, col + 1, value)))
+                           % (name, col + 1, value, len(data))))
+
+
+def count_of(token):
+    return int(token) if token.isdigit() else NUMBER_WORDS.get(token.lower())
+
+
+def list_size(lines, at, above=None):
+    """(items, description) of the table, list or run of headings that starts at index `at` of lines:
+    data rows of a table (total rows left out), the top-level items of a bullet or numbered list, or the
+    headings one level below the heading level `above` when the claim sits right under such a heading.
+    None when none starts there."""
+    n, text = lines[at]
+    h = HEADING.match(text)
+    if h and above is not None and len(h.group(1)) == above + 1:
+        count = 0
+        for _n, t in lines[at:]:
+            m = HEADING.match(t)
+            if m and len(m.group(1)) <= above:
+                break
+            count += bool(m and len(m.group(1)) == above + 1)
+        return count, "the run of headings starting at line %d" % n
+    if text.lstrip().startswith("|"):
+        block = []
+        for _n, t in lines[at:]:
+            if not t.lstrip().startswith("|"):
+                break
+            block.append(t)
+        if len(block) >= 3 and re.match(r"^\|?\s*:?-{3,}", block[1].strip()):
+            return len([1 for t in block[2:] if total_column(cells(t)) is None]), \
+                "the table starting at line %d" % n
+        return None
+    m = LIST_ITEM.match(text)
+    if not m:
+        return None
+    indent, count = len(m.group(1)), 0
+    for _n, t in lines[at:]:
+        item = LIST_ITEM.match(t)
+        if not t.strip():
+            continue
+        if item and len(item.group(1)) == indent:
+            count += 1
+        elif item and len(item.group(1)) > indent or t.startswith(" ") and not item:
+            continue
+        else:
+            break
+    return count, "the list starting at line %d" % n
+
+
+def book_counts():
+    """[(table, noun, count, cite)] from references/book-counts.json."""
+    try:
+        data = json.loads((SKILL_DIR / "references" / "book-counts.json").read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return []
+    return [(t["table"], t["noun"].lower(), int(t["count"]), t["cite"]) for t in data.get("tables", [])]
+
+
+def check_counts(path, lines, out):
+    """A count in prose ("all fourteen elements of Table 1.1") that disagrees with the table or list
+    printed straight after it, or with the rows the book prints in that table (book-counts.json). The
+    same count in the same words elsewhere in the file is reported too, since the wrong number is
+    usually copied (the charter said fourteen in three places)."""
+    claims, wrong, level, current = [], {}, {}, None
+    registry = book_counts()
+    for k, (n, line) in enumerate(lines):
+        h = HEADING.match(line)
+        if h:
+            current = len(h.group(1))
+        level[k] = current
+        if line.lstrip().startswith("|") or not line.strip() or h or LIST_ITEM.match(line):
+            continue
+        for m in COUNT_CLAIM.finditer(plain(line)):
+            if re.match(r"\W*(?:above|earlier|before|previous|so far)\b", plain(line)[m.end():], re.I):
+                continue
+            claims.append((n, count_of(m.group(1)), m.group(2).lower(), k))
+        for table, noun, count, cite in registry:
+            for m in re.finditer(r"\b(\d{1,3}|%s)\s+(?:[\w'-]+\s+){0,2}?%s\s+of\s+Table\s+%s\b"
+                                 % ("|".join(NUMBER_WORDS), noun, re.escape(table)), plain(line), re.I):
+                said = count_of(m.group(1))
+                if said != count:
+                    wrong[(said, noun)] = (n, count, "Table %s as the book prints it (%s)" % (table, cite))
+                    claims.append((n, said, noun, k))
+    for n, said, noun, k in claims:
+        j = k + 1
+        while j < len(lines) and not lines[j][1].strip():
+            j += 1
+        if j >= len(lines) or lines[j][0] - n > 3 or (said, noun) in wrong:
+            continue
+        got = list_size(lines, j, level[k])
+        if got and got[0] != said and said is not None:
+            wrong[(said, noun)] = (n, got[0], got[1])
+    shown = set()
+    for n, said, noun, k in claims:
+        hit = wrong.get((said, noun))
+        if not hit or (n, said, noun) in shown:
+            continue
+        shown.add((n, said, noun))
+        at, size, where = hit
+        if n == at:
+            out.append(Finding("warning", "count", path, n, "says %s %s, but %s has %s" % (said, noun, where, size)))
+        else:
+            out.append(Finding("warning", "count", path, n,
+                               "says %s %s, the same count that line %d gets wrong (%s has %s)"
+                               % (said, noun, at, where, size)))
 
 
 def collect_id_values(path, names, rows, id_values):
@@ -597,6 +807,77 @@ def report_id_conflicts(id_values, out):
                 where += "; and %d more" % (len(seen) - 4)
             out.append(Finding("warning", "id-conflict", path, n,
                                "%s has different %s text in different tables: %s" % (key, name, where)))
+
+
+M0_PHRASE = re.compile(r"assigned by the sponsor at M0", re.I)
+M0_ROW = re.compile(r"^\|\s*M0\s*\|")
+ANY_DATE = re.compile(r"\b(\d{1,2}) (%s)[a-z]* (\d{4})\b" % "|".join(m[:3] for m in MONTHS))
+# The family of wordings that tie the project manager's appointment to M0: a verb of appointing, the
+# project manager, and either M0 itself or a date on or before M0, or a future "to be assigned".
+APPOINT = re.compile(r"\b(?:assign|name|appoint|designat|select|nominat)\w*", re.I)
+PM_WORDS = re.compile(r"\bproject manager\b", re.I)
+M0_ANCHOR = re.compile(r"\b(?:at|by|before|on or before|until)\s+M0\b|\bto be (?:assigned|named|appointed|designated)\b"
+                       r"|\bwill (?:assign|name|appoint|designate)\b", re.I)
+BEFORE_DATE = re.compile(r"\b(?:on or before|by|before)\s+(?:%s )?(\d{1,2}) (%s)[a-z]* (\d{4})\b"
+                         % (WEEKDAY, "|".join(m[:3] for m in MONTHS)), re.I)
+
+
+def charter_m0(files):
+    """The M0 date from the milestone table of a charter among files, or None."""
+    for path, lines in files:
+        for _n, line in lines:
+            if M0_ROW.match(line.strip()):
+                m = ANY_DATE.search(plain(line))
+                if m:
+                    return datetime.date(int(m.group(3)), [x[:3] for x in MONTHS].index(m.group(2)) + 1,
+                                         int(m.group(1)))
+    return None
+
+
+def appointment_before_m0(sentence, m0):
+    """True when a sentence ties the project manager's appointment to M0: 'assigned by the sponsor at M0',
+    'to be named', or 'names the project manager on or before <a date not after M0>'."""
+    if M0_PHRASE.search(sentence):
+        return True
+    if not (PM_WORDS.search(sentence) and APPOINT.search(sentence)):
+        return False
+    if M0_ANCHOR.search(sentence):
+        return True
+    for m in BEFORE_DATE.finditer(sentence):
+        month = [x[:3].lower() for x in MONTHS].index(m.group(2)[:3].lower()) + 1
+        if datetime.date(int(m.group(3)), month, int(m.group(1))) <= m0:
+            return True
+    return False
+
+
+def check_stale_m0(path, lines, m0, out):
+    """'name to be assigned by the sponsor at M0' fits a document prepared on or before M0 (review-lessons.md,
+    One person, one name). After M0 it reads as stale: the appointment is either recorded or a question. The
+    check reads the family of wordings (appointment verb, project manager, M0 or a date on or before it), not
+    one phrase."""
+    if m0 is None:
+        return
+    prepared = None
+    for _n, line in lines:
+        if re.match(r"\*\*Date Prepared:\*\*", line.strip()):
+            m = ANY_DATE.search(plain(line))
+            if m:
+                prepared = datetime.date(int(m.group(3)), [x[:3] for x in MONTHS].index(m.group(2)) + 1,
+                                         int(m.group(1)))
+            break
+    if prepared is None or prepared <= m0:
+        return
+    for n, line in lines:
+        text = plain(line)
+        if text.lstrip().startswith("|"):
+            text = " ; ".join(cells(text))
+        hit = next((x for x in sentences(text) if appointment_before_m0(x, m0)), None)
+        if hit:
+            out.append(Finding("warning", "stale-m0", path, n,
+                               "the appointment of the project manager is tied to M0 or to a date on or before it "
+                               "(%r) in a document prepared on %s, after M0 on %s; no project document records the "
+                               "appointment, so write that, mark it, and list it as a question to the sponsor"
+                               % (hit.strip()[:90], prepared.isoformat(), m0.isoformat())))
 
 
 def people(files):
@@ -674,7 +955,7 @@ def check_approvals(path, text, lines, out):
             return
 
 
-def run(texts, sponsor=None, customer=None, terms=None, labels=None):
+def run(texts, sponsor=None, customer=None, terms=None, labels=None, audit=False, today=None):
     """Every check over texts, a {path: markdown} mapping in the order given; returns the findings.
 
     Sponsor and customer default to the names in the charter fields among texts;
@@ -691,7 +972,9 @@ def run(texts, sponsor=None, customer=None, terms=None, labels=None):
     charters = [path for path, _ in files if is_charter(texts[path])]
 
     out, id_values = [], defaultdict(list)
+    m0 = charter_m0(files)
     for path, lines in files:
+        check_stale_m0(path, lines, m0, out)
         check_markup(path, lines, labels, out)
         check_terms(path, lines, terms, out)
         check_dates(path, lines, out)
@@ -699,7 +982,10 @@ def run(texts, sponsor=None, customer=None, terms=None, labels=None):
         check_section_refs(path, lines, numbers_by_path, charters, out)
         check_citations(path, lines, longest, out)
         check_form_notes(path, lines, labels, out)
-        check_tables(path, lines, out, id_values)
+        check_note_length(path, lines, out)
+        check_date_prepared(path, lines, today, out)
+        check_tables(path, lines, out, id_values, audit)
+        check_counts(path, lines, out)
         check_roles(path, lines, sponsor, customer, out)
         check_approvals(path, texts[path], lines, out)
     report_id_conflicts(id_values, out)
@@ -707,17 +993,50 @@ def run(texts, sponsor=None, customer=None, terms=None, labels=None):
     return out
 
 
-def contributed(texts, report, sponsor=None, customer=None):
+def contributed(texts, report, sponsor=None, customer=None, audit=False, today=None, with_context=False):
     """Findings that the report paths contribute, and the number of context findings left out.
 
     A finding is the report paths' when it sits in one of them, or when it is absent
-    from a run over the other files alone.
+    from a run over the other files alone. With with_context the left-out findings are returned too, as a
+    third value.
     """
-    everything = run(texts, sponsor, customer)
+    everything = run(texts, sponsor, customer, audit=audit, today=today)
     context = {p: t for p, t in texts.items() if p not in report}
-    before = set(run(context, sponsor, customer)) if context else set()
+    before = set(run(context, sponsor, customer, audit=audit, today=today)) if context else set()
     shown = [f for f in everything if f.path in report or f not in before]
-    return shown, len(everything) - len(shown)
+    left = [f for f in everything if f not in shown]
+    if with_context:
+        return shown, len(left), left
+    return shown, len(left)
+
+
+def heading_at(text, line):
+    """The nearest heading at or above a line of text, for the context listing."""
+    found = ""
+    for n, raw in enumerate(text.splitlines(), 1):
+        if n > line:
+            break
+        m = HEADING.match(raw)
+        if m:
+            found = m.group(2).strip()
+    return found
+
+
+def grouped(findings, order):
+    """One line per (level, check): the count, the files, the first location and message, the next lines."""
+    groups = {}
+    for f in sorted(findings, key=lambda f: (order.get(f.path, len(order)), f.line, f.check)):
+        groups.setdefault((f.level, f.check), []).append(f)
+    lines = []
+    for (level, check), items in sorted(groups.items(), key=lambda kv: (kv[0][0] != "error", -len(kv[1]), kv[0][1])):
+        first = items[0]
+        files = sorted({i.path for i in items})
+        lines.append("%s [%s] x%d in %s; first %s:%d: %s" % (level.upper(), check, len(items), ", ".join(files),
+                                                          first.path, first.line, first.message))
+        if len(items) > 1:
+            lines.append("    more at: " + ", ".join("%s:%d" % (i.path, i.line) for i in items[1:6])
+                         + (" ..." if len(items) > 6 else ""))
+    return lines
 
 
 def main(argv=None):
@@ -729,9 +1048,23 @@ def main(argv=None):
     ap.add_argument("--sponsor", help="sponsor's name, if the charter is not among the paths")
     ap.add_argument("--customer", help="customer's name, if the charter is not among the paths")
     ap.add_argument("--errors-only", action="store_true")
+    ap.add_argument("--group", action="store_true",
+                    help="one line per check and level (count, files, first location, the next lines) instead of "
+                         "one line per finding")
+    ap.add_argument("--show-context", action="store_true",
+                    help="with --report, also list the findings left out as already in the context files, with "
+                         "the heading each sits under")
+    ap.add_argument("--today", metavar="YYYY-MM-DD",
+                    help="check each Date Prepared against this day (after it: error; before it: warning)")
+    ap.add_argument("--audit", action="store_true",
+                    help="also report a uniform column the text above the table explains; use when reviewing "
+                         "documents, not when generating a form")
     args = ap.parse_args(argv)
 
-    paths = [os.path.normpath(p) for p in args.paths]
+    shorthand = {"charter": "docs/charter-package.en.md", "scope": "docs/scope-package.en.md"}
+    repo = SKILL_DIR.parents[2]
+    paths = [os.path.normpath(os.path.relpath(repo / shorthand[p]) if p in shorthand and not Path(p).is_file() else p)
+             for p in args.paths]
     report = [os.path.normpath(p) for p in args.report if p]
     if "" in args.report:
         if not paths:
@@ -747,16 +1080,31 @@ def main(argv=None):
         texts[p] = Path(p).read_text(encoding="utf-8")
 
     sponsor, customer = args.sponsor, args.customer
+    today = None
+    if args.today:
+        try:
+            today = datetime.date.fromisoformat(args.today)
+        except ValueError:
+            ap.error("--today %r: write the date as YYYY-MM-DD" % args.today)
+    left = []
     if report:
         report = set(report)
-        out, hidden = contributed(texts, report, sponsor, customer)
+        out, hidden, left = contributed(texts, report, sponsor, customer, args.audit, today, with_context=True)
     else:
-        out, hidden = run(texts, sponsor, customer), 0
+        out, hidden = run(texts, sponsor, customer, audit=args.audit, today=today), 0
 
     order = {p: i for i, p in enumerate(paths)}
     shown = [f for f in out if f.level == "error" or not args.errors_only]
-    for f in sorted(shown, key=lambda f: (order.get(f.path, len(order)), f.line, f.check)):
-        print(f)
+    if args.group:
+        for line in grouped(shown, order):
+            print(line)
+    else:
+        for f in sorted(shown, key=lambda f: (order.get(f.path, len(order)), f.line, f.check)):
+            print(f)
+    if args.show_context and left:
+        print("Findings already in the context files (not part of the report):")
+        for f in sorted(left, key=lambda f: (order.get(f.path, len(order)), f.line, f.check)):
+            print("  CONTEXT %s  (under: %s)" % (f, heading_at(texts[f.path], f.line) or "no heading"))
     errors = sum(f.level == "error" for f in out)
     summary = "%d error(s), %d warning(s) in %d file(s)" % (errors, len(out) - errors, len(paths))
     if report:

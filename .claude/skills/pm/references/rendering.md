@@ -70,6 +70,10 @@ blank line between them. The labels vary and are not interchangeable:
   labels as the first `Field | Content` table, and a regenerated 1.1 matches
   that.
 
+The title-block lines sit directly under each other, with no trailing spaces. A Markdown preview folds them into one line; `md_to_docx.py` and `tools/gdoc.py`
+read them as separate lines, so check the layout in the .docx, not in a preview. `new_form.py` leaves Project Title empty: copy it from the charter's title block
+when filling a form from the project, and leave it empty on a blank template; a blank template leaves Date Prepared empty too, and a filled form takes the day it is written (`house-style.md`, Dates on a form).
+
 Do not write `**Project:**`, `**Date prepared:**` or `**Source:**` in a form;
 those are not printed labels. The bold key/value block under the H1 of
 `docs/charter-package.en.md` (`**Project:**`, `**Budget:**`, `**Date
@@ -121,6 +125,13 @@ Markdown, and do not invent a pair the form does not print.
 `tools/gdoc_form.py` does not pair fields; it draws title bars, group header
 rows passed to it explicitly, column widths and landscape pages in the Google
 Doc.
+
+**A table inside a free-text box.** In this project some boxes of 2.8 and of the 1.1 sections hold a
+table (a roles table, a functions list). That is allowed: the table is content, so its header
+cells are not printed labels, and `check_fidelity.py` lists them as unprinted (Role, ID, Function,
+Deliverable, Criterion). Run it with `--ignore-tables`, which skips a table none of whose labels
+the form prints and counts it, and name the tables once in the italic paragraph. A column added to
+one of the form's own tables (a header beside a printed label) is still a defect.
 
 A cell holds one paragraph. `<br>` does not survive the push to the Google Doc
 (it arrived as literal text 23 times), and Markdown cannot put a list in a
@@ -198,7 +209,16 @@ as a bold line (the colon is optional). A plain-text label is not found by
 Nothing goes inside the form that the printed form does not print: no note
 under the milestone table, no explanation under Approvals, no extra title
 heading. Put the explanation in a short italic paragraph before the form's
-first page heading. Signature blocks copy the printed columns exactly; for 1.1
+first page heading.
+
+**The italic note.** One paragraph, in this order, and nothing else: (1) the citation, PDF and printed pages;
+(2) the source copy used (file, and the date wording when the charter is uncommitted); (3) differences between
+the printed pages, or between 2A and 2B, and the tailorings taken (an added row, a flattened header, a table in a
+box); (4) added rows or labels and why; (5) where a source column with no printed place went (the Type of a risk
+in Comments); (6) the Requirements source of a stakeholder register; (7) what is empty and why, and that a name
+is marked or unknown (the project manager). Its readers are the team and a grader, who read the form, not the
+note: keep it under about 150 words (`check_consistency.py` warns above that, `note-length`) and put questions to
+the user in the reply. Signature blocks copy the printed columns exactly; for 1.1
 that is two, Project Manager and Sponsor or Originator.
 
 ## Grouped header rows
@@ -268,12 +288,43 @@ column in the italic paragraph and leave the data in the source.
 **One source column for two printed ones.** 2.32 prints Response in bank 1
 and Actions in bank 2; the charter has one Response column. Copy the source's
 response verbatim into Response and do not split it, because one ID, one text
-matters more than the split. Actions takes only what a document states as
+matters more than the split. A strategy label (avoid, mitigate, transfer, accept,
+escalate, contingent response or fallback plan) is the skill's classification, since the
+charter's responses carry no label: never put it in Response; if one is given, write it in
+Comments as `Strategy, skill's reading: ...` (judgment, recorded in 3.2) and say so in the
+italic paragraph. `pmbok-risk.md` says the same. Actions takes only what a document states as
 actions for that risk (the work packages the scope package's coverage check
-assigns to the response, cited as such); otherwise it is empty. Status is
+assigns to the response, cited as such); otherwise it is empty. A work package
+is written with its title, never as a bare code, so the cell does not read as a
+list of numbers: `Work package 1.2.3.2, Notification gateway proof of concept`
+(the title as the dictionary spells it). Status is
 `Open`, plain, for every risk no document records as closed (see
 `house-style.md`, Judgement columns), and the italic paragraph says why, which
 also answers the uniform-column check.
+
+**Filling 2.32 from the charter, step by step.**
+
+- One row per charter risk (R1 to R12 as the charter numbers them), the ID column holding `R1`, `R2`, and the risk statement copied as written.
+- Scaffold with room for every risk, to a scratch path in an audit or a sandbox:
+  `python3 .claude/skills/pm/scripts/new_form.py 2.32 --rows 12 --out <scratch>/2-32-risk-register.en.md`.
+- Actions: `python3 .claude/skills/pm/scripts/risk_actions.py docs/scope-package.en.md` prints the cell for each risk from the scope package's coverage check
+  (`R1 to R12 responses`), each work package with its title as the dictionary spells it. Several packages in one cell are separated by a semicolon, never a comma,
+  because the titles contain commas. Cite the coverage row once in the italic paragraph; a risk the row does not list has an empty Actions cell.
+- While a 3.3 is pending, a risk whose response names a date or a milestone that the request moves (the charter's R8 and R9 are examples) keeps the charter text; say in the
+  italic paragraph that the request lists it as updated and that the text follows the charter until the sponsor decides.
+- The charter date of the form: a charter committed in git is named with its commit date in the italic paragraph (`house-style.md`, Dates on a form).
+- The italic note is counted per paragraph (150 words each). A 2.32 note that must carry the Type column, Actions, the empty cells, the pending 3.3 and Status is split into two italic paragraphs,
+  the citation and the copy used first, the readings second; `check_consistency.py --report <file>` counts each alone.
+- The checker prints how many findings sit in the context files; `--show-context` lists them with the heading each sits under, so it can be confirmed that none touches the risk table.
+
+**3.1 Issue Log (Issue ID) and 3.2 Decision Log (ID).** The book defines no ID scheme for either. Number
+entries in the order they are logged (`ISS1`, `ISS2` for issues, `DEC1`, `DEC2` for decisions
+is the skill's suggestion, not the book's, and `D1` is taken by the deliverables; a risk that occurred keeps its register ID, for example R5, in the
+Issue Description so the two logs read as one record). Responsible Party takes only a name or
+role a document states (the charter names the sponsor and the PM by role); otherwise it is
+left empty and the missing person is listed as a question in the reply. Date is the
+team's, so it is left empty in a proposed row. 3.2 Comments carries the alternatives
+considered, the reason and the impact (BoF 3.2 p168 (PDF 179)).
 
 If the printed form has no ID column, do not add one. 1.3 Stakeholder Register
 starts with Name, 1.4 Stakeholder Analysis with Name or Role, 2.14 Milestone
@@ -300,7 +351,8 @@ say so once in the italic paragraph before the form.
 in `tools/` goes through, understands: headings `#` to `#####` (a `######`
 heading is a paragraph of literal hashes); paragraphs; `- ` bullets and `1. `
 numbered items, one level only, since indentation is dropped; `> ` quotes;
-pipe tables; `---`; fenced blocks, each line a paragraph indented by its
+pipe tables; `---` (on a line of its own with a blank line above it: directly under a table row it
+becomes a stray `---` cell in `gdoc.md_to_html`, and `check_consistency.py` reports `table-rule`); fenced blocks, each line a paragraph indented by its
 leading spaces (the WBS outline goes through this); and inline `**bold**`,
 `*italic*`, `` `code` `` and `<mark>`. Anything else, `<br>` and other HTML,
 entities, images in Markdown syntax, nested list indentation, arrives as
