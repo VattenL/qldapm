@@ -150,5 +150,74 @@ class Load(unittest.TestCase):
                 self.assertEqual(lc.main([str(path) + ".missing"]), 2)
 
 
+class Effort(unittest.TestCase):
+    D = staticmethod(lc.datetime.date)
+
+    def test_a_part_time_effort_above_full_time_in_its_window(self):
+        # 2.5 person-months of 160 hours in the 46 working days from 16 October to 18 December 2026
+        findings, lines = lc.effort_check("MOB1", 2.5, "pm", self.D(2026, 10, 16), self.D(2026, 12, 18),
+                                          hours_per_pm=160)
+        self.assertEqual(len(findings), 1)
+        self.assertIn("43.5 hours a week", findings[0])
+        self.assertIn("above full time", findings[0])
+        text = "\n".join(lines)
+        self.assertIn("400 hours", text)
+        self.assertIn("full-time week assumed", text)
+        self.assertIn("1.19 person-months per calendar month", text)
+
+    def test_an_effort_within_full_time_but_above_the_part_time_limit(self):
+        args = ("MOB1", 200, "h", self.D(2026, 10, 5), self.D(2026, 11, 13))
+        self.assertEqual(lc.effort_check(*args)[0], [])
+        findings, _ = lc.effort_check(*args, limit=20.0, week_hours=40.0)
+        self.assertEqual(len(findings), 1)
+        self.assertIn("above the stated limit of 20", findings[0])
+        lines = lc.effort_check(*args, week_hours=40.0)[1]
+        self.assertNotIn("assumed", "\n".join(lines))
+
+    def test_a_person_month_length_is_never_assumed(self):
+        with self.assertRaises(ValueError) as caught:
+            lc.effort_check("MOB1", 2.5, "pm", self.D(2026, 10, 16), self.D(2026, 12, 18))
+        self.assertIn("--hours-per-pm", str(caught.exception))
+
+    def test_a_window_with_no_working_day_is_refused(self):
+        with self.assertRaises(ValueError):
+            lc.effort_check("MOB1", 8, "h", self.D(2026, 10, 10), self.D(2026, 10, 11))
+
+    def test_holidays_shorten_the_window(self):
+        plain = lc.effort_check("A", 80, "h", self.D(2026, 10, 5), self.D(2026, 10, 16))[1][-1]
+        held = lc.effort_check("A", 80, "h", self.D(2026, 10, 5), self.D(2026, 10, 16),
+                               holidays=[(self.D(2026, 10, 12), self.D(2026, 10, 16))])[1][-1]
+        self.assertIn("40.0 hours a week", plain)
+        self.assertIn("80.0 hours a week", held)
+
+    def test_parse_effort_reads_milestone_ids_and_dates(self):
+        miles = {"M2": self.D(2026, 10, 16), "M5": self.D(2026, 12, 18)}
+        self.assertEqual(lc.parse_effort("MOB1=2.5:pm:M2:M5", miles),
+                         ("MOB1", 2.5, "pm", self.D(2026, 10, 16), self.D(2026, 12, 18)))
+        self.assertEqual(lc.parse_effort("A=8:h:2026-10-05:2026-10-06", {})[3], self.D(2026, 10, 5))
+        for bad in ("A=8:h:M2:M5", "A=8:x:2026-10-05:2026-10-06", "A=8:h:2026-10-06:2026-10-05",
+                    "A=8:h:5 October:6 October", "A=8h"):
+            with self.assertRaises(ValueError, msg=bad):
+                lc.parse_effort(bad, {})
+
+    def test_command_line_effort(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "scope.md"
+            path.write_text(scope(("1.1.1.1", MON_FRI, "DEV1", 10)), encoding="utf-8")
+            out = io.StringIO()
+            with contextlib.redirect_stdout(out):
+                code = lc.main([str(path), "--effort", "MOB1=2.5:pm:2026-10-16:2026-12-18", "--hours-per-pm", "160",
+                                "--effort-source", "MOB1=charter.md:337 and charter.md:353"])
+            self.assertEqual(code, 1)
+            self.assertIn("charter.md:337 and charter.md:353", out.getvalue())
+            self.assertIn("1 effort finding(s)", out.getvalue())
+            with contextlib.redirect_stdout(io.StringIO()):
+                self.assertEqual(lc.main([str(path), "--effort", "MOB1=300:h:2026-10-16:2026-12-18"]), 0)
+            err = io.StringIO()
+            with contextlib.redirect_stderr(err):
+                self.assertEqual(lc.main([str(path), "--effort", "MOB1=2.5:pm:2026-10-16:2026-12-18"]), 2)
+            self.assertIn("--hours-per-pm", err.getvalue())
+
+
 if __name__ == "__main__":
     unittest.main()

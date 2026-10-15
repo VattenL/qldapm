@@ -69,8 +69,32 @@ Every date is written YYYY-MM-DD (2026-12-18); a prose date stops the run with a
 - With `--charter`, a package whose window ends after the date of a milestone listed on its sheet is printed as a `gate:` line. Read the
   sheet and the roll-up first: the scope package states its deliberate cases (a package that crosses a gate for a stated reason).
 
+- `--effort NAME=QTY:UNIT:FROM:TO` compares an effort the source states with the calendar window it is placed in. It needs no
+  dictionary hours, so it catches what the spread cannot: a part-time role whose person-months do not fit between joining and
+  leaving. UNIT is `pm` or `h`; FROM and TO are dates or milestone ids read from `--charter` (`MOB1=2.5:pm:M2:M5`).
+
 **A part-time person the charter gives no weekly figure.** The charter states 2.5 person-months for the mobile developer and no
-hours a week. The default limit of 40 then judges that person as full time and hides an overload. Report the person-months
-against the window the sheets give (the months between joining and leaving, from the charter's milestone notes), ask the sponsor for
-the weekly limit, run with an assumed limit and label it assumed, and list the missing limit as an open question or a warning;
-never write the assumed limit as the charter's.
+hours a week, and the dictionary spread alone judges that person against the default 40, as full time. Run the effort check
+as well:
+
+```bash
+python3 .claude/skills/pm/scripts/load_check.py docs/scope-package.en.md --charter docs/charter-package.en.md \
+    --effort MOB1=2.5:pm:M2:M5 --hours-per-pm <hours the source gives> --fraction MOB1=<stated fraction> \
+    --effort-source "MOB1=docs/charter-package.en.md:<line>, docs/scope-package.en.md:<line>"
+```
+
+It prints the hours (quantity times the person-month), the working days of the window, the weekly hours, the implied FTE and
+whether that is above the person's own limit (`--limit NAME=HOURS` or `--fraction NAME=0.5`) or above 1.0 (exit code 1), and it
+echoes `--effort-source`. Three inputs are the caller's and none is assumed silently:
+
+- **The length of a person-month** (`--hours-per-pm`) has no single value. Take it from the source (the hours the cost rates are
+  worked out at, such as the 160 hours of the rate mix) and name that line in the finding. Without it a `pm` effort is a usage
+  error. If the source states none, ask the sponsor and say the figure is assumed.
+- **The full-time week** (`--week-hours`) defaults to 40 and the output says "full-time week assumed" until it is given.
+- **The window** counts both end dates, Monday to Friday, less `--holiday` and the charter's breaks that have an end. "Joins
+  after M2" and "leaves after M5" are read as the M2 and M5 dates themselves; say so in the finding if a day either way changes
+  the answer. The output also prints person-months per calendar month (days over 30.4375, an approximation) as a cross-check.
+
+Then ask the sponsor for the weekly limit, run with an assumed limit labelled as assumed, and list the missing limit as an open
+question or a warning; never write the assumed limit as the charter's. The finding cites every line the effort rests on: each
+charter sentence that states the person-months, the join and leave points, and the sheet that places the work.

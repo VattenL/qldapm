@@ -224,7 +224,7 @@ python3 tools/check_scope.py         # chỉ khi scope package hoặc thứ nó 
 | Kiểm tra | Trả lời câu hỏi | Báo lỗi (exit 1) khi |
 | --- | --- | --- |
 | `check_fidelity.py` | Markdown có đủ mọi nhãn in, đúng chính tả, đúng thứ tự in không? | Thiếu nhãn hoặc sai thứ tự. Nhãn không có trên form chỉ được liệt kê, không làm hỏng kiểm tra. `--flattened` chấp nhận RTM và WBS dictionary của scope package, nơi tiêu đề nhóm in được viết thành nhãn con hoặc thành nhóm cộng nhãn con, và liệt kê chúng; `--ignore-tables` bỏ qua bảng nằm trong ô văn bản tự do; `--page N` kiểm một trang in của form mà tài liệu viết tách ra |
-| `check_consistency.py --report <form>` | Form mới có khớp với charter và scope package không? | Bất kỳ lỗi nào do form mới gây ra. Lỗi cũ trong tài liệu nguồn chỉ được đếm, không hiển thị (`--show-context` liệt kê chúng kèm đề mục chứa chúng; `--group` in một dòng cho mỗi loại kiểm tra; `--today YYYY-MM-DD` so mỗi Date Prepared với ngày đó; hai từ `charter` và `scope` thay cho hai file package) |
+| `check_consistency.py --report <form>` | Form mới có khớp với charter và scope package không? | Bất kỳ lỗi nào do form mới gây ra. Lỗi cũ trong tài liệu nguồn chỉ được đếm, không hiển thị (`--show-context` liệt kê chúng kèm đề mục chứa chúng; `--group` in một dòng cho mỗi loại kiểm tra, trừ mỗi `form-note` giữ một dòng riêng kèm đoạn trích; `--today YYYY-MM-DD` so mỗi Date Prepared với ngày đó; hai từ `charter` và `scope` thay cho hai file package) |
 | `tools/check_scope.py` | Scope package còn cộng đủ 4,400 giờ và 700,000,000 VND không? | Bất kỳ kiểm tra nào của nó |
 
 Một form sạch in ra, ví dụ:

@@ -154,7 +154,9 @@ approach and a network diagram are forms to create unless it holds them (scope p
   needs decide (BoF 2.17 p73 (PDF 84); p76 (PDF 87)). The Weighting Equation column names the one used. On the
   book's sample, triangular gives (20 + 25 + 36) / 3 = 27 days and beta gives 26.
 - **Reserve vocabulary.** The reserve budget line is a cost contingency reserve; charter form 2B's Cost row says
-  "management reserve use reported monthly", a source error to report, not copy. Float is not a schedule reserve.
+  "management reserve use reported monthly", a source error to report, not copy. Float is not a schedule reserve. Before saying the budget line and the success criterion agree, or that a document names no management reserve, run
+  `grep -n -i "management reserve\|contingency reserve" docs/*.md docs/forms/*.md` (variants from the `house-style.md` table), quote each hit with file and line, and report a mismatch as a finding;
+  never smooth it over (`decisions.md` section 1).
 - **SPI alone misleads**: it measures all work, so critical path performance is checked too (PM 7.4.2.2 p263
   (PDF 302)). The 5 percent in the charter is a cost band, not a schedule threshold.
 
@@ -278,9 +280,11 @@ approach and a network diagram are forms to create unless it holds them (scope p
 - Recorded in: 3.3 Schedule (Increase, Decrease, Modify, Description); 3.2; 2.18; the risk register for risks
   the compression creates (PM 6.6.3.5 p230 (PDF 269)). Formula: none.
 - Wrong move: cutting an estimate to fit a date. Compression is done "without reducing the project scope" (PM
-  6.5.2.6 p215 (PDF 254)) and chapter 6 names no technique that shrinks an estimate. A schedule modification
-  may result in a change request (PM 6.5.3.5 p220 (PDF 259); 6.6.3.3 p229 (PDF 268)); making it the route
-  when no compression closes the gap, a change request (3.3) to the sponsor, is the team rule.
+  6.5.2.6 p215 (PDF 254)) and chapter 6 names no technique that shrinks an estimate (searched PM 6.5.2 p209 to 216 (PDF 248 to 255), 6.6.2
+  p226 to 228 (PDF 265 to 267)). A schedule modification may result in a change request (PM 6.5.3.5 p220 (PDF 259);
+  6.6.3.3 p229 (PDF 268)); making it the route when no compression closes the gap, a change request (3.3) to the
+  sponsor, is the team rule. Say it in words whenever the recovery needs time or money beyond the baseline: this is a
+  change request (3.3) to the sponsor, and trimming or cutting estimates to absorb it is not a technique in the book.
 
 **D9. Variance thresholds and the trigger for action.**
 - When: set in 6.1, applied in 6.6 at each status date; trigger is a variance past a threshold.

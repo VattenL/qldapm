@@ -480,6 +480,25 @@ class Consistency(unittest.TestCase):
             "The project manager is not yet named."])
         found = [f for f in cc.run({"doc.md": form}) if f.check == "form-note"]
         self.assertEqual([f.line for f in found], [9])
+        self.assertIn('"The project manager is not yet named."', found[0].message)
+
+    def test_every_form_note_is_listed_with_its_text_when_grouped(self):
+        form = "\n".join([
+            "#### PROJECT CHARTER, page 4 of 4", "",
+            "| Field | Content |", "| --- | --- |", "| **Approvals** | |", "",
+            "The project manager is not yet named.", "",
+            "A second note that is not printed."])
+        found = [f for f in cc.run({"doc.md": form}) if f.check == "form-note"]
+        lines = cc.grouped(found, {"doc.md": 0})
+        self.assertEqual(len(found), 2)
+        self.assertIn('"The project manager is not yet named."', lines[0])
+        self.assertTrue(any('"A second note that is not printed."' in l and "doc.md:9" in l for l in lines[1:]))
+
+    def test_a_long_form_note_is_quoted_and_marked_cut(self):
+        text = "word " * (cc.NOTE_QUOTE // 5 + 20)
+        quoted = cc.quoted(text)
+        self.assertIn("(cut at %d of" % cc.NOTE_QUOTE, quoted)
+        self.assertEqual(cc.quoted("short note"), '"short note"')
 
     def test_denied_term_is_allowed(self):
         self.assertNotIn("term", self.run_on("The project has no management reserve."))

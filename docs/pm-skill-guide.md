@@ -224,7 +224,7 @@ python3 tools/check_scope.py         # only when the scope package or what it ro
 | Check | Question it answers | Fails (exit 1) on |
 | --- | --- | --- |
 | `check_fidelity.py` | Does the Markdown carry every printed label, spelled as printed, in printed order? | Missing or out-of-order labels. Unprinted labels are listed but do not fail. `--flattened` accepts the scope package's RTM and WBS dictionary, which write a printed group header as its child label or as group and child, and lists them; `--ignore-tables` skips a table inside a free-text box; `--page N` checks one printed page of a form the document writes apart |
-| `check_consistency.py --report <form>` | Does the new form agree with the charter and scope package? | Any error the new form contributes. Old errors in the sources are counted, not shown (`--show-context` lists them with the heading each sits under; `--group` prints one line per check; `--today YYYY-MM-DD` compares each Date Prepared with that day; the words `charter` and `scope` stand for the two package files) |
+| `check_consistency.py --report <form>` | Does the new form agree with the charter and scope package? | Any error the new form contributes. Old errors in the sources are counted, not shown (`--show-context` lists them with the heading each sits under; `--group` prints one line per check, except that each `form-note` keeps its own line with its quoted text; `--today YYYY-MM-DD` compares each Date Prepared with that day; the words `charter` and `scope` stand for the two package files) |
 | `tools/check_scope.py` | Does the scope package still roll up to 4,400 hours and 700,000,000 VND? | Any of its checks |
 
 A clean form prints, for example:

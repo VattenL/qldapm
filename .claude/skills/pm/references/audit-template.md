@@ -78,9 +78,15 @@ Each is reported as a finding with its location, or on a line of "Scans that fou
    information. Report one warning even when a sentence above the table explains it: quote the sentence and say what would close the warning (the form's own rule makes the value constant, or the team grades the rows).
    `check_consistency.py --audit` prints it as `uniform-column` and names the column and the value; the audit still has to list it.
 6. The same requirement ID across RTM Part 1 and the Inter-RTM Part 1B for Source and Priority (`id-conflict`): every difference with both locations, or "the IDs agree" with an example.
-7. Notes placed inside a printed form (`form-note`), stated counts against their lists (`count`), ID ranges against the families (`range`), contents lines such as "V1 to V11" against the prompt log.
+7. Notes placed inside a printed form (`form-note`; each hit is its own finding, see Rules for findings), stated counts against their lists (`count`), ID ranges against the families (`range`), contents lines such as "V1 to V11" against the prompt log.
 8. Derived figures recomputed from the assumption as written (the business-case activation share, the part-time person's load against the allocation: `load_check.py`).
-9. `check_pages.py` on the report itself.
+9. **Stated effort against its window.** For every person the charter or the scope package gives an effort in person-months or hours and a window (joins after one milestone, leaves after another; a pilot of so many hours), run
+   `load_check.py --effort NAME=QTY:UNIT:FROM:TO --hours-per-pm <the source's figure> --effort-source "NAME=<file:line>, <file:line>"` and report the implied FTE. It is a finding when it is above full time, or above the part-time
+   fraction or weekly limit the documents state; the dictionary spread (scan 8) cannot see it, and an aside in another finding does not count. The finding cites **each source line**: every sentence that states the effort, the join and leave points
+   (with the milestone dates and the line of the charter table that dates them), the sheet that places the work, and the line that gives the length of a person-month; it quotes them and shows the arithmetic (hours, working days, weeks, hours a
+   week, FTE). The length of a person-month is the source's or the caller's, never silent: name the line it came from, or say it is assumed and ask the sponsor. When the documents state no weekly limit, the finding is a warning that asks for it
+   (the effort above full time is an error: it contradicts itself without any limit). A scan with no person-month effort in the sources is listed under "Scans that found nothing" as such.
+10. `check_pages.py` on the report itself.
 
 ## Rules for findings
 
@@ -94,7 +100,17 @@ Each is reported as a finding with its location, or on a line of "Scans that fou
   defect are one finding with every location listed.
 - **Location.** `file:line`, plus the section, sheet code or form page, so it
   can be found in both the Markdown and the Doc. For the Doc, name the tab and
-  the heading the text sits under.
+  the heading the text sits under. Every finding, errors and warnings alike, has a
+  `file:line` and quoted text: a finding without both is a lead, not a finding. A
+  finding about a count or a pattern lists every location, each with its line.
+- **A generated picture.** For a defect seen in a Gantt page, the milestone chart or the
+  histogram, the picture has no line to cite, so give: the generator and its function
+  (`tools/schedule.py`, `tools/gdoc_schedule_tab.py` `build()`), the payload heading the image sits
+  under (`4.1 Project Schedule`), the `@@IMAGE` or `![...]` line in the source or payload with
+  its line number, and the source rows the bar or the label was drawn from (`file:line`, quoted:
+  the dates, the task name). Say which image you viewed (its file name or page) and what is wrong
+  in it in words (a bar starting after its finish, a label cut off); the Needs line names the
+  generator or the source row, never the image.
 - **A payload has no file in the repo.** A payload exists only in memory or in
   the scratchpad, so cite what rebuilds it and where in it: the generator and
   its function, the payload heading, and the source line the text came from,
@@ -121,6 +137,15 @@ Each is reported as a finding with its location, or on a line of "Scans that fou
   (printed page 130)". PDF page = printed page + 11. A bare "page 130" is
   ambiguous and draws a question, and a section number alone is no citation:
   run `check_pages.py` on the report.
+- **A form note is its own finding.** `check_consistency.py` `form-note` prints the quoted text of each
+  note. Report every hit separately, never as "n form-notes at lines a, b, c": quote the note, give
+  `file:line` and the printed page heading it sits under, and state the severity and why. A note that
+  changes what the form says (a tailoring, a condition, a figure the form has no field for) is a
+  warning that names what would close it (move it above the form into the italic reading paragraph,
+  or print it in a field the form has); one that contradicts a printed field or another document is
+  an error with both quotations; one that only repeats the source below the form is a warning of
+  low weight, and still listed. A hit dropped as a false positive (a label the script does not know)
+  is counted in Method with its quoted text. `--group` still prints every note on its own line.
 - **Script output is a lead, not a finding.** Read the line each script points
   at before reporting it, and say in Method how many script findings you
   dropped as false positives and why. Every `range` warning is either reported
@@ -166,7 +191,9 @@ Each is reported as a finding with its location, or on a line of "Scans that fou
 - **What the load check cannot see.** `load-check.md` spreads dictionary hours
   over the package windows and `tools/level.py` checks the levelled days; neither
   checks a person's hours in the week of a named milestone or a part-time limit
-  unless you pass the person's own limit. Say so in Method when it matters.
+  unless you pass the person's own limit, and neither compares a stated person-months
+  with the window it is placed in (that is `load_check.py --effort`, mandatory scan 9).
+  Say so in Method when it matters.
 - **Known findings are listed, not hidden.** `check_fidelity.py` on the scope package's 2.7 and on 2.10
   exits 1 without the option because the package writes a printed group header as its child labels; run it with `--flattened`
   (it accepts the child alone, `Category`, and group and child, `Labor Rate`), report the flattened labels as one warning

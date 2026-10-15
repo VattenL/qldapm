@@ -94,7 +94,11 @@ and Explanation" is the skill's house convention, not stated in the book, which 
 (BoF 4.4 p207 (PDF 218)). Use the full printed row labels of `extract_form.py 4.4 --fields` (Planned value (PV), Earned value (EV), Actual
 cost (AC), Schedule variance (SV), Cost variance (CV), Schedule performance index (SPI), Cost performance index (CPI), Percent planned,
 Percent earned, Percent spent), never "PV, EV, AC" or "SV, CV". Leave the printed "Estimates at Completion (EAC)" header row empty. Table 4.4
-has no row for BAC or Overall Status and the book gives no Overall Status scale: state the wording the report uses, or leave it for the PM.
+has no row for BAC or Overall Status and the book gives no Overall Status scale (searched BoF 4.4, 206 to 207, PDF 217 to 218): state the wording the report uses, or leave it for the PM.
+Root Cause of Schedule Variance, Root Cause of Cost Variance, Schedule Impact and Budget Impact need the team's judgement: leave each empty or `[TBD]` and ask. The Budget impact element asks for the impact on the budget, contingency
+funds and reserves "and any intended actions to address the variance" (BoF Table 4.4 p207 (PDF 218)), which are the PM's and the sponsor's choice, so no forecast total, escalation decision or reserve effect is drafted into it, and a cause
+written in a pending 3.3 is not this variance's cause until the team confirms it. A computed forecast goes only in a field the form prints for it: the two EAC rows, Selected EAC, Justification, and Explanation (with ETC and VAC), TCPI and the
+percent rows; a percent overrun against a threshold has no field and stays in the reply. A proposed Budget Impact text, if asked for, goes in the reply outside the form block as a proposal. A negative claim carries the pages searched.
 Ask which baseline the BAC and the charter's percent refer to: the book's BAC is the total planned value (PM 7.4.2.2 p261 (PDF 300)), the
 cost baseline includes the contingency reserves of its work packages and excludes management reserves (PM 7.3.3.1 p254 (PDF 293)), so say
 whether the contingency reserve is inside the BAC you used. Budgeted-rate EAC: say beside the figure that it accepts the
@@ -109,7 +113,7 @@ them. List `docs/forms/` now, it is the truth (SKILL.md step 3).
 | Fact | Where |
 | --- | --- |
 | The budget, its lines with their basis, the funding tranches and the milestones that release them, any statement that no further funding is committed | Charter `#### Preapproved financial resources`; form 1.1 page 3 |
-| The reserve budget line: which reserve it is, whether it sits inside the baseline, which risks may draw on it and through what; whether any management reserve exists | Same table; `review-lessons.md` section 5 |
+| The reserve budget line: which reserve it is, whether it sits inside the baseline, which risks may draw on it and through what; whether any management reserve exists | Same table; `review-lessons.md` section 5; then the term search of `decisions.md` section 1 over every copy, because the Cost success criterion words it differently |
 | Risks R1 to R12 | Charter `#### Overall project risk` |
 | Cost criterion: the budget ceiling, the variance limit per stage gate, how reserve use is reported (the criterion may word the reserve differently from the budget line: report both wordings, `decisions.md` section 5) | Charter `#### Project objectives and related success criteria` |
 | Authority: every limit of the block, with the ones the charter marks assumed | Charter `#### Assigned project manager, responsibility, and authority level` |
@@ -139,7 +143,7 @@ them. List `docs/forms/` now, it is the truth (SKILL.md step 3).
 - **A TCPI toward the EAC of the present CPI equals the CPI, and toward the budgeted-rate EAC it is 1**, because each EAC assumes exactly that efficiency (outside arithmetic from the formulas on PDF 305, printed 266, not a sentence of the book): it measures the forecast, not the effort left against the BAC. Quote the Table 7-1 words (harder, same, easier to complete) for the TCPI toward the BAC; `pm_calc.py evm` leaves the words off those two rows and says why.
 - **Garbled print.** The Book shows "cE = ( cO + c4M + cP ) /6" (PDF 100, printed 89); use the PMBOK form (245, PDF 284). Percent planned,
   earned and spent are Book formulas (PDF 218, printed 207), not PMBOK text.
-- **Contingency, never "management reserve"** for line 6 (`house-style.md`), though 7.2.3.1 (246, PDF 285) lets estimates carry both.
+- **Contingency, never "management reserve"** for line 6 (`house-style.md`), though 7.2.3.1 (246, PDF 285) lets estimates carry both. The charter's Cost success criterion still words the report as "management reserve use reported monthly" (charter form 2B). Before writing that the budget line and the success criterion agree, or that a document names no management reserve, run `grep -n -i "management reserve\|contingency reserve" docs/*.md docs/forms/*.md` (variants from the `house-style.md` table), quote each hit with file and line, and report a mismatch as a source error for the sponsor; never smooth it over, and never decide from one read (`decisions.md` section 1).
 - **Agile paragraph is no licence to cut estimates.** Under a strict budget it adjusts scope and schedule (234, PDF 273), and this
   project is predictive.
 - **Reserve in Estimate.** 2.20's Estimate includes reserve (Table 2.18); the charter holds the reserve at project level, so show
@@ -175,7 +179,9 @@ judgment call based on risk, time remaining in the project, and technical perfor
 
 Team rule for all of them: a remedy is a technique PMBOK 6 or the Book names, with its trade-off; an estimate is never cut to fit a date
 or a fund; when constraints cannot all hold, the route is a change request (form 3.3, PDF 183 to 185, printed 172 to 174) to the sponsor,
-with the decision in the Decision Log (3.2: ID, Category, Decision, Responsible Party, Date, Comments).
+with the decision in the Decision Log (3.2: ID, Category, Decision, Responsible Party, Date, Comments). Say it in words whenever a recovery or a
+response needs money or time beyond the baseline: this is a change request (3.3) to the sponsor (analysis of project performance may result in a change request to the cost and schedule baselines, 7.4.3.3, 269, PDF 308;
+a response to a risk, 11.5.3.1, 447, PDF 486), and trimming or cutting estimates to absorb it is not a technique in the book (searched 7.4.2, 260 to 268, PDF 299 to 307; 6.5.2, 209 to 216, PDF 248 to 255; 6.6.2, 226 to 228, PDF 265 to 267).
 
 ### D1 Estimating technique per work package, and the three-point equation
 - **When:** Estimate Costs (7.2), at planning and whenever scope or assumptions change.
@@ -275,7 +281,7 @@ with the decision in the Decision Log (3.2: ID, Category, Decision, Responsible 
 - **Techniques:** root cause analysis (4.5.2.2, 111, PDF 150); corrective action, preventive action or defect repair (4.5.3.2, 112, PDF 151),
   chosen by alternatives or cost-benefit analysis (111, PDF 150). If variance is too severe, a change request revises the cost baseline "to
   provide a realistic basis for performance measurement" (269, PDF 308). Negative CV is often hard to recover (262, PDF 301). Relative cost of
-  the options is not stated.
+  the options is not stated (searched 4.5.2, 111, PDF 150; 4.5.3, 112, PDF 151; 7.4.2.2, 262 to 267, PDF 301 to 306).
 - **Inputs:** 4.4 figures, risk register, status reports; none recorded yet.
 - **Records:** 4.3 Cost Variance; 4.4 Root Cause of Cost Variance, Budget Impact; 3.3 and 3.2 when a baseline changes.
 - **Formula:** CV = EV - AC; CPI = EV/AC; VAC = BAC - EAC.
@@ -296,4 +302,4 @@ with the decision in the Decision Log (3.2: ID, Category, Decision, Responsible 
 - **Records:** 4.4 EAC rows, Selected EAC, Justification, and Explanation, TCPI; forecast to stakeholders (7.4.3.2, 269, PDF 308); escalate
   a forecast overrun above the charter's percent.
 - **Formula:** the EAC, ETC and TCPI rows above.
-- **Wrong move:** assuming recovery without support (265, PDF 304); TCPI above 1.0 means harder (267, PDF 306).
+- **Wrong move:** assuming recovery without support (265, PDF 304); TCPI above 1.0 means harder (267, PDF 306). Writing the forecast into Budget Impact or Root Cause instead of the EAC rows (see 4.3 and 4.4 above).
