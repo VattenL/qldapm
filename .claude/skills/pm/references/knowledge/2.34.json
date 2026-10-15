@@ -1,0 +1,107 @@
+{
+  "form": "2.34",
+  "name": "Probability and Impact Assessment",
+  "process_group": "Planning",
+  "pmbok_processes": [
+    "11.3 Perform Qualitative Risk Analysis"
+  ],
+  "purpose": "Records the definitions of probability and of impact on each objective, plus a key that turns probability and impact scores into an overall risk rating. The definitions normally live in the risk management plan; use this form when the project has no risk management plan. It is developed once and does not usually change.",
+  "receives_from": [
+    {
+      "source": "2.31",
+      "what": "Risk management plan: named as a source in the prose; the book does not say which fields are used"
+    },
+    {
+      "source": "2.32",
+      "what": "Risk register: named as a source in the prose; the book does not say which fields are used"
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "2.32",
+      "what": "Risk register: named as a recipient in the prose; the book does not say which fields flow"
+    }
+  ],
+  "alignment": [
+    {
+      "form": "2.31",
+      "what_must_agree": "The book says only 'aligned and consistent'. Reading aid from the element table, not stated in the book: the probability and impact definitions, which the risk management plan normally holds (the prose says the definitions are defined there)."
+    },
+    {
+      "form": "2.32",
+      "what_must_agree": "The book says only 'aligned and consistent'. Reading aid from the element table, not stated in the book: the probability, impact and score values entered in the register against these definitions."
+    },
+    {
+      "form": "2.35",
+      "what_must_agree": "The book says only 'aligned and consistent'. Reading aid from the element table, not stated in the book: the rating key against the shading and thresholds of the probability and impact matrix."
+    },
+    {
+      "form": "1.3",
+      "what_must_agree": "The book says only 'aligned and consistent'. Reading aid from the element table, not stated in the book: the objectives and thresholds against what key stakeholders care about."
+    }
+  ],
+  "elements": [
+    {
+      "element": "Scope impact",
+      "printed_label": "Scope Impact",
+      "guidance": "What each impact level means for scope. The book's example runs from Very High (product does not meet objectives and is effectively useless) to Very Low (minimal deviation from requirements)."
+    },
+    {
+      "element": "Quality impact",
+      "printed_label": "Quality Impact",
+      "guidance": "What each level means for quality. The book's example runs from Very High (performance significantly below objectives, effectively useless) to Very Low (minimal deviation in performance)."
+    },
+    {
+      "element": "Schedule impact",
+      "printed_label": "Schedule Impact",
+      "guidance": "What each level means for the schedule. The book's example uses percent of overall schedule increase (Very High above 20 percent, High 10 to 20, Medium 5 to 10), then float: Low when noncritical paths have used all their float or overall increase is 1 to 5 percent, Very Low when noncritical paths slip but float remains."
+    },
+    {
+      "element": "Cost impact",
+      "printed_label": "Cost Impact",
+      "guidance": "What each level means for cost. The book's example uses percent cost increase (Very High above 20 percent, High 10 to 20, Medium 5 to 10), then contingency: Low when all contingency funds are needed, Very Low when some contingency is used and some remains."
+    },
+    {
+      "element": "Probability",
+      "printed_label": "Probability",
+      "guidance": "What each probability level means. The book's example: Very High 80 percent or greater, High 61 to 80, Medium 41 to 60, Low 21 to 40, Very Low 1 to 20, each with a plain-words phrase (most likely, probably, likely, may, unlikely)."
+    },
+    {
+      "element": "Risk rating",
+      "printed_label": "Risk Rating",
+      "guidance": "The key for the overall rating. The book's example gives rules per rating (High, Medium, Low) built from a probability level together with an impact level on any objective, and one rule on how many objectives score Medium. See notes for the exact combinations."
+    }
+  ],
+  "tailoring": [
+    "On smaller projects, impacts may be grouped together without separating impact by objective.",
+    "The matrix can be 3 by 3 for a small project, 5 by 5 for a medium project and 10 by 10 for a complex or large project.",
+    "To show the relative criticality of objectives (usually scope, schedule, cost, quality), use a tighter range of thresholds between levels for the critical one. The book's example: if cost is critical, Very Low to Very High as 2, 4, 6, 8 and 10 percent variance; if cost is relaxed, 5, 10, 15, 20 and 25 percent.",
+    "Other objectives that matter, such as stakeholder satisfaction, can be added; some organisations combine scope and quality into one objective.",
+    "To make the assessment more robust, add urgency information to show whether a risk is imminent or distant."
+  ],
+  "agile_or_adaptive": "",
+  "decisions": [
+    {
+      "decision": "What each impact level means on each objective",
+      "recorded_in": "Scope Impact; Quality Impact; Schedule Impact; Cost Impact",
+      "notes": ""
+    },
+    {
+      "decision": "What each probability level means",
+      "recorded_in": "Probability",
+      "notes": ""
+    },
+    {
+      "decision": "Which probability and impact combinations rate as High, Medium or Low",
+      "recorded_in": "Risk Rating",
+      "notes": ""
+    },
+    {
+      "decision": "Which objectives get tighter thresholds because they are critical",
+      "recorded_in": "Cost Impact; Schedule Impact",
+      "notes": "Tailoring decision; the book's example is cost."
+    }
+  ],
+  "citation": "Book of Forms form 2.34, PDF pages 148 to 150 (printed pages 137 to 139); Table 2.31 PDF pages 149 to 150 (printed pages 138 to 139)",
+  "notes": "Blank form: PDF pages 151 to 152 (printed pages 140 to 141); its printed title is Probability and Impact Risk Rating. The prose says this is 'a tool used in 11.3 Perform Qualitative Risk Analysis', not an output of it. Risk Rating example rules (Table 2.31): High = probability Medium or above with Very High impact on any objective; probability High or above with High impact; probability Very High with Medium impact; or a Medium score on more than two objectives. Medium = probability Very Low with High or above impact; Low with Medium or above impact; Medium with Low to High impact; High with Very Low to Medium impact; Very High with Low or Very Low impact; or Very Low with Medium impact on more than two objectives. Low = probability Medium with Very Low impact; Low with Low or Very Low impact; Very Low with Medium or less impact. The example rules overlap in places (for instance Very Low probability with Medium impact on more than two objectives is Medium by one rule and Low by another) and the book gives no tie-break: not stated in the book. The probability example here (61 to 80) differs by one point at the boundary from the 2.31 example (60 to 80). The Tailoring Tips lead-in says 'probability and impact matrix' although it is under the assessment. Nothing on the blank form crosses probability with impact; that is form 2.35."
+}

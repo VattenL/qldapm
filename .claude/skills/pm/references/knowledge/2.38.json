@@ -1,0 +1,161 @@
+{
+  "form": "2.38",
+  "name": "Procurement Strategy",
+  "process_group": "Planning",
+  "pmbok_processes": [
+    "12.1 Plan Procurement Management"
+  ],
+  "purpose": "A project document describing information about specific procurements: how work is delivered, which contract type is used and how the procurement moves through its phases. It is developed once for each procurement when needed.",
+  "receives_from": [
+    {
+      "source": "1.1",
+      "what": "Project charter: named as a source in the prose; the book does not say which fields are used"
+    },
+    {
+      "source": "1.3",
+      "what": "Stakeholder register: named as a source in the prose; the book does not say which fields are used"
+    },
+    {
+      "source": "2.3",
+      "what": "Project roadmap: named as a source in the prose; the book does not say which fields are used"
+    },
+    {
+      "source": "2.6",
+      "what": "Requirements documentation: named as a source in the prose; the book does not say which fields are used"
+    },
+    {
+      "source": "2.7",
+      "what": "Requirements traceability matrix: named as a source in the prose; the book does not say which fields are used"
+    },
+    {
+      "source": "Scope baseline",
+      "what": "named as a source in the prose; the book does not say which fields are used"
+    },
+    {
+      "source": "2.14",
+      "what": "Milestone list: named as a source in the prose; the book does not say which fields are used"
+    },
+    {
+      "source": "2.18",
+      "what": "Project schedule: named as a source in the prose; the book does not say which fields are used"
+    },
+    {
+      "source": "2.26",
+      "what": "Resource management plan: named as a source in the prose; the book does not say which fields are used"
+    },
+    {
+      "source": "2.28",
+      "what": "Resource requirements: named as a source in the prose; the book does not say which fields are used"
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "2.18",
+      "what": "Project schedule: named as a recipient in the prose; the book does not say which fields flow"
+    },
+    {
+      "target": "Project budget",
+      "what": "named as a recipient in the prose; the book does not say which fields flow"
+    },
+    {
+      "target": "2.23",
+      "what": "Quality management plan: named as a recipient in the prose; the book does not say which fields flow"
+    },
+    {
+      "target": "2.32",
+      "what": "Risk register: named as a recipient in the prose; the book does not say which fields flow"
+    }
+  ],
+  "alignment": [
+    {
+      "form": "1.1",
+      "what_must_agree": "The book says only 'aligned and consistent'. Reading aid from the element table, not stated in the book: the procurement against the charter's high-level scope, budget and constraints."
+    },
+    {
+      "form": "2.3",
+      "what_must_agree": "The book says only 'aligned and consistent'. Reading aid from the element table, not stated in the book: procurement phases against the roadmap."
+    },
+    {
+      "form": "2.6",
+      "what_must_agree": "The book says only 'aligned and consistent'. Reading aid from the element table, not stated in the book: what is bought against the requirements."
+    },
+    {
+      "form": "2.7",
+      "what_must_agree": "The book says only 'aligned and consistent'. Reading aid from the element table, not stated in the book: what is bought against the traced requirements."
+    },
+    {
+      "form": "2.11",
+      "what_must_agree": "The book says only 'aligned and consistent'. Reading aid from the element table, not stated in the book: procurement phase milestones against the schedule management plan."
+    },
+    {
+      "form": "2.19",
+      "what_must_agree": "The book says only 'aligned and consistent'. Reading aid from the element table, not stated in the book: fee structure and contract type against the cost management plan."
+    },
+    {
+      "form": "2.26",
+      "what_must_agree": "The book says only 'aligned and consistent'. Reading aid from the element table, not stated in the book: what is bought against the resource management plan."
+    },
+    {
+      "form": "2.37",
+      "what_must_agree": "The book says only 'aligned and consistent'. Reading aid from the element table, not stated in the book: contract types, phases and knowledge transfer against the timing, metrics and roles in the procurement management plan."
+    }
+  ],
+  "elements": [
+    {
+      "element": "Delivery methods",
+      "printed_label": "Delivery Method",
+      "guidance": "How the work is delivered. The blank form prints one Delivery Method box; Table 2.34 splits it into the two rows below."
+    },
+    {
+      "element": "Delivery methods: Professional services",
+      "printed_label": "Delivery Method",
+      "guidance": "How the contractor will work with the buyer, for example in a joint venture, as a representative, with or without subcontracting allowed."
+    },
+    {
+      "element": "Delivery methods: Construction services",
+      "printed_label": "Delivery Method",
+      "guidance": "The limitations of delivery, such as design-build or design-bid-build."
+    },
+    {
+      "element": "Contract types",
+      "printed_label": "Contract Type",
+      "guidance": "The contract type, fixed, incentive or award fees, with the criteria for the fees. Common types the book lists: Fixed Price (FFP firm fixed price, FPIF fixed price with incentive fee, FP-EPA fixed price with economic price adjustment), cost reimbursable (CPFF cost plus fixed fee, CPIF cost plus incentive fee, CPAF cost plus award fee) and time and materials (T&M). The blank form prints eight checkboxes (the seven abbreviations and Other) and an Incentive or Award Fee table with a Criteria column."
+    },
+    {
+      "element": "Procurement phases",
+      "printed_label": "Procurement Life Cycle",
+      "guidance": "The procurement phases, milestones, the criteria to advance to the next phase, and the tests or evaluations for each phase, including any knowledge transfer requirements. The blank form prints Phase, Entry Criteria, Key Deliverables or Milestones, Exit Criteria and Knowledge Transfer."
+    }
+  ],
+  "tailoring": [
+    "A project done with internal resources only needs no procurement strategy.",
+    "For a project with few procurements, consider combining this form with the procurement management plan (2.37).",
+    "For simple purchases, or a vendor you have worked with successfully for a long time, a formal strategy may be unnecessary; record the information in the statement of work that is part of the contract.",
+    "Work with the contracting or legal department so the strategy complies with organisational purchasing policies."
+  ],
+  "agile_or_adaptive": "",
+  "decisions": [
+    {
+      "decision": "How the contractor delivers the work",
+      "recorded_in": "Delivery Method",
+      "notes": ""
+    },
+    {
+      "decision": "Which contract type applies and what incentive or award fee criteria go with it",
+      "recorded_in": "Contract Type; Incentive or Award Fee; Criteria",
+      "notes": "The prose gives no rule for choosing a contract type: not stated in the book."
+    },
+    {
+      "decision": "Which phases the procurement goes through, the criteria to enter and leave each, and what knowledge is transferred",
+      "recorded_in": "Procurement Life Cycle",
+      "notes": ""
+    },
+    {
+      "decision": "Whether a formal strategy is needed or a statement of work is enough",
+      "recorded_in": "",
+      "notes": "Tailoring decision; not recorded on the form."
+    }
+  ],
+  "citation": "Book of Forms form 2.38, PDF pages 163 to 164 (printed pages 152 to 153); Tailoring Tips and start of Alignment PDF page 163 (printed page 152), Alignment end and Table 2.34 PDF page 164 (printed page 153)",
+  "notes": "Blank form: PDF page 165 (printed page 154). The blank form prints the abbreviations only for the contract types; the expansions come from Table 2.34. It prints Date, not Date Prepared. The prose's Delivery methods sub-rows (Professional services, Construction services) both map to the single printed Delivery Method box. 'Scope baseline' and 'Project budget' are not single forms and are named, not numbered. Which project documents the fee criteria must agree with is not stated in the book. The alignment 'what_must_agree' texts are reading aids, since the book states only 'aligned and consistent'."
+}

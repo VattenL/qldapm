@@ -1,0 +1,83 @@
+{
+  "form": "2.25",
+  "name": "Responsibility Assignment Matrix",
+  "process_group": "Planning",
+  "pmbok_processes": [
+    "9.1 Plan Resource Management"
+  ],
+  "purpose": "Shows the intersection of work packages and resources, usually team members rather than physical resources, and the level of participation each has on each work package. Common participation types are Accountable, Responsible, Consulted, Resource, Informed and Sign-off; a key explaining each level must always be included. The book's example is a RACI chart.",
+  "receives_from": [
+    {
+      "source": "Scope baseline",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "2.6",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "1.3",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "2.26",
+      "what": "The prose calls the RAM a data representation tool whose result feeds the resource management plan in process 9.1 Plan Resource Management."
+    }
+  ],
+  "alignment": [
+    {
+      "form": "2.9",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "2.6",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "2.28",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "Procurement documents (RFP, RFQ, etc.)",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    }
+  ],
+  "elements": [
+    {
+      "element": "Work package",
+      "printed_label": "Work package 1",
+      "guidance": "The work package being assigned. The RAM can be used at work package, control account or activity level. The blank form prints rows labelled Work package 1 to 6 and Etc."
+    },
+    {
+      "element": "Resource",
+      "printed_label": "Person 1",
+      "guidance": "The person, division or organization working on the project. The blank form prints columns labelled Person 1 to 4 and Etc."
+    }
+  ],
+  "tailoring": [
+    "Tailor the participation types to the project; some projects need 'sign-off' of specific deliverables, others use the term 'approve'.",
+    "Choose the level of recording: large projects with several vendors and large deliverables often use the RAM as the intersection of the WBS and the organizational breakdown structure (OBS); small projects may use it at deliverable or activity level to help enter schedule information."
+  ],
+  "agile_or_adaptive": "",
+  "decisions": [
+    {
+      "decision": "Which participation types the project uses and what each means",
+      "recorded_in": "",
+      "notes": "The blank form prints a legend with R, C, A and I; the prose lists six common types and says the key must always be included."
+    },
+    {
+      "decision": "Level at which responsibility is recorded: work package, control account, activity, or WBS by OBS",
+      "recorded_in": "Work package 1",
+      "notes": ""
+    },
+    {
+      "decision": "Who takes which participation level on each work package",
+      "recorded_in": "Person 1",
+      "notes": ""
+    }
+  ],
+  "citation": "Book of Forms form 2.25, PDF pages 112 to 113 (printed pages 101 to 102)",
+  "notes": "The elements table has only two rows (Work package, Resource). The blank form (PDF page 114, printed page 103) prints sample letters in the grid and a legend R = Responsible, C = Consult, A = Accountable, I = Inform; the prose bullets say Consulted and Informed and add Resource and Sign-off. printed_label values use the first row and column labels of the pattern 'Work package N' and 'Person N'. The book says the RAM is progressively elaborated as scope and resource information becomes known. It names 9.1 as the process it feeds, not an output of 9.1. The book gives no rule on how many people may hold a letter on one work package; not stated in the book."
+}

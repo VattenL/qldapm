@@ -1,0 +1,89 @@
+{
+  "form": "3.4",
+  "name": "Change Log",
+  "process_group": "Executing",
+  "pmbok_processes": [
+    "4.6 Perform Integrated Change Control"
+  ],
+  "purpose": "Tracks changes from the change request through the final decision. It is used in Perform Integrated Change Control and is updated throughout the project.",
+  "receives_from": [
+    {
+      "source": "3.3",
+      "what": "Table 3.4 says the Category is entered from the change request form; the prose says the log tracks changes from the change request through the final decision, so the other columns (description, requestor, submission date) are read as coming from the request as well (reading)"
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "4.2",
+      "what": "if change requests were submitted in the reporting period, the status report may summarise them and refer the reader to the change log (4.2 Tailoring Tip, PDF page 207, printed page 196)"
+    }
+  ],
+  "alignment": [
+    {
+      "form": "2.2",
+      "what_must_agree": "statuses, categories and dispositions in the log must be the ones the change management plan defines (the book gives only the list entry; reading)"
+    },
+    {
+      "form": "3.3",
+      "what_must_agree": "the log's Category must be the one on the change request (Table 3.4); that description, requestor and the disposition recorded on the request must match as well is a reading, the book does not spell it out"
+    }
+  ],
+  "elements": [
+    {
+      "element": "Identifier",
+      "printed_label": "ID",
+      "guidance": "A unique change identifier."
+    },
+    {
+      "element": "Category",
+      "printed_label": "Category",
+      "guidance": "The category from the change request form."
+    },
+    {
+      "element": "Description",
+      "printed_label": "Description of Change",
+      "guidance": "A description of the proposed change."
+    },
+    {
+      "element": "Requestor",
+      "printed_label": "Requestor",
+      "guidance": "The name of the person requesting the change."
+    },
+    {
+      "element": "Submission date",
+      "printed_label": "Submission Date",
+      "guidance": "The date the change was submitted."
+    },
+    {
+      "element": "Status",
+      "printed_label": "Status",
+      "guidance": "Open, pending or closed."
+    },
+    {
+      "element": "Disposition",
+      "printed_label": "Disposition",
+      "guidance": "The outcome of the request: approved, deferred or rejected."
+    }
+  ],
+  "tailoring": [
+    "Include summary information from the change request, such as the cost or schedule impact.",
+    "Add a check box saying whether the change is mandatory (for example a legal requirement) or discretionary.",
+    "Record configuration management tracking, such as which configurable items are affected.",
+    "Some IT projects add a field saying whether the change is a bug fix."
+  ],
+  "agile_or_adaptive": "",
+  "decisions": [
+    {
+      "decision": "Where the request stands in the process",
+      "recorded_in": "Status",
+      "notes": "Open, pending or closed."
+    },
+    {
+      "decision": "What was decided on the request",
+      "recorded_in": "Disposition",
+      "notes": "Approved, deferred or rejected."
+    }
+  ],
+  "citation": "Book of Forms form 3.4, PDF pages 186 to 187 (printed pages 175 to 176)",
+  "notes": "Table 3.4 names the first column Identifier and the third Description; the blank form (PDF page 188, printed page 177) prints ID and Description of Change, and the blank form wins. The prose lists the change request and the change management plan as the documents the log is related to, in place of a normal Alignment lead-in; the Alignment section then lists the same two. The statuses here (open, pending, closed) differ from the issue log (open or closed). The book does not say who updates the log or approves the dispositions (not stated in the book). The change management plan (2.2) is listed as related and in Alignment; the book does not say what flows from it, so it is not in receives_from."
+}

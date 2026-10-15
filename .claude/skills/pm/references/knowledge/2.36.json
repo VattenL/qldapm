@@ -1,0 +1,166 @@
+{
+  "form": "2.36",
+  "name": "Risk Data Sheet",
+  "process_group": "Planning",
+  "pmbok_processes": [
+    "11.2 Identify Risks"
+  ],
+  "purpose": "Holds the detailed information about one specific identified risk. It starts from the risk register entry and adds detail: cause, secondary and residual risks, contingency plan, funds and time, and a fallback plan. It is continuously updated and elaborated throughout the project.",
+  "receives_from": [
+    {
+      "source": "2.32",
+      "what": "Risk register: the sheet is filled in from the register entry for the risk"
+    }
+  ],
+  "provides_to": [],
+  "alignment": [
+    {
+      "form": "2.32",
+      "what_must_agree": "The book says only 'aligned and consistent'. Reading aid from the element table, not stated in the book: Risk ID, description, status, probability, impact, score, responses, revised values and actions against the register entry; the register is the summary and the sheet the extension."
+    },
+    {
+      "form": "2.35",
+      "what_must_agree": "The book says only 'aligned and consistent'. Reading aid from the element table, not stated in the book: the probability and impact ratings and scores against the matrix."
+    },
+    {
+      "form": "2.33",
+      "what_must_agree": "The book says only 'aligned and consistent'. Reading aid from the element table, not stated in the book: the risk figures and contingency amounts against what the risk report summarises."
+    }
+  ],
+  "elements": [
+    {
+      "element": "Risk ID",
+      "printed_label": "Risk ID",
+      "guidance": "A unique risk identifier (the same one used in the register)."
+    },
+    {
+      "element": "Risk description",
+      "printed_label": "Risk Description",
+      "guidance": "A detailed description of the risk."
+    },
+    {
+      "element": "Status",
+      "printed_label": "Status",
+      "guidance": "Open or closed."
+    },
+    {
+      "element": "Risk cause",
+      "printed_label": "Risk Cause",
+      "guidance": "The circumstances or drivers that are the source of the risk."
+    },
+    {
+      "element": "Probability",
+      "printed_label": "Probability",
+      "guidance": "The likelihood of the event or condition occurring."
+    },
+    {
+      "element": "Impact",
+      "printed_label": "Impact",
+      "guidance": "The effect on one or more objectives. The blank form prints an Impact group with Scope, Quality, Schedule and Cost."
+    },
+    {
+      "element": "Score",
+      "printed_label": "Score",
+      "guidance": "With numeric scoring, multiply probability by impact; with relative scoring, combine the two ratings (for example high-low or medium-high)."
+    },
+    {
+      "element": "Responses",
+      "printed_label": "Responses",
+      "guidance": "The planned response strategy for the risk or condition. The prose misspells the label as Reponses."
+    },
+    {
+      "element": "Revised probability",
+      "printed_label": "Revised Probability",
+      "guidance": "The likelihood once the response has been implemented."
+    },
+    {
+      "element": "Revised impact",
+      "printed_label": "Revised Impact",
+      "guidance": "The impact once the response has been implemented. The blank form prints a Revised Impact group with Scope, Quality, Schedule and Cost."
+    },
+    {
+      "element": "Revised score",
+      "printed_label": "Revised Score",
+      "guidance": "The risk score once the response has been implemented."
+    },
+    {
+      "element": "Responsible party",
+      "printed_label": "Responsible Party",
+      "guidance": "The person responsible for managing the risk."
+    },
+    {
+      "element": "Actions",
+      "printed_label": "Actions",
+      "guidance": "Any actions that need to be taken to respond to the risk."
+    },
+    {
+      "element": "Secondary risks",
+      "printed_label": "Secondary Risks",
+      "guidance": "New risks that arise out of the response strategies taken to address this risk."
+    },
+    {
+      "element": "Residual risk",
+      "printed_label": "Residual Risk",
+      "guidance": "The risk that remains after the response strategies."
+    },
+    {
+      "element": "Contingency plan",
+      "printed_label": "Contingency Plan",
+      "guidance": "A plan to start if specific events occur, such as missing an intermediate milestone. The prose says contingency plans are used when the risk or the residual risk is accepted."
+    },
+    {
+      "element": "Contingency funds",
+      "printed_label": "Contingency Funds",
+      "guidance": "The funds needed to protect the budget from overrun."
+    },
+    {
+      "element": "Contingency time",
+      "printed_label": "Contingency Time",
+      "guidance": "The time needed to protect the schedule from overrun."
+    },
+    {
+      "element": "Fallback plans",
+      "printed_label": "Fallback Plans",
+      "guidance": "A plan to use if the other response strategies fail."
+    },
+    {
+      "element": "Comments",
+      "printed_label": "Comments",
+      "guidance": "Any comments or other helpful information about the risk event or condition."
+    }
+  ],
+  "tailoring": [
+    "Not every project needs risk data sheets; where they are used they are an extension of the risk register.",
+    "Fields can be added or deleted as needed."
+  ],
+  "agile_or_adaptive": "",
+  "decisions": [
+    {
+      "decision": "Which secondary risks the chosen response creates",
+      "recorded_in": "Secondary Risks",
+      "notes": ""
+    },
+    {
+      "decision": "What risk remains after the response, and whether it is accepted",
+      "recorded_in": "Residual Risk",
+      "notes": "The prose ties contingency plans to acceptance of the risk or residual risk."
+    },
+    {
+      "decision": "Which contingency plan starts on which event, and how much contingency money and time protect the budget and schedule",
+      "recorded_in": "Contingency Plan; Contingency Funds; Contingency Time",
+      "notes": ""
+    },
+    {
+      "decision": "What to do if the response strategies fail",
+      "recorded_in": "Fallback Plans",
+      "notes": ""
+    },
+    {
+      "decision": "Who manages the risk and which actions respond to it",
+      "recorded_in": "Responsible Party; Actions",
+      "notes": ""
+    }
+  ],
+  "citation": "Book of Forms form 2.36, PDF pages 155 to 156 (printed pages 144 to 145); Table 2.32 PDF page 156 (printed page 145)",
+  "notes": "Blank form: PDF page 157 (printed page 146); one sheet per risk. The prose has no 'provides information to' statement, so provides_to is empty; the sheet is described as an extension of the register. The prose says the sheet 'can be started in process 11.2 Identify Risks' and is not an output of a named process. The prose lists 'Schedule or cost contingency' once under typical information and splits it into Contingency funds and Contingency time in Table 2.32. The prose Impact and Revised impact each map to one printed group of four columns. The prose label Responses is misspelled Reponses in Table 2.32; the printed label is Responses. The alignment 'what_must_agree' texts are reading aids; the book states only 'aligned and consistent'."
+}

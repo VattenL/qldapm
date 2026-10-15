@@ -1,0 +1,82 @@
+{
+  "form": "2.3",
+  "name": "Project Roadmap",
+  "process_group": "Planning",
+  "pmbok_processes": [],
+  "purpose": "The roadmap is a high-level visual summary of the life cycle phases, key deliverables, management reviews and milestones. It is developed once, in conjunction with the project management plan if it is developed at all, and changed only when the dates of key events, milestones or deliverables change.",
+  "receives_from": [
+    {
+      "source": "1.1",
+      "what": "the book lists key deliverables among the items the roadmap takes in, from the charter and the project management plan together; it does not say which item comes from which"
+    },
+    {
+      "source": "2.1",
+      "what": "the book names the key deliverables, project life cycle, management reviews, and scope and schedule baselines as the items taken in from the charter and the project management plan; it does not say which item comes from which"
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "2.18",
+      "what": "the roadmap provides information to the project schedule; not stated in the book which fields"
+    },
+    {
+      "target": "2.32",
+      "what": "the roadmap provides information to the risk register; not stated in the book which fields"
+    },
+    {
+      "target": "2.14",
+      "what": "the roadmap provides information to the milestone list; not stated in the book which fields"
+    }
+  ],
+  "alignment": [
+    {
+      "form": "2.1",
+      "what_must_agree": "must be consistent with the project management plan"
+    },
+    {
+      "form": "2.14",
+      "what_must_agree": "must be consistent with the milestone list"
+    }
+  ],
+  "elements": [
+    {
+      "element": "Project life cycle phases",
+      "printed_label": "Life Cycle Phases",
+      "guidance": "The name of each life cycle phase."
+    },
+    {
+      "element": "Major deliverables or events",
+      "printed_label": "",
+      "guidance": "Key deliverables, phase gates, key approvals, external events or other significant events in the project. The blank form has no label for this; the sample shows them on the Timeline."
+    },
+    {
+      "element": "Significant milestones",
+      "printed_label": "",
+      "guidance": "Milestones in the project. The blank form has no label for this; the sample shows them as markers on the Timeline."
+    },
+    {
+      "element": "Timing and types of reviews",
+      "printed_label": "",
+      "guidance": "Management, customer, compliance or other significant reviews. The blank form has no label for this; the sample shows them as markers on the Timeline."
+    }
+  ],
+  "tailoring": [
+    "For large and complex projects the roadmap will likely be a separate stand-alone document.",
+    "For smaller projects the roadmap may serve as the project management plan."
+  ],
+  "agile_or_adaptive": "",
+  "decisions": [
+    {
+      "decision": "Which phases the project has and in what order they run",
+      "recorded_in": "Life Cycle Phases",
+      "notes": ""
+    },
+    {
+      "decision": "Which deliverables, approvals, external events, milestones and reviews are significant enough to show, and when they fall",
+      "recorded_in": "Timeline",
+      "notes": "Implied by the elements list; the book does not call these decisions."
+    }
+  ],
+  "citation": "Book of Forms form 2.3, PDF page 39 (printed page 28)",
+  "notes": "The whole description is on PDF page 39 (printed page 28). The book says the roadmap is not listed as an output in PMBOK 6, so there is no process to cite. The blank form (PDF page 40, printed page 29) is a filled sample, not a blank form; its printed headings are Approach, Life Cycle Phases and Timeline. Approach is not a row of the description table and has no guidance in the book prose; it is printed on the sample as text. The description heading says the table helps develop a \"project management plan\", which looks like a slip in the book for project roadmap; this file follows the table rows as printed. The description table on this page carries no table number."
+}

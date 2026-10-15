@@ -1,0 +1,151 @@
+{
+  "form": "2.33",
+  "name": "Risk Report",
+  "process_group": "Planning",
+  "pmbok_processes": [
+    "11.2 Identify Risks"
+  ],
+  "purpose": "Presents the state of overall project risk and summarises the individual project risks, covering identification, analysis, response planning, implementation and monitoring. It is developed at the start of the project and updated throughout.",
+  "starts": {
+    "when": "the start of the project",
+    "cite": "Book of Forms form 2.33, PDF page 142 (printed page 131)"
+  },
+  "receives_from": [
+    {
+      "source": "1.2",
+      "what": "Assumption log: reviewed as an input (the prose says the report can receive information from anywhere in the project environment); the book does not say which fields are used"
+    },
+    {
+      "source": "3.1",
+      "what": "Issue log: reviewed as an input (the prose says the report can receive information from anywhere in the project environment); the book does not say which fields are used"
+    },
+    {
+      "source": "3.5",
+      "what": "Lessons learned register: reviewed as an input (the prose says the report can receive information from anywhere in the project environment); the book does not say which fields are used"
+    },
+    {
+      "source": "2.31",
+      "what": "Risk management plan: reviewed as an input (the prose says the report can receive information from anywhere in the project environment); the book does not say which fields are used"
+    },
+    {
+      "source": "Project performance reports",
+      "what": "reviewed as an input (the prose says the report can receive information from anywhere in the project environment); the book does not say which fields are used"
+    },
+    {
+      "source": "4.3",
+      "what": "Variance analysis: reviewed as an input (the prose says the report can receive information from anywhere in the project environment); the book does not say which fields are used"
+    },
+    {
+      "source": "Earned value status",
+      "what": "reviewed as an input (the prose says the report can receive information from anywhere in the project environment); the book does not say which fields are used"
+    },
+    {
+      "source": "4.5",
+      "what": "Risk audit: reviewed as an input (the prose says the report can receive information from anywhere in the project environment); the book does not say which fields are used"
+    },
+    {
+      "source": "4.6",
+      "what": "Contractor status reports: reviewed as an input (the prose says the report can receive information from anywhere in the project environment); the book does not say which fields are used"
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "3.5",
+      "what": "Lessons learned register: named as a recipient in the prose; the book does not say which fields flow"
+    },
+    {
+      "target": "5.2",
+      "what": "Project closeout report: named as a recipient in the prose; the book does not say which fields flow"
+    }
+  ],
+  "alignment": [
+    {
+      "form": "1.2",
+      "what_must_agree": "The book says only 'aligned and consistent'; the field overlap is not stated in the book."
+    },
+    {
+      "form": "3.1",
+      "what_must_agree": "The prose Alignment list says 'Issue register'; the book's form is the Issue Log. The book states only 'aligned and consistent'."
+    },
+    {
+      "form": "Project performance report",
+      "what_must_agree": "Named, not numbered in the book. The book states only 'aligned and consistent'."
+    },
+    {
+      "form": "2.31",
+      "what_must_agree": "The book says only 'aligned and consistent'. Reading aid from the element table, not stated in the book: the scales and the probability and impact matrix used for the counts and ratings in the report."
+    },
+    {
+      "form": "2.32",
+      "what_must_agree": "The book says only 'aligned and consistent'. Reading aid from the element table, not stated in the book: the risk counts, critical risks and responses in the report against the register."
+    }
+  ],
+  "elements": [
+    {
+      "element": "Executive summary",
+      "printed_label": "Executive Summary",
+      "guidance": "A statement of the overall project risk exposure and the major individual risks affecting the project, with the proposed responses for trends."
+    },
+    {
+      "element": "Overall project risk",
+      "printed_label": "Overall Project Risk",
+      "guidance": "The overall risk of the project: a high-level statement of trends, the significant drivers of overall risk, and recommended responses. The blank form prints three boxes under this heading: Overall Risk Status and Trends, Significant Drivers of Overall Risk and Recommended Responses."
+    },
+    {
+      "element": "Individual project risks",
+      "printed_label": "Individual Project Risks",
+      "guidance": "A summary of the individual risks: the number of risks in each box of the probability and impact matrix, key metrics (active risks, newly closed risks, distribution by category, objective and score), the most critical risks and their changes since the last report, and recommended responses to the top risks. The blank form prints a 5 by 5 count grid, a Metrics list, a Critical Risks table (Top Risks, Responses) and a Changes to Critical Risks box."
+    },
+    {
+      "element": "Quantitative analysis",
+      "printed_label": "Quantitative Analysis Summary",
+      "guidance": "The results of quantitative risk analysis: results of quantitative assessments (S-curve, tornado and similar), the probability of meeting key objectives, the drivers of cost and schedule outcomes, and proposed responses. The blank form prints Probability of Meeting Objectives, Range of Outcomes and Key Drivers of Variances with Proposed Responses."
+    },
+    {
+      "element": "Reserve status",
+      "printed_label": "Reserve Status",
+      "guidance": "Reserve used, reserve remaining and an assessment of whether the reserve is adequate. The blank form prints cost and schedule reserve tables (Total, Used to Date, Used This Period, Remaining Reserve) and an Assessment of Reserve Adequacy box."
+    },
+    {
+      "element": "Risk audit results (if applicable)",
+      "printed_label": "Risk Audit Summary",
+      "guidance": "A summary of the results of a risk audit of the risk management processes. The blank form prints Summary of Risk Events, Summary of Risk Management Processes and Summary of Recommendations."
+    }
+  ],
+  "tailoring": [
+    "Small, simple or short projects: summarise this information in the regular project status report instead of a separate risk report.",
+    "Many projects do no quantitative risk analysis; if yours does not, omit that part of the report.",
+    "Larger, longer or more complex projects: tailor the quantitative risk analysis techniques to those most appropriate to the project.",
+    "For a more robust report, add appendices such as the full risk register and the quantitative risk model inputs (probabilistic distributions, branch correlation groups)."
+  ],
+  "agile_or_adaptive": "",
+  "decisions": [
+    {
+      "decision": "Whether overall project risk exposure is rising or falling, and what to recommend",
+      "recorded_in": "Overall Risk Status and Trends; Recommended Responses",
+      "notes": ""
+    },
+    {
+      "decision": "Which risks are the top (critical) risks and what is recommended for them",
+      "recorded_in": "Top Risks; Responses; Changes to Critical Risks",
+      "notes": ""
+    },
+    {
+      "decision": "Whether the cost and schedule reserves are adequate",
+      "recorded_in": "Assessment of Reserve Adequacy",
+      "notes": ""
+    },
+    {
+      "decision": "Which proposed responses address the drivers of cost and schedule variance",
+      "recorded_in": "Key Drivers of Variances; Proposed Responses",
+      "notes": "Only where quantitative analysis was done."
+    },
+    {
+      "decision": "Whether a separate risk report is needed or the status report is enough",
+      "recorded_in": "",
+      "notes": "Tailoring decision, not recorded on the form."
+    }
+  ],
+  "citation": "Book of Forms form 2.33, PDF pages 142 to 143 (printed pages 131 to 132); Tailoring Tips and Alignment start PDF page 142 (printed page 131), Alignment ends and Table 2.30 are on PDF page 143 (printed page 132)",
+  "notes": "Blank form: PDF pages 144 to 147 (printed pages 133 to 136). The prose says the report is 'an output from process 11.2 Identify Risks'. Table 2.30 has six rows; the blank form breaks several into more specific boxes (see guidance), and printed Metrics count risks by objective, by probability level, active and newly closed, but not by category, which the prose lists. Earned value status and Project performance reports are named, not numbered: they may correspond to forms 4.4 and 4.2, but the prose does not give numbers. 'Project closeout report' is taken to be form 5.2 Project or Phase Closeout. The Alignment list says 'Issue register' where the book's form is the Issue Log (3.1). The blank form prints 'Date' in the title block, not 'Date Prepared'."
+}

@@ -1,0 +1,197 @@
+{
+  "form": "2.7",
+  "name": "Requirements Traceability Matrix",
+  "process_group": "Planning",
+  "pmbok_processes": [
+    "5.2 Collect Requirements"
+  ],
+  "purpose": "Tracks the attributes of each requirement through the project life cycle, using the requirements documentation and showing how each requirement is addressed elsewhere in the project: traced to the business objective, the WBS deliverable, the metric that measures it and the technique that validates it. A second page, the inter-requirements traceability matrix, traces the relationship between two categories of requirements (the book's sample pairs business requirements with technical requirements).",
+  "receives_from": [
+    {
+      "source": "1.1",
+      "what": "named as a source; the book does not say what is passed (the Business Objective column is described as taken from the charter or business case, Table 2.6, PDF page 53, printed page 42)"
+    },
+    {
+      "source": "1.2",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "1.3",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "2.4",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "2.5",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "2.40",
+      "what": "named as a source (the book calls it the stakeholder engagement plan); the book does not say what is passed"
+    },
+    {
+      "source": "3.5",
+      "what": "named as a source; the book does not say what is passed"
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "2.23",
+      "what": "named as a recipient; the book does not say what is passed"
+    },
+    {
+      "target": "Procurement statement of work",
+      "what": "named as a recipient; the book does not say what is passed"
+    },
+    {
+      "target": "Product acceptance",
+      "what": "named as a recipient; the book does not say what is passed"
+    },
+    {
+      "target": "3.3",
+      "what": "named as a recipient (the book says \"Change requests\"); the book does not say what is passed"
+    }
+  ],
+  "alignment": [
+    {
+      "form": "Development approach",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book. This is not a form in the book."
+    },
+    {
+      "form": "2.5",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "2.6",
+      "what_must_agree": "The book says only \"aligned and consistent\". Both element tables carry an identifier, the requirement text, the stakeholder or source, a category and a priority, so those would be the natural overlap (an inference, not stated in the book) (Tables 2.5 and 2.6, PDF pages 49 and 53, printed pages 38 and 42)."
+    },
+    {
+      "form": "Release and iteration plan",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book. The nearest form in the book is 6.3 Release Plan, but the book does not name it here."
+    }
+  ],
+  "elements": [
+    {
+      "element": "ID (traceability matrix)",
+      "printed_label": "ID",
+      "guidance": "A unique requirement identifier."
+    },
+    {
+      "element": "Requirement (traceability matrix)",
+      "printed_label": "Requirement",
+      "guidance": "The condition or capability the project must meet, or that the product, service or result must have, to satisfy a stakeholder's need or expectation."
+    },
+    {
+      "element": "Source (traceability matrix)",
+      "printed_label": "Source",
+      "guidance": "The stakeholder who identified the requirement."
+    },
+    {
+      "element": "Category (traceability matrix)",
+      "printed_label": "Category",
+      "guidance": "The category of the requirement; the book's examples are functional, nonfunctional, maintainability, security."
+    },
+    {
+      "element": "Priority (traceability matrix)",
+      "printed_label": "Priority",
+      "guidance": "The priority, for example Level 1, Level 2, or must have, should have, nice to have. The book words this as prioritizing the requirement category."
+    },
+    {
+      "element": "Business objective (traceability matrix)",
+      "printed_label": "Business Objective",
+      "guidance": "The business objective from the charter or business case that is met by fulfilling the requirement."
+    },
+    {
+      "element": "Deliverable (traceability matrix)",
+      "printed_label": "Deliverable",
+      "guidance": "The deliverable associated with the requirement."
+    },
+    {
+      "element": "Verification (traceability matrix)",
+      "printed_label": "Verification",
+      "guidance": "The metric used to measure whether the requirement is satisfied."
+    },
+    {
+      "element": "Validation (traceability matrix)",
+      "printed_label": "Validation",
+      "guidance": "The technique that will be used to validate that the requirement meets the stakeholder's needs."
+    },
+    {
+      "element": "ID (inter-requirements matrix, business requirement)",
+      "printed_label": "ID",
+      "guidance": "A unique business requirement identifier."
+    },
+    {
+      "element": "Business requirement (inter-requirements matrix)",
+      "printed_label": "Business Requirement",
+      "guidance": "The condition or capability that must be met by the project or be present in the product, service or result to satisfy the business needs."
+    },
+    {
+      "element": "Priority (inter-requirements matrix, business requirement)",
+      "printed_label": "Priority",
+      "guidance": "The priority of the business requirement (Level 1, Level 2, or must, should, nice to have)."
+    },
+    {
+      "element": "Source (inter-requirements matrix, business requirement)",
+      "printed_label": "Source",
+      "guidance": "The stakeholder who identified the business requirement."
+    },
+    {
+      "element": "ID (inter-requirements matrix, technical requirement)",
+      "printed_label": "ID",
+      "guidance": "A unique technical requirement identifier."
+    },
+    {
+      "element": "Technical requirement (inter-requirements matrix)",
+      "printed_label": "Technical Requirement",
+      "guidance": "The technical performance the deliverable must meet to satisfy a stakeholder's need or expectation."
+    },
+    {
+      "element": "Priority (inter-requirements matrix, technical requirement)",
+      "printed_label": "Priority",
+      "guidance": "The priority of the technical requirement (Level 1, Level 2, or must, should, nice to have)."
+    },
+    {
+      "element": "Source (inter-requirements matrix, technical requirement)",
+      "printed_label": "Source",
+      "guidance": "The stakeholder who identified the technical requirement."
+    }
+  ],
+  "tailoring": [
+    "For complex projects invest in requirements management software; a paper form is usually helpful only for small projects or for tracking at a high level.",
+    "For projects with one or more vendors, add a field showing which organization is accountable for meeting each requirement.",
+    "Consider an outline format with the business requirement at the parent level and the technical requirements and specifications under it."
+  ],
+  "agile_or_adaptive": "",
+  "decisions": [
+    {
+      "decision": "which business objective each requirement serves",
+      "recorded_in": "Business Objective",
+      "notes": ""
+    },
+    {
+      "decision": "which WBS deliverable carries each requirement",
+      "recorded_in": "Deliverable",
+      "notes": ""
+    },
+    {
+      "decision": "the metric that will show a requirement is satisfied",
+      "recorded_in": "Verification",
+      "notes": ""
+    },
+    {
+      "decision": "the technique that will validate the requirement against the stakeholder's need",
+      "recorded_in": "Validation",
+      "notes": ""
+    },
+    {
+      "decision": "which technical requirements implement which business requirement",
+      "recorded_in": "Technical Requirement",
+      "notes": "Second page only (inter-requirements matrix); one row pairs one business requirement with one technical requirement as printed."
+    }
+  ],
+  "citation": "Book of Forms form 2.7, PDF pages 51 to 53 (printed pages 40 to 42); blank forms PDF pages 54 to 55 (printed pages 43 to 44)",
+  "notes": "The book gives no adaptive-specific text for this form; the Alignment list names a release and iteration plan (PDF page 52, printed page 41). Element order follows Table 2.6 then Table 2.7 (PDF page 53, printed page 42). Table 2.6 lists Category before Priority, but the blank form prints Priority before Category; the printed order wins on the form. On the second page ID, Priority and Source each print twice, once per requirement type, so printed_label repeats. Alternative uses the book gives for the inter-requirements matrix (PDF page 51, printed page 40): business objectives and technical requirements, functional and technical requirements, requirements and verification method, technical requirements and WBS deliverables."
+}

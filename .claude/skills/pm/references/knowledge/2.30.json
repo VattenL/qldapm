@@ -1,0 +1,128 @@
+{
+  "form": "2.30",
+  "name": "Communications Management Plan",
+  "process_group": "Planning",
+  "pmbok_processes": [
+    "10.1 Plan Communications Management"
+  ],
+  "purpose": "A component of the project management plan that describes how project communications will be planned, structured, implemented and monitored for effectiveness. It lists who needs which information, how it is delivered, how often and by whom, the assumptions and constraints on communication, and a glossary. It is updated periodically as stakeholders join and leave and communication needs change.",
+  "receives_from": [
+    {
+      "source": "1.1",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "2.6",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "2.26",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "1.3",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "2.40",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "1.3",
+      "what": "Named by the book as a recipient; which content is not stated in the book."
+    },
+    {
+      "target": "2.40",
+      "what": "Named by the book as a recipient; which content is not stated in the book."
+    }
+  ],
+  "alignment": [
+    {
+      "form": "2.18",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "1.3",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "2.40",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    }
+  ],
+  "elements": [
+    {
+      "element": "Stakeholder communication requirements",
+      "printed_label": "Stakeholder",
+      "guidance": "The people or groups who need project information and their specific requirements."
+    },
+    {
+      "element": "Information",
+      "printed_label": "Information",
+      "guidance": "The information to be communicated, including language, format, content and level of detail."
+    },
+    {
+      "element": "Method or media",
+      "printed_label": "Method",
+      "guidance": "How it is delivered, for example email, meetings, web meetings."
+    },
+    {
+      "element": "Time frame and frequency",
+      "printed_label": "Timing or Frequency",
+      "guidance": "How often the information is given and under what circumstances."
+    },
+    {
+      "element": "Sender",
+      "printed_label": "Sender",
+      "guidance": "The name of the person or group that provides the information."
+    },
+    {
+      "element": "Communication constraints or assumptions (assumptions part)",
+      "printed_label": "Assumptions",
+      "guidance": "Assumptions about communication. The book gives one element row for assumptions and constraints; the blank form prints two columns."
+    },
+    {
+      "element": "Communication constraints or assumptions (constraints part)",
+      "printed_label": "Constraints",
+      "guidance": "Constraints, which can include proprietary, secure or sensitive information and the restrictions on distributing it."
+    },
+    {
+      "element": "Glossary of common terminology",
+      "printed_label": "Glossary of Terms or Acronyms",
+      "guidance": "Terms or acronyms unique to the project or used in a unique way."
+    }
+  ],
+  "tailoring": [
+    "When several organizations work on the project, add the person responsible for authorizing release of internal or confidential information, and how different communication hardware, software and technologies will be handled so everyone is reached.",
+    "For a multinational team, account for the business language, the currency unit of measure, translation and other factors needed for effective communication across countries and cultures.",
+    "On a project with a large communication component, identify the resources, time and budget allocated to communication activities.",
+    "For complex communication needs, include a flowchart of the sequence of communication events."
+  ],
+  "agile_or_adaptive": "",
+  "decisions": [
+    {
+      "decision": "Which stakeholders get which information, by what method, how often and from whom",
+      "recorded_in": "Stakeholder",
+      "notes": "Spans Information, Method, Timing or Frequency and Sender."
+    },
+    {
+      "decision": "How sensitive or proprietary information is restricted",
+      "recorded_in": "Constraints",
+      "notes": ""
+    },
+    {
+      "decision": "Who authorizes release of internal or confidential information on a multi-organization project",
+      "recorded_in": "",
+      "notes": "Tailoring tip; the blank form has no box for it."
+    },
+    {
+      "decision": "Whether communication resources, time and budget are identified",
+      "recorded_in": "",
+      "notes": "Tailoring tip; the blank form has no box for it."
+    }
+  ],
+  "citation": "Book of Forms form 2.30, PDF pages 129 to 130 (printed pages 118 to 119)",
+  "notes": "The prose table (Table 2.27) has seven rows; the single row 'Communication constraints or assumptions' is split here into two entries because the blank form (PDF page 131, printed page 120) prints Assumptions and Constraints as separate columns (Assumptions first). The prose table uses different words from the form: Stakeholder communication requirements, Method or media, Time frame and frequency, Glossary of common terminology; the blank form wins. The intro also lists resources, time and budgets for communication, methods for sensitive information and methods for updating the plan as optional contents with no box. The blank form prints the line 'Attach relevant communication diagrams or flowcharts.' The prose gives no section on adaptive projects."
+}

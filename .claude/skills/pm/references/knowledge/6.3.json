@@ -1,0 +1,74 @@
+{
+  "form": "6.3",
+  "name": "Release Plan",
+  "process_group": "Agile",
+  "pmbok_processes": [],
+  "purpose": "A high-level schedule, similar to a roadmap, showing which release each requirement or user story is assigned to. What a release holds can change with the relative priority of the backlog items and the availability of the resources needed. It can be elaborated into sprints.",
+  "receives_from": [
+    {
+      "source": "6.2",
+      "what": "the user stories or requirements assigned to releases come from the backlog (Table 6.3)"
+    },
+    {
+      "source": "6.1",
+      "what": "a high-level release plan may be developed after the product vision and backlog are started (prose); which fields flow is not stated in the book"
+    }
+  ],
+  "provides_to": [],
+  "alignment": [
+    {
+      "form": "6.1",
+      "what_must_agree": "the releases must deliver what the vision promises (reading; the book gives only the list entry)"
+    },
+    {
+      "form": "2.3",
+      "what_must_agree": "the book says 'Roadmap'; taken to be the project roadmap form; release timing must agree with it (reading; the book gives only the list entry)"
+    },
+    {
+      "form": "6.2",
+      "what_must_agree": "the stories in each release must be the same items, in the same priority, as the backlog (reading; the book gives only the list entry)"
+    }
+  ],
+  "elements": [
+    {
+      "element": "Release dates",
+      "printed_label": "",
+      "guidance": "Either a timeline or a milestone marker for when releases start and finish; it can be more detailed, as a linear schedule showing each release's duration. The blank form prints no release date field, only the sprint columns."
+    },
+    {
+      "element": "User stories",
+      "printed_label": "",
+      "guidance": "The requirements or user stories taken from the backlog. The blank form shows them as sticky notes labelled User Story in the Sprint 1 to Sprint 4 columns and Team 1 to Team 4 lanes."
+    }
+  ],
+  "tailoring": [
+    "As the plan gets more concrete, assign requirements or user stories to specific sprints in the release.",
+    "Arrange the plan in swim lanes, each lane assigned to a team or work stream.",
+    "Show the plan with a timeline to show relationships between user stories or features; this blends release content with schedule information."
+  ],
+  "agile_or_adaptive": "The book places this form in its Agile chapter and says the agile forms can be tailored for any project regardless of development method. The prose says a release can be elaborated into several sprints, that once a sprint starts its requirements or user stories cannot be changed, and that the sequence and priorities may be updated after each sprint. The introduction suggests the Plan Schedule Management process: the release plan is a high-level schedule that may take the place of a schedule management plan, or serve as a high-level schedule for agile teams on small projects (Agile chapter introduction, PDF page 250, printed page 239).",
+  "decisions": [
+    {
+      "decision": "Which release each requirement or user story goes into",
+      "recorded_in": "User Story notes under Sprint columns",
+      "notes": "Updated by relative priority in the backlog and by the availability of resources, per the prose; the book states no further rule."
+    },
+    {
+      "decision": "When each release starts and finishes",
+      "recorded_in": "",
+      "notes": "Table 6.3 names release dates, but the blank form prints no field for them."
+    },
+    {
+      "decision": "Whether and when stories are assigned to specific sprints",
+      "recorded_in": "Sprint 1 to Sprint 4 columns",
+      "notes": "Once a sprint starts its stories cannot be changed (prose)."
+    },
+    {
+      "decision": "What the release is meant to achieve",
+      "recorded_in": "Release Goal",
+      "notes": "Printed on the blank form only."
+    }
+  ],
+  "citation": "Book of Forms form 6.3, PDF page 255 (printed page 244); Table 6.3 PDF page 255 (printed page 244); blank form PDF page 256 (printed page 245); Agile chapter introduction PDF page 250 (printed page 239)",
+  "notes": "pmbok_processes is empty because the Agile chapter introduction says PMBOK 6 lists none of the agile forms as an output of any process; it suggests Plan Schedule Management as the process where the release plan is most useful. The prose has no receives-from or provides-to section; the 6.2 entry comes from Table 6.3 and the 6.1 entry from the prose. provides_to is empty because no recipient is stated. The blank form's title block prints Project Name, not Project Title, and has no Date Prepared; it also prints a Release Goal row, which Table 6.3 does not list. Both printed_label values are empty because the blank form prints neither element name as a label. 'Roadmap' in the Alignment list is not a form name; reading it as 2.3 is an assumption."
+}

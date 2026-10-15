@@ -1,0 +1,123 @@
+{
+  "form": "2.8",
+  "name": "Project Scope Statement",
+  "process_group": "Planning",
+  "pmbok_processes": [
+    "5.3 Define Scope"
+  ],
+  "purpose": "Helps define and develop the project scope and the product scope. At minimum it holds the project scope description, the project deliverables, the product acceptance criteria and the project exclusions. It is developed once and is not usually updated unless the scope changes significantly.",
+  "receives_from": [
+    {
+      "source": "1.1",
+      "what": "the project description and key deliverables, which the scope description, deliverables and acceptance criteria are progressively elaborated from (Table 2.8, PDF page 57, printed page 46)"
+    },
+    {
+      "source": "1.2",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "2.4",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "2.6",
+      "what": "the requirements, from which the project scope is progressively elaborated (Table 2.8)"
+    },
+    {
+      "source": "2.32",
+      "what": "named as a source; the book does not say what is passed"
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "2.9",
+      "what": "named as a recipient; the book does not say what is passed"
+    },
+    {
+      "target": "Scope baseline",
+      "what": "the scope statement is one of the three parts of the baseline, with the approved WBS and WBS dictionary (PDF page 60, printed page 49)"
+    }
+  ],
+  "alignment": [
+    {
+      "form": "1.1",
+      "what_must_agree": "The book says only \"aligned and consistent\"; Table 2.8 says the scope description, deliverables and acceptance criteria are elaborated from the charter's description, key deliverables and acceptance information, so they must not contradict it."
+    },
+    {
+      "form": "2.9",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book. The deliverables are the natural overlap (an inference)."
+    },
+    {
+      "form": "2.6",
+      "what_must_agree": "The book says only \"aligned and consistent\"; Table 2.8 says the project scope is elaborated from the requirements in the requirements documentation."
+    }
+  ],
+  "elements": [
+    {
+      "element": "Project scope description",
+      "printed_label": "Project Scope Description",
+      "guidance": "The project scope, progressively elaborated from the project description in the charter and from the requirements in the requirements documentation."
+    },
+    {
+      "element": "Project deliverables",
+      "printed_label": "Project Deliverables",
+      "guidance": "The deliverables, progressively elaborated from the key deliverables in the charter's project description."
+    },
+    {
+      "element": "Product acceptance criteria",
+      "printed_label": "Product Acceptance Criteria",
+      "guidance": "Acceptance criteria elaborated from the information in the charter; they can be developed for each component of the project."
+    },
+    {
+      "element": "Project exclusions",
+      "printed_label": "Project Exclusions",
+      "guidance": "A clear statement of what is out of scope for the product and the project."
+    }
+  ],
+  "tailoring": [
+    "For smaller projects, combine the project scope statement with the project charter.",
+    "For agile projects, combine the information with the release and iteration plan."
+  ],
+  "agile_or_adaptive": "For agile projects the scope statement information can be combined with the release and iteration plan (Tailoring Tips, PDF page 56, printed page 45).",
+  "decisions": [
+    {
+      "decision": "what is in scope for the project and the product",
+      "recorded_in": "Project Scope Description",
+      "notes": ""
+    },
+    {
+      "decision": "which deliverables the project commits to",
+      "recorded_in": "Project Deliverables",
+      "notes": ""
+    },
+    {
+      "decision": "what must be true for the product to be accepted, per component if needed",
+      "recorded_in": "Product Acceptance Criteria",
+      "notes": ""
+    },
+    {
+      "decision": "what is explicitly out of scope",
+      "recorded_in": "Project Exclusions",
+      "notes": ""
+    },
+    {
+      "decision": "which constraints and assumptions bound the project",
+      "recorded_in": "Project Constraints; Project Assumptions",
+      "notes": "Printed on the blank form's second page only; Table 2.8 does not describe them, so the book gives no guidance for them."
+    }
+  ],
+  "citation": "Book of Forms form 2.8, PDF pages 56 to 57 (printed pages 45 to 46); blank form PDF pages 58 to 59 (printed pages 47 to 48)",
+  "notes": "Table 2.8 describes only the four elements printed on the first blank page. Project Constraints and Project Assumptions are printed on the second blank page (PDF page 59, printed page 48) and have no entry in the table, so they are not in elements; their guidance is not stated in the book. The process is 5.3 Define Scope (PDF page 56, printed page 45).",
+  "blank_only": [
+    {
+      "printed_label": "Project Constraints",
+      "cite": "Book of Forms form 2.8 blank, PDF page 59 (printed page 48)",
+      "note": "Not stated in the book as a field of its own. Printed on page 2 of the blank form; Table 2.8 lists no such element."
+    },
+    {
+      "printed_label": "Project Assumptions",
+      "cite": "Book of Forms form 2.8 blank, PDF page 59 (printed page 48)",
+      "note": "Not stated in the book as a field of its own. Printed on page 2 of the blank form; Table 2.8 lists no such element."
+    }
+  ]
+}
