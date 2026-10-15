@@ -1,0 +1,115 @@
+{
+  "form": "1.3",
+  "name": "Stakeholder Register",
+  "process_group": "Initiating",
+  "pmbok_processes": [
+    "13.1 Identify Stakeholders"
+  ],
+  "purpose": "The register identifies the people and organizations affected by the project and records relevant information about each. It starts thin and becomes more complete as the team learns each stakeholder's requirements, expectations and classification. It is a dynamic project document, because stakeholders, their influence, requirements and classification are likely to change.",
+  "receives_from": [
+    {
+      "source": "1.1",
+      "what": "the key stakeholder list"
+    },
+    {
+      "source": "Procurement documents",
+      "what": "stakeholder information; not stated in the book which elements"
+    },
+    {
+      "source": "1.4",
+      "what": "the book lists the stakeholder analysis matrix as related to the register, with no direction stated; the 1.4 page says stakeholder analysis can be used to help fill in the register"
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "2.6",
+      "what": "stakeholder information; not stated in the book which fields"
+    },
+    {
+      "target": "2.23",
+      "what": "stakeholder information; not stated in the book which fields"
+    },
+    {
+      "target": "2.30",
+      "what": "stakeholder information; not stated in the book which fields"
+    },
+    {
+      "target": "2.31",
+      "what": "stakeholder information; not stated in the book which fields"
+    },
+    {
+      "target": "2.32",
+      "what": "stakeholder information; not stated in the book which fields"
+    },
+    {
+      "target": "2.40",
+      "what": "stakeholder information; not stated in the book which fields"
+    }
+  ],
+  "alignment": [
+    {
+      "form": "1.1",
+      "what_must_agree": "aligned and consistent with the project charter (Table 1.1 says the charter's key stakeholder list is elaborated in the register)"
+    },
+    {
+      "form": "1.4",
+      "what_must_agree": "aligned and consistent with the stakeholder analysis matrix; the book does not say which fields"
+    },
+    {
+      "form": "2.40",
+      "what_must_agree": "aligned and consistent with the stakeholder engagement plan; the book does not say which fields"
+    }
+  ],
+  "elements": [
+    {
+      "element": "Name",
+      "printed_label": "Name",
+      "guidance": "The stakeholder's name; a position or organization may stand in until the name is known."
+    },
+    {
+      "element": "Position/Role",
+      "printed_label": "Position/Role",
+      "guidance": "The position and or role the stakeholder holds in the organization. Positions are job titles such as programmer, human resources analyst or quality assurance specialist; roles are functions on the project team such as testing lead, Scrum Master or scheduler."
+    },
+    {
+      "element": "Contact information",
+      "printed_label": "Contact Information",
+      "guidance": "How to reach the stakeholder, such as phone number, email address or physical address."
+    },
+    {
+      "element": "Requirements",
+      "printed_label": "Requirements",
+      "guidance": "The stakeholder's high-level needs for the project and or product."
+    },
+    {
+      "element": "Expectations",
+      "printed_label": "Expectations",
+      "guidance": "The stakeholder's main expectations of the project and or product."
+    },
+    {
+      "element": "Classification",
+      "printed_label": "Classification",
+      "guidance": "A category for the stakeholder. Some projects use friend, foe or neutral; others use high, medium or low impact."
+    }
+  ],
+  "tailoring": [
+    "Combine the position in the organization with the role on the project, especially on a smaller project where everyone knows everyone's position.",
+    "Combine the stakeholder analysis matrix information with the stakeholder register.",
+    "Drop position, role and contact information for small internal projects."
+  ],
+  "agile_or_adaptive": "",
+  "decisions": [
+    {
+      "decision": "How each stakeholder is classified",
+      "recorded_in": "Classification",
+      "notes": "Scheme options are the book's examples: friend, foe, neutral, or high, medium, low impact."
+    },
+    {
+      "decision": "Whether position, role and contact details are kept at all",
+      "recorded_in": "Position/Role",
+      "notes": "Tailoring decision for small internal projects."
+    }
+  ],
+  "citation": "Book of Forms form 1.3, PDF pages 23 to 24 (printed pages 12 to 13)",
+  "notes": "Purpose, receives, provides, process and Tailoring Tips: PDF page 23 (printed page 12). Alignment and Table 1.3: PDF page 24 (printed page 13). The prose bullet list splits position in the organization and role in the project into two items; Table 1.3 and the blank form combine them as Position/Role. The printed form has no ID column (see references/fields/1.3.json notes)."
+}

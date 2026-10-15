@@ -1,0 +1,139 @@
+{
+  "form": "2.9",
+  "name": "Work Breakdown Structure",
+  "process_group": "Planning",
+  "pmbok_processes": [
+    "5.4 Create WBS"
+  ],
+  "purpose": "Decomposes all the work of the project, starting at the project level and breaking it down into finer levels of detail. The lowest level is the work package, a discrete deliverable that can be decomposed into activities. The approved WBS, its WBS dictionary and the project scope statement together make up the scope baseline.",
+  "receives_from": [
+    {
+      "source": "2.4",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "2.8",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "2.6",
+      "what": "named as a source; the book does not say what is passed"
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "2.12",
+      "what": "as part of the scope baseline; the book does not say what is passed (the activity list is said to take its deliverables from the WBS, PDF page 70, printed page 59)"
+    },
+    {
+      "target": "2.15",
+      "what": "as part of the scope baseline; the book does not say what is passed"
+    },
+    {
+      "target": "2.16",
+      "what": "as part of the scope baseline; the book does not say what is passed"
+    },
+    {
+      "target": "2.18",
+      "what": "as part of the scope baseline; the book does not say what is passed"
+    },
+    {
+      "target": "2.20",
+      "what": "as part of the scope baseline; the book does not say what is passed"
+    },
+    {
+      "target": "Project budget",
+      "what": "as part of the scope baseline; the book does not say what is passed"
+    },
+    {
+      "target": "2.23",
+      "what": "as part of the scope baseline; the book does not say what is passed"
+    },
+    {
+      "target": "2.26",
+      "what": "as part of the scope baseline; the book does not say what is passed"
+    },
+    {
+      "target": "2.28",
+      "what": "as part of the scope baseline (the book says \"Activity resource requirements\"); the book does not say what is passed"
+    },
+    {
+      "target": "2.32",
+      "what": "as part of the scope baseline; the book does not say what is passed"
+    },
+    {
+      "target": "2.37",
+      "what": "as part of the scope baseline; the book does not say what is passed"
+    },
+    {
+      "target": "Accepted deliverables",
+      "what": "as part of the scope baseline; the book does not say what is passed"
+    }
+  ],
+  "alignment": [
+    {
+      "form": "1.1",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "2.6",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "2.8",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book. The scope statement's deliverables are the natural overlap (an inference)."
+    },
+    {
+      "form": "2.10",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the dictionary describes the control accounts and work packages the WBS contains, so every work package and code of accounts in one must exist in the other (an inference from the dictionary's purpose, PDF page 63, printed page 52)."
+    },
+    {
+      "form": "2.12",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    }
+  ],
+  "elements": [
+    {
+      "element": "Control account",
+      "printed_label": "Control Account",
+      "guidance": "The point where scope, schedule and cost are integrated and used to measure project performance."
+    },
+    {
+      "element": "Work package",
+      "printed_label": "Work Package",
+      "guidance": "The lowest-level deliverable in the WBS, used to estimate and measure resources, cost and duration. Each work package rolls up to one and only one control account for reporting."
+    }
+  ],
+  "tailoring": [
+    "The needs of the project decide how the WBS is organized; the second level sets the organization. Options the book names: geography, major deliverables, life cycle phases, subprojects.",
+    "For smaller projects, draw the WBS like an organizational chart, with deliverables in boxes and subordinate deliverables beneath.",
+    "For larger projects, arrange the WBS as an outline with a numbering structure.",
+    "At the start only two or three levels may be defined; progressive elaboration then decomposes the work into finer deliverables.",
+    "If the organization has accounting codes, align each deliverable to a specific accounting code to track expenditure."
+  ],
+  "agile_or_adaptive": "",
+  "decisions": [
+    {
+      "decision": "how the second level organizes the WBS (geography, major deliverables, life cycle phases or subprojects)",
+      "recorded_in": "Major Deliverable",
+      "notes": "The printed sample outline labels level 2 as Major Deliverable; the book lists the other options as tailoring."
+    },
+    {
+      "decision": "which elements are control accounts, where scope, schedule and cost are integrated for performance measurement",
+      "recorded_in": "Control Account",
+      "notes": ""
+    },
+    {
+      "decision": "where decomposition stops (the work package level)",
+      "recorded_in": "Work Package",
+      "notes": ""
+    },
+    {
+      "decision": "the numbering or accounting code attached to each element",
+      "recorded_in": "",
+      "notes": "The book asks for a way of identifying the hierarchy, such as a numeric structure, and an accounting-code alignment where the organization has codes; it prints the codes as part of each line."
+    }
+  ],
+  "citation": "Book of Forms form 2.9, PDF pages 60 to 61 (printed pages 49 to 50); blank form PDF page 62 (printed page 51)",
+  "notes": "Table 2.9 (PDF page 61, printed page 50) defines only Control account and Work package. The blank form is an indented numbered outline whose lines are placeholders (Project, Major Deliverable, Control Account, Work Package), per references/fields/2.9.json. Uncertain point: Table 2.9 says each work package rolls up to one and only one control account, but the printed sample puts some work packages directly under a major deliverable (the line numbered 1.1.2 sits beside the control account 1.1.1) and a control account at level 2 (1.2); the book does not reconcile this, so do not derive a rule from the sample. The book also does not state how many levels a WBS should have. The high levels are defined at the start; lower levels may be progressively elaborated (PDF page 60, printed page 49)."
+}

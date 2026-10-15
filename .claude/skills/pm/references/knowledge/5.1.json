@@ -1,0 +1,217 @@
+{
+    "form": "5.1",
+    "name": "Lessons Learned Summary",
+    "process_group": "Closing",
+    "pmbok_processes": [
+        "4.7 Close Project or Phase"
+    ],
+    "purpose": "Compiles and organizes what the team did that worked very well and should pass to other teams, and what should be improved for future work. It draws on the lessons recorded in the lessons learned register, and covers risks, issues, procurements, quality defects and any areas of poor or outstanding performance. It is developed at the close of a phase on long projects and at the close of the project on shorter ones.",
+    "receives_from": [
+        {
+            "source": "3.5",
+            "what": "the lessons learned register records the lessons throughout the project or at specific intervals, and the summary compiles and organizes them (prose)"
+        }
+    ],
+    "provides_to": [
+        {
+            "target": "Lessons learned repository",
+            "what": "the summary is saved with the lessons learned register in a repository, which can be as simple as a binder or as capable as a searchable database, to improve the current project (if done during it) and future projects (prose)"
+        }
+    ],
+    "alignment": [
+        {
+            "form": "3.1",
+            "what_must_agree": "the book says 'Issue register'; taken to be the issue log; the issues summarized here must match it (reading; the book gives only the list entry)"
+        },
+        {
+            "form": "2.32",
+            "what_must_agree": "the risks summarized here must match the risk register (reading; the book gives only the list entry)"
+        },
+        {
+            "form": "3.2",
+            "what_must_agree": "the decisions that shaped what worked or did not must match the decision log (reading; the book gives only the list entry)"
+        },
+        {
+            "form": "3.5",
+            "what_must_agree": "each lesson summarized must trace to the lessons learned register (reading; the book gives only the list entry)"
+        },
+        {
+            "form": "6.4",
+            "what_must_agree": "what sprint retrospectives found must be reflected, not contradicted (reading; the book gives only the list entry)"
+        }
+    ],
+    "elements": [
+        {
+            "element": "Project performance: Requirements definition and management",
+            "printed_label": "Requirements definition and management",
+            "guidance": "Two columns. What Worked Well: practices or incidents that were effective in defining and managing requirements. What Can Be Improved: practices or incidents that can be improved in defining and managing requirements."
+        },
+        {
+            "element": "Project performance: Scope definition and management",
+            "printed_label": "Scope definition and management",
+            "guidance": "Two columns. What Worked Well: practices or incidents that were effective in defining and managing scope. What Can Be Improved: practices or incidents that can be improved in defining and managing scope."
+        },
+        {
+            "element": "Project performance: Schedule development and control",
+            "printed_label": "Schedule development and control",
+            "guidance": "Two columns. What Worked Well: practices or incidents that were effective in developing and controlling the schedule. What Can Be Improved: practices or incidents that can be improved in developing and controlling the schedule."
+        },
+        {
+            "element": "Project performance: Cost estimating and control",
+            "printed_label": "Cost estimating and control",
+            "guidance": "Two columns. What Worked Well: practices or incidents that were effective in developing estimates and controlling costs. What Can Be Improved: practices or incidents that can be improved in developing estimates and controlling costs."
+        },
+        {
+            "element": "Project performance: Quality planning and control",
+            "printed_label": "Quality planning and control",
+            "guidance": "Two columns. What Worked Well: practices or incidents that were effective in planning, managing and controlling quality. What Can Be Improved: practices or incidents that can be improved in planning, managing and controlling quality. Specific defects are recorded elsewhere on the form."
+        },
+        {
+            "element": "Project performance: Physical resource planning and control",
+            "printed_label": "Physical resource planning and control",
+            "guidance": "Two columns. What Worked Well: practices or incidents that were effective in planning, acquiring and managing physical resources. What Can Be Improved: practices or incidents that can be improved in planning, acquiring and managing physical resources."
+        },
+        {
+            "element": "Project performance: Team planning, development, and performance",
+            "printed_label": "Team planning, development, and performance",
+            "guidance": "Two columns. What Worked Well: practices or incidents that were effective in working with team members and developing and managing the team. What Can Be Improved: practices or incidents that can be improved in working with team members and developing and managing the team."
+        },
+        {
+            "element": "Project performance: Communications management",
+            "printed_label": "Communications management",
+            "guidance": "Two columns. What Worked Well: practices or incidents that were effective in planning and distributing information. What Can Be Improved: practices or incidents that can be improved in planning and distributing information."
+        },
+        {
+            "element": "Project performance: Reporting",
+            "printed_label": "Reporting",
+            "guidance": "Two columns. What Worked Well: practices or incidents that were effective in reporting project performance. What Can Be Improved: practices or incidents that can be improved in reporting project performance."
+        },
+        {
+            "element": "Project performance: Risk management",
+            "printed_label": "Risk management",
+            "guidance": "Two columns. What Worked Well: practices or incidents that were effective in the risk management process. Specific risks are recorded elsewhere on the form. What Can Be Improved: practices or incidents that can be improved in the risk management process. Specific risks are recorded elsewhere on the form."
+        },
+        {
+            "element": "Project performance: Procurement planning and management",
+            "printed_label": "Procurement planning and management",
+            "guidance": "Two columns. What Worked Well: practices or incidents that were effective in planning, conducting and administering contracts. What Can Be Improved: practices or incidents that can be improved in planning, conducting and administering contracts."
+        },
+        {
+            "element": "Project performance: Stakeholder engagement",
+            "printed_label": "Stakeholder engagement",
+            "guidance": "Two columns. What Worked Well: practices or incidents that were effective in engaging stakeholders. What Can Be Improved: practices or incidents that can be improved in engaging stakeholders."
+        },
+        {
+            "element": "Project performance: Process improvement information",
+            "printed_label": "Process improvement information",
+            "guidance": "Two columns. What Worked Well: processes that were developed and should be continued. What Can Be Improved: processes that should be changed or discontinued."
+        },
+        {
+            "element": "Project performance: Product-specific information",
+            "printed_label": "Product-specific information",
+            "guidance": "Two columns. What Worked Well: practices or incidents that were effective in delivering the specific product, service or result. What Can Be Improved: ones that can be improved in delivering it."
+        },
+        {
+            "element": "Project performance: Other",
+            "printed_label": "Other",
+            "guidance": "Two columns. What Worked Well: any other effective practices or incidents, such as change control or configuration management. What Can Be Improved: any other practices or incidents that can be improved, such as change control or configuration management. The label Other prints twice on the blank form: here and as a section heading on page 2."
+        },
+        {
+            "element": "Risks and issues: Risk or issue description",
+            "printed_label": "Risk or Issue Description",
+            "guidance": "The risks or issues that occurred and should be considered to improve organizational learning."
+        },
+        {
+            "element": "Risks and issues: Response",
+            "printed_label": "Response",
+            "guidance": "The response and how effective it was."
+        },
+        {
+            "element": "Risks and issues: Comments",
+            "printed_label": "Comments",
+            "guidance": "Anything else needed to improve future project performance."
+        },
+        {
+            "element": "Quality defects: Defect description",
+            "printed_label": "Defect Description",
+            "guidance": "The quality defects that should be considered to improve organizational effectiveness."
+        },
+        {
+            "element": "Quality defects: Resolution",
+            "printed_label": "Resolution",
+            "guidance": "How the defects were resolved."
+        },
+        {
+            "element": "Quality defects: Comments",
+            "printed_label": "Comments",
+            "guidance": "What should be done to improve future project performance."
+        },
+        {
+            "element": "Vendor management: Vendor",
+            "printed_label": "Vendor",
+            "guidance": "The vendor or vendors."
+        },
+        {
+            "element": "Vendor management: Issue",
+            "printed_label": "Issue",
+            "guidance": "Any issues, claims or disputes that occurred."
+        },
+        {
+            "element": "Vendor management: Resolution",
+            "printed_label": "Resolution",
+            "guidance": "The outcome or resolution."
+        },
+        {
+            "element": "Vendor management: Comments",
+            "printed_label": "Comments",
+            "guidance": "What should be done to improve future vendor management performance."
+        },
+        {
+            "element": "Other: Areas of exceptional performance",
+            "printed_label": "Areas of Exceptional Performance",
+            "guidance": "Areas of exceptional performance that can be passed on to other teams."
+        },
+        {
+            "element": "Other: Areas for improvement",
+            "printed_label": "Areas for Improvement",
+            "guidance": "Areas that can be improved for future performance."
+        }
+    ],
+    "tailoring": [
+        "Add, combine or eliminate rows as needed to capture the important aspects of the project.",
+        "Consider a section on change management, which can be a challenging part of projects.",
+        "Consider a section on phase management if the summary is done at the end of the project.",
+        "Integration management is important for projects that are part of a program or that have several organizations working on one project.",
+        "If the project used a new development approach, such as a blended predictive and adaptive (agile) approach, consider adding relevant lessons learned."
+    ],
+    "agile_or_adaptive": "The Tailoring Tips say that a project using a new development approach, such as a blended predictive and adaptive (agile) approach, should consider adding relevant lessons learned. Retrospectives (form 6.4) are on the Alignment list.",
+    "decisions": [
+        {
+            "decision": "Which practices are passed to other teams",
+            "recorded_in": "What Worked Well; Areas of Exceptional Performance",
+            "notes": ""
+        },
+        {
+            "decision": "Which practices or processes are improved, changed or discontinued",
+            "recorded_in": "What Can Be Improved; Areas for Improvement",
+            "notes": ""
+        },
+        {
+            "decision": "Which risks, issues, quality defects and vendor problems are carried forward as organizational learning",
+            "recorded_in": "Risks and issues; Quality defects; Vendor management",
+            "notes": ""
+        },
+        {
+            "decision": "When the summary is made: at the end of a phase (long projects) or at the end of the project (shorter ones)",
+            "recorded_in": "",
+            "notes": "Stated in the prose; the form has no field for it."
+        },
+        {
+            "decision": "Which sections to add, combine or drop",
+            "recorded_in": "",
+            "notes": "Tailoring choices: change management, phase management, integration management, agile lessons."
+        }
+    ],
+    "citation": "Book of Forms form 5.1, PDF pages 240 to 243 (printed pages 229 to 232); Table 5.1 PDF pages 242 to 243 (printed pages 231 to 232); blank form PDF pages 244 to 245 (printed pages 233 to 234)",
+    "notes": "The Closing chapter opener shares PDF page 240 (printed page 229) with the start of the 5.1 prose. The prose says the summary supports process 4.7 Close Project or Phase. The prose has no receives-from or provides-to section beyond the lessons learned register and the repository; the Alignment list is not directional. Table 5.1 heads the second column What Can be Improved; the blank form prints What Can Be Improved. The prose bullets list fourteen project performance topics; Table 5.1 and the blank form give the same fourteen in the same order and add a fifteenth row, Other, last. Table 5.1 sub-rows under Risks and issues, Quality defects and Vendor management are laid out with the sub-label in the first description column and its instruction beside it; the guidance here follows that pairing. 'Issue register' and 'Retrospectives' in the Alignment list are not form names; reading them as 3.1 and 6.4 is an assumption."
+}

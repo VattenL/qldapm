@@ -1,0 +1,107 @@
+{
+  "form": "3.6",
+  "name": "Quality Audit",
+  "process_group": "Executing",
+  "pmbok_processes": [
+    "8.2 Manage Quality"
+  ],
+  "purpose": "A quality audit is a structured, independent review of any project or product element. The form records which areas were audited, good practices to share, areas for improvement, and each deficiency with its action, owner and due date. The book calls it a technique from Manage Quality and says audits should be tailored to the project.",
+  "receives_from": [
+    {
+      "source": "2.23",
+      "what": "the quality management plan is the document compliance is checked against; the prose lists compliance with the quality management plan as an audit area and as the only Alignment entry"
+    },
+    {
+      "source": "Similar projects",
+      "what": "good practices from similar projects (Table 3.6)"
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "Other projects",
+      "what": "audits can also carry information to be shared with other projects (Tailoring Tip)"
+    }
+  ],
+  "alignment": [
+    {
+      "form": "2.23",
+      "what_must_agree": "audited areas, standards and the corrective and preventive actions must agree with the quality management plan (the book gives only the list entry; reading)"
+    }
+  ],
+  "elements": [
+    {
+      "element": "Area audited",
+      "printed_label": "Area Audited",
+      "guidance": "Check the box for each area audited. The prose lists ten common areas; the blank form prints seven boxes."
+    },
+    {
+      "element": "Good practices from similar projects",
+      "printed_label": "Good Practices from Similar Projects",
+      "guidance": "Describe good or best practices that can be shared from similar projects."
+    },
+    {
+      "element": "Areas for improvement",
+      "printed_label": "Areas for Improvement",
+      "guidance": "Describe what needs to improve and the specific improvements or measurements to achieve."
+    },
+    {
+      "element": "Deficiencies or defects: ID",
+      "printed_label": "ID",
+      "guidance": "A unique defect identifier."
+    },
+    {
+      "element": "Deficiencies or defects: Defect",
+      "printed_label": "Defect",
+      "guidance": "Describe the deficiency or defect."
+    },
+    {
+      "element": "Deficiencies or defects: Action",
+      "printed_label": "Action",
+      "guidance": "The corrective actions needed to fix the defect."
+    },
+    {
+      "element": "Deficiencies or defects: Responsible party",
+      "printed_label": "Responsible Party",
+      "guidance": "The person assigned to correct the deficiency or defect."
+    },
+    {
+      "element": "Deficiencies or defects: Due date",
+      "printed_label": "Due Date",
+      "guidance": "The due date for correcting it; the prose says each defect needs an action item, a responsible party and a due date for compliance."
+    },
+    {
+      "element": "Comments",
+      "printed_label": "Comments",
+      "guidance": "Any additional useful comments about the audit."
+    }
+  ],
+  "tailoring": [
+    "Include information that will be shared with other projects.",
+    "Use the audit to track the implementation of approved changes and of corrective or preventive actions."
+  ],
+  "agile_or_adaptive": "",
+  "decisions": [
+    {
+      "decision": "Which areas the audit covers",
+      "recorded_in": "Area Audited",
+      "notes": ""
+    },
+    {
+      "decision": "Which practices are worth sharing",
+      "recorded_in": "Good Practices from Similar Projects",
+      "notes": ""
+    },
+    {
+      "decision": "What must improve and by what measure",
+      "recorded_in": "Areas for Improvement",
+      "notes": ""
+    },
+    {
+      "decision": "What is a deficiency, how it is fixed, by whom and by when",
+      "recorded_in": "ID; Defect; Action; Responsible Party; Due Date",
+      "notes": ""
+    }
+  ],
+  "citation": "Book of Forms form 3.6, PDF pages 192 to 193 (printed pages 181 to 182)",
+  "notes": "Table 3.6 has a parent row Deficiencies or defects with five sub-rows; they are listed as \"Deficiencies or defects: <sub>\". The prose bullet list of audit areas (project processes, project documents, product requirements, product documentation, defect or deficiency repair, compliance with organizational policies and procedures, compliance with the quality management plan, good practices from similar projects, areas for improvement, description of deficiencies or defects) differs from the printed boxes (Project processes, Project documents, Product documents, Product documentation, Quality management plan, Defect/deficiency repair, Organizational policies and procedures); the blank form (PDF page 194, printed page 183) wins. The blank form also prints Project Auditor and Audit Date in the title block, which Table 3.6 does not list. The book names the audit a technique of 8.2 Manage Quality, so it is not an output of that process; PMBOK 6 itself was not read for this file. The Tailoring Tip says some projects use audits to track implementation of approved changes and of corrective or preventive actions; the book names no form for either, so no provides_to entry is made for 3.3 or 3.4."
+}

@@ -1,0 +1,219 @@
+{
+  "form": "2.1",
+  "name": "Project Management Plan",
+  "process_group": "Planning",
+  "pmbok_processes": [
+    "4.2 Develop Project Management Plan"
+  ],
+  "purpose": "The plan describes how the team will execute, monitor, control and close the project. Besides a little unique content it is mostly the subsidiary management plans and the baselines, combined into one integrated approach. It is developed during initial planning and usually changes only after a significant change in the charter, environment or scope.",
+  "receives_from": [
+    {
+      "source": "1.1",
+      "what": "charter information; not stated in the book which elements"
+    },
+    {
+      "source": "2.2",
+      "what": "the content of the change management plan, which is part of the project management plan"
+    },
+    {
+      "source": "2.4",
+      "what": "the content of the scope management plan, which is part of the project management plan"
+    },
+    {
+      "source": "2.5",
+      "what": "the content of the requirements management plan, which is part of the project management plan"
+    },
+    {
+      "source": "2.11",
+      "what": "the content of the schedule management plan, which is part of the project management plan"
+    },
+    {
+      "source": "2.19",
+      "what": "the content of the cost management plan, which is part of the project management plan"
+    },
+    {
+      "source": "2.23",
+      "what": "the content of the quality management plan, which is part of the project management plan"
+    },
+    {
+      "source": "2.26",
+      "what": "the content of the resource management plan, which is part of the project management plan"
+    },
+    {
+      "source": "2.30",
+      "what": "the content of the communications management plan, which is part of the project management plan"
+    },
+    {
+      "source": "2.31",
+      "what": "the content of the risk management plan, which is part of the project management plan"
+    },
+    {
+      "source": "2.37",
+      "what": "the content of the procurement management plan, which is part of the project management plan"
+    },
+    {
+      "source": "2.40",
+      "what": "the content of the stakeholder engagement plan, which is part of the project management plan"
+    },
+    {
+      "source": "Baselines",
+      "what": "scope baseline, schedule baseline, cost baseline and the performance measurement baseline (an integrated baseline of scope, schedule and cost)"
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "2.2",
+      "what": "foundation: the project management plan provides information to all subsidiary plans (change management plan)"
+    },
+    {
+      "target": "2.4",
+      "what": "foundation: the project management plan provides information to all subsidiary plans (scope management plan)"
+    },
+    {
+      "target": "2.5",
+      "what": "foundation: the project management plan provides information to all subsidiary plans (requirements management plan)"
+    },
+    {
+      "target": "2.11",
+      "what": "foundation: the project management plan provides information to all subsidiary plans (schedule management plan)"
+    },
+    {
+      "target": "2.19",
+      "what": "foundation: the project management plan provides information to all subsidiary plans (cost management plan)"
+    },
+    {
+      "target": "2.23",
+      "what": "foundation: the project management plan provides information to all subsidiary plans (quality management plan)"
+    },
+    {
+      "target": "2.26",
+      "what": "foundation: the project management plan provides information to all subsidiary plans (resource management plan)"
+    },
+    {
+      "target": "2.30",
+      "what": "foundation: the project management plan provides information to all subsidiary plans (communications management plan)"
+    },
+    {
+      "target": "2.31",
+      "what": "foundation: the project management plan provides information to all subsidiary plans (risk management plan)"
+    },
+    {
+      "target": "2.37",
+      "what": "foundation: the project management plan provides information to all subsidiary plans (procurement management plan)"
+    },
+    {
+      "target": "2.40",
+      "what": "foundation: the project management plan provides information to all subsidiary plans (stakeholder engagement plan)"
+    },
+    {
+      "target": "Other integration processes",
+      "what": "the book says the plan provides information to all other integration processes"
+    }
+  ],
+  "alignment": [
+    {
+      "form": "Subsidiary management plans",
+      "what_must_agree": "the plan must be consistent with all subsidiary management plans (forms 2.2, 2.4, 2.5, 2.11, 2.19, 2.23, 2.26, 2.30, 2.31, 2.37, 2.40)"
+    },
+    {
+      "form": "2.3",
+      "what_must_agree": "aligned and consistent with the project roadmap; the book does not say which fields (the tailoring tip says a roadmap summarizes phases, major deliverables, milestones and key reviews)"
+    },
+    {
+      "form": "2.14",
+      "what_must_agree": "aligned and consistent with the milestone list; the book does not say which fields"
+    }
+  ],
+  "elements": [
+    {
+      "element": "Project life cycle",
+      "printed_label": "Project Life Cycle",
+      "guidance": "Describe the life cycle used to do the project: the name of each phase, its key activities, key deliverables, entry criteria, exit criteria and key reviews. The blank form prints two tables: Phase with Key Activities and Key Deliverables, and Phase with Reviews, Entry Criteria and Exit Criteria."
+    },
+    {
+      "element": "Development approaches",
+      "printed_label": "Development Approaches",
+      "guidance": "Document how each key deliverable will be created. Common approaches are predictive (scope known and stable) and adaptive (scope evolving and subject to change); iterative or incremental development may also be named."
+    },
+    {
+      "element": "Subsidiary management plans",
+      "printed_label": "Subsidiary Management Plans",
+      "guidance": "List the subsidiary plans that are part of this plan, as a table of contents, links to electronic copies, or a list of separate documents that count as part of it."
+    },
+    {
+      "element": "Scope variance threshold",
+      "printed_label": "Scope Variance Threshold",
+      "guidance": "Define which scope variances are acceptable, which are a warning and which are unacceptable. Scope variance can be expressed by the features and functions present in the end product or by the performance metrics wanted."
+    },
+    {
+      "element": "Scope baseline management",
+      "printed_label": "Scope Baseline Management",
+      "guidance": "Describe how the scope baseline is managed, including the response to acceptable, warning and unacceptable variance; what triggers preventive or corrective action; and when the change control process is used. Define the difference between a scope revision and a scope change (the book's example: changing a color is a revision, changing a function is a change)."
+    },
+    {
+      "element": "Schedule variance threshold",
+      "printed_label": "Schedule Variance Threshold",
+      "guidance": "Define acceptable, warning and unacceptable schedule variance. It may be a percent of variance from the baseline, or the amount of float used, or whether any schedule reserve has been used."
+    },
+    {
+      "element": "Schedule baseline management",
+      "printed_label": "Schedule Baseline Management",
+      "guidance": "Describe how the schedule baseline is managed: responses to acceptable, warning and unacceptable variance, what triggers preventive or corrective action, and when change control is enacted."
+    },
+    {
+      "element": "Cost variance threshold",
+      "printed_label": "Cost Variance Threshold",
+      "guidance": "Define acceptable, warning and unacceptable cost variance. It may be a percent of variance from the baseline; the book's example bands are 0 to 5 percent, 5 to 10 percent and greater than 10 percent."
+    },
+    {
+      "element": "Cost baseline management",
+      "printed_label": "Cost Baseline Management",
+      "guidance": "Describe how the cost baseline is managed: responses to acceptable, warning and unacceptable variance, what triggers preventive or corrective action, and when change control is enacted."
+    },
+    {
+      "element": "Baselines",
+      "printed_label": "Baselines",
+      "guidance": "Attach all project baselines."
+    }
+  ],
+  "tailoring": [
+    "On a large and complex project each subsidiary plan will likely be a stand-alone plan; present the project management plan as a shell with only the life cycle, development approach and key reviews, and link or refer to the detailed subsidiary plans.",
+    "On a smaller project, a project roadmap that summarizes phases, major deliverables, milestones and key reviews may be enough.",
+    "Expect additional subsidiary plans that fit the nature of the project, such as a technology, logistics or safety management plan."
+  ],
+  "agile_or_adaptive": "Table 2.1 names adaptive approaches (scope evolving and subject to change) next to predictive ones for the Development approaches element, and adds iterative and incremental development. The book gives no other adaptive-specific guidance for this form.",
+  "decisions": [
+    {
+      "decision": "Which life cycle the project uses and how its phases are gated",
+      "recorded_in": "Project Life Cycle",
+      "notes": "Entry and exit criteria and key reviews per phase are in the second table."
+    },
+    {
+      "decision": "Which development approach applies to each key deliverable",
+      "recorded_in": "Development Approaches",
+      "notes": ""
+    },
+    {
+      "decision": "Which subsidiary plans exist and where they are kept",
+      "recorded_in": "Subsidiary Management Plans",
+      "notes": ""
+    },
+    {
+      "decision": "What counts as acceptable, warning and unacceptable variance for scope, schedule and cost",
+      "recorded_in": "Scope Variance Threshold",
+      "notes": "Repeated in Schedule Variance Threshold and Cost Variance Threshold."
+    },
+    {
+      "decision": "What triggers preventive or corrective action and when change control is enacted",
+      "recorded_in": "Scope Baseline Management",
+      "notes": "Repeated in Schedule Baseline Management and Cost Baseline Management."
+    },
+    {
+      "decision": "What is a scope revision versus a scope change",
+      "recorded_in": "Scope Baseline Management",
+      "notes": "The book says a revision generally needs less approval than a change."
+    }
+  ],
+  "citation": "Book of Forms form 2.1, PDF pages 31 to 33 (printed pages 20 to 22)",
+  "notes": "Purpose, receives, provides, process and typical content: PDF page 31 (printed page 20). Tailoring Tips, Alignment and the start of Table 2.1: PDF page 32 (printed page 21). Rest of Table 2.1: PDF page 33 (printed page 22). The change management plan (2.2) and requirements management plan (2.5) are listed among the subsidiary plans in the prose; the blank form's Subsidiary Management Plans table prints rows Scope, Time, Cost, Quality, Resource, Communications, Risk, Procurement, Stakeholder and Other Plans, so change and requirements plans go under Other Plans or are tailored in (the book does not say). Table 2.1 has 10 rows. The prose list of typical information includes baseline management and timing and types of reviews; the blank form carries these as the Baseline Management boxes and the Reviews column. The prose and Table 2.1 call the reviews column Key reviews; the blank form prints Reviews."
+}

@@ -1,0 +1,246 @@
+{
+  "form": "1.1",
+  "name": "Project Charter",
+  "process_group": "Initiating",
+  "pmbok_processes": [
+    "4.1 Develop Project Charter"
+  ],
+  "purpose": "The charter formally authorizes a project or a phase. It states why the project exists, describes it at a high level, and names the project manager together with that person's authority level. It is written once and only revised after a significant change in the environment, scope, schedule, resources, budget or stakeholders.",
+  "receives_from": [
+    {
+      "source": "Agreements (contracts)",
+      "what": "may be the stated reason for doing the project (see Project purpose)"
+    },
+    {
+      "source": "Statements of work",
+      "what": "information the charter can draw on; not stated in the book which elements"
+    },
+    {
+      "source": "Business case",
+      "what": "may be the stated reason for doing the project (see Project purpose)"
+    },
+    {
+      "source": "Benefits management plan",
+      "what": "information the charter can draw on; not stated in the book which elements"
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "1.3",
+      "what": "key stakeholder list, to be elaborated in the stakeholder register"
+    },
+    {
+      "target": "2.1",
+      "what": "charter information; not stated in the book which elements"
+    },
+    {
+      "target": "2.4",
+      "what": "charter information; not stated in the book which elements"
+    },
+    {
+      "target": "2.5",
+      "what": "charter information; not stated in the book which elements"
+    },
+    {
+      "target": "2.6",
+      "what": "high-level requirements, to be elaborated in the requirements documentation"
+    },
+    {
+      "target": "2.7",
+      "what": "charter information; not stated in the book which elements"
+    },
+    {
+      "target": "2.8",
+      "what": "key deliverables, to be elaborated in the project scope statement"
+    },
+    {
+      "target": "2.11",
+      "what": "charter information; not stated in the book which elements"
+    },
+    {
+      "target": "2.19",
+      "what": "charter information; not stated in the book which elements"
+    },
+    {
+      "target": "2.23",
+      "what": "charter information; not stated in the book which elements"
+    },
+    {
+      "target": "2.26",
+      "what": "charter information; not stated in the book which elements"
+    },
+    {
+      "target": "2.30",
+      "what": "charter information; not stated in the book which elements"
+    },
+    {
+      "target": "2.31",
+      "what": "charter information; not stated in the book which elements"
+    },
+    {
+      "target": "2.37",
+      "what": "charter information; not stated in the book which elements"
+    },
+    {
+      "target": "2.40",
+      "what": "charter information; not stated in the book which elements"
+    }
+  ],
+  "alignment": [
+    {
+      "form": "Business case",
+      "what_must_agree": "aligned and consistent with the business case; the book does not say which fields (Project purpose may refer to a business case); the book gives no form number"
+    },
+    {
+      "form": "2.8",
+      "what_must_agree": "aligned and consistent with the project scope statement; the book does not say which fields (Table 1.1 says the key deliverables are elaborated in the scope statement)"
+    },
+    {
+      "form": "Milestone schedule",
+      "what_must_agree": "aligned and consistent with the milestone schedule; the book does not say which fields (the Summary milestone schedule is the related charter element by name); the book names this document \"Milestone schedule\" and gives no form number (the milestone list is form 2.14, but the book does not state that link)"
+    },
+    {
+      "form": "Budget",
+      "what_must_agree": "aligned and consistent with the budget; the book does not say which fields (Preapproved financial resources is the related charter element by name); the book names this document \"Budget\" and gives no form number"
+    },
+    {
+      "form": "1.3",
+      "what_must_agree": "aligned and consistent with the stakeholder register (Table 1.1 says the key stakeholder list is elaborated in the register)"
+    },
+    {
+      "form": "2.32",
+      "what_must_agree": "aligned and consistent with the risk register; the book does not say which fields (Overall project risk is the related charter element by name)"
+    }
+  ],
+  "elements": [
+    {
+      "element": "Project purpose",
+      "printed_label": "Project Purpose",
+      "guidance": "The reason the project is undertaken. It may point to a business case, the organization's strategic plan, external factors, a contract agreement or any other reason."
+    },
+    {
+      "element": "High-level project description",
+      "printed_label": "High-Level Project Description",
+      "guidance": "A summary-level description of the project."
+    },
+    {
+      "element": "Project boundaries",
+      "printed_label": "Project Boundaries",
+      "guidance": "The limits of the project scope, such as scope exclusions or other limitations."
+    },
+    {
+      "element": "Key deliverables",
+      "printed_label": "Key Deliverables",
+      "guidance": "The high-level project and product deliverables; the project scope statement elaborates them later."
+    },
+    {
+      "element": "High-level requirements",
+      "printed_label": "High-Level Requirements",
+      "guidance": "The high-level conditions or capabilities needed to meet the project purpose, including the product features and functions that satisfy stakeholder needs and expectations; the requirements documentation elaborates them later."
+    },
+    {
+      "element": "Overall project risk",
+      "printed_label": "Overall Project Risk",
+      "guidance": "An assessment of how risky the project is as a whole, covering political, social, economic and technological volatility, uncertainty, complexity and ambiguity. It concerns stakeholder exposure to variation in the project outcome."
+    },
+    {
+      "element": "Project objectives and related success criteria",
+      "printed_label": "Project Objectives",
+      "guidance": "Objectives are usually set for at least scope, schedule and cost; the success criteria are the metrics used to judge them. Quality, safety and stakeholder satisfaction objectives may be added. The blank form prints this as one table whose columns are Project Objectives and Success Criteria, with rows Scope, Time, Cost and Other."
+    },
+    {
+      "element": "Summary milestone schedule",
+      "printed_label": "Summary Milestones",
+      "guidance": "Significant events such as completion of key deliverables, the start or end of a phase, or product acceptance. The blank form pairs each milestone with a Due Date."
+    },
+    {
+      "element": "Preapproved financial resources",
+      "printed_label": "Preapproved Financial Resources",
+      "guidance": "The funding available for the project; it may include funding sources and annual funding limits."
+    },
+    {
+      "element": "Key stakeholder list",
+      "printed_label": "Stakeholder(s)",
+      "guidance": "An initial, high-level list of people or groups who influence or can influence project success, and those influenced by its success; the stakeholder register elaborates it later. The blank form pairs each stakeholder with a Role."
+    },
+    {
+      "element": "Project exit criteria",
+      "printed_label": "Project Exit Criteria",
+      "guidance": "The performance, metrics, conditions or other measurements that must be met to conclude the project."
+    },
+    {
+      "element": "Assigned project manager, responsibility, and authority level",
+      "printed_label": "Project Manager Authority Level",
+      "guidance": "The project manager's authority over staffing, budget management and variance, technical decisions and conflict resolution. The four sub-fields below carry the detail."
+    },
+    {
+      "element": "Project manager authority: staffing decisions",
+      "printed_label": "Staffing Decisions",
+      "guidance": "Staffing authority, for example the power to hire, fire, discipline, accept or not accept project staff. This sub-field is described inside the authority row of Table 1.1, not as a row of its own."
+    },
+    {
+      "element": "Project manager authority: budget management and variance",
+      "printed_label": "Budget Management and Variance",
+      "guidance": "Budget management is the authority to commit, manage and control project funds; variance is the level of variance that requires escalation. Described inside the authority row of Table 1.1."
+    },
+    {
+      "element": "Project manager authority: technical decisions",
+      "printed_label": "Technical Decisions",
+      "guidance": "The authority to make technical decisions about deliverables or the project approach. Described inside the authority row of Table 1.1."
+    },
+    {
+      "element": "Project manager authority: conflict resolution",
+      "printed_label": "Conflict Resolution",
+      "guidance": "How far the project manager can resolve conflict within the team, within the organization and with external stakeholders. Described inside the authority row of Table 1.1."
+    },
+    {
+      "element": "Name and authority of the sponsor or other person(s) authorizing the project charter",
+      "printed_label": "Sponsor Authority",
+      "guidance": "The name, position and authority of the person who oversees the project manager for the purposes of the project. Common authority types are approving changes, setting acceptable variance limits, resolving inter-project conflicts and championing the project at senior management level."
+    }
+  ],
+  "tailoring": [
+    "Combine the charter with the project scope statement, especially for a small project.",
+    "When the project is done under contract, the statement of work can serve as the charter in some cases."
+  ],
+  "agile_or_adaptive": "",
+  "decisions": [
+    {
+      "decision": "Whether the project or phase is formally authorized, and by whom",
+      "recorded_in": "Approvals",
+      "notes": "The prose says the charter formally authorizes the project; the Approvals block carries the signatures. The bullet list also names project approval requirements, which the blank form prints only as Approvals."
+    },
+    {
+      "decision": "Who is the project manager and at what authority level",
+      "recorded_in": "Project Manager Authority Level",
+      "notes": ""
+    },
+    {
+      "decision": "How much funding is preapproved",
+      "recorded_in": "Preapproved Financial Resources",
+      "notes": ""
+    },
+    {
+      "decision": "What variance level has to be escalated to the sponsor",
+      "recorded_in": "Budget Management and Variance",
+      "notes": "Variance is defined in the project manager row of Table 1.1 as the level that requires escalation."
+    },
+    {
+      "decision": "Which authority the sponsor holds, such as approving changes and determining acceptable variance limits",
+      "recorded_in": "Sponsor Authority",
+      "notes": "The book lists these as common types of sponsor authority, not as a fixed list."
+    },
+    {
+      "decision": "Which conditions let the project be concluded",
+      "recorded_in": "Project Exit Criteria",
+      "notes": ""
+    },
+    {
+      "decision": "Which objectives are measured and by which success criteria",
+      "recorded_in": "Project Objectives",
+      "notes": ""
+    }
+  ],
+  "citation": "Book of Forms form 1.1, PDF pages 13 to 15 (printed pages 2 to 4)",
+  "notes": "Purpose, receives, provides and the process: PDF page 13 (printed page 2). Tailoring Tips and Alignment: PDF page 14 (printed page 3). Table 1.1: PDF pages 14 to 15 (printed pages 3 to 4). Table 1.1 has 13 rows; the four authority sub-fields and Approvals are not rows of it. The element names differ from the blank form: see references/fields/1.1.json notes for the label mapping. The Success Criteria column, the Due Date column and the Role column have no separate row in Table 1.1 and are covered by the element they accompany. The Approvals block (columns Project Manager and Sponsor or Originator) has no description in the book."
+}

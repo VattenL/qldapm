@@ -1,0 +1,135 @@
+{
+  "form": "2.40",
+  "name": "Stakeholder Engagement Plan",
+  "process_group": "Planning",
+  "pmbok_processes": [
+    "13.2 Plan Stakeholder Engagement"
+  ],
+  "purpose": "A component of the project management plan that describes the strategies and actions to promote productive involvement of stakeholders in decision making and project execution. It records current and desired engagement, pending stakeholder changes, relationships between stakeholders and the approach for each, and can include methods for updating the plan. It is updated periodically as needed.",
+  "receives_from": [
+    {
+      "source": "1.1",
+      "what": "Project charter: named as a source in the prose; the book does not say which fields are used"
+    },
+    {
+      "source": "1.2",
+      "what": "Assumption log: named as a source in the prose; the book does not say which fields are used"
+    },
+    {
+      "source": "3.4",
+      "what": "Change log: named as a source in the prose; the book does not say which fields are used"
+    },
+    {
+      "source": "3.1",
+      "what": "Issue log: named as a source in the prose; the book does not say which fields are used"
+    },
+    {
+      "source": "1.3",
+      "what": "Stakeholder register: named as a source in the prose; the book does not say which fields are used"
+    },
+    {
+      "source": "2.26",
+      "what": "Resource management plan: named as a source in the prose; the book does not say which fields are used"
+    },
+    {
+      "source": "2.18",
+      "what": "Project schedule: named as a source in the prose; the book does not say which fields are used"
+    },
+    {
+      "source": "2.30",
+      "what": "Communications management plan: named as a source in the prose; the book does not say which fields are used"
+    },
+    {
+      "source": "2.31",
+      "what": "Risk management plan: named as a source in the prose; the book does not say which fields are used"
+    },
+    {
+      "source": "2.32",
+      "what": "Risk register: named as a source in the prose; the book does not say which fields are used"
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "2.6",
+      "what": "Requirements documentation: named as a recipient in the prose; the book does not say which fields flow"
+    },
+    {
+      "target": "2.23",
+      "what": "Quality management plan: named as a recipient in the prose; the book does not say which fields flow"
+    },
+    {
+      "target": "2.30",
+      "what": "Communications management plan: named as a recipient in the prose; the book does not say which fields flow"
+    },
+    {
+      "target": "1.3",
+      "what": "Stakeholder register: named as a recipient in the prose; the book does not say which fields flow"
+    }
+  ],
+  "alignment": [
+    {
+      "form": "1.3",
+      "what_must_agree": "The book says only 'aligned and consistent'. Reading aid from the element table, not stated in the book: the stakeholders listed in the engagement table and their classification against the register."
+    },
+    {
+      "form": "2.30",
+      "what_must_agree": "The book says only 'aligned and consistent'. Reading aid from the element table, not stated in the book: the approach to each stakeholder against the communications planned for them."
+    },
+    {
+      "form": "2.18",
+      "what_must_agree": "The book says only 'aligned and consistent'. Reading aid from the element table, not stated in the book: when engagement activities happen against the project schedule."
+    }
+  ],
+  "elements": [
+    {
+      "element": "Stakeholder engagement assessment matrix",
+      "printed_label": "Stakeholder",
+      "guidance": "List stakeholders from the stakeholder register and mark the current engagement level with a C and the desired level with a D. The book's common levels: unaware (unaware of the project and its potential impacts), resistant (aware and resistant to the change), neutral (aware, neither supportive nor resistant), supportive (aware and supportive of the change), leading (aware and actively engaged in ensuring project success). The blank form prints this table without a heading, with a Stakeholder column and the five level columns, and a C and D legend beneath it."
+    },
+    {
+      "element": "Stakeholder changes",
+      "printed_label": "Pending Stakeholder Changes",
+      "guidance": "Pending additions, deletions or changes to stakeholders and their potential impact on the project."
+    },
+    {
+      "element": "Interrelationships",
+      "printed_label": "Stakeholder Relationships",
+      "guidance": "Any relationships between and among stakeholder groups."
+    },
+    {
+      "element": "Stakeholder engagement approach",
+      "printed_label": "Stakeholder Engagement Approach",
+      "guidance": "The approach to be used with each stakeholder to move them to the preferred level of engagement. The blank form prints Stakeholder and Approach columns."
+    }
+  ],
+  "tailoring": [
+    "Small projects may not need a stakeholder engagement plan; combine the information with the stakeholder register as appropriate.",
+    "A project with many overlapping and intersecting stakeholder relationships can benefit from a stakeholder relationship map that shows the connections.",
+    "Many high-risk projects depend on stakeholder engagement; a project with many stakeholders, complex interactions and high-risk stakeholders needs a robust plan."
+  ],
+  "agile_or_adaptive": "",
+  "decisions": [
+    {
+      "decision": "The desired engagement level for each stakeholder, compared with the current level",
+      "recorded_in": "Stakeholder (engagement table, C and D)",
+      "notes": ""
+    },
+    {
+      "decision": "How each stakeholder will be moved to the desired level",
+      "recorded_in": "Stakeholder Engagement Approach",
+      "notes": ""
+    },
+    {
+      "decision": "How pending stakeholder additions, deletions or changes are handled",
+      "recorded_in": "Pending Stakeholder Changes",
+      "notes": ""
+    },
+    {
+      "decision": "Whether a map of stakeholder relationships is needed",
+      "recorded_in": "Stakeholder Relationships",
+      "notes": "Tailoring tip for projects with overlapping relationships."
+    }
+  ],
+  "citation": "Book of Forms form 2.40, PDF pages 169 to 170 (printed pages 158 to 159); Tailoring Tips PDF page 169 (printed page 158), Alignment and Table 2.36 PDF page 170 (printed page 159)",
+  "notes": "Blank form: PDF pages 171 to 172 (printed pages 160 to 161). The prose says the plan 'is an output from process 13.2 Plan Stakeholder Engagement'. The blank form prints no heading over the engagement assessment table, so printed_label for that element is its first column, Stakeholder, which also heads the approach table; the C and D legend is printed beneath the table. Prose labels differ from the blank form (Stakeholder changes, Interrelationships); the blank form wins. The prose gives no rule for which engagement gaps need action first: not stated in the book. The prose names no agile or adaptive tailoring. The alignment 'what_must_agree' texts are reading aids, since the book states only 'aligned and consistent'."
+}

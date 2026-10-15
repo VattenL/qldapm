@@ -1,0 +1,68 @@
+{
+  "form": "2.29",
+  "name": "Resource Breakdown Structure",
+  "process_group": "Planning",
+  "pmbok_processes": [
+    "9.2 Estimate Activity Resources"
+  ],
+  "purpose": "A hierarchical structure that organizes the project's resources by type and category, shown as a hierarchical chart or as an outline. Resources follow the project scope, so the structure stays stable while scope is stable and evolves with it.",
+  "receives_from": [
+    {
+      "source": "1.2",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "2.26",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "Scope baseline",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "2.13",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "2.17",
+      "what": "The prose names 'Duration estimates worksheet'. The closest forms are 2.17 Duration Estimating Worksheet and 2.16 Duration Estimates; 2.17 is assumed because of 'worksheet', and which content flows is not stated in the book."
+    }
+  ],
+  "alignment": [
+    {
+      "form": "2.26",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "2.28",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    }
+  ],
+  "elements": [],
+  "tailoring": [
+    "For projects with many kinds of team resources, break the team branch down further by skill level, required certifications, location or other information.",
+    "For projects at different locations, organize the structure by geography."
+  ],
+  "agile_or_adaptive": "",
+  "decisions": [
+    {
+      "decision": "How resources are grouped into types and categories",
+      "recorded_in": "",
+      "notes": ""
+    },
+    {
+      "decision": "Whether the team branch is decomposed further (skill level, certifications, location)",
+      "recorded_in": "",
+      "notes": "Tailoring tip."
+    },
+    {
+      "decision": "Whether the structure is organized by geography",
+      "recorded_in": "",
+      "notes": "Tailoring tip."
+    }
+  ],
+  "citation": "Book of Forms form 2.29, PDF page 127 (printed page 116)",
+  "notes": "The book gives no Document Element table for this form, so elements is empty. The blank form (PDF page 128, printed page 117) is a sample indented outline with five branches under Project: People, Equipment, Materials, Supplies, Locations, numbered 1.1 to 1.5; the leaf entries (Quantity of Role 1, Quantity of Level 1 and so on) are placeholders, not fields. The prose gives no section on adaptive projects."
+}

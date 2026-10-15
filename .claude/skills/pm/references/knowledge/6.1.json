@@ -1,0 +1,90 @@
+{
+    "form": "6.1",
+    "name": "Product Vision",
+    "process_group": "Agile",
+    "pmbok_processes": [],
+    "purpose": "Gives the future view of the product being developed: aspirational, yet achievable and realistic. It is developed once, at the very beginning of the project, and is often an input to the business case. On agile-based projects it is often used in place of a project charter.",
+    "receives_from": [],
+    "provides_to": [
+        {
+            "target": "Business case",
+            "what": "the product vision is often an input to the business case (prose)"
+        },
+        {
+            "target": "6.2",
+            "what": "the backlog is often developed in conjunction with the product vision (6.2 prose, PDF page 253, printed page 242); which fields flow is not stated in the book"
+        }
+    ],
+    "alignment": [
+        {
+            "form": "6.2",
+            "what_must_agree": "the backlog's requirements and stories must serve the vision's needs and key benefit (reading; the book gives only the list entry)"
+        },
+        {
+            "form": "2.3",
+            "what_must_agree": "the book says 'Roadmap'; taken to be the project roadmap form; it must agree with the direction the vision states (reading; the book gives only the list entry)"
+        },
+        {
+            "form": "6.3",
+            "what_must_agree": "the releases must deliver what the vision promises (reading; the book gives only the list entry)"
+        }
+    ],
+    "elements": [
+        {
+            "element": "Target customer",
+            "printed_label": "We are developing this product for ____.",
+            "guidance": "The person or group who will buy or use the product. On the blank form this is the stem 'We are developing this product for ____.'"
+        },
+        {
+            "element": "Needs",
+            "printed_label": "To respond to the following need(s):",
+            "guidance": "The needs or requirements the product will address. On the blank form this is the stem 'To respond to the following need(s):' with three empty bullets."
+        },
+        {
+            "element": "Product and key attributes",
+            "printed_label": "This product responds to those needs by providing the following:",
+            "guidance": "A description of the product with its attributes, functional and nonfunctional requirements, and top-level requirements. On the blank form this is the stem 'This product responds to those needs by providing the following:' with four empty bullets."
+        },
+        {
+            "element": "Key benefit",
+            "printed_label": "Customers will buy this product because:",
+            "guidance": "Why the customer would buy the product. On the blank form this is the stem 'Customers will buy this product because:' with four empty bullets."
+        }
+    ],
+    "tailoring": [
+        "Document the business goals the product is aligned to.",
+        "Identify the key competitors and how this product will be better.",
+        "Describe what differentiates this product from similar products in the market.",
+        "The whole vision can be one or two sentences, or it can follow a formula like the one in the sample form."
+    ],
+    "agile_or_adaptive": "The book places this form in its Agile chapter, says it is often used in place of a project charter on agile-based projects, and says the agile forms can be tailored for any project regardless of development method (Agile chapter introduction, PDF page 250, printed page 239). The introduction suggests the Develop Project Charter process: the form may be used before developing a charter or, for smaller projects, instead of one.",
+    "decisions": [
+        {
+            "decision": "Who the target customer is",
+            "recorded_in": "We are developing this product for ____.",
+            "notes": ""
+        },
+        {
+            "decision": "Which needs the product answers",
+            "recorded_in": "To respond to the following need(s):",
+            "notes": ""
+        },
+        {
+            "decision": "What the product is and its key attributes",
+            "recorded_in": "This product responds to those needs by providing the following:",
+            "notes": ""
+        },
+        {
+            "decision": "Why customers will buy it",
+            "recorded_in": "Customers will buy this product because:",
+            "notes": ""
+        },
+        {
+            "decision": "Whether the vision stands in for a project charter",
+            "recorded_in": "",
+            "notes": "The prose says it is often used in place of a charter on agile-based projects and the introduction says for smaller projects; the form has no field for it."
+        }
+    ],
+    "citation": "Book of Forms form 6.1, PDF page 251 (printed page 240); Table 6.1 PDF page 251 (printed page 240); blank form PDF page 252 (printed page 241); Agile chapter introduction PDF page 250 (printed page 239)",
+    "notes": "pmbok_processes is empty because the Agile chapter introduction says PMBOK 6 lists none of the agile forms as an output of any process; it only suggests where each might be most useful (for this form, Develop Project Charter). The prose has no receives-from section. The blank form does not print the Table 6.1 element names; it prints four sentence stems as text blocks, so printed_label holds the stem for each element; the Table 6.1 element order matches the stem order. Table 6.1 says Key benefit; the prose bullet says Key benefits. 'Roadmap' in the Alignment list is not a form name; reading it as 2.3 is an assumption."
+}

@@ -1,0 +1,134 @@
+{
+  "form": "4.7",
+  "name": "Procurement Audit",
+  "process_group": "Monitoring and Controlling",
+  "pmbok_processes": [
+    "12.3 Control Procurements"
+  ],
+  "purpose": "Reviews the contracts and the contracting processes for completeness, accuracy and effectiveness. What it records can be used to improve the process and the results on the current procurement or on other contracts. It is run periodically through the project, or as needed.",
+  "receives_from": [],
+  "provides_to": [
+    {
+      "target": "Current procurement and other contracts",
+      "what": "the audit's information can be used to improve the process and results on the current procurement or on other contracts (prose)"
+    },
+    {
+      "target": "Other projects and organization policies, procedures and processes",
+      "what": "good practices to share and areas for improvement, with lessons learned (Table 4.7)"
+    }
+  ],
+  "alignment": [
+    {
+      "form": "2.37",
+      "what_must_agree": "the three process rows are judged against what the procurement management plan says to do (reading; the book gives only the list entry)"
+    },
+    {
+      "form": "4.6",
+      "what_must_agree": "vendor performance findings must be consistent with what the contractor status reports said (reading; the book gives only the list entry)"
+    },
+    {
+      "form": "4.8",
+      "what_must_agree": "the audit and the contract closeout report both hold what worked well and what can be improved for scope, quality, schedule, cost and other, so the two must not contradict (reading; the book gives only the list entry)"
+    }
+  ],
+  "elements": [
+    {
+      "element": "What worked well: Scope",
+      "printed_label": "Scope",
+      "guidance": "Aspects of contract scope that were handled well."
+    },
+    {
+      "element": "What worked well: Quality",
+      "printed_label": "Quality",
+      "guidance": "Aspects of product quality that were handled well."
+    },
+    {
+      "element": "What worked well: Schedule",
+      "printed_label": "Schedule",
+      "guidance": "Aspects of the contract schedule that were handled well."
+    },
+    {
+      "element": "What worked well: Cost",
+      "printed_label": "Cost",
+      "guidance": "Aspects of the contract budget that were handled well."
+    },
+    {
+      "element": "What worked well: Other",
+      "printed_label": "Other",
+      "guidance": "Any other aspects of the contract or procurement that were handled well."
+    },
+    {
+      "element": "What can be improved: Scope",
+      "printed_label": "Scope",
+      "guidance": "Aspects of contract scope that could be improved."
+    },
+    {
+      "element": "What can be improved: Quality",
+      "printed_label": "Quality",
+      "guidance": "Aspects of product quality that could be improved."
+    },
+    {
+      "element": "What can be improved: Schedule",
+      "printed_label": "Schedule",
+      "guidance": "Aspects of the contract schedule that could be improved."
+    },
+    {
+      "element": "What can be improved: Cost",
+      "printed_label": "Cost",
+      "guidance": "Aspects of the contract budget that could be improved."
+    },
+    {
+      "element": "What can be improved: Other",
+      "printed_label": "Other",
+      "guidance": "Any other aspects of the contract or procurement that could be improved."
+    },
+    {
+      "element": "Procurement management process audit: Process",
+      "printed_label": "Process",
+      "guidance": "One row per process: Plan procurements, Conduct procurements and Control procurements. The blank form prints them as Plan Procurements, Conduct Procurements and Control Procurements."
+    },
+    {
+      "element": "Procurement management process audit: Followed",
+      "printed_label": "Followed",
+      "guidance": "Whether each procurement process was followed or not, per procurement."
+    },
+    {
+      "element": "Procurement management process audit: Tools and techniques used",
+      "printed_label": "Tools and Techniques Used",
+      "guidance": "Any tools or techniques that were effective for each procurement."
+    },
+    {
+      "element": "Good practices to share",
+      "printed_label": "Description of Good Practices to Share",
+      "guidance": "Good practices that can be shared with other projects or built into organization policies, procedures or processes, including lessons learned."
+    },
+    {
+      "element": "Areas for improvement",
+      "printed_label": "Description of Areas for Improvement",
+      "guidance": "Areas of the procurement process that should be improved, including information for policies, procedures or processes and for lessons learned."
+    }
+  ],
+  "tailoring": [
+    "Add qualitative information such as how easy the vendor was to work with, how quickly calls were returned and how collaborative the attitude was; this helps with future procurement opportunities."
+  ],
+  "agile_or_adaptive": "",
+  "decisions": [
+    {
+      "decision": "Which aspects of the vendor's scope, quality, schedule and cost performance went well and which to improve",
+      "recorded_in": "What Worked Well; What Can Be Improved",
+      "notes": ""
+    },
+    {
+      "decision": "Whether each procurement process was followed",
+      "recorded_in": "Followed",
+      "notes": ""
+    },
+    {
+      "decision": "Which practices are shared and which policies or procedures change",
+      "recorded_in": "Description of Good Practices to Share; Description of Areas for Improvement",
+      "notes": ""
+    }
+  ],
+  "citation": "Book of Forms form 4.7, PDF pages 229 to 230 (printed pages 218 to 219); Table 4.7 PDF page 230 (printed page 219); blank form PDF pages 231 to 232 (printed pages 220 to 221)",
+  "notes": "The prose has no receives-from or provides-to section and Table 4.7 names no source document, so receives_from is empty. The prose bullets group the first content as Vendor performance audit; Table 4.7 groups it as What worked well and What can be improved, and the blank form prints the heading Vendor Performance Audit over two bands. Scope, Quality, Schedule, Cost and Other print twice, once under each band, so the same printed label appears for both bands and the element name says which. The prose says the audit is a technique from 12.3 Control Procurements. Table 4.7 calls the page 2 elements Good practices to share and Areas for improvement; the blank form prints Description of Good Practices to Share and Description of Areas for Improvement. The blank form's title block prints Project Auditor and Audit Date, which Table 4.7 does not list. The Table 4.7 text for the Followed and Tools columns is run together in the extracted page; the guidance is read from it."
+}

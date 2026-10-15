@@ -1,0 +1,136 @@
+{
+  "form": "2.11",
+  "name": "Schedule Management Plan",
+  "process_group": "Planning",
+  "pmbok_processes": [
+    "6.1 Plan Schedule Management"
+  ],
+  "purpose": "Part of the project management plan. It specifies how the project schedule will be developed, monitored and controlled: the methodology and tool, the accuracy and units of the estimates, the thresholds that trigger action, how the schedule is reported and updated, and how it links to the organization's procedures. It is developed once and does not usually change.",
+  "receives_from": [
+    {
+      "source": "1.1",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "2.1",
+      "what": "named as a source (the book says \"Project management plan\"); the book does not say what is passed"
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "2.12",
+      "what": "named as a recipient; the book does not say what is passed"
+    },
+    {
+      "target": "2.13",
+      "what": "named as a recipient; the book does not say what is passed"
+    },
+    {
+      "target": "2.15",
+      "what": "named as a recipient; the book does not say what is passed"
+    },
+    {
+      "target": "2.16",
+      "what": "named as a recipient (the book says \"Activity duration estimates\"); the book does not say what is passed"
+    },
+    {
+      "target": "2.18",
+      "what": "named as a recipient; the book does not say what is passed"
+    },
+    {
+      "target": "Schedule baseline",
+      "what": "named as a recipient; the book does not say what is passed"
+    },
+    {
+      "target": "2.32",
+      "what": "named as a recipient; the book does not say what is passed"
+    }
+  ],
+  "alignment": [
+    {
+      "form": "1.1",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "2.19",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    }
+  ],
+  "elements": [
+    {
+      "element": "Schedule methodology",
+      "printed_label": "Schedule Methodology",
+      "guidance": "The scheduling methodology used, whether critical path, agile or another."
+    },
+    {
+      "element": "Scheduling tool(s)",
+      "printed_label": "Scheduling Tools",
+      "guidance": "The tool or tools used: scheduling software, reporting software, earned value software and so on."
+    },
+    {
+      "element": "Level of accuracy",
+      "printed_label": "Level of Accuracy",
+      "guidance": "The accuracy needed for estimates. It may evolve as more is known (progressive elaboration); if rolling wave planning guidelines exist, state the accuracy required as time progresses."
+    },
+    {
+      "element": "Units of measure",
+      "printed_label": "Units of Measure",
+      "guidance": "Whether duration estimates are in days, weeks, months or another unit."
+    },
+    {
+      "element": "Variance thresholds",
+      "printed_label": "Variance Thresholds",
+      "guidance": "The measures that decide whether an activity, work package or the whole project is on time, needs preventive action, or is late and needs corrective action."
+    },
+    {
+      "element": "Schedule reporting and format",
+      "printed_label": "Schedule Reporting and Format",
+      "guidance": "The schedule information needed for status and progress reports; if a specific format is used, attach it or refer to the form or template."
+    },
+    {
+      "element": "Organizational procedure links",
+      "printed_label": "Organizational Procedure Links",
+      "guidance": "The schedule outline follows the numbering structure of the WBS, and may also need to follow the organization's code of accounts or other accounting and reporting structures."
+    },
+    {
+      "element": "Schedule updates",
+      "printed_label": "Schedule Updates",
+      "guidance": "The process for updating the schedule: update frequency, permissions and version control, plus the guidelines for keeping baseline integrity and for re-baselining if necessary."
+    }
+  ],
+  "tailoring": [
+    "Add the level of detail and the timing of WBS decomposition, based on rolling wave planning.",
+    "For projects that use agile, add the time box periods for releases, waves and iterations.",
+    "For projects that use earned value management, add the rules for establishing percent complete and the EVM measurement techniques (fixed formula, percent complete, level of effort and so on)."
+  ],
+  "agile_or_adaptive": "For projects that use agile, add information on the time box periods for releases, waves and iterations (Tailoring Tips, PDF page 67, printed page 56). Schedule methodology may be critical path, agile or another (Table 2.11, PDF page 68, printed page 57).",
+  "decisions": [
+    {
+      "decision": "which scheduling methodology and tool the project uses",
+      "recorded_in": "Schedule Methodology; Scheduling Tools",
+      "notes": ""
+    },
+    {
+      "decision": "how precise estimates must be and in what unit",
+      "recorded_in": "Level of Accuracy; Units of Measure",
+      "notes": ""
+    },
+    {
+      "decision": "when a deviation counts as on time, as needing preventive action, or as late and needing corrective action",
+      "recorded_in": "Variance Thresholds",
+      "notes": "The book gives no numeric threshold; the project sets them."
+    },
+    {
+      "decision": "how the schedule is reported and in which format",
+      "recorded_in": "Schedule Reporting and Format",
+      "notes": ""
+    },
+    {
+      "decision": "who may change the schedule, how often it is updated, and when re-baselining is allowed",
+      "recorded_in": "Schedule Updates",
+      "notes": ""
+    }
+  ],
+  "citation": "Book of Forms form 2.11, PDF pages 67 to 68 (printed pages 56 to 57); blank form PDF page 69 (printed page 58)",
+  "notes": "The blank form prints Date, not Date Prepared, in its title block, and Scheduling Tools where Table 2.11 says Scheduling tool(s); the printed labels win (references/fields/2.11.json). Level of Accuracy, Units of Measure and Variance Thresholds print as three boxes on one row. Process: 6.1 Plan Schedule Management (PDF page 67, printed page 56). The book gives no numeric defaults for accuracy or variance thresholds."
+}

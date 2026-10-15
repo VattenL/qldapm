@@ -1,0 +1,162 @@
+{
+  "form": "2.17",
+  "name": "Duration Estimating Worksheet",
+  "process_group": "Planning",
+  "pmbok_processes": [
+    "6.4 Estimate Activity Durations"
+  ],
+  "purpose": "A worksheet that helps develop duration estimates when a quantitative method is used: parametric, analogous or three-point estimating. Each method has its own sub-table, and the results feed the duration estimates form (2.16).",
+  "receives_from": [
+    {
+      "source": "1.2",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "Scope baseline",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "2.12",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "2.13",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "2.28",
+      "what": "named as a source (the book says \"Resource requirements\"); the book does not say what is passed"
+    },
+    {
+      "source": "Resource calendars",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "Project team assignments",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "2.32",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "3.5",
+      "what": "named as a source; the book does not say what is passed"
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "2.16",
+      "what": "the estimates worked out on the sheet (the book says \"Duration estimates\")"
+    }
+  ],
+  "alignment": [],
+  "elements": [
+    {
+      "element": "ID",
+      "printed_label": "ID",
+      "guidance": "A unique identifier."
+    },
+    {
+      "element": "Effort hours (parametric)",
+      "printed_label": "Effort Hours",
+      "guidance": "The labor needed to do the work; usually hours, possibly days. Book example: 150 hours."
+    },
+    {
+      "element": "Resource quantity (parametric)",
+      "printed_label": "Resource Quantity",
+      "guidance": "The number of resources available. Book example: 2 people."
+    },
+    {
+      "element": "Percent available (parametric)",
+      "printed_label": "% Available",
+      "guidance": "How much of the time the resources are available, usually as a percent per day or per week. Book example: 75 percent."
+    },
+    {
+      "element": "Performance factor (parametric)",
+      "printed_label": "Performance Factor",
+      "guidance": "A factor, if appropriate, for how fast the resource works compared with the average resource, which has a factor of 1.0. The book's examples: a highly skilled resource .8, a less skilled one 1.2."
+    },
+    {
+      "element": "Duration estimate (parametric)",
+      "printed_label": "Duration Estimate",
+      "guidance": "The effort hours divided by (resource quantity times percent available times performance factor), as the book prints the equation. Book example: 150 / (2 x .75 x .8) = 125 hours."
+    },
+    {
+      "element": "Previous activity (analogous)",
+      "printed_label": "Previous Activity",
+      "guidance": "A description of the earlier, similar activity. Book example: build a 160 square foot deck."
+    },
+    {
+      "element": "Previous duration (analogous)",
+      "printed_label": "Previous Duration",
+      "guidance": "The duration of the earlier activity. Book example: 10 days."
+    },
+    {
+      "element": "Current activity (analogous)",
+      "printed_label": "Current Activity",
+      "guidance": "How the current activity differs from the previous one. Book example: build a 200 square foot deck."
+    },
+    {
+      "element": "Multiplier (analogous)",
+      "printed_label": "Multiplier",
+      "guidance": "The current activity divided by the previous activity, in the same measure of size. Book example: 200 / 160 = 1.25."
+    },
+    {
+      "element": "Duration estimate (analogous)",
+      "printed_label": "Duration Estimate",
+      "guidance": "The previous duration multiplied by the multiplier. Book example: 10 days x 1.25 = 12.5 days."
+    },
+    {
+      "element": "Optimistic duration (three-point)",
+      "printed_label": "Optimistic Duration",
+      "guidance": "An estimate assuming everything goes well: no material delays, all resources available and performing as expected. Book example: 20 days."
+    },
+    {
+      "element": "Most likely duration (three-point)",
+      "printed_label": "Most Likely Duration",
+      "guidance": "An estimate assuming some delays but nothing out of the ordinary. Book example: 25 days."
+    },
+    {
+      "element": "Pessimistic duration (three-point)",
+      "printed_label": "Pessimistic Duration",
+      "guidance": "An estimate assuming significant risks materialize and cause delays. Book example: 36 days."
+    },
+    {
+      "element": "Weighting equation (three-point)",
+      "printed_label": "Weighting Equation",
+      "guidance": "How the three estimates are weighted and divided. The book names the beta distribution as the most common: tE = (tO + 4tM + tP) / 6. Book example: (20 + 4 x 25 + 36) / 6."
+    },
+    {
+      "element": "Expected duration (three-point)",
+      "printed_label": "Expected Duration Estimate",
+      "guidance": "The expected duration from the weighting calculation. Book example: 26 days."
+    }
+  ],
+  "tailoring": [],
+  "agile_or_adaptive": "",
+  "decisions": [
+    {
+      "decision": "which quantitative method suits an activity: parametric, analogous or three-point",
+      "recorded_in": "",
+      "notes": "The book says analogous estimates are generally used for a high-level estimate when detailed information is not available (PDF page 84, printed page 73), and three-point estimates account for uncertainty. It gives no further selection rule."
+    },
+    {
+      "decision": "how many people are assigned and how much of their time is available",
+      "recorded_in": "Resource Quantity; % Available",
+      "notes": ""
+    },
+    {
+      "decision": "whether to adjust for the skill of the resource",
+      "recorded_in": "Performance Factor",
+      "notes": "See the uncertainty in notes about how the factor is applied."
+    },
+    {
+      "decision": "how to weight the optimistic, most likely and pessimistic estimates",
+      "recorded_in": "Weighting Equation",
+      "notes": "The book says the needs of the project decide the equation and shows only the beta distribution; other equations are not stated in the book."
+    }
+  ],
+  "citation": "Book of Forms form 2.17, PDF pages 84 to 87 (printed pages 73 to 76); blank form PDF page 88 (printed page 77)",
+  "notes": "This form has no Tailoring Tips and no Alignment section (PDF pages 84 to 87, printed pages 73 to 76), so tailoring and alignment are empty; per SKILL.md the documents to compare are those named under receives and provides. The sheet has three independent sub-tables (Parametric Estimates, Analogous Estimates, Three-Point Estimates), each with its own ID and Duration Estimate (or Expected Duration Estimate) column, so printed_label repeats for ID and Duration Estimate; the element names carry the method in brackets. The blank form prints % Available, Three-Point Estimates and Expected Duration Estimate where Table 2.16 says Percent available, Three-point estimate (beta distribution) and Expected duration; the printed labels win. UNCERTAIN, the book contradicts itself on the performance factor: the prose (PDF page 84, printed page 73) says to multiply the estimated hours by a performance factor, and the Table 2.16 description (PDF page 86, printed page 75) says a skilled resource gets the work done faster, so the effort hours are multiplied by .8; but the printed equation divides the effort by quantity x percent available x performance factor, and the printed example 150 / (2 x .75 x .8) = 125 hours is longer than the 100 hours without the factor. The book does not reconcile these; state which reading is used when a worksheet is filled, and do not treat either as the book's rule. Other facts: the book says most people are productive on project work only about 75 percent of the time (PDF page 84, printed page 73); the three-point example (20 + 4 x 25 + 36) / 6 equals 26 days, matching the printed result. Process: 6.4 Estimate Activity Durations (the book prints Estimate Activity Duration here); estimates are developed throughout the project as schedule and activity details are refined (PDF page 85, printed page 74)."
+}

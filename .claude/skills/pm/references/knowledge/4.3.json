@@ -1,0 +1,167 @@
+{
+  "form": "4.3",
+  "name": "Variance Analysis",
+  "process_group": "Monitoring and Controlling",
+  "pmbok_processes": [
+    "4.5 Monitor and Control Project Work",
+    "4.7 Close Project or Phase",
+    "5.6 Control Scope",
+    "6.6 Control Schedule",
+    "7.4 Control Costs"
+  ],
+  "purpose": "Collects and organises information on performance variances, normally for schedule, cost and quality. For each it states planned result, actual result, variance, root cause and planned response. The book calls variance analysis a data analysis technique, used in the five processes above, and says the result can stand alone, sit inside the project status report, or back up an earned value status report.",
+  "receives_from": [],
+  "provides_to": [
+    {
+      "target": "4.2",
+      "what": "the analysis can be provided as part of the project status report (prose)"
+    },
+    {
+      "target": "4.4",
+      "what": "the analysis can be provided as backup to an earned value status report (prose); the book names no form number, 4.4 is matched by title"
+    }
+  ],
+  "alignment": [
+    {
+      "form": "4.1",
+      "what_must_agree": "variances and root causes must match those in the team member reports"
+    },
+    {
+      "form": "4.2",
+      "what_must_agree": "variances and root causes must match those in the project status report"
+    },
+    {
+      "form": "2.18",
+      "what_must_agree": "planned and actual schedule results must match the project schedule"
+    },
+    {
+      "form": "2.20",
+      "what_must_agree": "planned costs must agree with the cost estimates"
+    },
+    {
+      "form": "Project budget (no form of this name in the book)",
+      "what_must_agree": "planned and actual costs must agree with the project budget; the book has no form named project budget (not stated in the book)"
+    },
+    {
+      "form": "3.1",
+      "what_must_agree": "variances that became issues must match the issue log"
+    },
+    {
+      "form": "4.4",
+      "what_must_agree": "the book writes \"earned value status report\"; the matching form is the Earned Value Analysis Report (4.4), whose variances must agree with these"
+    },
+    {
+      "form": "4.6",
+      "what_must_agree": "the book writes \"contractor status report\"; the matching form is the Contractor Status Report (4.6), whose variances must agree with these"
+    }
+  ],
+  "elements": [
+    {
+      "element": "Schedule variance: Planned result",
+      "printed_label": "Planned Result",
+      "guidance": "Describe the work planned to be accomplished."
+    },
+    {
+      "element": "Schedule variance: Actual result",
+      "printed_label": "Actual Result",
+      "guidance": "Describe the work actually accomplished."
+    },
+    {
+      "element": "Schedule variance: Variance",
+      "printed_label": "Variance",
+      "guidance": "Describe the variance."
+    },
+    {
+      "element": "Schedule variance: Root cause",
+      "printed_label": "Root Cause",
+      "guidance": "Identify the root cause of the variance."
+    },
+    {
+      "element": "Schedule variance: Planned response",
+      "printed_label": "Planned Response",
+      "guidance": "Document the planned corrective or preventive action."
+    },
+    {
+      "element": "Cost variance: Planned result",
+      "printed_label": "Planned Result",
+      "guidance": "Record the planned costs for the work planned to be accomplished."
+    },
+    {
+      "element": "Cost variance: Actual result",
+      "printed_label": "Actual Result",
+      "guidance": "Record the actual costs spent."
+    },
+    {
+      "element": "Cost variance: Variance",
+      "printed_label": "Variance",
+      "guidance": "Calculate the variance."
+    },
+    {
+      "element": "Cost variance: Root cause",
+      "printed_label": "Root Cause",
+      "guidance": "Identify the root cause of the variance."
+    },
+    {
+      "element": "Cost variance: Planned response",
+      "printed_label": "Planned Response",
+      "guidance": "Document the planned corrective or preventive action."
+    },
+    {
+      "element": "Quality variance: Planned result",
+      "printed_label": "Planned Result",
+      "guidance": "Describe the planned performance or quality measurements."
+    },
+    {
+      "element": "Quality variance: Actual result",
+      "printed_label": "Actual Result",
+      "guidance": "Describe the actual performance or quality measurements."
+    },
+    {
+      "element": "Quality variance: Variance",
+      "printed_label": "Variance",
+      "guidance": "Describe the variance."
+    },
+    {
+      "element": "Quality variance: Root cause",
+      "printed_label": "Root Cause",
+      "guidance": "Identify the root cause of the variance."
+    },
+    {
+      "element": "Quality variance: Planned response",
+      "printed_label": "Planned Response",
+      "guidance": "Document the planned corrective action; Table 4.3 says corrective only, not corrective or preventive, for quality."
+    }
+  ],
+  "tailoring": [
+    "Scope variance can be included, but it is generally shown by the schedule variance, because more or less scope will have been done over time.",
+    "The analysis can be done at activity, resource, work package, control account or project level, as needed.",
+    "Add a check box saying whether the information must be escalated to the sponsor, program manager or other appropriate individuals.",
+    "Add a field for the implications of continued variance, such as a forecast based on trend analysis or on identified responses.",
+    "Tailor the presentation as well as the content: many PMOs have reporting software that turns the data into dashboards, heat reports, stop light charts or other representations."
+  ],
+  "agile_or_adaptive": "",
+  "decisions": [
+    {
+      "decision": "What the planned and actual results were and how big the variance is",
+      "recorded_in": "Planned Result; Actual Result; Variance",
+      "notes": "Repeated under Schedule Variance, Cost Variance and Quality Variance."
+    },
+    {
+      "decision": "What caused each variance",
+      "recorded_in": "Root Cause",
+      "notes": ""
+    },
+    {
+      "decision": "What the planned response to each variance is",
+      "recorded_in": "Planned Response",
+      "notes": "Corrective or preventive for schedule and cost; corrective for quality."
+    },
+    {
+      "decision": "Whether the variance must be escalated",
+      "recorded_in": "No printed box",
+      "notes": "Only a Tailoring Tip, which suggests adding a check box."
+    }
+  ],
+  "citation": "Book of Forms form 4.3, PDF pages 213 to 214 (printed pages 202 to 203)",
+  "notes": "Table 4.3 has three parent rows (Schedule variance, Cost variance, Quality variance), each with five sub-rows; they are listed as \"Parent: sub\", and the printed labels repeat three times on the blank form (PDF pages 215 to 216, printed pages 204 to 205). On the blank form the cost section spans the page break. The prose says the information can be standalone, part of 4.2, or backup to an earned value status report. The book does not say what feeds the planned and actual results beyond the Alignment list (not stated in the book), so receives_from is empty. Table 4.3 gives no formula for a variance; the cost row says only calculate the variance (not stated in the book)."
+}

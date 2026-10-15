@@ -1,0 +1,259 @@
+{
+  "form": "2.10",
+  "name": "WBS Dictionary",
+  "process_group": "Planning",
+  "pmbok_processes": [
+    "5.4 Create WBS"
+  ],
+  "purpose": "Supports the WBS with detail about the control accounts and work packages in it, either per work package or as a summary at control account level. With the approved WBS and the project scope statement it forms the scope baseline. It is progressively elaborated as planning proceeds: a work package's statement of work may be defined before its activities, cost estimates and resource needs are known.",
+  "receives_from": [
+    {
+      "source": "2.6",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "2.8",
+      "what": "the acceptance criteria, usually taken from the scope statement (Table 2.10, PDF page 65, printed page 54)"
+    },
+    {
+      "source": "1.2",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "2.12",
+      "what": "the activity descriptions, from the activity list or the schedule (Table 2.10)"
+    },
+    {
+      "source": "2.14",
+      "what": "named as a source; the book does not say what is passed (the Milestones element asks for the milestones associated with the work package, Table 2.10, PDF page 65, printed page 54)"
+    },
+    {
+      "source": "2.28",
+      "what": "named as a source (the book says \"Activity resource requirements\"); Table 2.10 says the resource and the material units usually come from the resource requirements"
+    },
+    {
+      "source": "2.20",
+      "what": "the labor rate and the material cost, usually from cost estimates (Table 2.10)"
+    },
+    {
+      "source": "2.24",
+      "what": "named as a source (the book says \"Quality metrics\"); the book does not say what is passed"
+    },
+    {
+      "source": "Contracts",
+      "what": "named as a source; the Agreement information element is a reference to contracts or other agreements (Table 2.10)"
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "2.12",
+      "what": "as part of the scope baseline; the book does not say what is passed"
+    },
+    {
+      "target": "2.15",
+      "what": "as part of the scope baseline; the book does not say what is passed"
+    },
+    {
+      "target": "2.16",
+      "what": "as part of the scope baseline; the book does not say what is passed"
+    },
+    {
+      "target": "2.18",
+      "what": "as part of the scope baseline; the book does not say what is passed"
+    },
+    {
+      "target": "2.20",
+      "what": "as part of the scope baseline; the book does not say what is passed"
+    },
+    {
+      "target": "Project budget",
+      "what": "as part of the scope baseline; the book does not say what is passed"
+    },
+    {
+      "target": "2.23",
+      "what": "as part of the scope baseline; the book does not say what is passed"
+    },
+    {
+      "target": "2.26",
+      "what": "as part of the scope baseline; the book does not say what is passed"
+    },
+    {
+      "target": "2.28",
+      "what": "as part of the scope baseline (the book says \"Activity resource requirements\"); the book does not say what is passed"
+    },
+    {
+      "target": "2.32",
+      "what": "as part of the scope baseline; the book does not say what is passed"
+    },
+    {
+      "target": "2.37",
+      "what": "as part of the scope baseline; the book does not say what is passed"
+    },
+    {
+      "target": "Accepted deliverables",
+      "what": "as part of the scope baseline; the book does not say what is passed"
+    }
+  ],
+  "alignment": [
+    {
+      "form": "1.1",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "2.6",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "2.8",
+      "what_must_agree": "The book says only \"aligned and consistent\"; Table 2.10 says the acceptance criteria usually come from the scope statement."
+    },
+    {
+      "form": "2.9",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the dictionary details the control accounts and work packages of the WBS, and the Code of Accounts and Work Package Name come from the WBS (Table 2.10)."
+    },
+    {
+      "form": "2.12",
+      "what_must_agree": "The book says only \"aligned and consistent\"; Table 2.10 says the activities listed in the dictionary come from the activity list or the schedule."
+    }
+  ],
+  "elements": [
+    {
+      "element": "Work package name",
+      "printed_label": "Work Package Name",
+      "guidance": "A brief description of the work package deliverable, taken from the WBS."
+    },
+    {
+      "element": "Code of account",
+      "printed_label": "Code of Accounts",
+      "guidance": "The code of account from the WBS."
+    },
+    {
+      "element": "Milestones",
+      "printed_label": "Milestones",
+      "guidance": "Any milestones associated with the work package."
+    },
+    {
+      "element": "Due dates",
+      "printed_label": "Due Dates",
+      "guidance": "The due dates of the milestones associated with the work package."
+    },
+    {
+      "element": "ID",
+      "printed_label": "ID",
+      "guidance": "A unique activity identifier, usually an extension of the WBS code of accounts."
+    },
+    {
+      "element": "Activity",
+      "printed_label": "Activity",
+      "guidance": "The activity as described in the activity list or the schedule."
+    },
+    {
+      "element": "Team resource",
+      "printed_label": "Resource",
+      "guidance": "The resources for the activity, usually from the resource requirements."
+    },
+    {
+      "element": "Labor hours",
+      "printed_label": "Labor: Hours",
+      "guidance": "The total effort required."
+    },
+    {
+      "element": "Labor rate",
+      "printed_label": "Labor: Rate",
+      "guidance": "The labor rate, usually from the cost estimates."
+    },
+    {
+      "element": "Labor total",
+      "printed_label": "Labor: Total",
+      "guidance": "Labor hours multiplied by the labor rate."
+    },
+    {
+      "element": "Material units",
+      "printed_label": "Material: Units",
+      "guidance": "The amount of material required, usually from the resource requirements."
+    },
+    {
+      "element": "Material cost",
+      "printed_label": "Material: Cost",
+      "guidance": "The material cost, usually from the cost estimates."
+    },
+    {
+      "element": "Material total",
+      "printed_label": "Material: Total",
+      "guidance": "Material units multiplied by the material cost."
+    },
+    {
+      "element": "Total cost",
+      "printed_label": "Total Cost",
+      "guidance": "The sum of labor, materials and any other costs associated with the work package."
+    },
+    {
+      "element": "Quality requirements",
+      "printed_label": "Quality Requirements",
+      "guidance": "Any quality requirements or metrics associated with the work package."
+    },
+    {
+      "element": "Acceptance criteria",
+      "printed_label": "Acceptance Criteria",
+      "guidance": "The acceptance criteria for the deliverable, usually from the scope statement."
+    },
+    {
+      "element": "Technical information",
+      "printed_label": "Technical Information",
+      "guidance": "A description of, or reference to, the technical requirements or documentation needed to complete the work package."
+    },
+    {
+      "element": "Agreement information",
+      "printed_label": "Agreement Information",
+      "guidance": "A reference to any contract or other agreement that affects the work package."
+    }
+  ],
+  "tailoring": [
+    "For smaller projects a WBS dictionary may not be needed.",
+    "Where a dictionary is used, make it as detailed or as high level as needed; a minimum could be the description of work, the cost estimate, key delivery dates and assigned resources.",
+    "For outsourced deliverables, treat the dictionary entry as a mini statement of work.",
+    "The dictionary can reference other documents and the relevant sections for technical, quality or agreement information."
+  ],
+  "agile_or_adaptive": "",
+  "decisions": [
+    {
+      "decision": "the level of detail of the dictionary (per work package, or summary per control account)",
+      "recorded_in": "",
+      "notes": "Stated in the purpose and Tailoring Tips; it is a decision about the whole form, not one box."
+    },
+    {
+      "decision": "which milestones and due dates belong to each work package",
+      "recorded_in": "Milestones; Due Dates",
+      "notes": ""
+    },
+    {
+      "decision": "which activities, resources and costs make up each work package",
+      "recorded_in": "Activity; Resource; Total Cost",
+      "notes": "The book's cost arithmetic: labor total is hours times rate, material total is units times cost, total cost is the sum of labor, materials and other costs."
+    },
+    {
+      "decision": "the quality requirements and acceptance criteria the deliverable must meet",
+      "recorded_in": "Quality Requirements; Acceptance Criteria",
+      "notes": ""
+    },
+    {
+      "decision": "which contract or agreement governs an outsourced work package",
+      "recorded_in": "Agreement Information",
+      "notes": ""
+    }
+  ],
+  "citation": "Book of Forms form 2.10, PDF pages 63 to 65 (printed pages 52 to 54); blank form PDF page 66 (printed page 55)",
+  "notes": "Table 2.10 (PDF page 65, printed page 54) has no entry for Description of Work or Assumptions and Constraints, which the blank form prints (PDF page 66, printed page 55); they are not in elements and the book gives no guidance for them beyond the purpose list, which names Description of work and Assumptions and constraints (PDF page 63, printed page 52). The purpose list also names a responsible organization or person, which the blank form does not print. printed_label for the cost columns is written Group: Label, as references/forms-index.md does, because Total prints twice. The Milestones box prints numbered lines 1 to 3 and the sheet is one per work package (references/fields/2.10.json). The book says the dictionary inputs are more detailed than the WBS inputs (PDF page 63, printed page 52). Process: 5.4 Create WBS, progressively elaborated throughout the project (PDF page 64, printed page 53).",
+  "blank_only": [
+    {
+      "printed_label": "Description of Work",
+      "cite": "Book of Forms form 2.10 blank, PDF page 66 (printed page 55)",
+      "note": "Not stated in the book as a field of its own. Printed beside Work Package Name; Table 2.10 lists no such element."
+    },
+    {
+      "printed_label": "Assumptions and Constraints",
+      "cite": "Book of Forms form 2.10 blank, PDF page 66 (printed page 55)",
+      "note": "Not stated in the book as a field of its own. Printed beside Code of Accounts; Table 2.10 lists no such element."
+    }
+  ]
+}

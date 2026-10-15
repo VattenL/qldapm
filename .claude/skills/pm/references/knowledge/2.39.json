@@ -1,0 +1,123 @@
+{
+  "form": "2.39",
+  "name": "Source Selection Criteria",
+  "process_group": "Planning",
+  "pmbok_processes": [
+    "12.1 Plan Procurement Management"
+  ],
+  "purpose": "A set of attributes the buyer wants a seller to meet or exceed to be selected for a contract. The form helps decide and rate the criteria used to evaluate bid proposals through a multistep weighted-scoring process: set criteria, weight them to 100 percent, define the rating range and what each rating means, rate each proposal, multiply weight by rating, and total. It is established for each major procurement.",
+  "receives_from": [],
+  "provides_to": [],
+  "alignment": [
+    {
+      "form": "2.6",
+      "what_must_agree": "The book says only 'aligned and consistent'. Reading aid from the element table, not stated in the book: the criteria against the requirements the seller must meet."
+    },
+    {
+      "form": "Scope baseline",
+      "what_must_agree": "The book says only 'aligned and consistent'. Reading aid from the element table, not stated in the book: the criteria against the scope being bought. The scope baseline is named, not numbered, in the book."
+    },
+    {
+      "form": "2.18",
+      "what_must_agree": "The book says only 'aligned and consistent'. Reading aid from the element table, not stated in the book: delivery-date criteria against the project schedule."
+    },
+    {
+      "form": "2.26",
+      "what_must_agree": "The book says only 'aligned and consistent'. Reading aid from the element table, not stated in the book: capability, staffing and training criteria against the resource management plan."
+    },
+    {
+      "form": "2.28",
+      "what_must_agree": "The book says only 'aligned and consistent'. Reading aid from the element table, not stated in the book: capability and capacity criteria against the resource requirements."
+    },
+    {
+      "form": "2.37",
+      "what_must_agree": "The book says only 'aligned and consistent'. Reading aid from the element table, not stated in the book: criteria against the procurement management plan, which also mentions independent estimates for source selection."
+    },
+    {
+      "form": "2.38",
+      "what_must_agree": "The book says only 'aligned and consistent'. Reading aid from the element table, not stated in the book: criteria against the delivery method and contract type in the procurement strategy."
+    }
+  ],
+  "elements": [
+    {
+      "element": "Criteria",
+      "printed_label": "Criterion 1",
+      "guidance": "The criteria used to evaluate bids, each described by what each rating means. The blank form prints five rows labelled Criterion 1 to Criterion 5 in the first grid, with rating columns 1 to 5. The book lists commonly used criteria: capability and capacity; product cost and life cycle cost; delivery dates; technical expertise; prior experience; proposed approach and work plan; key staff qualifications, availability and competence; financial stability; management experience; training and knowledge transfer."
+    },
+    {
+      "element": "Criteria: rating 1",
+      "printed_label": "1",
+      "guidance": "What a 1 means for the criterion. The book's example, for experience: the bidder has no prior experience."
+    },
+    {
+      "element": "Criteria: rating 2",
+      "printed_label": "2",
+      "guidance": "What a 2 means. Example for experience: the bidder has done 1 similar job."
+    },
+    {
+      "element": "Criteria: rating 3",
+      "printed_label": "3",
+      "guidance": "What a 3 means. Example for experience: the bidder has done 3 to 5 similar jobs."
+    },
+    {
+      "element": "Criteria: rating 4",
+      "printed_label": "4",
+      "guidance": "What a 4 means. Example for experience: the bidder has done 5 to 10 similar jobs."
+    },
+    {
+      "element": "Criteria: rating 5",
+      "printed_label": "5",
+      "guidance": "What a 5 means. Example for experience: the job is the bidder's core competency."
+    },
+    {
+      "element": "Weight",
+      "printed_label": "Weight",
+      "guidance": "The weight of each criterion; the weights of all criteria must total 100 percent."
+    },
+    {
+      "element": "Candidate rating",
+      "printed_label": "Candidate 1 Rating",
+      "guidance": "The rating given to the candidate against the criterion, using the rating definitions above. The blank form prints a Rating column for each of three candidates."
+    },
+    {
+      "element": "Candidate score",
+      "printed_label": "Candidate 1 Score",
+      "guidance": "The weight multiplied by the rating. The blank form prints a Score column for each of three candidates."
+    },
+    {
+      "element": "Total",
+      "printed_label": "Totals",
+      "guidance": "The sum of the candidate's scores. The highest total score wins the bid (prose step 7). On the blank form the Totals row blocks out the Rating cells and leaves the Weight and Score cells for entry."
+    }
+  ],
+  "tailoring": [
+    "A small, uncomplicated procurement likely does not need a weighted source selection criteria form.",
+    "For international procurements, add familiarity with local laws and regulations and experience and relationships in the locations involved.",
+    "For construction projects or projects with many logistical concerns, add logistics handling as a criterion."
+  ],
+  "agile_or_adaptive": "",
+  "decisions": [
+    {
+      "decision": "Which criteria the bids are evaluated on",
+      "recorded_in": "Criterion 1 to Criterion 5",
+      "notes": ""
+    },
+    {
+      "decision": "How much each criterion weighs (total 100 percent)",
+      "recorded_in": "Weight",
+      "notes": ""
+    },
+    {
+      "decision": "The rating range and what performance earns each rating",
+      "recorded_in": "1; 2; 3; 4; 5",
+      "notes": "The prose says the range might be 1 to 5 or 1 to 10; the blank form prints 1 to 5 only."
+    },
+    {
+      "decision": "Which proposal is selected",
+      "recorded_in": "Totals",
+      "notes": "The prose step 7 says the highest total score is the winner of the bid."
+    }
+  ],
+  "citation": "Book of Forms form 2.39, PDF pages 166 to 167 (printed pages 155 to 156); steps and Tailoring Tips PDF page 166 (printed page 155), Alignment PDF pages 166 to 167 (printed pages 155 to 156), Table 2.35 PDF page 167 (printed page 156)",
+  "notes": "Blank form: PDF page 168 (printed page 157). The prose has no 'receives information from' or 'provides information to' statement, so both lists are empty. The prose names no tailoring for agile or adaptive projects. Table 2.35 has 5 rows (Criteria with five rating sub-rows, Weight, Candidate rating, Candidate score, Total); the blank form's labels are Criterion 1 to 5, Weight, Candidate N Rating, Candidate N Score and Totals, so printed_label maps Criteria to the first row label (Criterion 1) as a representative; the same applies to Candidate 2 and 3. The blank form prints three candidates; the prose does not limit the number. The prose says rating range 'such as 1 to 5 or 1 to 10'; the blank form supports 1 to 5. The book does not say how a tie, a pass mark or a mandatory criterion is handled: not stated in the book. The alignment 'what_must_agree' texts are reading aids, since the book states only 'aligned and consistent'."
+}

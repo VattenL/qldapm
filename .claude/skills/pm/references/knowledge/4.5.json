@@ -1,0 +1,142 @@
+{
+    "form": "4.5",
+    "name": "Risk Audit",
+    "process_group": "Monitoring and Controlling",
+    "pmbok_processes": [
+        "11.7 Control Risks"
+    ],
+    "purpose": "Evaluates how effective risk identification, the risk responses and the risk management process as a whole have been. It reviews what happened to individual risk events and responses, whether the risk management processes were followed, and which practices should be shared or improved. It is run periodically, as needed.",
+    "receives_from": [
+        {
+            "source": "2.32",
+            "what": "the event, its root cause and the response are listed or copied from the risk register (Table 4.5)"
+        },
+        {
+            "source": "2.31",
+            "what": "the processes are judged as followed or not against what the risk management plan says to do (Table 4.5, Followed)"
+        }
+    ],
+    "provides_to": [
+        {
+            "target": "Other projects, and the organization's risk forms, templates, policies, procedures and processes",
+            "what": "good practices to share, with recommendations to update and improve those items so the practices are repeatable (Table 4.5)"
+        }
+    ],
+    "alignment": [
+        {
+            "form": "2.31",
+            "what_must_agree": "the six process rows must name the processes the risk management plan defines, and Followed is judged against that plan (reading; the book gives only the list entry)"
+        },
+        {
+            "form": "2.32",
+            "what_must_agree": "each event, cause and response in the audit must match the risk register entry it was taken from (Table 4.5 says to list them from the register)"
+        },
+        {
+            "form": "2.33",
+            "what_must_agree": "the audit's findings about responses and, where included, overall risk must not contradict the risk report (reading; the book gives only the list entry)"
+        }
+    ],
+    "elements": [
+        {
+            "element": "Risk event audit: Event",
+            "printed_label": "Event",
+            "guidance": "The event, listed from the risk register."
+        },
+        {
+            "element": "Risk event audit: Cause",
+            "printed_label": "Cause",
+            "guidance": "The root cause of the event, taken from the risk register."
+        },
+        {
+            "element": "Risk event audit: Response",
+            "printed_label": "Response",
+            "guidance": "The response that was implemented."
+        },
+        {
+            "element": "Risk event audit: Comment",
+            "printed_label": "Comment",
+            "guidance": "Discuss whether the event could have been foreseen and responded to more effectively."
+        },
+        {
+            "element": "Risk response audit: Event",
+            "printed_label": "Event",
+            "guidance": "The event, listed from the risk register."
+        },
+        {
+            "element": "Risk response audit: Response",
+            "printed_label": "Response",
+            "guidance": "The risk response, listed from the risk register."
+        },
+        {
+            "element": "Risk response audit: Successful",
+            "printed_label": "Successful",
+            "guidance": "Whether the response was successful."
+        },
+        {
+            "element": "Risk response audit: Actions to improve",
+            "printed_label": "Actions to Improve",
+            "guidance": "Any opportunities to improve the way risks are responded to."
+        },
+        {
+            "element": "Risk management process audit: Process",
+            "printed_label": "Process",
+            "guidance": "One row per process. Table 4.5 names Plan risk management, Identify risks, Perform qualitative risk analysis, Perform quantitative risk analysis, Plan risk responses and Control risks; the blank form prints Plan Risk Management, Identify Risks, Perform Qualitative Assessment, Perform Quantitative Assessment, Plan Risk Responses and Monitor and Control Risks."
+        },
+        {
+            "element": "Risk management process audit: Followed",
+            "printed_label": "Followed",
+            "guidance": "Whether each process was followed as the risk management plan indicates."
+        },
+        {
+            "element": "Risk management process audit: Tools and techniques used",
+            "printed_label": "Tools and Techniques Used",
+            "guidance": "The tools and techniques used in each risk management process, and whether they were successful."
+        },
+        {
+            "element": "Description of good practices to share",
+            "printed_label": "Description of Good Practices to Share",
+            "guidance": "Practices that should be shared for use on other projects, including recommendations to update and improve risk forms, templates, policies, procedures or processes so the practices are repeatable."
+        },
+        {
+            "element": "Description of areas for improvement",
+            "printed_label": "Description of Areas for Improvement",
+            "guidance": "Practices that need improvement, the improvement plan, and any follow-up dates or information for corrective action."
+        }
+    ],
+    "tailoring": [
+        "Add an assessment of how effective the risk management approach is, to make the audit more robust.",
+        "If the organization has risk management policies and procedures, add an assessment of compliance with them.",
+        "Many organizations do not track opportunity management; extend the audit scope to opportunities where it is appropriate.",
+        "On larger projects, include information on overall project risk in addition to individual risk events."
+    ],
+    "agile_or_adaptive": "",
+    "decisions": [
+        {
+            "decision": "Whether a risk response worked",
+            "recorded_in": "Successful",
+            "notes": "The book states no success criterion; not stated in the book."
+        },
+        {
+            "decision": "What to change in how risks are responded to",
+            "recorded_in": "Actions to Improve; Comment",
+            "notes": ""
+        },
+        {
+            "decision": "Whether each risk management process was followed as planned",
+            "recorded_in": "Followed",
+            "notes": ""
+        },
+        {
+            "decision": "Which practices are shared and which forms, templates, policies or procedures are updated",
+            "recorded_in": "Description of Good Practices to Share",
+            "notes": ""
+        },
+        {
+            "decision": "Which practices need an improvement plan, and which follow-up dates or corrective action information go with it",
+            "recorded_in": "Description of Areas for Improvement",
+            "notes": ""
+        }
+    ],
+    "citation": "Book of Forms form 4.5, PDF pages 220 to 221 (printed pages 209 to 210); Table 4.5 PDF page 221 (printed page 210); blank form PDF pages 222 to 223 (printed pages 211 to 212)",
+    "notes": "The prose has no receives-from or provides-to section; the two receives_from entries and the one provides_to entry come from the Table 4.5 descriptions. Table 4.5 groups the rows as Risk event audit, Risk response audit and Risk management process audit; the blank form prints the same three tables under the headings Risk Event Audit, Risk Response Audit and Risk Management Process Audit. Event and Response appear twice, once per table, and map to the same printed label each time. The six process names are collapsed into one Process element because Table 4.5 gives one description for Followed and one for Tools and techniques used across all six rows. The blank form wins for process names. The prose calls the audit a tool used in 11.7 Control Risks. The blank form's title block also prints Project Auditor and Audit Date, which Table 4.5 does not list."
+}

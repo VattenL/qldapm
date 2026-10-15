@@ -1,0 +1,139 @@
+{
+  "form": "2.19",
+  "name": "Cost Management Plan",
+  "process_group": "Planning",
+  "pmbok_processes": [
+    "7.1 Plan Cost Management"
+  ],
+  "purpose": "A part of the project management plan that says how project costs will be estimated, structured, monitored and controlled. It fixes the measuring conventions (units, rounding, accuracy), the thresholds and rules used later for cost control, and the reporting format. The prose adds that it may also carry authority levels for cost and budget commitment, funding limitations, and guidance on when and how costs are recorded. It is developed once and does not usually change.",
+  "receives_from": [
+    {
+      "source": "1.1",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "2.11",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "2.31",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "2.20",
+      "what": "Named by the book as a recipient; which content is not stated in the book."
+    },
+    {
+      "target": "2.22",
+      "what": "Named by the book as a recipient; which content is not stated in the book."
+    },
+    {
+      "target": "2.32",
+      "what": "Named by the book as a recipient; which content is not stated in the book."
+    }
+  ],
+  "alignment": [
+    {
+      "form": "1.1",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "2.11",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    }
+  ],
+  "elements": [
+    {
+      "element": "Units of measure",
+      "printed_label": "Units of Measure",
+      "guidance": "How each type of resource is measured: labor in staff hours, days or weeks; physical resources in gallons, meters, tons or whatever suits the material; some resources are a lump sum each time they are used."
+    },
+    {
+      "element": "Level of precision",
+      "printed_label": "Level of Precision",
+      "guidance": "Whether estimates are rounded to hundreds, thousands or another step."
+    },
+    {
+      "element": "Level of accuracy",
+      "printed_label": "Level of Accuracy",
+      "guidance": "The accuracy the estimates need. It may change as more is known (progressive elaboration); where rolling wave planning guidelines exist, give the accuracy required at each stage as time passes."
+    },
+    {
+      "element": "Organizational procedure links",
+      "printed_label": "Organizational Procedure Links",
+      "guidance": "Cost estimating and reporting follow the WBS numbering and, where required, the organization's code of accounts or other accounting and reporting structures."
+    },
+    {
+      "element": "Control thresholds",
+      "printed_label": "Control Thresholds",
+      "guidance": "The measures that decide whether an activity, work package or the whole project is on budget, needs preventive action, or is over budget and needs corrective action; usually a percent deviation from the baseline."
+    },
+    {
+      "element": "Rules of performance measurement",
+      "printed_label": "Rules of Performance Measurement",
+      "guidance": "The WBS level at which progress and spending are measured; for earned value, whether costs are reported at work package or control account level; the measurement method (weighted milestones, fixed formula, percent complete and so on); and the equations that will forecast estimate to complete (ETC) and estimate at completion (EAC)."
+    },
+    {
+      "element": "Cost reporting information and format",
+      "printed_label": "Cost Reporting and Format",
+      "guidance": "The cost information needed for status and progress reports, a copy of or reference to any required format or template, and the reporting frequency."
+    },
+    {
+      "element": "Additional details",
+      "printed_label": "Additional Details",
+      "guidance": "Variables behind strategic funding choices such as make or buy, buy or lease, borrowing versus in-house funds."
+    }
+  ],
+  "tailoring": [
+    "On smaller projects the project manager often does not manage the budget; in that case the form is not needed.",
+    "Units of measure for each type of resource may sit in this plan or in the resource management plan (2.26).",
+    "On projects that use earned value management, add the rules for setting percent complete and the EVM measurement techniques (fixed formula, percent complete, level of effort and so on); on projects that do not, delete that field."
+  ],
+  "agile_or_adaptive": "",
+  "decisions": [
+    {
+      "decision": "Unit of measure for each resource type",
+      "recorded_in": "Units of Measure",
+      "notes": ""
+    },
+    {
+      "decision": "Rounding step for estimates",
+      "recorded_in": "Level of Precision",
+      "notes": ""
+    },
+    {
+      "decision": "Accuracy required of estimates and how it tightens over time (rolling wave)",
+      "recorded_in": "Level of Accuracy",
+      "notes": ""
+    },
+    {
+      "decision": "Deviation from baseline that triggers preventive action versus corrective action, per activity, work package and project",
+      "recorded_in": "Control Thresholds",
+      "notes": "The book says usually a percent deviation; it gives no default percentage."
+    },
+    {
+      "decision": "WBS level at which progress and spending are measured, and the measurement method and ETC/EAC equations when earned value is used",
+      "recorded_in": "Rules of Performance Measurement",
+      "notes": ""
+    },
+    {
+      "decision": "What cost information goes into status reports, in what format, how often",
+      "recorded_in": "Cost Reporting and Format",
+      "notes": ""
+    },
+    {
+      "decision": "Strategic funding choices: make or buy, buy or lease, borrow or use in-house funds",
+      "recorded_in": "Additional Details",
+      "notes": ""
+    },
+    {
+      "decision": "Whether the form is needed at all, and whether the EVM field is kept",
+      "recorded_in": "",
+      "notes": "Tailoring tips: small projects where the project manager does not manage the budget; projects without earned value."
+    }
+  ],
+  "citation": "Book of Forms form 2.19, PDF pages 93 to 94 (printed pages 82 to 83)",
+  "notes": "The prose lists eight things the plan can include; three of them (process for estimating costs, process for developing a time-phased budget, process for monitoring and controlling costs) have no box on the blank form (PDF page 95, printed page 84), and neither do the optional extras (authority levels, funding limitations, cost recording guidelines). The prose table says 'Cost reporting information and format'; the blank form prints 'Cost Reporting and Format', which wins. The alignment list (charter, schedule management plan) is shorter than the receives list, which also names the risk management plan. The prose gives no section on adaptive projects."
+}

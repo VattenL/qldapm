@@ -1,0 +1,74 @@
+{
+  "form": "2.35",
+  "name": "Probability and Impact Matrix",
+  "process_group": "Planning",
+  "pmbok_processes": [
+    "11.3 Perform Qualitative Risk Analysis"
+  ],
+  "purpose": "A table used to plot each risk after the probability and impact assessment has fixed its probability and impact. It lets the team see and rank risks for response and gauge overall project risk from the number of risks in each cell. It can be built for threats and for opportunities; its information is transferred to the risk register.",
+  "receives_from": [
+    {
+      "source": "2.31",
+      "what": "Risk management plan: named as a source in the prose; the book does not say which fields are used"
+    },
+    {
+      "source": "2.34",
+      "what": "Probability and impact risk assessment: named as a source in the prose; the book does not say which fields are used"
+    },
+    {
+      "source": "2.32",
+      "what": "Risk register: named as a source in the prose; the book does not say which fields are used"
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "2.32",
+      "what": "Risk register: information from the matrix is transferred to the register"
+    }
+  ],
+  "alignment": [
+    {
+      "form": "2.31",
+      "what_must_agree": "The book says only 'aligned and consistent'. Reading aid from the element table, not stated in the book: the matrix size, the scoring and which cells count as high, medium and low against the risk management plan."
+    },
+    {
+      "form": "2.32",
+      "what_must_agree": "The book says only 'aligned and consistent'. Reading aid from the element table, not stated in the book: the placement of each risk against its probability, impact and score in the register."
+    },
+    {
+      "form": "2.34",
+      "what_must_agree": "The book says only 'aligned and consistent'. Reading aid from the element table, not stated in the book: the levels and the rating key against the assessment (the prose Alignment lists both together)."
+    },
+    {
+      "form": "1.3",
+      "what_must_agree": "The book says only 'aligned and consistent'. Reading aid from the element table, not stated in the book: the high, medium and low zones against the risk thresholds of the stakeholders."
+    }
+  ],
+  "elements": [],
+  "tailoring": [
+    "The matrix can be 3 by 3 for a small project, 5 by 5 for a medium project and 10 by 10 for a complex or large project.",
+    "Use a nonlinear numbering structure to stress high risks; the book's example doubles each impact step: Very Low .5, Low 1, Medium 2, High 4, Very High 8.",
+    "Objectives can be weighted by importance. The book's example: schedule 40 percent of the score and scope, quality and cost 20 percent each, making sure the total is 100 percent.",
+    "The probability and impact combinations that count as high, medium or low can reflect the organisation's risk appetite: an organisation with a low appetite may rank medium-or-high probability with medium-or-high impact as high risk, while one with a higher threshold may rank only very high probability with very high impact as high."
+  ],
+  "agile_or_adaptive": "",
+  "decisions": [
+    {
+      "decision": "Where each risk sits on the grid, and so which risks get a response first",
+      "recorded_in": "Matrix grid",
+      "notes": "The blank form is an empty 5 by 5 grid; it prints no labels for the cells."
+    },
+    {
+      "decision": "Which cells count as high, medium and low risk",
+      "recorded_in": "Matrix grid (shading)",
+      "notes": "The prose gives no cell-by-cell rule; the blank form shades cells in three tones with no legend."
+    },
+    {
+      "decision": "How much overall risk the project carries, read from the number of risks per cell",
+      "recorded_in": "Matrix grid",
+      "notes": "The prose says many risks in the red zone mean more contingency and likely more time and budget to develop and implement responses."
+    }
+  ],
+  "citation": "Book of Forms form 2.35, PDF page 153 (printed page 142)",
+  "notes": "Blank form: PDF page 154 (printed page 143). The prose has no Description or element table for this form, so elements is empty; the blank form prints only a 5 by 5 grid with Very Low to Very High row and column labels and no axis titles (see references/fields/2.35.json, which is the authority). The prose says this is 'a tool used in 11.3 Perform Qualitative Risk Analysis' and 'updated throughout the project'. The prose mentions 'red zone', but the blank form prints grey tones and no colours: do not assume a colour key. Which cells are high, medium or low is not stated in the book beyond the tailoring examples; the risk management plan (2.31) holds the project's rule."
+}

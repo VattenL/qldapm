@@ -1,0 +1,11 @@
+{
+  "note": "Counts of rows the books print in a named table, read off the PDF page. check_consistency.py compares a sentence such as 'the thirteen elements of Table 1.1' with them. Add a table here only after counting its rows on the page.",
+  "tables": [
+    {
+      "table": "1.1",
+      "noun": "elements",
+      "count": 13,
+      "cite": "Book of Forms Table 1.1, PDF pages 14 to 15 (printed pages 3 to 4)"
+    }
+  ]
+}

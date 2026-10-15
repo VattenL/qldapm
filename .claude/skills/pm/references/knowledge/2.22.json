@@ -1,0 +1,107 @@
+{
+  "form": "2.22",
+  "name": "Cost Baseline",
+  "process_group": "Planning",
+  "pmbok_processes": [
+    "7.3 Determine Budget"
+  ],
+  "purpose": "A time-phased budget used to measure, monitor and control cost performance. It is built by summing project costs per time period into a cumulative cost curve (the S-curve) against which actual cost, planned cost and funds spent are tracked. It is developed once and is not expected to change unless the scope changes significantly.",
+  "receives_from": [
+    {
+      "source": "Scope baseline",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "2.19",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "2.20",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "2.18",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "2.26",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "2.32",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "Agreements (contracts)",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "2.1",
+      "what": "Named by the book as a recipient; which content is not stated in the book."
+    },
+    {
+      "target": "2.32",
+      "what": "Named by the book as a recipient; which content is not stated in the book."
+    }
+  ],
+  "alignment": [
+    {
+      "form": "1.2",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "2.18",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "2.20",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "Project team assignments",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "2.32",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    }
+  ],
+  "elements": [],
+  "tailoring": [
+    "The baseline generally includes contingency reserve for known risks and generally does not include management reserve; management reserve is held above the baseline but is part of the project budget. Company policy may differ.",
+    "The baseline may be shown to display funding constraints, funding requirements or different funding sources.",
+    "The organization may not require a graphic; a spreadsheet or an internal budgeting system display may be used instead."
+  ],
+  "agile_or_adaptive": "",
+  "decisions": [
+    {
+      "decision": "Whether the baseline includes contingency funds and indirect costs",
+      "recorded_in": "",
+      "notes": "The prose says it may or may not include them; the tailoring tip says contingency reserve is generally in and management reserve generally out."
+    },
+    {
+      "decision": "Whether to keep more than one baseline, for example separate labor or procurement baselines",
+      "recorded_in": "",
+      "notes": ""
+    },
+    {
+      "decision": "Whether to call it the performance measurement baseline",
+      "recorded_in": "",
+      "notes": "The prose says this is the name when earned value measurements are used."
+    },
+    {
+      "decision": "How to display it: S-curve, funding view or spreadsheet",
+      "recorded_in": "",
+      "notes": ""
+    },
+    {
+      "decision": "When to re-baseline",
+      "recorded_in": "",
+      "notes": "The prose says the baseline is not expected to change unless there is a significant change in scope; the change route itself is not described on this page."
+    }
+  ],
+  "citation": "Book of Forms form 2.22, PDF page 104 (printed page 93)",
+  "notes": "The book gives no Document Element table for this form, so elements is empty. The blank form (PDF page 105, printed page 94) prints only a sample S-curve chart, cumulative cost over periods 1 to 7 with gridlines from 0 to 14,000; the numbers are samples, not fields. The prose says to record the cost baseline as the cumulative cost curve but does not give a method for spreading cost over periods or for sizing the reserves; those are not stated in the book here. Alignment list names 'Project team assignments' (no form in the book)."
+}

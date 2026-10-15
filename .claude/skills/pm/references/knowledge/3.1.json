@@ -1,0 +1,133 @@
+{
+  "form": "3.1",
+  "name": "Issue Log",
+  "process_group": "Executing",
+  "pmbok_processes": [
+    "4.3 Direct and Manage Project Work"
+  ],
+  "purpose": "Records and monitors issues. An issue is a current condition or situation that could affect the project objectives, such as a point in dispute or under discussion, opposing views, or a risk event that has happened and must now be dealt with. It is created at the start of the project and kept up to date throughout.",
+  "starts": {
+    "when": "the start of the project",
+    "cite": "Book of Forms form 3.1, PDF page 176 (printed page 165)"
+  },
+  "receives_from": [
+    {
+      "source": "2.32",
+      "what": "a risk event that has occurred can become an issue (prose: issues can arise from a risk event that has occurred and must now be dealt with); which form carries the event is a reading, the prose names no form"
+    },
+    {
+      "source": "4.1",
+      "what": "new issues identified by a team member in the reporting period; Table 4.1 says they should be recorded in the issue log as well"
+    },
+    {
+      "source": "4.2",
+      "what": "new issues identified in the reporting period; Table 4.2 says they should be recorded in the issue log as well"
+    }
+  ],
+  "provides_to": [],
+  "alignment": [
+    {
+      "form": "2.32",
+      "what_must_agree": "an issue that grew out of a realised risk must tell the same story as that risk's entry in the risk register (the prose says issues can arise from a risk event that has occurred; the book gives no further rule)"
+    },
+    {
+      "form": "3.2",
+      "what_must_agree": "a decision taken to resolve an issue must not contradict the decision log (overlap not spelled out in the book; reading from the Alignment list)"
+    },
+    {
+      "form": "3.5",
+      "what_must_agree": "a lesson drawn from an issue must match the issue's final resolution (overlap not spelled out in the book; reading from the Alignment list)"
+    }
+  ],
+  "elements": [
+    {
+      "element": "ID",
+      "printed_label": "Issue ID",
+      "guidance": "A unique identifier for each issue."
+    },
+    {
+      "element": "Type",
+      "printed_label": "Type",
+      "guidance": "The type or category of issue, for example stakeholder issue, technical issue or conflict."
+    },
+    {
+      "element": "Issue description",
+      "printed_label": "Issue Description",
+      "guidance": "A detailed description of the issue."
+    },
+    {
+      "element": "Priority",
+      "printed_label": "Priority",
+      "guidance": "The priority, for example urgent, high, medium or low."
+    },
+    {
+      "element": "Impact on objectives",
+      "printed_label": "Impact on Objectives",
+      "guidance": "Which project objectives the issue affects and how much."
+    },
+    {
+      "element": "Responsible party",
+      "printed_label": "Responsible Party",
+      "guidance": "The person assigned to resolve the issue."
+    },
+    {
+      "element": "Status",
+      "printed_label": "Status",
+      "guidance": "Open or closed."
+    },
+    {
+      "element": "Resolution date",
+      "printed_label": "Res. Date",
+      "guidance": "The date by which the issue needs to be resolved, that is a target date; the book describes it as a deadline, not as the date the issue was closed."
+    },
+    {
+      "element": "Final resolution",
+      "printed_label": "Final Resolution",
+      "guidance": "How the issue was resolved."
+    },
+    {
+      "element": "Comments",
+      "printed_label": "Comments",
+      "guidance": "Clarifying comments about the issue, its resolution or any other field."
+    }
+  ],
+  "tailoring": [
+    "Add information on the source of the issue.",
+    "Add a field naming the stakeholders who are affected by the issue or should help resolve it."
+  ],
+  "agile_or_adaptive": "",
+  "decisions": [
+    {
+      "decision": "How urgent the issue is",
+      "recorded_in": "Priority",
+      "notes": "Urgent, high, medium or low are the book's examples; no scale or threshold is stated in the book."
+    },
+    {
+      "decision": "Who owns the resolution",
+      "recorded_in": "Responsible Party",
+      "notes": ""
+    },
+    {
+      "decision": "By when the issue must be resolved",
+      "recorded_in": "Res. Date",
+      "notes": ""
+    },
+    {
+      "decision": "Which objectives the issue affects and by how much",
+      "recorded_in": "Impact on Objectives",
+      "notes": ""
+    },
+    {
+      "decision": "Whether the issue is still open",
+      "recorded_in": "Status",
+      "notes": ""
+    },
+    {
+      "decision": "How the issue was settled",
+      "recorded_in": "Final Resolution",
+      "notes": ""
+    }
+  ],
+  "citation": "Book of Forms form 3.1, PDF pages 176 to 177 (printed pages 165 to 166)",
+  "notes": "The blank form (PDF page 178, printed page 167) prints two banks of columns: the first bank is Issue ID, Type, Issue Description, Priority, Impact on Objectives; the second bank is Responsible Party, Status, Res. Date, Final Resolution, Comments, and row N of bank 2 continues row N of bank 1. Table 3.1 calls the first column ID and the date Resolution date; the blank form wins. The prose does not say which documents the issue log provides information to (not stated in the book). Receives_from 4.1 and 4.2 and the 4.1/4.2 tailoring flows are taken from Table 4.1 (PDF page 203, printed page 192) and Table 4.2 (PDF page 208, printed page 197)."
+}

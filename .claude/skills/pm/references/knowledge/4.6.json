@@ -1,0 +1,141 @@
+{
+    "form": "4.6",
+    "name": "Contractor Status Report",
+    "process_group": "Monitoring and Controlling",
+    "pmbok_processes": [
+        "12.3 Control Procurements"
+    ],
+    "purpose": "Filled out by the contractor and sent to the project manager on a regular basis. It tracks status for the current reporting period, forecasts future periods, and collects new risks, disputes and issues. Its content is generally included in the project status report the project manager compiles.",
+    "receives_from": [
+        {
+            "source": "Contractor (vendor)",
+            "what": "the contractor fills out the report and submits it to the project manager at predefined intervals (prose)"
+        }
+    ],
+    "provides_to": [
+        {
+            "target": "4.2",
+            "what": "the information is generally included in the project status report compiled by the project manager (prose)"
+        },
+        {
+            "target": "2.32",
+            "what": "risks reported here should also be in the risk register (Table 4.6)"
+        },
+        {
+            "target": "3.1",
+            "what": "new issues reported here should also be entered in the issue log (Table 4.6)"
+        }
+    ],
+    "alignment": [
+        {
+            "form": "2.37",
+            "what_must_agree": "the reporting interval and content must match what the procurement management plan requires of the vendor (reading; the book gives only the list entry)"
+        },
+        {
+            "form": "2.18",
+            "what_must_agree": "the contract's schedule performance must agree with the project schedule (reading; the book gives only the list entry)"
+        },
+        {
+            "form": "2.20",
+            "what_must_agree": "cost performance and forecasts must agree with the cost estimates (reading; the book gives only the list entry)"
+        },
+        {
+            "form": "Project budget",
+            "what_must_agree": "contract spend must agree with the project budget; the book has no form named project budget (reading; the book gives only the list entry)"
+        },
+        {
+            "form": "4.3",
+            "what_must_agree": "variances reported here must match the variance analysis (reading; the book gives only the list entry)"
+        },
+        {
+            "form": "4.4",
+            "what_must_agree": "the book lists 'Earned value status report'; taken to be the earned value analysis, and the contract figures must agree with it (reading; the book gives only the list entry)"
+        },
+        {
+            "form": "4.2",
+            "what_must_agree": "the project status report that absorbs this report must not contradict it (reading; the book gives only the list entry)"
+        }
+    ],
+    "elements": [
+        {
+            "element": "Scope performance this reporting period",
+            "printed_label": "Scope Performance This Reporting Period",
+            "guidance": "Progress made on scope during the reporting period."
+        },
+        {
+            "element": "Quality performance this reporting period",
+            "printed_label": "Quality Performance This Reporting Period",
+            "guidance": "Any quality or performance variances."
+        },
+        {
+            "element": "Schedule performance this reporting period",
+            "printed_label": "Schedule Performance This Reporting Period",
+            "guidance": "Whether the contract is on schedule; if ahead or behind, the cause of the variance."
+        },
+        {
+            "element": "Cost performance this reporting period",
+            "printed_label": "Cost Performance This Reporting Period",
+            "guidance": "Whether the contract is on budget; if over or under, the cause of the variance."
+        },
+        {
+            "element": "Forecast performance for future reporting periods",
+            "printed_label": "Forecast Performance for Future Reporting Periods",
+            "guidance": "The estimated delivery date and final cost of the contract. For a fixed price contract, do not enter cost forecasts."
+        },
+        {
+            "element": "Claims or disputes",
+            "printed_label": "Claims or Disputes",
+            "guidance": "Any new or resolved disputes or claims that arose during the current reporting period."
+        },
+        {
+            "element": "Risks",
+            "printed_label": "Risks",
+            "guidance": "Any risks. They should also be in the risk register."
+        },
+        {
+            "element": "Planned corrective or preventive action",
+            "printed_label": "Planned Corrective or Preventive Action",
+            "guidance": "The corrective or preventive actions planned to recover schedule, cost, scope or quality variances."
+        },
+        {
+            "element": "Issues",
+            "printed_label": "Issues",
+            "guidance": "Any new issues. They should also be entered in the issue log."
+        },
+        {
+            "element": "Comments",
+            "printed_label": "Comments",
+            "guidance": "Anything else that adds relevance to the report."
+        }
+    ],
+    "tailoring": [
+        "Add an escalations field for the areas that need to go to the sponsor, program manager, contracting officer or another appropriate person.",
+        "If contract change requests were submitted during the reporting period, describe summary information about them in the report.",
+        "The presentation can be tailored: many PMOs use reporting software that turns the data into dashboards, heat reports, stop light charts or other displays."
+    ],
+    "agile_or_adaptive": "",
+    "decisions": [
+        {
+            "decision": "Whether the contract is on schedule and on budget, and why not if it is not",
+            "recorded_in": "Schedule Performance This Reporting Period; Cost Performance This Reporting Period",
+            "notes": ""
+        },
+        {
+            "decision": "What corrective or preventive action recovers the variances",
+            "recorded_in": "Planned Corrective or Preventive Action",
+            "notes": "The book names no specific techniques here."
+        },
+        {
+            "decision": "Which items need escalation, and which contract change requests submitted this period are summarised",
+            "recorded_in": "",
+            "notes": "Both are tailoring suggestions: an added escalations field, and summary information on contract change requests submitted during the reporting period; the form has no field for either. The book does not say when a contract change request is needed."
+        },
+        {
+            "decision": "Which new risks and issues are carried into the risk register and the issue log",
+            "recorded_in": "Risks; Issues",
+            "notes": ""
+        }
+    ],
+    "citation": "Book of Forms form 4.6, PDF pages 224 to 225 (printed pages 213 to 214); Table 4.6 PDF page 225 (printed page 214); blank form PDF pages 226 to 228 (printed pages 215 to 217)",
+    "notes": "The prose has no receives-from or provides-to section; the entries come from the opening paragraph and the Table 4.6 descriptions for Risks and Issues. The report is an example of work performance information identified in 12.3 Control Procurements. The prose bullet list says Forecasted performance and Preventive or corrective action; the blank form prints Forecast Performance for Future Reporting Periods and Planned Corrective or Preventive Action, and the table follows the blank form apart from capitalisation. The blank form's title block also prints Vendor and Contract #, which Table 4.6 does not list. 'Earned value status report' in the Alignment list is not a form name in the book; reading it as form 4.4 is an assumption."
+}

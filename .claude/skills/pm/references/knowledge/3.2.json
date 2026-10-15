@@ -1,0 +1,101 @@
+{
+  "form": "3.2",
+  "name": "Decision Log",
+  "process_group": "Executing",
+  "pmbok_processes": [],
+  "purpose": "Keeps track of the decisions made while a product is developed or a project is managed, who made them and when, because there are often alternatives. It is created at the start of the project and maintained throughout. The book says it is not listed explicitly in PMBOK 6 but helps with day-to-day management.",
+  "starts": {
+    "when": "the start of the project",
+    "cite": "Book of Forms form 3.2, PDF page 179 (printed page 168)"
+  },
+  "receives_from": [
+    {
+      "source": "4.1",
+      "what": "decisions made in the reporting period, if the report has the optional decisions field (4.1 Tailoring Tip: decisions recorded there would be transferred to the project decision log)"
+    },
+    {
+      "source": "4.2",
+      "what": "decisions made in the reporting period, if the report has the optional decisions field (4.2 Tailoring Tip: decisions recorded there would be transferred to the project decision log)"
+    }
+  ],
+  "provides_to": [],
+  "alignment": [
+    {
+      "form": "2.8",
+      "what_must_agree": "decisions that change what is in or out of the project must agree with the project scope statement (overlap not spelled out in the book; reading from the Alignment list)"
+    },
+    {
+      "form": "2.25",
+      "what_must_agree": "the person who makes a decision must be someone the responsibility assignment matrix gives that authority (reading: Table 3.2 defines Responsible party as the person authorized to make the decision)"
+    },
+    {
+      "form": "2.30",
+      "what_must_agree": "who is informed of a decision must agree with the communications management plan (overlap not spelled out in the book; reading from the Alignment list)"
+    },
+    {
+      "form": "3.1",
+      "what_must_agree": "the book writes \"issue register\"; no form has that name and the issue log (3.1) is the matching form. Decisions that resolve issues must agree with the issue log (reading)"
+    }
+  ],
+  "elements": [
+    {
+      "element": "ID",
+      "printed_label": "ID",
+      "guidance": "A unique decision identifier."
+    },
+    {
+      "element": "Category",
+      "printed_label": "Category",
+      "guidance": "The type of decision, for example technical, project or process."
+    },
+    {
+      "element": "Decision",
+      "printed_label": "Decision",
+      "guidance": "A detailed description of the decision."
+    },
+    {
+      "element": "Responsible party",
+      "printed_label": "Responsible Party",
+      "guidance": "The person authorized to make the decision."
+    },
+    {
+      "element": "Priority",
+      "printed_label": "Date",
+      "guidance": "Table 3.2 names this element Priority but describes it as the date the decision was made and authorized; the blank form prints Date, so enter the date."
+    },
+    {
+      "element": "Comments",
+      "printed_label": "Comments",
+      "guidance": "Further information to clarify the decision: alternatives considered, the reason the decision was made, and its impact."
+    }
+  ],
+  "tailoring": [
+    "For large, complicated or complex projects add fields for the impact of the decision on deliverables or project objectives.",
+    "Add a field for the stakeholders who are affected by the decision, should help make it, or should be informed of it."
+  ],
+  "agile_or_adaptive": "",
+  "decisions": [
+    {
+      "decision": "What was decided",
+      "recorded_in": "Decision",
+      "notes": ""
+    },
+    {
+      "decision": "Who was authorized to decide",
+      "recorded_in": "Responsible Party",
+      "notes": ""
+    },
+    {
+      "decision": "When the decision was made and authorized",
+      "recorded_in": "Date",
+      "notes": "Table 3.2 labels this element Priority but describes a date."
+    },
+    {
+      "decision": "Which alternatives were considered and why this one was chosen",
+      "recorded_in": "Comments",
+      "notes": ""
+    }
+  ],
+  "citation": "Book of Forms form 3.2, PDF page 179 (printed page 168)",
+  "notes": "The prose and Table 3.2 are on one page. The Alignment list has four entries; the book writes \"Issue register\" where the matching form is the Issue Log (3.1), which is an uncertain mapping. The blank form (PDF page 180, printed page 169) prints Date for the fifth column; Table 3.2 names it Priority but describes a date, so the table appears to carry a wrong element name and the blank form wins. The prose does not say which documents the decision log provides to (not stated in the book)."
+}

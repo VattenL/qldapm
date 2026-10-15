@@ -1,0 +1,79 @@
+{
+  "form": "2.27",
+  "name": "Team Charter",
+  "process_group": "Planning",
+  "pmbok_processes": [
+    "9.1 Plan Resource Management"
+  ],
+  "purpose": "Sets ground rules and guidelines for the team, particularly useful for virtual teams and teams drawn from different organizations, so that expectations and agreements on how to work together are explicit. It holds values, meeting and communication guidelines, the decision-making and conflict resolution processes, and other agreements. It is generally developed once, but the team should revisit it if there is substantial turnover.",
+  "receives_from": [],
+  "provides_to": [],
+  "alignment": [
+    {
+      "form": "2.26",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    }
+  ],
+  "elements": [
+    {
+      "element": "Team values and principles",
+      "printed_label": "Team Values and Principles",
+      "guidance": "Values and principles the team agrees to work within, for example mutual respect, working from fact rather than opinion."
+    },
+    {
+      "element": "Meeting guidelines",
+      "printed_label": "Meeting Guidelines",
+      "guidance": "Guidelines that keep meetings productive, for example decision makers must be present, start on time, stick to the agenda."
+    },
+    {
+      "element": "Communication guidelines",
+      "printed_label": "Communication Guidelines",
+      "guidance": "Guidelines for effective communication, for example everyone voices an opinion, no dominating, no interrupting, no inflammatory language."
+    },
+    {
+      "element": "Decision-making process",
+      "printed_label": "Decision-Making Process",
+      "guidance": "How decisions are made, the project manager's relative power, any voting procedures, and the circumstances under which a decision can be revisited."
+    },
+    {
+      "element": "Conflict resolution process",
+      "printed_label": "Conflict Resolution Process",
+      "guidance": "How conflict is managed, when it is escalated, when it is tabled for later discussion."
+    },
+    {
+      "element": "Other agreements",
+      "printed_label": "Other Agreements",
+      "guidance": "Any other agreements or approaches that support a collaborative, productive working relationship."
+    }
+  ],
+  "tailoring": [
+    "If contractors hold key roles, include them in developing the team charter.",
+    "If the organization has organizational values, align the team charter with them.",
+    "International teams may need more time on this document because cultures differ in how they make decisions and resolve conflicts."
+  ],
+  "agile_or_adaptive": "",
+  "decisions": [
+    {
+      "decision": "Rules for who must attend meetings and how they run",
+      "recorded_in": "Meeting Guidelines",
+      "notes": ""
+    },
+    {
+      "decision": "Who decides, by what voting or authority, and when a decision may be reopened",
+      "recorded_in": "Decision-Making Process",
+      "notes": ""
+    },
+    {
+      "decision": "When a conflict is escalated and when it is tabled",
+      "recorded_in": "Conflict Resolution Process",
+      "notes": ""
+    },
+    {
+      "decision": "Whether to revisit and reaffirm the charter after substantial turnover",
+      "recorded_in": "",
+      "notes": "The book names the trigger but gives no threshold for 'substantial'."
+    }
+  ],
+  "citation": "Book of Forms form 2.27, PDF pages 120 to 121 (printed pages 109 to 110)",
+  "notes": "The prose names no documents it receives from or provides to, so both lists are empty (not stated in the book). The intro lists 'Team agreements' where the table and the form say 'Other agreements'. The blank form (PDF pages 122 to 123, printed pages 111 to 112) also prints a Signature and Date block, nine blank lines per column, which has no row in the elements table. The prose gives no section on adaptive projects."
+}

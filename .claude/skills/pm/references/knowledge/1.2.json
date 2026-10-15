@@ -1,0 +1,145 @@
+{
+  "form": "1.2",
+  "name": "Assumption Log",
+  "process_group": "Initiating",
+  "pmbok_processes": [
+    "4.1 Develop Project Charter"
+  ],
+  "purpose": "The log records assumptions, which are planning factors treated as true without proof, and constraints, which are limiting factors such as a predetermined budget or fixed deliverable milestones. It is a living document that is updated throughout the project; assumptions are elaborated over time and are eventually validated, at which point they stop being assumptions.",
+  "receives_from": [
+    {
+      "source": "Any project document",
+      "what": "assumptions can come from any document in the project"
+    },
+    {
+      "source": "Project team",
+      "what": "assumptions the team determines itself"
+    },
+    {
+      "source": "1.1",
+      "what": "constraints may be documented in the charter"
+    },
+    {
+      "source": "Customer, sponsor or regulatory agencies",
+      "what": "these parties determine the constraints"
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "2.6",
+      "what": "assumptions and constraints; not stated in the book which fields"
+    },
+    {
+      "target": "2.8",
+      "what": "assumptions and constraints; not stated in the book which fields"
+    },
+    {
+      "target": "2.15",
+      "what": "assumptions and constraints; not stated in the book which fields"
+    },
+    {
+      "target": "2.16",
+      "what": "assumptions and constraints; not stated in the book which fields"
+    },
+    {
+      "target": "2.18",
+      "what": "assumptions and constraints; not stated in the book which fields"
+    },
+    {
+      "target": "2.23",
+      "what": "assumptions and constraints; not stated in the book which fields"
+    },
+    {
+      "target": "Resource estimates",
+      "what": "assumptions and constraints; the book names \"Resource estimates\" without a form number"
+    },
+    {
+      "target": "2.32",
+      "what": "assumptions and constraints; not stated in the book which fields"
+    },
+    {
+      "target": "2.40",
+      "what": "assumptions and constraints; not stated in the book which fields"
+    }
+  ],
+  "alignment": [
+    {
+      "form": "1.1",
+      "what_must_agree": "constraints and assumptions must be consistent with the project charter"
+    },
+    {
+      "form": "3.1",
+      "what_must_agree": "must be consistent with the issue log; the book gives no further detail"
+    },
+    {
+      "form": "2.32",
+      "what_must_agree": "must be consistent with the risk register; the book gives no further detail"
+    }
+  ],
+  "elements": [
+    {
+      "element": "ID",
+      "printed_label": "ID",
+      "guidance": "An identifier for the assumption or constraint."
+    },
+    {
+      "element": "Category",
+      "printed_label": "Category",
+      "guidance": "The category of the assumption or constraint."
+    },
+    {
+      "element": "Assumption/constraint",
+      "printed_label": "Assumption/Constraint",
+      "guidance": "A description of the assumption or constraint."
+    },
+    {
+      "element": "Responsible party",
+      "printed_label": "Responsible Party",
+      "guidance": "The person tasked with following up on the assumption to find out whether it is true."
+    },
+    {
+      "element": "Due date",
+      "printed_label": "Due Date",
+      "guidance": "The date by which the assumption needs to be validated."
+    },
+    {
+      "element": "Actions",
+      "printed_label": "Actions",
+      "guidance": "Actions needed to validate the assumption."
+    },
+    {
+      "element": "Status",
+      "printed_label": "Status",
+      "guidance": "The status of the assumption, for example active, transferred or closed."
+    },
+    {
+      "element": "Comments",
+      "printed_label": "Comments",
+      "guidance": "Any additional information about the assumption or constraint."
+    }
+  ],
+  "tailoring": [
+    "Combine the assumption log with the issue register and the decision log to make an AID Log (A = assumption, I = issue, D = decision), for example a spreadsheet with one sheet for each.",
+    "On a very large project, keep the constraints in a separate log from the assumptions."
+  ],
+  "agile_or_adaptive": "",
+  "decisions": [
+    {
+      "decision": "Who follows up each assumption and by when it must be validated",
+      "recorded_in": "Responsible Party",
+      "notes": "Recorded together with Due Date."
+    },
+    {
+      "decision": "Which actions will validate an assumption",
+      "recorded_in": "Actions",
+      "notes": ""
+    },
+    {
+      "decision": "Whether an assumption is still active, has been transferred or is closed",
+      "recorded_in": "Status",
+      "notes": "The three values are the book's examples, not a fixed list."
+    }
+  ],
+  "citation": "Book of Forms form 1.2, PDF pages 20 to 21 (printed pages 9 to 10)",
+  "notes": "Purpose, receives, provides, process and Tailoring Tips: PDF page 20 (printed page 9). Alignment and Table 1.2: PDF page 21 (printed page 10). The book says the log is an output of 4.1 and that it is updated throughout the project; it does not name the processes that later update it. The prose bullet list calls the first field Identifier; Table 1.2 and the blank form call it ID."
+}

@@ -1,0 +1,139 @@
+{
+  "form": "3.3",
+  "name": "Change Request",
+  "process_group": "Executing",
+  "pmbok_processes": [
+    "4.3 Direct and Manage Project Work"
+  ],
+  "purpose": "Used to ask for a change to any aspect of the project: the product, documents, cost, schedule or anything else. It can come from almost any process of executing, monitoring and controlling. When complete it is submitted to the change control board for review.",
+  "receives_from": [
+    {
+      "source": "Executing, monitoring and controlling processes",
+      "what": "a change request can come from almost any process involved in executing, monitoring and controlling the project (prose)"
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "Change control board",
+      "what": "the completed request is submitted to the change control board for review (prose)"
+    },
+    {
+      "target": "3.4",
+      "what": "the change log tracks each change from the change request through the final decision, and its Category is copied from the change request (3.4 prose and Table 3.4)"
+    }
+  ],
+  "alignment": [
+    {
+      "form": "2.2",
+      "what_must_agree": "the change request must follow the change management plan's categories, approval levels and process (the book gives only the list entry; reading)"
+    },
+    {
+      "form": "3.4",
+      "what_must_agree": "Table 3.4 says the log's Category is entered from the change request form, so the two must carry the same category; that the requestor, description and disposition also match is a reading, the book does not spell it out"
+    }
+  ],
+  "elements": [
+    {
+      "element": "Requestor",
+      "printed_label": "Requestor",
+      "guidance": "The name and, if appropriate, the position of the person asking for the change."
+    },
+    {
+      "element": "Category",
+      "printed_label": "Category",
+      "guidance": "Check the box for the category of change. Table 3.3 does not list the boxes; the blank form prints Scope, Quality, Requirements, Cost, Schedule and Documents."
+    },
+    {
+      "element": "Description of change",
+      "printed_label": "Detailed Description of Proposed Change",
+      "guidance": "Describe the proposed change in enough detail to communicate every aspect of it."
+    },
+    {
+      "element": "Justification for proposed change",
+      "printed_label": "Justification for Proposed Change",
+      "guidance": "State the reason for the change."
+    },
+    {
+      "element": "Impacts of change: Scope",
+      "printed_label": "Scope",
+      "guidance": "Describe the impact of the change on project and product scope. The blank form adds Increase, Decrease and Modify boxes and a Description box."
+    },
+    {
+      "element": "Impacts of change: Quality",
+      "printed_label": "Quality",
+      "guidance": "Describe the impact on project or product quality. The blank form adds Increase, Decrease and Modify boxes and a Description box."
+    },
+    {
+      "element": "Impacts of change: Requirements",
+      "printed_label": "Requirements",
+      "guidance": "Describe the impact on project or product requirements. The blank form adds Increase, Decrease and Modify boxes and a Description box."
+    },
+    {
+      "element": "Impacts of change: Cost",
+      "printed_label": "Cost",
+      "guidance": "Describe the impact on the project budget, cost estimates or funding requirements. The blank form adds Increase, Decrease and Modify boxes and a Description box."
+    },
+    {
+      "element": "Impacts of change: Schedule",
+      "printed_label": "Schedule",
+      "guidance": "Describe the impact on the schedule and whether the critical path changes. The blank form adds Increase, Decrease and Modify boxes and a Description box."
+    },
+    {
+      "element": "Impacts of change: Project documents",
+      "printed_label": "Project Documents",
+      "guidance": "Describe the impact on each project document. On the blank form this label is printed inside the Stakeholder Impact Description box, with no Increase, Decrease or Modify boxes of its own."
+    },
+    {
+      "element": "Comments",
+      "printed_label": "Comments",
+      "guidance": "Any comment that clarifies information about the requested change."
+    }
+  ],
+  "tailoring": [
+    "On a smaller project, replace the per-area impacts (scope, quality, requirements and so on) with one summary description of impacts.",
+    "Add a check box saying whether the change is mandatory (for example a legal requirement) or discretionary.",
+    "Add a field describing the implications of not making the change."
+  ],
+  "agile_or_adaptive": "",
+  "decisions": [
+    {
+      "decision": "Which category the proposed change falls in",
+      "recorded_in": "Category",
+      "notes": ""
+    },
+    {
+      "decision": "How the change moves scope, quality, requirements, cost, schedule and project documents",
+      "recorded_in": "Scope; Quality; Requirements; Cost; Schedule; Project Documents",
+      "notes": "Increase, Decrease or Modify for the first five; Table 3.3 asks for the critical path effect under Schedule."
+    },
+    {
+      "decision": "How stakeholders are affected",
+      "recorded_in": "Stakeholder Impact",
+      "notes": "Printed on the blank form (High risk, Low risk, Medium risk) but not described in Table 3.3."
+    },
+    {
+      "decision": "Approve, defer or reject",
+      "recorded_in": "Disposition",
+      "notes": "Printed on the blank form with a separate Justification box; Table 3.3 and the 3.3 prose do not describe it, and the prose says only that the request goes to the change control board for review."
+    }
+  ],
+  "citation": "Book of Forms form 3.3, PDF pages 181 to 182 (printed pages 170 to 171)",
+  "notes": "Table 3.3 has a parent row Impacts of change with six sub-rows; the elements array lists the six sub-rows as \"Impacts of change: <area>\" because the parent row has no description of its own. The blank form (PDF pages 183 to 185, printed pages 172 to 174) prints three things Table 3.3 does not describe: Stakeholder Impact (High risk, Low risk, Medium risk, with its Description box), Disposition (Approve, Defer, Reject) and a second Justification box under Disposition on page 3; the fields file is the authority for their labels. Table 3.3 lists Project documents as one of the Impacts of change, while the form prints it only as a label inside the Stakeholder Impact box. The disposition values Approve, Defer and Reject match the approved, deferred and rejected of Table 3.4 (PDF page 187, printed page 176). Team rule, not from the book: when scope, cost, schedule and quality cannot all hold, the route is a change request (this form) to the sponsor; never cut estimates to fit a date. The book names the change control board as the reviewer; it does not name who completes the Disposition box (not stated in the book). The Alignment list also names the change management plan (2.2); the book does not say what flows from it, so it is not in receives_from.",
+  "blank_only": [
+    {
+      "printed_label": "Stakeholder Impact",
+      "cite": "Book of Forms form 3.3 blank, PDF page 184 (printed page 173)",
+      "note": "Not stated in the book as a field of its own. The blank form prints the boxes High risk, Low risk and Medium risk with a Description box; Table 3.3 has no such element."
+    },
+    {
+      "printed_label": "Disposition",
+      "cite": "Book of Forms form 3.3 blank, PDF page 185 (printed page 174)",
+      "note": "Not stated in the book as a field of its own. The blank form prints the boxes Approve, Defer and Reject on page 3; Table 3.3 has no such element."
+    },
+    {
+      "printed_label": "Justification",
+      "cite": "Book of Forms form 3.3 blank, PDF page 185 (printed page 174)",
+      "note": "Not stated in the book as a field of its own. The page 3 box is separate from Justification for Proposed Change on page 1; Table 3.3 has no element for it. The team writes the reason for the decision here."
+    }
+  ]
+}

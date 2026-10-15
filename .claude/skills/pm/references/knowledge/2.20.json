@@ -1,0 +1,168 @@
+{
+  "form": "2.20",
+  "name": "Cost Estimates",
+  "process_group": "Planning",
+  "pmbok_processes": [
+    "7.2 Estimate Costs"
+  ],
+  "purpose": "Records the cost of the resources needed to finish the project work (labor, equipment, supplies, services, facilities, material), which can be approximated for each work package. Estimates come from expert judgment or from a quantitative method: parametric, analogous or three-point. The estimates are developed and then refined periodically.",
+  "receives_from": [
+    {
+      "source": "2.19",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "Scope baseline",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "2.18",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "2.23",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "2.28",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "2.32",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "3.5",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "2.22",
+      "what": "Named by the book as a recipient; which content is not stated in the book."
+    },
+    {
+      "target": "2.28",
+      "what": "Named by the book as a recipient; which content is not stated in the book."
+    },
+    {
+      "target": "2.32",
+      "what": "Named by the book as a recipient; which content is not stated in the book."
+    }
+  ],
+  "alignment": [
+    {
+      "form": "1.2",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "2.13",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "2.18",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "2.28",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "Project team assignments",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    }
+  ],
+  "elements": [
+    {
+      "element": "ID",
+      "printed_label": "WBS ID",
+      "guidance": "Unique identifier such as the WBS ID or the activity ID."
+    },
+    {
+      "element": "Resource",
+      "printed_label": "Resource",
+      "guidance": "The person, equipment or material needed for the WBS deliverable."
+    },
+    {
+      "element": "Labor costs",
+      "printed_label": "Labor Costs",
+      "guidance": "Costs of team or outsourced resources."
+    },
+    {
+      "element": "Physical costs",
+      "printed_label": "Physical Costs",
+      "guidance": "Costs of material, equipment, supplies or other physical resources."
+    },
+    {
+      "element": "Reserve",
+      "printed_label": "Reserve",
+      "guidance": "Contingency reserve amounts, if any."
+    },
+    {
+      "element": "Estimate",
+      "printed_label": "Estimate",
+      "guidance": "The sum of labor cost, physical resource cost and reserve."
+    },
+    {
+      "element": "Basis of estimates",
+      "printed_label": "Basis of Estimates",
+      "guidance": "What the estimate rests on, such as cost per pound, duration of the work, square feet."
+    },
+    {
+      "element": "Method",
+      "printed_label": "Method",
+      "guidance": "The estimating method used, such as analogous or parametric."
+    },
+    {
+      "element": "Assumptions/constraints",
+      "printed_label": "Assumptions/Constraints",
+      "guidance": "Assumptions used in estimating, such as how long the resource will be needed."
+    },
+    {
+      "element": "Range",
+      "printed_label": "Range",
+      "guidance": "The range of the estimate."
+    },
+    {
+      "element": "Confidence level",
+      "printed_label": "Confidence Level",
+      "guidance": "How confident the estimator is in the estimate."
+    }
+  ],
+  "tailoring": [
+    "Estimates may include contingency reserve for risks caused by uncertainty in the estimate or ambiguity in scope or resource availability.",
+    "If cost of quality, cost of financing or indirect costs were considered, add that information to the estimate.",
+    "Estimate at the accuracy and precision your project needs; rolling wave planning is often used, refining the estimates as scope and resource information grows.",
+    "If vendors are used, show the estimated cost and the type of contract, to account for possible fees and awards."
+  ],
+  "agile_or_adaptive": "",
+  "decisions": [
+    {
+      "decision": "Which estimating approach to use for each work package: expert judgment, parametric, analogous or three-point",
+      "recorded_in": "Method",
+      "notes": ""
+    },
+    {
+      "decision": "How much contingency reserve to hold against estimating uncertainty and scope or resource ambiguity",
+      "recorded_in": "Reserve",
+      "notes": ""
+    },
+    {
+      "decision": "How accurate and precise the estimate must be, and how wide the range and how high the confidence",
+      "recorded_in": "Range",
+      "notes": "Also Confidence Level; the book gives no numeric thresholds."
+    },
+    {
+      "decision": "Whether cost of quality, cost of financing and indirect costs are included",
+      "recorded_in": "Estimate",
+      "notes": "Tailoring tip; the blank form has no column for them."
+    },
+    {
+      "decision": "For vendor work, the contract type that accounts for fees and awards",
+      "recorded_in": "Estimate",
+      "notes": "Tailoring tip; the blank form has no contract type column."
+    }
+  ],
+  "citation": "Book of Forms form 2.20, PDF pages 96 to 97 (printed pages 85 to 86)",
+  "notes": "The blank form (PDF page 98, printed page 87) is titled ACTIVITY COST ESTIMATES. It differs from the prose table: it prints 'WBS ID' where the table says 'ID', and its column order is Method, Assumptions/Constraints, Basis of Estimates, where the table lists Basis of estimates before Method; the blank form order wins. The intro's 'at least' list names Physical resource costs, the table names Physical costs, the form prints Physical Costs. The 'Resource' element is in the table and on the form but not in the intro's 'at least' list. The book says the Estimate is the sum of labor, physical resource and reserve costs. Rolling wave planning is named here for cost estimating but is not tied to adaptive projects. 2.20 says it provides to 2.28 while 2.28 lists 'Cost estimates' among its sources, so the two forms feed each other and the order of work is not stated in the book."
+}

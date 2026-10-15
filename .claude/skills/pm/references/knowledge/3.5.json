@@ -1,0 +1,104 @@
+{
+  "form": "3.5",
+  "name": "Lessons Learned Register",
+  "process_group": "Executing",
+  "pmbok_processes": [
+    "4.4 Manage Project Knowledge"
+  ],
+  "purpose": "Records challenges, problems, good practices and other information that can be passed to the organization and to other projects, so mistakes are not repeated and processes improve. Lessons can be project oriented or product oriented and can cover risks, issues, procurements, quality defects and areas of poor or outstanding performance. It is updated throughout the project.",
+  "receives_from": [
+    {
+      "source": "4.1",
+      "what": "lessons or knowledge-transfer items, if the report has the optional field (4.1 Tailoring Tip: such fields can feed the lessons learned register)"
+    },
+    {
+      "source": "4.2",
+      "what": "lessons or knowledge-transfer items, if the report has the optional field (4.2 Tailoring Tip: such fields can feed the lessons learned register)"
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "Organization and other projects",
+      "what": "lessons that can be passed along to the organization and to other projects (prose)"
+    }
+  ],
+  "alignment": [
+    {
+      "form": "2.2",
+      "what_must_agree": "a lesson about change handling must agree with the change management plan (overlap not spelled out in the book; reading from the Alignment list)"
+    },
+    {
+      "form": "3.4",
+      "what_must_agree": "a lesson drawn from a change must match what the change log records for that change (reading)"
+    },
+    {
+      "form": "3.1",
+      "what_must_agree": "a lesson drawn from an issue must match the issue log's final resolution (reading)"
+    },
+    {
+      "form": "3.2",
+      "what_must_agree": "a lesson drawn from a decision must match the decision log entry (reading)"
+    },
+    {
+      "form": "5.1",
+      "what_must_agree": "lessons in the register must be consistent with the lessons learned summary at closing (reading)"
+    }
+  ],
+  "elements": [
+    {
+      "element": "ID",
+      "printed_label": "ID",
+      "guidance": "A unique lesson identifier."
+    },
+    {
+      "element": "Category",
+      "printed_label": "Category",
+      "guidance": "The category of lesson, for example process, technical, environmental, stakeholder or phase."
+    },
+    {
+      "element": "Trigger",
+      "printed_label": "Trigger",
+      "guidance": "The context, event or condition that led to the challenge, problem or beneficial outcome."
+    },
+    {
+      "element": "Lesson",
+      "printed_label": "Lesson",
+      "guidance": "The lesson stated so it can be passed on to other projects and the organization."
+    },
+    {
+      "element": "Responsible party",
+      "printed_label": "Responsible Party",
+      "guidance": "The person assigned to implement any changes so that the lesson is communicated and distributed."
+    },
+    {
+      "element": "Comments",
+      "printed_label": "Comments",
+      "guidance": "Clarifying comments about the challenge, problem, good practice or any other field."
+    }
+  ],
+  "tailoring": [
+    "Add the person who identified the lesson, especially when that person differs from the one accountable for implementing it.",
+    "Add the next implementation opportunity and expected implementation date, so a lesson is acted on and not only recorded.",
+    "Add a check box saying whether the lesson affects an organizational system, policy or practice or can be implemented without escalating."
+  ],
+  "agile_or_adaptive": "",
+  "decisions": [
+    {
+      "decision": "What is worth passing on",
+      "recorded_in": "Lesson",
+      "notes": ""
+    },
+    {
+      "decision": "Who carries the lesson into practice",
+      "recorded_in": "Responsible Party",
+      "notes": ""
+    },
+    {
+      "decision": "Which events count as lessons and how they are grouped",
+      "recorded_in": "Category; Trigger",
+      "notes": ""
+    }
+  ],
+  "citation": "Book of Forms form 3.5, PDF pages 189 to 190 (printed pages 178 to 179)",
+  "notes": "The book states no flow from the issue log, decision log or change log into the register (not stated in the book), so they appear only under alignment. The Alignment list names the change management plan, change log, issue log, decision log and lessons learned summary (5.1, listed in forms-index.md as Lessons Learned Summary). The printed labels match Table 3.5 exactly (blank form PDF page 191, printed page 180). The register is an output of Manage Project Knowledge; the closing summary (5.1) is not described on these pages. Provides_to lists only the organization and other projects; the book does not say what flows between the register and the lessons learned summary (5.1), so 5.1 appears only under alignment."
+}

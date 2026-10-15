@@ -1,0 +1,104 @@
+{
+  "form": "4.9",
+  "name": "Product Acceptance Form",
+  "process_group": "Monitoring and Controlling",
+  "pmbok_processes": [
+    "5.5 Validate Scope"
+  ],
+  "purpose": "Records, requirement by requirement, whether a deliverable or component was validated and accepted, and who accepted it. It is done periodically through the project as each deliverable or component is validated, not only at the end.",
+  "receives_from": [
+    {
+      "source": "2.6",
+      "what": "the requirement identifier and the requirement description are entered from the requirements documentation (Table 4.9)"
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "5.2",
+      "what": "the project or phase closeout takes its verification and validation information from the product acceptance form (5.2 Table 5.2, PDF page 247, printed page 236)"
+    },
+    {
+      "target": "4.8",
+      "what": "acceptance of the product or result is a condition of closing a contract (4.8 prose, PDF page 233, printed page 222); which fields flow is not stated in the book"
+    }
+  ],
+  "alignment": [
+    {
+      "form": "2.4",
+      "what_must_agree": "the validation and acceptance approach must follow the scope management plan (reading; the book gives only the list entry)"
+    },
+    {
+      "form": "2.6",
+      "what_must_agree": "each ID and requirement must match the requirements documentation (Table 4.9 says to enter them from it)"
+    },
+    {
+      "form": "2.7",
+      "what_must_agree": "each requirement accepted here must trace to its deliverable in the requirements traceability matrix (reading; the book gives only the list entry)"
+    },
+    {
+      "form": "2.23",
+      "what_must_agree": "the acceptance criteria and validation methods must be consistent with the quality management plan (reading; the book gives only the list entry)"
+    }
+  ],
+  "elements": [
+    {
+      "element": "ID",
+      "printed_label": "ID",
+      "guidance": "A unique requirement identifier, taken from the requirements documentation."
+    },
+    {
+      "element": "Requirement",
+      "printed_label": "Requirement",
+      "guidance": "The requirement description, taken from the requirements documentation."
+    },
+    {
+      "element": "Acceptance criteria",
+      "printed_label": "Acceptance Criteria",
+      "guidance": "The criteria for acceptance."
+    },
+    {
+      "element": "Validation method",
+      "printed_label": "Validation Method",
+      "guidance": "How the requirement is validated as meeting the stakeholder's needs."
+    },
+    {
+      "element": "Status",
+      "printed_label": "Status",
+      "guidance": "Whether the requirement or deliverable was accepted or not."
+    },
+    {
+      "element": "Sign-off",
+      "printed_label": "Sign-off",
+      "guidance": "The signature of the party accepting the product."
+    }
+  ],
+  "tailoring": [
+    "A small project with only a few deliverables may not need this form.",
+    "Add a column for the verification method used to prove the deliverables meet the requirements; the form then becomes a product verification, validation and acceptance form."
+  ],
+  "agile_or_adaptive": "",
+  "decisions": [
+    {
+      "decision": "Whether each requirement or deliverable is accepted",
+      "recorded_in": "Status; Sign-off",
+      "notes": ""
+    },
+    {
+      "decision": "How each requirement is validated",
+      "recorded_in": "Validation Method",
+      "notes": ""
+    },
+    {
+      "decision": "What counts as acceptable",
+      "recorded_in": "Acceptance Criteria",
+      "notes": ""
+    },
+    {
+      "decision": "Whether the form is needed at all (small projects) and whether to add a verification method column",
+      "recorded_in": "",
+      "notes": "Tailoring choices; the form has no field for them."
+    }
+  ],
+  "citation": "Book of Forms form 4.9, PDF page 237 (printed page 226); Table 4.9 PDF page 237 (printed page 226); blank form PDF page 238 (printed page 227)",
+  "notes": "All the prose is on one page. The prose bullets say Method of validation; Table 4.9 and the blank form say Validation method. The blank form prints a Comments column between Status and Sign-off that Table 4.9 does not list, so it has no element row here. The index name is Product Acceptance Form; the title bar reads FORMAL ACCEPTANCE FORM. The prose has no receives-from or provides-to section; the 5.2 and 4.8 provides_to entries come from those forms' own pages, cited in each entry."
+}

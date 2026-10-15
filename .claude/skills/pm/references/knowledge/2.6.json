@@ -1,0 +1,173 @@
+{
+  "form": "2.6",
+  "name": "Requirements Documentation",
+  "process_group": "Planning",
+  "pmbok_processes": [
+    "5.2 Collect Requirements"
+  ],
+  "purpose": "Records the requirements discovered from stakeholders' needs for the product, service or result, in enough detail to be included in the scope baseline and to be measured and validated. It helps the project manager make tradeoff decisions among requirements and manage stakeholder expectations, and it is elaborated progressively as more information arrives. Requirements are best grouped by category.",
+  "receives_from": [
+    {
+      "source": "1.1",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "1.2",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "1.3",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "2.4",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "2.5",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "Stakeholder management plan",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "3.5",
+      "what": "named as a source; the book does not say what is passed"
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "1.3",
+      "what": "named as a recipient; the book does not say what is passed"
+    },
+    {
+      "target": "Scope baseline",
+      "what": "requirements documented in enough detail to be included in the baseline"
+    },
+    {
+      "target": "2.23",
+      "what": "named as a recipient; the book does not say what is passed"
+    },
+    {
+      "target": "2.26",
+      "what": "named as a recipient; the book does not say what is passed"
+    },
+    {
+      "target": "2.30",
+      "what": "named as a recipient; the book does not say what is passed"
+    },
+    {
+      "target": "2.32",
+      "what": "named as a recipient; the book does not say what is passed"
+    },
+    {
+      "target": "2.37",
+      "what": "named as a recipient; the book does not say what is passed"
+    },
+    {
+      "target": "Project close out report",
+      "what": "named as a recipient; the book does not say what is passed"
+    }
+  ],
+  "alignment": [
+    {
+      "form": "2.5",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "Benefits management plan",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book. This plan is not a form in the book."
+    },
+    {
+      "form": "2.23",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "2.7",
+      "what_must_agree": "The book says only \"aligned and consistent\". Both element tables carry an identifier, the requirement text, the stakeholder or source, a category and a priority, so those would be the natural overlap (an inference, not stated in the book) (Tables 2.5 and 2.6, PDF pages 49 and 53, printed pages 38 and 42)."
+    },
+    {
+      "form": "6.3",
+      "what_must_agree": "The book lists \"Release plan\"; the specific fields are not stated in the book. The Phase or Release column is a likely overlap (an inference, not stated in the book)."
+    }
+  ],
+  "elements": [
+    {
+      "element": "ID",
+      "printed_label": "ID",
+      "guidance": "A unique identifier for the requirement."
+    },
+    {
+      "element": "Requirement",
+      "printed_label": "Requirement",
+      "guidance": "The condition or capability the project must meet, or that the product, service or result must have, to satisfy a stakeholder's need or expectation."
+    },
+    {
+      "element": "Stakeholder",
+      "printed_label": "Stakeholder",
+      "guidance": "The stakeholder's name; if no name is known yet, a position or organization stands in until more is known."
+    },
+    {
+      "element": "Category",
+      "printed_label": "Category",
+      "guidance": "The category of the requirement. Common categories in the book: business, stakeholder, solution, transition and readiness, project, quality."
+    },
+    {
+      "element": "Priority",
+      "printed_label": "Priority",
+      "guidance": "The priority group, for example Level 1, Level 2, or must have, should have, nice to have."
+    },
+    {
+      "element": "Acceptance criteria",
+      "printed_label": "Acceptance Criteria",
+      "guidance": "What must be met for the stakeholder to approve that the requirement is fulfilled."
+    },
+    {
+      "element": "Test or verification method",
+      "printed_label": "Test or Verification",
+      "guidance": "How it will be verified that the requirement is met: inspection, test, demonstration or analysis."
+    },
+    {
+      "element": "Phase or release",
+      "printed_label": "Phase or Release",
+      "guidance": "The phase or release in which the requirement will be met."
+    }
+  ],
+  "tailoring": [
+    "For an agile or adaptive approach, add the release or iteration of each requirement.",
+    "For a project with many requirements, indicate the relationships between requirements.",
+    "Add assumptions or constraints associated with a requirement.",
+    "For small, quick adaptive or agile projects, combine the requirements documentation with the backlog."
+  ],
+  "agile_or_adaptive": "The process is done once for a well-defined scope that is unlikely to change; for adaptive projects the documentation can evolve and change throughout the project. Tailoring: add release or iteration per requirement, and for small quick projects merge it with the backlog.",
+  "decisions": [
+    {
+      "decision": "which category each requirement belongs to",
+      "recorded_in": "Category",
+      "notes": "The book gives six common categories as examples, not a fixed list."
+    },
+    {
+      "decision": "how requirements rank when they compete (tradeoffs among requirements)",
+      "recorded_in": "Priority",
+      "notes": "The book says the documentation assists tradeoff decisions; the ranking scheme is the project's choice (Level 1, 2 or must, should, nice)."
+    },
+    {
+      "decision": "what the stakeholder will accept as proof that a requirement is fulfilled",
+      "recorded_in": "Acceptance Criteria",
+      "notes": ""
+    },
+    {
+      "decision": "how each requirement will be verified",
+      "recorded_in": "Test or Verification",
+      "notes": "The book names inspection, test, demonstration, analysis."
+    },
+    {
+      "decision": "which phase or release delivers each requirement",
+      "recorded_in": "Phase or Release",
+      "notes": ""
+    }
+  ],
+  "citation": "Book of Forms form 2.6, PDF pages 48 to 49 (printed pages 37 to 38); blank form PDF page 50 (printed page 39)",
+  "notes": "Minimum content the book lists (PDF page 48, printed page 37): identifier, requirement, stakeholder, category, priority, acceptance criteria, test or verification method, release or phase; the eight elements of Table 2.5 (PDF page 49, printed page 38) match. The blank form prints \"Test or Verification\" where Table 2.5 says \"Test or verification method\" and \"Phase or Release\" where the table says \"Phase or release\"; the printed labels win. The process note (PDF page 49, printed page 38) is 5.2 Collect Requirements. The book does not say how often the form is updated beyond the adaptive remark."
+}

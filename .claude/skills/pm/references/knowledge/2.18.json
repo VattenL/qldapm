@@ -1,0 +1,150 @@
+{
+  "form": "2.18",
+  "name": "Project Schedule",
+  "process_group": "Planning",
+  "pmbok_processes": [
+    "6.5 Develop Schedule"
+  ],
+  "purpose": "Combines the activity list, network diagram, resource requirements, duration estimates and other relevant information to fix the start and finish dates of the project activities. A common presentation is a Gantt chart showing the dependencies between activities; a milestone chart showing only the dates of important events or key deliverables is an alternative. It is updated and elaborated throughout the project.",
+  "receives_from": [
+    {
+      "source": "1.2",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "2.11",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "2.12",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "2.13",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "2.14",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "2.15",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "2.16",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "Project team assignments",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "Resource calendars",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "2.8",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "2.32",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "3.5",
+      "what": "named as a source; the book does not say what is passed"
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "2.20",
+      "what": "named as a recipient; the book does not say what is passed"
+    },
+    {
+      "target": "Project budget",
+      "what": "named as a recipient; the book does not say what is passed"
+    },
+    {
+      "target": "2.26",
+      "what": "named as a recipient; the book does not say what is passed"
+    },
+    {
+      "target": "2.32",
+      "what": "named as a recipient; the book does not say what is passed"
+    },
+    {
+      "target": "2.40",
+      "what": "named as a recipient (the book says \"Stakeholder engagement plan\"); the book does not say what is passed"
+    }
+  ],
+  "alignment": [
+    {
+      "form": "1.1",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "1.2",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "2.11",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "2.3",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "Scope baseline",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "2.12",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "2.15",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "2.16",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "Project team assignments",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "Project calendars",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    }
+  ],
+  "elements": [],
+  "tailoring": [
+    "For smaller projects scheduling software may not be needed; a spreadsheet or other means can show the schedule.",
+    "For projects that use scheduling software, the needs of the project decide the fields used and the information entered and tracked.",
+    "At the start, only the WBS information may be entered; as the work is decomposed, add activities, durations, resources and other information, at the level of detail the project needs.",
+    "A milestone chart may be distributed instead, showing only the dates of important events or key deliverables; showing the dependencies on it is optional."
+  ],
+  "agile_or_adaptive": "",
+  "decisions": [
+    {
+      "decision": "the start and finish date of each activity, given sequence, durations, resources and calendars",
+      "recorded_in": "Start; Finish",
+      "notes": "The printed Task Name, Start and Finish columns carry the dates; the book's prose says the Gantt chart also shows the WBS identifier and the resource name next to each bar."
+    },
+    {
+      "decision": "which presentation is distributed: Gantt chart with dependencies, or a milestone chart",
+      "recorded_in": "",
+      "notes": "Both are printed as samples; the book says dependencies on a milestone chart are optional."
+    },
+    {
+      "decision": "how much detail the schedule holds at each stage of planning",
+      "recorded_in": "",
+      "notes": "Starts at WBS level and is elaborated as work is decomposed (Tailoring Tips)."
+    }
+  ],
+  "citation": "Book of Forms form 2.18, PDF pages 89 to 90 (printed pages 78 to 79); blank forms PDF pages 91 to 92 (printed pages 80 to 81)",
+  "notes": "There is no Document Element table for this form, so elements is empty (references/fields/2.18.json). Both blank pages are worked samples (kitchen cabinets, house construction) whose rows must not be copied. The Gantt page prints the columns ID, WBS, Task Name, Start, Finish; the milestone chart page prints ID, Task Name, Finish. Neither prints a Project Title or Date Prepared line. The prose (PDF page 89, printed page 78) says the sample Gantt chart shows the WBS identifier, activity name, start dates, finish dates and resource name next to the bar; on the printed form those map to WBS, Task Name, Start, Finish, and the resource name is on the bar, not in a column. The book names no scheduling technique on this form (PDF pages 89 to 90, printed pages 78 to 79). Process: 6.5 Develop Schedule."
+}

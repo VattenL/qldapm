@@ -1,0 +1,139 @@
+{
+  "form": "2.16",
+  "name": "Duration Estimates",
+  "process_group": "Planning",
+  "pmbok_processes": [
+    "6.4 Estimate Activity Durations"
+  ],
+  "purpose": "Records how long each piece of project work will take to complete. An estimate can be made for each activity, work package or control account, using expert judgment or a quantitative method (parametric, analogous or three-point estimating). Where the duration is driven by people, the effort hours are converted into days or weeks.",
+  "receives_from": [
+    {
+      "source": "1.2",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "Scope baseline",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "2.11",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "2.12",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "2.13",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "2.14",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "2.28",
+      "what": "named as a source (the book says \"Resource requirements\"); the book does not say what is passed"
+    },
+    {
+      "source": "2.29",
+      "what": "named as a source (the book says \"Resource breakdown structure\" and lists it twice); the book does not say what is passed"
+    },
+    {
+      "source": "Resource calendars",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "Project team assignments",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "2.32",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "3.5",
+      "what": "named as a source; the book does not say what is passed"
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "Schedule baseline",
+      "what": "named as a recipient; the book does not say what is passed"
+    },
+    {
+      "target": "2.18",
+      "what": "named as a recipient; the book does not say what is passed"
+    },
+    {
+      "target": "2.32",
+      "what": "named as a recipient; the book does not say what is passed"
+    }
+  ],
+  "alignment": [
+    {
+      "form": "1.2",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "2.13",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "2.28",
+      "what_must_agree": "The book says only \"aligned and consistent\" (it says \"Resource requirements\"); the specific fields are not stated in the book."
+    }
+  ],
+  "elements": [
+    {
+      "element": "ID",
+      "printed_label": "ID",
+      "guidance": "A unique identifier."
+    },
+    {
+      "element": "Activity description",
+      "printed_label": "Activity Description",
+      "guidance": "A description of the work that needs to be done."
+    },
+    {
+      "element": "Effort hours",
+      "printed_label": "Effort Hours",
+      "guidance": "The amount of labor needed to do the work; usually in hours, possibly in days."
+    },
+    {
+      "element": "Duration estimates",
+      "printed_label": "Duration Estimate",
+      "guidance": "The length of time needed to do the work; usually in days, possibly in weeks or months."
+    }
+  ],
+  "tailoring": [
+    "Duration estimates may include contingency reserve for risks from uncertainty in the estimates, ambiguity in the scope, or resource availability.",
+    "Estimate at the level of accuracy the project needs. Rolling wave planning is often used: as more is known about the activities, the estimates are refined and updated.",
+    "For projects using an agile development approach, set time boxes are used instead of duration estimates, and different estimating methods are used."
+  ],
+  "agile_or_adaptive": "For agile projects, set time boxes are used rather than duration estimates, and different estimating methods apply (Tailoring Tips, PDF page 82, printed page 71).",
+  "decisions": [
+    {
+      "decision": "which estimating technique is used for an activity: expert judgment, parametric, analogous or three-point",
+      "recorded_in": "Duration Estimate",
+      "notes": "The worksheet form 2.17 carries the arithmetic for the three quantitative methods."
+    },
+    {
+      "decision": "how much effort the work needs, and how that converts to calendar duration",
+      "recorded_in": "Effort Hours; Duration Estimate",
+      "notes": "The book's conversion for people-driven work is hours divided by 8 for days and by 40 for weeks (PDF page 81, printed page 70). It gives no other conversion."
+    },
+    {
+      "decision": "whether the estimate includes a contingency reserve",
+      "recorded_in": "Duration Estimate",
+      "notes": "Stated as a possibility in Tailoring Tips; the book gives no percentage."
+    },
+    {
+      "decision": "how accurate the estimate must be, refined as rolling wave planning proceeds",
+      "recorded_in": "",
+      "notes": "Level of accuracy is set in the schedule management plan (2.11, Table 2.11, PDF page 68, printed page 57)."
+    }
+  ],
+  "citation": "Book of Forms form 2.16, PDF pages 81 to 82 (printed pages 70 to 71); blank form PDF page 83 (printed page 72)",
+  "notes": "The blank form prints Duration Estimate where Table 2.15 says Duration estimates; the printed label wins. The prose says estimates include at least ID, activity description and effort hours (PDF page 81, printed page 70), and the table adds the duration itself. The hours-to-days rule (divide by 8) and hours-to-weeks rule (divide by 40) are the book's, applied to durations driven by people rather than materials or equipment. The book's 'receives from' list names the resource breakdown structure twice; it is listed once here. The book spells the process 6.4 Estimate Activity Durations here and Estimate Activity Duration on form 2.17."
+}
