@@ -6,14 +6,19 @@ references/rendering.md and house-style.md. Every value is left empty, because
 a blank form holds no project facts: fill it from the project documents, and
 mark anything assumed with <mark>.
 
-The default output is docs/forms/<number>-<slug>.en.md in the repo, and an
-existing file is never overwritten without --force. A form the team fills again
-and again (a weekly status report) gets one dated copy per use with --dated:
-docs/forms/<number>-<slug>-YYYY-MM-DD.en.md.
+Without --out the form is printed to standard output, so a trial run never
+touches docs/. --docs writes docs/forms/<number>-<slug>.en.md in the repo, and
+an existing file is never overwritten without --force. A form the team fills
+again and again (a weekly status report) gets one dated copy per use with
+--dated, which implies --docs: docs/forms/<number>-<slug>-YYYY-MM-DD.en.md.
+In a sandbox or an audit, where docs/ is read-only or must stay as it is, pass
+--out with a scratch path. --out with a directory (an existing one, or a path ending in /)
+writes the default file name into it, dated when --dated is given, so the weekly-copy
+workflow runs in a sandbox:  new_form.py 4.2 --out <scratch>/ --dated 2026-10-19
 
 A register table gets as many empty rows as the printed form draws, read from
-the spec's notes ("The table prints 6 blank rows"), or 3 where the notes give no
-count; --rows overrides it.
+the spec's notes ("The table prints 6 blank rows", "1 tall blank row"), or 3 where the
+notes give no count; --rows overrides it.
 """
 
 import argparse
@@ -29,8 +34,9 @@ PRINTED_OFFSET = 11
 DEFAULT_ROWS = 3
 COUNTS = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6, "seven": 7, "eight": 8,
           "nine": 9, "ten": 10, "eleven": 11, "twelve": 12, "thirteen": 13, "fourteen": 14, "fifteen": 15}
-# "prints 6 blank rows", "eight blank rows each", "two banks of seven blank rows", "6 tall blank rows".
-BLANK_ROWS = re.compile(r"\b(\d+|%s)\s+(?:tall\s+)?blank\s+rows\b" % "|".join(COUNTS), re.I)
+# "prints 6 blank rows", "eight blank rows each", "two banks of seven blank rows", "6 tall blank rows",
+# "1 tall blank row".
+BLANK_ROWS = re.compile(r"\b(\d+|%s)\s+(?:tall\s+)?blank\s+rows?\b" % "|".join(COUNTS), re.I)
 # rendering.md, Boxes with numbered lines.
 NUMBERED_LINES = ("A box printed with numbered lines holds its entries in one cell, written inline as"
                   " (1) ... (2) ...; a table keeps one row per entry.")
@@ -232,6 +238,8 @@ def citation(spec):
                  " second table continues row N of the first.")
     if "numbered lines" in spec.get("notes", ""):
         text += " " + NUMBERED_LINES
+    if spec.get("reading"):
+        text += " " + spec["reading"]
     return f"*{text}*"
 
 
@@ -278,13 +286,15 @@ def render(spec, rows=None):
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("form", help="form number (2.32) or part of its name (risk register)")
-    ap.add_argument("--out", help="output path, or - for standard output; "
-                                  "default docs/forms/<number>-<slug>.en.md")
+    ap.add_argument("--out", help="output path, or - for standard output (the default)")
+    ap.add_argument("--docs", action="store_true",
+                    help="write docs/forms/<number>-<slug>.en.md in the repo instead of printing")
     ap.add_argument("--rows", type=int, help="empty rows per register table "
                                              "(default: the printed count, or 3 where the spec gives none)")
     ap.add_argument("--dated", nargs="?", const="today", metavar="YYYY-MM-DD",
                     help="a dated copy for a form filled repeatedly: <number>-<slug>-YYYY-MM-DD.en.md "
-                         "(default today); ignored with --out")
+                         "(default today); implies --docs, except with --out DIRECTORY (the dated name is "
+                         "written into the directory), and ignored with --out FILE")
     ap.add_argument("--force", action="store_true", help="overwrite an existing file")
     args = ap.parse_args()
     if args.rows is not None and args.rows < 1:
@@ -300,10 +310,13 @@ def main():
     form = resolve(load_index(), args.form)
     text = render(load_spec(form["num"]), args.rows)
 
-    if args.out == "-":
+    if args.out == "-" or not (args.out or args.docs or dated):
         sys.stdout.write(text)
         return
-    out = Path(args.out) if args.out else default_path(load_spec(form["num"]), find_repo_root(), dated)
+    if args.out and (args.out.endswith(("/", "\\")) or Path(args.out).is_dir()):
+        out = Path(args.out) / default_path(load_spec(form["num"]), find_repo_root(), dated).name
+    else:
+        out = Path(args.out) if args.out else default_path(load_spec(form["num"]), find_repo_root(), dated)
     if out.exists() and not args.force:
         sys.exit(f"{out} exists; pass --force to overwrite it")
     out.parent.mkdir(parents=True, exist_ok=True)

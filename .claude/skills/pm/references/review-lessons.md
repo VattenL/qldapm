@@ -28,7 +28,7 @@ sources, so an audit reports them again if it finds them.
 10. Completeness of the package
 11. How to answer a reviewer
 
-## 1. People and roles
+## 1. People and roles, and the stakeholder registers (1.3, 1.4)
 
 **Sponsor and customer are two different people.** Sponsor Dr. Nguyễn Mạnh Hùng
 funds, approves and accepts; customer Đỗ Thị Bích Ngọc owns the center and the
@@ -59,10 +59,19 @@ page 1 and "Nguyễn Văn A" in the stakeholder table. Now the PM is deliberatel
 unnamed (assumption 15: the sponsor appoints the PM at M0), so the name is
 empty in all three places: the Project Manager box of 1.1, the signature
 block, and the stakeholder row. The row itself stays. A register whose first
-column is Name (1.3, 1.4) may write the position, `Project Manager`, in the
-Name cell, since Table 1.3 lets a position stand in for a name, with
-`<mark>name to be assigned by the sponsor at M0</mark>` beside it; it never
-writes a person's name. (Thread AAACG0ldth8; New 1.)
+column is Name (1.3, 1.4) writes the position alone, `Project Manager`, in the
+Name cell, since Table 1.3 lets a position stand in for a name; it never writes
+a person's name and puts no description in the cell (the next rule: a field holds
+the value). That rule wins over any "name to be assigned" wording in a cell. The
+sentence "name to be assigned by the sponsor at M0" belongs in the italic paragraph
+and the question list only, and only for a Date Prepared on or before M0 (14
+September 2026); `check_consistency.py` warns (`stale-m0`) when it appears in a
+document prepared after M0. After M0 write that no project document records the
+appointment, mark it, and list it as a question to the sponsor; never invent a
+name. The safe sentence, which `check_consistency.py` does not read as stale: "No project document records who the project
+manager is, so the name is left empty and listed as a question to the sponsor." (it has no M0, no date and no "to be assigned"). (Thread AAACG0ldth8; New 1.) Keep the italic paragraph to what a reader needs
+(the source copy, what is empty and why): a few sentences, not the 280 words of the
+first runs; the questions to the user go in the reply.
 
 **A field holds the value, not a description of it.** Reviewers struck
 "- owner and Director of the learning center" after a sponsor's name and "- sponsor
@@ -140,6 +149,13 @@ right, but "Project approval requirements ... comes from PMBOK 6 section
 Table 1.1; Project approval requirements is in the book's section 1.1 list
 (printed page 2) but not in Table 1.1 or on the form".
 
+**Business-case arithmetic is rechecked with a stated method.** `pm_calc.py
+payback --investment I --net ...` gives the first period whose cumulative net
+benefit reaches the investment (an outside arithmetic aid: PMBOK 6 names payback
+and prints no equation). For anything else write a scratch script, list its
+inputs and where each came from in the audit's Method line, and show the
+arithmetic in the finding.
+
 **A rule that is cited is stated.** "Exceptions to the sizing rule" in a Doc that
 never states the 8 to 80 hour rule (audit E7). If a section relies on a rule,
 the rule is in the same deliverable.
@@ -210,8 +226,45 @@ months 2 to 6 on budget line 5 (thread AAACG0ldtiY).
   flags a uniform column unless a sentence in the text above the table, in
   the same part, names the value together with the column or with "every" or
   "all" ("Every requirement is Must have: ..."). An audit that finds the
-  reason stated names it under What passed, with its line, so the reader
-  knows the column was checked; it is a warning only if the reason is weak.
+  reason stated is still a warning when reviewing documents (`check_consistency.py
+  --audit` reports it): a reason does not make a constant column informative.
+  Name the reason's line in the warning and say what would close it (the form's
+  own rule makes the value constant, or the team grades the rows). Only a
+  column the printed form defines as constant passes quietly.
+
+### Open on 15 October 2026
+
+This list is a starting point, not a verdict: re-run each grep before reporting, and drop an item that no
+longer matches, since the sources are edited between audits. Report the item, do not pick a winner (the
+sponsor decides). A line that is not here is not thereby fixed: walk sections 1 to 6 as well.
+
+Contradictions in the charter package (`docs/charter-package.en.md`):
+
+- Reserve wording: `grep -n -i "management reserve" docs/charter-package.en.md` finds form 2B's Cost row
+  (line 464, "management reserve use reported monthly"); 2A's Cost row says "reserve use reported monthly"
+  and budget line 6 is a contingency reserve.
+- R12 against the Time criterion: `grep -n "^| R12 \|no milestone more than" docs/charter-package.en.md`. R12
+  says go-live does not depend on the app and an app slip of up to two weeks after M6 is absorbed without moving
+  M6; the Time criterion says no milestone more than 1 week late and M6 is named "app live in both stores".
+  Three statements, two readings.
+- "All fourteen elements of Table 1.1": `grep -n -i "fourteen" docs/charter-package.en.md` (lines 28, 34, 227);
+  Table 1.1 has 13 rows (see "Stated counts" above).
+- Part-time load: the charter gives the mobile developer 2.5 person-months and no weekly figure
+  (`grep -n -i "person-month" docs/charter-package.en.md`; `grep -n -i "a week" docs/charter-package.en.md` finds
+  only the Academic Manager's and the Accountant's hours). `load_check.py` therefore judges the person against 40 unless
+  told otherwise; ask for the limit (SKILL.md, load per person).
+- Tranches: the charter releases 20%, 25%, 30% and 25% by M6 (`grep -n -i "tranche" docs/charter-package.en.md`);
+  read what is held for M7 and the warranty (section 5).
+
+Contradictions in the scope package (`docs/scope-package.en.md`) and between the packages:
+
+- Team size: `grep -n "Team size" docs/*.md`. The scope package states that the brief assumes 4 staff while the charter is
+  baselined at 5 plus a part-time developer; it says so itself, so report it as an explained difference.
+- WBS order: `grep -n "^#### 1.4.1.[34] " docs/scope-package.en.md` finds 1.4.1.3 F03 before 1.4.1.4 F02 (section 2, Codes in work order).
+- A rule directly under a table row: `grep -n -B1 "^---$" docs/scope-package.en.md` and look for a table row on the line above (line 210,
+  under the RTM Part 1B table); `check_consistency.py` reports it as `table-rule`, and the Doc generator turns it into a stray cell.
+- The appointment of the project manager: `check_consistency.py` warns `stale-m0` for sentences that tie it to M0 or to a date on or before M0 in
+  a document prepared after M0.
 
 ## 7. Form layout fidelity
 

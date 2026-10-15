@@ -301,5 +301,113 @@ class RepoDocuments(unittest.TestCase):
             self.assertIn("plain line", note)
 
 
+class TablesInsideBoxes(unittest.TestCase):
+    FORM = {"form": "9.4", "name": "Boxes", "printed_title": "BOXES", "kind": "fields", "page_count": 1,
+            "title_block": [], "pages": [{"page": 1, "blocks": [
+                {"type": "fields", "labels": ["Problem", "Users"]}]}]}
+    MD = ("# 9.4 Boxes\n\n| Field | Content |\n| --- | --- |\n| **Problem** | text |\n| **Users** | see below |\n\n"
+          + table(["Role", "Who they are"], [["Teacher", "staff"]]))
+
+    def test_a_table_header_inside_a_box_is_reported_by_default(self):
+        result = cf.check(self.MD, self.FORM)
+        self.assertEqual({c.text for c, _ in result.extra}, {"Role", "Who they are"})
+
+    def test_ignore_tables_skips_it_and_counts_it(self):
+        result = cf.check(self.MD, self.FORM, ignore_tables=True)
+        self.assertEqual(result.extra, [])
+        self.assertEqual(result.ignored, 1)
+
+    def test_a_table_that_carries_a_printed_label_is_still_the_forms(self):
+        md = "# 9.4 Boxes\n\n" + table(["Problem", "Extra column"], [["a", "b"]])
+        result = cf.check(md, self.FORM, ignore_tables=True)
+        self.assertEqual([c.text for c, _ in result.extra], ["Extra column"])
+        self.assertEqual(result.ignored, 0)
+
+    @unittest.skipUnless((DOCS / "charter-package.en.md").exists(), "needs docs/charter-package.en.md")
+    def test_the_charter_scope_statement_with_the_option(self):
+        code, lines = run_main(DOCS / "charter-package.en.md", "2.8", "--section", "Part 1: Requirement Specification",
+                               "--end", "Part 2:", "--ignore-tables")
+        self.assertEqual(code, 0, lines)
+        self.assertFalse([x for x in lines if x.startswith("unprinted labels") and "(0" not in x], lines)
+
+
+class FlattenedGroups(unittest.TestCase):
+    """--flattened: the scope package writes the RTM group header as its child labels (rendering.md)."""
+
+    FORM = {"form": "9.2", "name": "Test", "printed_title": "TEST", "kind": "matrix", "page_count": 1,
+            "title_block": [], "pages": [{"page": 1, "blocks": [
+                {"type": "table", "bank": 1, "columns": [
+                    {"group": "Requirement Information", "columns": ["ID", "Source"]}, "Notes"]}]}]}
+    FLAT = "# 9.2 Test\n\n" + table(["ID", "Source", "Notes"], [["R1", "A", "x"]])
+
+    def test_a_flattened_group_fails_by_default(self):
+        result = cf.check(self.FLAT, self.FORM)
+        self.assertTrue(result.failed)
+        self.assertEqual([s.text for s, _ in result.missing],
+                         ["Requirement Information: ID", "Requirement Information: Source"])
+
+    def test_flattened_option_accepts_the_child_label_and_lists_it(self):
+        result = cf.check(self.FLAT, self.FORM, flat_groups=True)
+        self.assertFalse(result.failed)
+        self.assertEqual([s.text for s in result.flattened],
+                         ["Requirement Information: ID", "Requirement Information: Source"])
+
+    @unittest.skipUnless((DOCS / "scope-package.en.md").exists(), "needs docs/scope-package.en.md")
+    def test_the_scope_package_rtm_passes_only_with_the_option(self):
+        package = DOCS / "scope-package.en.md"
+        self.assertEqual(run_main(package, "2.7", "--section", "Part 1:")[0], 1)
+        code, lines = run_main(package, "2.7", "--section", "Part 1:", "--flattened")
+        self.assertEqual(code, 0)
+        self.assertTrue([x for x in lines if x.startswith("grouped headers written without the colon")])
+
+    COST = {"form": "9.3", "name": "Cost", "printed_title": "COST", "kind": "fields", "page_count": 1,
+            "title_block": [], "pages": [{"page": 1, "blocks": [
+                {"type": "table", "bank": 1, "columns": [
+                    "ID", {"group": "Labor", "columns": ["Hours", "Total"]},
+                    {"group": "Material", "columns": ["Units", "Total"]}, "Total Cost"]}]}]}
+
+    def test_group_and_child_joined_by_a_space_is_accepted(self):
+        md = "# 9.3 Cost\n\n" + table(["ID", "Labor Hours", "Labor Total", "Material Units", "Material Total",
+                                         "Total Cost"], [["1", "2", "3", "4", "5", "6"]])
+        result = cf.check(md, self.COST, flat_groups=True)
+        self.assertFalse(result.failed, result.missing)
+        self.assertEqual(len(result.flattened), 4)
+        self.assertEqual(result.extra, [])
+
+    def test_a_child_shared_by_two_groups_is_not_accepted_alone(self):
+        md = "# 9.3 Cost\n\n" + table(["ID", "Hours", "Total", "Units", "Total Cost"], [["1", "2", "3", "4", "5"]])
+        result = cf.check(md, self.COST, flat_groups=True)
+        self.assertEqual([s.text for s, _ in result.missing], ["Labor: Total", "Material: Total"])
+
+    def test_the_other_spelling_of_an_accepted_label_stays_reported(self):
+        md = "# 9.3 Cost\n\n" + table(["ID", "Labor Hours", "Labor Total", "Material Units", "Material Total",
+                                         "Total Cost"], [["1"] * 6]) + table(["Hours", "Rate"], [["1", "2"]])
+        result = cf.check(md, self.COST, flat_groups=True)
+        self.assertEqual([c.text for c, _ in result.extra], ["Hours", "Rate"])
+
+    @unittest.skipUnless((DOCS / "scope-package.en.md").exists(), "needs docs/scope-package.en.md")
+    def test_the_wbs_dictionary_sheets_pass_with_the_option(self):
+        package = DOCS / "scope-package.en.md"
+        code, lines = run_main(package, "2.10", "--section", "Part 3: WBS Dictionary", "--flattened")
+        self.assertEqual(code, 0, lines)
+        self.assertIn("22/22 printed labels present in printed order", lines)
+        self.assertFalse([x for x in lines if "Labor Rate" in x or "Material Cost" in x])
+
+    @unittest.skipUnless((DOCS / "scope-package.en.md").exists(), "needs docs/scope-package.en.md")
+    def test_the_second_rtm_page_is_checked_alone_with_page_two(self):
+        package = DOCS / "scope-package.en.md"
+        code, lines = run_main(package, "2.7", "--section", "Part 1B", "--page", "2", "--flattened")
+        self.assertEqual(code, 0, lines)
+        self.assertFalse([x for x in lines if x.startswith("missing")], lines)
+
+    def test_page_must_exist(self):
+        self.assertEqual(run_main("x.md", "2.7", "--page", "3")[0], 2)
+
+    def test_flattened_option_does_not_excuse_a_label_that_is_absent(self):
+        md = "# 9.2 Test\n\n" + table(["ID", "Notes"], [["R1", "x"]])
+        result = cf.check(md, self.FORM, flat_groups=True)
+        self.assertEqual([s.text for s, _ in result.missing], ["Requirement Information: Source"])
+
+
 if __name__ == "__main__":
     unittest.main()

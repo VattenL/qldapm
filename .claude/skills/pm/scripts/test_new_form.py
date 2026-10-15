@@ -136,7 +136,8 @@ class Shapes(unittest.TestCase):
         self.assertEqual(new_form.printed_rows(spec("1.3")), 6)
         self.assertEqual(new_form.printed_rows(spec("3.1")), 7)    # "two banks of seven blank rows"
         self.assertEqual(new_form.printed_rows(spec("1.1")), 7)    # 7 and 6: the larger
-        self.assertEqual(new_form.printed_rows(spec("4.2")), new_form.DEFAULT_ROWS)  # no count given
+        self.assertEqual(new_form.printed_rows(spec("4.2")), 1)    # "1 tall blank row below it"
+        self.assertEqual(new_form.printed_rows({"notes": "no count here"}), new_form.DEFAULT_ROWS)
         self.assertEqual(len(tables(blank("1.3"))[0]), 7)
 
     def test_numbered_lines_are_explained_in_the_reading_paragraph(self):
@@ -312,6 +313,45 @@ class Cli(unittest.TestCase):
             forced = run_cli("new_form.py", "2.32", "--out", out, "--force", "--rows", "5")
             self.assertEqual(forced.returncode, 0, forced.stderr)
             self.assertEqual(out.read_text(encoding="utf-8"), blank("2.32", rows=5))
+
+    def test_dated_copy_into_a_scratch_directory_never_touches_docs(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            res = run_cli("new_form.py", "4.2", "--out", tmp + "/", "--dated", "2026-10-19")
+            self.assertEqual(res.returncode, 0, res.stderr)
+            files = sorted(p.name for p in Path(tmp).iterdir())
+            self.assertEqual(files, ["4-2-project-status-report-2026-10-19.en.md"])
+            self.assertEqual((Path(tmp) / files[0]).read_text(encoding="utf-8"), blank("4.2"))
+            plain = run_cli("new_form.py", "4.2", "--out", tmp)
+            self.assertEqual(plain.returncode, 0, plain.stderr)
+            self.assertIn("4-2-project-status-report.en.md", sorted(p.name for p in Path(tmp).iterdir()))
+            bad = run_cli("new_form.py", "4.2", "--out", tmp, "--dated", "19 October")
+            self.assertNotEqual(bad.returncode, 0)
+
+    def test_status_report_reading_paragraph_says_schedule_first_then_cost(self):
+        text = blank("4.2")
+        italic = text.splitlines()[2]
+        self.assertIn("the first copy of each is the schedule one and the second the cost one", italic)
+        self.assertIn("PDF pages 207 to 208 (printed pages 196 to 197)", italic)
+        self.assertIn("PDF pages 209 to 212 (printed pages 198 to 201)", italic)
+        self.assertNotIn("schedule one", blank("2.32").splitlines()[2])
+
+    def test_status_report_risk_and_issue_tables_print_one_blank_row(self):
+        text = blank("4.2")
+        for header in ("| Risk |", "| Issue |"):
+            body = text.split(header + "\n| --- |\n")[1].split("\n\n")[0]
+            self.assertEqual(body.splitlines(), ["| |"], header)
+
+    def test_no_citation_is_nested_inside_another_bracket(self):
+        italic = blank("4.2").splitlines()[2]
+        self.assertNotIn("(Book of Forms form 4.2", italic)
+        self.assertIn("Table 4.2, PDF pages 207 to 208 (printed pages 196 to 197)", italic)
+
+    def test_no_out_prints_and_writes_nothing(self):
+        before = sorted(p.name for p in (HERE.parents[3] / "docs" / "forms").glob("*"))
+        res = run_cli("new_form.py", "6.4")
+        self.assertEqual(res.returncode, 0)
+        self.assertEqual(res.stdout, blank("6.4"))
+        self.assertEqual(before, sorted(p.name for p in (HERE.parents[3] / "docs" / "forms").glob("*")))
 
     def test_stdout(self):
         res = run_cli("new_form.py", "6.4", "--out", "-")

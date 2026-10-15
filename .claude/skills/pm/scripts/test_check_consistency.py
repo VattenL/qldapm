@@ -6,6 +6,7 @@ records the review's verdict that a finding is correct or a miss is by design.
 """
 
 import contextlib
+import datetime
 import io
 import shutil
 import tempfile
@@ -268,6 +269,79 @@ class Consistency(unittest.TestCase):
             "| ID | Source |", "| --- | --- |", "| BR03 | Accountant |"])
         self.assertIn("id-conflict", self.run_on(text))
 
+    M0_TABLE = "| ID | Milestone | Due date |\n| --- | --- | --- |\n| M0 | Kickoff | Mon 14 Sep 2026 |\n\n"
+
+    def test_m0_phrase_after_m0_is_stale(self):
+        text = self.M0_TABLE + ("**Date Prepared:** 15 October 2026\n\n"
+                                "| Name |\n| --- |\n| <mark>name to be assigned by the sponsor at M0</mark> |\n")
+        self.assertIn("stale-m0", self.run_on(text))
+
+    def test_m0_phrase_on_or_before_m0_is_fine(self):
+        text = self.M0_TABLE + ("**Date Prepared:** 14 September 2026\n\n"
+                                "| Name |\n| --- |\n| <mark>name to be assigned by the sponsor at M0</mark> |\n")
+        self.assertNotIn("stale-m0", self.run_on(text))
+
+    def test_other_wordings_of_the_m0_appointment_are_stale_too(self):
+        for sentence in ("The sponsor names the project manager on or before 14 September 2026.",
+                         "The project manager is to be assigned by the sponsor.",
+                         "The sponsor will appoint the project manager at M0.",
+                         "| Assumptions | The sponsor names the project manager by Mon 14 Sep 2026, and others. |"):
+            text = self.M0_TABLE + "**Date Prepared:** 23 September 2026\n\n%s\n" % sentence
+            self.assertIn("stale-m0", self.run_on(text), sentence)
+
+    def test_an_appointment_after_m0_or_no_appointment_is_not_flagged(self):
+        for sentence in ("The sponsor names the project manager by 30 September 2026.",
+                         "Kickoff minutes are signed by the project manager named in writing.",
+                         "The sponsor assigns the reviewer at M0."):
+            text = self.M0_TABLE + "**Date Prepared:** 23 September 2026\n\n%s\n" % sentence
+            self.assertNotIn("stale-m0", self.run_on(text), sentence)
+
+    def test_a_rule_directly_under_a_table_row_is_an_error(self):
+        table = "| A | B |\n| --- | --- |\n| 1 | 2 |\n"
+        self.assertIn("table-rule", self.run_on(table + "---\n\nNext\n"))
+        self.assertNotIn("table-rule", self.run_on(table + "\n---\n\nNext\n"))
+        self.assertNotIn("table-rule", self.run_on("Text\n\n---\n\nNext\n"))
+
+    def test_a_long_italic_note_above_a_form_warns(self):
+        page = "#### RISK REPORT, page 1 of 1\n\n| A |\n| --- |\n| x |\n"
+        short = "*" + " ".join(["word"] * 40) + "*\n\n" + page
+        long = "*" + " ".join(["word"] * 200) + "*\n\n" + page
+        self.assertNotIn("note-length", self.run_on(short))
+        self.assertIn("note-length", self.run_on(long))
+        self.assertNotIn("note-length", self.run_on("*" + " ".join(["word"] * 200) + "*\n\nNo form page here.\n"))
+
+    def test_a_wrapped_italic_note_is_counted_as_one_paragraph(self):
+        page = "#### RISK REPORT, page 1 of 1\n\n| A |\n| --- |\n| x |\n"
+        words = ["word"] * 200
+        wrapped = "*" + "\n".join(" ".join(words[i:i + 10]) for i in range(0, 200, 10)) + "*\n\n" + page
+        self.assertIn("note-length", self.run_on(wrapped))
+        two = "*" + " ".join(["a"] * 40) + "*\n\n*" + "\n".join(" ".join(words[i:i + 10]) for i in range(0, 200, 10)) \
+            + "*\n\n" + page
+        found = [f for f in cc.run({"doc.md": two}) if f.check == "note-length"]
+        self.assertEqual(len(found), 1)
+        self.assertGreater(found[0].line, 1)
+
+    def test_date_prepared_against_today_is_off_unless_given(self):
+        text = "**Date Prepared:** 2 September 2026\n"
+        self.assertNotIn("date-prepared", {f.check for f in cc.run({"a.md": text})})
+        late = [f for f in cc.run({"a.md": text}, today=datetime.date(2026, 10, 15)) if f.check == "date-prepared"]
+        self.assertEqual([f.level for f in late], ["warning"])
+        self.assertIn("43 day(s)", late[0].message)
+        early = [f for f in cc.run({"a.md": text}, today=datetime.date(2026, 9, 1)) if f.check == "date-prepared"]
+        self.assertEqual([f.level for f in early], ["error"])
+        same = cc.run({"a.md": text}, today=datetime.date(2026, 9, 2))
+        self.assertNotIn("date-prepared", {f.check for f in same})
+
+    def test_uniform_column_message_names_the_column_and_the_value(self):
+        rows = "\n".join("| FR%02d | Must have |" % i for i in range(1, 10))
+        found = [f for f in cc.run({"a.md": "| ID | Priority |\n| --- | --- |\n" + rows}) if f.check == "uniform-column"]
+        self.assertIn("column 'Priority'", found[0].message)
+        self.assertIn("'Must have' in every one of 9 rows", found[0].message)
+
+    def test_m0_rule_needs_the_charter_date(self):
+        text = "**Date Prepared:** 15 October 2026\n\nname to be assigned by the sponsor at M0\n"
+        self.assertNotIn("stale-m0", self.run_on(text))
+
     def test_uniform_priority(self):
         rows = "\n".join("| FR%02d | Must have |" % i for i in range(1, 10))
         self.assertIn("uniform-column", self.run_on("| ID | Priority |\n| --- | --- |\n" + rows))
@@ -287,6 +361,65 @@ class Consistency(unittest.TestCase):
         text = ("# 2.32 Risk Register\n\n*Status is Open because no response has been completed.*\n\n"
                 "| ID | Status |\n| --- | --- |\n" + rows)
         self.assertNotIn("uniform-column", self.run_on(text))
+
+    def test_audit_reports_an_explained_uniform_column_too(self):
+        rows = "\n".join("| FR%02d | Must have |" % i for i in range(1, 10))
+        text = ("## Part 1: RTM\n\nEvery requirement is Must have: nothing in the baseline is optional.\n\n"
+                "| ID | Priority |\n| --- | --- |\n" + rows)
+        self.assertNotIn("uniform-column", {f.check for f in cc.run({"a.md": text})})
+        audited = [f for f in cc.run({"a.md": text}, audit=True) if f.check == "uniform-column"]
+        self.assertEqual(len(audited), 1)
+        self.assertIn("still separates nothing", audited[0].message)
+
+    def test_priority_of_one_id_differs_between_tables(self):
+        text = "\n".join([
+            "| ID | Priority |", "| --- | --- |", "| BR03 | Must have |", "",
+            "| ID | Priority |", "| --- | --- |", "| BR03 | Should have |"])
+        self.assertIn("id-conflict", self.run_on(text))
+
+    def test_section_after_a_page_citation_is_the_books(self):
+        text = "Per PMBOK 6, printed page 442, section 11.5.2.1 says so. See also section 7.4.2.2 of the Guide."
+        self.assertNotIn("section-ref", self.run_on(text))
+        # a section of this document is still checked
+        self.assertIn("section-ref", self.run_on("The plan is in section 9.9 here."))
+        # another sentence about the book does not excuse the next sentence
+        self.assertIn("section-ref", self.run_on("PMBOK 6 is the source. The plan is in section 9.9 here."))
+
+    def test_count_that_disagrees_with_the_list_after_it(self):
+        text = "All fourteen items of the plan:\n\n- one\n- two\n- three\n"
+        found = [f for f in cc.run({"a.md": text}) if f.check == "count"]
+        self.assertEqual(len(found), 1)
+        self.assertIn("says 14 items, but the list starting at line 3 has 3", found[0].message)
+        ok = "All three items of the plan:\n\n- one\n- two\n- three\n"
+        self.assertEqual([f for f in cc.run({"a.md": ok}) if f.check == "count"], [])
+
+    def test_count_against_a_table_and_a_run_of_headings(self):
+        table = "The two risks are:\n\n| ID | Risk |\n| --- | --- |\n| R1 | a |\n| R2 | b |\n| R3 | c |\n"
+        self.assertEqual(len([f for f in cc.run({"a.md": table}) if f.check == "count"]), 1)
+        heads = "### Charter\n\nAll four elements, in order.\n\n#### One\n\ntext\n\n#### Two\n\ntext\n\n### Next\n"
+        found = [f for f in cc.run({"a.md": heads}) if f.check == "count"]
+        self.assertEqual(len(found), 1)
+        self.assertIn("has 2", found[0].message)
+
+    def test_count_repeated_elsewhere_is_reported_with_the_wrong_one(self):
+        text = ("Covers all fourteen elements.\n\n### Charter\n\n*All fourteen elements of Table 1.1, listed*\n\n"
+                "#### One\n\ntext\n")
+        found = [f for f in cc.run({"a.md": text}) if f.check == "count"]
+        self.assertEqual(sorted(f.line for f in found), [1, 5])
+
+    def test_count_of_a_book_table_comes_from_the_registry(self):
+        found = [f for f in cc.run({"a.md": "The thirteen elements of Table 1.1 are used."}) if f.check == "count"]
+        self.assertEqual(found, [])
+        found = [f for f in cc.run({"a.md": "The fourteen elements of Table 1.1 are used."}) if f.check == "count"]
+        self.assertEqual(len(found), 1)
+        self.assertIn("Table 1.1 as the book prints it", found[0].message)
+        self.assertIn("PDF pages 14 to 15 (printed pages 3 to 4)", found[0].message)
+
+    def test_count_claims_that_look_backwards_or_sit_in_a_list_are_left_alone(self):
+        above = "The two functions above are in scope.\n\n| a | b |\n| --- | --- |\n| 1 | 2 |\n| 3 | 4 |\n| 5 | 6 |\n"
+        self.assertEqual([f for f in cc.run({"a.md": above}) if f.check == "count"], [])
+        inside = "- Each of the seven roles sees data\n- other\n- another\n"
+        self.assertEqual([f for f in cc.run({"a.md": inside}) if f.check == "count"], [])
 
     def test_reference_named_after_the_number(self):
         self.assertNotIn("section-ref", self.run_on("Carried by Part 2 of `docs/scope-package.en.md`."))
@@ -403,6 +536,32 @@ class CommandLine(unittest.TestCase):
         _code, once = run_main(self.source)
         _code, twice = run_main(self.source, self.source)
         self.assertEqual(once, twice)
+
+    def test_group_prints_one_line_per_check_with_a_count(self):
+        self.source.write_text("Dates 02 September 2026 and 03 September 2026 and 2026-09-04.\n", encoding="utf-8")
+        _code, lines = run_main(self.source, "--group")
+        date_lines = [line for line in lines if "[date]" in line]
+        self.assertEqual(len(date_lines), 1)
+        self.assertIn("x3", date_lines[0])
+
+    def test_show_context_lists_the_hidden_findings_with_their_heading(self):
+        self.source.write_text("## Register\n\n" + self.source.read_text(encoding="utf-8"), encoding="utf-8")
+        _code, plain_lines = run_main(self.form, self.source, "--report", self.form)
+        _code, lines = run_main(self.form, self.source, "--report", self.form, "--show-context")
+        self.assertGreater(len(lines), len(plain_lines))
+        context = [line for line in lines if line.lstrip().startswith("CONTEXT")]
+        self.assertTrue(context)
+        self.assertTrue(all("(under: Register)" in line for line in context))
+
+    def test_charter_and_scope_are_shorthand_for_the_package_files(self):
+        code, lines = run_main("charter", "scope", "--errors-only")
+        self.assertIn("2 file(s)", lines[-1])
+        self.assertNotIn("no such file", "\n".join(lines))
+
+    def test_today_must_be_a_date(self):
+        with contextlib.redirect_stderr(io.StringIO()):
+            with self.assertRaises(SystemExit):
+                cc.main([str(self.form), "--today", "15 October"])
 
     def test_errors_only_hides_warnings(self):
         _code, lines = run_main(self.source, "--errors-only")
