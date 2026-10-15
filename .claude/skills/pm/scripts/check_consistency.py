@@ -29,7 +29,9 @@ on the first path. A report path that is not among the paths is added to them.
 constant column informative); use it when reviewing documents.
 
 --group prints one line per check and level (count, files, first location and message, the next lines) instead of
-one line per finding, since one defect often shows as a finding for every date or citation it touches.
+one line per finding, since one defect often shows as a finding for every date or citation it touches. A
+form-note is the exception: each note is its own finding and prints its own quoted text, so --group lists
+every one of them, not only the first.
 --show-context, with --report, also lists the findings left out as already in the context files, each with
 the heading it sits under, so they can be checked for any that touch the table under review.
 --today YYYY-MM-DD checks every Date Prepared against that day: one dated after it is an error, one before it a
@@ -475,6 +477,18 @@ def check_stakeholders(files, parties, out):
                                        % (party, where[0], where[1], where[2], "; " + why if why else "")))
 
 
+NOTE_QUOTE = 500
+
+
+def quoted(text, limit=NOTE_QUOTE):
+    """The text as written, inside quotation marks, for a finding that must show what it found. A line longer than
+    limit is cut and says so, so the cut is never read as the author's last word."""
+    text = " ".join(text.split())
+    if len(text) > limit:
+        return '"%s" (cut at %d of %d characters)' % (text[:limit].rstrip(), limit, len(text))
+    return '"%s"' % text
+
+
 def check_form_notes(path, lines, labels, out):
     """Prose between a printed page heading and the end of the form is a note the form does not print.
 
@@ -494,7 +508,8 @@ def check_form_notes(path, lines, labels, out):
               and not re.match(r"[-*] \[[ xX]\]", text)
               and plain(text).rstrip(":").lower() not in labels):
             out.append(Finding("warning", "form-note", path, n,
-                               "text inside the printed form that the form does not print; move it before the form"))
+                               "text inside the printed form that the form does not print, %s; move it before the "
+                               "form" % quoted(text)))
 
 
 NOTE_WORDS = 150
@@ -1022,6 +1037,9 @@ def heading_at(text, line):
     return found
 
 
+EACH_ITEM = {"form-note"}  # a finding per quoted note: --group lists every one with its text, not only the first
+
+
 def grouped(findings, order):
     """One line per (level, check): the count, the files, the first location and message, the next lines."""
     groups = {}
@@ -1033,7 +1051,9 @@ def grouped(findings, order):
         files = sorted({i.path for i in items})
         lines.append("%s [%s] x%d in %s; first %s:%d: %s" % (level.upper(), check, len(items), ", ".join(files),
                                                           first.path, first.line, first.message))
-        if len(items) > 1:
+        if check in EACH_ITEM:
+            lines.extend("    %s:%d: %s" % (i.path, i.line, i.message) for i in items[1:])
+        elif len(items) > 1:
             lines.append("    more at: " + ", ".join("%s:%d" % (i.path, i.line) for i in items[1:6])
                          + (" ..." if len(items) > 6 else ""))
     return lines

@@ -303,7 +303,7 @@ first.
    situation with sources, constraint check, options table (technique, the
    book's trade-off or "not stated in the book", baseline effect), one
    recommendation, calculator output, what the team must decide and who,
-   forms to update, citations with both page numbers.
+   forms to update, citations with both page numbers. One response label per risk action; leave 4.4's cause and impact fields to the team (items 3, 12).
 5. **Record it, after the user agrees.** 3.2 Decision Log for the decision, its
    alternatives and reason; 3.1 for an issue; 3.3 then 3.4 when a baseline, a
    plan or a constraint changes (the sponsor approves what is beyond the PM's
@@ -363,46 +363,47 @@ fix while auditing unless asked: the audit is what the team decides from.
    `--report <file>` when one file is the deliverable, so the errors the sources already carry are not mixed
    in), `check_fidelity.py` on each form (`--section` per form inside a package), `check_schedule.py` on a
    2.18, and `tools/check_scope.py` when the scope package is in scope. Read the line behind each finding
-   before reporting it; a script finding is a lead (`check_consistency.py --group` collapses one defect that shows as many
-   findings). A pending 3.3 explains a date or an hour total (`--explained hours`), never an order defect: `--explained
-   sequence=REASON` and `break=REASON` need the reason quoted. Before a push ask for the Doc ID; without it, or without
+   before reporting it; a script finding is a lead. For a long warning list use `check_consistency.py --group`
+   (one line per check; each `form-note` still prints its quoted text and is its own finding). A pending 3.3
+   explains a date or an hour total (`--explained hours`), never an order defect: `--explained sequence=REASON`
+   and `break=REASON` need the reason quoted. Before a push ask for the Doc ID; without it, or without
    credentials, say in Method that the live Doc and its comments were not audited.
-2. **Walk `review-lessons.md`** section by section against the documents, all of it this time. Recompute
-   every derived figure from its assumption as written, and count every list a number describes: grep each
-   stated count ("fourteen", "V1 to V11") and compare it with its source list (the `count` check reads
-   `references/book-counts.json`). Compare each Date Prepared with today (`check_consistency.py --today YYYY-MM-DD`) and
-   each stated duration with its window (`audit-template.md`, Stated durations and staleness).
+2. **Walk `review-lessons.md`** section by section against the documents, all of it this time. Read the Traps
+   section of each `pmbok-<area>.md` that has one (quality has none) the documents touch (step 3's form-to-note table) and test every trap
+   against the text. Recompute every derived figure from its assumption as written, and count every list a number
+   describes: grep each stated count ("fourteen", "V1 to V11") and compare it with its source list (the `count`
+   check reads `references/book-counts.json`). Compare each Date Prepared with today (`check_consistency.py
+   --today YYYY-MM-DD`) and each stated duration with its window (`audit-template.md`, Stated durations and staleness).
 3. **Check sequence.** In a schedule, a WBS dictionary or a milestone list, read each work package's activities in
    date order and each milestone against the work it names. Look for anything used, reviewed, accepted or signed
    before the thing exists or finishes; a phase closed before the period it closes; a date inside a period the
    charter rules out (a holiday, a freeze). `check_schedule.py` finds a check dated before its subject, a closeout
    before its warranty or its milestone, a go-live before the UAT, a test before the build, a review before another
    package's work, a stated count against its window, and work in a break; the rest is read, by the recipe in
-   `audit-template.md` (Used before it exists). Run every mandatory scan of `audit-template.md` and list each one that
-   found nothing (`<br>`, a merged sponsor and customer, RTM Source and Priority across Parts 1 and 1B) under "Scans that
-   found nothing"; an RTM whose Priority is one value throughout is a warning even when a sentence explains it.
-4. **Check load per person per week** (below). `check_schedule.py` also compares booked with priced hours. A
-   plan whose people are booked above their allocation is not a plan.
-5. **Audit a generated form, or the push pipeline,** when a file is generated (2.18) or the documents are about to
-   go to the Doc: `references/push-audit.md`.
+   `audit-template.md` (Used before it exists). Run every mandatory scan of `audit-template.md` and list each one
+   that found nothing under "Scans that found nothing"; an RTM whose Priority is one value throughout is a warning
+   even when a sentence explains it.
+4. **Check load per person per week** (below) and each stated effort against its window (`--effort`, mandatory
+   scan 9). `check_schedule.py` compares booked with priced hours; a plan booked above allocation is not a plan.
+5. **Audit a generated form (2.18) or the push pipeline** before documents go to the Doc: `references/push-audit.md`.
 6. **Report** in the shape of `references/audit-template.md`: Errors numbered E1..., then Warnings W1..., each
-   with the location (`file:line` and the section or form page), the evidence quoted, and the fix or the
-   decision it needs and who makes it. A defect that is explained but undecided is a warning naming the
-   decision. Write it as a Markdown file only where the user asks; otherwise give it in the reply.
-7. **Replies to reviewer threads** follow `review-lessons.md` section 11 and go in the reviewer's language.
-   `tools/gdoc.py comments --doc <id>` lists the threads; `tools/gdoc.py post --doc <id> --review <file>
-   --dry-run` shows what would be posted.
+   with the location (`file:line` and the section or form page; for a generated picture, the generator, payload
+   heading and source line), the evidence quoted, and the fix or the decision it needs and who makes it. A defect
+   that is explained but undecided is a warning naming the decision. Write it as a Markdown file only where the
+   user asks; otherwise give it in the reply.
+7. **Replies to reviewer threads** follow `review-lessons.md` section 11, in the reviewer's language;
+   `tools/gdoc.py comments --doc <id>` lists the threads, `post --doc <id> --review <file> --dry-run` previews.
 
 ### Load per person per week
 
 `python3 .claude/skills/pm/scripts/load_check.py docs/scope-package.en.md --charter docs/charter-package.en.md
 --limit MOB1=<hours> --leaves MOB1=YYYY-MM-DD` spreads each person's hours over the working days of each package's window
-(less the breaks the charter dates with an end, or `--holiday`), sums by week and compares with the person's limit and
-leaving date; `--schedule <2.18 file>` uses the rows of a levelled 2.18 instead. It also reports a day above 24 hours and a
-package ending after a milestone it feeds. The default limit is 40 and each finding under it says "limit assumed"; when the
-charter gives a part-time person no weekly figure (only person-months), 40 hides an overload: report the person-months against
-the window, ask the sponsor for the weekly limit, and list it as an open question. An overload is an error until a document
-explains it (`--explained overload=REASON`), then a warning. Report a week as overloaded only when it is clearly over.
+(less the charter's breaks that have an end, or `--holiday`), sums by week and compares with the limit and leaving date;
+`--schedule <2.18 file>` uses a levelled 2.18's rows. It also reports a day above 24 hours and a package ending after a
+milestone it feeds. The default limit is 40 ("limit assumed" in each finding). When the charter gives a part-time person
+only person-months, 40 hides an overload: run `--effort MOB1=2.5:pm:M2:M5 --hours-per-pm <the source's figure>` for the
+implied FTE, ask the sponsor for the weekly limit, list it as an open question. An overload is an error until a document
+explains it (`--explained overload=REASON`), then a warning; report a week only when it is clearly over.
 Method: `references/load-check.md`.
 
 ## Checks before you hand it over
@@ -435,7 +436,7 @@ Method: `references/load-check.md`.
 | `references/load-check.md` | Load per person per week: the method, `--schedule` and the level.py comparison |
 | `scripts/extract_form.py` | Form text from the PDF; `--fields` the spec, `--knowledge` the field guidance and links (no PDF needed), `--alignment`, `--tailoring`, `--prose` |
 | `scripts/pm_calc.py` | Derived numbers with the page that prints each formula (`evm`, `pert`, `effort-to-duration`, `analogous`, `bottom-up`, `risk-score`, `emv`, `weighted-score`, `earned-schedule`, `cpm`, `crash`, `velocity`, `cd3`, `payback`, `comms-channels`, `reserve`, `funding`, `response-effectiveness`); the outside arithmetic aids say so in their output; `--json` |
-| `scripts/load_check.py` | Hours per person per week and per day against a limit and a leaving date, from the dictionary or a levelled 2.18; `--limit`, `--leaves`, `--schedule`, `--explained`, `--holiday`, `--charter` |
+| `scripts/load_check.py` | Hours per person per week and per day against a limit and a leaving date, from the dictionary or a levelled 2.18; `--limit`, `--leaves`, `--schedule`, `--explained`, `--holiday`, `--charter`, `--effort` (stated person-months or hours against a window) |
 | `scripts/check_pages.py` | A reply or note: every page number needs its printed or PDF partner (English or Vietnamese); a section or a negative claim with no page warns |
 | `scripts/form_graph.py` | The forms as a dependency graph: `<form>`, `--impact <forms> [--depth N] [--category C]`, `--order`, `--check`, `--markdown [--out F]` |
 | `scripts/new_form.py` | Blank Markdown form from the spec; prints by default; `--out` (file or directory), `--docs`, `--dated`, `--rows`, `--force` |
