@@ -21,6 +21,7 @@ Run with:
     python3 tools/gdoc_resource_tab.py --doc DOC_ID --preview FILE   # write the tab text and stop
     python3 tools/gdoc_resource_tab.py --doc DOC_ID --create         # add the tab, then write it
     python3 tools/gdoc_resource_tab.py --doc DOC_ID --clear          # rewrite a tab written before
+    python3 tools/gdoc_resource_tab.py --doc DOC_ID --tidy           # only the outline pass of form 2.29
 """
 
 from __future__ import annotations
@@ -55,6 +56,11 @@ WIDTHS = [[130, 338], [130, 338], [234, 234], [58, 100, 76, 117, 117]]
 # Rows each table repeats on a page it runs onto: the heading rows and the column header.
 PINNED = [0, 0, 1, 3]
 SIGNATURE_ROW_PT = 26
+# The outline of form 2.29 is set in the small face, so that its 40 lines and the page number stay on
+# one page under the reading convention, as the book prints the form.
+OUTLINE_PT = 8
+OUTLINE_SPACE_PT = 0
+PAGE_LINE_SPACE_PT = 6
 
 REWRITES = [
     ("the scope package as committed on 14 October 2026",
@@ -137,7 +143,7 @@ def build() -> tuple[str, str]:
 
     register = body_of(requirements).rstrip() + "\n\n" + PAGE.format("Page 1 of 1") + "\n"
 
-    fields = "**Project Title:** %s\t**Date Prepared:** %s" % (PROJECT, date)
+    fields = "**Project Title:** %s      **Date\u00a0Prepared:** %s" % (PROJECT, date)
     box = "\n".join(["```form", "!title RESOURCE BREAKDOWN STRUCTURE", "!fields " + fields]
                     + outline_of(structure) + ["!page Page 1 of 1", "```"])
 
@@ -151,6 +157,48 @@ def build() -> tuple[str, str]:
             or "scope package" in text or ".md" in text:
         raise SystemExit("a repo reference or a <br> is left in the tab text")
     return date, text
+
+
+def tidy_box(doc, tab_n):
+    """The framed outline of form 2.29 in the small face with tight lines, and its Project Title
+    line with spaces and a whole 'Date Prepared' where an earlier write left a tab. Safe to run again."""
+    tab_id, content = doc.tab(tab_n)
+    table_el = ge.top_tables(content)[-1]
+    cell = ge.table_cells(table_el)[0][0]
+    paras = [el for el in cell["content"] if "paragraph" in el]
+    reqs = []
+    last = paras[-1]
+    reqs.append({"updateParagraphStyle": {
+        "range": {"startIndex": last["startIndex"], "endIndex": last["endIndex"], "tabId": tab_id},
+        "paragraphStyle": {"spaceAbove": {"magnitude": PAGE_LINE_SPACE_PT, "unit": "PT"}},
+        "fields": "spaceAbove"}})
+    for el in paras[1:-1]:
+        text = ge.para_text(el)
+        rng = {"startIndex": el["startIndex"], "endIndex": el["endIndex"], "tabId": tab_id}
+        if text.startswith("Project Title:"):
+            continue
+        reqs.append({"updateTextStyle": {
+            "range": {"startIndex": el["startIndex"], "endIndex": el["endIndex"] - 1, "tabId": tab_id},
+            "textStyle": {"fontSize": {"magnitude": OUTLINE_PT, "unit": "PT"}}, "fields": "fontSize"}})
+        reqs.append({"updateParagraphStyle": {
+            "range": rng, "paragraphStyle": {"spaceAbove": {"magnitude": OUTLINE_SPACE_PT, "unit": "PT"}},
+            "fields": "spaceAbove"}})
+    doc.batch(reqs)
+    tab_id, content = doc.tab(tab_n)
+    cell = ge.table_cells(ge.top_tables(content)[-1])[0][0]
+    line = next(el for el in cell["content"] if "paragraph" in el and ge.para_text(el).startswith("Project Title:"))
+    text, start = ge.para_text(line), line["startIndex"]
+    fixes = []
+    at = text.find("\t")
+    if at >= 0:
+        fixes.append((start + at, 1, "      "))
+    at = text.find("Date Prepared:")
+    if at >= 0:
+        fixes.append((start + at + 4, 1, "\u00a0"))
+    for index, length, new_text in sorted(fixes, reverse=True):
+        doc.batch([{"deleteContentRange": {"range": {"startIndex": index, "endIndex": index + length,
+                                                     "tabId": tab_id}}},
+                   {"insertText": {"location": {"index": index, "tabId": tab_id}, "text": new_text}}])
 
 
 def lay_out(doc, tab_n, date):
@@ -199,6 +247,7 @@ def lay_out(doc, tab_n, date):
             "range": {"startIndex": el["startIndex"], "endIndex": el["endIndex"], "tabId": tab_id},
             "paragraphStyle": {"pageBreakBefore": True}, "fields": "pageBreakBefore"}})
     doc.batch(reqs)
+    tidy_box(doc, tab_n)
     layout.finish(doc, tab_n)
 
 
@@ -209,6 +258,7 @@ def main(argv=None):
     p.add_argument("--token", default=os.path.join(DEFAULT_DIR, "token.json"))
     p.add_argument("--create", action="store_true", help="add the tab if the Doc has none by this name")
     p.add_argument("--clear", action="store_true", help="empty this tab first; only this tab is touched")
+    p.add_argument("--tidy", action="store_true", help="only run the outline pass on the tab already written")
     p.add_argument("--dry-run", action="store_true")
     p.add_argument("--preview", default="", help="write the tab text to this file and stop")
     a = p.parse_args(argv)
@@ -237,6 +287,10 @@ def main(argv=None):
         names = [t[0].strip() for t in doc.tabs()]
         print("  created tab %r" % a.tab)
     tab_n = names.index(a.tab)
+    if a.tidy:
+        tidy_box(doc, tab_n)
+        print("done, %d API calls" % doc.calls)
+        return 0
     tab_id, content = doc.tab(tab_n)
     if a.clear and content[-1]["endIndex"] > 2:
         doc.delete_range(tab_id, 1, content[-1]["endIndex"] - 1)
