@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>scope-package.eli5.vi</title>
+<style>
+/* Print stylesheet for the charter package (A4, Chrome headless --print-to-pdf) */
+
+@page {
+  size: A4;
+  margin: 20mm 18mm 18mm 18mm;
+}
+
+html {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+body {
+  font-family: "Times New Roman", "Nimbus Roman", serif;
+  font-size: 12pt;
+  line-height: 1.45;
+  color: #000;
+  margin: 0;
+}
+
+/* ---------- headings ---------- */
+
+h1 {
+  font-size: 20pt;
+  text-align: center;
+  margin: 0 0 4pt 0;
+  letter-spacing: 0.5pt;
+}
+
+h2 {
+  font-size: 15pt;
+  margin: 20pt 0 8pt 0;
+  padding-bottom: 3pt;
+  border-bottom: 1.2pt solid #000;
+  page-break-after: avoid;
+}
+
+h3 {
+  font-size: 13pt;
+  margin: 14pt 0 6pt 0;
+  page-break-after: avoid;
+}
+
+h4 {
+  font-size: 12pt;
+  font-style: italic;
+  margin: 10pt 0 4pt 0;
+  page-break-after: avoid;
+}
+
+p, li {
+  margin: 0 0 6pt 0;
+  text-align: justify;
+}
+
+ul, ol {
+  margin: 0 0 8pt 0;
+  padding-left: 20pt;
+}
+
+li {
+  margin-bottom: 2pt;
+}
+
+code {
+  font-family: "Consolas", "Courier New", monospace;
+  font-size: 10.5pt;
+}
+
+hr {
+  border: none;
+  border-top: 0.8pt solid #999;
+  margin: 12pt 0;
+}
+
+/* ---------- tables ---------- */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 6pt 0 12pt 0;
+  font-size: 11pt;
+  page-break-inside: auto;
+}
+
+th, td {
+  border: 0.8pt solid #000;
+  padding: 4pt 6pt;
+  vertical-align: top;
+  text-align: left;
+}
+
+th {
+  background: #e8e8e8;
+  font-weight: bold;
+}
+
+tr {
+  page-break-inside: avoid;
+  page-break-after: auto;
+}
+
+thead {
+  display: table-header-group;
+}
+
+/* Function list: fixed column widths so the description gets the room */
+.fnlist table {
+  table-layout: fixed;
+}
+
+.fnlist td:nth-child(1), .fnlist th:nth-child(1) { width: 6%; }
+.fnlist td:nth-child(2), .fnlist th:nth-child(2) { width: 18%; }
+.fnlist td:nth-child(3), .fnlist th:nth-child(3) { width: 14%; }
+
+/* Narrow first column for ID-style tables */
+table.ids td:first-child,
+table.ids th:first-child {
+  width: 8%;
+  white-space: nowrap;
+}
+
+/* ---------- cover block ---------- */
+
+.cover {
+  margin-bottom: 16pt;
+  text-align: center;
+}
+
+.cover .subtitle {
+  font-size: 13pt;
+  font-style: italic;
+  margin-bottom: 10pt;
+}
+
+.cover table {
+  width: 80%;
+  margin: 0 auto;
+  font-size: 11pt;
+}
+
+.cover table td:first-child {
+  width: 38%;
+  font-weight: bold;
+  background: #f2f2f2;
+}
+
+.cover table td {
+  text-align: left;
+}
+
+/* ---------- charter form replica ---------- */
+
+.form-title {
+  text-align: center;
+  font-size: 14pt;
+  font-weight: bold;
+  letter-spacing: 1pt;
+  margin: 0 0 8pt 0;
+  text-transform: uppercase;
+}
+
+/* Form tables: label cell shaded, answer cell plain */
+table.form td.label {
+  width: 32%;
+  font-weight: bold;
+  background: #f2f2f2;
+}
+
+table.form td {
+  min-height: 18pt;
+}
+
+.formpage {
+  page-break-before: always;
+  page-break-after: always;
+}
+
+.formpage {
+  font-size: 9.5pt;
+  line-height: 1.3;
+}
+
+.formpage table {
+  page-break-inside: auto;
+  font-size: 9pt;
+  margin: 4pt 0 5pt 0;
+}
+
+.formpage table th,
+.formpage table td {
+  padding: 2.5pt 4pt;
+}
+
+.formpage .page-of {
+  margin-top: 4pt;
+}
+
+.formpage .form-title {
+  font-size: 13pt;
+  margin-bottom: 6pt;
+}
+
+.formpage:last-child {
+  page-break-after: auto;
+}
+
+.pagebreak {
+  page-break-after: always;
+  height: 0;
+}
+
+.page-of {
+  text-align: center;
+  font-size: 10pt;
+  font-style: italic;
+  margin-top: 10pt;
+}
+
+/* ---------- uncertainty marker (reserved for requirement 3) ---------- */
+
+.unsure,
+mark {
+  background: #ffff00;
+  color: #000;
+}
+
+.note {
+  font-size: 10.5pt;
+  font-style: italic;
+  color: #333;
+}
+
+</style>
+</head>
+<body>
+<h1>Giải thích gói phạm vi cho người không chuyên</h1>
+<p>Bản diễn giải của <code>docs/scope-package.en.md</code> theo mức dễ nhất, kiểu giải thích cho trẻ con.
+Đây không phải bài nộp. Bài nộp vẫn là file tiếng Anh. File này chỉ để người ngoài ngành đọc
+hiểu nhóm đang làm gì, hoặc để chính nhóm dùng khi phải trình bày miệng.</p>
+<p>Số liệu trong bài lấy từ file thật ngày 23 tháng 9 năm 2026, không phải nhớ: 57 dòng yêu cầu,
+78 gói công việc, 24 control account, 4.400 giờ, 700.000.000 VND, 28 phép kiểm tra đều đạt.
+Muốn kiểm lại thì chạy <code>python tools/check_scope.py</code>.</p>
+<hr />
+<h2>Cái file đó là gì</h2>
+<p>Hãy tưởng tượng sắp xây <strong>một cái nhà cho búp bê thật to</strong>. To lắm. Không phải làm một mình
+trong một buổi chiều được.</p>
+<p>File đó là <strong>tờ giấy ghi kế hoạch xây nhà</strong>.</p>
+<p>Nó có ba phần, giống ba tờ giấy dán cạnh nhau trên tường.</p>
+<hr />
+<h2>Tờ thứ nhất: ai muốn gì</h2>
+<p>Trước khi xây thì phải hỏi mọi người xem họ muốn cái gì.</p>
+<ul>
+<li>Mẹ muốn nhà có <strong>cửa sổ</strong>.</li>
+<li>Em muốn có <strong>cầu trượt</strong>.</li>
+<li>Bà muốn <strong>cửa phải đóng được</strong>, kẻo mèo chui vào.</li>
+</ul>
+<p>Tờ giấy này ghi lại <strong>57 điều ước</strong> như vậy. Mỗi điều ước đều ghi rõ ba thứ:</p>
+<table>
+<thead>
+<tr>
+<th>Ghi cái gì</th>
+<th>Để làm gì</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ai ước cái đó</td>
+<td>Sau này có gì còn biết hỏi ai</td>
+</tr>
+<tr>
+<td>Chỗ nào trong nhà sẽ làm ra nó</td>
+<td>Để không có điều ước nào bị bỏ quên</td>
+</tr>
+<tr>
+<td>Làm sao biết là đã làm xong đúng</td>
+<td>Để lúc xong không cãi nhau</td>
+</tr>
+</tbody>
+</table>
+<p>Chỗ cuối cùng quan trọng nhất. Nếu chỉ ghi "nhà phải đẹp" thì lúc xây xong sẽ cãi nhau ngay,
+vì ai cũng nghĩ đẹp là một kiểu khác nhau. Nên phải ghi kiểu <strong>đếm được</strong>: cửa sổ phải mở ra
+được, cầu trượt phải trượt được.</p>
+<hr />
+<h2>Tờ thứ hai: chia việc ra</h2>
+<p>Xây cả cái nhà thì to quá, nghĩ thôi đã thấy sợ. Nên phải <strong>bẻ nhỏ nó ra</strong>.</p>
+<p>Giống như xếp hình Lego. Không ai xếp một cục khổng lồ. Làm từng mảnh nhỏ, rồi ghép lại.</p>
+<p><code>Cả cái nhà
+├── Làm cái móng
+├── Làm bức tường
+│   ├── Tường bên trái
+│   └── Tường bên phải
+└── Làm cái mái</code></p>
+<p>Cứ bẻ nhỏ mãi, cuối cùng ra <strong>78 việc nhỏ</strong>. Mỗi việc nhỏ <strong>một người làm</strong> thôi, để không ai
+đổ lỗi cho ai.</p>
+<p>Có một quy tắc hay ở đây. Việc nhỏ không được <strong>quá to</strong> mà cũng không được <strong>quá bé</strong>.</p>
+<ul>
+<li>Quá to thì làm cả tháng không biết xong chưa.</li>
+<li>Quá bé thì ghi giấy còn mất công hơn là làm.</li>
+</ul>
+<hr />
+<h2>Tờ thứ ba: tấm thẻ cho mỗi việc</h2>
+<p>Mỗi việc nhỏ trong 78 việc kia đều có <strong>một tấm thẻ riêng</strong>, tức là 78 tấm thẻ.</p>
+<p>Trên mỗi tấm thẻ ghi:</p>
+<ul>
+<li>Việc này là gì</li>
+<li>Ai làm</li>
+<li>Làm trong bao lâu</li>
+<li>Tốn bao nhiêu tiền</li>
+<li>Làm sao biết là xong rồi</li>
+</ul>
+<p>Giống tấm thẻ dán trên hộp đồ chơi. Nhìn vào là biết trong hộp có gì, không cần mở ra.</p>
+<hr />
+<h2>Chỗ hay nhất</h2>
+<p>Tất cả các con số <strong>cộng lại phải vừa khít</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Cộng cái gì</th>
+<th>Phải ra đúng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tiền của cả 78 tấm thẻ</td>
+<td>700.000.000 VND</td>
+</tr>
+<tr>
+<td>Số giờ làm của cả 78 tấm thẻ</td>
+<td>4.400 giờ</td>
+</tr>
+</tbody>
+</table>
+<p>Không thừa một đồng, không thiếu một đồng.</p>
+<p>Mà 78 tấm thẻ thì nhiều quá, cộng bằng tay kiểu gì cũng sai. Nên nhóm làm <strong>một cái máy cộng
+tự động</strong>. Nó cộng hết, rồi nói đúng rồi hay sai rồi. Bây giờ nó đang nói đúng rồi, cả <strong>28
+phép kiểm tra</strong> đều qua.</p>
+<hr />
+<h2>Vì sao phải làm tất cả cái này</h2>
+<p>Vì nếu không có tờ giấy này, thì lúc xây được nửa cái nhà sẽ có người hỏi:</p>
+<blockquote>
+<p>Ơ, hết tiền rồi à? Mà cái mái đâu? Ai là người phải làm cái mái nhỉ?</p>
+</blockquote>
+<p>Lúc đó thì muộn rồi.</p>
+<hr />
+<h2>Đối chiếu sang từ chuyên môn</h2>
+<p>Bảng này để người trong nhóm bắc cầu từ cách nói trên sang đúng tên gọi trong bài nộp.</p>
+<table>
+<thead>
+<tr>
+<th>Trong bài này gọi là</th>
+<th>Tên thật trong <code>scope-package.en.md</code></th>
+<th>Nguồn</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tờ ai muốn gì</td>
+<td>Requirements Traceability Matrix</td>
+<td>Form 2.7</td>
+</tr>
+<tr>
+<td>Tờ chia việc</td>
+<td>Work Breakdown Structure</td>
+<td>Form 2.9</td>
+</tr>
+<tr>
+<td>Tấm thẻ mỗi việc</td>
+<td>WBS Dictionary</td>
+<td>Form 2.10</td>
+</tr>
+<tr>
+<td>Việc nhỏ</td>
+<td>Work package</td>
+<td>78 cái</td>
+</tr>
+<tr>
+<td>Nhóm việc</td>
+<td>Control account</td>
+<td>24 cái</td>
+</tr>
+<tr>
+<td>Quy tắc không quá to không quá bé</td>
+<td>Quy tắc 8/80 giờ</td>
+<td>PMBOK</td>
+</tr>
+<tr>
+<td>Máy cộng tự động</td>
+<td><code>tools/check_scope.py</code></td>
+<td>28 phép kiểm tra</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

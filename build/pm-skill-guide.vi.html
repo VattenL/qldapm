@@ -1,0 +1,2022 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>pm-skill-guide.vi</title>
+<style>
+/* Print stylesheet for the charter package (A4, Chrome headless --print-to-pdf) */
+
+@page {
+  size: A4;
+  margin: 20mm 18mm 18mm 18mm;
+}
+
+html {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+body {
+  font-family: "Times New Roman", "Nimbus Roman", serif;
+  font-size: 12pt;
+  line-height: 1.45;
+  color: #000;
+  margin: 0;
+}
+
+/* ---------- headings ---------- */
+
+h1 {
+  font-size: 20pt;
+  text-align: center;
+  margin: 0 0 4pt 0;
+  letter-spacing: 0.5pt;
+}
+
+h2 {
+  font-size: 15pt;
+  margin: 20pt 0 8pt 0;
+  padding-bottom: 3pt;
+  border-bottom: 1.2pt solid #000;
+  page-break-after: avoid;
+}
+
+h3 {
+  font-size: 13pt;
+  margin: 14pt 0 6pt 0;
+  page-break-after: avoid;
+}
+
+h4 {
+  font-size: 12pt;
+  font-style: italic;
+  margin: 10pt 0 4pt 0;
+  page-break-after: avoid;
+}
+
+p, li {
+  margin: 0 0 6pt 0;
+  text-align: justify;
+}
+
+ul, ol {
+  margin: 0 0 8pt 0;
+  padding-left: 20pt;
+}
+
+li {
+  margin-bottom: 2pt;
+}
+
+code {
+  font-family: "Consolas", "Courier New", monospace;
+  font-size: 10.5pt;
+}
+
+hr {
+  border: none;
+  border-top: 0.8pt solid #999;
+  margin: 12pt 0;
+}
+
+/* ---------- tables ---------- */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 6pt 0 12pt 0;
+  font-size: 11pt;
+  page-break-inside: auto;
+}
+
+th, td {
+  border: 0.8pt solid #000;
+  padding: 4pt 6pt;
+  vertical-align: top;
+  text-align: left;
+}
+
+th {
+  background: #e8e8e8;
+  font-weight: bold;
+}
+
+tr {
+  page-break-inside: avoid;
+  page-break-after: auto;
+}
+
+thead {
+  display: table-header-group;
+}
+
+/* Function list: fixed column widths so the description gets the room */
+.fnlist table {
+  table-layout: fixed;
+}
+
+.fnlist td:nth-child(1), .fnlist th:nth-child(1) { width: 6%; }
+.fnlist td:nth-child(2), .fnlist th:nth-child(2) { width: 18%; }
+.fnlist td:nth-child(3), .fnlist th:nth-child(3) { width: 14%; }
+
+/* Narrow first column for ID-style tables */
+table.ids td:first-child,
+table.ids th:first-child {
+  width: 8%;
+  white-space: nowrap;
+}
+
+/* ---------- cover block ---------- */
+
+.cover {
+  margin-bottom: 16pt;
+  text-align: center;
+}
+
+.cover .subtitle {
+  font-size: 13pt;
+  font-style: italic;
+  margin-bottom: 10pt;
+}
+
+.cover table {
+  width: 80%;
+  margin: 0 auto;
+  font-size: 11pt;
+}
+
+.cover table td:first-child {
+  width: 38%;
+  font-weight: bold;
+  background: #f2f2f2;
+}
+
+.cover table td {
+  text-align: left;
+}
+
+/* ---------- charter form replica ---------- */
+
+.form-title {
+  text-align: center;
+  font-size: 14pt;
+  font-weight: bold;
+  letter-spacing: 1pt;
+  margin: 0 0 8pt 0;
+  text-transform: uppercase;
+}
+
+/* Form tables: label cell shaded, answer cell plain */
+table.form td.label {
+  width: 32%;
+  font-weight: bold;
+  background: #f2f2f2;
+}
+
+table.form td {
+  min-height: 18pt;
+}
+
+.formpage {
+  page-break-before: always;
+  page-break-after: always;
+}
+
+.formpage {
+  font-size: 9.5pt;
+  line-height: 1.3;
+}
+
+.formpage table {
+  page-break-inside: auto;
+  font-size: 9pt;
+  margin: 4pt 0 5pt 0;
+}
+
+.formpage table th,
+.formpage table td {
+  padding: 2.5pt 4pt;
+}
+
+.formpage .page-of {
+  margin-top: 4pt;
+}
+
+.formpage .form-title {
+  font-size: 13pt;
+  margin-bottom: 6pt;
+}
+
+.formpage:last-child {
+  page-break-after: auto;
+}
+
+.pagebreak {
+  page-break-after: always;
+  height: 0;
+}
+
+.page-of {
+  text-align: center;
+  font-size: 10pt;
+  font-style: italic;
+  margin-top: 10pt;
+}
+
+/* ---------- uncertainty marker (reserved for requirement 3) ---------- */
+
+.unsure,
+mark {
+  background: #ffff00;
+  color: #000;
+}
+
+.note {
+  font-size: 10.5pt;
+  font-style: italic;
+  color: #333;
+}
+
+</style>
+</head>
+<body>
+<h1>Hướng dẫn dùng PM skill</h1>
+<p>Cách dùng skill <code>pm</code> trong Claude Code để tạo, kiểm tra và audit các form trong <em>A Project Manager's
+Book of Forms</em>, bản thứ 3, cho dự án này. Tài liệu viết cho các bạn trong nhóm đã nắm môn học và cuốn
+sách nhưng chưa đọc phần bên trong của skill.</p>
+<p>Bản tiếng Anh: <a href="pm-skill-guide.md"><code>pm-skill-guide.md</code></a>. Lệnh, tên file và nhãn in trên form được
+giữ nguyên tiếng Anh.</p>
+<p>Mọi lệnh dưới đây đã được chạy thử trong repo từ thư mục gốc, trừ các lệnh <code>gdoc</code> cần thông tin đăng nhập Google của nhóm: các lệnh về form chạy ngày 1 October 2026, các lệnh về quyết định (<code>--knowledge</code>, <code>pm_calc.py</code>, <code>form_graph.py</code>, mục 8) chạy ngày 15 October 2026.</p>
+<h2>Mục lục</h2>
+<ol>
+<li>Skill làm gì và không làm gì</li>
+<li>Chuẩn bị</li>
+<li>Cách yêu cầu một form</li>
+<li>Từ yêu cầu đến sản phẩm</li>
+<li>Ba trạng thái đánh dấu</li>
+<li>Quy tắc reviewer kiểm tra</li>
+<li>Audit và trả lời comment trên Google Doc</li>
+<li>Ra quyết định: hỏi nên làm gì</li>
+<li>Toàn bộ 66 form</li>
+<li>Bảng lệnh nhanh</li>
+<li>Xử lý sự cố</li>
+<li>Cải tiến skill</li>
+</ol>
+<h2>1. Skill làm gì và không làm gì</h2>
+<p>Skill nằm ở <code>.claude/skills/pm/</code>. Claude Code tự nạp skill khi bạn yêu cầu một form, nhắc số hiệu
+form, yêu cầu audit tài liệu trong <code>docs/</code>, hoặc hỏi nên làm gì trước một tình huống của dự án (trễ
+tiến độ, vượt chi phí, một rủi ro đã xảy ra, một change request).</p>
+<table>
+<thead>
+<tr>
+<th>Skill làm</th>
+<th>Skill không làm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tìm đúng form trong 66 form theo số hoặc theo tên, và hỏi lại khi một tên khớp nhiều form</td>
+<td>Nhớ danh sách trường theo trí nhớ; mọi nhãn lấy từ <code>references/fields/&lt;form&gt;.json</code>, được chép từ trang form trống</td>
+</tr>
+<tr>
+<td>Dựng khung form bằng Markdown với title block, nhãn, tiêu đề trang, header nhóm và các bank đúng như bản in, đúng thứ tự in</td>
+<td>Thêm trường, cột hay ghi chú mà form in không có</td>
+</tr>
+<tr>
+<td>Điền form từ <code>docs/charter-package.en.md</code>, <code>docs/scope-package.en.md</code> và các form trong <code>docs/forms/</code></td>
+<td>Bịa giá trị dự án; giá trị giả định được tô vàng, giá trị chưa biết để trống hoặc <code>[TBD]</code></td>
+</tr>
+<tr>
+<td>Chạy kiểm tra fidelity và consistency rồi báo kết quả</td>
+<td>Âm thầm chọn một bên khi hai tài liệu mâu thuẫn; skill báo mâu thuẫn để nhóm quyết định</td>
+</tr>
+<tr>
+<td>Xuất form ra <code>.docx</code> trông giống sách</td>
+<td>Đẩy lên Google Doc của nhóm khi bạn chưa yêu cầu, và không bao giờ đẩy khi không có Doc ID bạn đưa</td>
+</tr>
+<tr>
+<td>Audit cả gói tài liệu và soạn trả lời comment của reviewer</td>
+<td>Sửa file trong lúc audit, trừ khi bạn yêu cầu sửa</td>
+</tr>
+<tr>
+<td>Trả lời câu hỏi "nên làm gì" bằng các phương án là kỹ thuật của PMBOK 6 hoặc Book of Forms, kèm đánh đổi sách nêu, rồi tính các con số suy ra và liệt kê các form phải đổi (mục 8)</td>
+<td>Cắt estimate cho vừa ngày hay vừa tiền, bịa người chịu trách nhiệm, ngưỡng hay điểm số, hoặc quyết thay sponsor; khi phạm vi, tiến độ, chi phí và chất lượng không thể cùng giữ, nó đưa về change request (3.3) gửi sponsor</td>
+</tr>
+</tbody>
+</table>
+<p>Markdown trong <code>docs/</code> là nguồn gốc. File <code>.docx</code> và Google Doc đều được dựng từ Markdown.</p>
+<h2>2. Chuẩn bị</h2>
+<table>
+<thead>
+<tr>
+<th>Cần có</th>
+<th>Để làm gì</th>
+<th>Kiểm tra</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Claude Code, mở tại thư mục gốc repo</td>
+<td>Skill gắn với project và script dùng đường dẫn trong repo</td>
+<td>Gõ <code>/</code> thấy <code>/pm</code></td>
+</tr>
+<tr>
+<td>Python 3</td>
+<td>Mọi script là Python thuần (đã thử trên 3.9 và 3.14)</td>
+<td><code>python3 --version</code></td>
+</tr>
+<tr>
+<td><code>pdftotext</code> (poppler)</td>
+<td><code>extract_form.py</code> đọc chữ trong sách</td>
+<td><code>pdftotext -v</code></td>
+</tr>
+<tr>
+<td><code>uv</code></td>
+<td>Chạy <code>md_to_docx.py</code>, test và công cụ Google kèm thư viện cần thiết</td>
+<td><code>uv --version</code></td>
+</tr>
+<tr>
+<td><code>A_Project_Managers_Book_of_Forms.pdf</code> ở thư mục gốc</td>
+<td>Căn cứ cho mọi form</td>
+<td><code>ls A_Project_Managers_Book_of_Forms.pdf</code></td>
+</tr>
+<tr>
+<td><code>~/.config/qldapm/client_secret.json</code></td>
+<td>Chỉ cần khi đọc hoặc ghi Google Doc</td>
+<td>xem README, mục Google Doc</td>
+</tr>
+</tbody>
+</table>
+<p>Số trang: skill và script dùng <strong>trang PDF</strong>. Trang PDF = trang in + 11. Khi trích dẫn ghi cả hai, ví
+dụ "form 2.32, PDF page 141 (printed page 130)".</p>
+<h2>3. Cách yêu cầu một form</h2>
+<p>Hỏi bằng tiếng Anh hay tiếng Việt đều được. Nêu số hiệu form là cách nhanh nhất để ra đúng form.</p>
+<table>
+<thead>
+<tr>
+<th>Bạn muốn</th>
+<th>Ví dụ câu lệnh</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Một form đã điền</td>
+<td><code>Make the 2.32 Risk Register from the risks in the charter. Keep the R numbers; we have not scored probability or impact yet.</code></td>
+</tr>
+<tr>
+<td>Một form đã điền, hỏi bằng tiếng Việt</td>
+<td><code>Tạo cho nhóm form 1.3 Stakeholder Register từ charter, đúng form trong sách nhé. Nội dung tiếng Anh.</code></td>
+</tr>
+<tr>
+<td>Một form trống</td>
+<td><code>Give me a blank 4.2 Project Status Report for the team, we'll fill it in every week.</code></td>
+</tr>
+<tr>
+<td>Một form trống, hỏi bằng tiếng Việt</td>
+<td><code>Cho mình form 2.14 Milestone List để trống, nhóm sẽ tự điền.</code></td>
+</tr>
+<tr>
+<td>Một bản audit</td>
+<td><code>Audit docs/charter-package.en.md and docs/scope-package.en.md before we push them. Errors and warnings with locations. Don't fix anything.</code></td>
+</tr>
+<tr>
+<td>Một bản audit, hỏi bằng tiếng Việt</td>
+<td><code>Kiểm tra docs/forms/2-18-project-schedule.en.md so với charter và scope package, liệt kê lỗi và cảnh báo, đừng sửa file.</code></td>
+</tr>
+<tr>
+<td>Một file Word</td>
+<td><code>Render docs/forms/2-32-risk-register.en.md to .docx for submission.</code></td>
+</tr>
+<tr>
+<td>Một quyết định</td>
+<td><code>The mobile work is two weeks late against its milestone. What are my options and what do I update?</code> (mục 8)</td>
+</tr>
+<tr>
+<td>Một quyết định, hỏi bằng tiếng Việt</td>
+<td><code>khach hang muon them chuc nang moi thi ghi vao dau?</code> (mục 8)</td>
+</tr>
+</tbody>
+</table>
+<p>Bạn cũng có thể gọi skill trực tiếp bằng slash command:</p>
+<p><code>text
+/pm 2.32                      điền form 2.32 từ tài liệu dự án
+/pm risk register             như trên, gọi bằng tên
+/pm 4.2 blank                 form trống, không có giá trị dự án
+/pm audit docs/charter-package.en.md docs/scope-package.en.md</code></p>
+<p>Mẹo:</p>
+<ul>
+<li><strong>Ngôn ngữ nội dung.</strong> Sản phẩm viết bằng tiếng Anh kể cả khi bạn hỏi bằng tiếng Việt. Muốn khác thì
+  nói rõ.</li>
+<li><strong>Tên mơ hồ.</strong> "risk" khớp sáu form (2.31, 2.32, 2.33, 2.34, 2.36, 4.5). Skill liệt kê và hỏi lại
+  thay vì đoán.</li>
+<li><strong>Thiếu dữ liệu.</strong> Nếu tài liệu không có giá trị form cần, skill sẽ hỏi bạn hoặc để trống. Hãy trả
+  lời câu hỏi; đừng bảo nó "cứ điền đại".</li>
+<li><strong>Ghi ra đâu.</strong> Form mới được ghi vào <code>docs/forms/&lt;number&gt;-&lt;slug&gt;.en.md</code>, ví dụ
+  <code>docs/forms/2-32-risk-register.en.md</code>. Skill không ghi đè file có sẵn trừ khi được bảo.</li>
+</ul>
+<h2>4. Từ yêu cầu đến sản phẩm</h2>
+<p><code>text
+yêu cầu
+  1. xác định form             references/forms-index.md, extract_form.py
+  2. đọc form in               extract_form.py --fields và --knowledge, thêm trang PDF với form dạng biểu đồ
+  3. thu thập dữ liệu dự án    docs/charter-package.en.md, docs/scope-package.en.md, docs/forms/
+  4. dựng khung rồi điền       new_form.py, sau đó sửa Markdown
+  5. kiểm tra                  check_fidelity.py, check_consistency.py, tools/check_scope.py, form_graph.py --impact, đọc lại
+  6. xuất Word (nếu yêu cầu)   md_to_docx.py
+  7. đẩy lên Doc (nếu yêu cầu) tools/gdoc*.py, sau khi audit payload</code></p>
+<p>Claude chạy các bước này cho bạn. Bạn có thể tự chạy bất kỳ lệnh nào để xem đúng thứ Claude đã thấy.</p>
+<h3>Bước 1 và 2: form nào, và form in gì</h3>
+<p><code>bash
+python3 .claude/skills/pm/scripts/extract_form.py 2.32 --fields                 # nhãn in trên form, không cần PDF
+python3 .claude/skills/pm/scripts/extract_form.py 2.32                          # bảng Document Element và chữ của form trống
+python3 .claude/skills/pm/scripts/extract_form.py 2.32 --alignment --tailoring  # thêm mục Alignment và Tailoring Tips
+python3 .claude/skills/pm/scripts/extract_form.py 2.32 --prose                  # toàn bộ phần mô tả
+python3 .claude/skills/pm/scripts/extract_form.py 2.32 --knowledge              # mỗi trường chứa gì, nguồn, nơi nhận, quyết định; không cần PDF
+python3 .claude/skills/pm/scripts/extract_form.py risk                          # liệt kê sáu form khớp, thoát mã 1</code></p>
+<p>Kết quả <code>--fields</code> của 2.32, rút gọn:</p>
+<p><code>text
+Title block: Project Title | Date Prepared
+Page 1 of 1 (PDF page 141)
+  table, bank 1: ID | Risk Statement | Owner | Probability | Impact: Scope | ... | Score | Response
+  table, bank 2: Revised Probability | Impact: Scope | ... | Responsible Party | Actions | Status | Comments
+Notes: ... Bank 2 prints no ID column. ...</code></p>
+<p>Đọc dòng Notes: nó ghi những gì danh sách nhãn không thể hiện được (bank, nội dung mẫu không được chép,
+nhãn in hai lần).</p>
+<p><code>--knowledge</code> in <code>references/knowledge/&lt;form&gt;.json</code>: mục đích, rồi từng nhãn in kèm điều sách nói nên
+ghi vào đó, các tài liệu form này nhận thông tin từ và cung cấp thông tin cho, các tài liệu nó phải
+khớp, các tailoring tip, và những quyết định form này ghi lại. Với 2.32, rút gọn:</p>
+<p><code>text
+Fields, printed label then what goes in it (13):
+  - ID [book element: Risk ID]
+      A unique identifier for the risk. The blank form prints the column as ID.
+  - Risk Statement [book element: Risk statement]
+      The risk event or condition. Usually phrased 'EVENT may occur, causing IMPACT' or ...
+Sources, information this form receives from (19):
+  - 1.2
+      Assumption log: reviewed as a source of risks ...; the book does not say which fields are used
+Alignment, must agree with: none listed in the book
+Tailoring tips: none printed for this form
+Decisions recorded here (6):
+  - Which response strategy a risk gets now
+      Recorded in: Response</code></p>
+<p>"The book does not say" nghĩa là sách im lặng và nhóm tự quyết. Khi nhãn trong knowledge khác nhãn trên
+form trống (2.32 in <code>ID</code> còn bảng element ghi <code>Risk ID</code>), form trống thắng; chép nhãn từ <code>--fields</code>.</p>
+<h3>Bước 3: dữ liệu dự án nằm ở đâu</h3>
+<table>
+<thead>
+<tr>
+<th>Dữ liệu</th>
+<th>File và vị trí</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vấn đề, sản phẩm, người dùng, chức năng F01 to F12, trường hợp ngoại lệ</td>
+<td><code>docs/charter-package.en.md</code>, Part 1, 1.1</td>
+</tr>
+<tr>
+<td>Sản phẩm bàn giao D1 to D11</td>
+<td>như trên, 1.2</td>
+</tr>
+<tr>
+<td>Tiêu chí nghiệm thu A01 to A12</td>
+<td>như trên, 1.3</td>
+</tr>
+<tr>
+<td>Loại trừ, ràng buộc, giả định 1 to 19</td>
+<td>như trên, 1.4 đến 1.6</td>
+</tr>
+<tr>
+<td>Các phần tử charter: rủi ro R1 to R12, mốc M0 to M7, ngân sách, stakeholder</td>
+<td><code>docs/charter-package.en.md</code>, Part 2A</td>
+</tr>
+<tr>
+<td>Form 1.1 đã điền</td>
+<td><code>docs/charter-package.en.md</code>, Part 2B</td>
+</tr>
+<tr>
+<td>Yêu cầu BR, FR, NFR và RTM (2.7)</td>
+<td><code>docs/scope-package.en.md</code>, Part 1 và 1B</td>
+</tr>
+<tr>
+<td>WBS (2.9) và WBS dictionary (2.10), mã nguồn lực PM, DEV1 to DEV3, QA1, MOB1</td>
+<td>như trên, Part 2 và 3</td>
+</tr>
+<tr>
+<td>Lịch dự án (2.18) và change request cho các mốc bị dời (3.3)</td>
+<td><code>docs/forms/2-18-project-schedule.en.md</code>, <code>docs/forms/3-3-change-request.en.md</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Bước 4: dựng khung rồi điền</h3>
+<p><code>bash
+python3 .claude/skills/pm/scripts/new_form.py 2.32                    # in form trống ra màn hình, không ghi gì
+python3 .claude/skills/pm/scripts/new_form.py 2.32 --out &lt;path&gt;       # ghi vào nơi bạn chọn (đường dẫn tạm khi audit)
+python3 .claude/skills/pm/scripts/new_form.py 2.32 --docs --rows 12   # docs/forms/2-32-risk-register.en.md, 12 dòng trống
+python3 .claude/skills/pm/scripts/new_form.py 2.32 --docs --force     # ghi đè file đã có
+python3 .claude/skills/pm/scripts/new_form.py 4.2 --out &lt;thư mục&gt;/ --dated 2026-10-19   # bản có ngày của báo cáo định kỳ, ghi vào một thư mục ngoài docs/
+python3 .claude/skills/pm/scripts/risk_actions.py docs/scope-package.en.md          # ô Actions của 2.32 cho từng rủi ro, lấy từ coverage check</code></p>
+<p>Chỉ <code>--docs</code> (và <code>--dated</code> khi không có <code>--out</code>) mới ghi vào <code>docs/</code>. <code>Project Title</code> để trống: chép từ khối tiêu đề của charter khi bạn điền form.</p>
+<p>Khung của 2.32 bắt đầu như sau:</p>
+<p>```markdown</p>
+<h1>2.32 Risk Register</h1>
+<p><em>Form 2.32, A Project Manager's Book of Forms, 3rd edition, PDF page 141 (printed page 130). The table
+prints in two banks, one above the other; row N of the second table continues row N of the first.</em></p>
+<p><strong>Project Title:</strong>
+<strong>Date Prepared:</strong></p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Risk Statement</th>
+<th>Owner</th>
+<th>Probability</th>
+<th>Impact: Scope</th>
+<th>Impact: Quality</th>
+<th>Impact: Schedule</th>
+<th>Impact: Cost</th>
+<th>Score</th>
+<th>Response</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>```</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Form trống chính là khung này, không thêm gì: không tên, ngày, số tiền hay ID.</p>
+<p>Mỗi loại form thành Markdown như sau:</p>
+<table>
+<thead>
+<tr>
+<th>Kind</th>
+<th>Dạng Markdown</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fields</code></td>
+<td>Bảng <code>Field \| Content</code>, nhãn in đậm bên trái, đúng thứ tự in</td>
+</tr>
+<tr>
+<td><code>log</code></td>
+<td>Một bảng, mỗi cột in là một cột; register rộng (2.32, 2.36, 3.1) thành hai bảng, mỗi bảng một bank in</td>
+</tr>
+<tr>
+<td><code>matrix</code></td>
+<td>Lưới với nhãn dòng ở cột đầu, giữ chú giải in bên dưới</td>
+</tr>
+<tr>
+<td><code>outline</code></td>
+<td>Danh sách đánh số lồng nhau (2.9, 2.29), không bao giờ là bảng Code / Element</td>
+</tr>
+<tr>
+<td><code>chart</code>, <code>diagram</code></td>
+<td>Bảng dữ liệu đằng sau hình, kèm một khối Mermaid</td>
+</tr>
+<tr>
+<td><code>narrative</code></td>
+<td>Các câu mở đầu in sẵn, điền phần trống (6.1)</td>
+</tr>
+</tbody>
+</table>
+<p>Cột nằm dưới một header nhóm in sẵn được viết <code>Group: Label</code>, ví dụ <code>Impact: Scope</code>. Không viết
+<code>Impact Scope</code>, không viết <code>Scope (Impact)</code>.</p>
+<h3>Bước 5: kiểm tra</h3>
+<p><code>bash
+python3 .claude/skills/pm/scripts/check_fidelity.py docs/forms/2-32-risk-register.en.md 2.32
+python3 .claude/skills/pm/scripts/check_consistency.py docs/forms/2-32-risk-register.en.md \
+    docs/charter-package.en.md docs/scope-package.en.md --report docs/forms/2-32-risk-register.en.md
+python3 tools/check_scope.py         # chỉ khi scope package hoặc thứ nó cộng dồn lên bị thay đổi</code></p>
+<table>
+<thead>
+<tr>
+<th>Kiểm tra</th>
+<th>Trả lời câu hỏi</th>
+<th>Báo lỗi (exit 1) khi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>check_fidelity.py</code></td>
+<td>Markdown có đủ mọi nhãn in, đúng chính tả, đúng thứ tự in không?</td>
+<td>Thiếu nhãn hoặc sai thứ tự. Nhãn không có trên form chỉ được liệt kê, không làm hỏng kiểm tra. <code>--flattened</code> chấp nhận RTM và WBS dictionary của scope package, nơi tiêu đề nhóm in được viết thành nhãn con hoặc thành nhóm cộng nhãn con, và liệt kê chúng; <code>--ignore-tables</code> bỏ qua bảng nằm trong ô văn bản tự do; <code>--page N</code> kiểm một trang in của form mà tài liệu viết tách ra</td>
+</tr>
+<tr>
+<td><code>check_consistency.py --report &lt;form&gt;</code></td>
+<td>Form mới có khớp với charter và scope package không?</td>
+<td>Bất kỳ lỗi nào do form mới gây ra. Lỗi cũ trong tài liệu nguồn chỉ được đếm, không hiển thị (<code>--show-context</code> liệt kê chúng kèm đề mục chứa chúng; <code>--group</code> in một dòng cho mỗi loại kiểm tra, trừ mỗi <code>form-note</code> giữ một dòng riêng kèm đoạn trích; <code>--today YYYY-MM-DD</code> so mỗi Date Prepared với ngày đó; hai từ <code>charter</code> và <code>scope</code> thay cho hai file package)</td>
+</tr>
+<tr>
+<td><code>tools/check_scope.py</code></td>
+<td>Scope package còn cộng đủ 4,400 giờ và 700,000,000 VND không?</td>
+<td>Bất kỳ kiểm tra nào của nó</td>
+</tr>
+</tbody>
+</table>
+<p>Một form sạch in ra, ví dụ:</p>
+<p><code>text
+2.32 Risk Register, 2-32-risk-register.en.md lines 1 to 18
+22/22 printed labels present in printed order</code></p>
+<p>Sau script, skill liệt kê các tài liệu mà sách nói form này phải khớp và báo mâu thuẫn:</p>
+<p><code>bash
+python3 .claude/skills/pm/scripts/form_graph.py 2.32                      # nguồn, nơi nhận, form phải khớp
+python3 .claude/skills/pm/scripts/form_graph.py --impact 2.9 2.10 --depth 1   # tài liệu cần xem lại khi nhiều form đổi cùng lúc</code></p>
+<p><code>--impact</code> đánh dấu mỗi tài liệu đã có trong <code>docs/</code> hay chưa, đếm số file (2.9 và 2.10 chung một file) và báo "Nothing to compare" khi không có tài liệu nào, nên skill chỉ đọc những gì đang tồn tại.
+Một liên kết được tính khi một trong hai form khai báo nó, và nhãn cho biết bên nào khai báo. Mục 11 giải
+thích cách đọc một kiểm tra bị lỗi.</p>
+<h3>Bước 6: file Word</h3>
+<p><code>bash
+uv run --with python-docx .claude/skills/pm/scripts/md_to_docx.py docs/forms/2-32-risk-register.en.md
+uv run --with python-docx .claude/skills/pm/scripts/md_to_docx.py docs/forms/2-32-risk-register.en.md -o /tmp/risk.docx</code></p>
+<p>File <code>.docx</code> có thanh tiêu đề tối màu như sách, bảng có viền, các cặp trường đặt cạnh nhau như form in,
+và chân trang "Page N of M". Khối Mermaid bị bỏ qua; bảng phía trên đã chứa số liệu. Chỉ xuất Word khi
+tài liệu dùng để nộp hoặc in.</p>
+<h3>Bước 7: Google Doc của nhóm</h3>
+<p>Doc là bản sao của Markdown. Sửa Markdown rồi dựng lại Doc; không bao giờ sửa tay trên Doc.</p>
+<ul>
+<li>Chỉ khi được yêu cầu, và chỉ với Doc ID truyền qua dòng lệnh (ID nằm trong <code>README.md</code>, mục Google
+  Doc). Không ai ghi ID vào file.</li>
+<li>Cài đặt một lần cho mỗi máy: <code>README.md</code>, mục Google Doc.</li>
+<li>Doc có nhiều tab, mỗi tab có generator riêng. Dùng đúng cái tương ứng:</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Phần của Doc</th>
+<th>Payload dựng bởi</th>
+<th>Ghi bởi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tab scope baseline</td>
+<td><code>python3 tools/scope_tab3.py --out &lt;scratch&gt;/tab3.md</code></td>
+<td><code>tools/gdoc_tab3.py</code>, <code>tools/gdoc_scope_sync.py</code></td>
+</tr>
+<tr>
+<td>Tab lịch (2.18, 3.3)</td>
+<td><code>gdoc_schedule_tab.build()</code></td>
+<td><code>tools/gdoc_schedule_tab.py</code></td>
+</tr>
+<tr>
+<td>Cả tài liệu, chỉ một tab</td>
+<td><code>tools/gdoc.py</code></td>
+<td><code>gdoc.py import-html</code> (Doc mới)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Không bao giờ chạy <code>gdoc.py replace</code> trên Doc của nhóm.</strong> Lệnh này import lại toàn bộ file và gộp
+  Doc nhiều tab thành một tab.</li>
+<li>Dựng và kiểm tra payload trước khi đẩy, vì thứ lên Doc là thứ generator sinh ra. Các lệnh này không
+  cần đăng nhập:</li>
+</ul>
+<p><code>bash
+python3 tools/scope_tab3.py --out /tmp/tab3.md
+PYTHONDONTWRITEBYTECODE=1 python3 -c "import sys; sys.path.insert(0, 'tools'); import gdoc_schedule_tab as g; print(g.build())" &gt; /tmp/schedule-tab.md
+python3 .claude/skills/pm/scripts/check_consistency.py /tmp/tab3.md</code></p>
+<h2>5. Ba trạng thái đánh dấu</h2>
+<p>Mỗi giá trị trong form ở một trong ba trạng thái, và Markdown cho thấy trạng thái nào.</p>
+<table>
+<thead>
+<tr>
+<th>Trạng thái</th>
+<th>Cách viết</th>
+<th>Ví dụ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Đã biết: từ tài liệu dự án hoặc từ bạn</td>
+<td>Chữ thường</td>
+<td><code>700,000,000 VND</code></td>
+</tr>
+<tr>
+<td>Giả định, suy ra hoặc chưa xác nhận</td>
+<td><code>&lt;mark&gt;...&lt;/mark&gt;</code>, ghi lý do ngay trong ô nếu vừa</td>
+<td><code>courses of &lt;mark&gt;24 to 48 sessions&lt;/mark&gt;</code> (charter 1.1.1)</td>
+</tr>
+<tr>
+<td>Chưa biết và không suy ra được</td>
+<td>Ô trống, hoặc <code>[TBD]</code> khi ô trống trông như bị bỏ sót</td>
+<td><code>[TBD]</code></td>
+</tr>
+</tbody>
+</table>
+<p>Vì sao:</p>
+<ul>
+<li>Đề bài yêu cầu điền form và để trống hoặc tô vàng ô chưa biết. <code>&lt;mark&gt;</code> trở thành tô vàng trong
+  Google Doc.</li>
+<li><code>CLAUDE.md</code> cấm giá trị đoán mò. Form giấu giá trị đoán làm nhóm tốn một buổi họp để gỡ; form đánh
+  dấu rõ giá trị đoán thì xác nhận được trong một lượt đọc.</li>
+<li><code>&lt;mark&gt;</code> là HTML duy nhất được phép. Nó đánh dấu nội dung, không bao giờ đánh dấu nhãn hay tiêu đề.</li>
+</ul>
+<p>Ô trống là một trạng thái thật, không phải lỗi: tên project manager trong charter được để trống có chủ
+ý, vì sponsor bổ nhiệm PM tại M0 (assumption 15).</p>
+<h2>6. Quy tắc reviewer kiểm tra</h2>
+<p>Các quy tắc này đến từ hai vòng review trên Doc của nhóm (60 phát hiện). Kiểm tra consistency bắt được
+các dòng ghi "script".</p>
+<table>
+<thead>
+<tr>
+<th>Quy tắc</th>
+<th>Viết</th>
+<th>Không viết</th>
+<th>Bắt bởi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Một kiểu ngày cho cả tài liệu</td>
+<td><code>2 September 2026</code></td>
+<td><code>02 September 2026</code>, <code>2 Sep 2026</code>, <code>2026-09-02</code></td>
+<td>script</td>
+</tr>
+<tr>
+<td>Chỉ có thứ trong tuần khi cả bảng đều có</td>
+<td><code>Mon 14 September 2026</code> ở mọi dòng</td>
+<td>trộn ngày có thứ và không có thứ</td>
+<td>script (cảnh báo)</td>
+</tr>
+<tr>
+<td>Dòng ngân sách 28,000,000 VND là contingency reserve</td>
+<td>contingency reserve</td>
+<td><code>management reserve</code>, là quỹ của sponsor nằm ngoài baseline; dự án này không có quỹ đó</td>
+<td>script</td>
+</tr>
+<tr>
+<td>Sponsor và customer là hai người</td>
+<td>Dr. Nguyễn Mạnh Hùng đi với từ sponsor; Đỗ Thị Bích Ngọc đi với từ customer hoặc Director</td>
+<td>"sponsor" cạnh tên customer, hoặc "owner" cạnh tên sponsor</td>
+<td>script</td>
+</tr>
+<tr>
+<td>Không xuống dòng trong ô</td>
+<td><code>(1) ... (2) ... (3) ...</code> trên một dòng</td>
+<td><code>&lt;br&gt;</code>, vì nó hiện nguyên văn trên Doc</td>
+<td>script</td>
+</tr>
+<tr>
+<td>Chỉ dùng <code>&lt;mark&gt;</code> làm HTML</td>
+<td><code>&lt;mark&gt;</code></td>
+<td>thẻ hay HTML entity khác</td>
+<td>script</td>
+</tr>
+<tr>
+<td>Không thêm gì vào trong form in</td>
+<td>giải thích đặt ở đoạn in nghiêng phía trên form</td>
+<td>ghi chú dưới bảng, chữ dưới Approvals, tiêu đề thừa</td>
+<td>một phần (cảnh báo)</td>
+</tr>
+<tr>
+<td>Nhãn title block đúng như in</td>
+<td><code>**Project Title:**</code>, <code>**Date Prepared:**</code> (hoặc <code>**Date:**</code> nếu form in vậy)</td>
+<td><code>**Project:**</code>, <code>**Date prepared:**</code>, <code>**Source:**</code></td>
+<td>fidelity</td>
+</tr>
+<tr>
+<td>Không thêm cột form không in</td>
+<td>1.3 bắt đầu bằng Name</td>
+<td>thêm cột ID vào 1.3, 1.4, 2.14, 6.4 hoặc bank 2 của 2.32, 2.36, 3.1</td>
+<td>fidelity</td>
+</tr>
+<tr>
+<td>Khoảng ID khớp với phần tử cuối hiện tại</td>
+<td><code>R1 to R12</code>, <code>F01 to F12</code></td>
+<td><code>R1 to R10</code> khi đã có R12</td>
+<td>script (cảnh báo)</td>
+</tr>
+<tr>
+<td>Một ID, một nội dung</td>
+<td>NFR02 viết giống nhau ở mọi nơi</td>
+<td>một ID mang hai nghĩa</td>
+<td>script (cảnh báo)</td>
+</tr>
+<tr>
+<td><code>A</code> nghĩa là tiêu chí nghiệm thu</td>
+<td><code>A01</code>, <code>assumption 18</code></td>
+<td><code>A18</code> cho một giả định</td>
+<td>đọc</td>
+</tr>
+<tr>
+<td>Tổng phải khớp</td>
+<td>các dòng cộng đúng bằng dòng Total</td>
+<td>tổng gõ tay</td>
+<td>script</td>
+</tr>
+<tr>
+<td>Văn bản chép thì chép nguyên</td>
+<td>câu rủi ro của charter, đúng từng chữ</td>
+<td>viết lại theo ý</td>
+<td>đọc</td>
+</tr>
+<tr>
+<td>Không em dash, không emoji</td>
+<td>dấu phẩy, chấm phẩy, hai chấm hoặc dấu chấm</td>
+<td>em dash, en dash, emoji</td>
+<td>script</td>
+</tr>
+<tr>
+<td>Ghi cả hai số trang</td>
+<td>PDF page 141 (printed page 130)</td>
+<td>"page 130"</td>
+<td>đọc</td>
+</tr>
+</tbody>
+</table>
+<p>Danh sách đầy đủ, kèm các thread review đứng sau mỗi quy tắc, nằm ở
+<code>.claude/skills/pm/references/review-lessons.md</code>.</p>
+<h2>7. Audit và trả lời comment trên Google Doc</h2>
+<h3>Audit</h3>
+<p>Yêu cầu audit khi tài liệu sắp được đẩy lên Doc, hoặc trước hạn chấm điểm. Skill đóng vai reviewer và
+không sửa file trừ khi bạn yêu cầu.</p>
+<p>Thứ tự skill chạy:</p>
+<ol>
+<li>Script trên cả gói: <code>check_consistency.py --audit</code> trên mọi file cùng lúc (<code>--audit</code> còn báo cột toàn
+   một giá trị dù văn bản phía trên đã giải thích), <code>check_fidelity.py</code> trên từng form (dùng <code>--section</code> với
+   form nằm trong một package, <code>--flattened</code> cho RTM), <code>check_schedule.py</code> cho 2.18 (còn so tên mốc với charter;
+   <code>--explained hours</code> báo chênh lệch giờ mà một 3.3 đang chờ giải thích thành warning; một 3.3 đang chờ không bao giờ giải thích
+   được lỗi thứ tự, nên <code>--explained sequence=LÝ DO</code> và <code>break=LÝ DO</code> phải kèm lý do trích từ tài liệu), <code>tools/check_scope.py</code>.
+   Thêm <code>--report &lt;file&gt;</code> khi chỉ một file là sản phẩm bàn giao. Mỗi lần quét bắt buộc trong <code>audit-template.md</code> đều được báo cáo, hoặc là một phát hiện hoặc là một dòng dưới "Scans that found nothing": định dạng ngày, <code>&lt;br&gt;</code>, sponsor và khách hàng bị gộp, cách gọi reserve, RTM có Priority chỉ một giá trị (luôn là cảnh báo dù có câu giải thích), cùng một ID giữa Part 1 và 1B.</li>
+<li>Từng bài học trong <code>review-lessons.md</code>, tính lại số liệu suy ra từ giả định.</li>
+<li>Trình tự: không gì được dùng, nghiệm thu hay ký trước khi nó tồn tại; không ngày nào rơi vào khoảng
+   thời gian charter loại trừ. <code>check_schedule.py</code> bắt việc kiểm tra đặt trước đối tượng của nó, đóng dự án trước
+   tháng bảo hành hoặc mốc của nó, go-live trước UAT, kiểm thử trước khi build, review trước công việc của package khác, con số trong tên việc hay trong câu của dictionary so với khoảng thời gian của nó,
+   và việc nằm trong kỳ nghỉ (là lỗi khi charter nói kỳ nghỉ không chịu thêm độ trễ nào); phần còn lại đọc tay theo công thức trong <code>audit-template.md</code> (Used before it exists).</li>
+<li>Khối lượng mỗi người mỗi tuần so với phân bổ trong charter (<code>load_check.py docs/scope-package.en.md --limit
+   MOB1=&lt;giờ&gt; --leaves MOB1=YYYY-MM-DD</code>, thêm <code>--charter</code>, <code>--holiday</code>, <code>--daily-limit</code>; <code>--schedule &lt;file 2.18&gt;</code> rải giờ theo các dòng của lịch đã cân bằng nguồn lực;
+   <code>--explained overload=LÝ DO</code> biến quá tải thành cảnh báo nêu tài liệu giải thích; kết quả dùng mặc định 40 giờ có ghi "limit assumed", và khi charter không nêu số giờ mỗi tuần
+   của người bán thời gian, mặc định che mất quá tải, nên hỏi sponsor; <code>python3 tools/level.py</code> cho lịch đã cân bằng nguồn lực).</li>
+<li>Form được sinh tự động hoặc payload đẩy lên, khi có liên quan đến Doc (<code>references/push-audit.md</code>).</li>
+</ol>
+<p>Báo cáo theo mẫu <code>.claude/skills/pm/references/audit-template.md</code>:</p>
+<p>```text</p>
+<h2>Errors        E1, E2, ...   mâu thuẫn chứng minh được bằng hai trích dẫn</h2>
+<h2>Warnings      W1, W2, ...   điểm yếu người chấm có thể bắt</h2>
+<h2>Scans that found nothing    mỗi lần quét không có kết quả, để người đọc biết nó đã chạy</h2>
+<h2>What passed                 các kiểm tra khác không phát hiện gì</h2>
+<p>```</p>
+<p>Mỗi phát hiện có vị trí (<code>file:line</code> và mục hoặc trang form), trích dẫn bằng chứng, và cách sửa hoặc
+quyết định cần đưa ra và ai quyết định.</p>
+<p>Lệnh hữu ích khi audit:</p>
+<p><code>bash
+python3 .claude/skills/pm/scripts/check_consistency.py docs/charter-package.en.md docs/scope-package.en.md
+python3 .claude/skills/pm/scripts/check_consistency.py docs/charter-package.en.md docs/scope-package.en.md --errors-only
+python3 .claude/skills/pm/scripts/check_fidelity.py docs/scope-package.en.md 2.7 --section "Part 1:" --flattened
+python3 .claude/skills/pm/scripts/load_check.py docs/scope-package.en.md --limit MOB1=20 --leaves MOB1=2026-12-18
+python3 tools/check_scope.py
+python3 tools/level.py</code></p>
+<h3>Trả lời comment trên Doc</h3>
+<p>Ví dụ hỏi <code>Trả lời các comment còn mở trên Doc của nhóm</code> và đưa Doc ID. Skill liệt kê các thread cùng
+đoạn văn mỗi thread gắn vào, soạn câu trả lời, và cho bạn xem trước những gì sẽ đăng trước khi đăng.</p>
+<p><code>bash
+gdoc() { uv run --with google-api-python-client,google-auth-oauthlib,markdown tools/gdoc.py "$@"; }
+gdoc comments --doc DOC_ID                                         # các thread và đoạn văn được gắn
+gdoc post --doc DOC_ID --review review/&lt;date&gt;-doc-review.json --dry-run
+gdoc post --doc DOC_ID --review review/&lt;date&gt;-doc-review.json</code></p>
+<p>Cách viết câu trả lời (<code>review-lessons.md</code> mục 11):</p>
+<ol>
+<li>Đồng ý hay không ngay ở từ đầu tiên ("Đồng ý", "Đã bỏ", "Đã thêm").</li>
+<li>Nói rõ đã đổi gì và ở đâu: mục, ô, phiên bản.</li>
+<li>Trích câu mới bằng tiếng Anh khi tài liệu gốc là tiếng Anh.</li>
+<li>Liệt kê các chỗ khác bị sửa theo.</li>
+<li>Khi yêu cầu xung đột với ràng buộc cố định (ngân sách, thời gian), nêu ràng buộc đó và cái giá của
+   việc đánh đổi, để nhóm quyết định.</li>
+<li>Trả lời bằng ngôn ngữ của reviewer.</li>
+</ol>
+<p><code>post</code> là idempotent: câu trả lời có dòng đầu đã có trên Doc sẽ được bỏ qua.</p>
+<h2>8. Ra quyết định: hỏi nên làm gì</h2>
+<p>Form ghi lại quyết định; form không đưa ra quyết định. Khi bạn hỏi nên làm gì ("trễ hai tuần rồi", "R5
+xảy ra rồi", "khách hàng muốn thêm chức năng mới", "điền form nào đây?"), skill đi theo đường quyết định
+và kết thúc ở các form ghi lại quyết định đó.</p>
+<p><code>text
+tình huống
+  1. định tuyến                references/decisions.md (40 dòng định tuyến, 43 quyết định), references/pmbok-&lt;area&gt;.md
+  2. tính các số suy ra        scripts/pm_calc.py
+  3. liệt kê thứ khác phải đổi scripts/form_graph.py --impact
+  4. trình bày                 định dạng khuyến nghị ở mục 5 của decisions.md
+  5. ghi lại (sau khi bạn đồng ý) 3.2 Decision Log; 3.3 Change Request rồi 3.4 Change Log khi baseline đổi</code></p>
+<h3>Câu lệnh ví dụ</h3>
+<table>
+<thead>
+<tr>
+<th>Tình huống</th>
+<th>Câu lệnh ví dụ</th>
+<th>Nhận lại gì</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Trễ tiến độ</td>
+<td><code>The mobile application work (WBS 1.5.4, due for M5) is two weeks late. What are my options, which are allowed, and what do I update? I do not want an answer that just says the estimate was wrong.</code></td>
+<td>Crashing và fast tracking (PMBOK 6 section 6.5.2.6) kèm đánh đổi, phần 2.18 đã dùng rồi, giới hạn dự phòng và quyền hạn lấy từ charter, change request gửi sponsor, các form phải cập nhật</td>
+</tr>
+<tr>
+<td>Tình trạng earned value</td>
+<td><code>BAC 700,000,000; PV 280,000,000; EV 252,000,000; AC 294,000,000 VND. Give me the status, a forecast at completion and what goes in form 4.4.</code></td>
+<td>CV, SV, CPI, SPI, ba EAC và TCPI từ <code>pm_calc.py evm</code>, cách gọi tình trạng của PMBOK 6 Table 7-1, các trường của 4.4, ngưỡng leo thang 5%</td>
+</tr>
+<tr>
+<td>Rủi ro đã xảy ra</td>
+<td><code>R5 has happened: the notification gateway is unstable and the price went up. What do we do, and what do I write in the register and the decision log? I do not know who owns it.</code></td>
+<td>Các chiến lược của 11.5, contingency reserve trong giới hạn của charter, nội dung đề xuất cho 2.32 và 3.2, để trống người phụ trách và điểm số</td>
+</tr>
+<tr>
+<td>Dùng form nào</td>
+<td><code>khach hang muon them chuc nang moi thi ghi vao dau?</code></td>
+<td>3.3 rồi 3.4, sponsor quyết định, 2.7 và scope baseline 2.8 đến 2.10 chỉ đổi sau khi duyệt, trả lời bằng tiếng Việt</td>
+</tr>
+<tr>
+<td>Ghi ở đâu</td>
+<td><code>Where do I write down why we chose a second provider?</code></td>
+<td>3.2 Decision Log, cột Comments ghi các phương án và lý do</td>
+</tr>
+</tbody>
+</table>
+<p>Các câu hỏi trên hỏi bằng tiếng Việt cũng được; câu trả lời theo ngôn ngữ bạn hỏi.</p>
+<h3>Câu trả lời gồm những gì</h3>
+<p>Định dạng khuyến nghị (<code>decisions.md</code> mục 5) có tám phần: tình huống kèm tài liệu và mục mà mỗi dữ kiện
+đến từ đó; kiểm tra ràng buộc (cái nào trong phạm vi, tiến độ, chi phí, chất lượng, nguồn lực và rủi ro
+đang chặt, phương án chạm baseline nào, quyền hạn của PM có đủ không); bảng phương án (kỹ thuật kèm trích
+dẫn, đánh đổi sách nêu hoặc "not stated in the book", ảnh hưởng đến baseline); một khuyến nghị; kết quả
+máy tính; nhóm phải quyết định gì và ai quyết; các form cần cập nhật kèm trường in; và trích dẫn có cả hai
+số trang. Những dữ kiện như giới hạn dự phòng 20,000,000 VND, ngưỡng sai lệch 5% hay ngày của một mốc
+được đọc từ charter và các package mỗi lần; danh mục quyết định không lưu chúng. Nó giữ một danh sách các giới
+hạn quyền hạn cần đọc (mỗi giao dịch, mỗi lần dùng dự phòng, phần trăm vượt dự báo và cơ sở tính, thay đổi vốn,
+loại dự phòng và rủi ro nào được rút) mà các quyết định về trễ tiến độ, sai lệch, dự báo và dự phòng đều trỏ tới.
+Câu hỏi như "tôi viết gì" hay "báo gì cho sponsor" được trả lời bằng bản nháp ngay trong câu trả lời, không tạo file.</p>
+<h3>Các quy tắc skill giữ</h3>
+<p>Đây là quy tắc của nhóm, được nhắc lại trong <code>SKILL.md</code> và <code>decisions.md</code>.</p>
+<ul>
+<li>Mọi cách xử lý là một kỹ thuật PMBOK 6 hoặc Book of Forms có nêu tên, kèm đánh đổi sách nêu. Nếu sách
+  không nêu, câu trả lời ghi "not stated in the book" và đánh dấu đó là phán đoán.</li>
+<li>Không bao giờ cắt estimate cho vừa ngày hay vừa tiền.</li>
+<li>Khi phạm vi, tiến độ, chi phí và chất lượng không thể cùng giữ, đường đi là change request (3.3) gửi
+  sponsor.</li>
+<li>Contingency reserve (nằm trong cost baseline, dành cho rủi ro đã nhận diện) khác management reserve
+  (nằm ngoài). Khi charter gọi reserve khác với dòng ngân sách, câu trả lời nêu cả hai cách gọi như một lỗi nguồn để sponsor quyết định.</li>
+<li>Câu hỏi hẹp (một con số trạng thái, dùng form nào) nhận câu trả lời ngắn kèm ba form cần viết trước; định dạng bảy phần đầy đủ dành cho quyết định làm dịch chuyển baseline hoặc đòi phương án.</li>
+<li>Không bịa người chịu trách nhiệm, ngưỡng, điểm số, đơn giá hay ngày; hỏi lại hoặc để trống.</li>
+<li>Không ghi gì vào <code>docs/</code> nếu bạn chưa yêu cầu.</li>
+</ul>
+<h3>pm_calc.py: các con số</h3>
+<p>Python thuần, không cần gói nào. Mỗi kết quả in kèm trang sách in công thức đó, cả trang PDF và trang in.
+<code>--json</code> cho đầu ra đọc bằng máy.</p>
+<table>
+<thead>
+<tr>
+<th>Lệnh con</th>
+<th>Tính</th>
+<th>Sách in ở đâu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>evm</code></td>
+<td>CV, SV, CPI, SPI, phần trăm kế hoạch, đạt được và đã chi, ba EAC, ETC, VAC, TCPI (TCPI hướng tới EAC theo CPI hiện tại bằng đúng CPI và hướng tới EAC theo tỷ lệ ngân sách bằng 1, nên hai dòng đó không kèm lời của Table 7-1); <code>--threshold</code> và <code>--base</code> thêm mức vượt dưới dạng phần trăm của BAC, PV, EV hoặc AC cùng số tiền của ngưỡng và đánh dấu trong hay ngoài ngưỡng; chỉ <code>--bac</code> với <code>--threshold</code> thì in số tiền</td>
+<td>PMBOK 6 section 7.4.2.2 và Table 7-1; Book of Forms 4.4. Phần trăm là công cụ tính ngoài sách: không sách nào in phần trăm sai lệch</td>
+</tr>
+<tr>
+<td><code>pert</code></td>
+<td>Trung bình beta và tam giác của ba estimate</td>
+<td>Book of Forms 2.17, 2.21; PMBOK 6 section 6.4.2.4, 7.2.2.5</td>
+</tr>
+<tr>
+<td><code>effort-to-duration</code></td>
+<td>Thời lượng từ công sức, số lượng, phần trăm sẵn sàng và hệ số năng suất</td>
+<td>Book of Forms 2.17, Table 2.16</td>
+</tr>
+<tr>
+<td><code>analogous</code></td>
+<td>Estimate từ giá trị trước và tỉ lệ kích thước</td>
+<td>Book of Forms 2.17, 2.21</td>
+</tr>
+<tr>
+<td><code>bottom-up</code></td>
+<td>Chi phí bằng giờ x đơn giá cộng vật tư và các phần còn lại</td>
+<td>Book of Forms 2.21, Table 2.20</td>
+</tr>
+<tr>
+<td><code>risk-score</code></td>
+<td>High, Medium hoặc Low từ xác suất và tác động; <code>--matrix</code> in lưới 2.35</td>
+<td>Book of Forms 2.34 Table 2.31, 2.35; PMBOK 6 Figure 11-5</td>
+</tr>
+<tr>
+<td><code>emv</code></td>
+<td>Giá trị tiền tệ kỳ vọng và cây quyết định với <code>--option</code></td>
+<td>PMBOK 6 section 11.4.2.5, Figure 11-15</td>
+</tr>
+<tr>
+<td><code>weighted-score</code></td>
+<td>Điểm theo tiêu chí có trọng số và phương án thắng</td>
+<td>Book of Forms 2.39, Table 2.35</td>
+</tr>
+<tr>
+<td><code>earned-schedule</code></td>
+<td>SV(t) = ES - AT, SPI(t) = ES / AT</td>
+<td>PMBOK 6, Trends and Emerging Practices in Project Cost Management, printed page 233 (PDF page 272)</td>
+</tr>
+<tr>
+<td><code>crash</code></td>
+<td>Các phương án crashing xếp theo chi phí thêm cho mỗi ngày rút được, và những phương án rẻ nhất đạt <code>--needed</code> ngày; chỉ việc trên đường găng, với thời lượng và chi phí crash do nhóm đưa ra</td>
+<td>PMBOK 6 section 6.5.2.6, printed page 215 (PDF page 254) định nghĩa crashing là chi phí gia tăng thấp nhất và không in công thức; được ghi là công cụ tính ngoài sách</td>
+</tr>
+<tr>
+<td><code>cpm</code></td>
+<td>Ngày sớm và muộn, float tổng và float tự do, đường găng, <code>--deadline</code> (số ngày làm việc từ ngày 1, hoặc một ngày kèm <code>--start</code>), kịch bản <code>--slip</code>; <code>--start</code> và <code>--holiday</code> đổi ngày làm việc thành ngày lịch và cho biết độ trễ có vượt qua kỳ nghỉ không</td>
+<td>PMBOK 6 section 6.5.2.2 và Figure 6-16 mô tả các lượt tính và không in công thức; được ghi là công cụ tính ngoài sách</td>
+</tr>
+<tr>
+<td><code>velocity</code></td>
+<td>Velocity mỗi iteration, trung bình, số iteration còn lại</td>
+<td>Agile Practice Guide section 5.4.1, printed page 64 (PDF page 874); trung bình và dự báo là công cụ tính ngoài sách</td>
+</tr>
+<tr>
+<td><code>cd3</code></td>
+<td>Xếp hạng theo chi phí trì hoãn chia cho thời lượng</td>
+<td>Agile Practice Guide Table 5-1, printed page 59 (PDF page 869); Guide chỉ in lời, không in đơn vị</td>
+</tr>
+<tr>
+<td><code>payback</code></td>
+<td>Kỳ đầu tiên mà lợi ích ròng tích lũy đạt vốn đầu tư</td>
+<td>PMBOK 6 nêu payback và không in công thức; được ghi là công cụ tính ngoài sách</td>
+</tr>
+<tr>
+<td><code>comms-channels</code></td>
+<td>n(n-1)/2</td>
+<td>Cả hai sách đều không in; được ghi là công cụ tính ngoài sách</td>
+</tr>
+<tr>
+<td><code>reserve</code></td>
+<td>Dự phòng rủi ro còn lại so với giá trị kỳ vọng của các rủi ro còn mở</td>
+<td>PMBOK 6 section 11.7.2.1, printed page 456 (PDF page 495) nêu phép so sánh và không in công thức; được ghi là công cụ tính ngoài sách</td>
+</tr>
+<tr>
+<td><code>funding</code></td>
+<td>Vốn đã giải ngân theo từng đợt so với chi phí đến nay</td>
+<td>PMBOK 6 section 7.3.3.2, printed page 256 (PDF page 295), và Figure 7-9; được ghi là công cụ tính ngoài sách</td>
+</tr>
+<tr>
+<td><code>response-effectiveness</code></td>
+<td>(thay đổi mức tác động) / (chi phí thực hiện) của từng biện pháp</td>
+<td>PMBOK 6 section 11.5.2.8, printed page 446 (PDF page 485)</td>
+</tr>
+</tbody>
+</table>
+<p><code>bash
+python3 .claude/skills/pm/scripts/pm_calc.py evm --bac 700000000 --pv 280000000 --ev 252000000 --ac 294000000</code></p>
+<p><code>text
+Variances and indexes (no assumption beyond the inputs)
+  CV                                 -42000000  (over planned cost)  [1]
+  SV                                 -28000000  (behind schedule)  [1]
+  CPI                                0.8571  (over planned cost)  [2]
+  SPI                                0.9  (behind schedule)  [2]
+EAC at the present CPI
+  EAC                                816666666.6667  [6]
+      formula: EAC = BAC / CPI
+      assumption: The cumulative CPI to date continues for all remaining work.
+Sources
+  [1] PMBOK 6 section 7.4.2.2, printed page 262 (PDF page 301); PMBOK 6 Table 7-1, printed page 267 (PDF page 306); ...</code></p>
+<p>Công cụ sẽ không làm gì:</p>
+<ul>
+<li>Chỗ hai cuốn sách không in công thức, nó ghi "not stated in the book": độ lệch chuẩn của beta, thời
+  gian hoàn vốn, phần trăm sai lệch. Nó không tự thêm công thức.</li>
+<li>Nó từ chối đầu vào mà công thức không nhận được (BAC bằng không, xác suất âm, <code>nan</code>) và nói rõ vì sao;
+  AC hoặc PV bằng không thì không có CPI hay SPI và đầu ra nói như vậy. Nó không thay bằng một giá trị khác.</li>
+<li>Nó in tối đa bốn chữ số thập phân, không làm tròn. Không cuốn sách nào nêu quy tắc làm tròn; chỉ số được
+  báo như công cụ in (CPI 0.8621 không được ghi thành 0.86 cho đẹp), kèm các từ của Table 7-1, tiền theo
+  đồng nguyên, so với ngưỡng bằng giá trị chưa làm tròn. Phần trăm vượt chi là công cụ tính ngoài sách, kèm cơ sở tính.</li>
+<li>Phần văn xuôi của form 2.17 nói người giỏi thì nhanh hơn, còn công thức in lại chia cho hệ số. Công cụ
+  theo công thức in và ví dụ in (150 giờ công, 2 người, 75 phần trăm, hệ số 0.8 ra 125 giờ) và in một ghi
+  chú về chỗ không khớp này. Hãy báo nhóm bạn dùng cách đọc nào.</li>
+<li>Table 2.31 in 80 phần trăm ở hai dải xác suất; công cụ từ chối <code>80%</code> trơn và hỏi từ chỉ mức.</li>
+</ul>
+<h3>form_graph.py: còn gì khác phải đổi</h3>
+<p>66 form dưới dạng đồ thị, dựng từ các danh sách <code>receives_from</code>, <code>provides_to</code> và <code>alignment</code> trong
+<code>references/knowledge/</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Lệnh</th>
+<th>In ra</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>form_graph.py 3.3</code></td>
+<td>Nguồn, nơi nhận và form phải khớp của một form, cái gì chảy qua, và bên nào khai báo từng liên kết</td>
+</tr>
+<tr>
+<td><code>form_graph.py --impact 2.9 2.10 --depth 1</code></td>
+<td>Tài liệu cần xem lại khi một hay nhiều form đổi, xếp theo khoảng cách, mỗi dòng ghi đã có trong docs/ hay chưa (hoặc là mục thay thế: charter giữ nội dung của 1.2, 1.3, 2.6, 2.14 và 2.32, đếm riêng), kèm số file và một dòng nói form đang đổi nhận từ đâu; câu trả lời nêu đủ mọi form được liệt kê, không bỏ, không thêm; <code>--category</code> giới hạn 3.3 vào một số nhóm Impacts of Change; không có <code>--depth</code> thì đi theo liên kết đến hết</td>
+</tr>
+<tr>
+<td><code>form_graph.py --order [--group Planning]</code></td>
+<td>Thứ tự tạo form theo trình tự quy trình PMBOK (9.1 và 9.2 xếp trước 6.4 vì chúng tạo đầu vào của 6.4); các form thuộc nhóm Executing, Monitoring and Controlling và Closing được liệt kê riêng, mỗi form gắn nhãn bước của bản đầu và lúc nó hoàn tất; liên kết từ quy trình sau về quy trình trước là đầu vào để sửa lại, và các cạnh bị cắt được in ra; 2.27, 2.39 và 4.8, mà sách chỉ nói là khớp với một kế hoạch, cùng 4.3, 4.4, 4.6 và 4.7 nhận các kế hoạch và baseline mà chúng đo làm điều kiện tiên quyết, gắn nhãn là ánh xạ của skill</td>
+</tr>
+<tr>
+<td><code>form_graph.py --check</code></td>
+<td>Liên kết một form khai báo mà form kia không khai báo</td>
+</tr>
+<tr>
+<td><code>form_graph.py --markdown [--out F]</code></td>
+<td>In ra bản đồ form; <code>--out</code> ghi vào file (bản đã commit là <code>references/form-graph.md</code>, và một test báo lỗi khi bản đó cũ)</td>
+</tr>
+</tbody>
+</table>
+<p>```text
+$ python3 .claude/skills/pm/scripts/form_graph.py --impact 3.3 --depth 1 --category Cost
+Recheck when 3.3 Change Request changes (6 documents, within 1 edge):
+  1  2.2 Change Management Plan  [not in docs]  (3.3 provides to it)
+  1  2.20 Cost Estimates  [not in docs]  (3.3 Impacts of Change: Cost; skill mapping, not book text)
+  1  2.21 Cost Estimating Worksheet  [not in docs]  (3.3 Impacts of Change: Cost; skill mapping, not book text)
+  1  2.22 Cost Baseline  [not in docs]  (3.3 Impacts of Change: Cost; skill mapping, not book text)
+  1  3.4 Change Log  [not in docs]  (3.3 provides to it)
+  1  Change control board (external)  [external, no form]  (3.3 provides to it)</p>
+<p>0 of 5 forms exist in docs/, in 0 files.
+Nothing to compare: none of these 5 forms exists in docs/. Say so, list them as forms to create or update later, and do not paste the rows as if they were documents to recheck.
+Changed form lives in: forms/3-3-change-request.en.md (3.3)
+```</p>
+<p>Without <code>--category</code>, 3.3 also lists the forms of the other categories (Scope, Quality, Requirements,
+Schedule, Stakeholder Impact, Project Documents, and resources and risk), and the forms whose results may become
+a 3.3 (2.18, 2.32, 2.40, 3.6, 4.3, 4.4, 4.6) point back to it. Those rows are tagged <code>skill mapping, not book text</code>: the
+book lists the categories on 3.3 (Book of Forms form 3.3, PDF pages 181 to 182 (printed pages 170 to 171)),
+and the mapping from a category to the forms of the matching knowledge area is the skill's.</p>
+<p>Đọc kết quả cẩn thận:</p>
+<ul>
+<li>Scope baseline là hợp thể duy nhất: 2.8, 2.9 và 2.10 gộp lại (Book of Forms form 2.9, PDF page 60
+  (printed page 49)). Form nhận từ hoặc phải khớp với scope baseline được liệt kê theo cả ba. Schedule
+  baseline và project budget là tên bên ngoài vì sách không gọi tên form nào cho chúng.</li>
+<li>Sách thường chỉ nói form này cung cấp cho form kia, không nói trường nào chảy qua. Dòng chữ trên mỗi
+  liên kết ghi đúng điều đó; đừng suy thành ánh xạ trường.</li>
+<li><code>--check</code> báo 340 liên kết một chiều (117 <code>provides_to</code>, 68 <code>receives_from</code>, 155 alignment). Phần lớn là
+  một form liệt kê nơi nhận mà nơi nhận không liệt kê lại. Đó là sách im lặng ở một phía, hoặc khoảng
+  trống trong các file knowledge, không phải lỗi của dự án.</li>
+<li><code>--order</code> cắt mọi liên kết đi từ form của quy trình PMBOK 6 sau về form của quy trình trước (nhóm quy
+  trình, rồi chương và mục, rồi số form), nên 1.3 đứng trước 2.4 và 2.16 trước 2.18. Risk register 2.32,
+  risk report 2.33, issue log 3.1 và decision log 3.2 được tạo từ đầu dự án (Book of Forms form 2.32, PDF
+  page 140 (printed page 129); 2.33, PDF page 142 (printed page 131); 3.1, PDF page 176 (printed page 165);
+  3.2, PDF page 179 (printed page 168)), nên các liên kết đến chúng là đầu vào để sửa lại. Thứ tự này là
+  cách đọc của skill trên các liên kết đã ghi, không phải của sách.</li>
+</ul>
+<h3>Giới hạn</h3>
+<ul>
+<li>Danh mục quyết định và các ghi chú PMBOK được viết từ hai cuốn sách và kiểm hai lượt. Số trang PMBOK
+  trong các mục quyết định đã được đối chiếu với PDF. Những nhận định dựa vào Book of Forms chỉ được kiểm
+  độ lệch trang, trừ các liên kết của form 2.10, 2.32 và 3.3 và công thức của form 2.16, 2.17, 2.21,
+  2.34, 2.35, 2.39, 4.3 và 4.4 đã được đọc trên trang. Hãy coi trích dẫn là con trỏ và mở trang ra trước
+  khi trích cho reviewer.</li>
+<li>Danh mục gộp khoảng 100 quyết định theo từng lĩnh vực thành 43 mục xuyên lĩnh vực. Tình huống không khớp
+  dòng nào được trả lời từ mục gần nhất, và câu trả lời nói rõ điều đó.</li>
+<li>Skill chỉ khuyến nghị. Sponsor quyết định những gì vượt quyền hạn của project manager, và charter không
+  nêu change control board.</li>
+</ul>
+<h2>9. Toàn bộ 66 form</h2>
+<p>Kind quyết định dạng Markdown (mục 4). Cột "Trong repo" chỉ nơi đã có bản điền sẵn. Tên form giữ
+nguyên như in trong sách.</p>
+<table>
+<thead>
+<tr>
+<th>Form</th>
+<th>Name</th>
+<th>Kind</th>
+<th>Dữ liệu dự án cần có</th>
+<th>Trong repo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.1</td>
+<td>Project Charter</td>
+<td>fields</td>
+<td>Mục đích, mô tả, phạm vi, sản phẩm bàn giao, yêu cầu, rủi ro tổng thể, mục tiêu và tiêu chí thành công, các mốc, ngân sách được duyệt, stakeholder, tiêu chí kết thúc, quyền hạn PM, sponsor</td>
+<td>charter Part 2B</td>
+</tr>
+<tr>
+<td>1.2</td>
+<td>Assumption Log</td>
+<td>log</td>
+<td>Giả định 1 to 19 và các ràng buộc, kèm phân loại, người chịu trách nhiệm, hạn, hành động, trạng thái</td>
+<td></td>
+</tr>
+<tr>
+<td>1.3</td>
+<td>Stakeholder Register</td>
+<td>log</td>
+<td>Tên, vị trí hoặc vai trò, liên hệ, yêu cầu, kỳ vọng, phân loại của từng stakeholder</td>
+<td></td>
+</tr>
+<tr>
+<td>1.4</td>
+<td>Stakeholder Analysis</td>
+<td>log</td>
+<td>Từng stakeholder hoặc vai trò với mức quan tâm, ảnh hưởng và thái độ</td>
+<td></td>
+</tr>
+<tr>
+<td>2.1</td>
+<td>Project Management Plan</td>
+<td>fields</td>
+<td>Các giai đoạn vòng đời, hoạt động và sản phẩm, review giai đoạn với tiêu chí vào và ra, cách phát triển từng sản phẩm, các kế hoạch con, ngưỡng sai lệch, quản lý baseline</td>
+<td></td>
+</tr>
+<tr>
+<td>2.2</td>
+<td>Change Management Plan</td>
+<td>fields</td>
+<td>Cách quản lý thay đổi, thế nào là thay đổi lịch, ngân sách, phạm vi hay tài liệu, change control board, quy trình xử lý change request</td>
+<td></td>
+</tr>
+<tr>
+<td>2.3</td>
+<td>Project Roadmap</td>
+<td>chart</td>
+<td>Các giai đoạn với ngày bắt đầu và kết thúc, các mốc lớn</td>
+<td></td>
+</tr>
+<tr>
+<td>2.4</td>
+<td>Scope Management Plan</td>
+<td>fields</td>
+<td>Cách dựng và duy trì WBS và dictionary, nghiệm thu sản phẩm, gắn phạm vi với yêu cầu</td>
+<td></td>
+</tr>
+<tr>
+<td>2.5</td>
+<td>Requirements Management Plan</td>
+<td>fields</td>
+<td>Cách thu thập, phân tích, phân loại, ưu tiên, truy vết, theo dõi, báo cáo, xác nhận yêu cầu và quản lý cấu hình</td>
+<td></td>
+</tr>
+<tr>
+<td>2.6</td>
+<td>Requirements Documentation</td>
+<td>log</td>
+<td>Yêu cầu kèm stakeholder, phân loại, ưu tiên, tiêu chí nghiệm thu, kiểm thử, giai đoạn hoặc bản phát hành</td>
+<td></td>
+</tr>
+<tr>
+<td>2.7</td>
+<td>Requirements Traceability Matrix</td>
+<td>matrix</td>
+<td>ID yêu cầu, nội dung, nguồn, ưu tiên, phân loại; mục tiêu kinh doanh, sản phẩm, verification, validation; yêu cầu kinh doanh đối chiếu yêu cầu kỹ thuật ở trang 2</td>
+<td>scope Part 1, 1B</td>
+</tr>
+<tr>
+<td>2.8</td>
+<td>Project Scope Statement</td>
+<td>fields</td>
+<td>Mô tả phạm vi, sản phẩm bàn giao, tiêu chí nghiệm thu, loại trừ, ràng buộc, giả định</td>
+<td>charter Part 1</td>
+</tr>
+<tr>
+<td>2.9</td>
+<td>Work Breakdown Structure</td>
+<td>outline</td>
+<td>Sản phẩm, control account và work package có mã, theo thứ tự công việc</td>
+<td>scope Part 2</td>
+</tr>
+<tr>
+<td>2.10</td>
+<td>WBS Dictionary</td>
+<td>fields</td>
+<td>Mỗi work package: mô tả, giả định, mốc và hạn, hoạt động với nguồn lực, giờ, đơn giá, vật tư, chi phí, tiêu chí chất lượng và nghiệm thu</td>
+<td>scope Part 3</td>
+</tr>
+<tr>
+<td>2.11</td>
+<td>Schedule Management Plan</td>
+<td>fields</td>
+<td>Phương pháp, công cụ, độ chính xác, đơn vị, ngưỡng sai lệch, báo cáo, quy tắc cập nhật</td>
+<td></td>
+</tr>
+<tr>
+<td>2.12</td>
+<td>Activity List</td>
+<td>log</td>
+<td>Hoạt động của từng work package với ID và mô tả công việc</td>
+<td></td>
+</tr>
+<tr>
+<td>2.13</td>
+<td>Activity Attributes</td>
+<td>fields</td>
+<td>Một hoạt động: hoạt động trước và sau với kiểu quan hệ và lead hoặc lag, nguồn lực, kỹ năng, loại công sức, địa điểm, ngày bắt buộc, giả định</td>
+<td></td>
+</tr>
+<tr>
+<td>2.14</td>
+<td>Milestone List</td>
+<td>log</td>
+<td>Các mốc M0 to M7 với mô tả và loại</td>
+<td></td>
+</tr>
+<tr>
+<td>2.15</td>
+<td>Network Diagram</td>
+<td>diagram</td>
+<td>Hoạt động với hoạt động trước, kiểu quan hệ (FS, SS, FF, SF), lead hoặc lag</td>
+<td></td>
+</tr>
+<tr>
+<td>2.16</td>
+<td>Duration Estimates</td>
+<td>log</td>
+<td>Mỗi hoạt động: số giờ công, ước lượng thời gian</td>
+<td></td>
+</tr>
+<tr>
+<td>2.17</td>
+<td>Duration Estimating Worksheet</td>
+<td>log</td>
+<td>Đầu vào ước lượng parametric, analogous và three-point cho từng hoạt động</td>
+<td></td>
+</tr>
+<tr>
+<td>2.18</td>
+<td>Project Schedule</td>
+<td>chart</td>
+<td>Hoạt động với ID, mã WBS, tên, ngày bắt đầu, ngày kết thúc; các mốc</td>
+<td><code>docs/forms/2-18-project-schedule.en.md</code></td>
+</tr>
+<tr>
+<td>2.19</td>
+<td>Cost Management Plan</td>
+<td>fields</td>
+<td>Đơn vị, độ chi tiết, độ chính xác, ngưỡng kiểm soát, quy tắc đo hiệu suất, báo cáo</td>
+<td></td>
+</tr>
+<tr>
+<td>2.20</td>
+<td>Cost Estimates (in là Activity Cost Estimates)</td>
+<td>log</td>
+<td>Mỗi WBS ID: nguồn lực, chi phí nhân công và vật chất, dự phòng, ước lượng, phương pháp, cơ sở, khoảng, độ tin cậy</td>
+<td></td>
+</tr>
+<tr>
+<td>2.21</td>
+<td>Cost Estimating Worksheet</td>
+<td>log</td>
+<td>Đầu vào chi phí parametric, analogous, three-point và bottom-up</td>
+<td></td>
+</tr>
+<tr>
+<td>2.22</td>
+<td>Cost Baseline</td>
+<td>chart</td>
+<td>Giá trị kế hoạch cộng dồn theo kỳ, từ lịch và ước lượng chi phí</td>
+<td></td>
+</tr>
+<tr>
+<td>2.23</td>
+<td>Quality Management Plan</td>
+<td>fields</td>
+<td>Tiêu chuẩn, mục tiêu kèm thước đo, vai trò chất lượng, sản phẩm và quy trình được review, cách làm QA và QC</td>
+<td></td>
+</tr>
+<tr>
+<td>2.24</td>
+<td>Quality Metrics</td>
+<td>log</td>
+<td>Hạng mục, thước đo, cách đo (từ A01 to A12 và các NFR)</td>
+<td></td>
+</tr>
+<tr>
+<td>2.25</td>
+<td>Responsibility Assignment Matrix</td>
+<td>matrix</td>
+<td>Work package đối chiếu người (PM, DEV1 to DEV3, QA1, MOB1) với R, A, C, I</td>
+<td></td>
+</tr>
+<tr>
+<td>2.26</td>
+<td>Resource Management Plan</td>
+<td>fields</td>
+<td>Vai trò với số lượng, kỹ năng, thời điểm nhận và trả người; trách nhiệm và quyền hạn; cơ cấu; đào tạo; khen thưởng; nguồn lực vật chất</td>
+<td></td>
+</tr>
+<tr>
+<td>2.27</td>
+<td>Team Charter</td>
+<td>fields</td>
+<td>Giá trị chung, quy tắc họp, giao tiếp, ra quyết định và giải quyết xung đột, chữ ký thành viên</td>
+<td></td>
+</tr>
+<tr>
+<td>2.28</td>
+<td>Resource Requirements</td>
+<td>log</td>
+<td>Mỗi ID: nguồn lực, số lượng, giả định</td>
+<td></td>
+</tr>
+<tr>
+<td>2.29</td>
+<td>Resource Breakdown Structure</td>
+<td>outline</td>
+<td>Nguồn lực theo nhóm: người, thiết bị, vật tư, đồ dùng</td>
+<td></td>
+</tr>
+<tr>
+<td>2.30</td>
+<td>Communications Management Plan</td>
+<td>fields</td>
+<td>Mỗi stakeholder: thông tin, phương thức, thời điểm, người gửi; giả định, ràng buộc, bảng thuật ngữ</td>
+<td></td>
+</tr>
+<tr>
+<td>2.31</td>
+<td>Risk Management Plan</td>
+<td>fields</td>
+<td>Chiến lược, phương pháp, vai trò, nhóm rủi ro, ngân sách rủi ro, quy tắc dùng dự phòng, mức chấp nhận rủi ro, định nghĩa xác suất và tác động</td>
+<td></td>
+</tr>
+<tr>
+<td>2.32</td>
+<td>Risk Register</td>
+<td>log</td>
+<td>Rủi ro R1 to R12 với owner, xác suất, tác động lên scope, quality, schedule và cost, điểm, phản ứng, các giá trị sau phản ứng</td>
+<td></td>
+</tr>
+<tr>
+<td>2.33</td>
+<td>Risk Report</td>
+<td>fields</td>
+<td>Tóm tắt, tình trạng và động lực rủi ro tổng thể, số rủi ro theo xác suất và tác động, các chỉ số</td>
+<td></td>
+</tr>
+<tr>
+<td>2.34</td>
+<td>Probability and Impact Assessment (in là Probability and Impact Risk Rating)</td>
+<td>matrix</td>
+<td>Định nghĩa Very High đến Very Low cho từng mục tiêu và cho xác suất, ngưỡng xếp hạng</td>
+<td></td>
+</tr>
+<tr>
+<td>2.35</td>
+<td>Probability and Impact Matrix</td>
+<td>matrix</td>
+<td>Ô xác suất và tác động nào nhóm coi là cao, trung bình, thấp</td>
+<td></td>
+</tr>
+<tr>
+<td>2.36</td>
+<td>Risk Data Sheet</td>
+<td>log</td>
+<td>Một rủi ro chi tiết: nguyên nhân, điểm, phản ứng, rủi ro thứ cấp và còn lại, kế hoạch dự phòng, tiền, thời gian, phương án lùi</td>
+<td></td>
+</tr>
+<tr>
+<td>2.37</td>
+<td>Procurement Management Plan</td>
+<td>fields</td>
+<td>Gắn mua sắm với phạm vi, lịch và rủi ro, thời điểm mua sắm, chỉ số, vai trò, giả định, luật áp dụng và tiền tệ, ước lượng độc lập</td>
+<td></td>
+</tr>
+<tr>
+<td>2.38</td>
+<td>Procurement Strategy</td>
+<td>fields</td>
+<td>Hình thức giao, loại hợp đồng, tiêu chí thưởng, vòng đời mua sắm</td>
+<td></td>
+</tr>
+<tr>
+<td>2.39</td>
+<td>Source Selection Criteria</td>
+<td>log</td>
+<td>Tiêu chí với trọng số và điểm cho từng ứng viên</td>
+<td></td>
+</tr>
+<tr>
+<td>2.40</td>
+<td>Stakeholder Engagement Plan</td>
+<td>fields</td>
+<td>Mức tham gia hiện tại và mong muốn của từng stakeholder, thay đổi sắp tới, quan hệ, cách tiếp cận</td>
+<td></td>
+</tr>
+<tr>
+<td>3.1</td>
+<td>Issue Log</td>
+<td>log</td>
+<td>Vấn đề với loại, mô tả, ưu tiên, tác động, người chịu trách nhiệm, trạng thái, ngày và cách giải quyết</td>
+<td></td>
+</tr>
+<tr>
+<td>3.2</td>
+<td>Decision Log</td>
+<td>log</td>
+<td>Quyết định với phân loại, người chịu trách nhiệm, ngày</td>
+<td></td>
+</tr>
+<tr>
+<td>3.3</td>
+<td>Change Request</td>
+<td>fields</td>
+<td>Người yêu cầu, phân loại, mô tả, lý do, tác động lên scope, quality, requirements, cost, schedule và stakeholder, kết quả xử lý</td>
+<td><code>docs/forms/3-3-change-request.en.md</code></td>
+</tr>
+<tr>
+<td>3.4</td>
+<td>Change Log</td>
+<td>log</td>
+<td>Thay đổi với phân loại, người yêu cầu, ngày nộp, trạng thái, kết quả xử lý</td>
+<td></td>
+</tr>
+<tr>
+<td>3.5</td>
+<td>Lessons Learned Register</td>
+<td>log</td>
+<td>Bài học với phân loại, tác nhân, người chịu trách nhiệm</td>
+<td></td>
+</tr>
+<tr>
+<td>3.6</td>
+<td>Quality Audit</td>
+<td>fields</td>
+<td>Người audit, ngày audit, khu vực audit, thực hành tốt, điểm cần cải thiện, lỗi và hành động</td>
+<td></td>
+</tr>
+<tr>
+<td>3.7</td>
+<td>Team Performance Assessment</td>
+<td>fields</td>
+<td>Đánh giá và nhận xét về hiệu suất kỹ thuật và năng lực giao tiếp</td>
+<td></td>
+</tr>
+<tr>
+<td>4.1</td>
+<td>Team Member Status Report</td>
+<td>fields</td>
+<td>Hoạt động kế hoạch, đã làm và chưa làm của một người, chi phí, sai lệch, kỳ tới</td>
+<td></td>
+</tr>
+<tr>
+<td>4.2</td>
+<td>Project Status Report</td>
+<td>fields</td>
+<td>Kết quả trong kỳ, sai lệch và tác động lên mốc và ngân sách, kỳ tới, rủi ro, vấn đề, thay đổi</td>
+<td></td>
+</tr>
+<tr>
+<td>4.3</td>
+<td>Variance Analysis</td>
+<td>fields</td>
+<td>Kế hoạch so với thực tế cho lịch, chi phí và chất lượng, nguyên nhân gốc, phản ứng</td>
+<td></td>
+</tr>
+<tr>
+<td>4.4</td>
+<td>Earned Value Analysis (in là Earned Value Analysis Report)</td>
+<td>fields</td>
+<td>BAC, PV, EV, AC theo kỳ; SV, CV, SPI, CPI; nguyên nhân gốc và tác động</td>
+<td></td>
+</tr>
+<tr>
+<td>4.5</td>
+<td>Risk Audit</td>
+<td>fields</td>
+<td>Sự kiện rủi ro và phản ứng đã xảy ra, quy trình rủi ro có được tuân thủ không</td>
+<td></td>
+</tr>
+<tr>
+<td>4.6</td>
+<td>Contractor Status Report</td>
+<td>fields</td>
+<td>Hiệu suất scope, quality, schedule và cost của nhà thầu, dự báo, khiếu nại, rủi ro</td>
+<td></td>
+</tr>
+<tr>
+<td>4.7</td>
+<td>Procurement Audit</td>
+<td>fields</td>
+<td>Hiệu suất nhà cung cấp, quy trình mua sắm có được tuân thủ không</td>
+<td></td>
+</tr>
+<tr>
+<td>4.8</td>
+<td>Contract Closeout Report (in là Contract Closeout)</td>
+<td>fields</td>
+<td>Hiệu suất nhà cung cấp, thay đổi và tranh chấp hợp đồng, ngày hoàn thành và ngày thanh toán cuối</td>
+<td></td>
+</tr>
+<tr>
+<td>4.9</td>
+<td>Product Acceptance Form (in là Formal Acceptance Form)</td>
+<td>log</td>
+<td>Yêu cầu với tiêu chí nghiệm thu, cách xác nhận, trạng thái, ký duyệt</td>
+<td></td>
+</tr>
+<tr>
+<td>5.1</td>
+<td>Lessons Learned Summary</td>
+<td>fields</td>
+<td>Điều làm tốt và điều cần cải thiện theo từng lĩnh vực, khi kết thúc dự án</td>
+<td></td>
+</tr>
+<tr>
+<td>5.2</td>
+<td>Project or Phase Closeout (in là Project Closeout)</td>
+<td>fields</td>
+<td>Mục tiêu so với kết quả cho scope, quality, time, cost; lợi ích; nhu cầu kinh doanh; rủi ro và vấn đề</td>
+<td></td>
+</tr>
+<tr>
+<td>6.1</td>
+<td>Product Vision</td>
+<td>narrative</td>
+<td>Sản phẩm cho ai, nhu cầu, cách đáp ứng, vì sao khách hàng mua</td>
+<td></td>
+</tr>
+<tr>
+<td>6.2</td>
+<td>Product Backlog</td>
+<td>log</td>
+<td>Hạng mục với tóm tắt, ưu tiên, story, trạng thái</td>
+<td></td>
+</tr>
+<tr>
+<td>6.3</td>
+<td>Release Plan</td>
+<td>chart</td>
+<td>Mục tiêu phát hành, sprint đối chiếu team</td>
+<td></td>
+</tr>
+<tr>
+<td>6.4</td>
+<td>Retrospective</td>
+<td>log</td>
+<td>Start, stop, keep, more, less</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Khoảng trang của từng form nằm trong <code>.claude/skills/pm/references/forms-index.md</code>. Nhãn in chính xác
+của một form: <code>python3 .claude/skills/pm/scripts/check_fidelity.py --list &lt;form&gt;</code>.</p>
+<h2>10. Bảng lệnh nhanh</h2>
+<p>Chạy từ thư mục gốc repo. <code>S=.claude/skills/pm/scripts</code> cho dòng lệnh ngắn hơn.</p>
+<p>```bash
+S=.claude/skills/pm/scripts</p>
+<h1>Tra form</h1>
+<p>python3 $S/extract_form.py 2.32 --fields                 # nhãn in trên form, không cần PDF
+python3 $S/extract_form.py 2.32                          # bảng element và chữ form trống từ PDF
+python3 $S/extract_form.py 2.32 --alignment --tailoring  # phải khớp với gì, tailoring thế nào
+python3 $S/extract_form.py 2.32 --prose                  # toàn bộ phần mô tả
+python3 $S/extract_form.py 2.32 --knowledge              # hướng dẫn từng trường, nguồn, nơi nhận, quyết định; không cần PDF
+python3 $S/check_fidelity.py --list 2.32                 # nhãn cần có, ở dạng Markdown</p>
+<h1>Quyết định</h1>
+<p>python3 $S/pm_calc.py evm --bac <BAC> --pv <PV> --ev <EV> --ac <AC>      # thêm --json cho đầu ra máy đọc
+python3 $S/pm_calc.py pert --o 20 --m 25 --p 36
+python3 $S/pm_calc.py risk-score --probability high --impact very-high
+python3 $S/pm_calc.py evm --bac 700 --pv 280 --ev 252 --ac 294 --threshold 5 --base bac pv   # phần trăm vượt, trong hay ngoài ngưỡng
+python3 $S/pm_calc.py cpm --activity A=5 --activity B=3 --link A,B --slip A=4 --start 2027-01-25 --holiday 2027-02-06:2027-02-14
+python3 $S/pm_calc.py reserve --contingency 28 --used 5 --risk R5=0.3:12
+python3 $S/pm_calc.py evm --bac 700 --threshold 5                        # số tiền ứng với một ngưỡng phần trăm
+python3 $S/pm_calc.py crash --option A 10 7 30 --option B 8 6 12 --needed 4   # phương án crashing theo chi phí thêm mỗi ngày rút được
+python3 $S/pm_calc.py cpm --activity A=5 --activity B=3 --link A,B --start 2027-01-25 --deadline 2027-02-05   # deadline là ngày thì cần --start
+python3 $S/pm_calc.py --help                                             # cả mười tám lệnh con
+python3 $S/form_graph.py 3.3                             # nguồn, nơi nhận, form phải khớp
+python3 $S/form_graph.py --impact 2.9 --depth 1          # cần xem lại gì khi 2.9 đổi
+python3 $S/form_graph.py --order --group Planning        # thứ tự tạo form từ các liên kết đã ghi
+python3 $S/form_graph.py --check                         # liên kết một chiều trong các file knowledge
+python3 $S/form_graph.py --markdown --out .claude/skills/pm/references/form-graph.md   # sinh lại bản đã commit</p>
+<h1>Dựng khung</h1>
+<p>python3 $S/new_form.py 2.32                              # in ra màn hình, không ghi gì
+python3 $S/new_form.py 2.32 --docs                       # ghi docs/forms/2-32-risk-register.en.md
+python3 $S/new_form.py 2.32 --rows 12 --out /tmp/r.md    # thêm dòng, đường dẫn khác
+python3 $S/new_form.py 2.32 --docs --force               # ghi đè
+python3 $S/new_form.py 4.2 --out /tmp/reports/ --dated 2026-10-19   # bản có ngày trong một thư mục, không bao giờ vào docs/
+python3 $S/risk_actions.py docs/scope-package.en.md      # ô Actions của 2.32 cho từng rủi ro</p>
+<h1>Kiểm tra</h1>
+<p>python3 $S/check_fidelity.py docs/forms/<file>.md <form>
+python3 $S/check_fidelity.py docs/scope-package.en.md 2.7 --section "Part 1:" --flattened
+python3 $S/check_fidelity.py docs/scope-package.en.md 2.7 --section "Part 1B" --page 2 --flattened
+python3 $S/check_pages.py <reply>.md                     # mọi số trang đều có số trang in hoặc PDF đi kèm (tiếng Anh hoặc tiếng Việt); mục không kèm trang bị cảnh báo
+python3 $S/load_check.py docs/scope-package.en.md --limit MOB1=20 --leaves MOB1=2026-12-18
+python3 $S/load_check.py docs/scope-package.en.md --charter docs/charter-package.en.md --daily-limit 8
+python3 $S/load_check.py docs/scope-package.en.md --schedule docs/forms/2-18-project-schedule.en.md --limit MOB1=20   # các dòng của 2.18 đã cân bằng
+python3 $S/check_consistency.py docs/forms/<file>.md docs/charter-package.en.md docs/scope-package.en.md --report docs/forms/<file>.md
+python3 $S/check_consistency.py docs/charter-package.en.md docs/scope-package.en.md --errors-only
+python3 $S/check_consistency.py charter scope --group --today 2026-10-15   # một dòng cho mỗi loại; Date Prepared so với một ngày
+python3 tools/check_scope.py
+python3 tools/level.py</p>
+<h1>Xuất Word</h1>
+<p>uv run --with python-docx $S/md_to_docx.py docs/forms/<file>.md
+uv run --with python-docx $S/md_to_docx.py docs/forms/<file>.md -o <out>.docx</p>
+<h1>Payload cho Google Doc (không cần đăng nhập)</h1>
+<p>python3 tools/scope_tab3.py --out /tmp/tab3.md
+PYTHONDONTWRITEBYTECODE=1 python3 -c "import sys; sys.path.insert(0, 'tools'); import gdoc_schedule_tab as g; print(g.build())" &gt; /tmp/schedule-tab.md</p>
+<h1>Test</h1>
+<p>uv run --with pytest --with python-docx pytest -q .claude/skills/pm/scripts
+python3 -m unittest discover -s .claude/skills/pm/scripts    # không cần uv, nhưng cần đã cài python-docx
+python3 -m unittest tools.test_check_scope
+```</p>
+<p>Mã thoát: <code>0</code> sạch, <code>1</code> có phát hiện gây lỗi, <code>2</code> dùng sai lệnh (ví dụ thiếu file).</p>
+<h2>11. Xử lý sự cố</h2>
+<table>
+<thead>
+<tr>
+<th>Triệu chứng</th>
+<th>Nguyên nhân</th>
+<th>Cách sửa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>uv: command not found</code></td>
+<td>Chưa cài uv</td>
+<td><code>brew install uv</code>, hoặc <code>curl -LsSf https://astral.sh/uv/install.sh \| sh</code>. Không có uv: <code>python3 -m venv .venv &amp;&amp; .venv/bin/pip install python-docx pytest</code>, rồi dùng <code>.venv/bin/python</code> (<code>.venv/</code> đã nằm trong gitignore)</td>
+</tr>
+<tr>
+<td><code>FileNotFoundError: ... 'pdftotext'</code></td>
+<td>Chưa cài poppler</td>
+<td>macOS <code>brew install poppler</code>; Ubuntu hoặc WSL <code>sudo apt install poppler-utils</code>. Trong lúc chờ, <code>--fields</code> vẫn chạy được</td>
+</tr>
+<tr>
+<td><code>A_Project_Managers_Book_of_Forms.pdf not found ...; pass --pdf</code></td>
+<td>Chạy ngoài repo, hoặc thiếu PDF</td>
+<td><code>cd</code> về thư mục gốc repo, hoặc thêm <code>--pdf &lt;path&gt;</code></td>
+</tr>
+<tr>
+<td><code>several forms match 'risk'</code></td>
+<td>Tên khớp nhiều form</td>
+<td>Dùng số hiệu, ví dụ <code>2.32</code></td>
+</tr>
+<tr>
+<td><code>unknown form or document: 9.9</code> (thoát mã 2) từ <code>form_graph.py</code></td>
+<td>Đối số không phải số hiệu form cũng không phải tên có trong đồ thị</td>
+<td>Dùng số ở mục 9, hoặc tên bên ngoài đúng như sách viết, ví dụ <code>"Scope baseline"</code></td>
+</tr>
+<tr>
+<td><code>form_graph.py --impact 2.9</code> in ra khoảng một trăm tài liệu</td>
+<td>Không có <code>--depth</code> thì nó đi theo mọi liên kết xuống hết, mà đồ thị rất dày</td>
+<td>Thêm <code>--depth 1</code> hoặc <code>--depth 2</code></td>
+</tr>
+<tr>
+<td><code>pm_calc.py</code> thoát mã 2 kèm <code>error:</code></td>
+<td>Công thức không nhận được đầu vào: BAC bằng không, xác suất ngoài 0 đến 100%, <code>80%</code> trơn ở Table 2.31, <code>nan</code></td>
+<td>Đọc thông báo; nó nêu đầu vào nào và vì sao. Đưa số còn thiếu hoặc từ chỉ mức</td>
+</tr>
+<tr>
+<td>Một con số hiện <code>not stated in the book</code></td>
+<td>Hai cuốn sách không in công thức cho nó (độ lệch chuẩn beta, phần trăm sai lệch; hoàn vốn và các lượt tính đường găng là công cụ tính ngoài sách)</td>
+<td>Thống nhất cách tính với nhóm và ghi vào 3.2; đừng trích sách cho nó</td>
+</tr>
+<tr>
+<td><code>no knowledge file for form ...</code> từ <code>extract_form.py --knowledge</code></td>
+<td>Số hiệu sai hoặc thiếu file</td>
+<td>Dùng <code>references/knowledge/&lt;number&gt;.json</code>; cả 66 form đều có</td>
+</tr>
+<tr>
+<td><code>... exists; pass --force to overwrite it</code></td>
+<td><code>new_form.py</code> không ghi đè</td>
+<td><code>--out &lt;đường dẫn khác&gt;</code>, hoặc <code>--force</code> nếu đúng ý</td>
+</tr>
+<tr>
+<td><code>tools/gdoc_edit.py not found; run this from inside the repo</code></td>
+<td>Chạy <code>md_to_docx.py</code> ngoài repo</td>
+<td>Chạy từ thư mục gốc repo</td>
+</tr>
+<tr>
+<td>Skill không chạy</td>
+<td>Claude Code mở ngoài repo, hoặc yêu cầu không giống việc PM</td>
+<td>Mở Claude Code tại thư mục gốc repo, gõ <code>/pm &lt;form&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Đọc một kiểm tra fidelity bị lỗi</h3>
+<p><code>check_fidelity.py</code> chạy trên <code>.claude/skills/pm/scripts/fixtures/fidelity/broken-2-32.md</code>, một lần
+làm thật trước đây, rút gọn:</p>
+<p><code>text
+2.32 Risk Register, broken-2-32.md lines 1 to 37
+12/22 printed labels present in printed order
+missing (9):
+  page 1, table, bank 1: Impact: Scope (written as 'Impact Scope' on line 9)
+  page 1, table, bank 2: Status
+out of printed order (1):
+  page 1, table, bank 1: Probability (line 9)
+unprinted labels (9), reported only:
+  line 5: Source
+  line 9: Impact Scope (printed as 'Impact: Scope')</code></p>
+<ul>
+<li><strong>missing</strong>: thiếu một nhãn in. Có "written as" nghĩa là nhãn có nhưng sai chính tả; đổi tên lại.
+  Không có gợi ý nghĩa là không có; thêm vào đúng vị trí in.</li>
+<li><strong>out of printed order</strong>: có nhưng sai vị trí; chuyển chỗ.</li>
+<li><strong>unprinted labels</strong>: thứ form không in, như <code>**Source:**</code>. Xóa đi, hoặc ghi rõ là tailoring trong
+  đoạn in nghiêng phía trên form. Mục này không làm hỏng kiểm tra.</li>
+</ul>
+<h3>Đọc một kiểm tra consistency bị lỗi</h3>
+<p>Mỗi dòng có dạng <code>LEVEL file:line [check] message</code>. Ví dụ thật:</p>
+<p><code>text
+WARNING docs/forms/3-3-change-request.en.md:34 [date-style] this table column mixes date styles: plain 1 (first line 34), weekday 2 (first line 34)
+0 error(s), 1 warning(s) in 3 file(s); reporting on docs/forms/3-3-change-request.en.md, 24 finding(s) already in the context files not shown</code></p>
+<table>
+<thead>
+<tr>
+<th>Tên kiểm tra</th>
+<th>Ý nghĩa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>date</code>, <code>date-style</code></td>
+<td>Ngày không theo kiểu <code>2 September 2026</code>, hoặc trộn kiểu trong một cột</td>
+</tr>
+<tr>
+<td><code>range</code></td>
+<td>Một khoảng như <code>R1 to R10</code> dừng trước phần tử cuối hiện tại</td>
+</tr>
+<tr>
+<td><code>role-merge</code></td>
+<td>Lẫn từ ngữ của sponsor và customer</td>
+</tr>
+<tr>
+<td><code>term</code></td>
+<td>Một từ trong bảng "Never write" của <code>house-style.md</code></td>
+</tr>
+<tr>
+<td><code>html</code>, <code>em-dash</code>, <code>emoji</code></td>
+<td>Markup hoặc ký tự không sống sót khi lên Doc hoặc vi phạm quy tắc</td>
+</tr>
+<tr>
+<td><code>mark-on-label</code></td>
+<td>Tô vàng nhãn hoặc tiêu đề</td>
+</tr>
+<tr>
+<td><code>total</code></td>
+<td>Dòng Total không bằng tổng các dòng</td>
+</tr>
+<tr>
+<td><code>uniform-column</code></td>
+<td>Mọi dòng cùng một giá trị, nên cột không mang thông tin</td>
+</tr>
+<tr>
+<td><code>id-conflict</code></td>
+<td>Một ID có hai nội dung khác nhau</td>
+</tr>
+<tr>
+<td><code>section-ref</code></td>
+<td>Tham chiếu tới mục không có trong tài liệu nộp</td>
+</tr>
+<tr>
+<td><code>approvals</code></td>
+<td>Khối chữ ký không giống bản in</td>
+</tr>
+<tr>
+<td><code>form-note</code></td>
+<td>Có chữ bên trong form in mà form không in</td>
+</tr>
+<tr>
+<td><code>note-length</code></td>
+<td>Một đoạn in nghiêng phía trên form (các dòng xuống hàng tính là một đoạn) dài quá khoảng 150 từ</td>
+</tr>
+<tr>
+<td><code>date-prepared</code></td>
+<td>Với <code>--today</code>: Date Prepared sau ngày đó (lỗi) hoặc trước ngày đó (cảnh báo, xác nhận nội dung được kiểm lần cuối vào ngày ấy)</td>
+</tr>
+<tr>
+<td><code>stale-m0</code></td>
+<td>Việc bổ nhiệm project manager gắn với M0 hoặc một ngày trước đó, trong tài liệu lập sau M0</td>
+</tr>
+<tr>
+<td><code>table-rule</code></td>
+<td>Dòng <code>---</code> nằm ngay dưới một dòng bảng, bị bộ sinh Doc biến thành một ô thừa</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Error làm lần chạy thất bại; warning thì không. Mọi cảnh báo <code>range</code> phải được sửa hoặc giải thích, vì
+  đây là kiểm tra đã bắt được <code>R1 to R10</code>.</li>
+<li>Với <code>--report</code>, các phát hiện đã có sẵn trong charter hoặc scope package chỉ được đếm ở cuối, không
+  hiển thị. Tài liệu nguồn vẫn còn một số lỗi (ví dụ ngày viết tắt trong charter); đó là việc riêng,
+  không phải lý do form của bạn bị lỗi.</li>
+<li>Phát hiện của script là manh mối. Mở dòng đó ra đọc trước khi sửa.</li>
+</ul>
+<h2>12. Cải tiến skill</h2>
+<h3>Cấu trúc</h3>
+<table>
+<thead>
+<tr>
+<th>Đường dẫn</th>
+<th>Sửa gì ở đây</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.claude/skills/pm/SKILL.md</code></td>
+<td>Quy trình làm form và đường quyết định Claude làm theo (giữ dưới 450 dòng)</td>
+</tr>
+<tr>
+<td><code>references/decisions.md</code></td>
+<td>Danh mục quyết định: bảng định tuyến, 43 quyết định, đường kiểm soát thay đổi, định dạng khuyến nghị</td>
+</tr>
+<tr>
+<td><code>references/pmbok-&lt;area&gt;.md</code></td>
+<td>Một ghi chú PMBOK 6 cho mỗi lĩnh vực kiến thức, và <code>pmbok-agile.md</code>; bảng form đến ghi chú nằm trong <code>SKILL.md</code></td>
+</tr>
+<tr>
+<td><code>references/knowledge/&lt;form&gt;.json</code></td>
+<td>Mỗi trường chứa gì, nguồn, nơi nhận, alignment, quyết định; đọc qua <code>extract_form.py --knowledge</code>. <code>form_graph.py</code> dựng từ đây</td>
+</tr>
+<tr>
+<td><code>references/book-structure.md</code>, <code>references/form-graph.md</code></td>
+<td>Cách sách được tổ chức; bản đồ form sinh tự động (sinh lại bằng <code>form_graph.py --markdown --out references/form-graph.md</code>)</td>
+</tr>
+<tr>
+<td><code>references/review-lessons.md</code></td>
+<td>Những gì reviewer bắt, và cách kiểm tra</td>
+</tr>
+<tr>
+<td><code>references/house-style.md</code></td>
+<td>Quy tắc đánh dấu, ngày, bảng "Never write", nơi chứa dữ liệu dự án</td>
+</tr>
+<tr>
+<td><code>references/rendering.md</code></td>
+<td>Mỗi loại form thành Markdown thế nào</td>
+</tr>
+<tr>
+<td><code>references/forms-index.md</code></td>
+<td>66 form, trang, loại, tiêu đề in</td>
+</tr>
+<tr>
+<td><code>references/fields/&lt;form&gt;.json</code></td>
+<td>Nhãn in của từng form; sửa ở đây nếu một nhãn sai</td>
+</tr>
+<tr>
+<td><code>references/audit-template.md</code>, <code>references/push-audit.md</code></td>
+<td>Mẫu báo cáo audit; audit form được sinh tự động (sinh lại vào bản sao tạm) và payload đẩy lên Doc</td>
+</tr>
+<tr>
+<td><code>references/book-counts.json</code></td>
+<td>Số dòng sách in trong một bảng có tên, cho kiểm tra <code>count</code> của <code>check_consistency.py</code></td>
+</tr>
+<tr>
+<td><code>scripts/*.py</code>, <code>scripts/test_*.py</code>, <code>scripts/fixtures/</code></td>
+<td>Script, test và dữ liệu test, gồm <code>pm_calc.py</code>, <code>form_graph.py</code>, <code>check_schedule.py</code>, <code>load_check.py</code>, <code>check_pages.py</code> và <code>risk_actions.py</code></td>
+</tr>
+<tr>
+<td><code>evals/evals.json</code></td>
+<td>Câu lệnh test kèm assertion chấm được</td>
+</tr>
+</tbody>
+</table>
+<h3>Thêm một bài học review</h3>
+<p>Khi reviewer bắt một lỗi mới trên Doc:</p>
+<ol>
+<li>Thêm vào mục phù hợp của <code>references/review-lessons.md</code> (1 người và vai trò, 2 ID và khoảng, 3 số
+   liệu, 4 phạm vi, 5 tiền, 6 tiêu chí thành công, 7 bố cục, 8 markup, 9 ngày, 10 tính đầy đủ, 11 trả
+   lời). Ghi sai ở đâu, vì sao reviewer quan tâm, cách kiểm tra, và trích ID thread hoặc audit.</li>
+<li>Một từ bị cấm: thêm một dòng vào bảng "Never write | Write instead | Why" trong
+   <code>references/house-style.md</code>. Kiểm tra consistency đọc bảng này, không cần sửa code.</li>
+<li>Một quy tắc kiểm tra được bằng máy: thêm kiểm tra vào <code>scripts/check_consistency.py</code>, đánh dấu bài
+   học <strong>[script]</strong>, và thêm fixture trong <code>scripts/fixtures/consistency/</code>: <code>fnNN-*.md</code> phải bị bắt,
+   <code>fpNN-*.md</code> không được bị bắt. Đăng ký chúng trong <code>scripts/test_check_consistency.py</code>.</li>
+<li>Một nhãn in bị sai: sửa <code>references/fields/&lt;form&gt;.json</code> sau khi xem trang form trống (<code>Read</code> trang
+   PDF, hoặc <code>pdftotext -layout -f N -l N A_Project_Managers_Book_of_Forms.pdf -</code>).</li>
+</ol>
+<h3>Chạy test</h3>
+<p><code>bash
+uv run --with pytest --with python-docx pytest -q .claude/skills/pm/scripts</code></p>
+<p>Kết quả hiện tại: <code>481 passed</code> cùng các subtest. <code>test_pm_skill.py</code> còn kiểm <code>SKILL.md</code> giữ dưới 450 dòng, phần description vừa 1,024 ký tự, và các eval đúng cấu trúc; <code>test_pm_calc.py</code> dựng lại các ví dụ có tính toán mà sách in. Chạy lại sau mọi thay đổi trong <code>.claude/skills/pm/</code>.</p>
+<h3>Chạy eval</h3>
+<p><code>evals/evals.json</code> có chín câu lệnh kèm assertion: audit charter và scope package, form 1.3 Stakeholder
+Register từ câu hỏi tiếng Việt, form 2.32 Risk Register, audit giữ riêng cho lịch 2.18, form 4.2 trống,
+và bốn câu hỏi quyết định (trễ tiến độ phần mobile, tình trạng earned value với số liệu cho sẵn, xử lý
+R5, và câu hỏi tiếng Việt về nơi ghi một chức năng mới). Để chạy, hỏi Claude Code:</p>
+<p><code>text
+Use the skill-creator skill to run the pm evals in .claude/skills/pm/evals/evals.json
+and write the results to .claude/skills/pm-workspace/iteration-&lt;N&gt;/.</code></p>
+<p>Các lần chạy trước nằm ở <code>.claude/skills/pm-workspace/iteration-1/</code> và <code>iteration-2/</code>: mỗi eval một
+thư mục chứa output, và <code>benchmark.md</code> với tỉ lệ đạt so với phiên bản skill trước. Khi thêm eval, ghi
+đủ <code>id</code>, <code>eval_name</code>, <code>prompt</code>, <code>expected_output</code>, <code>files</code> và <code>assertions</code>, và viết mỗi assertion sao
+cho người khác kiểm được chỉ từ output.</p>
+<h3>Thêm hoặc sửa tri thức về quyết định</h3>
+<ul>
+<li>Một dữ kiện PMBOK hay Book of Forms trong một quyết định: sửa <code>references/pmbok-&lt;area&gt;.md</code> tương ứng và
+  <code>references/decisions.md</code>, ghi trang theo cả hai cách đánh số, rồi mở trang ra kiểm.</li>
+<li>Liên kết hay hướng dẫn trường của một form: sửa <code>references/knowledge/&lt;form&gt;.json</code>. Chạy
+  <code>form_graph.py --check</code> xem phía kia có liệt kê liên kết không, và <code>form_graph.py --markdown --out references/form-graph.md</code> để sinh lại
+  (không có <code>--out</code> thì chỉ in ra, và một test báo lỗi khi bản đã commit cũ).</li>
+<li>Một công thức: sửa <code>scripts/pm_calc.py</code> khi một cuốn sách in công thức đó, và thêm test với ví dụ có tính
+  toán của sách. Phép tính mà sách chỉ nêu hoặc vẽ (hoàn vốn, các lượt tính đường găng) có thể thêm như công
+  cụ tính ngoài sách, ghi rõ như vậy trong đầu ra và docstring. Nếu không, công cụ phải ghi "not stated in
+  the book".</li>
+</ul>
+<h3>Trước khi commit</h3>
+<ul>
+<li>Test chạy qua.</li>
+<li>Không em dash, en dash hay emoji (<code>CLAUDE.md</code>).</li>
+<li>Không ghi AI vào commit message.</li>
+<li>Không ghi Doc ID hay giá trị hardcode nào vào file.</li>
+</ul>
+</body>
+</html>
