@@ -67,9 +67,7 @@ REWRITES = [
      "the scope baseline of section 3 as committed on 14 October 2026"),
 ]
 REQUIREMENTS_REWRITES = [
-    ("`3-3-change-request-scope.en.md` defers", "The scope change request of section 5.7 defers"),
-    ("`3-3-change-request.en.md` moves", "the schedule change request moves"),
-    ("The charter and the scope package stay the baseline", "The charter and the scope baseline stay in force"),
+    ("the scope change request that carries it", "the scope change request of section 5.7 that carries it"),
 ]
 HEADER = "| Field | Content |\n| --- | --- |\n"
 TITLE_LINES = re.compile(r"^\*\*(Project Title|Date Prepared):\*\* .*\n", re.M)
