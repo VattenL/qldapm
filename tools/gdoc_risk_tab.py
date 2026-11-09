@@ -49,8 +49,8 @@ FOOTER = "Page 1 of 1"
 WIDTHS = [[50, 80, 380, 138],
           [50, 70, 132, 132, 132, 132],
           [160, 120, 120, 120],
-          [24, 130, 44, 42, 58, 58, 58, 58, 46, 130],
-          [24, 42, 50, 50, 50, 50, 46, 56, 160, 30, 90]]
+          [24, 130, 44, 42, 58, 58, 58, 58, 64, 112],
+          [24, 42, 50, 50, 50, 50, 64, 56, 142, 30, 90]]
 BANKS = 2
 # First column of the four Impact columns in each bank; every other column's label spans both header rows.
 IMPACT = [4, 2]
