@@ -199,7 +199,7 @@ Every assumed figure in this document is listed here. None of them is given by t
 | # | Assumption |
 | --- | --- |
 | 1 | The center has 1,200 active students aged 6 to 18, 35 teachers, and 3 branches, and runs no preschool programme. No real customer data is used; this is an academic exercise. |
-| 2 | There are 52 staff users: the 35 teachers plus 17 administrative, finance, and management staff, being 1 Director, 3 academic managers, 9 front-desk staff across the three branches, 3 accountants, and 1 IT administrator. Students and parents are counted separately and are not part of the training target. |
+| 2 | There are 52 staff users: the 35 teachers plus 17 administrative, finance, and management staff, being 1 Director, 3 academic managers, 9 front-desk staff across the three branches, 3 accountants, and 1 IT administrator. Each of the 3 academic managers also manages one of the three branches, so the branch managers are counted among the academic managers and not separately. Students and parents are counted separately and are not part of the training target. |
 | 3 | The parent portal peaks at about 300 concurrent sessions, when results are published or a tuition notice goes to the whole center. |
 | 4 | Annual tuition turnover is about 7,200,000,000 VND, being 1,200 students at about 6,000,000 VND a year. |
 | 5 | Manual duplicate data entry costs about 60 staff-hours a month, at a fully loaded cost of about 60,000 VND a staff-hour. |
@@ -358,16 +358,24 @@ Total **700,000,000 VND**, from the center's <mark>2026 to 2027 capital budget</
 | --- | --- |
 | <mark>Dr. Nguyễn Mạnh Hùng</mark> | Sponsor: authorises the project and this charter, releases the funding, approves scope changes beyond the project manager's authority, gives final acceptance |
 | <mark>Đỗ Thị Bích Ngọc</mark>, owner and Center Director | Customer: owns the business need, commits the center's staff and data to the project, and takes the system into daily operation |
+| Branch managers, being the 3 academic managers (assumption 2) | Run the daily operation of their branch, which switches over at go-live; the sponsor champions the project with them |
 | Academic Manager | Business owner for courses, classes, scheduling, assessment; main requirement source and UAT lead |
 | Accountant | Business owner for tuition, debt, and payroll; owner of the tuition benefit; UAT participant |
 | Front-desk / Admissions supervisor | Business owner for enrollment and payment recording; represents the daily users |
 | Head Teacher | Represents the 35 teachers for attendance, scores, and teaching-hour screens |
+| Teachers | End users of attendance, scores, teaching-hour sheets, and the mobile app |
 | Students and parents | End users of schedule, result, and tuition views; recipients of notifications |
 | Center IT administrator | Receives the system at handover; operates accounts, backup, and hosting afterwards |
 | Project Manager | Plans, executes, and controls the project; single point of contact for the sponsor |
 | Development team, 3 developers, 1 part-time mobile developer, and 1 QA | Analysis, design, build, test, deployment, documentation |
+| Supplier line management | Keeps hiring, firing, and contractual employment decisions for the team; provides a replacement team member |
+| Supplier support desk | Takes over the warranty for months 2 to 6 after go-live |
 | Notification gateway provider | External supplier of the SMS and email channel |
 | Cloud hosting provider | External supplier of the production and staging environment |
+| Apple, App Store | Reviews and publishes the iOS app under the center's account |
+| Google, Google Play | Reviews and publishes the Android app under the center's account |
+| Push notification service provider | External supplier of push delivery to the app |
+| State authority enforcing the Law on Personal Data Protection | Regulates how the personal data of students and guardians is handled |
 
 #### Project approval requirements
 
@@ -487,16 +495,24 @@ M6 to M7 is the first month of the six-month warranty; months 2 to 6 run after c
 | --- | --- |
 | <mark>Dr. Nguyễn Mạnh Hùng</mark> | Sponsor: authorises the project and this charter, releases the funding, approves scope changes, gives final acceptance |
 | <mark>Đỗ Thị Bích Ngọc</mark>, owner and Center Director | Customer: owns the business need, commits the center's staff and data, takes the system into daily operation |
+| Branch managers, being the 3 academic managers | Run the daily operation of their branch, which switches over at go-live |
 | Academic Manager | Business owner for courses, classes, scheduling, assessment; main requirement source and UAT lead |
 | Accountant | Business owner for tuition, debt, and teaching-hour payroll; owner of the tuition benefit; UAT participant |
 | Front-desk / Admissions supervisor | Business owner for enrollment and payment recording; represents the daily users |
 | Head Teacher, teacher representative | Represents the 35 teachers for attendance, scores, and teaching-hour screens |
+| Teachers | End users of attendance, scores, teaching-hour sheets, and the mobile app |
 | Students and parents | End users of schedule, result, and tuition views; recipients of notifications |
 | Center IT administrator | Receives the system at handover; operates accounts, backup, and hosting afterwards |
 | Project Manager | Plans, executes, and controls the project; single point of contact for the sponsor |
 | Development team, 3 developers, 1 part-time mobile developer, and 1 QA engineer | Analysis, design, build, test, deployment, documentation |
+| Supplier line management | Hiring, firing, and contractual employment decisions for the team |
+| Supplier support desk | Warranty for months 2 to 6 after go-live |
 | SMS and email gateway provider | External supplier of the notification channel |
 | Cloud hosting provider | External supplier of the production and staging environment |
+| Apple, App Store | Store review and publication of the iOS app |
+| Google, Google Play | Store review and publication of the Android app |
+| Push notification service provider | External supplier of push delivery to the app |
+| State authority enforcing the Law on Personal Data Protection | Regulator of personal data handling |
 
 | Field | Content |
 | --- | --- |
