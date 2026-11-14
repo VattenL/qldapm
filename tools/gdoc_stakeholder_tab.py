@@ -67,6 +67,7 @@ REGISTER_REWRITES = [
 ANALYSIS_REWRITES = [
     ("stakeholders of form 1.3 Stakeholder Register, with",
      "stakeholders of form 1.3 Stakeholder Register of section 9.1, with"),
+    ("entered in form 1.2 Assumption Log as assumption 20", "entered in form 1.2 Assumption Log of section 10 as assumption 20"),
 ]
 TITLE_LINES = re.compile(r"^\*\*(Project Title|Date Prepared):\*\* .*\n", re.M)
 NOTE = re.compile(r"^\*([^*].*)\*$", re.M)
