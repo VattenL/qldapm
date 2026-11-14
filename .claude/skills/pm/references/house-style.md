@@ -22,9 +22,23 @@ Which unknown marking to use: an empty cell for each cell of a register grid tha
 session); `[TBD]` only for a single box, or where an empty cell would read as an oversight. One document uses one of the two for the same kind of cell, and
 the italic paragraph says which and why once.
 
-`<mark>` is the only HTML allowed in these documents. `tools/gdoc.py` turns it
-into a yellow highlight in the Google Doc, which is how the course requires
-assumed content to be flagged, so it is load-bearing rather than decorative.
+**In the coursework Doc, "known" means given by the brief.** The grader reads
+yellow against `docs/requirements.md`, not against the team's charter: a figure
+the team chose for the case (1,200 students, 35 teachers, 3 branches, 60
+staff-hours, 8%, milestone dates, unit prices, the sponsor's and customer's
+names) is uncertain to the grader, so it is inside `<mark>` where it
+originates, in the charter, and every copy elsewhere is marked the same way
+(`review-lessons.md` section 12). A value the user confirms in the
+conversation, or a published price with its source, is known.
+
+Two tags are allowed in these documents. `<mark>` is turned into a yellow
+highlight in the Google Doc by every tab writer, which is how the course
+requires assumed content to be flagged, so it is load-bearing rather than
+decorative. `<ins>` marks a cell changed in the current version of a revised
+form and becomes a green shading; only `tools/gdoc_risk_tab.py` converts it
+today, so use it only in a form whose writer does, wrap the whole cell, keep
+it outside any `<mark>` (`<ins><mark>...</mark></ins>`), and say so in the
+italic paragraph (`review-lessons.md` section 13).
 
 When a value is assumed, say what it was inferred from in the same cell if that
 fits in a clause. A reviewer who can see the reasoning can confirm or reject it
@@ -42,8 +56,9 @@ come from.
 | --- | --- | --- |
 | 1.3 Classification | 1.4 Stakeholder Analysis, or the user | Empty, with 1.4 named as its source. A first pass derived by a stated rule, inside `<mark>`, only when the user asks for one |
 | 1.4 Power, Interest, Influence, Impact | the user or a stakeholder workshop | Empty |
-| 2.32 and 2.36 Probability, Impact, Score | a scoring session (2.31 definitions, 2.34, 2.35) | Empty, or `[TBD]` |
-| 2.32 Owner and Responsible Party, 3.1 Responsible Party, 3.2 Responsible Party | a document that names a person as the owner | Empty, and the missing owners listed as a question in the reply. A role the charter has not filled (a project manager "to be assigned") does not count, a risk response that says "name the Accountant as benefit owner" or "sponsor-approved replacement" is a response and not an owner, and the Responsible Person of a WBS dictionary sheet owns that package's work, not a risk or a decision |
+| 2.32 and 2.36 Probability, Impact, Score, and the Revised columns | a scoring session on the 2.31 definitions (2.34, 2.35) | The reviewers expect a first reading (`review-lessons.md` section 15): define the scales above the form when no 2.31 exists, then fill every cell inside `<mark>` as the preparer's reading; Revised values forecast the residual risk once the response is carried out. Empty only when the user asks for a register with no reading |
+| 2.32 Owner and Responsible Party | a document that names an owner | One role per risk, named as in 2.28 (`Project manager (PM)`), inside `<mark>` as the preparer's proposal, and listed in the reply for the team to confirm (Đại Dũng Nguyễn, 4 November: every risk has an owner). A role the charter has not filled is still a role; never write a person's name no document gives |
+| 3.1 Responsible Party, 3.2 Responsible Party | a document that names a person or role as responsible | Empty, and the missing person listed as a question in the reply. A risk response that says "name the Accountant as benefit owner" or "sponsor-approved replacement" is a response and not an owner, and the Responsible Person of a WBS dictionary sheet owns that package's work, not an issue or a decision |
 | 2.32 and 3.1 Status | the register itself: a new record is Open until a document records it done or closed | Plain `Open`, not marked; say once in the italic paragraph that no response is complete yet |
 | 2.6 and 2.7 Priority | the requirements documentation | Copied; if every row has one value, say why once above the table |
 
@@ -240,8 +255,9 @@ and 78-sheet WBS dictionary (2.10). Its totals are fixed by the charter and
 in all). Resource codes are PM, DEV1 to DEV3, QA1 and MOB1. `docs/wbs_req.md` is the brief for that package and
 records which class notes were checked against the book.
 
-When the Markdown changes, the Google Doc is regenerated from it with
-`tools/gdoc.py` or `tools/gdoc_edit.py`, never hand-edited. Regenerating is not
+When the Markdown changes, the Google Doc is regenerated from it by the tab's
+writer (`project.md` section 2); the team also edits the Doc by hand, so a push
+keeps what the live tab kept (`review-lessons.md` section 10). Regenerating is not
 a guarantee, though: the Doc's tab 3 fell 108 paragraphs behind its source
 (audit E9) because the generator, `tools/scope_tab3.py`, dropped everything
 before Part 1 and turned the WBS outline into a table (audit E8), not because

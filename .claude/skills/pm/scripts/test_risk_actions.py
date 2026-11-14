@@ -24,11 +24,31 @@ class Actions(unittest.TestCase):
     def test_a_work_package_is_written_with_its_title_and_several_are_joined_by_a_semicolon(self):
         titles = ra.sheet_titles(PACKAGE)
         found, missing = ra.actions(ra.coverage_row(PACKAGE)[1], titles)
-        self.assertEqual(found, {"R1": ["1.2.3.2", "1.2.3.3"], "R2": ["1.2.3.2"]})
+        self.assertEqual(found, {"R1": [("1.2.3.2", ""), ("1.2.3.3", "")], "R2": [("1.2.3.2", "")]})
         self.assertEqual(missing, [])
         self.assertEqual(ra.render(found["R1"], titles),
-                         "Work package 1.2.3.2, Notification gateway proof of concept; "
-                         "Work package 1.2.3.3, Cross-platform framework proof")
+                         "Work package 1.2.3.2 Notification gateway proof of concept: ; "
+                         "Work package 1.2.3.3 Cross-platform framework proof: ")
+
+    def test_the_action_the_coverage_row_gives_follows_the_colon(self):
+        row = PACKAGE.replace("R1 1.2.3.2 and 1.2.3.3;", "R1 1.2.3.2 (send test messages behind one interface) and "
+                                                           "1.2.3.3: run the framework on both platforms;")
+        titles = ra.sheet_titles(row)
+        found, _missing = ra.actions(ra.coverage_row(row)[1], titles)
+        self.assertEqual(ra.render(found["R1"], titles),
+                         "Work package 1.2.3.2 Notification gateway proof of concept: send test messages behind one "
+                         "interface; Work package 1.2.3.3 Cross-platform framework proof: run the framework on both "
+                         "platforms")
+
+    def test_an_empty_action_is_named_for_the_writer(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "scope.md"
+            path.write_text(PACKAGE, encoding="utf-8")
+            out, err = io.StringIO(), io.StringIO()
+            with contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
+                self.assertEqual(ra.main([str(path)]), 0)
+            self.assertIn("R1\tWork package 1.2.3.2 Notification gateway proof of concept: ; ", out.getvalue())
+            self.assertIn("R1: no action text for 1.2.3.2, 1.2.3.3", err.getvalue())
 
     def test_a_code_with_no_sheet_is_reported_and_the_exit_code_is_one(self):
         with tempfile.TemporaryDirectory() as tmp:

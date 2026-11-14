@@ -2,11 +2,28 @@
 
 import contextlib
 import io
+import shutil
+import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
 
 import load_check as lc
+
+FIXTURES = Path(__file__).resolve().parent / "fixtures" / "load"
+
+
+def fixture(name):
+    return (FIXTURES / (name + ".md")).read_text(encoding="utf-8")
+
+
+def run_main(*argv):
+    """(exit code, stdout, stderr) of the command line."""
+    out, err = io.StringIO(), io.StringIO()
+    with contextlib.redirect_stdout(out), contextlib.redirect_stderr(err):
+        code = lc.main([str(a) for a in argv])
+    return code, out.getvalue(), err.getvalue()
 
 SHEET = """#### {code} {name}
 
@@ -148,6 +165,69 @@ class Load(unittest.TestCase):
                 self.assertEqual(lc.main([str(path), "--holiday", "not-a-date"]), 2)
                 self.assertEqual(lc.main([str(path), "--limit", "DEV1"]), 2)
                 self.assertEqual(lc.main([str(path) + ".missing"]), 2)
+
+
+class Fixtures(unittest.TestCase):
+    """The fp fixtures come from the 14 November 2026 run over the team's documents (tool-run.md FP13, FP14); the
+    x fixtures are charters that crashed the run instead of giving a usage error."""
+
+    def test_fp01_schedule_rows_are_judged_by_the_hours_a_week_must_hold(self):
+        # Write 40 h in week 1 and Review 40 h over weeks 1 and 2: the form places Review in week 2, peak 40 h.
+        code, out, _err = run_main(FIXTURES / "fp01-schedule-even-spread-scope.md", "--schedule",
+                                   FIXTURES / "fp01-schedule-even-spread-schedule.md")
+        self.assertEqual(code, 0, out)
+        self.assertIn("0 finding(s)", out)
+
+    def test_fp01_a_week_the_rows_must_overfill_is_still_reported(self):
+        sched = fixture("fp01-schedule-even-spread-schedule").replace(
+            "| 10 days | Mon 14 September 2026 | Fri 25 September 2026 |",
+            "| 6 days | Mon 14 September 2026 | Mon 21 September 2026 |")
+        found, unmatched = lc.schedule_allocations(fixture("fp01-schedule-even-spread-scope"), sched)
+        findings, _ = lc.check("", {}, {}, found_skipped=(found, unmatched), forced=True)
+        self.assertEqual(len(findings), 1)
+        self.assertIn("at least 72.0 hours", findings[0])
+
+    def test_fp02_a_milestone_named_as_a_start_is_not_a_gate(self):
+        text, charter = fixture("fp02-gate-from-milestone-scope"), fixture("fp02-gate-from-milestone-charter")
+        self.assertEqual(lc.gate_crossings(text, lc.charter_milestones(charter)), [])
+        gates = text.replace("issued every week from M0 |", "issued every week from M0; 2. Gate review at each of "
+                                                            "M0 to M1 |")
+        self.assertEqual([c[:2] for c in lc.gate_crossings(gates, lc.charter_milestones(charter))],
+                         [("1.1.1.2", "M1")])
+
+    def test_fp03_a_window_is_judged_against_the_latest_milestone_its_sheet_lists(self):
+        text, charter = fixture("fp03-gate-latest-milestone-scope"), fixture("fp03-gate-latest-milestone-charter")
+        self.assertEqual(lc.gate_crossings(text, lc.charter_milestones(charter)), [])
+        late = text.replace("Tue 5 January 2027", "Fri 8 January 2027")
+        self.assertEqual([c[:2] for c in lc.gate_crossings(late, lc.charter_milestones(charter))],
+                         [("1.9.1.2", "M6")])
+
+    def test_x01_a_charter_with_the_months_in_full_is_read(self):
+        miles = lc.charter_milestones(fixture("x01-charter-full-months"))
+        self.assertEqual(miles, {"M0": lc.datetime.date(2026, 9, 14), "M1": lc.datetime.date(2026, 10, 2),
+                                 "M6": lc.datetime.date(2027, 1, 5)})
+        code, out, err = run_main(FIXTURES / "fp03-gate-latest-milestone-scope.md", "--charter",
+                                  FIXTURES / "x01-charter-full-months.md")
+        self.assertEqual(code, 0, err)
+
+    def test_x02_a_charter_without_the_milestone_block_is_a_usage_error(self):
+        code, _out, err = run_main(FIXTURES / "fp03-gate-latest-milestone-scope.md", "--charter",
+                                   FIXTURES / "x02-charter-no-milestone-block.md")
+        self.assertEqual(code, 2)
+        self.assertIn("#### Summary milestone schedule", err)
+
+    def test_x03_a_missing_tools_folder_is_a_usage_error(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            scripts = Path(tmp) / "repo" / ".claude" / "skills" / "pm" / "scripts"
+            scripts.mkdir(parents=True)
+            here = Path(__file__).resolve().parent
+            for name in ("load_check.py", "check_schedule.py"):
+                shutil.copy(here / name, scripts / name)
+            done = subprocess.run([sys.executable, str(scripts / "load_check.py"), str(FIXTURES / "x01-charter-full-"
+                                   "months.md")], capture_output=True, text=True, cwd=tmp)
+            self.assertEqual(done.returncode, 2, done.stderr)
+            self.assertIn("tools", done.stderr)
+            self.assertNotIn("Traceback", done.stderr)
 
 
 class Effort(unittest.TestCase):

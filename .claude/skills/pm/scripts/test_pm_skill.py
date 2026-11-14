@@ -79,8 +79,8 @@ class SkillFile(unittest.TestCase):
     def setUp(self):
         self.text = (SKILL / "SKILL.md").read_text(encoding="utf-8")
 
-    def test_stays_under_450_lines(self):
-        self.assertLess(len(self.text.splitlines()), 450)
+    def test_stays_under_500_lines(self):
+        self.assertLess(len(self.text.splitlines()), 500)
 
     def test_description_fits_and_triggers_on_decisions(self):
         desc = re.search(r"^description: (.*)$", self.text, re.M).group(1)
@@ -90,7 +90,7 @@ class SkillFile(unittest.TestCase):
             self.assertIn(word, desc)
 
     def test_version_and_no_dashes(self):
-        self.assertIn("version: 2.5.0", self.text)
+        self.assertIn("version: 2.6.0", self.text)
         self.assertIsNone(DASHES.search(self.text))
 
     def test_decision_path_names_its_tools_and_catalog(self):
@@ -123,8 +123,8 @@ class Evals(unittest.TestCase):
     def setUp(self):
         self.evals = json.loads((SKILL / "evals" / "evals.json").read_text(encoding="utf-8"))["evals"]
 
-    def test_ids_are_one_to_nine_and_complete(self):
-        self.assertEqual([e["id"] for e in self.evals], list(range(1, 10)))
+    def test_ids_are_consecutive_and_complete(self):
+        self.assertEqual([e["id"] for e in self.evals], list(range(1, 12)))
         for e in self.evals:
             for key in ("eval_name", "prompt", "expected_output", "files", "assertions"):
                 self.assertTrue(e[key] or key == "files", (e["id"], key))

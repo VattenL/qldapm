@@ -22,16 +22,21 @@ negative (warning): "the book prints no X" with no page. Write "not stated in
 Vietnamese replies use "trang in 215 (trang PDF 254)"; "trang" alone is a
 printed page. Not read as citations: text inside double quotation marks, a line
 that starts with "> " or "quote:", and "page 3 of 4" or "page 1 of the Doc"
-(a position in a document). Section numbers such as 6.5.2.6 and a bare form
+(a position in a document), and "printed page N" with no partner when N is no
+higher than the longest form's page count (references/fields/*.json), which is a
+page of the printed form ("the printed page 1 pairs Project Sponsor with Date
+Prepared"); a book page that low is rare and is still checked when paired. Section numbers such as 6.5.2.6 and a bare form
 number are not page numbers. "PM" is read as PMBOK only with a section of two or more dots (PM 6.5.2.6) or a
 page cue after it (PM 6.5 p215); a resource code with hours (PM 99.8 hours) is not a reference. Exit code 1 when an error is found, 0 otherwise, 2
 for a usage error.
 """
 
 import argparse
+import json
 import re
 import sys
 from collections import namedtuple
+from pathlib import Path
 
 OFFSETS = (11, 39, 810)
 REF = re.compile(
@@ -50,6 +55,21 @@ DEFERRAL = re.compile(r"\b(?:see|read|in|per|from)\s+(?:the\s+)?(?:note\s+)?`?(?
 NEGATIVE = re.compile(r"\b(?:the\s+)?(?:book|books|PMBOK|Guide)\s+(?:prints|gives|states|names|defines)\s+no\b", re.I)
 SENTENCE = re.compile(r"(?<=[.;:!?])\s+(?=[A-Z(])|\n\n")
 Finding = namedtuple("Finding", "level line message")
+FIELDS = Path(__file__).resolve().parent.parent / "references" / "fields"
+
+
+def longest_form():
+    """The most pages any printed form has; a lower "printed page N" may be a page of the form."""
+    most = 1
+    for p in FIELDS.glob("*.json"):
+        try:
+            most = max(most, int(json.loads(p.read_text(encoding="utf-8")).get("page_count", 1)))
+        except (ValueError, TypeError):
+            continue
+    return most
+
+
+LONGEST_FORM = longest_form()
 
 
 def kind_of(text):
@@ -124,6 +144,8 @@ def check(text):
                     continue
                 partner = [r for r in refs if r[2] != kind and (abs(r[0] - end) <= 45 or abs(start - r[1]) <= 45)]
                 if not partner:
+                    if kind == "printed" and number <= LONGEST_FORM:
+                        continue
                     other = "printed" if kind == "pdf" else "PDF"
                     out.append(Finding("error", n, "%s page %d has no %s number beside it; write both, for example "
                                        "'printed page 215 (PDF page 254)'" % (kind.upper() if kind == "pdf" else kind,

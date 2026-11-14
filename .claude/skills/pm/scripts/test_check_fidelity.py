@@ -252,6 +252,46 @@ class Region(unittest.TestCase):
         self.assertEqual([c.text for c, _ in cf.check(md, spec("2.22")).extra], ["Owner"])
 
 
+class FormBoundaries(unittest.TestCase):
+    """Findings of the 14 November 2026 tool run: fp fixtures must pass clean, fn fixtures must fail."""
+
+    def fixture(self, name):
+        return (FIXTURES / (name + ".md")).read_text(encoding="utf-8")
+
+    def test_the_next_form_in_the_same_file_ends_the_region(self):
+        result = cf.check(self.fixture("fp01-two-forms-one-file"), spec("2.20"))
+        self.assertFalse(result.failed)
+        self.assertEqual(result.extra, [])
+        self.assertEqual(result.end, 11)
+
+    def test_a_table_above_the_title_block_is_not_the_form(self):
+        result = cf.check(self.fixture("fp02-table-above-title-block"), spec("2.32"))
+        self.assertFalse(result.failed)
+        self.assertEqual(result.extra, [])
+        self.assertEqual(result.start, 8)
+
+    def test_a_helper_table_above_the_form_does_not_hide_a_missing_label(self):
+        result = cf.check(self.fixture("fp03-helper-table-above-title-block"), spec("1.4"))
+        self.assertEqual(result.disorder, [])
+        self.assertEqual(result.extra, [])
+        self.assertEqual([s.text for s, _ in result.missing], ["Interest"])
+        self.assertIn("line 5, above the form", result.missing[0][1])
+
+    def test_each_copy_of_a_repeated_form_is_checked(self):
+        code, lines = run_main(FIXTURES / "fn01-repeated-sheet-missing-row.md", "2.10", "--section", "Part 3",
+                               "--flattened")
+        self.assertEqual(code, 1, lines)
+        self.assertTrue(any("Quality Requirements" in x and "line 42" in x for x in lines), lines)
+        self.assertTrue(any("written 2 times" in x for x in lines), lines)
+
+    def test_a_complete_repeated_form_still_passes(self):
+        text = self.fixture("fn01-repeated-sheet-missing-row").replace(
+            "| Acceptance Criteria | Sponsor confirms",
+            "| Quality Requirements | x |\n| Acceptance Criteria | Sponsor confirms")
+        result = cf.check(text, spec("2.10"), section="Part 3", flat_groups=True)
+        self.assertFalse(result.failed, (result.missing, result.disorder))
+
+
 class CommandLine(unittest.TestCase):
     def test_list_prints_the_header_rows(self):
         code, out = run_main("--list", "2.32")

@@ -216,6 +216,45 @@
         "Does not say 'add it to the product backlog 6.2' as the answer for this predictive, baselined project, and does not propose absorbing the function by cutting other estimates; if cost or schedule cannot hold the route is 3.3 to the sponsor",
         "Cites both page numbers for each book claim (in Vietnamese as 'trang in N (trang PDF M)', accepted by check_pages.py), writes no file, and the answer contains no em dash, en dash or emoji"
       ]
+    },
+    {
+      "id": 10,
+      "eval_name": "cross-tab-warranty-and-pending-cr",
+      "prompt": "Before we review the whole plan: how much support staff does the warranty get after go-live, and is that the same in every document and Doc tab? Answer with sources. Read docs/forms/ and the other branches where the skill's project map says a version lives.",
+      "expected_output": "Two readings: about 0.35 FTE and 35,000,000 VND for warranty months 2 to 6 in the charter (budget line 5), the scope package, HEAD 2.28 and 2.29 and form 1.3; 0.2 FTE, 160 hours and 25,120,000 in 2.20, the scope change request of 8 October and tab 7 (origin/resource-tab). The second is the pending request's figure, applied ahead of the sponsor's decision; reported as a disagreement for the team, not settled.",
+      "files": [
+        "docs/charter-package.en.md",
+        "docs/scope-package.en.md"
+      ],
+      "assertions": [
+        "Gives both readings with their figures: 0.35 FTE with 35,000,000 VND, and 0.2 FTE with 160 hours and 25,120,000 VND",
+        "Cites file and line (or the Doc tab) for each reading, re-read at answer time rather than copied from the skill's notes",
+        "Says the 0.2 FTE figure comes from the scope change request of 8 October 2026, which has no disposition, and that a document applying it while it is pending is a finding",
+        "Notes that the Doc's tab 7 follows a version of 2.28 on another branch (origin/resource-tab) than the repo's HEAD, or says it could not check the Doc and why",
+        "Does not pick a winner and names who decides (the sponsor, through the change request)",
+        "Reads references/project.md before the documents and checks each of its claims against the files instead of repeating it",
+        "Lists the Doc tabs that state each reading (tabs 0 and 3 against tabs 5 and 7), or says the Doc was not snapshotted and why",
+        "Names form 3.3 Change Request with both page numbers, PDF page 183 (printed page 172), when it explains why the request decides the figure"
+      ]
+    },
+    {
+      "id": 11,
+      "eval_name": "answer-reviewer-risk-actions-vi",
+      "prompt": "Vatten comment tren tab 8: 'Viet lai action cho de hieu hon. Chua ro hanh dong la gi, moi chi biet vi tri o dau.' Viet lai o Actions cua R5 va soan tra loi.",
+      "expected_output": "A Vietnamese reply in the section 11 pattern (agree first, what changed and where, version and marking) and an R5 Actions cell written as 'Work package <code> <title>: <what is done>' for each package the scope package's coverage check gives for R5, separated by semicolons, the action text marked where it is the preparer's wording.",
+      "files": [
+        "docs/scope-package.en.md"
+      ],
+      "assertions": [
+        "The Actions cell names each work package with its code and its title as the dictionary spells it, then a colon, then a verb phrase saying what is done; packages are separated by semicolons",
+        "The work packages are the ones the scope package's coverage row gives for R5 (risk_actions.py), none invented",
+        "Action wording that no document states is inside <mark>",
+        "The reply is in Vietnamese with diacritics, opens by agreeing, says what changed and where, and names the version and how changed cells are marked",
+        "Nothing is posted to the Doc and no file under docs/ is written unless asked",
+        "Cites the risk register form as form 2.32, PDF page 141 (printed page 130), wherever it names the book",
+        "Keeps the other cells of R5 unchanged, or names each cell it changed and wraps it in <ins> outside any <mark>",
+        "Gives the reply as a draft in the answer and asks before posting it with tools/gdoc.py"
+      ]
     }
   ]
 }

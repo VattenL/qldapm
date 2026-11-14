@@ -89,6 +89,10 @@ CHARTER_AFTER = re.compile(r"^\W{0,2}\s*(?:of|in)\s+(?:the\s+)?(?:project\s+)?ch
 HEADING = re.compile(r"^(#{1,6})\s+(.*)$")
 HEADING_NUMBER = re.compile(r"^(?:(?:Part|Section)\s+)?(\d+(?:\.\d+)*[A-Z]?)[.:]?(?:\s|$)")
 HTML_TAG = re.compile(r"</?([a-zA-Z][a-zA-Z0-9]*)\b[^>]*>")
+# <mark> marks uncertain content; <ins> marks a cell changed in the current version of a revised form
+# (2.32 version 1.1) and wraps the mark: <ins><mark>...</mark></ins>.
+ALLOWED_TAGS = ("mark", "ins")
+INS_IN_MARK = re.compile(r"<mark>(?:(?!</mark>).)*<ins>", re.I)
 ENTITY = re.compile(r"&(?:[a-zA-Z]+|#\d+|#x[0-9a-fA-F]+);")
 EM_DASH = re.compile(r"\u2014|&mdash;|&#8212;|&#x2014;", re.I)
 # Pictographs and the miscellaneous symbol and dingbat blocks, except the three text symbols a
@@ -132,6 +136,12 @@ COUNT_NOUNS = ("elements|risks|milestones|rows|functions|deliverables|requiremen
 COUNT_CLAIM = re.compile(r"\b(?:all|the|these|those|every one of the)\s+(\d{1,3}|%s)\s+(?:[\w'-]+\s+){0,2}?(%s)\b"
                          % ("|".join(NUMBER_WORDS), COUNT_NOUNS), re.I)
 LIST_ITEM = re.compile(r"^(\s*)(?:[-*+]|\d+[.)])\s+\S")
+# What a count claim names right after its noun: "the fourteen elements of section 2A", "of Table 1.1".
+REFERENT = re.compile(r"^\s+(?:of|in)\s+(?:the\s+)?(table|section|part|form)\s+(\d+(?:\.\d+)*[A-Z]?)\b", re.I)
+# Items a claim lists in its own sentence: "the 12 work packages 1.2.3.4, 1.3.1.5, ..." or "F01, F02 and F03".
+ENUM_ITEM = r"(?:\d+(?:\.\d+)+|[A-Z]{1,3}\d{1,3})\b"
+ENUMERATION = re.compile(r"^\s*:?\s*(%s(?:\s*,\s*(?:and\s+)?%s|\s+and\s+%s)+)" % (ENUM_ITEM, ENUM_ITEM, ENUM_ITEM))
+ENUM_RANGE = re.compile(r"^\s*:?\s*([A-Z]{1,3})(\d{1,3})(?: to | through |-|\u2013)\1?(\d{1,3})\b")
 # A short table often has one value throughout for a good reason; from eight rows on, a column
 # with one value is more likely a default nobody revisited.
 MIN_ROWS_FOR_UNIFORM = 8
@@ -219,6 +229,22 @@ def load_terms():
     return terms
 
 
+def party_roles():
+    """{party: role} from the 'Position or role in 1.3' column of the 'External party' table, when it has one."""
+    roles = {}
+    for p in sorted((SKILL_DIR / "references").glob("*.md")):
+        lines = list(enumerate(p.read_text(encoding="utf-8").splitlines(), 1))
+        for _start, header, rows in tables(lines):
+            heads = [plain(h).lower() for h in header]
+            if heads[:2] != ["external party", "written as"]:
+                continue
+            col = next((i for i, h in enumerate(heads) if h.startswith(("position", "role"))), None)
+            for _n, row in rows:
+                if col is not None and col < len(row) and plain(row[0]) and plain(row[col]):
+                    roles[plain(row[0])] = plain(row[col])
+    return roles
+
+
 def load_parties():
     """(party, [names], why) rows of every 'External party | Written as | Why' table in references/."""
     parties = []
@@ -255,11 +281,18 @@ def check_markup(path, lines, labels, out):
                                "a horizontal rule directly under a table row is read as a table row by the Doc "
                                "generator and arrives as a stray '---' cell; leave a blank line between the "
                                "table and the rule"))
+        seen = set()
         for m in HTML_TAG.finditer(line):
-            if m.group(1).lower() != "mark":
+            tag = m.group(1).lower()
+            if tag not in ALLOWED_TAGS and tag not in seen:
+                seen.add(tag)
                 out.append(Finding("error", "html", path, n,
-                                   "<%s> will reach the Google Doc as literal text; only <mark> is converted"
+                                   "<%s> will reach the Google Doc as literal text; only <mark> and, around it, <ins> "
+                                   "are allowed"
                                    % m.group(1)))
+        if INS_IN_MARK.search(line):
+            out.append(Finding("error", "html", path, n,
+                               "<ins> sits inside <mark>; it must wrap the <mark>: <ins><mark>...</mark></ins>"))
         if EM_DASH.search(line):
             out.append(Finding("error", "em-dash", path, n, "em dash; use a comma, semicolon or full stop"))
         for m in ENTITY.finditer(line):
@@ -283,13 +316,26 @@ def check_markup(path, lines, labels, out):
             out.append(Finding("error", "mark-on-label", path, n, "a heading is highlighted"))
 
 
+# A sentence that puts the money outside the cost baseline uses "management reserve" as PMBOK 6 does
+# (section 7.3.2.3): "not requested for the cost baseline; the sponsor may hold it as a management reserve".
+OUTSIDE_BASELINE = re.compile(r"\b(?:outside|above|not\s+(?:[\w-]+\s+){0,3}?(?:for|in|into|part of|within))"
+                              r"\s+the\s+cost\s+baseline\b", re.I)
+
+
 def check_terms(path, lines, terms, out):
-    """Words house-style.md forbids, from its 'Never write' table. A denial ('no X') is allowed."""
+    """Words house-style.md forbids, from its 'Never write' table. A denial ('no X') is allowed. A term
+    in a line that places it outside the cost baseline is a warning: it may be the book's own sense."""
     for never, instead, why in terms:
         pattern = re.compile(r"\b%s\b" % re.escape(never), re.I)
         for n, line in lines:
             for m in pattern.finditer(line):
                 if re.search(r"\b(?:no|not|never|nor)\b(?:\s+\w+)?\s*$", line[:m.start()], re.I):
+                    continue
+                if OUTSIDE_BASELINE.search(line):
+                    out.append(Finding("warning", "term", path, n,
+                                       "'%s' beside a sum kept outside the cost baseline, PMBOK 6's own sense; "
+                                       "confirm it does not name the project's reserve line, which is a '%s'"
+                                       % (m.group(0), instead)))
                     continue
                 out.append(Finding("error", "term", path, n, "'%s': write '%s'%s"
                                    % (m.group(0), instead, "; " + why if why else "")))
@@ -316,11 +362,16 @@ def date_blocks(lines):
     return blocks
 
 
+DATE_PREPARED_LABEL = re.compile(r"^\s*\*\*Date prepared:?\*\*", re.I)
+
+
 def check_dates(path, lines, out):
     """House format is '2 September 2026'; a weekday prefix only if every date beside it has one."""
     blocks = date_blocks(lines)
     styles = defaultdict(lambda: defaultdict(list))
     for n, line in lines:
+        # Date Prepared needs no weekday (it is the day the form was written), so its line sets no prose style.
+        label = bool(DATE_PREPARED_LABEL.match(line))
         pieces = list(enumerate(cells(line))) if (n, 0) in blocks else [(None, line)]
         for col, text in pieces:
             block = blocks.get((n, col), 0)
@@ -331,7 +382,8 @@ def check_dates(path, lines, out):
                 if m.group(2).startswith("0"):
                     out.append(Finding("error", "date", path, n,
                                        "leading zero in '%s'; write the day without it" % m.group(0)))
-                styles[block]["weekday" if m.group(1) else "plain"].append(n)
+                if not (label and block == 0):
+                    styles[block]["weekday" if m.group(1) else "plain"].append(n)
             for m in SHORT_DATE.finditer(text):
                 out.append(Finding("error", "date", path, n,
                                    "abbreviated month in '%s'; write the month in full" % m.group(0).rstrip(".")))
@@ -379,14 +431,19 @@ def check_ranges(path, lines, defined, out):
             if not have or hi <= lo or len(have) < MIN_FAMILY:
                 continue
             top = max(have)
+            last = "%s%0*d" % (family, len(m.group(3)), top)
             if hi > top:
                 out.append(Finding("error", "range", path, n,
-                                   "'%s' runs past the last defined %s, which is %s%d"
-                                   % (m.group(0), family, family, top)))
+                                   "'%s' runs past the last defined %s, which is %s" % (m.group(0), family, last)))
             elif top - NEAR_END <= hi < top and lo == min(have):
+                # "F01 to F11 cannot go live, or F12 arrives late": the IDs left out are named one by one beside
+                # the range. Another range does not count ("F01 to F10, then F11 to F12" may be a stale split).
+                rest = RANGE.sub(" ", line)
+                named = {int(x.group(2)) for x in ID.finditer(rest) if x.group(1) == family}
+                if set(range(hi + 1, top + 1)) & have <= named:
+                    continue
                 out.append(Finding("warning", "range", path, n,
-                                   "'%s' stops short of %s%d; stale if it means the whole family"
-                                   % (m.group(0), family, top)))
+                                   "'%s' stops short of %s; stale if it means the whole family" % (m.group(0), last)))
 
 
 def heading_numbers(lines):
@@ -435,11 +492,22 @@ def check_citations(path, lines, longest, out):
     """A book page cited without saying which numbering: PDF and printed pages differ by 11.
 
     A page number no higher than the longest form's page count is read as a page of a form
-    ("form 1.1 page 3") and left alone; so is a citation with PDF or printed beside it.
+    ("form 1.1 page 3") and left alone; so is a citation with PDF or printed beside it, if the
+    other numbering stands within 45 characters ("printed page 448 (PDF page 487)"). One kind
+    alone ("printed page 515") is reported too.
     """
     for n, line in lines:
         for m in PAGE_CITE.finditer(line):
             if int(m.group(1)) <= longest:
+                continue
+            kind = re.search(r"\b(PDF|printed)\s+$", line[max(0, m.start() - 12):m.start()], re.I)
+            if kind:
+                other = "printed" if kind.group(1).lower() == "pdf" else "PDF"
+                window = line[max(0, m.start() - 45):m.end() + 45]
+                if not re.search(r"\b%s\s+pages?\s+\d" % other, window, re.I):
+                    out.append(Finding("warning", "citation", path, n,
+                                       "'%s %s' has no %s page beside it; write both, for example 'printed page N "
+                                       "(PDF page N+11)'" % (kind.group(1), m.group(0), other)))
                 continue
             near = line[max(0, m.start() - 12):m.end() + 25]
             if re.search(r"\b(?:PDF|printed)\b", near, re.I):
@@ -449,32 +517,63 @@ def check_citations(path, lines, longest, out):
                                "N (printed page N-11)'" % m.group(0)))
 
 
-def check_stakeholders(files, parties, out):
+def stakeholder_lists(files):
+    """(path, start, rows, key column, role column, ID column) of every stakeholder list among files. The key
+    column is the first one headed Name, Name or Role or Stakeholder, wherever it stands (1.3 and 1.4 put
+    an ID column first); the role column is the one headed Position/Role, Position or Role."""
+    found = []
+    for path, lines in files:
+        for start, header, rows in tables(lines):
+            heads = [plain(h).lower() for h in header]
+            key = next((i for i, h in enumerate(heads) if h in STAKEHOLDER_KEYS), None)
+            if key is None or key > 1 or len(rows) < 3:
+                continue
+            role = next((i for i, h in enumerate(heads) if h in ("position/role", "position", "role")), None)
+            ident = 0 if key == 1 and heads[0] in ID_HEADERS else None
+            found.append((path, start, rows, key, role, ident))
+    return found
+
+
+def check_stakeholders(files, parties, out, roles=None):
     """A stakeholder list names every external party the project documents depend on.
 
     The parties come from the 'External party' table in house-style.md. A party counts as a
     dependency when any line outside the list names it (a risk, a budget line, an assumption),
-    and as listed when a first cell of the list names it.
+    and as listed when a key cell of the list names it, or a role cell carries the party's role
+    from that table's 'Position or role in 1.3' column. A row is read together with the rows of
+    the same ID in the other stakeholder lists given (1.4 names S16 Viettel IDC; 1.3 gives its role).
     """
-    for path, lines in files:
-        for start, header, rows in tables(lines):
-            if plain(header[0]).lower() not in STAKEHOLDER_KEYS or len(rows) < 3:
+    roles = party_roles() if roles is None else roles
+    lists = stakeholder_lists(files)
+    by_id = defaultdict(list)
+    for _p, _s, rows, key, role, ident in lists:
+        for _n, r in rows:
+            if ident is not None and ident < len(r):
+                by_id[plain(r[ident])].append((plain(r[key]) if key < len(r) else "",
+                                               plain(r[role]) if role is not None and role < len(r) else ""))
+    for path, start, rows, key, role, ident in lists:
+        named, played = [], []
+        for _n, r in rows:
+            entries = by_id.get(plain(r[ident]), []) if ident is not None and ident < len(r) else []
+            entries = entries or [(plain(r[key]) if key < len(r) else "",
+                                   plain(r[role]) if role is not None and role < len(r) else "")]
+            named.extend(e[0] for e in entries)
+            played.extend(e[1] for e in entries)
+        listed, played = " | ".join(named), " | ".join(played).lower()
+        inside = {start} | {n for n, _r in rows}
+        for party, names, why in parties:
+            pattern = re.compile(r"(?<!\w)(?:%s)(?!\w)" % "|".join(re.escape(x) for x in names), re.I)
+            if pattern.search(listed) or (roles.get(party) and roles[party].lower() in played):
                 continue
-            listed = " | ".join(plain(r[0]) for _n, r in rows if r)
-            inside = {start} | {n for n, _r in rows}
-            for party, names, why in parties:
-                pattern = re.compile(r"(?<!\w)(?:%s)(?!\w)" % "|".join(re.escape(x) for x in names), re.I)
-                if pattern.search(listed):
-                    continue
-                # The list's own file first, so the evidence quoted does not change when a new
-                # file is given before it (check_consistency --report compares the messages).
-                ordered = sorted(files, key=lambda f: f[0] != path)
-                where = next(((p2, n2, m.group(0)) for p2, lines2 in ordered for n2, l2 in lines2
-                              if not (p2 == path and n2 in inside) for m in [pattern.search(l2)] if m), None)
-                if where:
-                    out.append(Finding("warning", "stakeholder", path, start,
-                                       "the stakeholder list has no row for %s, which %s:%d names ('%s')%s"
-                                       % (party, where[0], where[1], where[2], "; " + why if why else "")))
+            # The list's own file first, so the evidence quoted does not change when a new
+            # file is given before it (check_consistency --report compares the messages).
+            ordered = sorted(files, key=lambda f: f[0] != path)
+            where = next(((p2, n2, m.group(0)) for p2, lines2 in ordered for n2, l2 in lines2
+                          if not (p2 == path and n2 in inside) for m in [pattern.search(l2)] if m), None)
+            if where:
+                out.append(Finding("warning", "stakeholder", path, start,
+                                   "the stakeholder list has no row for %s, which %s:%d names ('%s')%s"
+                                   % (party, where[0], where[1], where[2], "; " + why if why else "")))
 
 
 NOTE_QUOTE = 500
@@ -496,16 +595,21 @@ def check_form_notes(path, lines, labels, out):
     printed label (an impact area of 3.3, say) are the form's own content. An @@IMAGE line is
     the placeholder a Doc payload (tools/gdoc_schedule_tab.py) uses for the printed picture.
     """
+    # A file of one form (its H1 is the form number and title) written without page headings starts the form
+    # at its Project Title line; there a numbered list is the form's own outline (the 2.29 breakdown).
+    single = (not any(FORM_PAGE.match(line) for _n, line in lines)
+              and any(re.match(r"# \d+\.\d+ ", line) for _n, line in lines))
     inside = False
     for n, line in lines:
         text = line.strip()
-        if FORM_PAGE.match(line):
+        if FORM_PAGE.match(line) or (single and TITLE_BLOCK.match(line)):
             inside = True
         elif re.match(r"^(#{1,3} |---\s*$)", line):
             inside = False
         elif (inside and text and not text.startswith(("|", "#", "![", "<!--", "@@IMAGE"))
               and not re.match(r"\*\*[^*]+\*\*:?", text)
               and not re.match(r"[-*] \[[ xX]\]", text)
+              and not (single and re.match(r"\d+[.)] ", text))
               and plain(text).rstrip(":").lower() not in labels):
             out.append(Finding("warning", "form-note", path, n,
                                "text inside the printed form that the form does not print, %s; move it before the "
@@ -513,6 +617,16 @@ def check_form_notes(path, lines, labels, out):
 
 
 NOTE_WORDS = 150
+TITLE_BLOCK = re.compile(r"^\s*\*\*Project Title:?\*\*")
+
+
+def form_start(lines):
+    """Index in lines where the printed form starts: its first page heading, or, in a form written without
+    one (1.3, 1.4, 2.28, 2.29, 2.32), the Project Title line of its title block. None when neither exists."""
+    first = next((i for i, (_n, line) in enumerate(lines) if FORM_PAGE.match(line)), None)
+    if first is None:
+        first = next((i for i, (_n, line) in enumerate(lines) if TITLE_BLOCK.match(line)), None)
+    return first
 
 
 def check_note_length(path, lines, out):
@@ -520,25 +634,16 @@ def check_note_length(path, lines, out):
     added rows, empty cells, the PM mark). A long one is a note nobody reads (review-lessons.md, One person,
     one name: a few sentences, not 280 words). A paragraph is the run of consecutive non-blank lines, so a
     note wrapped over many lines counts as one. The limit is the skill's, not the book's."""
-    first = next((i for i, (_n, line) in enumerate(lines) if FORM_PAGE.match(line)), None)
+    first = form_start(lines)
     if first is None:
         return
-    paragraph = []
-    for n, line in lines[:first] + [(0, "")]:
-        text = line.strip()
-        if text:
-            paragraph.append((n, text))
-            continue
-        if paragraph:
-            joined = " ".join(t for _n, t in paragraph)
-            if len(joined) > 2 and joined.startswith("*") and not joined.startswith("**") and joined.endswith("*"):
-                count = len(joined.split())
-                if count > NOTE_WORDS:
-                    out.append(Finding("warning", "note-length", path, paragraph[0][0],
-                                       "the italic note above the form is %d words; keep it to the citation, the copy "
-                                       "used, differences, added rows, empty cells and the PM mark (about %d words at "
-                                       "most) and put questions in the reply" % (count, NOTE_WORDS)))
-        paragraph = []
+    for n, joined in italic_paragraphs(lines[:first]):
+        count = len(joined.split())
+        if count > NOTE_WORDS:
+            out.append(Finding("warning", "note-length", path, n,
+                               "the italic note above the form is %d words; keep it to the citation, the copy "
+                               "used, differences, added rows, empty cells and the PM mark (about %d words at "
+                               "most) and put questions in the reply" % (count, NOTE_WORDS)))
 
 
 DATE_PREPARED = re.compile(r"\bDate prepared\b", re.I)
@@ -572,19 +677,55 @@ def check_tables(path, lines, out, id_values, audit=False):
         collect_id_values(path, names, rows, id_values)
 
 
+def italic_paragraphs(lines):
+    """(first line, text) of each italic paragraph among lines: a run of non-blank lines that opens with a
+    single asterisk and closes with one, so a note wrapped over many lines is one paragraph."""
+    found, paragraph = [], []
+    for n, line in list(lines) + [(0, "")]:
+        text = line.strip()
+        if text:
+            paragraph.append((n, text))
+            continue
+        if paragraph:
+            joined = " ".join(t for _n, t in paragraph)
+            if len(joined) > 2 and joined.startswith("*") and not joined.startswith("**") and joined.endswith("*"):
+                found.append((paragraph[0][0], joined))
+        paragraph = []
+    return found
+
+
+def reading_paragraphs(lines):
+    """The italic reading paragraphs under the file's H1, before its first level-2 heading: they speak for
+    every table of the form, however many sections follow."""
+    top, end = None, len(lines)
+    for i, (_n, line) in enumerate(lines):
+        h = HEADING.match(line)
+        if h and len(h.group(1)) == 1 and top is None:
+            top = i
+        elif h and len(h.group(1)) == 2 and top is not None:
+            end = i
+            break
+    if top is None:
+        return []
+    return [t for _n, t in italic_paragraphs(lines[top + 1:end])]
+
+
 def prose_above(lines, start):
     """The text a reader sees before the table at line start: every line that is not a table row
-    or a heading, back to the nearest heading of level 1 or 2 (the part the table belongs to)."""
-    text = []
+    or a heading, back to the nearest heading of level 1 or 2 (the part the table belongs to). When
+    that heading is a level-2 one, the italic reading paragraphs under the H1 are read too."""
+    text, stopped = [], None
     for n, line in reversed(lines):
         if n >= start:
             continue
         h = HEADING.match(line)
         if h and len(h.group(1)) <= 2:
+            stopped = len(h.group(1))
             break
         if not h and not line.lstrip().startswith("|"):
             text.append(line.strip())
-    return plain(" ".join(reversed(text)))
+    reading = reading_paragraphs(lines) if stopped == 2 else []
+    return plain(" ".join(reading + list(reversed(text))))
 
 
 def number(cell):
@@ -733,11 +874,31 @@ def book_counts():
     return [(t["table"], t["noun"].lower(), int(t["count"]), t["cite"]) for t in data.get("tables", [])]
 
 
+def enumerated(rest):
+    """How many items the text right after a count claim lists, or None when it lists none."""
+    r = ENUM_RANGE.match(rest)
+    if r:
+        return int(r.group(3)) - int(r.group(2)) + 1
+    e = ENUMERATION.match(rest)
+    return len(re.findall(ENUM_ITEM, e.group(1))) if e else None
+
+
+def referent(rest):
+    """('table', '1.1') when the text right after a count claim names what it counts, else None."""
+    m = REFERENT.match(rest)
+    return (m.group(1).lower(), m.group(2).lower()) if m else None
+
+
+def same_referent(claim, wrong):
+    return claim is None or wrong is None or claim == wrong
+
+
 def check_counts(path, lines, out):
     """A count in prose ("all fourteen elements of Table 1.1") that disagrees with the table or list
-    printed straight after it, or with the rows the book prints in that table (book-counts.json). The
-    same count in the same words elsewhere in the file is reported too, since the wrong number is
-    usually copied (the charter said fourteen in three places)."""
+    printed straight after it, the items it lists in its own sentence, or the rows the book prints in
+    that table (book-counts.json). The same count in the same words elsewhere in the file is reported
+    too, since the wrong number is usually copied (the charter said fourteen in three places), unless
+    that line names another table or section ("the fourteen elements of section 2A")."""
     claims, wrong, level, current = [], {}, {}, None
     registry = book_counts()
     for k, (n, line) in enumerate(lines):
@@ -748,32 +909,41 @@ def check_counts(path, lines, out):
         if line.lstrip().startswith("|") or not line.strip() or h or LIST_ITEM.match(line):
             continue
         for m in COUNT_CLAIM.finditer(plain(line)):
-            if re.match(r"\W*(?:above|earlier|before|previous|so far)\b", plain(line)[m.end():], re.I):
+            rest = plain(line)[m.end():]
+            if re.match(r"\W*(?:above|earlier|before|previous|so far)\b", rest, re.I):
                 continue
-            claims.append((n, count_of(m.group(1)), m.group(2).lower(), k))
+            claims.append((n, count_of(m.group(1)), m.group(2).lower(), k, referent(rest), enumerated(rest)))
         for table, noun, count, cite in registry:
             for m in re.finditer(r"\b(\d{1,3}|%s)\s+(?:[\w'-]+\s+){0,2}?%s\s+of\s+Table\s+%s\b"
                                  % ("|".join(NUMBER_WORDS), noun, re.escape(table)), plain(line), re.I):
                 said = count_of(m.group(1))
                 if said != count:
-                    wrong[(said, noun)] = (n, count, "Table %s as the book prints it (%s)" % (table, cite))
-                    claims.append((n, said, noun, k))
-    for n, said, noun, k in claims:
+                    wrong[(said, noun)] = (n, count, "Table %s as the book prints it (%s)" % (table, cite),
+                                           ("table", table.lower()))
+                    claims.append((n, said, noun, k, ("table", table.lower()), None))
+    for n, said, noun, k, named, listed in claims:
+        hit = wrong.get((said, noun))
+        if said is None or hit and same_referent(named, hit[3]):
+            continue
+        if listed is not None:
+            if listed != said and not hit:
+                wrong[(said, noun)] = (n, listed, "the list in the same sentence", named)
+            continue
         j = k + 1
         while j < len(lines) and not lines[j][1].strip():
             j += 1
-        if j >= len(lines) or lines[j][0] - n > 3 or (said, noun) in wrong:
+        if j >= len(lines) or lines[j][0] - n > 3:
             continue
         got = list_size(lines, j, level[k])
-        if got and got[0] != said and said is not None:
-            wrong[(said, noun)] = (n, got[0], got[1])
+        if got and got[0] != said and not hit:
+            wrong[(said, noun)] = (n, got[0], got[1], named)
     shown = set()
-    for n, said, noun, k in claims:
+    for n, said, noun, k, named, _listed in claims:
         hit = wrong.get((said, noun))
-        if not hit or (n, said, noun) in shown:
+        if not hit or (n, said, noun) in shown or not same_referent(named, hit[3]):
             continue
         shown.add((n, said, noun))
-        at, size, where = hit
+        at, size, where, _named = hit
         if n == at:
             out.append(Finding("warning", "count", path, n, "says %s %s, but %s has %s" % (said, noun, where, size)))
         else:

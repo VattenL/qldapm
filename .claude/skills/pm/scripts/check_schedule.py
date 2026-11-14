@@ -12,13 +12,17 @@ hours, from a table headed Resource with a hours column.
         --charter docs/charter-package.en.md --scope docs/scope-package.en.md
 
 sequence (warning): an activity whose name says it checks something (review,
-    approval, acceptance, sign-off, walkthrough, verification) finishes before
-    an activity that comes before it in the same work package or control
-    account and is not itself a check; a closeout activity finishes before any
-    other activity of its phase. Code order stands for "produces the input",
-    so read both rows before reporting: a finding is a lead. The activity it
-    names is the one that shares the most words with the check, or for a closeout
-    the warranty activity, else the latest finisher; the others are counted.
+    approval, acceptance, sign-off, walkthrough, verification, a check; not
+    check-in, and not "checks", which names test work such as "storage
+    checks") finishes before an activity that comes before it in the same
+    work package, or in an earlier package of the same control account that
+    shares a content word with it (by name or package title), and is not
+    itself a check; a closeout activity finishes before any other activity of its
+    phase. Code order stands for "produces the input", so read both rows before
+    reporting: a finding is a lead. The activity it names is the one that
+    shares the most words with the check (one of its own work package first),
+    or for a closeout the warranty activity, else the latest finisher; the
+    others are counted.
 go-live (warning): an activity named go-live, production deployment,
     switchover or cutover finishes before an activity that executes or signs off
     the UAT (a UAT or user acceptance activity of execution, testing or
@@ -41,7 +45,9 @@ test-order (warning): an activity that executes or retests names functions (F01 
     the package named for one of them is built; read both rows, and the dictionary, which may ask for the order.
 review-order (warning): a review, approval or walkthrough finishes before an activity of ANOTHER package or
     control account that it shares two or more content words with and that is not itself a check; the sequence
-    check only compares inside one package or control account.
+    check only compares inside one package or control account. Role words (business owners, sponsor) are not
+    content words, and a pair is skipped when the words it shares are already named by another package that
+    finishes on or before the check (the reviewed code exists; the later row is defect fixing).
 stated-count (warning): a task name states a number of weeks or days ("Weekly status report, 21 weeks") that
     differs from the row's own window (more than one week, or a different number of working days), and, with
     --scope, a dictionary sentence that states a duration ("pilot ... for the two weeks before go-live") for an
@@ -76,13 +82,16 @@ MONTHS = ("January", "February", "March", "April", "May", "June", "July", "Augus
 DATE = re.compile(r"\b(\d{1,2}) (%s) (\d{4})\b" % "|".join(MONTHS))
 ISO = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 ACTIVITY = re.compile(r"^(\d+(?:\.\d+)+)-A(\d+)$")
-CHECK_WORDS = re.compile(r"\b(?:review|approv\w*|accept\w*|sign(?:ed)?[- ]off|walkthrough|verif\w*)\b", re.I)
+CHECK_WORDS = re.compile(r"\b(?:review|approv\w*|accept\w*|sign(?:ed)?[- ]off|walkthrough|verif\w*|check\b(?!-in))\b",
+                         re.I)
 CLOSE_WORDS = re.compile(r"\b(?:closeout|close-out|lessons learned|final acceptance)\b", re.I)
 GO_LIVE_WORDS = re.compile(r"\b(?:go-live|go live|switchover|cut-?over|production deployment)\b", re.I)
 UAT_RUN_WORDS = re.compile(r"\b(?:UAT|user acceptance)\b.*\b(?:execution|executing|testing|sign(?:ed)?[- ]?off)\b"
                            r"|\bacceptance decision\b", re.I)
 GENERIC = {"with", "against", "from", "that", "this", "their", "after", "before", "report", "the", "and", "for",
-           "plan", "review", "approval", "walkthrough", "verification", "acceptance", "written", "check"}
+           "plan", "review", "approval", "walkthrough", "verification", "acceptance", "written", "check",
+           # role nouns: a review held with the sponsor is not about the sponsor's other activities
+           "business", "owner", "owners", "sponsor", "director", "administrator", "center", "team"}
 BREAK_WORDS = re.compile(r"\b(?:holiday|break|freeze|closure|New Year|Tết)\b", re.I)
 BEGINS = re.compile(r"\b(?:begins|starts|runs from|from)\s+(?:on\s+)?(\d{1,2} (?:%s) \d{4})" % "|".join(MONTHS))
 ENDS = re.compile(r"\b(?:ends|until|to|through)\s+(?:on\s+)?(\d{1,2} (?:%s) \d{4})" % "|".join(MONTHS))
@@ -159,8 +168,19 @@ def schedule_rows(text):
     return rows
 
 
+def package_titles(rows):
+    """{package code: title} from the rows of a Gantt table that carry a WBS code with no activity suffix."""
+    return {r.code: r.name for r in rows if not r.activity and re.fullmatch(r"\d+(?:\.\d+)+", r.code)}
+
+
+def topic(row, titles):
+    """Content words of an activity and of the title of its work package."""
+    return words(row.name) | words(titles.get(row.code.split("-")[0], ""))
+
+
 def check_sequence(path, rows, out):
     acts = [r for r in rows if r.activity]
+    titles = package_titles(rows)
     for r in acts:
         closing = CLOSE_WORDS.search(r.name)
         if not closing and not CHECK_WORDS.search(r.name):
@@ -176,9 +196,12 @@ def check_sequence(path, rows, out):
             if closing:
                 related = xparts[:2] == parts[:2] and xpkg != pkg
             else:
+                # another package of the control account is an input only when the two share a content word
+                # (by name or package title): a weekly status report runs through every baseline review
                 related = ((xpkg == pkg and int(xnum) < int(num))
                            or (xparts[:3] == parts[:3] and len(xparts) == len(parts)
-                               and [int(p) for p in xparts] < [int(p) for p in parts]))
+                               and [int(p) for p in xparts] < [int(p) for p in parts]
+                               and topic(r, titles) & topic(x, titles)))
             if related and x.finish > r.finish:
                 inputs.append(x)
         if inputs:
@@ -199,14 +222,17 @@ def words(name):
 
 def pick_input(r, inputs, closing):
     """The activity to name as the thing a check or closeout comes before: for a closeout the warranty
-    activity, for a check the activity that shares the most words with it, else the latest finisher."""
+    activity, for a check the activity that shares the most words with it, else the latest finisher, an activity
+    of the check's own work package before one of another package."""
     latest = lambda xs: max(xs, key=lambda x: x.finish)
     if closing:
         warranty = [x for x in inputs if re.search(r"warrant", x.name, re.I)]
         return latest(warranty) if warranty else latest(inputs)
     shared = [(len(words(r.name) & words(x.name)), x) for x in inputs]
     best = max(n for n, _x in shared)
-    return latest([x for n, x in shared if n == best]) if best else latest(inputs)
+    tied = [x for n, x in shared if n == best]
+    own = [x for x in tied if x.code.split("-")[0] == r.code.split("-")[0]]
+    return latest(own or tied)
 
 
 def check_go_live(path, rows, out):
@@ -260,8 +286,11 @@ def check_test_order(path, rows, out):
 def check_review_order(path, rows, out):
     """A check that finishes before the activity of another package or control account it names most (two or
     more content words in common, the activity itself not a check). Inside one package or control account the
-    sequence check already compares. A lead: read both rows."""
+    sequence check already compares. When every word the two share is already named (by an activity or its package
+    title) by another package that finishes on or before the check, the reviewed thing exists, so the later
+    activity is a follow-up such as defect fixing, not the input. A lead: read both rows."""
     acts = [r for r in rows if r.activity]
+    titles = package_titles(rows)
     for r in acts:
         if not CHECK_WORDS.search(r.name) or CLOSE_WORDS.search(r.name):
             continue
@@ -275,7 +304,11 @@ def check_review_order(path, rows, out):
             common = words(r.name) & words(x.name)
             if len(common) >= 2 and (best is None or len(common) > len(shared)):
                 best, shared = x, common
-        if best is not None and best.finish > r.finish:
+        if best is not None and best.finish > r.finish and not all(
+                any(w in topic(x, titles) for x in acts
+                    if x.finish <= r.finish and not CHECK_WORDS.search(x.name)
+                    and ACTIVITY.match(x.code).group(1) != pkg)
+                for w in shared):
             out.append(Finding("warning", "review-order", path, r.line,
                                "%s '%s' finishes %s, before %s '%s' (line %d) of another package finishes %s "
                                "(words in common: %s); if that is the thing it reviews, the review comes first"

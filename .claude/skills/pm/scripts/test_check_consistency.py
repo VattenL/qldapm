@@ -78,6 +78,9 @@ class Flagged(unittest.TestCase):
         "fn37-range-v-family-list-item": ("range", "warning"),
         "fn38-range-heading-defined": ("range", "warning"),
         "fn39-charter-word-hides-ref": ("section-ref", "error"),
+        "fn40-note-no-page-heading": ("note-length", "warning"),
+        "fn41-citation-one-sided": ("citation", "warning"),
+        "fn42-stakeholder-id-column": ("stakeholder", "warning"),
     }
 
     def test_each_fixture(self):
@@ -134,6 +137,11 @@ class Clean(unittest.TestCase):
         "fp17-section-ref-heading-with-mark": "section-ref",
         "fp19-sponsor-with-word-owner-of-risk": "role-merge",
         "fp20-customer-sponsored-event": "role-merge",
+        "fp21-ins-around-mark": "html",
+        "fp23-count-enumerated-in-sentence": "count",
+        "fp25-range-top-named-beside": "range",
+        "fp26-uniform-reason-under-h1": "uniform-column",
+        "fp27-date-prepared-label-plain": "date-style",
         "x02-rounded-percent": "total",
         "x03-section-heading-word": "section-ref",
         "x04-subtotal-hyphen": "total",
@@ -160,6 +168,84 @@ class Clean(unittest.TestCase):
         pooled = [f for f in findings("fp04-cross-doc-ref", "charter-context") if f.check == "section-ref"]
         self.assertEqual([f.level for f in pooled], ["warning"])
         self.assertIn("charter-context.md", pooled[0].message)
+
+
+class Harvest(unittest.TestCase):
+    """False positives and negatives a run over the 14 November 2026 documents found
+    (scratchpad harvest/tool-run.md, FP1 to FP7 and FN1 to FN3)."""
+
+    def run_on(self, text):
+        return cc.run({"doc.md": text})
+
+    def test_ins_must_wrap_the_mark_not_sit_inside_it(self):
+        inside = [f for f in self.run_on("| R1 | <mark><ins>If X, Y may occur</ins></mark> |") if f.check == "html"]
+        self.assertEqual(len(inside), 1)
+        self.assertIn("wrap the <mark>", inside[0].message)
+        self.assertIn("html", {f.check for f in self.run_on("| R1 | <u>changed</u> |")})
+
+    def test_a_tag_is_reported_once_per_line(self):
+        found = [f for f in self.run_on("| R1 | a<br>b<br>c |") if f.check == "html"]
+        self.assertEqual(len(found), 1)
+
+    def test_reserve_placed_outside_the_cost_baseline_is_only_a_warning(self):
+        found = [f for f in findings("fp22-reserve-outside-cost-baseline") if f.check == "term"]
+        self.assertEqual([f.level for f in found], ["warning"])
+        self.assertIn(("term", "error"), pairs(findings("fn22-management-reserve")))
+
+    def test_count_of_another_section_is_not_tied_to_the_book_table(self):
+        found = [f for f in findings("fp24-count-of-another-section") if f.check == "count"]
+        self.assertEqual([f.line for f in found], [3])
+
+    def test_enumerated_count_that_disagrees_is_reported(self):
+        text = "Deferred: the 4 work packages 1.2.3.4, 1.3.1.5, 1.9.1.2, 684 hours.\n"
+        found = [f for f in self.run_on(text) if f.check == "count"]
+        self.assertEqual(len(found), 1)
+        self.assertIn("has 3", found[0].message)
+
+    def test_range_message_keeps_the_zero_padding(self):
+        text = fixture("fp25-range-top-named-beside").replace(", or F04 arrives late", "")
+        found = [f for f in self.run_on(text) if f.check == "range"]
+        self.assertEqual(len(found), 1)
+        self.assertIn("F04", found[0].message)
+
+    def test_reason_under_the_h1_is_read_in_audit_too(self):
+        audited = [f for f in findings("fp26-uniform-reason-under-h1", audit=True) if f.check == "uniform-column"]
+        self.assertEqual(len(audited), 1)
+        self.assertIn("gives a reason", audited[0].message)
+
+    def test_note_length_without_a_page_heading_needs_a_title_block(self):
+        text = fixture("fn40-note-no-page-heading").replace("**Project Title:** X\n", "")
+        self.assertNotIn("note-length", {f.check for f in self.run_on(text)})
+
+    def test_form_note_in_a_form_without_a_page_heading(self):
+        text = "# 1.3 Stakeholder Register\n\n*Reading note.*\n\n**Project Title:** X\n**Date Prepared:** 1 May 2026\n\n" \
+               "| ID | Name |\n| --- | --- |\n| S01 | A |\n\nThe sponsor names S02 later.\n"
+        found = [f for f in self.run_on(text) if f.check == "form-note"]
+        self.assertEqual([f.line for f in found], [12])
+        outline = text.replace("The sponsor names S02 later.", "1. People\n   1. Developers: 3")
+        self.assertNotIn("form-note", {f.check for f in self.run_on(outline)})
+        package = text.replace("# 1.3 Stakeholder Register", "## Part 1: Register")
+        self.assertNotIn("form-note", {f.check for f in self.run_on(package)})
+
+    def test_one_sided_citation(self):
+        self.assertIn("citation", {f.check for f in self.run_on("Figure 11-5, printed page 408, shows it.")})
+        for text in ("PMBOK 6 section 11.5.3.3, printed page 448 (PDF page 487).",
+                     "Form 2.32, PDF page 141 (printed page 130).",
+                     "Form 1.1, PDF pages 16 to 19 (printed pages 5 to 8)."):
+            self.assertNotIn("citation", {f.check for f in self.run_on(text)}, text)
+
+    def test_stakeholder_role_and_id_join(self):
+        """A party is listed when its row's role cell carries the party's role from house-style.md, also
+        through a row of the same ID in another stakeholder list (1.4 names S16 only as Viettel IDC)."""
+        register = ("| ID | Name | Position/Role |\n| --- | --- | --- |\n| S01 | Sponsor | Sponsor |\n"
+                    "| S02 | Customer | Customer |\n| S16 | Viettel IDC | Cloud hosting provider, named by the team |\n")
+        analysis = ("| ID | Name or Role | Interest |\n| --- | --- | --- |\n| S01 | Sponsor | High |\n"
+                    "| S02 | Customer | High |\n| S16 | Viettel IDC | Low |\n")
+        source = "Assumption 7: the hosting provider keeps the server up.\n"
+        found = cc.run({"1-3.md": register, "1-4.md": analysis, "a.md": source})
+        self.assertEqual([f for f in found if f.check == "stakeholder"], [])
+        found = cc.run({"1-4.md": analysis, "a.md": source})
+        self.assertEqual(len([f for f in found if f.check == "stakeholder"]), 1)
 
 
 class Verdicts(unittest.TestCase):

@@ -253,6 +253,13 @@ the `group` entries in
 `Impact Scope`, `Impact - Scope` or `Scope (Impact)`; and do not add a group the
 form does not print.
 
+This is the Markdown rule. The Doc prints the book's two header rows: the tab
+writer splits `Impact: Scope` into a group cell merged across its columns, with
+every other label merged down both rows (`tools/gdoc_risk_tab.py`, commit
+0d2f000). A writer that prints the prefixed labels as they stand gives the
+flattened table the reviewers rejected (`review-lessons.md` section 7), so a
+new form with a grouped header needs the same split in its writer.
+
 A group that spans every column of its table is not a grouped header but the
 table's caption (2.17 and 2.21 page 1: Parametric, Analogous and Three-Point
 Estimates). The same holds for a `text` block printed directly above a table
@@ -286,25 +293,30 @@ paragraph where it went. If the form has no free-text field, name the source
 column in the italic paragraph and leave the data in the source.
 
 **One source column for two printed ones.** 2.32 prints Response in bank 1
-and Actions in bank 2; the charter has one Response column. Copy the source's
-response verbatim into Response and do not split it, because one ID, one text
-matters more than the split. A strategy label (avoid, mitigate, transfer, accept,
-escalate, contingent response or fallback plan) is the skill's classification, since the
-charter's responses carry no label: never put it in Response; if one is given, write it in
-Comments as `Strategy, skill's reading: ...` (judgment, recorded in 3.2) and say so in the
-italic paragraph. `pmbok-risk.md` says the same. Actions takes only what a document states as
-actions for that risk (the work packages the scope package's coverage check
-assigns to the response, cited as such); otherwise it is empty. A work package
-is written with its title, never as a bare code, so the cell does not read as a
-list of numbers: `Work package 1.2.3.2, Notification gateway proof of concept`
-(the title as the dictionary spells it). Status is
+and Actions in bank 2; the charter has one Response column. Response starts
+with the threat strategy (Avoid, Transfer, Mitigate, Accept, Escalate; PMBOK 6
+section 11.5.2.4, printed page 442 (PDF page 481)), then the response, then any
+contingent response: `Mitigate: write each acceptance criterion as test cases
+...; Contingent response: if UAT fails, ...`. The reviewers asked for this; the
+strategy is the preparer's reading, so the strategy word is inside `<mark>` when
+no document names it, and the italic paragraph says so once. Actions say what is
+done in each work package: `Work package <code> <title>: <what is done>`, the
+title as the dictionary spells it, a colon before the action, a semicolon between
+packages (the titles contain commas). A cell that names a package and no action
+("Work package 1.2.3.2, Notification gateway proof of concept") was the defect
+Vatten raised on 5 November. The packages come from the scope package's coverage
+check (`risk_actions.py`); the action text comes from the response and the
+package's dictionary sheet, marked where it is the preparer's wording. Status is
 `Open`, plain, for every risk no document records as closed (see
 `house-style.md`, Judgement columns), and the italic paragraph says why, which
 also answers the uniform-column check.
 
 **Filling 2.32 from the charter, step by step.**
 
-- One row per charter risk (R1 to R12 as the charter numbers them), the ID column holding `R1`, `R2`, and the risk statement copied as written.
+- The model is `docs/forms/2-32-risk-register.en.md` version 1.1, which answers the reviewers' threads of 4 and 5 November (`review-lessons.md` section 15).
+- One row per charter risk (R1 to R12 as the charter numbers them), the ID column holding `R1`, `R2`. The risk statement is restated in the book's structure, "If CONDITION exists, EVENT may occur, leading to EFFECT" (Table 2.29, PDF page 140 (printed page 129)), keeping every fact of the charter's text and adding none, inside `<mark>` as the preparer's restatement; the charter keeps its short text, and the italic paragraph says which charter version was restated. Risks found elsewhere (assumptions, a pending 3.3) get the next IDs and say where they came from.
+- Above the form, when no 2.31 exists: a Probability and impact scales section with definitions of probability, definitions of impact for each objective and the probability and impact matrix (three levels, PMBOK 6 Table 11-1 and Figure 11-5), every level highlighted, cost levels tied to the charter's reserve authority. Then fill Probability, each Impact cell as `Level: effect on that objective`, Score as `Probability-Impact` from the highest impact, Owner as one role from 2.28 (`Project manager (PM)`), and the Revised columns as the forecast residual risk; all of them inside `<mark>`.
+- A revised register opens with a Revision history table (Version, Date, Change, Review comment answered) and wraps each changed cell in `<ins>` (`house-style.md`).
 - Scaffold with room for every risk, to a scratch path in an audit or a sandbox:
   `python3 .claude/skills/pm/scripts/new_form.py 2.32 --rows 12 --out <scratch>/2-32-risk-register.en.md`.
 - Actions: `python3 .claude/skills/pm/scripts/risk_actions.py docs/scope-package.en.md` prints the cell for each risk from the scope package's coverage check
@@ -326,10 +338,15 @@ left empty and the missing person is listed as a question in the reply. Date is 
 team's, so it is left empty in a proposed row. 3.2 Comments carries the alternatives
 considered, the reason and the impact (BoF 3.2 p168 (PDF 179)).
 
-If the printed form has no ID column, do not add one. 1.3 Stakeholder Register
-starts with Name, 1.4 Stakeholder Analysis with Name or Role, 2.14 Milestone
-List with Milestone, 6.4 Retrospective with Start. The first printed column is
-the key, and an added ID column is a field the form does not print. Where a
+If the printed form has no ID column, do not add one unless it is a named
+tailoring. 1.3 Stakeholder Register starts with Name, 1.4 Stakeholder Analysis
+with Name or Role, 2.14 Milestone List with Milestone, 6.4 Retrospective with
+Start. The first printed column is the key, and an added ID column is a field
+the form does not print. The exception is a column that joins two forms or
+that a reviewer asked for, named once in the italic paragraph with its reason:
+the team's 1.3 and 1.4 share S01 to S20 so each row of one can be matched to
+the other, and 2.32 bank 2 carries the risk ID at Vatten's request.
+`check_fidelity.py` still lists the column; the reading paragraph answers it. Where a
 record already has a repo ID, it may lead the text of the first printed column
 (`M1 Requirement specification approved and baselined` in 2.14's Milestone
 column).

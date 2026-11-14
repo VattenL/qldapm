@@ -95,7 +95,7 @@ never inside it. Placements marked "judgement" are this note's reading, not the 
 | Unique identifier; structured statement separating cause and effect | ID; Risk Statement ("EVENT may occur, causing IMPACT", BoF p129/140) |
 | Potential then nominated risk owner | Owner |
 | Probability and impact on each objective; priority level or risk score | Probability; Impact (Scope, Quality, Schedule, Cost); Score |
-| Preliminary then agreed response strategy | Response: the charter's own wording copied as written; a strategy label is the skill's reading, goes in Comments, and is recorded as judgment in 3.2 (`rendering.md`) |
+| Preliminary then agreed response strategy | Response, starting with the strategy word (`Mitigate: ...`), the reviewers' request of 4 and 5 November; the word is the preparer's reading, inside `<mark>` unless a document names it (`rendering.md`, `review-lessons.md` section 15) |
 | Specific actions; budget and schedule activities for the response; triggers | Actions; triggers and warning signs in Actions or Comments, judgement |
 | Revised assessment after the response | Revised Probability; Impact (printed Impact, not Revised); Revised Score |
 | Owner of a response action (p450/489 "owners for agreed-upon risk responses") | Responsible Party, judgement; BoF Table 2.29 has no such element |
@@ -150,7 +150,7 @@ effective, approach appropriate, policies followed, reserves adequate) are the q
 | --- | --- |
 | R1 to R12 with Type (Product or Project) and Response | `charter-package.en.md` Part 2A "Overall project risk" table; copy as written |
 | Overall rating Medium and its drivers (fixed budget and date, one week of float per phase, PM is also BA, volatile tuition rules, go-live four weeks before the Lunar New Year) | Same section; Part 2B charter form, Overall Project Risk |
-| Probability, Impact, Score, Owner, Status, revised values | Nowhere. No document scores a risk or names an owner (R11 names the Accountant as benefit owner only). Leave empty, house-style table |
+| Probability, Impact, Score, Owner, Status, revised values | The charter scores none and names no owner (R11 names the Accountant as benefit owner only). `docs/forms/2-32-risk-register.en.md` version 1.1 carries the preparer's first reading of all of them on scales it defines, highlighted, which is what the reviewers asked for (`house-style.md`, Judgement columns) |
 | Objectives with measurable limits: Time, Cost, Quality, scope | Charter Part 2A "Project objectives and related success criteria"; read the cost, schedule and quality limits and the acceptance criteria there |
 | Contingency reserve | The reserve budget line (amount and share of the budget are in the charter table), inside the cost baseline, which risks may draw on it and through what; scope package Part 2 roll-up and 1.1.1.4 Technical Information |
 | Management reserve; schedule reserve | No budget line holds one, but the charter form 2B Cost criterion words the reserve report as "management reserve use reported monthly" (see Traps): run the term search of `decisions.md` section 1 over every copy before writing that a document names no management reserve or that two wordings agree. Charter: no further funding committed, an increase needs the sponsor's written approval. No schedule reserve is named; the charter cites about one week of float in analysis, design and test, and R12 absorbs two weeks |
@@ -185,8 +185,8 @@ effective, approach appropriate, policies followed, reserves adequate) are the q
   record that it occurred and point to the 3.1 entry, which repeats the ID and the risk statement. Who closes it: the book names a Responsible party "assigned to resolve the issue", a Status of open or closed and a Final resolution that describes how it was resolved (BoF Table 3.1 p166/177), and does not say who sets closed (searched BoF 3.1 p165 to 166/176 to 177, 2.32 p128 to 129/139 to 140, 3.2 p168/179). Team rule: the 3.1 Status stays open until the response is carried out and the issue is resolved; the Responsible party writes Final resolution; closing is the PM's decision, recorded as a row in 3.2; then 2.32 Status becomes closed so the two logs agree. (An earlier version of this note said the entry leaves the register; the book does not say so.)
 - **A contingent response needs a trigger the team writes.** The book gives no numeric trigger (p445/484) and 2.36 has no trigger box: the Contingency
   Plan element says the plan starts "if specific events occur, such as missing an intermediate milestone" (BoF Table 2.32 p145/156). The charter's
-  responses name none, so list the trigger as an open question for the risk owner; never write that it has fired. The "Revised" columns of 2.32 change
-  only after the response is carried out.
+  responses name none, so list the trigger as an open question for the risk owner; never write that it has fired. The "Revised" columns of 2.32 hold the
+  forecast residual risk once the response is carried out (11.5.3.3), highlighted; they are re-read when it has been.
 - **All twelve risks are threats.** The book wants opportunities too (p395/434). None identified is a fact to state, not to invent.
 - **Escalate has a book meaning** (p442/481): ownership passes outside the project, and the team stops monitoring.
   The charter uses "escalate to the sponsor" for a decision inside project governance (R3, R8; R9 escalates without naming to whom); say which.
@@ -237,7 +237,7 @@ Formulas the chapter and the forms give, exactly; everything else below is "not 
 ### 4. Which risks get attention first, who owns them, which go on the watch list
 - **Arises:** 11.3, "regularly" per the plan, in agile before each iteration (p421/460).
 - **Techniques and trade-offs:** risk data quality assessment (weighted score over completeness, objectivity, relevancy, timeliness; poor data may mean gathering better data, p423/462); probability and impact assessment by interview or meeting, assumptions recorded; other parameters for "a more robust prioritization" (p424/463); risk categorization (p425/464); matrix, or a bubble chart when more than two parameters (p425 to 426/464 to 465). Assessments are subjective and biased, so the facilitator corrects for bias (p420/459).
-- **Inputs, kept in:** R1 to R12, scales from 2.31, stakeholder list for owners. Scores and owners do not exist yet; a scoring session produces them.
+- **Inputs, kept in:** R1 to R18 of 2.32, scales from 2.31 (none exists; 2.32 defines its own above the form), 2.28 for owner roles. The 2.32 scores and owners are the preparer's highlighted first reading; a scoring session with the team confirms them.
 - **Recorded in:** 2.32 Owner, Probability, Impact, Score; 2.35; watch list in Comments (no box); 2.34 rating.
 - **Formula:** Score = Probability x Impact.
 - **Wrong move:** no owner. Each risk gets one who plans the response and reports progress (p421/460, p426/465). Guessing scores is also wrong here (house-style).
@@ -275,7 +275,7 @@ Formulas the chapter and the forms give, exactly; everything else below is "not 
 
 - **Choosing:** alternatives analysis; cost-benefit analysis when the impact can be monetised; multicriteria decision analysis over cost of response, effectiveness, resource availability, timing (urgency, proximity, dormancy), impact level, effect on related risks, secondary risks (p446/485). A response must be appropriate, cost-effective, realistic, agreed and owned (p439/478). Large projects may use optimisation or real options (p439/478).
 - **Inputs, kept in:** R1 to R12 current responses (charter 2A, not labelled with a strategy name); contingency reserve; schedule and team assignments (scope package); several responses already exist as work packages, so cite the package.
-- **Recorded in:** 2.32 Response (the charter's wording, no label added; a strategy label goes in Comments), Actions, Revised columns, Responsible Party; 2.36 Responses, Secondary Risks, Residual Risk; response work added to the schedule (p448/487).
+- **Recorded in:** 2.32 Response (the strategy word first, then the response), Actions (`Work package <code> <title>: <what is done>`), Revised columns, Responsible Party; 2.36 Responses, Secondary Risks, Residual Risk; response work added to the schedule (p448/487).
 - **Formula:** cost effectiveness = (change in impact level) / (implementation cost).
 - **Wrong move:** an unnamed or unowned response. "Unsuitable risk responses can have the converse effect" (p439/478). Cutting estimates is not a strategy in 11.5.2.4 (searched 11.5.2 p441 to 446/480 to 485). When the response needs time or money beyond the baseline, say in words that the route is a change request (3.3) to the sponsor (11.5.3.1 p447/486) and that trimming or cutting estimates to absorb it is not a technique in the book.
 
