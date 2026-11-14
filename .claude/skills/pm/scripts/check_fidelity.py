@@ -33,13 +33,17 @@ carries any printed label is still the form's and still reported.
 --page N checks only the labels of printed page N of a form with several pages, for a
 document that writes one page apart (the 2.7 second page in Part 1B); a later page's
 repeated title block is not required, since the project writes it once.
+
+A form written several times in the region (the 78 sheets of a WBS dictionary, each with its
+own title block) is checked copy by copy, so a field lost from one sheet is missing even when
+the other sheets carry it; a finding names the copy and the line its title block starts on.
 """
 
 import argparse
 import json
 import re
 import sys
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from pathlib import Path
 
 from new_form import underlying_header
@@ -47,6 +51,8 @@ from new_form import underlying_header
 SKILL_DIR = Path(__file__).resolve().parent.parent
 FIELDS = SKILL_DIR / "references" / "fields"
 
+# Any form's page heading: "#### COST ESTIMATING WORKSHEET, page 1 of 2".
+ANY_PAGE = re.compile(r"^#{1,6}\s+.+,\s*page\s+\d+\s+of\s+\d+\s*$", re.I)
 SEPARATOR = re.compile(r"^\|?\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)*\|?$")
 HEADING = re.compile(r"^(#{1,6})\s+(.*?)\s*#*\s*$")
 TASK = re.compile(r"^[-*+]\s+\[[ xX]\]\s+(.*)$")
@@ -215,9 +221,12 @@ def region(lines, spec, section=None, until=None):
     sooner, at the first later heading containing the --end text (the Roll-up
     and Coverage check under the scope package's Part 2 are not form 2.9). A
     file whose H1 names the form is checked from the top, so unprinted lines
-    above the first page heading are seen. Otherwise the form starts at its
-    `page 1 of N` heading. It ends at the first heading shallower than the page
-    headings after the last page, or at the end of the file.
+    above the first page heading are seen, from its title block when it has one:
+    a revision history or a scale table above the title block is not the form.
+    Otherwise the form starts at its `page 1 of N` heading. It ends at the first
+    heading shallower than the page headings after the last page, at the page
+    heading of another form after the last page (2.20 and 2.21 in one file), or
+    at the end of the file.
     """
     if section:
         for i, line in enumerate(lines):
@@ -234,9 +243,7 @@ def region(lines, spec, section=None, until=None):
     names = "|".join(re.escape(t) for t in sorted(titles, key=len, reverse=True))
     page = re.compile(r"^(#{1,6})\s+(?:%s),\s*page\s+\d+\s+of\s+\d+\s*$" % names, re.I)
     pages = [i for i, line in enumerate(lines) if page.match(line)]
-    h1 = next((line for line in lines if line.startswith("# ")), "")
-    names_form = re.match(r"^#\s+%s(?!\.?\d)" % re.escape(spec["form"]), h1)
-    start = 0 if names_form or not pages else pages[0]
+    start = 0 if names_form(lines, spec) or not pages else pages[0]
     end = len(lines)
     if pages:
         level = len(page.match(lines[pages[-1]]).group(1))
@@ -245,7 +252,30 @@ def region(lines, spec, section=None, until=None):
             if m and len(m.group(1)) < level:
                 end = j
                 break
+    after = pages[-1] if pages else start
+    end = next((j for j in range(after + 1, end) if ANY_PAGE.match(lines[j]) and not page.match(lines[j])), end)
+    if start == 0:
+        top = title_start(lines, spec, end)
+        if top is not None:
+            start = min(top, pages[0]) if pages else top
     return start, end
+
+
+def names_form(lines, spec):
+    """Whether the file's H1 names the form ("# 2.32 Risk Register")."""
+    h1 = next((line for line in lines if line.startswith("# ")), "")
+    return bool(re.match(r"^#\s+%s(?!\.?\d)" % re.escape(spec["form"]), h1))
+
+
+def title_start(lines, spec, end):
+    """Index of the line that opens the form's title block (its bold line, or the header of the field table
+    whose first cell carries it), or None when the form has no title block or the file does not write it."""
+    if not spec["title_block"]:
+        return None
+    first = spec["title_block"][0]
+    found, _plain = scan(lines, 0, end)
+    hit = next((c for c in found if c.text == first and c.cls == "label"), None)
+    return None if hit is None else (hit.table or hit.line) - 1
 
 
 def scan(lines, start, end, printed=frozenset()):
@@ -348,6 +378,8 @@ class Result:
     end: int
     flattened: list = field(default_factory=list)
     ignored: int = 0  # tables inside boxes skipped by --ignore-tables
+    copies: int = 1  # copies of the form in the region, each checked on its own
+    failing: int = None  # printed labels missing or out of order in at least one copy
 
     @property
     def failed(self):
@@ -372,29 +404,53 @@ def flat_spellings(spec):
                     for child in children} for group, children in groups.items()}
 
 
+def copies(found, exp):
+    """(first, stop, line) spans of found, one per copy of the form: the region holds several copies when the
+    first title-block label appears a whole multiple of the times the form prints it. Labels before the
+    first copy belong to it."""
+    whole = [(0, len(found), 0)]
+    if not exp or exp[0].shape != "title":
+        return whole
+    first = exp[0]
+    per = sum(1 for s in exp if s.text == first.text and s.cls == first.cls)
+    at = [k for k, c in enumerate(found) if c.text == first.text and c.cls == first.cls]
+    if len(at) < 2 * per or len(at) % per:
+        return whole
+    cuts = at[::per]
+    return [(0 if n == 0 else k, stop, found[k].line) for n, (k, stop) in enumerate(zip(cuts, cuts[1:] + [len(found)]))]
+
+
 def check(markdown, spec, section=None, until=None, flat_groups=False, only_page=None, ignore_tables=False):
     lines = markdown.splitlines()
     start, end = region(lines, spec, section, until)
     printed = all_labels(spec)
     found, plain = scan(lines, start, end, printed)
+    # Lines above a title block in a file named after the form: not the form, but a label written there
+    # is named when the form lacks it.
+    lead = scan(lines, 0, start, printed)[0] if start and not section and names_form(lines, spec) else []
     exp = expected(spec, only_page)
-    pairs = align(exp, found)
-    used = set(pairs.values())
+    spans = copies(found, exp)
 
-    disorder, unplaced = [], []
-    for i, slot in enumerate(exp):
-        if i in pairs:
-            continue
-        j = next((k for k, c in enumerate(found) if k not in used
-                  and c.text == slot.text and c.cls == slot.cls), None)
-        if j is None:
-            unplaced.append(slot)
-        else:
-            used.add(j)
-            disorder.append((slot, found[j].line))
+    used, disorder, unplaced, out_of_order = set(), [], [], set()
+    for n, (lo, hi, at) in enumerate(spans):
+        pairs = {i: lo + j for i, j in align(exp, found[lo:hi]).items()}
+        used |= set(pairs.values())
+        for i, slot in enumerate(exp):
+            if i in pairs:
+                continue
+            if len(spans) > 1:
+                slot = replace(slot, where="%s, copy %d from line %d" % (slot.where, n + 1, at))
+            j = next((k for k in range(lo, hi) if k not in used
+                      and found[k].text == slot.text and found[k].cls == slot.cls), None)
+            if j is None:
+                unplaced.append((i, slot))
+            else:
+                used.add(j)
+                disorder.append((slot, found[j].line))
+                out_of_order.add(i)
 
     missing, cited = [], set()
-    for slot in unplaced:
+    for _i, slot in unplaced:
         pool = [c for k, c in enumerate(found) if k not in used] + plain
         near = next((c for c in pool if id(c) not in cited and loose(c.text) == loose(slot.text)), None)
         note = ""
@@ -402,6 +458,10 @@ def check(markdown, spec, section=None, until=None, flat_groups=False, only_page
             cited.add(id(near))
             shape = "as a plain line" if near.cls == "plain" else "as %r" % near.text
             note = "written %s on line %d" % (shape, near.line)
+        else:
+            near = next((c for c in lead if loose(c.text) == loose(slot.text)), None)
+            if near is not None:
+                note = "written on line %d, above the form" % near.line
         missing.append((slot, note))
 
     flattened, accepted = [], set()
@@ -428,7 +488,10 @@ def check(markdown, spec, section=None, until=None, flat_groups=False, only_page
     # (a roles table in 2.8, say); its headers are content, not labels the form lacks.
     own = {c.table for c in found if c.table and (c.text in printed or c.text in accepted)}
     boxed = {c.table for c in found if c.table and c.table not in own and not c.structural}
-    extra = []
+    # Above the title block only a bold line is reported (a second title block in another layout, say); a
+    # table there is the document's own (a revision history, the scales a form uses), not the form's.
+    extra = [(c, "printed as %r" % by_loose[loose(c.text)] if loose(c.text) in by_loose else "")
+             for c in lead if not c.table and c.text not in printed]
     for k, c in enumerate(found):
         if k in used or c.structural or c.text in printed or c.text in accepted:
             continue
@@ -439,17 +502,26 @@ def check(markdown, spec, section=None, until=None, flat_groups=False, only_page
         note = by_loose.get(loose(c.text))
         extra.append((c, "printed as %r" % note if note else ""))
     return Result(len(exp), missing, disorder, extra, start, end, [slot for slot, _ in flattened],
-                  len(boxed & {c.table for c in found if c.table}) if ignore_tables else 0)
+                  len(boxed & {c.table for c in found if c.table}) if ignore_tables else 0, len(spans),
+                  len(out_of_order | {i for i, slot in unplaced if any(slot is s for s, _ in missing)}))
 
 
 def report(result, spec, name):
-    ok = result.total - len(result.missing) - len(result.disorder)
+    bad = len(result.missing) + len(result.disorder) if result.failing is None else result.failing
     print("%s %s, %s lines %d to %d" % (spec["form"], spec["name"], name, result.start + 1, result.end))
-    print("%d/%d printed labels present in printed order" % (ok, result.total))
+    print("%d/%d printed labels present in printed order" % (result.total - bad, result.total))
+    if result.copies > 1:
+        print("the form is written %d times in the region (one title block each); every copy is checked, "
+              "and a finding names its copy" % result.copies)
     if result.flattened:
-        print("grouped headers written without the colon (%d), accepted by --flattened:" % len(result.flattened))
+        # One line per printed header, however many copies of the form write it so.
+        flat = {}
         for slot in result.flattened:
-            print("  %s: %s" % (slot.where, slot.text))
+            key = (re.sub(r", copy \d+ from line \d+$", "", slot.where), slot.text)
+            flat[key] = flat.get(key, 0) + 1
+        print("grouped headers written without the colon (%d), accepted by --flattened:" % len(flat))
+        for (where, text), count in flat.items():
+            print("  %s: %s%s" % (where, text, " (in %d copies)" % count if count > 1 else ""))
     if result.missing:
         print("missing (%d):" % len(result.missing))
         for slot, note in result.missing:

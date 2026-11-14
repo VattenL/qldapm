@@ -301,6 +301,48 @@ class Explained(Base):
             self.assertEqual(cs.main([self.write("s.md", schedule), "--scope", scope, "--explained", "hours"]), 0)
 
 
+FIXTURES = Path(__file__).resolve().parent / "fixtures" / "schedule"
+
+
+class Harvest(Base):
+    """False positives and a false negative found by running the checks on the team's 2.18 (fixtures/schedule)."""
+
+    def found(self, name, check):
+        out, _count = cs.run(str(FIXTURES / (name + ".md")))
+        return [f for f in out if f.check == check]
+
+    def test_a_review_is_not_compared_with_level_of_effort_work_it_shares_no_word_with(self):
+        self.assertEqual(self.found("fp01-sequence-level-of-effort", "sequence"), [])
+
+    def test_a_control_account_input_that_shares_a_word_with_its_package_title_still_counts(self):
+        text = HEAD + "| 1 | **1.2.2.1** | **Requirements traceability matrix** | 8 days | Wed 23 September 2026 " \
+                      "| Mon 12 October 2026 | PM |\n" \
+            + row(2, "1.2.2.1-A1", "Build the business, functional, and nonfunctional rows",
+                  "Wed 23 September 2026", "Mon 12 October 2026") \
+            + row(3, "1.2.2.2-A1", "Requirements review against the notes and the charter",
+                  "Wed 30 September 2026", "Fri 2 October 2026")
+        found = [f for f in self.checks(text) if f.check == "sequence"]
+        self.assertEqual([f.line for f in found], [5])
+        self.assertIn("control account", found[0].message)
+
+    def test_a_check_names_the_input_of_its_own_package_before_one_of_the_control_account(self):
+        found = self.found("fp04-sequence-own-package-partner", "sequence")
+        self.assertEqual(len(found), 1)
+        self.assertIn("1.10.1.2-A1", found[0].message)
+        self.assertIn("work package", found[0].message)
+
+    def test_role_words_do_not_pair_a_review_with_another_package(self):
+        self.assertEqual(self.found("fp02-review-order-role-words", "review-order"), [])
+
+    def test_a_review_of_work_already_built_is_not_paired_with_later_fixing(self):
+        self.assertEqual(self.found("fp03-review-order-subject-built", "review-order"), [])
+
+    def test_check_is_a_check_word_but_check_in_is_not(self):
+        found = self.found("fn01-check-word", "sequence")
+        self.assertEqual([f.line for f in found], [6])
+        self.assertIn("1.2.1.3-A1", found[0].message)
+
+
 class CommandLine(Base):
     def test_exit_codes(self):
         scope = self.write("scope.md", Hours.SCOPE)

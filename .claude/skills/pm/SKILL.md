@@ -1,7 +1,7 @@
 ---
 name: pm
-description: Generate, fill or audit project management documents from A Project Manager's Book of Forms (3rd edition), keeping printed fields in printed order, and answer project management decisions with PMBOK 6 techniques. Use it for any form in the book, filled or blank (charter, assumption log, stakeholder register, scope statement, WBS, schedule, cost, quality, resource, communications, risk and procurement plans, risk register, RACI, change request, issue, decision and change logs, status, variance and earned value reports, audits, closeout, agile forms), for a form number such as 1.1, 2.32 or 6.4, and to check, audit or review PM documents in docs/ or answer comments on the team's Google Doc. Also use it for decisions: a schedule slip, a cost overrun, a risk that occurred or a risk response, evaluating a change request, earned value status, reserves, estimates, or which form to use, in English or Vietnamese, even without naming the book.
-version: 2.5.0
+description: Generate, fill or audit project management documents from A Project Manager's Book of Forms (3rd edition), keeping printed fields in printed order, and answer project management decisions with PMBOK 6 techniques. Use it for any form in the book, filled or blank (charter, assumption log, stakeholder register, scope statement, WBS, schedule, cost, quality, resource, communications, risk and procurement plans, risk register, RACI, change request, issue, decision and change logs, status, variance and earned value reports, audits, closeout, agile forms), for a form number such as 1.1, 2.32 or 6.4, and to check, audit or review PM documents in docs/, the team's Google Doc or the whole project plan, or answer reviewer comments. Also use it for decisions: a schedule slip, a cost overrun, a risk that occurred or a risk response, evaluating a change request, earned value status, reserves, estimates, or which form to use, in English or Vietnamese, even without naming the book.
+version: 2.6.0
 user-invocable: true
 argument-hint: "[form number or name] | audit <files> | decide <situation>"
 ---
@@ -26,7 +26,11 @@ Three things make a generated form useful rather than plausible-looking:
 3. **The document agrees with itself and with its siblings.** Two review rounds
    (60 findings) were almost all about this: a sponsor described as the owner,
    "R1 to R10" after R12 existed, "management reserve" beside a contingency
-   reserve. `references/review-lessons.md` lists what the reviewers catch.
+   reserve. `references/review-lessons.md` lists what the reviewers catch
+   (five review rounds to 8 November, 20 sections), and
+   `references/project.md` maps every deliverable, its source, its Doc tab,
+   the figures that must agree across them and the disagreements open on 14
+   November 2026.
 
 All commands below run from the repo root. The scripts are plain Python 3;
 only `md_to_docx.py` needs a package (`uv run --with python-docx`).
@@ -88,8 +92,12 @@ for the form's purpose only. Otherwise read `references/house-style.md` (marking
 `references/rendering.md`, the section for this form's kind. From
 `references/review-lessons.md` read sections 1, 2, 7, 8 and 9 for every form (section 1
 holds the PM-name rule for 1.3 and 1.4), and sections 3 to 6 when the form carries
-numbers, scope boundaries, money or success criteria. Reading all of it for a
-one-page register costs time and adds nothing.
+numbers, scope boundaries, money or success criteria; section 12 (marking) for
+anything bound for the Doc, 13 for a revision of an existing form, 14 before a
+push, 15 for 2.31, 2.32 and 2.36, 16 for 2.18 or a 3.3 that moves dates, 17 for
+2.9 and 2.10, and 18 while any 3.3 is pending (`references/project.md` section 6
+says which are). Reading all of it for a one-page register costs time and adds
+nothing.
 
 Read the PMBOK 6 note for the form's knowledge area. Each note maps the
 chapter onto the forms, gives the page map (printed and PDF page), lists the
@@ -120,9 +128,11 @@ the note says which. Read the chapter in `PMBOK6_and_Agile_Practice_Guide.pdf`
 book's process-to-form map and its wording rules are in
 `references/book-structure.md`.
 
-The facts live in `docs/charter-package.en.md` (form 1.1 in Part 2B, the ID
-families, budget, risks, milestones, assumptions 1 to 19) and
-`docs/scope-package.en.md` (2.7, 2.9, 2.10). Read the Markdown directly; the
+Start from `references/project.md`: which file holds each form, which branch or
+Doc tab holds another version of it, the settled decisions, and every place a
+figure appears. Then read the facts where they live: `docs/charter-package.en.md`
+(form 1.1 in Part 2B, the ID families, budget, risks, milestones, assumptions 1
+to 19), `docs/scope-package.en.md` (2.7, 2.9, 2.10) and `docs/forms/`. Read the Markdown directly; the
 helpers in `tools/gdoc_edit.py` (`section`, `first_table`, `table_by_first_cell`,
 `field_map`) are optional. List `docs/forms/` and read every file in it, not only
 the graph neighbours: a pending 3.3 can change a risk or a date you are about to
@@ -161,9 +171,11 @@ Then fill it, keeping to these rules (`rendering.md` has the reasons):
   the form, never inside it, in the fixed order of `rendering.md` (The italic
   note). Nothing goes inside the form that it does not print: no notes under a
   table, no explanation under Approvals.
-- Copied project text (a risk statement, a response, a milestone name) is
+- Copied project text (a response, a milestone name, a criterion) is
   copied as written, not paraphrased, so the two documents stay one ID, one
-  text (a 2.32 from the charter: `rendering.md`, Filling 2.32 from the charter).
+  text. The exception the reviewers asked for is the 2.32 risk statement,
+  restated in the book's condition, event, effect structure with no fact added
+  (`rendering.md`, Filling 2.32 from the charter).
 - Assumed or derived values are inside `<mark>`; unknown values are an empty
   cell (the course brief says to leave a box empty when unknown) or `[TBD]`
   where an empty cell would read as an oversight.
@@ -242,7 +254,10 @@ reviews, and the Doc is built from it.
 
 ### 7. Push to the Google Doc only when asked
 
-The team's Doc is built from the Markdown and never hand-edited. Pushing needs
+The team's Doc is built from the Markdown by one writer per tab
+(`references/project.md` section 2), and the team also edits it by hand, so
+compare a fresh snapshot of the live tab with the payload and keep what the team
+kept (`review-lessons.md` section 10). Pushing needs
 the user's Doc ID (an argument every time; never write it into a file) and the
 OAuth client in `~/.config/qldapm/`. Audit the payload before any push
 (`references/push-audit.md`), because what reaches the Doc is what
@@ -358,6 +373,19 @@ When the user asks to check, audit or review documents, or to answer comments
 on the team's Google Doc, the job is the reviewer's, not the author's. Do not
 fix while auditing unless asked: the audit is what the team decides from.
 
+0. **Know the project before judging it.** Read `references/project.md` whole:
+   the brief, the deliverable map, the branches with other versions, the settled
+   decisions (not findings), the pending change requests and who has already
+   applied them, and the disagreements open on its date. Re-verify each before
+   reporting it; report what changed since. For the Doc, take a fresh snapshot
+   (`tools/gdoc_dump.py`, project.md section 10) and audit the snapshot, so every
+   finding quotes one version. A review of the whole plan covers every row of
+   the deliverable map, the Doc tabs and their sources side by side, every
+   figure of project.md section 5 in every place it is listed, and every open
+   thread; the `audit-doc` workflow does that with many agents (ask first). The
+   8 November run's verified findings are in `review/2026-11-08-doc-audit.json`
+   (keys V and G); recheck the ones still open rather than rediscovering them.
+
 1. **Scripts first, over the whole package.** Run `check_consistency.py --audit` over every file of the
    deliverable together (`--audit` also reports a constant column that the text above it explains; add
    `--report <file>` when one file is the deliverable, so the errors the sources already carry are not mixed
@@ -368,7 +396,7 @@ fix while auditing unless asked: the audit is what the team decides from.
    explains a date or an hour total (`--explained hours`), never an order defect: `--explained sequence=REASON`
    and `break=REASON` need the reason quoted. Before a push ask for the Doc ID; without it, or without
    credentials, say in Method that the live Doc and its comments were not audited.
-2. **Walk `review-lessons.md`** section by section against the documents, all of it this time. Read the Traps
+2. **Walk `review-lessons.md`** section by section against the documents, all 20 sections this time; section 20 says what each reviewer will look for. Read the Traps
    section of each `pmbok-<area>.md` that has one (quality has none) the documents touch (step 3's form-to-note table) and test every trap
    against the text. Recompute every derived figure from its assumption as written, and count every list a number
    describes: grep each stated count ("fourteen", "V1 to V11") and compare it with its source list (the `count`
@@ -424,7 +452,8 @@ Method: `references/load-check.md`.
 | `references/fields/<form>.json` | Printed labels per blank page: title block, blocks, groups, banks, row labels, pairs, legend, notes |
 | `references/rendering.md` | How each kind becomes Markdown, and why; filling 2.32 step by step |
 | `references/house-style.md` | Marking rules, dates, forbidden terms, Vietnamese terms, 1.3 fill rules, where the project's facts live |
-| `references/review-lessons.md` | What the team's reviewers caught, and how to check for it |
+| `references/review-lessons.md` | What the team's reviewers caught in five rounds, and how to check for it; who the reviewers are |
+| `references/project.md` | The project as of 14 November 2026: brief, deliverables with source, Doc tab and writer, other branches, settled decisions, ID families and figures with every place they appear, pending change requests, open disagreements and threads, forms not produced |
 | `references/decisions.md` | Decision catalog: 40 routing rows with impact anchors, 43 decisions with the book's trade-offs, calculator, forms to record in and escalation; the authority limits, the change control path, the recommendation format and drafts |
 | `references/pmbok-<area>.md` | One note per knowledge area and `pmbok-agile.md` (`pmbok-quality.md` is the model): page map, terms, where the project's facts live (pointers, no copied figures), decisions. Form-to-note table in step 3 |
 | `references/knowledge/<form>.json` | Per form: purpose, what goes in each field, sources, consumers, alignment, tailoring, decisions, citation; read through `extract_form.py --knowledge` |

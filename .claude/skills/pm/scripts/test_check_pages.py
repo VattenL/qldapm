@@ -41,6 +41,14 @@ class Pairs(unittest.TestCase):
         self.assertEqual(levels("The Disposition sits on page 3 of the form."), [])
         self.assertEqual(levels("Wrapped printed page 215\n(PDF page 254) pair."), [])
 
+    def test_a_printed_page_within_the_longest_form_is_a_form_page(self):
+        # charter:622 cites page 1 of the printed form 1.1, not page 1 of the book
+        self.assertEqual(levels("On the printed page 1 the form pairs **Project Sponsor** with **Date Prepared**."), [])
+        self.assertEqual(levels("The form fills printed pages 2 to 3."), [])
+        self.assertEqual(levels("Crashing is on printed page 215."), [("error", 1)])
+        self.assertEqual(levels("Early action beats repair (p443)."), [("error", 1)])
+        self.assertEqual(levels("Front matter on PDF page 3."), [("error", 1)])
+
     def test_the_other_kind_must_be_in_the_same_sentence(self):
         self.assertEqual(levels("See p215. Then PDF 254 elsewhere."), [("error", 1), ("error", 1)])
 
