@@ -1,0 +1,33 @@
+{
+  "form": "5.2",
+  "name": "Project or Phase Closeout",
+  "printed_title": "PROJECT CLOSEOUT",
+  "kind": "fields",
+  "page_count": 2,
+  "title_block": ["Project Title", "Date Prepared", "Project Manager"],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 248,
+      "blocks": [
+        {"type": "fields", "labels": ["Project Description"]}
+      ]
+    },
+    {
+      "page": 2,
+      "pdf_page": 249,
+      "blocks": [
+        {"type": "text", "text": "Performance Summary"},
+        {"type": "table", "bank": 1, "columns": ["Objectives", "Completion Criteria", "How Met"], "row_labels": ["Scope", "Quality"]},
+        {"type": "text", "text": "Variances"},
+        {"type": "table", "bank": 1, "columns": ["Objectives/Final Outcome", "Variances", "Comments"], "row_labels": ["Time", "Cost"]},
+        {"type": "fields", "labels": ["Benefits Management", "Business Needs"]},
+        {"type": "text", "text": "Risks and Issues"},
+        {"type": "table", "bank": 1, "columns": ["Risk or Issue", "Response or Resolution", "Comments"], "row_labels": []}
+      ]
+    }
+  ],
+  "pairs": [["Project Title", "Date Prepared", "Project Manager"]],
+  "legend": "",
+  "notes": "Landscape pages. The index name is Project or Phase Closeout; the title bar reads PROJECT CLOSEOUT. The title block prints three labels on one row (Project Title, Date Prepared, Project Manager), so the single entry in pairs is a triple. Page 1 is one large box with the label Project Description printed inside its top-left corner. On page 2 the text blocks are printed section headings over tables, not fillable fields; Benefits Management and Business Needs print as headings over boxes. In the Performance Summary and Variances tables the row-label column has no printed header. The Risks and Issues table prints 4 blank rows. Variances prints both as a section heading and as the middle column header of the table under it. Prose Table 5.2 treats Risks and issues as one summary element; the blank form prints it as a three-column table."
+}

@@ -1,0 +1,177 @@
+{
+  "form": "2.23",
+  "name": "Quality Management Plan",
+  "process_group": "Planning",
+  "pmbok_processes": [
+    "8.1 Plan Quality Management"
+  ],
+  "purpose": "A component of the project management plan that describes how the applicable quality policies, procedures and guidelines will be put to work to reach the project's quality objectives. It names the standards, the objectives with their measures, who does what, what gets reviewed, and the approaches and procedures for managing and controlling quality. It is developed once and is not usually changed.",
+  "receives_from": [
+    {
+      "source": "1.1",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "1.2",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "1.3",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "2.5",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "2.31",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "2.40",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "Scope baseline",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "2.6",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "2.7",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "2.32",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "2.4",
+      "what": "Named by the book as a recipient; which content is not stated in the book."
+    },
+    {
+      "target": "2.20",
+      "what": "Named by the book as a recipient; which content is not stated in the book."
+    },
+    {
+      "target": "2.26",
+      "what": "Named by the book as a recipient; which content is not stated in the book."
+    },
+    {
+      "target": "2.32",
+      "what": "Named by the book as a recipient; which content is not stated in the book."
+    },
+    {
+      "target": "Procurement documents (RFP, RFQ)",
+      "what": "Named by the book as a recipient; which content is not stated in the book."
+    }
+  ],
+  "alignment": [
+    {
+      "form": "1.1",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "2.4",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "2.5",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "2.26",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "Procurement documents (RFP, RFQ, etc.)",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    }
+  ],
+  "elements": [
+    {
+      "element": "Quality standards",
+      "printed_label": "Quality Standards",
+      "guidance": "Usually industry or product driven: ISO, IEEE or another regulatory or industry body."
+    },
+    {
+      "element": "Quality objectives",
+      "printed_label": "Quality Objectives",
+      "guidance": "The measures the project or product components must reach to meet stakeholder needs; the target to achieve. Metrics or specifications give a quantifiable measure of success. The form prints this as a two-column table headed Metric or Specification and Measure."
+    },
+    {
+      "element": "Quality roles and responsibilities",
+      "printed_label": "Quality Roles and Responsibilities",
+      "guidance": "The roles needed to carry out quality activities and the responsibilities of each. Printed as a two-column table, Roles and Responsibilities."
+    },
+    {
+      "element": "Deliverables and processes subject to quality review",
+      "printed_label": "Deliverables and Processes Subject to Quality Review",
+      "guidance": "Two lists: the key deliverables that have metrics or measures tied to quality objectives, and the project processes that need verification or validation that they are performed correctly or to quality requirements or objectives. Printed as two columns, Deliverables and Processes."
+    },
+    {
+      "element": "Quality management approach",
+      "printed_label": "Quality Management Approach",
+      "guidance": "How the quality process will be managed, including the timing and content of project and product quality audits."
+    },
+    {
+      "element": "Quality control approach",
+      "printed_label": "Quality Control Approach",
+      "guidance": "How the product and the project performance will be measured to ensure the product meets the quality objectives."
+    },
+    {
+      "element": "Applicable quality procedures",
+      "printed_label": "Applicable Quality Procedures",
+      "guidance": "Procedures used on the project, for example nonconformance and rework, corrective actions, quality audits and continuous improvement."
+    }
+  ],
+  "tailoring": [
+    "On smaller projects quality, requirements and scope are often handled as one aspect; on larger projects they are separate and may have distinct roles and responsibilities.",
+    "Many industries have specific standards; the plan may cite specific regulations or have them built into organizational policies and procedures.",
+    "Quality management planning must be consistent with the organization's quality policies, processes and procedures."
+  ],
+  "agile_or_adaptive": "",
+  "decisions": [
+    {
+      "decision": "Which standards and regulations apply",
+      "recorded_in": "Quality Standards",
+      "notes": ""
+    },
+    {
+      "decision": "Which quality objectives the project commits to and how each is measured",
+      "recorded_in": "Quality Objectives",
+      "notes": ""
+    },
+    {
+      "decision": "Who holds each quality role and what they are responsible for",
+      "recorded_in": "Quality Roles and Responsibilities",
+      "notes": ""
+    },
+    {
+      "decision": "Which deliverables and which processes are subject to quality review (verification or validation)",
+      "recorded_in": "Deliverables and Processes Subject to Quality Review",
+      "notes": ""
+    },
+    {
+      "decision": "When quality audits happen and what they cover",
+      "recorded_in": "Quality Management Approach",
+      "notes": ""
+    },
+    {
+      "decision": "How product and project performance will be measured against the objectives",
+      "recorded_in": "Quality Control Approach",
+      "notes": ""
+    },
+    {
+      "decision": "Which procedures apply: nonconformance and rework, corrective actions, audits, continuous improvement",
+      "recorded_in": "Applicable Quality Procedures",
+      "notes": ""
+    }
+  ],
+  "citation": "Book of Forms form 2.23, PDF pages 106 to 107 (printed pages 95 to 96)",
+  "notes": "The intro lists six things the plan can include; the elements table has seven rows, with the quality management approach and the quality control approach as two separate rows. The blank form (PDF pages 108 to 109, printed pages 97 to 98) prints Quality Objectives, Quality Roles and Responsibilities and Deliverables and Processes Subject to Quality Review as headings above two-column boxes; the sub-column names are in the guidance. The book does not say what goes in 'Measure' beyond the objective description. The prose gives no section on adaptive projects."
+}

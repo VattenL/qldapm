@@ -1,0 +1,50 @@
+{
+  "form": "3.3",
+  "name": "Change Request",
+  "printed_title": "CHANGE REQUEST",
+  "kind": "fields",
+  "page_count": 3,
+  "title_block": ["Project Title", "Date Prepared"],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 183,
+      "blocks": [
+        {"type": "fields", "labels": ["Requestor"]},
+        {"type": "checkboxes", "label": "Category", "options": ["Scope", "Quality", "Requirements", "Cost", "Schedule", "Documents"]},
+        {"type": "fields", "labels": ["Detailed Description of Proposed Change", "Justification for Proposed Change"]},
+        {"type": "text", "text": "Impacts of Change"},
+        {"type": "checkboxes", "label": "Scope", "options": ["Increase", "Decrease", "Modify"]},
+        {"type": "fields", "labels": ["Description"]},
+        {"type": "checkboxes", "label": "Quality", "options": ["Increase", "Decrease", "Modify"]},
+        {"type": "fields", "labels": ["Description"]}
+      ]
+    },
+    {
+      "page": 2,
+      "pdf_page": 184,
+      "blocks": [
+        {"type": "checkboxes", "label": "Requirements", "options": ["Increase", "Decrease", "Modify"]},
+        {"type": "fields", "labels": ["Description"]},
+        {"type": "checkboxes", "label": "Cost", "options": ["Increase", "Decrease", "Modify"]},
+        {"type": "fields", "labels": ["Description"]},
+        {"type": "checkboxes", "label": "Schedule", "options": ["Increase", "Decrease", "Modify"]},
+        {"type": "fields", "labels": ["Description"]},
+        {"type": "checkboxes", "label": "Stakeholder Impact", "options": ["High risk", "Low risk", "Medium risk"]},
+        {"type": "fields", "labels": ["Description", "Project Documents"]},
+        {"type": "fields", "labels": ["Comments"]}
+      ]
+    },
+    {
+      "page": 3,
+      "pdf_page": 185,
+      "blocks": [
+        {"type": "checkboxes", "label": "Disposition", "options": ["Approve", "Defer", "Reject"]},
+        {"type": "fields", "labels": ["Justification"]}
+      ]
+    }
+  ],
+  "pairs": [["Project Title", "Date Prepared"]],
+  "legend": "",
+  "notes": "Requestor and Category print as labels with a colon below the title line, with no rule and no box, so they sit in the body rather than the title block; the Requestor value goes on the same line as its label. The Category boxes print in a 3 by 2 grid read row by row. The text block Impacts of Change is a printed section heading with no box of its own. Each impact area prints as a bordered row (bold area name, then Increase, Decrease, Modify boxes) with a Description box directly under it. Stakeholder Impact offers High risk, Low risk, Medium risk in that printed order. Project Documents prints as a bold label inside the same bordered box as the Stakeholder Impact Description, with no Increase, Decrease or Modify boxes of its own; it is where the impact on project documents is described. Disposition prints on page 3 with its three boxes on the same line, and the Justification box under it is a separate box from the Justification for Proposed Change on page 1. Disagreements with the prose table (Table 3.3), where the blank form wins: prose Description of change versus printed Detailed Description of Proposed Change; the prose lists Project documents as one of the Impacts of change, while the form prints Project Documents only as a label inside the Stakeholder Impact box; the prose table has no Stakeholder Impact, Disposition or page 3 Justification element, and it does not list the Category box options (the form prints Documents among them)."
+}

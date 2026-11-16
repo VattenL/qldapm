@@ -1,0 +1,174 @@
+{
+  "form": "4.8",
+  "name": "Contract Closeout Report",
+  "process_group": "Monitoring and Controlling",
+  "pmbok_processes": [],
+  "purpose": "Documents the vendor's performance so it can be used to evaluate the vendor for future work, and supports project closure by ensuring the contractual agreements are completed or terminated. Before a contract can be fully closed or terminated, all disputes must be resolved, the product or result accepted and the final payments made.",
+  "receives_from": [
+    {
+      "source": "3.4",
+      "what": "the change ID, description and date approved of each contract change are copied from the change log (Table 4.8)"
+    },
+    {
+      "source": "4.9",
+      "what": "the prose makes acceptance of the product or result a condition of closing the contract (PDF page 233, printed page 222); this is a precondition, and the book states no data flowing from the acceptance form into this report"
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "5.2",
+      "what": "the project or phase closeout documents information from the procurement closeout (5.2 prose, PDF page 246, printed page 235)"
+    },
+    {
+      "target": "Future work with the vendor",
+      "what": "the vendor performance information is used to evaluate the vendor for future work (prose)"
+    }
+  ],
+  "alignment": [
+    {
+      "form": "2.37",
+      "what_must_agree": "contract closure must follow what the procurement management plan sets out (reading; the book gives only the list entry)"
+    },
+    {
+      "form": "4.7",
+      "what_must_agree": "the what worked well and what can be improved findings must agree with the procurement audit (reading; the book gives only the list entry)"
+    },
+    {
+      "form": "3.4",
+      "what_must_agree": "the record of contract changes must match the change log entries (Table 4.8 says each field is entered from the change log)"
+    },
+    {
+      "form": "5.2",
+      "what_must_agree": "the closeout facts on the contract must agree with the project closeout (reading; the book gives only the list entry)"
+    }
+  ],
+  "elements": [
+    {
+      "element": "What worked well: Scope",
+      "printed_label": "Scope",
+      "guidance": "Aspects of contract scope that were handled well."
+    },
+    {
+      "element": "What worked well: Quality",
+      "printed_label": "Quality",
+      "guidance": "Aspects of product quality that were handled well."
+    },
+    {
+      "element": "What worked well: Schedule",
+      "printed_label": "Schedule",
+      "guidance": "Aspects of the contract schedule that were handled well."
+    },
+    {
+      "element": "What worked well: Cost",
+      "printed_label": "Cost",
+      "guidance": "Aspects of the contract budget that were handled well."
+    },
+    {
+      "element": "What worked well: Other",
+      "printed_label": "Other",
+      "guidance": "Any other aspects of the contract or procurement that were handled well, such as how easy the vendor was to work with (the prose bullet for other information gives that example)."
+    },
+    {
+      "element": "What can be improved: Scope",
+      "printed_label": "Scope",
+      "guidance": "Aspects of contract scope that could be improved."
+    },
+    {
+      "element": "What can be improved: Quality",
+      "printed_label": "Quality",
+      "guidance": "Aspects of product quality that could be improved."
+    },
+    {
+      "element": "What can be improved: Schedule",
+      "printed_label": "Schedule",
+      "guidance": "Aspects of the contract schedule that could be improved."
+    },
+    {
+      "element": "What can be improved: Cost",
+      "printed_label": "Cost",
+      "guidance": "Aspects of the contract budget that could be improved."
+    },
+    {
+      "element": "What can be improved: Other",
+      "printed_label": "Other",
+      "guidance": "Any other aspects of the contract or procurement that could be improved, such as how easy the vendor was to work with (the prose bullet for other information gives that example)."
+    },
+    {
+      "element": "Record of contract changes: Change ID",
+      "printed_label": "Change ID",
+      "guidance": "The change identifier, copied from the change log."
+    },
+    {
+      "element": "Record of contract changes: Change description",
+      "printed_label": "Change Description",
+      "guidance": "The description, copied from the change log."
+    },
+    {
+      "element": "Record of contract changes: Date approved",
+      "printed_label": "Date Approved",
+      "guidance": "The date approved, copied from the change log."
+    },
+    {
+      "element": "Record of contract disputes: Description",
+      "printed_label": "Description",
+      "guidance": "The dispute or claim."
+    },
+    {
+      "element": "Record of contract disputes: Resolution",
+      "printed_label": "Resolution",
+      "guidance": "How the dispute or claim was resolved."
+    },
+    {
+      "element": "Record of contract disputes: Date resolved",
+      "printed_label": "Date Resolved",
+      "guidance": "The date the dispute or claim was resolved."
+    }
+  ],
+  "tailoring": [
+    "For a small contract, the whole vendor performance analysis can be a summary paragraph.",
+    "For small contracts, the contract changes and contract disputes records may not be needed.",
+    "If the project was built around one large contract, the project closeout report can be combined with this form."
+  ],
+  "agile_or_adaptive": "",
+  "decisions": [
+    {
+      "decision": "Whether the contract can be closed",
+      "recorded_in": "Date of Contract Completion; Signed Off by; Date of Final Payment",
+      "notes": "The prose conditions are: disputes resolved, product or result accepted, final payments made. The three closing fields are not in Table 4.8; the prose says they should be recorded."
+    },
+    {
+      "decision": "How the vendor performed, for evaluating it on future work",
+      "recorded_in": "What Worked Well; What Can Be Improved",
+      "notes": ""
+    },
+    {
+      "decision": "How each dispute or claim ended",
+      "recorded_in": "Resolution; Date Resolved",
+      "notes": ""
+    },
+    {
+      "decision": "Whether the contract is summarised in a paragraph or recorded in full (small contracts)",
+      "recorded_in": "",
+      "notes": "A tailoring choice; the form has no field for it."
+    }
+  ],
+  "citation": "Book of Forms form 4.8, PDF pages 233 to 234 (printed pages 222 to 223); Table 4.8 PDF page 234 (printed page 223); blank form PDF pages 235 to 236 (printed pages 224 to 225)",
+  "notes": "The prose names no PMBOK process for this form (it says only that contract closure supports the project closure process), so pmbok_processes is empty. The prose has no receives-from or provides-to section. Table 4.8 omits Project Manager, Contract Representative, Date of Contract Completion, Signed Off by and Date of Final Payment; the blank form prints all five, and the paragraph after the prose bullets says the completion date, who signed off and the final payment date should be recorded. The index name is Contract Closeout Report; the title bar reads CONTRACT CLOSEOUT. Scope, Quality, Schedule, Cost and Other print under both What Worked Well and What Can Be Improved, so the printed label repeats and the element name says which band. The prose says 'Change' for the description column; the blank form prints Change Description. The 5.2 provides_to entry rests on the 5.2 prose sentence 'information from the procurement closeout is documented'.",
+  "blank_only": [
+    {
+      "printed_label": "Date of Contract Completion",
+      "cite": "Book of Forms form 4.8 blank, PDF page 236 (printed page 225)",
+      "note": "Not stated in the book as a field of its own. Printed on page 2 of the blank form; Table 4.8 lists no such element."
+    },
+    {
+      "printed_label": "Signed Off by",
+      "cite": "Book of Forms form 4.8 blank, PDF page 236 (printed page 225)",
+      "note": "Not stated in the book as a field of its own. Printed on page 2 of the blank form; Table 4.8 lists no such element."
+    },
+    {
+      "printed_label": "Date of Final Payment",
+      "cite": "Book of Forms form 4.8 blank, PDF page 236 (printed page 225)",
+      "note": "Not stated in the book as a field of its own. Printed on page 2 of the blank form; Table 4.8 lists no such element."
+    }
+  ]
+}

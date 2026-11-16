@@ -1,0 +1,184 @@
+{
+  "form": "4.2",
+  "name": "Project Status Report",
+  "process_group": "Monitoring and Controlling",
+  "pmbok_processes": [
+    "4.5 Monitor and Control Project Work"
+  ],
+  "purpose": "Filled out by the project manager and sent at regular intervals to the sponsor, portfolio management group, PMO or other oversight person or group. It compiles the team member reports into summary-level accomplishments rather than activity detail, tracks schedule and cost for the period, shows impact on milestones and cost reserves, and lists new risks and issues. It is an example of a work performance report. The book also calls it a performance report or progress report.",
+  "receives_from": [
+    {
+      "source": "4.1",
+      "what": "the information is compiled from the team member status reports (prose)"
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "Sponsor, portfolio management group, PMO or other oversight person or group",
+      "what": "the report is submitted to them at predefined intervals (prose)"
+    },
+    {
+      "target": "2.32",
+      "what": "new risks identified; Table 4.2 says they should be recorded in the risk register as well"
+    },
+    {
+      "target": "3.1",
+      "what": "new issues identified; Table 4.2 says they should be recorded in the issue log as well"
+    },
+    {
+      "target": "3.2",
+      "what": "decisions made, if the report has the optional field (Tailoring Tip: they would be transferred to the project decision log)"
+    },
+    {
+      "target": "3.5",
+      "what": "knowledge transfer or lessons learned, if the report has the optional fields (Tailoring Tip)"
+    }
+  ],
+  "alignment": [
+    {
+      "form": "4.1",
+      "what_must_agree": "accomplishments, variances and risks and issues must be consistent with the team member reports they are compiled from"
+    },
+    {
+      "form": "2.18",
+      "what_must_agree": "accomplishments, milestone impact and critical path statements must match the project schedule"
+    },
+    {
+      "form": "2.20",
+      "what_must_agree": "funds and planned costs must agree with the cost estimates"
+    },
+    {
+      "form": "Project budget (no form of this name in the book)",
+      "what_must_agree": "funds spent and the budget or contingency impact must agree with the project budget; the book has no form named project budget (not stated in the book)"
+    },
+    {
+      "form": "3.1",
+      "what_must_agree": "new issues identified must also be in the issue log"
+    },
+    {
+      "form": "2.32",
+      "what_must_agree": "new risks identified must also be in the risk register"
+    },
+    {
+      "form": "4.3",
+      "what_must_agree": "variances and root causes must agree with the variance analysis"
+    },
+    {
+      "form": "4.4",
+      "what_must_agree": "the book writes \"earned value status report\"; the matching form is the Earned Value Analysis Report (4.4), whose figures must agree with the reported progress and spend"
+    },
+    {
+      "form": "4.6",
+      "what_must_agree": "the book writes \"contractor status report\"; the matching form is the Contractor Status Report (4.6), which must agree with contractor work reported here"
+    }
+  ],
+  "elements": [
+    {
+      "element": "Accomplishments for this reporting period",
+      "printed_label": "Accomplishments for This Reporting Period",
+      "guidance": "List all work packages or other accomplishments scheduled for completion in the period."
+    },
+    {
+      "element": "Accomplishments planned but not completed this reporting period",
+      "printed_label": "Accomplishments Planned but Not Completed This Reporting Period",
+      "guidance": "List all work packages or other accomplishments scheduled for the period that were not completed."
+    },
+    {
+      "element": "Root cause of variances",
+      "printed_label": "Root Cause of Variances",
+      "guidance": "First copy on the form (page 1). Identify the cause of the variance for any work not accomplished as scheduled; Table 4.2 treats this as the schedule variance."
+    },
+    {
+      "element": "Impact to upcoming milestones or project due date",
+      "printed_label": "Impact to Upcoming Milestones or Project Due Date",
+      "guidance": "Identify the impact of unfinished work on upcoming milestones or the overall schedule, including work behind on the critical path or a change in the critical path."
+    },
+    {
+      "element": "Planned corrective or preventive action",
+      "printed_label": "Planned Corrective or Preventive Action",
+      "guidance": "First copy on the form (page 2). Identify actions needed to make up schedule variances or to prevent future schedule variances."
+    },
+    {
+      "element": "Funds spent this reporting period",
+      "printed_label": "Funds Spent This Reporting Period",
+      "guidance": "Record the funds spent in the period."
+    },
+    {
+      "element": "Root cause of variance",
+      "printed_label": "Root Cause of Variances",
+      "guidance": "Second copy on the form (page 2). Identify the cause of any expenditure over or under plan, including labor versus material variance and whether the basis of estimates or estimating assumptions were at fault; Table 4.2 treats this as the cost variance."
+    },
+    {
+      "element": "Impact to overall budget or contingency funds",
+      "printed_label": "Impact to Overall Budget or Contingency Funds",
+      "guidance": "Indicate the impact on the overall project budget and whether contingency funds must be spent."
+    },
+    {
+      "element": "Planned corrective or preventive action",
+      "printed_label": "Planned Corrective or Preventive Action",
+      "guidance": "Second copy on the form (page 3). Identify actions needed to recover cost variances or prevent future ones; Table 4.2 words this as preventing future \"schedule\" variances, which reads as a misprint for cost because the row sits in the cost group."
+    },
+    {
+      "element": "Accomplishments planned for next reporting period",
+      "printed_label": "Accomplishments Planned for Next Reporting Period",
+      "guidance": "List all work packages or accomplishments scheduled for completion next period."
+    },
+    {
+      "element": "Costs planned for next reporting period",
+      "printed_label": "Costs Planned for Next Reporting Period",
+      "guidance": "Identify the funds planned to be spent next period."
+    },
+    {
+      "element": "New risks identified",
+      "printed_label": "New Risks Identified",
+      "guidance": "Any new risks identified in the period; they should also be recorded in the risk register."
+    },
+    {
+      "element": "Issues",
+      "printed_label": "Issues",
+      "guidance": "Any new issues that have arisen in the period; they should also be recorded in the issue log."
+    },
+    {
+      "element": "Comments",
+      "printed_label": "Comments",
+      "guidance": "Any comment that adds relevance to the report."
+    }
+  ],
+  "tailoring": [
+    "Add an escalation field for matters that need to go to the sponsor, program manager or other appropriate individuals.",
+    "Add a field for decisions made; these would be transferred to the project decision log.",
+    "If change requests were submitted in the period, summarise them and refer the reader to the change log.",
+    "If the organization has a robust knowledge management process, add fields for knowledge transfer or lessons learned, to go to its knowledge repository or lessons learned register.",
+    "Tailor the presentation as well as the content: many PMOs have reporting software that turns the data into dashboards, heat reports, stop light charts or other representations."
+  ],
+  "agile_or_adaptive": "",
+  "decisions": [
+    {
+      "decision": "Which accomplishments missed the plan and why",
+      "recorded_in": "Accomplishments Planned but Not Completed This Reporting Period; Root Cause of Variances (first copy)",
+      "notes": ""
+    },
+    {
+      "decision": "Whether a milestone or the project due date is at risk, or the critical path has moved",
+      "recorded_in": "Impact to Upcoming Milestones or Project Due Date",
+      "notes": ""
+    },
+    {
+      "decision": "Which actions will recover or prevent schedule and cost variances",
+      "recorded_in": "Planned Corrective or Preventive Action (both copies)",
+      "notes": ""
+    },
+    {
+      "decision": "Whether contingency funds must be spent",
+      "recorded_in": "Impact to Overall Budget or Contingency Funds",
+      "notes": ""
+    },
+    {
+      "decision": "Which new risks and issues go to the risk register and the issue log",
+      "recorded_in": "New Risks Identified; Issues",
+      "notes": ""
+    }
+  ],
+  "citation": "Book of Forms form 4.2, PDF pages 207 to 208 (printed pages 196 to 197)",
+  "notes": "Root Cause of Variances and Planned Corrective or Preventive Action each print twice on the blank form (PDF pages 209 to 212, printed pages 198 to 201) with identical wording; the form does not say what each copy covers. Table 4.2 supports the reading used here: the first pair is schedule, the second pair is cost, which also matches where each copy sits (after the accomplishment boxes, then after Funds Spent). The second Planned corrective row in Table 4.2 says \"future schedule variances\" although it sits in the cost group, which is an apparent misprint (uncertain). Table 4.2 names the second root cause singular; the blank form wins. Table 4.2 has no Project Manager or Sponsor element although the form prints both in the title block. The Alignment list has nine entries; \"project budget\", \"earned value status report\" and \"contractor status report\" are the book's wording, mapped to 4.4 and 4.6 by their printed titles, and no form is named project budget."
+}

@@ -1,0 +1,190 @@
+{
+  "form": "2.31",
+  "name": "Risk Management Plan",
+  "process_group": "Planning",
+  "pmbok_processes": [
+    "11.1 Plan Risk Management"
+  ],
+  "purpose": "A component of the project management plan that describes how risk management will be structured and performed for both threats and opportunities. It is the input to every other risk management process and says how each of them will be done. It is developed once and does not usually change.",
+  "receives_from": [
+    {
+      "source": "1.1",
+      "what": "Project charter: named as a source in the prose; the book does not say which fields are used"
+    },
+    {
+      "source": "2.1",
+      "what": "Project management plan (any component): named as a source in the prose; the book does not say which fields are used"
+    },
+    {
+      "source": "1.3",
+      "what": "Stakeholder register: named as a source in the prose; the book does not say which fields are used"
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "2.19",
+      "what": "Cost management plan: named as a recipient in the prose; the book does not say which fields flow"
+    },
+    {
+      "target": "2.23",
+      "what": "Quality management plan: named as a recipient in the prose; the book does not say which fields flow"
+    },
+    {
+      "target": "2.32",
+      "what": "Risk register: named as a recipient in the prose; the book does not say which fields flow"
+    },
+    {
+      "target": "2.40",
+      "what": "Stakeholder engagement plan: named as a recipient in the prose; the book does not say which fields flow"
+    }
+  ],
+  "alignment": [
+    {
+      "form": "2.4",
+      "what_must_agree": "The book says only 'aligned and consistent'. Reading aid from the element table, not stated in the book: the Scope column of the impact definitions against how scope is defined and controlled in the scope management plan."
+    },
+    {
+      "form": "2.11",
+      "what_must_agree": "The book says only 'aligned and consistent'. Reading aid from the element table, not stated in the book: the Time column of the impact definitions, and the timing of risk activities, against the schedule management plan."
+    },
+    {
+      "form": "2.19",
+      "what_must_agree": "The book says only 'aligned and consistent'. Reading aid from the element table, not stated in the book: the Cost column of the impact definitions, the Risk Management Funding box and the contingency and management reserve protocols against the cost management plan."
+    },
+    {
+      "form": "2.23",
+      "what_must_agree": "The book says only 'aligned and consistent'. Reading aid from the element table, not stated in the book: the Quality column of the impact definitions against the quality management plan."
+    },
+    {
+      "form": "2.26",
+      "what_must_agree": "The book says only 'aligned and consistent'. Reading aid from the element table, not stated in the book: the risk roles and responsibilities against the resource management plan."
+    },
+    {
+      "form": "2.37",
+      "what_must_agree": "The book says only 'aligned and consistent'. Reading aid from the element table, not stated in the book: risk transfer and insurance or bond requirements against the Risk Management box of the procurement management plan."
+    },
+    {
+      "form": "2.40",
+      "what_must_agree": "The book says only 'aligned and consistent'. Reading aid from the element table, not stated in the book: Stakeholder Risk Tolerances against the engagement approach in the stakeholder engagement plan."
+    }
+  ],
+  "elements": [
+    {
+      "element": "Strategy",
+      "printed_label": "Strategy",
+      "guidance": "The general approach to managing risk on this project."
+    },
+    {
+      "element": "Methodology",
+      "printed_label": "Methodology",
+      "guidance": "The approach to risk management, including the tools, approaches and data sources that will be used."
+    },
+    {
+      "element": "Roles and responsibilities",
+      "printed_label": "Roles and Responsibilities",
+      "guidance": "Who performs which risk management activity. The blank form prints this as a Role and Responsibility table with four numbered rows."
+    },
+    {
+      "element": "Risk categories",
+      "printed_label": "Risk Categories",
+      "guidance": "The groups used to sort and organise risks. They can sort the risk register or form a risk breakdown structure if one is used."
+    },
+    {
+      "element": "Risk management funding",
+      "printed_label": "Risk Management Funding",
+      "guidance": "The funding needed for risk activities, for example expert advice or transferring risks to a third party. The prose also says this element sets the protocols for establishing, measuring and allocating contingency and management reserves; the blank form prints those protocols in a separate Contingency Protocols box."
+    },
+    {
+      "element": "Frequency and timing",
+      "printed_label": "Frequency and Timing",
+      "guidance": "How often formal risk management activities are done, and when any specific activity happens."
+    },
+    {
+      "element": "Stakeholder risk appetite",
+      "printed_label": "Stakeholder Risk Tolerances",
+      "guidance": "The risk thresholds of the organisation(s) and key stakeholders for each objective. The blank form prints Tolerances where the prose says appetite."
+    },
+    {
+      "element": "Risk tracking and audit",
+      "printed_label": "Risk Tracking and Audit",
+      "guidance": "How risk activities will be recorded and how the risk management processes will be audited."
+    },
+    {
+      "element": "Definitions of probability",
+      "printed_label": "Definitions of Probability",
+      "guidance": "How probability is measured: the scale used and the meaning of each level. The definitions should reflect stakeholder risk appetite. The book gives a five-level example (Very high at 80 percent or higher down to Very low at 1 to 20 percent) as an illustration only; the printed form has one blank box per level."
+    },
+    {
+      "element": "Definitions of impact by objective",
+      "printed_label": "Definitions of Impact by Objective",
+      "guidance": "How impact is measured for the project as a whole or for each objective: the scale and the meaning of each level. The blank form prints columns Scope, Quality, Time and Cost for five levels. The book's illustration is a cost scale of overrun of the control account budget (above 20 percent for Very high, below 5 percent for Very low). The prose repeats 'probability definitions should reflect the stakeholder risk appetite' in this row, which reads as a slip for impact."
+    },
+    {
+      "element": "Probability and impact matrix",
+      "printed_label": "Probability and Impact Matrix",
+      "guidance": "Which combinations of probability and impact count as high, medium and low risk, and the scoring used to prioritise risks. It can also assess urgency, meaning how soon the risk event is likely to occur. The blank form prints a five by five grid."
+    }
+  ],
+  "tailoring": [
+    "Small, simple or short projects: use a simplified risk register with a 3 by 3 probability and impact matrix, and put risk information in the project status report instead of a separate risk report.",
+    "Larger, longer or more complex projects: build a robust risk management process with a more granular matrix, quantitative assessments for the schedule and budget baselines, risk audits and risk reports.",
+    "Projects that use an agile approach address risk at the start of each iteration and during the retrospective."
+  ],
+  "agile_or_adaptive": "Projects using an agile approach address risk at the start of each iteration and during the retrospective (Book of Forms form 2.31 Tailoring Tips, PDF page 132 (printed page 121)).",
+  "decisions": [
+    {
+      "decision": "Which overall approach, method, tools and data sources the project uses for risk",
+      "recorded_in": "Strategy",
+      "notes": ""
+    },
+    {
+      "decision": "Who does which risk management activity",
+      "recorded_in": "Roles and Responsibilities",
+      "notes": ""
+    },
+    {
+      "decision": "How risks are grouped for sorting and reporting",
+      "recorded_in": "Risk Categories",
+      "notes": ""
+    },
+    {
+      "decision": "How much funding risk activities get, and how contingency and management reserves are set, measured and allocated",
+      "recorded_in": "Risk Management Funding",
+      "notes": "The blank form also prints Contingency Protocols; the prose folds it into the funding element."
+    },
+    {
+      "decision": "How often formal risk activities are carried out and when",
+      "recorded_in": "Frequency and Timing",
+      "notes": ""
+    },
+    {
+      "decision": "Which risk thresholds the organisation and key stakeholders accept for each objective",
+      "recorded_in": "Stakeholder Risk Tolerances",
+      "notes": ""
+    },
+    {
+      "decision": "How risk activity is recorded and how the risk processes are audited",
+      "recorded_in": "Risk Tracking and Audit",
+      "notes": ""
+    },
+    {
+      "decision": "The probability scale and the impact scale per objective",
+      "recorded_in": "Definitions of Probability; Definitions of Impact by Objective",
+      "notes": ""
+    },
+    {
+      "decision": "Which probability and impact combinations rank as high, medium or low, and how risks are scored for priority",
+      "recorded_in": "Probability and Impact Matrix",
+      "notes": ""
+    }
+  ],
+  "citation": "Book of Forms form 2.31, PDF pages 132 to 134 (printed pages 121 to 123); Tailoring Tips PDF page 132 (printed page 121), Alignment PDF page 133 (printed page 122), Table 2.28 PDF page 134 (printed page 123)",
+  "notes": "Blank form: PDF pages 135 to 138 (printed pages 124 to 127). The prose lists 'Risk report formats' among typical information, but Table 2.28 has no row for it and the blank form prints no box for it; not stated in the book where report formats go. The prose also lists 'Methods to track and audit risk management activities' (Risk Tracking and Audit). The blank form prints Contingency Protocols, which Table 2.28 does not list as its own row (see Risk management funding). The percentage bands in the book's probability example share their boundary values (60 to 80, then 40 to 60), so the book does not say which band an exact 60 percent falls in; do not copy the example bands as project thresholds. For what each PMBOK 6 section 11.1 input, tool and output says, see the PMBOK note for chapter 11, not this file. The alignment 'what_must_agree' texts are reading aids, since the book states only that the documents should be aligned and consistent.",
+  "blank_only": [
+    {
+      "printed_label": "Contingency Protocols",
+      "cite": "Book of Forms form 2.31 blank, PDF page 135 (printed page 124)",
+      "note": "Not stated in the book as a field of its own. Table 2.28 puts the protocols for establishing, measuring and allocating contingency and management reserves inside the Risk Management Funding element; the blank form prints Contingency Protocols as its own label under it."
+    }
+  ]
+}

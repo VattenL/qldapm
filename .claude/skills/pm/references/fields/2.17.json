@@ -1,0 +1,81 @@
+{
+  "form": "2.17",
+  "name": "Duration Estimating Worksheet",
+  "printed_title": "DURATION ESTIMATING WORKSHEET",
+  "kind": "log",
+  "page_count": 1,
+  "title_block": [
+    "Project Title",
+    "Date Prepared"
+  ],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 88,
+      "blocks": [
+        {
+          "type": "table",
+          "bank": 1,
+          "columns": [
+            {
+              "group": "Parametric Estimates",
+              "columns": [
+                "ID",
+                "Effort Hours",
+                "Resource Quantity",
+                "% Available",
+                "Performance Factor",
+                "Duration Estimate"
+              ]
+            }
+          ],
+          "row_labels": []
+        },
+        {
+          "type": "table",
+          "bank": 1,
+          "columns": [
+            {
+              "group": "Analogous Estimates",
+              "columns": [
+                "ID",
+                "Previous Activity",
+                "Previous Duration",
+                "Current Activity",
+                "Multiplier",
+                "Duration Estimate"
+              ]
+            }
+          ],
+          "row_labels": []
+        },
+        {
+          "type": "table",
+          "bank": 1,
+          "columns": [
+            {
+              "group": "Three-Point Estimates",
+              "columns": [
+                "ID",
+                "Optimistic Duration",
+                "Most Likely Duration",
+                "Pessimistic Duration",
+                "Weighting Equation",
+                "Expected Duration Estimate"
+              ]
+            }
+          ],
+          "row_labels": []
+        }
+      ]
+    }
+  ],
+  "pairs": [
+    [
+      "Project Title",
+      "Date Prepared"
+    ]
+  ],
+  "legend": "",
+  "notes": "The page holds three separate sub-tables stacked in one frame, each with its own full-width caption row (Parametric Estimates, Analogous Estimates, Three-Point Estimates) printed above its own column header row, and seven blank rows each. They are independent tables, not banks of the same records, so each is recorded as bank 1 with the caption as a group spanning all its columns. The prose table 2.16 (PDF 86-87) says \"Percent available\", \"three-point estimate (beta distribution)\" and \"Expected duration\"; the blank form prints \"% Available\", \"Three-Point Estimates\" and \"Expected Duration Estimate\", which win."
+}

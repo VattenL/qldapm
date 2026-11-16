@@ -1,0 +1,32 @@
+{
+  "form": "2.15",
+  "name": "Network Diagram",
+  "printed_title": "NETWORK DIAGRAM",
+  "kind": "diagram",
+  "page_count": 1,
+  "title_block": [
+    "Project Title",
+    "Date Prepared"
+  ],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 80,
+      "blocks": [
+        {
+          "type": "picture",
+          "description": "Sample precedence diagram read left to right: Start to A; A to B and A to C (edge labelled FS-2d); B to D (edge labelled +2d); C to E; E to F (SS, drawn from the start of E to the start of F); D and E to G; G to H (FF, drawn from the finish of G to the finish of H); H to I; I and F to End. Nodes are rounded boxes, no time axis."
+        }
+      ]
+    }
+  ],
+  "pairs": [
+    [
+      "Project Title",
+      "Date Prepared"
+    ]
+  ],
+  "legend": "In this network diagram:\nThere is a two-day lead between the completion of A and beginning of C.\nThere is a two-day lag between the completion of B and beginning of D.\nThere is a start-to-start relationship between E and F.\nThere is a finish-to-finish relationship between G and H.\n\nAll other relationships are finish-to-start.",
+  "legend_sample": true,
+  "notes": "Landscape page. The diagram and legend are a worked sample, not fields: the activities A to I are placeholders for the project's own activities. Keep the printed edge notation (FS-2d for a lead, +2d for a lag, SS, FF) when drawing the project's network. There is no Document Element table for this form."
+}

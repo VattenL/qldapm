@@ -1,0 +1,33 @@
+{
+  "form": "2.24",
+  "name": "Quality Metrics",
+  "printed_title": "QUALITY METRICS",
+  "kind": "log",
+  "page_count": 1,
+  "title_block": [
+    "Project Title",
+    "Date Prepared"
+  ],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 111,
+      "blocks": [
+        {
+          "type": "table",
+          "bank": 1,
+          "columns": [
+            "ID",
+            "Item",
+            "Metric",
+            "Measurement Method"
+          ],
+          "row_labels": []
+        }
+      ]
+    }
+  ],
+  "pairs": [["Project Title", "Date Prepared"]],
+  "legend": "",
+  "notes": ""
+}

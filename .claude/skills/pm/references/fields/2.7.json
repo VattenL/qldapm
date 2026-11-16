@@ -1,0 +1,76 @@
+{
+  "form": "2.7",
+  "name": "Requirements Traceability Matrix",
+  "printed_title": "REQUIREMENTS TRACEABILITY MATRIX",
+  "kind": "matrix",
+  "page_count": 2,
+  "title_block": [
+    "Project Title",
+    "Date Prepared"
+  ],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 54,
+      "blocks": [
+        {
+          "type": "table",
+          "bank": 1,
+          "columns": [
+            {
+              "group": "Requirement Information",
+              "columns": [
+                "ID",
+                "Requirement",
+                "Source",
+                "Priority",
+                "Category"
+              ]
+            },
+            {
+              "group": "Relationship Traceability",
+              "columns": [
+                "Business Objective",
+                "Deliverable",
+                "Verification",
+                "Validation"
+              ]
+            }
+          ],
+          "row_labels": []
+        }
+      ]
+    },
+    {
+      "page": 2,
+      "pdf_page": 55,
+      "printed_title": "INTER-REQUIREMENTS TRACEABILITY MATRIX",
+      "title_block": true,
+      "blocks": [
+        {
+          "type": "table",
+          "bank": 1,
+          "columns": [
+            "ID",
+            "Business Requirement",
+            "Priority",
+            "Source",
+            "ID",
+            "Technical Requirement",
+            "Priority",
+            "Source"
+          ],
+          "row_labels": []
+        }
+      ]
+    }
+  ],
+  "pairs": [
+    [
+      "Project Title",
+      "Date Prepared"
+    ]
+  ],
+  "legend": "",
+  "notes": "Landscape pages. Page 2 prints its own title bar, \"INTER-REQUIREMENTS TRACEABILITY MATRIX\", and repeats the Project Title / Date Prepared header. Page 1 prints a grouped header row: \"Requirement Information\" spans ID to Category and \"Relationship Traceability\" spans Business Objective to Validation; keep both header rows. Page 2 has no group header; ID, Priority and Source each print twice, once for the business requirement and once for the technical requirement on the same row. Despite the kind \"matrix\" in forms-index.md, both pages are registers with one row per requirement and fixed columns, not a grid crossing two dimensions. The prose table 2.6 (PDF 53) lists Category before Priority; the blank page 1 prints Priority before Category, which wins."
+}

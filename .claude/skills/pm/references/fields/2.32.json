@@ -1,0 +1,21 @@
+{
+  "form": "2.32",
+  "name": "Risk Register",
+  "printed_title": "RISK REGISTER",
+  "kind": "log",
+  "page_count": 1,
+  "title_block": ["Project Title", "Date Prepared"],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 141,
+      "blocks": [
+        {"type": "table", "bank": 1, "columns": ["ID", "Risk Statement", "Owner", "Probability", {"group": "Impact", "columns": ["Scope", "Quality", "Schedule", "Cost"]}, "Score", "Response"], "row_labels": []},
+        {"type": "table", "bank": 2, "columns": ["Revised Probability", {"group": "Impact", "columns": ["Scope", "Quality", "Schedule", "Cost"]}, "Revised Score", "Responsible Party", "Actions", "Status", "Comments"], "row_labels": []}
+      ]
+    }
+  ],
+  "pairs": [["Project Title", "Date Prepared"]],
+  "legend": "",
+  "notes": "Landscape page. The two banks print one above the other on the same page, eight blank rows each, and bank 2 continues the records of bank 1 row for row. Bank 2 prints no ID column. The group header in bank 2 is printed as Impact, not Revised Impact. Revised Probability, Revised Score and Responsible Party each print on two lines in their header cells. The prose Table 2.29 says Risk ID and Risk owner where the blank form prints ID and Owner, and the prose table has no Responsible Party element although bank 2 prints one; the blank form wins."
+}

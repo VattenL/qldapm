@@ -1,0 +1,204 @@
+{
+  "form": "2.21",
+  "name": "Cost Estimating Worksheet",
+  "process_group": "Planning",
+  "pmbok_processes": [
+    "7.2 Estimate Costs"
+  ],
+  "purpose": "A working sheet that shows the arithmetic behind a cost estimate when a quantitative method or a bottom-up estimate is used. It covers four calculations: parametric (units times cost per unit), analogous (size ratio against similar past work times its cost), three-point (weighted optimistic, most likely and pessimistic costs) and bottom-up (detailed work package costs summed). Worksheets are developed and then refined periodically.",
+  "receives_from": [
+    {
+      "source": "2.19",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "Scope baseline",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "2.18",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "2.23",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "2.28",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "2.32",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "3.5",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    }
+  ],
+  "provides_to": [],
+  "alignment": [],
+  "elements": [
+    {
+      "element": "ID (shared by the parametric, analogous and three-point tables)",
+      "printed_label": "ID",
+      "guidance": "Unique identifier such as the WBS ID or the activity ID."
+    },
+    {
+      "element": "Parametric estimates: Cost variable",
+      "printed_label": "Cost Variable",
+      "guidance": "The cost driver, such as hours, square feet, gallons or another quantifiable measure. Book example: square feet."
+    },
+    {
+      "element": "Parametric estimates: Cost per unit",
+      "printed_label": "Cost per Unit",
+      "guidance": "The cost of one unit. Book example: $9.50."
+    },
+    {
+      "element": "Parametric estimates: Number of units",
+      "printed_label": "Number of Units",
+      "guidance": "How many units. Book example: 36."
+    },
+    {
+      "element": "Parametric estimates: Cost estimate",
+      "printed_label": "Cost Estimate",
+      "guidance": "Number of units times cost per unit. Book example: $9.50 x 36 = $342."
+    },
+    {
+      "element": "Analogous estimates: Previous activity",
+      "printed_label": "Previous Activity",
+      "guidance": "Description of the earlier, similar activity. Book example: build a 160 square foot deck."
+    },
+    {
+      "element": "Analogous estimates: Previous cost",
+      "printed_label": "Previous Cost",
+      "guidance": "The cost of that earlier activity. Book example: $5,000."
+    },
+    {
+      "element": "Analogous estimates: Current activity",
+      "printed_label": "Current Activity",
+      "guidance": "Describes how the current activity differs. Book example: build a 200 square foot deck."
+    },
+    {
+      "element": "Analogous estimates: Multiplier",
+      "printed_label": "Multiplier",
+      "guidance": "The current activity's size divided by the previous activity's size. Book example: 200/160 = 1.25."
+    },
+    {
+      "element": "Analogous estimates: Cost Estimate",
+      "printed_label": "Cost Estimate",
+      "guidance": "Previous cost times the multiplier. Book example: $5,000 x 1.25 = $6,250."
+    },
+    {
+      "element": "Three-point estimate (beta distribution): Optimistic cost",
+      "printed_label": "Optimistic Cost",
+      "guidance": "Assumes all costs were identified and nothing rises in material, labor or other drivers. Book example: $4,000."
+    },
+    {
+      "element": "Three-point estimate (beta distribution): Most likely cost",
+      "printed_label": "Most Likely Cost",
+      "guidance": "Assumes some fluctuation but nothing out of the ordinary. Book example: $5,000."
+    },
+    {
+      "element": "Three-point estimate (beta distribution): Pessimistic cost",
+      "printed_label": "Pessimistic Cost",
+      "guidance": "Assumes significant risks materialize and cause overruns. Book example: $7,500."
+    },
+    {
+      "element": "Three-point estimate (beta distribution): Weighting equation",
+      "printed_label": "Weighting Equation",
+      "guidance": "Weight the three estimates and divide; the most common weighting is the beta distribution, cE = (cO + 4cM + cP) / 6, where c is cost. The book's printed example line omits the pessimistic term (see notes); with the three book values the result is $5,250."
+    },
+    {
+      "element": "Three-point estimate (beta distribution): Expected cost",
+      "printed_label": "Expected Cost Estimate",
+      "guidance": "The expected cost from the weighting. Book example: $5,250."
+    },
+    {
+      "element": "Bottom-up: ID",
+      "printed_label": "ID",
+      "guidance": "Unique identifier such as the WBS ID or the activity ID."
+    },
+    {
+      "element": "Bottom-up: Labor hours",
+      "printed_label": "Labor Hours",
+      "guidance": "Estimated effort hours."
+    },
+    {
+      "element": "Bottom-up: Labor rate",
+      "printed_label": "Labor Rate",
+      "guidance": "Hourly or daily rate."
+    },
+    {
+      "element": "Bottom-up: Total labor",
+      "printed_label": "Total Labor",
+      "guidance": "Labor hours times labor rate."
+    },
+    {
+      "element": "Bottom-up: Material",
+      "printed_label": "Material",
+      "guidance": "Vendor quotes for material, or amount times cost per unit."
+    },
+    {
+      "element": "Bottom-up: Supplies",
+      "printed_label": "Supplies",
+      "guidance": "Vendor quotes for supplies, or amount times cost per unit."
+    },
+    {
+      "element": "Bottom-up: Equipment",
+      "printed_label": "Equipment",
+      "guidance": "Quotes to rent, lease or purchase equipment."
+    },
+    {
+      "element": "Bottom-up: Travel",
+      "printed_label": "Travel",
+      "guidance": "Quotes for travel."
+    },
+    {
+      "element": "Bottom-up: Other direct costs",
+      "printed_label": "Other Direct Costs",
+      "guidance": "Any other direct costs, with the type of cost documented."
+    },
+    {
+      "element": "Bottom-up: Indirect costs",
+      "printed_label": "Indirect Costs",
+      "guidance": "Indirect costs such as overhead."
+    },
+    {
+      "element": "Bottom-up: Reserve",
+      "printed_label": "Reserve",
+      "guidance": "Any contingency reserve cost for the work package."
+    },
+    {
+      "element": "Bottom-up: Estimate",
+      "printed_label": "Estimate",
+      "guidance": "Sum of labor, materials, supplies, equipment, travel, other direct costs, indirect costs and any contingency reserve."
+    }
+  ],
+  "tailoring": [],
+  "agile_or_adaptive": "",
+  "decisions": [
+    {
+      "decision": "Which quantitative method (parametric, analogous, three-point) or bottom-up estimate fits each item",
+      "recorded_in": "",
+      "notes": "The prose says analogous is generally used for a high-level estimate when detailed information is not available, and bottom-up gives the most accurate estimate at work package level."
+    },
+    {
+      "decision": "Which cost driver and unit cost drive a parametric estimate",
+      "recorded_in": "Cost Variable",
+      "notes": ""
+    },
+    {
+      "decision": "How complexity and price increases adjust an analogous estimate",
+      "recorded_in": "Multiplier",
+      "notes": "The prose says such factors can be applied; the form prints no separate column for them."
+    },
+    {
+      "decision": "Which equation weights the three-point estimate",
+      "recorded_in": "Weighting Equation",
+      "notes": "The prose says the project's needs decide the equation; beta distribution is the common one."
+    }
+  ],
+  "citation": "Book of Forms form 2.21, PDF pages 99 to 101 (printed pages 88 to 90)",
+  "notes": "No Alignment section and no Tailoring Tips in the book for this form, so alignment and tailoring are empty; the prose names sources but no recipients, so provides_to is empty (not stated in the book). The Description has two tables: Table 2.19 (parametric, analogous, three-point; the ID row is shared by all three) and Table 2.20 (bottom-up, page 2 of the blank form); element names carry a group prefix because 'ID', 'Cost Estimate', 'Reserve' and 'Estimate' recur. The prose heads the third group 'Three-point estimate (beta distribution)' and the last element 'Expected cost'; the blank form (PDF pages 102 to 103, printed pages 91 to 92) prints 'Three-Point Estimates' and 'Expected Cost Estimate', which win. Checked on the page image (PDF page 100, printed page 89): the Weighting equation row prints 'cE = (cO + c4M + cP)/6', with the 4 attached to the M term, and its example line prints '(4,000 + 4(5,000))/6', which leaves out the pessimistic term of $7,500. The intro (PDF page 99, printed page 88) prints the equation as optimistic cost + 4 times most likely cost + pessimistic cost, divided by 6, and the Expected Cost example of $5,250 matches (4,000 + 4 x 5,000 + 7,500) / 6, so the element guidance uses (cO + 4cM + cP) / 6 and the printed example line is a book slip. The book does not say how to combine the worksheet results into form 2.20."
+}

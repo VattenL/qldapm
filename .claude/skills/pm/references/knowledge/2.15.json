@@ -1,0 +1,81 @@
+{
+  "form": "2.15",
+  "name": "Network Diagram",
+  "process_group": "Planning",
+  "pmbok_processes": [
+    "6.3 Sequence Activities"
+  ],
+  "purpose": "A visual display of the relationships between schedule elements. The elements are nodes joined by arrows that show the type of relationship, and modifications to the relationship (leads and lags) can be added. It is developed once and is not usually changed unless the scope changes significantly.",
+  "receives_from": [
+    {
+      "source": "1.2",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "2.11",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "2.12",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "2.13",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "2.14",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "Scope baseline",
+      "what": "named as a source; the book does not say what is passed"
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "2.18",
+      "what": "named as the only recipient (the book says \"Project schedule\"); the book does not say what is passed"
+    }
+  ],
+  "alignment": [
+    {
+      "form": "2.18",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "2.3",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "2.14",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    }
+  ],
+  "elements": [],
+  "tailoring": [
+    "At the start of the project, sticky notes can be used to build a network diagram and get the idea of the flow of deliverables.",
+    "For some projects, enter the relationship type directly in the scheduling tool instead of drawing it; most scheduling software can show the schedule as a network diagram.",
+    "The diagram can be drawn at the activity level, the deliverable level or the milestone level."
+  ],
+  "agile_or_adaptive": "",
+  "decisions": [
+    {
+      "decision": "which relationship type links two elements: finish-to-start, start-to-start, finish-to-finish or start-to-finish",
+      "recorded_in": "",
+      "notes": "Drawn as the arrow between nodes; the form has no labelled boxes."
+    },
+    {
+      "decision": "whether a relationship carries a lead or a lag",
+      "recorded_in": "",
+      "notes": "Shown on the arrow in the book's notation."
+    },
+    {
+      "decision": "the level at which the diagram is drawn: activity, deliverable or milestone",
+      "recorded_in": "",
+      "notes": ""
+    }
+  ],
+  "citation": "Book of Forms form 2.15, PDF pages 78 to 79 (printed pages 67 to 68); blank form PDF page 80 (printed page 69)",
+  "notes": "There is no Document Element table for this form (references/fields/2.15.json), so elements is empty. The blank page is a worked sample (nodes A to I, a legend), not fields; its activities are placeholders. Relationship types as the book defines them (PDF page 78, printed page 67): finish-to-start (FS), the most common, where the predecessor must be complete before the successor can begin; start-to-start (SS), where the predecessor must begin before the successor begins; finish-to-finish (FF), where the predecessor must be complete before the successor can be complete; start-to-finish (SF), the least common, where the successor must begin before the predecessor can be complete. Lag is a directed delay, for example FS+3d means the successor starts three days after the predecessor is complete, and lag is not float. Lead is an acceleration, for example FS-3d means the successor begins three days before the predecessor is complete. Leads and lags can be applied to any relationship type. The printed sample uses FS-2d for a lead and +2d for a lag. Process: 6.3 Sequence Activities."
+}

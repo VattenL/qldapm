@@ -1,0 +1,20 @@
+{
+  "form": "4.9",
+  "name": "Product Acceptance Form",
+  "printed_title": "FORMAL ACCEPTANCE FORM",
+  "kind": "log",
+  "page_count": 1,
+  "title_block": ["Project Title", "Date Prepared"],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 238,
+      "blocks": [
+        {"type": "table", "bank": 1, "columns": ["ID", "Requirement", "Acceptance Criteria", "Validation Method", "Status", "Comments", "Sign-off"], "row_labels": []}
+      ]
+    }
+  ],
+  "pairs": [["Project Title", "Date Prepared"]],
+  "legend": "",
+  "notes": "Landscape page. The table prints 10 blank rows. The index name is Product Acceptance Form; the title bar reads FORMAL ACCEPTANCE FORM. Prose Table 4.9 lists ID, Requirement, Acceptance criteria, Validation method, Status, Sign-off and has no Comments element; the blank form prints a Comments column between Status and Sign-off."
+}

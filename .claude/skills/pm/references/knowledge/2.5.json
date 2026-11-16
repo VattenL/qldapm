@@ -1,0 +1,160 @@
+{
+  "form": "2.5",
+  "name": "Requirements Management Plan",
+  "process_group": "Planning",
+  "pmbok_processes": [
+    "5.1 Plan Scope Management"
+  ],
+  "purpose": "The requirements management plan is part of the project management plan and specifies how requirements activities are conducted throughout the project. The planning activities are collecting, analyzing, categorizing, prioritizing, documenting, determining metrics and defining the traceability structure; the managing activities are tracking, reporting, tracing, validating and configuration management. It is developed once and does not usually change.",
+  "receives_from": [
+    {
+      "source": "1.1",
+      "what": "charter information; not stated in the book which elements"
+    },
+    {
+      "source": "Development approach",
+      "what": "development approach information; not stated in the book which elements"
+    },
+    {
+      "source": "2.23",
+      "what": "quality management plan information; not stated in the book which elements"
+    },
+    {
+      "source": "2.4",
+      "what": "the book lists the scope management plan as related, not as a source"
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "2.6",
+      "what": "requirements management plan information; not stated in the book which elements"
+    },
+    {
+      "target": "2.7",
+      "what": "requirements management plan information; not stated in the book which elements (the Requirements traceability row of Table 2.4 covers the information linking requirements to deliverables)"
+    },
+    {
+      "target": "2.23",
+      "what": "requirements information; not stated in the book which elements"
+    },
+    {
+      "target": "2.32",
+      "what": "requirements information; not stated in the book which elements"
+    }
+  ],
+  "alignment": [
+    {
+      "form": "Development approach",
+      "what_must_agree": "must be consistent with the development approach; the book gives no form number"
+    },
+    {
+      "form": "2.2",
+      "what_must_agree": "must be consistent with the change management plan"
+    },
+    {
+      "form": "2.4",
+      "what_must_agree": "must be consistent with the scope management plan"
+    },
+    {
+      "form": "Release and iteration plan",
+      "what_must_agree": "must be consistent with the release and iteration plan; the book gives no form number"
+    },
+    {
+      "form": "Requirements backlog",
+      "what_must_agree": "must be consistent with the requirements backlog; the book gives no form number (form 6.2 is the Product Backlog, but the book does not state that link here)"
+    }
+  ],
+  "elements": [
+    {
+      "element": "Requirements collection",
+      "printed_label": "Collection",
+      "guidance": "Describe how requirements will be collected or elicited, considering techniques such as brainstorming, interviewing and observation."
+    },
+    {
+      "element": "Requirements analysis",
+      "printed_label": "Analysis",
+      "guidance": "Describe how requirements will be analyzed for prioritization, categorization and impact on the product or project approach."
+    },
+    {
+      "element": "Requirements categories",
+      "printed_label": "Categories",
+      "guidance": "Identify the categories for requirements, such as business, stakeholder or quality."
+    },
+    {
+      "element": "Requirements documentation",
+      "printed_label": "Documentation",
+      "guidance": "Define how requirements are documented; the format can range from a simple spreadsheet to more elaborate forms with detailed descriptions and attachments."
+    },
+    {
+      "element": "Requirements prioritization",
+      "printed_label": "Prioritization",
+      "guidance": "Identify the prioritization approach. Some requirements are non-negotiable, such as regulatory ones or those needed to comply with organization policy or infrastructure; others are nice to have but not necessary for functionality."
+    },
+    {
+      "element": "Requirements metrics",
+      "printed_label": "Metrics",
+      "guidance": "Document the metrics requirements are measured against. The book's example: a requirement to support 150 lb may have a design metric of 120 percent (180 lb), and any decision that takes the product below 120 percent needs customer approval."
+    },
+    {
+      "element": "Requirements traceability",
+      "printed_label": "Traceability Structure",
+      "guidance": "Identify the information used to link requirements from their origin to the deliverables that satisfy them."
+    },
+    {
+      "element": "Requirements tracking",
+      "printed_label": "Tracking",
+      "guidance": "Describe how often, and with what techniques, progress on requirements is tracked."
+    },
+    {
+      "element": "Requirements reporting",
+      "printed_label": "Reporting",
+      "guidance": "Describe how reporting on requirements is conducted and how often."
+    },
+    {
+      "element": "Requirements validation",
+      "printed_label": "Validation",
+      "guidance": "Identify the methods used to validate requirements, such as inspection, audits, demonstration and testing."
+    },
+    {
+      "element": "Requirements configuration management",
+      "printed_label": "Configuration Management",
+      "guidance": "Describe the configuration management system that controls requirements, documentation and the change management process, and the authorization levels needed to approve changes."
+    }
+  ],
+  "tailoring": [
+    "For smaller projects, combine the requirements management plan with the scope management plan.",
+    "If the project involves business analysis, incorporate how business analysis and project management requirements activities interact.",
+    "The test and evaluation strategy can be documented in this plan; for larger projects a separate testing plan may be better.",
+    "If using an agile or adaptive development approach, incorporate how the backlog is used to manage and track requirements."
+  ],
+  "agile_or_adaptive": "If an agile or adaptive development approach is used, incorporate how the backlog manages and tracks requirements (Tailoring Tips, PDF page 44, printed page 33).",
+  "decisions": [
+    {
+      "decision": "How requirements are collected, analyzed and categorized",
+      "recorded_in": "Collection",
+      "notes": "Spans Collection, Analysis and Categories."
+    },
+    {
+      "decision": "How requirements are prioritized, including which are non-negotiable",
+      "recorded_in": "Prioritization",
+      "notes": ""
+    },
+    {
+      "decision": "What metrics requirements are measured against and who must approve a drop below them",
+      "recorded_in": "Metrics",
+      "notes": ""
+    },
+    {
+      "decision": "How requirements are traced from origin to deliverable, tracked, reported and validated",
+      "recorded_in": "Traceability Structure",
+      "notes": "Spans Traceability Structure, Tracking, Reporting and Validation."
+    },
+    {
+      "decision": "Which authorization levels approve changes to requirements",
+      "recorded_in": "Configuration Management",
+      "notes": ""
+    }
+  ],
+  "citation": "Book of Forms form 2.5, PDF pages 44 to 45 (printed pages 33 to 34)",
+  "notes": "Purpose, receives, provides, process and Tailoring Tips: PDF page 44 (printed page 33). Alignment and the table: PDF page 45 (printed page 34). The table is printed as Table 2.4 in the book. The table has 11 rows, all of which the blank form prints, with the Requirements prefix dropped (traceability becomes Traceability Structure). The table gives no per-row guidance on who decides; the decisions here are read from the row text. The book lists the scope management plan as related and does not state a direction."
+}

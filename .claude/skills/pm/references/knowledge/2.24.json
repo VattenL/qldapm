@@ -1,0 +1,94 @@
+{
+  "form": "2.24",
+  "name": "Quality Metrics",
+  "process_group": "Planning",
+  "pmbok_processes": [
+    "8.1 Plan Quality Management"
+  ],
+  "purpose": "Gives specific, detailed measurements of a project or product attribute and how to measure it to verify compliance. The manage quality process consults the metrics to make sure the processes used will meet them; in control quality, deliverables or processes are measured and compared with the metric to decide whether the result is acceptable or corrective action or rework is needed.",
+  "receives_from": [
+    {
+      "source": "2.1",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "2.6",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "1.3",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "Manage Quality process",
+      "what": "The metrics are consulted there to check that planned processes will meet them (the prose names the process, not a form)."
+    },
+    {
+      "target": "Control Quality process",
+      "what": "Deliverables and processes are measured against the metrics to judge acceptability or the need for corrective action or rework (the prose names the process, not a form)."
+    }
+  ],
+  "alignment": [
+    {
+      "form": "2.6",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "2.23",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    }
+  ],
+  "elements": [
+    {
+      "element": "ID",
+      "printed_label": "ID",
+      "guidance": "Unique identifier; can be the WBS ID or activity ID number."
+    },
+    {
+      "element": "Item",
+      "printed_label": "Item",
+      "guidance": "The attribute to be measured."
+    },
+    {
+      "element": "Metric",
+      "printed_label": "Metric",
+      "guidance": "The specific, quantifiable measurement."
+    },
+    {
+      "element": "Measurement method",
+      "printed_label": "Measurement Method",
+      "guidance": "How it is measured, including any equipment or procedures."
+    }
+  ],
+  "tailoring": [
+    "On smaller projects quality metrics, requirements and specifications are considered the same thing; some industries say 'specifications' instead of 'metrics'.",
+    "Many industries have standards that include metrics; these must be followed. The quality management plan may cite the regulations or have them built into organizational policies and procedures."
+  ],
+  "agile_or_adaptive": "",
+  "decisions": [
+    {
+      "decision": "Which attributes of the product or project get a metric",
+      "recorded_in": "Item",
+      "notes": ""
+    },
+    {
+      "decision": "The quantified metric that defines an acceptable result",
+      "recorded_in": "Metric",
+      "notes": "The book gives no default values."
+    },
+    {
+      "decision": "How and with what equipment or procedure the attribute is measured",
+      "recorded_in": "Measurement Method",
+      "notes": ""
+    },
+    {
+      "decision": "Whether a measured result is acceptable or needs corrective action or rework",
+      "recorded_in": "",
+      "notes": "The prose says the result is compared with the metric; the decision is taken in control quality, not recorded on this form."
+    }
+  ],
+  "citation": "Book of Forms form 2.24, PDF page 110 (printed page 99)",
+  "notes": "Metrics are generally set as requirements are developed: once if requirements are stable, evolving if they change. The prose gives no section on adaptive projects. The blank form is PDF page 111 (printed page 100)."
+}

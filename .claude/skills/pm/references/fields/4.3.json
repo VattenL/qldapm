@@ -1,0 +1,34 @@
+{
+  "form": "4.3",
+  "name": "Variance Analysis",
+  "printed_title": "VARIANCE ANALYSIS",
+  "kind": "fields",
+  "page_count": 2,
+  "title_block": ["Project Title", "Date Prepared"],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 215,
+      "blocks": [
+        {"type": "text", "text": "Schedule Variance"},
+        {"type": "table", "bank": 1, "columns": ["Planned Result", "Actual Result", "Variance"], "row_labels": []},
+        {"type": "fields", "labels": ["Root Cause", "Planned Response"]},
+        {"type": "text", "text": "Cost Variance"},
+        {"type": "table", "bank": 1, "columns": ["Planned Result", "Actual Result", "Variance"], "row_labels": []}
+      ]
+    },
+    {
+      "page": 2,
+      "pdf_page": 216,
+      "blocks": [
+        {"type": "fields", "labels": ["Root Cause", "Planned Response"]},
+        {"type": "text", "text": "Quality Variance"},
+        {"type": "table", "bank": 1, "columns": ["Planned Result", "Actual Result", "Variance"], "row_labels": []},
+        {"type": "fields", "labels": ["Root Cause", "Planned Response"]}
+      ]
+    }
+  ],
+  "pairs": [["Project Title", "Date Prepared"]],
+  "legend": "",
+  "notes": "Schedule Variance, Cost Variance and Quality Variance are printed section headings. Under each heading the table has three blank rows, and the Root Cause and Planned Response boxes are joined to the bottom of that table inside one border. The Cost Variance Root Cause and Planned Response boxes print at the top of page 2, so the cost section spans the page break."
+}

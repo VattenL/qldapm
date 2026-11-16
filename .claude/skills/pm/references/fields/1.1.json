@@ -1,0 +1,48 @@
+{
+  "form": "1.1",
+  "name": "Project Charter",
+  "printed_title": "PROJECT CHARTER",
+  "kind": "fields",
+  "page_count": 4,
+  "title_block": ["Project Title", "Project Sponsor", "Date Prepared", "Project Manager", "Project Customer"],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 16,
+      "blocks": [
+        {"type": "fields", "labels": ["Project Purpose", "High-Level Project Description", "Project Boundaries", "Key Deliverables", "High-Level Requirements", "Overall Project Risk"]}
+      ]
+    },
+    {
+      "page": 2,
+      "pdf_page": 17,
+      "blocks": [
+        {"type": "table", "bank": 1, "columns": ["Project Objectives", "Success Criteria"], "row_labels": ["Scope", "Time", "Cost", "Other"]},
+        {"type": "table", "bank": 1, "columns": ["Summary Milestones", "Due Date"], "row_labels": []}
+      ]
+    },
+    {
+      "page": 3,
+      "pdf_page": 18,
+      "blocks": [
+        {"type": "fields", "labels": ["Preapproved Financial Resources"]},
+        {"type": "table", "bank": 1, "columns": ["Stakeholder(s)", "Role"], "row_labels": []},
+        {"type": "fields", "labels": ["Project Exit Criteria"]},
+        {"type": "text", "text": "Project Manager Authority Level"},
+        {"type": "fields", "labels": ["Staffing Decisions", "Budget Management and Variance"]}
+      ]
+    },
+    {
+      "page": 4,
+      "pdf_page": 19,
+      "blocks": [
+        {"type": "fields", "labels": ["Technical Decisions", "Conflict Resolution", "Sponsor Authority"]},
+        {"type": "text", "text": "Approvals"},
+        {"type": "signatures", "columns": ["Project Manager", "Sponsor or Originator"], "rows": ["Signature", "Name", "Date"]}
+      ]
+    }
+  ],
+  "pairs": [["Project Sponsor", "Date Prepared"], ["Project Manager", "Project Customer"]],
+  "legend": "",
+  "notes": "Title block prints Project Title on its own line, then two side-by-side rows. Overall Project Risk prints without a trailing colon on the blank form. On page 2 the objectives grid is a two-column table (Project Objectives, Success Criteria) whose rows are introduced by the printed labels Scope, Time, Cost and Other above each row. Summary Milestones table prints 7 blank rows; Stakeholder(s) table prints 6 blank rows. Project Manager Authority Level is a heading with no box of its own; Staffing Decisions, Budget Management and Variance (page 3), Technical Decisions and Conflict Resolution (page 4) are its sub-fields. Approvals is a heading with no box; the signature block under it prints two columns of lines labelled Project Manager Signature, Project Manager Name, Date (left) and Sponsor or Originator Signature, Sponsor or Originator Name, Date (right), so each printed label is the column name plus the row name except Date, which prints alone. The prose table (Table 1.1) names elements differently from the blank form: Summary milestone schedule (blank: Summary Milestones), Key stakeholder list (blank: Stakeholder(s) and Role table), Assigned project manager, responsibility, and authority level (blank: Project Manager Authority Level), Name and authority of the sponsor or other person(s) authorizing the project charter (blank: Sponsor Authority); the prose bullet list also names Project approval requirements, which the blank form prints only as the Approvals block."
+}

@@ -1,0 +1,102 @@
+{
+  "form": "2.14",
+  "name": "Milestone List",
+  "process_group": "Planning",
+  "pmbok_processes": [
+    "6.2 Define Activities"
+  ],
+  "purpose": "Defines all the project milestones and describes the nature of each. It can classify a milestone as optional or mandatory, internal or external, interim or final, or in any other way the project needs. It is developed once and is not usually changed unless the scope changes significantly.",
+  "receives_from": [
+    {
+      "source": "1.1",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "2.11",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "Scope baseline",
+      "what": "named as a source; the book does not say what is passed"
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "2.15",
+      "what": "named as a recipient; the book does not say what is passed"
+    },
+    {
+      "target": "2.16",
+      "what": "named as a recipient (the book says \"Duration estimates\"); the book does not say what is passed"
+    },
+    {
+      "target": "Gantt chart or other schedule presentation",
+      "what": "named as a recipient; the book does not say what is passed"
+    },
+    {
+      "target": "3.3",
+      "what": "named as a recipient (the book says \"Change requests\"); the book does not say what is passed"
+    },
+    {
+      "target": "Close out report",
+      "what": "named as a recipient; the book does not say what is passed"
+    }
+  ],
+  "alignment": [
+    {
+      "form": "1.1",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "2.12",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "2.15",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "2.16",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "2.18",
+      "what_must_agree": "The book says only \"aligned and consistent\" (it names the schedule); the specific fields are not stated in the book."
+    }
+  ],
+  "elements": [
+    {
+      "element": "Milestone name",
+      "printed_label": "Milestone",
+      "guidance": "A name that uniquely identifies the milestone."
+    },
+    {
+      "element": "Milestone description",
+      "printed_label": "Milestone Description",
+      "guidance": "A description with enough detail to tell what is needed for the milestone to be complete."
+    },
+    {
+      "element": "Type",
+      "printed_label": "Type",
+      "guidance": "The kind of milestone, for example internal or external, interim or final, mandatory or optional."
+    }
+  ],
+  "tailoring": [
+    "For some projects, enter the milestones directly in the scheduling tool instead of keeping a separate list."
+  ],
+  "agile_or_adaptive": "",
+  "decisions": [
+    {
+      "decision": "which events count as milestones, and when each is complete",
+      "recorded_in": "Milestone Description",
+      "notes": ""
+    },
+    {
+      "decision": "whether a milestone is internal or external, interim or final, mandatory or optional",
+      "recorded_in": "Type",
+      "notes": "The book gives these three pairs as examples; other classifications are allowed."
+    }
+  ],
+  "citation": "Book of Forms form 2.14, PDF page 76 (printed page 65); blank form PDF page 77 (printed page 66)",
+  "notes": "The blank form prints no ID column (so milestones are identified by name) and no date column; Table 2.14 lists only three elements (PDF page 76, printed page 65). The blank form prints Milestone where the table says Milestone name; the printed label wins. The Alignment and receives lists name a schedule and a scope baseline in words; the schedule is mapped to form 2.18. Process: 6.2 Define Activities."
+}

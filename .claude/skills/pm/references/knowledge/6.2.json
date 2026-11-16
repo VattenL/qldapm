@@ -1,0 +1,86 @@
+{
+  "form": "6.2",
+  "name": "Product Backlog",
+  "process_group": "Agile",
+  "pmbok_processes": [],
+  "purpose": "Keeps track of all the requirements with their priority and the release they will be incorporated into. It documents and prioritizes the requirements, features, functions and user stories for releases or sprints. It is developed at the start of the project, often together with the product vision, and updated throughout.",
+  "receives_from": [
+    {
+      "source": "6.1",
+      "what": "the backlog is often developed in conjunction with the product vision (prose); which fields flow is not stated in the book"
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "6.3",
+      "what": "the release plan assigns requirements or user stories from the backlog to releases (6.3 prose and Table 6.3, PDF page 255, printed page 244)"
+    }
+  ],
+  "alignment": [
+    {
+      "form": "6.1",
+      "what_must_agree": "the backlog's items must serve the vision's needs and key benefit (reading; the book gives only the list entry)"
+    },
+    {
+      "form": "2.3",
+      "what_must_agree": "the book says 'Roadmap'; taken to be the project roadmap form; the backlog's priorities must agree with it (reading; the book gives only the list entry)"
+    },
+    {
+      "form": "6.3",
+      "what_must_agree": "the stories and requirements assigned to each release must be the same items, in the same priority, as the backlog (reading; the book gives only the list entry)"
+    }
+  ],
+  "elements": [
+    {
+      "element": "ID",
+      "printed_label": "ID",
+      "guidance": "A unique identifier."
+    },
+    {
+      "element": "Summary description",
+      "printed_label": "Summary Description",
+      "guidance": "A brief description of the requirement or need, no more than one or two sentences."
+    },
+    {
+      "element": "Priority",
+      "printed_label": "Priority",
+      "guidance": "A way to prioritize or rank the requirements: summary groups such as high, medium and low, or numbers 1, 2, 3."
+    },
+    {
+      "element": "Story",
+      "printed_label": "Story",
+      "guidance": "Either the user story itself, prioritized, or the name of a user story recorded elsewhere."
+    },
+    {
+      "element": "Status",
+      "printed_label": "Status",
+      "guidance": "Whether the requirement is not started, in progress or complete."
+    }
+  ],
+  "tailoring": [
+    "Add estimating information such as story points.",
+    "Add which sprint a feature or function will be incorporated into, for more detail.",
+    "Add the user type that benefits from the requirement, such as customer, administrator or manager.",
+    "On large projects, add a column for the category of requirement."
+  ],
+  "agile_or_adaptive": "The book places this form in its Agile chapter and says the agile forms can be tailored for any project regardless of development method. The introduction suggests the Collect Requirements process: the backlog can be used in place of or in addition to the requirements documentation (Agile chapter introduction, PDF page 250, printed page 239).",
+  "decisions": [
+    {
+      "decision": "How the requirements rank against each other",
+      "recorded_in": "Priority",
+      "notes": ""
+    },
+    {
+      "decision": "Which release or sprint a requirement goes into",
+      "recorded_in": "",
+      "notes": "The prose says the backlog tracks the release for each requirement, but the blank form has no release column; the Tailoring Tips suggest adding a sprint column."
+    },
+    {
+      "decision": "How far each requirement has progressed",
+      "recorded_in": "Status",
+      "notes": ""
+    }
+  ],
+  "citation": "Book of Forms form 6.2, PDF page 253 (printed page 242); Table 6.2 PDF page 253 (printed page 242); blank form PDF page 254 (printed page 243); Agile chapter introduction PDF page 250 (printed page 239)",
+  "notes": "pmbok_processes is empty because the Agile chapter introduction says PMBOK 6 lists none of the agile forms as an output of any process; it suggests Collect Requirements as the process where the backlog is most useful. The prose has no receives-from or provides-to section; the entries come from the opening paragraph and from form 6.3. The prose bullets, Table 6.2 and the blank form give the same five elements in the same order. The blank form prints 15 empty rows. 'Roadmap' in the Alignment list is not a form name; reading it as 2.3 is an assumption."
+}

@@ -1,0 +1,133 @@
+{
+  "form": "5.2",
+  "name": "Project or Phase Closeout",
+  "process_group": "Closing",
+  "pmbok_processes": [
+    "4.7 Close Project or Phase"
+  ],
+  "purpose": "Documents the final project performance against the project objectives. The objectives from the project charter are reviewed, and the evidence that each was met is recorded; any objective not met, or any variance, is recorded too. Information from the procurement closeout is documented as well.",
+  "receives_from": [
+    {
+      "source": "1.1",
+      "what": "the objectives from the project charter are reviewed and evidence of meeting them is documented (prose)"
+    },
+    {
+      "source": "4.9",
+      "what": "the verification and validation information for the Quality row is entered from the product acceptance form (Table 5.2)"
+    },
+    {
+      "source": "4.8",
+      "what": "information from the procurement closeout is documented (prose); which fields flow is not stated in the book"
+    },
+    {
+      "source": "2.32",
+      "what": "the risk register's prose names project closeout as a recipient (form 2.32, PDF pages 139 to 140, printed pages 128 to 129); which fields flow is not stated in the book"
+    }
+  ],
+  "provides_to": [],
+  "alignment": [
+    {
+      "form": "2.1",
+      "what_must_agree": "the book says 'Project management plan (all components)'; the objectives, baselines and criteria in every component plan must match what the closeout reports against (reading; the book gives only the list entry)"
+    },
+    {
+      "form": "4.9",
+      "what_must_agree": "the verification and validation information must match the product acceptance form (Table 5.2 says to enter it from there)"
+    },
+    {
+      "form": "5.1",
+      "what_must_agree": "the risks and issues summarized here must be consistent with the lessons learned summary (reading; the book gives only the list entry)"
+    }
+  ],
+  "elements": [
+    {
+      "element": "Project description",
+      "printed_label": "Project Description",
+      "guidance": "A summary level description of the project."
+    },
+    {
+      "element": "Performance summary: Scope objectives",
+      "printed_label": "Objectives",
+      "guidance": "The scope objectives needed to achieve the planned benefits of the project (Scope row)."
+    },
+    {
+      "element": "Performance summary: Scope completion criteria",
+      "printed_label": "Completion Criteria",
+      "guidance": "The specific, measurable criteria needed to complete the scope objectives (Scope row)."
+    },
+    {
+      "element": "Performance summary: Scope how met",
+      "printed_label": "How Met",
+      "guidance": "Evidence that the completion criteria were met (Scope row)."
+    },
+    {
+      "element": "Performance summary: Quality objectives",
+      "printed_label": "Objectives",
+      "guidance": "The quality objectives and criteria needed to achieve the planned benefits of the project (Quality row)."
+    },
+    {
+      "element": "Performance summary: Quality completion criteria",
+      "printed_label": "Completion Criteria",
+      "guidance": "The specific, measurable criteria needed to meet the product and project quality objectives (Quality row)."
+    },
+    {
+      "element": "Performance summary: Quality how met",
+      "printed_label": "How Met",
+      "guidance": "The verification and validation information from the product acceptance form (Quality row)."
+    },
+    {
+      "element": "Variances",
+      "printed_label": "Variances",
+      "guidance": "The time and cost objectives, the final completion date and the final expenditures, with an explanation of any variance. On the blank form this is a table with rows Time and Cost and columns Objectives/Final Outcome, Variances and Comments."
+    },
+    {
+      "element": "Benefits management",
+      "printed_label": "Benefits Management",
+      "guidance": "How the final product, service or result achieved the benefits the project was undertaken to address."
+    },
+    {
+      "element": "Business needs",
+      "printed_label": "Business Needs",
+      "guidance": "How the final product, service or result achieved the business needs identified in the business plan."
+    },
+    {
+      "element": "Risks and issues",
+      "printed_label": "Risks and Issues",
+      "guidance": "A summary of significant risks or issues, or of the overall risk exposure, with the response and resolution strategies. On the blank form this is a table with columns Risk or Issue, Response or Resolution and Comments."
+    }
+  ],
+  "tailoring": [
+    "With an incremental life cycle or an agile method, the delivery of a major end item, service or capability may benefit from a formal phase closeout report.",
+    "For a project that is part of a program, tailor the content to the program's needs."
+  ],
+  "agile_or_adaptive": "With an incremental life cycle or agile development, delivering a major end item, service or capability may benefit from a formal phase closeout report (Tailoring Tip).",
+  "decisions": [
+    {
+      "decision": "Whether each scope and quality objective was met, and on what evidence",
+      "recorded_in": "How Met",
+      "notes": ""
+    },
+    {
+      "decision": "How the time and cost outcome compares with the objectives, and why it differs",
+      "recorded_in": "Variances",
+      "notes": ""
+    },
+    {
+      "decision": "Whether the benefits and business needs were achieved",
+      "recorded_in": "Benefits Management; Business Needs",
+      "notes": ""
+    },
+    {
+      "decision": "Which risks and issues are significant enough to summarize, and how they ended",
+      "recorded_in": "Risks and Issues",
+      "notes": ""
+    },
+    {
+      "decision": "Whether to issue a closeout for a phase, not only for the whole project",
+      "recorded_in": "",
+      "notes": "A tailoring choice; the form has no field for it."
+    }
+  ],
+  "citation": "Book of Forms form 5.2, PDF pages 246 to 247 (printed pages 235 to 236); Table 5.2 PDF page 247 (printed page 236); blank form PDF pages 248 to 249 (printed pages 237 to 238)",
+  "notes": "The prose says the form supports process 4.7 Close Project or Phase. The prose has no receives-from or provides-to section and states no recipient of the closeout, so provides_to is empty. The prose bullets list Project or phase description, Objectives, Completion criteria, How met, Cost and schedule variances, Benefits management, Business needs and Summary of risks and issues; Table 5.2 and the blank form group Objectives, Completion criteria and How met under a Performance Summary with Scope and Quality rows, and the blank form splits Variances into Time and Cost rows. The six Performance summary elements are split by the order of the three descriptions under each of Scope and Quality in Table 5.2, mapped to the blank form's column labels. Table 5.2 treats Risks and issues as one element; the blank form prints a three-column table. The blank form's title block also prints Project Manager, which Table 5.2 does not list. The index name is Project or Phase Closeout; the title bar reads PROJECT CLOSEOUT."
+}

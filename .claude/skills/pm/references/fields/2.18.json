@@ -1,0 +1,55 @@
+{
+  "form": "2.18",
+  "name": "Project Schedule",
+  "printed_title": "PROJECT SCHEDULE",
+  "kind": "chart",
+  "page_count": 2,
+  "title_block": [],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 91,
+      "blocks": [
+        {
+          "type": "table",
+          "bank": 1,
+          "columns": [
+            "ID",
+            "WBS",
+            "Task Name",
+            "Start",
+            "Finish"
+          ],
+          "row_labels": []
+        },
+        {
+          "type": "picture",
+          "description": "Captioned \"Sample Gantt Chart\". A Gantt chart beside the task grid: the timescale header prints the month (August 2008, September 2008, October 2008) over a row of day numbers every three days. Summary rows (bold) show a bracketed summary bar, activities show bars labelled with the assigned resource name, milestones show a diamond labelled with the date (8/20, 9/26, 10/2), and arrows join predecessors to successors."
+        }
+      ]
+    },
+    {
+      "page": 2,
+      "pdf_page": 92,
+      "blocks": [
+        {
+          "type": "table",
+          "bank": 1,
+          "columns": [
+            "ID",
+            "Task Name",
+            "Finish"
+          ],
+          "row_labels": []
+        },
+        {
+          "type": "picture",
+          "description": "Captioned \"Sample Milestone Chart\". A milestone chart beside the task grid: the timescale header prints quarters (Qtr 2, 2008, Qtr 3, 2008, Qtr 4, 2008) over month abbreviations (Mar to Jan). Each row shows one diamond labelled with its date (3/3 to 10/17), with arrows linking dependent milestones."
+        }
+      ]
+    }
+  ],
+  "pairs": [],
+  "legend": "",
+  "notes": "Landscape pages. Neither page prints a Project Title / Date Prepared header. Both pages are worked samples rather than blank forms: the printed rows (Kitchen Cabinets on page 1, a house build from Vendors selected to Punch list closed on page 2) are example data and must not be copied. Page 2 also prints an unlabelled indicator column between ID and Task Name, headed only by an information icon and holding calendar icons; it carries no text label and is left out of the columns. The captions \"Sample Gantt Chart\" and \"Sample Milestone Chart\" print centred inside the inner frame, above both the column grid and the chart, so in reading order each caption comes before its table; they name the sample and are not field labels. There is no Document Element table for this form."
+}
