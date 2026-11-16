@@ -1,0 +1,33 @@
+{
+  "form": "4.8",
+  "name": "Contract Closeout Report",
+  "printed_title": "CONTRACT CLOSEOUT",
+  "kind": "fields",
+  "page_count": 2,
+  "title_block": ["Project Title", "Date Prepared", "Project Manager", "Contract Representative"],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 235,
+      "blocks": [
+        {"type": "text", "text": "Vendor Performance Analysis"},
+        {"type": "table", "bank": 1, "columns": ["What Worked Well"], "row_labels": ["Scope", "Quality", "Schedule", "Cost", "Other"]},
+        {"type": "table", "bank": 1, "columns": ["What Can Be Improved"], "row_labels": ["Scope", "Quality", "Schedule", "Cost", "Other"]},
+        {"type": "text", "text": "Record of Contract Changes"},
+        {"type": "table", "bank": 1, "columns": ["Change ID", "Change Description", "Date Approved"], "row_labels": []}
+      ]
+    },
+    {
+      "page": 2,
+      "pdf_page": 236,
+      "blocks": [
+        {"type": "text", "text": "Record of Contract Disputes"},
+        {"type": "table", "bank": 1, "columns": ["Description", "Resolution", "Date Resolved"], "row_labels": []},
+        {"type": "fields", "labels": ["Date of Contract Completion", "Signed Off by", "Date of Final Payment"]}
+      ]
+    }
+  ],
+  "pairs": [["Project Title", "Date Prepared"], ["Project Manager", "Contract Representative"]],
+  "legend": "",
+  "notes": "Portrait pages. The index name is Contract Closeout Report; the title bar reads CONTRACT CLOSEOUT. The text blocks are printed section headings, not fillable fields. Under Vendor Performance Analysis one bordered grid holds both tables: What Worked Well and What Can Be Improved each print as a full-width band row with a trailing colon, followed by rows Scope, Quality, Schedule, Cost, Other beside one blank answer column of equal width; there is no printed column header row. Record of Contract Changes and Record of Contract Disputes each print 4 blank rows. Date of Contract Completion, Signed Off by and Date of Final Payment print as single underlined lines with no colon, one per line, below the disputes table; Signed Off by keeps the lowercase by. Prose Table 4.8 omits Project Manager, Contract Representative and the three closing lines (the prose paragraph mentions the completion date, who signed off and the final payment date)."
+}

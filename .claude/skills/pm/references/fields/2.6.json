@@ -1,0 +1,42 @@
+{
+  "form": "2.6",
+  "name": "Requirements Documentation",
+  "printed_title": "REQUIREMENTS DOCUMENTATION",
+  "kind": "log",
+  "page_count": 1,
+  "title_block": [
+    "Project Title",
+    "Date Prepared"
+  ],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 50,
+      "blocks": [
+        {
+          "type": "table",
+          "bank": 1,
+          "columns": [
+            "ID",
+            "Requirement",
+            "Stakeholder",
+            "Category",
+            "Priority",
+            "Acceptance Criteria",
+            "Test or Verification",
+            "Phase or Release"
+          ],
+          "row_labels": []
+        }
+      ]
+    }
+  ],
+  "pairs": [
+    [
+      "Project Title",
+      "Date Prepared"
+    ]
+  ],
+  "legend": "",
+  "notes": "Landscape page. The prose table 2.5 (PDF 49) names the column \"Test or verification method\"; the blank form prints \"Test or Verification\", which wins."
+}

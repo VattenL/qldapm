@@ -1,0 +1,106 @@
+{
+  "form": "2.12",
+  "name": "Activity List",
+  "process_group": "Planning",
+  "pmbok_processes": [
+    "6.2 Define Activities"
+  ],
+  "purpose": "Defines all the activities needed to complete the project work, described in enough detail that the person doing the work understands what is required to do it correctly. It contains an activity identifier, an activity name and a description of the work.",
+  "receives_from": [
+    {
+      "source": "2.11",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "Scope baseline",
+      "what": "particularly the deliverables from the WBS"
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "2.15",
+      "what": "named as a recipient; the book does not say what is passed"
+    },
+    {
+      "target": "2.16",
+      "what": "named as a recipient (the book says \"Activity duration estimates\"); the book does not say what is passed"
+    },
+    {
+      "target": "Gantt chart or other schedule presentation",
+      "what": "named as a recipient; the book does not say what is passed"
+    },
+    {
+      "target": "2.28",
+      "what": "named as a recipient (the book says \"Activity resource requirements\"); the book does not say what is passed"
+    }
+  ],
+  "alignment": [
+    {
+      "form": "2.14",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "2.13",
+      "what_must_agree": "The book says only \"aligned and consistent\"; both element tables carry the activity ID, name and description of work, so those are the natural overlap (an inference; Tables 2.12 and 2.13, PDF pages 71 and 74, printed pages 60 and 63)."
+    },
+    {
+      "form": "2.9",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the activities decompose the WBS deliverables (PDF page 70, printed page 59)."
+    },
+    {
+      "form": "2.10",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the dictionary lists activities taken from the activity list (Table 2.10, PDF page 65, printed page 54)."
+    },
+    {
+      "form": "6.2",
+      "what_must_agree": "The book says only \"aligned and consistent\" (it lists the product backlog); the specific fields are not stated in the book."
+    },
+    {
+      "form": "Iteration release plan",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book. The nearest form in the book is 6.3 Release Plan, but the book does not name it here."
+    }
+  ],
+  "elements": [
+    {
+      "element": "ID",
+      "printed_label": "ID",
+      "guidance": "A unique identifier."
+    },
+    {
+      "element": "Activity name",
+      "printed_label": "Activity",
+      "guidance": "A brief statement that summarizes the activity; it usually starts with a verb and is only a few words."
+    },
+    {
+      "element": "Description of work",
+      "printed_label": "Description of Work",
+      "guidance": "If needed, more detail on the activity, such as the process or method used to do the work."
+    }
+  ],
+  "tailoring": [
+    "For some projects, enter the activities in the scheduling tool instead of keeping a separate activity list.",
+    "Not every project needs a column describing the work.",
+    "For an adaptive development approach, the activity list evolves as requirements are added or changed in the product backlog.",
+    "For an adaptive approach, consider adding a column for the planned release or iteration of each activity."
+  ],
+  "agile_or_adaptive": "For adaptive approaches, or progressively elaborated projects, activities are defined throughout the project; the list evolves as the product backlog changes, and a release or iteration column can be added (PDF pages 70 to 71, printed pages 59 to 60).",
+  "decisions": [
+    {
+      "decision": "which activities are needed to produce each WBS deliverable",
+      "recorded_in": "Activity",
+      "notes": ""
+    },
+    {
+      "decision": "whether an activity needs a written description of method or process",
+      "recorded_in": "Description of Work",
+      "notes": "The book says not all projects need this column."
+    },
+    {
+      "decision": "whether to keep a separate list at all or enter activities directly in the scheduling tool",
+      "recorded_in": "",
+      "notes": "A tailoring decision for the whole form."
+    }
+  ],
+  "citation": "Book of Forms form 2.12, PDF pages 70 to 71 (printed pages 59 to 60); blank form PDF page 72 (printed page 61)",
+  "notes": "The blank form prints Activity where Table 2.12 says Activity name; the printed label wins. The process, 6.2 Define Activities, runs throughout the planning of the project (PDF page 70, printed page 59). Alignment names the product backlog (6.2 in the book) and an iteration release plan; the second has no form of that name in the book."
+}

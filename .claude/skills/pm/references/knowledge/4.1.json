@@ -1,0 +1,178 @@
+{
+  "form": "4.1",
+  "name": "Team Member Status Report",
+  "process_group": "Monitoring and Controlling",
+  "pmbok_processes": [
+    "4.5 Monitor and Control Project Work"
+  ],
+  "purpose": "Filled out by each team member and sent to the project manager at regular intervals. It tracks schedule, quality and cost status for the current period, gives the plan for the next period, and reports new risks and issues. The project manager normally compiles it into the project status report; both are examples of work performance reports.",
+  "receives_from": [
+    {
+      "source": "2.18",
+      "what": "the activities scheduled for the period; the project schedule is the first Alignment entry and Table 4.1 asks for activities scheduled for this and next period, so the flow is a reading, the book does not state it"
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "4.2",
+      "what": "the project manager generally compiles the team member reports into the project status report (prose)"
+    },
+    {
+      "target": "2.32",
+      "what": "new risks identified; Table 4.1 says they should be recorded in the risk register as well"
+    },
+    {
+      "target": "3.1",
+      "what": "new issues identified; Table 4.1 says they should be recorded in the issue log as well"
+    },
+    {
+      "target": "3.2",
+      "what": "decisions made, if the report has the optional field (Tailoring Tip: they would be transferred to the project decision log)"
+    },
+    {
+      "target": "3.5",
+      "what": "knowledge transfer or lessons learned, if the report has the optional fields (Tailoring Tip: they can go to the lessons learned register)"
+    }
+  ],
+  "alignment": [
+    {
+      "form": "2.18",
+      "what_must_agree": "activities planned, accomplished and not accomplished must match the project schedule"
+    },
+    {
+      "form": "2.20",
+      "what_must_agree": "funds planned and spent, and the costs planned for next period, must agree with the cost estimates"
+    },
+    {
+      "form": "Project budget (no form of this name in the book)",
+      "what_must_agree": "funds spent and planned must agree with the project budget; the book has no form named project budget and does not say which form it means (not stated in the book)"
+    },
+    {
+      "form": "3.1",
+      "what_must_agree": "new issues identified must also be in the issue log"
+    },
+    {
+      "form": "2.32",
+      "what_must_agree": "new risks identified must also be in the risk register"
+    },
+    {
+      "form": "4.2",
+      "what_must_agree": "the project manager's status report must be consistent with the team member reports it is compiled from"
+    },
+    {
+      "form": "4.3",
+      "what_must_agree": "variances and root causes must agree with the variance analysis"
+    },
+    {
+      "form": "4.4",
+      "what_must_agree": "the book writes \"earned value status report\"; the matching form is the Earned Value Analysis Report (4.4), whose figures must agree with the reported progress and spend"
+    }
+  ],
+  "elements": [
+    {
+      "element": "Activities planned this reporting period",
+      "printed_label": "Activities Planned for This Reporting Period",
+      "guidance": "List every activity scheduled for the period, including work to start, continue or complete."
+    },
+    {
+      "element": "Activities accomplished this reporting period",
+      "printed_label": "Activities Accomplished This Reporting Period",
+      "guidance": "List every activity accomplished in the period, including work started, continued or completed."
+    },
+    {
+      "element": "Activities planned but not accomplished this reporting period",
+      "printed_label": "Activities Planned but Not Accomplished This Reporting Period",
+      "guidance": "List activities that were scheduled for the period but were not started, continued or completed."
+    },
+    {
+      "element": "Root cause of variances",
+      "printed_label": "Root Cause of Activity Variances",
+      "guidance": "For work not done as scheduled, identify the cause of the variance. This is the first of two rows with this name in Table 4.1; the form prints it as Root Cause of Activity Variances."
+    },
+    {
+      "element": "Funds spent this reporting period",
+      "printed_label": "Funds Spent This Reporting Period",
+      "guidance": "Record the funds spent in the period."
+    },
+    {
+      "element": "Funds planned to be spent this reporting period",
+      "printed_label": "Funds Planned to Be Spent This Reporting Period",
+      "guidance": "Record the funds that were planned to be spent in the period."
+    },
+    {
+      "element": "Root cause of variances",
+      "printed_label": "Root Cause of Cost Variances",
+      "guidance": "For spending over or under plan, identify the cause, including labor versus material variances, and whether the basis of estimates or the assumptions were inaccurate. This is the second row with this name; the form prints it as Root Cause of Cost Variances."
+    },
+    {
+      "element": "Quality variances identified this period",
+      "printed_label": "Quality Variances Identified This Period",
+      "guidance": "Identify any product performance or quality variance."
+    },
+    {
+      "element": "Planned corrective or preventive action",
+      "printed_label": "Planned Corrective or Preventive Action",
+      "guidance": "Identify actions needed to recover cost, schedule or quality variances or to prevent future ones."
+    },
+    {
+      "element": "Activities planned for next reporting period",
+      "printed_label": "Activities Planned for Next Reporting Period",
+      "guidance": "List all activities scheduled for next period, including work to start, continue or complete."
+    },
+    {
+      "element": "Costs planned for next reporting period",
+      "printed_label": "Costs Planned for Next Reporting Period",
+      "guidance": "Identify the funds planned to be spent next period."
+    },
+    {
+      "element": "New risks identified",
+      "printed_label": "New Risks Identified",
+      "guidance": "Any new risks that have arisen; they should also be recorded in the risk register."
+    },
+    {
+      "element": "Issues",
+      "printed_label": "New Issues Identified",
+      "guidance": "Any new issues that have arisen; they should also be recorded in the issue log."
+    },
+    {
+      "element": "Comments",
+      "printed_label": "Comments",
+      "guidance": "Any comment that adds relevance to the report."
+    }
+  ],
+  "tailoring": [
+    "Add an escalation field for matters that need to go to the sponsor, program manager or another appropriate person.",
+    "Add a field for decisions made; these would be transferred to the project decision log.",
+    "If the organization has a robust knowledge management process, add fields for knowledge transfer or lessons learned, to be transferred to the organization's knowledge repository or lessons learned register."
+  ],
+  "agile_or_adaptive": "",
+  "decisions": [
+    {
+      "decision": "Which work missed its plan and why",
+      "recorded_in": "Activities Planned but Not Accomplished This Reporting Period; Root Cause of Activity Variances",
+      "notes": ""
+    },
+    {
+      "decision": "Which spending is off plan and why",
+      "recorded_in": "Root Cause of Cost Variances",
+      "notes": ""
+    },
+    {
+      "decision": "Which actions will recover or prevent a cost, schedule or quality variance",
+      "recorded_in": "Planned Corrective or Preventive Action",
+      "notes": ""
+    },
+    {
+      "decision": "Which new risks and issues go to the risk register and the issue log",
+      "recorded_in": "New Risks Identified; New Issues Identified",
+      "notes": ""
+    },
+    {
+      "decision": "What the team member plans to do and spend next period",
+      "recorded_in": "Activities Planned for Next Reporting Period; Costs Planned for Next Reporting Period",
+      "notes": ""
+    }
+  ],
+  "citation": "Book of Forms form 4.1, PDF pages 202 to 203 (printed pages 191 to 192)",
+  "notes": "Table 4.1 lists Root cause of variances twice; the first is for activities and the second for funds, and the blank form (PDF pages 204 to 206, printed pages 193 to 195) prints them as Root Cause of Activity Variances and Root Cause of Cost Variances. The elements array keeps both rows with the book's name, in the book's order. Table 4.1 says Issues where the form prints New Issues Identified, misprints \"corrective of preventive\", and has no Team Member or Role element, although the form prints both in the title block. The book states no source for the planned funds beyond the Alignment list (cost estimates, project budget)."
+}

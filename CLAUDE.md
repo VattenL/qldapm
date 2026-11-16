@@ -136,3 +136,10 @@ rtk init --global       # Add RTK to ~/.claude/CLAUDE.md
 
 Overall average: **60-90% token reduction** on common development operations.
 <!-- /rtk-instructions -->
+
+Must not do:
+- Using emdash
+- Decorate comment block
+- Using emoji in any case
+- Include yourself in any commit
+- Lying, hardcoded variables without user permission, guessing variable that might be to connect to other dependency (such as API, WS, or other services)

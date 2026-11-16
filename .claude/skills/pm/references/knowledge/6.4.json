@@ -1,0 +1,90 @@
+{
+    "form": "6.4",
+    "name": "Retrospective",
+    "process_group": "Agile",
+    "pmbok_processes": [],
+    "purpose": "An activity performed at the end of every sprint to improve the performance of the team and make it more efficient in each later sprint. It is usually kept on sticky notes or in software. The book's common approach is the starfish, which collects Start, Stop, Keep, More and Less.",
+    "receives_from": [],
+    "provides_to": [
+        {
+            "target": "The team's later sprints",
+            "what": "the intent is to improve team performance and efficiency in each subsequent sprint (prose)"
+        }
+    ],
+    "alignment": [
+        {
+            "form": "5.1",
+            "what_must_agree": "what retrospectives found must be reflected in the lessons learned summary (reading; the book gives only the list entry)"
+        },
+        {
+            "form": "5.2",
+            "what_must_agree": "the project closeout must not contradict what retrospectives found (reading; the book gives only the list entry)"
+        }
+    ],
+    "elements": [
+        {
+            "element": "Start",
+            "printed_label": "Start",
+            "guidance": "Actions and behaviors the team will begin to implement."
+        },
+        {
+            "element": "Stop",
+            "printed_label": "Stop",
+            "guidance": "Actions or behaviors the team will cease doing."
+        },
+        {
+            "element": "Keep",
+            "printed_label": "Keep",
+            "guidance": "Practices the team should continue with."
+        },
+        {
+            "element": "More",
+            "printed_label": "More",
+            "guidance": "Practices that were not done consistently and should be done more often."
+        },
+        {
+            "element": "Less",
+            "printed_label": "Less",
+            "guidance": "Practices that were done too much or should be reduced."
+        }
+    ],
+    "tailoring": [
+        "Use FLAP instead of the starfish: Future Considerations, Lessons, Accomplishments and Problems.",
+        "Color code the information to show a category such as technical, process, people or environment."
+    ],
+    "agile_or_adaptive": "The book places this form in its Agile chapter and says the agile forms can be tailored for any project regardless of development method. The retrospective is done at the end of every sprint. The introduction suggests the Manage Project Knowledge process: the retrospective can take the place of, or work in parallel with, the lessons learned register (Agile chapter introduction, PDF page 250, printed page 239).",
+    "decisions": [
+        {
+            "decision": "What the team starts doing",
+            "recorded_in": "Start",
+            "notes": ""
+        },
+        {
+            "decision": "What the team stops doing",
+            "recorded_in": "Stop",
+            "notes": ""
+        },
+        {
+            "decision": "What the team keeps doing",
+            "recorded_in": "Keep",
+            "notes": ""
+        },
+        {
+            "decision": "What the team does more of",
+            "recorded_in": "More",
+            "notes": ""
+        },
+        {
+            "decision": "What the team does less of",
+            "recorded_in": "Less",
+            "notes": ""
+        },
+        {
+            "decision": "Whether to use the starfish or FLAP",
+            "recorded_in": "",
+            "notes": "A tailoring choice; FLAP has columns Future Considerations, Lessons, Accomplishments and Problems, which the blank form does not print."
+        }
+    ],
+    "citation": "Book of Forms form 6.4, PDF page 257 (printed page 246); Table 6.4 PDF page 257 (printed page 246); blank form PDF page 258 (printed page 247); Agile chapter introduction PDF page 250 (printed page 239)",
+    "notes": "pmbok_processes is empty because the Agile chapter introduction says PMBOK 6 lists none of the agile forms as an output of any process; it suggests Manage Project Knowledge as the process where the retrospective is most useful. The prose has no receives-from or provides-to section and names no source document, so receives_from is empty; the single provides_to entry states the intent in the prose. The blank form prints 6 tall empty rows."
+}

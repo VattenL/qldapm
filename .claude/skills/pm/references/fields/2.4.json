@@ -1,0 +1,20 @@
+{
+  "form": "2.4",
+  "name": "Scope Management Plan",
+  "printed_title": "SCOPE MANAGEMENT PLAN",
+  "kind": "fields",
+  "page_count": 1,
+  "title_block": ["Project Title", "Date"],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 43,
+      "blocks": [
+        {"type": "fields", "labels": ["Work Breakdown (WBS) Structure", "WBS Dictionary", "Scope Baseline Maintenance", "Deliverable Acceptance", "Scope and Requirements Integration"]}
+      ]
+    }
+  ],
+  "pairs": [["Project Title", "Date"]],
+  "legend": "",
+  "notes": "The title block prints Date, not Date Prepared. The body labels print without trailing colons. The first label is printed as Work Breakdown (WBS) Structure, word order as printed. The prose table (printed as TABLE 2.3, Elements of the Scope Management Plan, because the book numbers its 2.x tables one behind the form numbers from 2.3 on) names the first element WBS and adds a sixth element, Project management and business analysis integration, which the blank form does not print."
+}

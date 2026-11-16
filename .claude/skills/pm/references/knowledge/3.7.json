@@ -1,0 +1,104 @@
+{
+  "form": "3.7",
+  "name": "Team Performance Assessment",
+  "process_group": "Executing",
+  "pmbok_processes": [
+    "9.4 Develop Team"
+  ],
+  "purpose": "Reviews the team as a whole on technical competence, interpersonal competence and general characteristics such as morale. The project manager uses it to find where the team's ability to meet the agreed project objectives can improve. It is an output of Develop Team.",
+  "receives_from": [],
+  "provides_to": [
+    {
+      "target": "Project manager",
+      "what": "the project manager uses the assessment to identify areas to improve the team's ability to achieve the agreed objectives (prose)"
+    }
+  ],
+  "alignment": [
+    {
+      "form": "2.26",
+      "what_must_agree": "the team's development approach and any team expectations in the assessment must agree with the resource management plan (the book gives only the list entry; reading)"
+    }
+  ],
+  "elements": [
+    {
+      "element": "Technical performance: Scope",
+      "printed_label": "Scope",
+      "guidance": "Rate the team's ability to deliver project and product scope, with comments on instances that justify the rating."
+    },
+    {
+      "element": "Technical performance: Quality",
+      "printed_label": "Quality",
+      "guidance": "Rate the team's ability to deliver the required project and product quality, with comments that justify the rating."
+    },
+    {
+      "element": "Technical performance: Schedule",
+      "printed_label": "Schedule",
+      "guidance": "Rate the team's ability to deliver on schedule, with comments that justify the rating."
+    },
+    {
+      "element": "Technical performance: Cost",
+      "printed_label": "Cost",
+      "guidance": "Rate the team's ability to deliver within budget, with comments that justify the rating."
+    },
+    {
+      "element": "Interpersonal competency: Communication",
+      "printed_label": "Communication",
+      "guidance": "Rate the team's ability to communicate effectively, with comments illustrating instances."
+    },
+    {
+      "element": "Interpersonal competency: Collaboration",
+      "printed_label": "Collaboration",
+      "guidance": "Rate the team's ability to collaborate effectively, with comments illustrating instances."
+    },
+    {
+      "element": "Interpersonal competency: Conflict management",
+      "printed_label": "Conflict Management",
+      "guidance": "Rate the team's ability to manage conflict effectively, with comments illustrating instances."
+    },
+    {
+      "element": "Interpersonal competency: Decision making",
+      "printed_label": "Decision Making",
+      "guidance": "Rate the team's ability to make decisions effectively, with comments illustrating instances."
+    },
+    {
+      "element": "Team morale",
+      "printed_label": "Team Morale",
+      "guidance": "Describe the overall team morale. The blank form also gives it three rating boxes and a Comments box."
+    },
+    {
+      "element": "Areas for development: Area",
+      "printed_label": "Area",
+      "guidance": "List technical or interpersonal areas for development."
+    },
+    {
+      "element": "Areas for development: Approach",
+      "printed_label": "Approach",
+      "guidance": "Describe the development approach, such as training, mentoring or coaching."
+    },
+    {
+      "element": "Areas for development: Actions",
+      "printed_label": "Actions",
+      "guidance": "List the actions needed to carry out the approach."
+    }
+  ],
+  "tailoring": [
+    "On a small project give only a summary of technical performance and interpersonal competency, without the subcategories.",
+    "If the project manager also evaluates individuals, modify the form to focus on individuals rather than the team.",
+    "Some assessments include team strengths and weaknesses."
+  ],
+  "agile_or_adaptive": "",
+  "decisions": [
+    {
+      "decision": "How the team rates on each technical and interpersonal item",
+      "recorded_in": "Scope; Quality; Schedule; Cost; Communication; Collaboration; Conflict Management; Decision Making; Team Morale",
+      "notes": "The blank form's ratings are Exceeds Expectations, Meets Expectations and Needs Improvement; the book states no criteria for each rating (not stated in the book)."
+    },
+    {
+      "decision": "Where the team needs development and how",
+      "recorded_in": "Area; Approach; Actions",
+      "notes": ""
+    }
+  ],
+  "citation": "Book of Forms form 3.7, PDF pages 195 to 196 (printed pages 184 to 185)",
+  "notes": "Table 3.7 has three parent rows (Technical performance, Interpersonal competency, Areas for development) with sub-rows; they are listed as \"Parent: sub\". The prose bullet list names Team characteristics with Morale and Cohesiveness; Table 3.7 has only Team morale, and the blank form (PDF pages 197 to 199, printed pages 186 to 188) prints only Team Morale, with no Cohesiveness item. Table 3.7 describes Team morale as a narrative while the blank form also gives it three rating boxes; the blank form wins. Each rated item has a Comments box on the form; Table 3.7 folds the comments into the rating rows. Rating scale boxes on the blank form: Exceeds Expectations, Meets Expectations, Needs Improvement. The only Alignment entry is the resource management plan (2.26); the book does not say what flows between the two, so receives_from is empty."
+}

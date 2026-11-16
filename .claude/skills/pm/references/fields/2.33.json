@@ -1,0 +1,61 @@
+{
+  "form": "2.33",
+  "name": "Risk Report",
+  "printed_title": "RISK REPORT",
+  "kind": "fields",
+  "page_count": 4,
+  "title_block": ["Project Title", "Date"],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 144,
+      "blocks": [
+        {"type": "fields", "labels": ["Executive Summary"]},
+        {"type": "text", "text": "Overall Project Risk"},
+        {"type": "fields", "labels": ["Overall Risk Status and Trends"]},
+        {"type": "fields", "labels": ["Significant Drivers of Overall Risk", "Recommended Responses"]},
+        {"type": "text", "text": "Individual Project Risks"},
+        {"type": "text", "text": "Indicate the number of individual risks in each box below."},
+        {"type": "table", "bank": 1, "columns": ["", "VL", "L", "M", "H", "VH"], "row_labels": ["VH", "H", "M", "L", "VL"]}
+      ]
+    },
+    {
+      "page": 2,
+      "pdf_page": 145,
+      "blocks": [
+        {"type": "text", "text": "Metrics"},
+        {"type": "table", "bank": 1, "columns": ["", ""], "row_labels": ["Number of scope risks", "Number of schedule risks", "Number of cost risks", "Number of quality risks", "Number of very high probability risks", "Number of high probability risks", "Number of medium probability risks", "Number of active risks", "Newly closed risks"]},
+        {"type": "text", "text": "Critical Risks"},
+        {"type": "table", "bank": 1, "columns": ["Top Risks", "Responses"], "row_labels": []},
+        {"type": "fields", "labels": ["Changes to Critical Risks"]}
+      ]
+    },
+    {
+      "page": 3,
+      "pdf_page": 146,
+      "blocks": [
+        {"type": "fields", "labels": ["Quantitative Analysis Summary"]},
+        {"type": "text", "text": "Probability of Meeting Objectives"},
+        {"type": "table", "bank": 1, "columns": ["Scope", "Schedule", "Cost", "Quality", "Other"], "row_labels": []},
+        {"type": "text", "text": "Range of Outcomes"},
+        {"type": "table", "bank": 1, "columns": ["Range of Schedule Outcomes", "Range of Cost Outcomes"], "row_labels": []},
+        {"type": "table", "bank": 1, "columns": ["Key Drivers of Variances", "Proposed Responses"], "row_labels": []},
+        {"type": "text", "text": "Reserve Status"},
+        {"type": "table", "bank": 1, "columns": ["Total Cost Reserve", "Used to Date", "Used This Period", "Remaining Reserve"], "row_labels": []},
+        {"type": "table", "bank": 1, "columns": ["Total Schedule Reserve", "Used to Date", "Used This Period", "Remaining Reserve"], "row_labels": []}
+      ]
+    },
+    {
+      "page": 4,
+      "pdf_page": 147,
+      "blocks": [
+        {"type": "fields", "labels": ["Assessment of Reserve Adequacy"]},
+        {"type": "text", "text": "Risk Audit Summary"},
+        {"type": "table", "bank": 1, "columns": ["", ""], "row_labels": ["Summary of Risk Events", "Summary of Risk Management Processes", "Summary of Recommendations"]}
+      ]
+    }
+  ],
+  "pairs": [["Project Title", "Date"], ["Significant Drivers of Overall Risk", "Recommended Responses"]],
+  "legend": "",
+  "notes": "The title block prints Date, not Date Prepared, and appears on page 1 only. A text block directly before a table or box is a printed heading, not a box of its own. Overall Project Risk and Individual Project Risks are section headings printed in small capitals (pdftotext reads them as OVERALL PROJECT RISK and INDIVIDUAL PROJECT RISKS); the instruction sentence under Individual Project Risks is printed on the form. The page 1 grid is a 5 by 5 count matrix whose column labels (VL, L, M, H, VH) print in a row beneath the grid with a blank corner cell; no axis titles are printed. In a table, the first entry of columns is the row-label column and an empty string means the header cell is printed blank. Critical Risks prints five rows numbered 1. to 5. in both the Top Risks and Responses cells. The Probability of Meeting Objectives, Range of Outcomes, Key Drivers of Variances and both Reserve Status tables are header cells over a single tall blank row. Probability of Meeting Objectives prints a trailing colon, dropped here. Used to Date, Used This Period and Remaining Reserve print twice, once in each reserve table. The prose Table 2.30 names elements (Overall project risk, Individual project risks, Quantitative analysis, Reserve status, Risk audit results (if applicable)) that the blank form breaks into the more specific printed labels above; the blank form wins."
+}

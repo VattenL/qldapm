@@ -1,0 +1,43 @@
+{
+  "form": "2.25",
+  "name": "Responsibility Assignment Matrix",
+  "printed_title": "RESPONSIBILITY ASSIGNMENT MATRIX",
+  "kind": "matrix",
+  "page_count": 1,
+  "title_block": [
+    "Project Title",
+    "Date Prepared"
+  ],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 114,
+      "blocks": [
+        {
+          "type": "table",
+          "bank": 1,
+          "columns": [
+            "",
+            "Person 1",
+            "Person 2",
+            "Person 3",
+            "Person 4",
+            "Etc."
+          ],
+          "row_labels": [
+            "Work package 1",
+            "Work package 2",
+            "Work package 3",
+            "Work package 4",
+            "Work package 5",
+            "Work package 6",
+            "Etc."
+          ]
+        }
+      ]
+    }
+  ],
+  "pairs": [["Project Title", "Date Prepared"]],
+  "legend": "R = Responsible: The person performing the work.\nC = Consult: The person who has information necessary to complete the work.\nA = Accountable: The person who is answerable to the project manager that the work is done on time, meets requirements, and is acceptable.\nI = Inform: This person should be notified when the work is complete.",
+  "notes": "In a table, the first entry of columns is the row-label column and an empty string means the header cell is printed blank (the corner cell here). The blank form prints sample letters in the grid (Work package 1: R, C, A, -, -; 2: -, A, -, I, R; 3: -, R, R, A, -; 4: A, R, I, C, -; 5: C, R, R, -, A; 6: R, -, A, I, -; Etc.: C, A, -, R, R, where - is an empty cell); they are examples, not fields. The legend prints below the grid and must be kept. The prose (Table 2.23) names the elements 'Work package' and 'Resource'; the blank form prints 'Work package N' row labels and 'Person N' column labels, which win. The legend says 'Consult' and 'Inform' where the prose bullet list says 'Consulted' and 'Informed'; the legend is reproduced as printed."
+}

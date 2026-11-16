@@ -1,0 +1,20 @@
+{
+  "form": "2.35",
+  "name": "Probability and Impact Matrix",
+  "printed_title": "PROBABILITY AND IMPACT MATRIX",
+  "kind": "matrix",
+  "page_count": 1,
+  "title_block": ["Project Title", "Date Prepared"],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 154,
+      "blocks": [
+        {"type": "table", "bank": 1, "columns": ["", "Very Low", "Low", "Medium", "High", "Very High"], "row_labels": ["Very High", "High", "Medium", "Low", "Very Low"]}
+      ]
+    }
+  ],
+  "pairs": [["Project Title", "Date Prepared"]],
+  "legend": "",
+  "notes": "Landscape page. A 5 by 5 grid with no text in the cells. Row labels print rotated 90 degrees, reading bottom to top, outside the left edge of the grid; column labels print beneath the grid. No axis titles are printed, so neither axis is named Probability or Impact on the form, and no prose table exists for this form. The cells are shaded in three tones of grey with no printed legend; reading rows top to bottom and columns Very Low to Very High: Very High row: mid, mid, dark, dark, dark; High row: mid, mid, mid, dark, dark; Medium row: light, mid, mid, mid, dark; Low row: light, white, mid, mid, mid; Very Low row: light, light, light, mid, mid. The single white cell (Low row, Low column) breaks the light-tone pattern of its neighbours and may be a print artefact; a renderer should reproduce the tones only if it can do so without inventing a meaning for them."
+}

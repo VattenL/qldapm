@@ -1,0 +1,171 @@
+{
+  "form": "2.2",
+  "name": "Change Management Plan",
+  "process_group": "Planning",
+  "pmbok_processes": [
+    "4.2 Develop Project Management Plan"
+  ],
+  "purpose": "The change management plan is a component of the project management plan and describes how change is managed on the project. It covers the structure and membership of the change control board, definitions of change, and the process from submitting a change request to its disposition. It is developed once and is not usually changed.",
+  "receives_from": [
+    {
+      "source": "3.4",
+      "what": "the book lists the change log as related, not as a source; not stated in the book which fields flow"
+    },
+    {
+      "source": "3.3",
+      "what": "the book lists the change request form as related, not as a source; not stated in the book which fields flow"
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "2.1",
+      "what": "the plan is part of the project management plan"
+    }
+  ],
+  "alignment": [
+    {
+      "form": "2.3",
+      "what_must_agree": "aligned and consistent with the project roadmap or development approach, whichever the project uses; the book lists them as one item and gives no form number for the development approach"
+    },
+    {
+      "form": "2.4",
+      "what_must_agree": "aligned and consistent with the scope management plan; the book does not say which fields"
+    },
+    {
+      "form": "2.5",
+      "what_must_agree": "must be consistent with the requirements management plan"
+    },
+    {
+      "form": "2.11",
+      "what_must_agree": "must be consistent with the schedule management plan"
+    },
+    {
+      "form": "2.19",
+      "what_must_agree": "must be consistent with the cost management plan"
+    },
+    {
+      "form": "2.23",
+      "what_must_agree": "must be consistent with the quality management plan"
+    },
+    {
+      "form": "Configuration management plan",
+      "what_must_agree": "must be consistent with the configuration management plan; the book has no form number for it"
+    }
+  ],
+  "elements": [
+    {
+      "element": "Change management approach",
+      "printed_label": "Change Management Approach",
+      "guidance": "Describe the degree of change control and how change control integrates with other aspects of project management."
+    },
+    {
+      "element": "Definitions of change",
+      "printed_label": "Definitions of Change",
+      "guidance": "Four definitions, one for each change type below; each says where the line is between a change that must go through change control and an ordinary update."
+    },
+    {
+      "element": "Definitions of change: Schedule Change",
+      "printed_label": "Schedule change",
+      "guidance": "Define a schedule change versus a schedule revision, and say when a schedule variance must go through change control to be re-baselined."
+    },
+    {
+      "element": "Definitions of change: Budget Change",
+      "printed_label": "Budget change",
+      "guidance": "Define a budget change versus a budget update, and say when a budget variance must go through change control to be re-baselined."
+    },
+    {
+      "element": "Definitions of change: Scope Change",
+      "printed_label": "Scope change",
+      "guidance": "Define a scope change versus progressive elaboration, and say when a scope variance must go through change control to be re-baselined."
+    },
+    {
+      "element": "Definitions of change: Project Document Change",
+      "printed_label": "Project document changes",
+      "guidance": "Say when updates to project management documents or other project documents must go through change control to be re-baselined."
+    },
+    {
+      "element": "Change control board",
+      "printed_label": "Change Control Board",
+      "guidance": "The board's members, with four attributes per member (below)."
+    },
+    {
+      "element": "Change control board: Name",
+      "printed_label": "Name",
+      "guidance": "The individual's name."
+    },
+    {
+      "element": "Change control board: Role",
+      "printed_label": "Role",
+      "guidance": "The person's position on the change control board."
+    },
+    {
+      "element": "Change control board: Responsibility",
+      "printed_label": "Responsibility",
+      "guidance": "The responsibilities and activities required of the role."
+    },
+    {
+      "element": "Change control board: Authority",
+      "printed_label": "Authority",
+      "guidance": "The authority level for approving or rejecting changes."
+    },
+    {
+      "element": "Change control process",
+      "printed_label": "Change Control Process",
+      "guidance": "The four steps below, each described in prose."
+    },
+    {
+      "element": "Change control process: Change request submittal",
+      "printed_label": "Change request submittal",
+      "guidance": "Describe how change requests are submitted, including who receives them and any special forms, policies or procedures."
+    },
+    {
+      "element": "Change control process: Change request tracking",
+      "printed_label": "Change request tracking",
+      "guidance": "Describe how requests are tracked from submittal to final disposition."
+    },
+    {
+      "element": "Change control process: Change request review",
+      "printed_label": "Change request review",
+      "guidance": "Describe how requests are reviewed, including analysis of the impact on project objectives such as schedule, scope and cost."
+    },
+    {
+      "element": "Change control process: Change request outcome",
+      "printed_label": "Change request disposition",
+      "guidance": "Describe the possible outcomes, such as accept, defer or reject. Table 2.2 calls this row Change request outcome; the blank form prints Change request disposition."
+    }
+  ],
+  "tailoring": [
+    "If only a few product components or project documents need configuration management, change management and configuration management can be combined into one plan.",
+    "The rigor and structure of the plan should reflect the product development approach: rigorous change management for predictive approaches; for adaptive approaches the plan should allow for evolving scope."
+  ],
+  "agile_or_adaptive": "For adaptive approaches the change management plan should allow for evolving scope; rigorous change management suits predictive approaches (Tailoring Tips, PDF page 36, printed page 25).",
+  "decisions": [
+    {
+      "decision": "How much change control the project applies",
+      "recorded_in": "Change Management Approach",
+      "notes": ""
+    },
+    {
+      "decision": "What is a change that needs re-baselining versus a revision, update or progressive elaboration",
+      "recorded_in": "Definitions of Change",
+      "notes": "One definition per type: schedule, budget, scope, project documents."
+    },
+    {
+      "decision": "Who sits on the change control board",
+      "recorded_in": "Name",
+      "notes": ""
+    },
+    {
+      "decision": "Who may approve or reject changes, and at what authority level",
+      "recorded_in": "Authority",
+      "notes": ""
+    },
+    {
+      "decision": "What the possible outcomes of a change request are",
+      "recorded_in": "Change request disposition",
+      "notes": "The book's examples are accept, defer or reject."
+    }
+  ],
+  "citation": "Book of Forms form 2.2, PDF pages 36 to 37 (printed pages 25 to 26)",
+  "notes": "Purpose, typical content, related forms, process, Tailoring Tips and the first part of Alignment: PDF page 36 (printed page 25). Rest of Alignment and Table 2.2: PDF page 37 (printed page 26). The Table 2.2 rows are Change management approach, Definitions of change, Change control board and Change control process; the sub-entries here are the sub-rows inside those rows, kept separate so each printed label maps to a guidance entry. The prose says the change request form and change log are related, which this file reads as forms 3.3 and 3.4 by name only. The alignment item \"Project roadmap or development approach\" is entered as 2.3; the book does not say where the development approach is recorded (form 2.1 has a Development Approaches element, but the book does not link them in this alignment list). The blank form prints Attach relevant forms used in the change control process as instruction text."
+}

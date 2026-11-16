@@ -1,0 +1,204 @@
+{
+  "form": "2.13",
+  "name": "Activity Attributes",
+  "process_group": "Planning",
+  "pmbok_processes": [
+    "6.2 Define Activities"
+  ],
+  "purpose": "Holds the details of each activity: its logical relationships, leads and lags, imposed dates, constraints, assumptions, resource needs, location and type of effort. The details are sometimes entered directly into the scheduling software, and otherwise collected on this form to help build the schedule model later. They are elaborated progressively as planning proceeds.",
+  "receives_from": [
+    {
+      "source": "2.11",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "2.12",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "2.15",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "Scope baseline",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "1.2",
+      "what": "named as a source; the book does not say what is passed"
+    },
+    {
+      "source": "2.28",
+      "what": "named as a source (the book says \"Activity resource requirements\"); the book does not say what is passed"
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "2.15",
+      "what": "named as a recipient; the book does not say what is passed"
+    },
+    {
+      "target": "2.16",
+      "what": "named as a recipient; the book does not say what is passed"
+    },
+    {
+      "target": "2.18",
+      "what": "named as a recipient; the book does not say what is passed"
+    },
+    {
+      "target": "2.28",
+      "what": "named as a recipient (the book says \"Resource requirements\"); the book does not say what is passed"
+    }
+  ],
+  "alignment": [
+    {
+      "form": "1.2",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the assumptions and constraints on each activity should not contradict the log (the book allows them to be kept in the assumption log instead of here, Tailoring Tips, PDF page 73, printed page 62)."
+    },
+    {
+      "form": "2.9",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "2.10",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "2.14",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "2.12",
+      "what_must_agree": "The book says only \"aligned and consistent\"; both element tables carry the activity ID, name and description of work, so those are the natural overlap (an inference; Tables 2.12 and 2.13, PDF pages 71 and 74, printed pages 60 and 63)."
+    },
+    {
+      "form": "2.15",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the relationships between activities (predecessors, successors, relationship types, leads and lags) are the natural overlap (an inference; PDF pages 74 and 78, printed pages 63 and 67)."
+    },
+    {
+      "form": "2.16",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "2.18",
+      "what_must_agree": "The book says only \"aligned and consistent\" (it names the schedule); the specific fields are not stated in the book."
+    },
+    {
+      "form": "2.20",
+      "what_must_agree": "The book says only \"aligned and consistent\" (it names cost estimates); the specific fields are not stated in the book."
+    },
+    {
+      "form": "2.28",
+      "what_must_agree": "The book says only \"aligned and consistent\" (it names resource requirements); the resource boxes of the attributes are the natural overlap (an inference)."
+    }
+  ],
+  "elements": [
+    {
+      "element": "ID",
+      "printed_label": "ID",
+      "guidance": "A unique identifier."
+    },
+    {
+      "element": "Activity name",
+      "printed_label": "Activity",
+      "guidance": "A brief statement that summarizes the activity; it starts with a verb and is usually only a few words."
+    },
+    {
+      "element": "Description of work",
+      "printed_label": "Description of Work",
+      "guidance": "The activity described in enough detail that the people doing the work understand what is needed to complete it."
+    },
+    {
+      "element": "Predecessor and successor activities",
+      "printed_label": "Predecessors | Successor",
+      "guidance": "The predecessor activities that must happen before this activity, and the successor activities that cannot happen until after it."
+    },
+    {
+      "element": "Logical relationships",
+      "printed_label": "Relationship",
+      "guidance": "The nature of the relationship between predecessor or successor and this activity, such as start-to-start, finish-to-start or finish-to-finish."
+    },
+    {
+      "element": "Leads and lags",
+      "printed_label": "Lead or Lag",
+      "guidance": "Any required delay between activities (lag) or acceleration (lead) that applies to the logical relationship."
+    },
+    {
+      "element": "Imposed dates",
+      "printed_label": "Imposed Dates or Other Constraints",
+      "guidance": "Any required dates for start, completion, reviews or accomplishments."
+    },
+    {
+      "element": "Constraints",
+      "printed_label": "Imposed Dates or Other Constraints",
+      "guidance": "Any limitation on the activity, such as finish-no-later-than dates, approaches to the work, or resources."
+    },
+    {
+      "element": "Assumptions",
+      "printed_label": "Assumptions",
+      "guidance": "Any assumption about the activity, such as availability of resources, skill sets or others that affect it."
+    },
+    {
+      "element": "Team resources and skill levels",
+      "printed_label": "Number and Type of Team Resources Required | Skill Requirements",
+      "guidance": "The number and roles of the people needed, with the skill level such as junior or senior."
+    },
+    {
+      "element": "Required physical resources",
+      "printed_label": "Required Resources",
+      "guidance": "The materials, supplies or equipment needed to complete the activity."
+    },
+    {
+      "element": "Location of performance",
+      "printed_label": "Location of Performance",
+      "guidance": "The location, if the work is done somewhere other than the performing site."
+    },
+    {
+      "element": "Type of effort",
+      "printed_label": "Type of Effort",
+      "guidance": "Whether the work is fixed duration, fixed effort, level of effort, apportioned effort or another type."
+    }
+  ],
+  "tailoring": [
+    "For some projects, enter the activities in the scheduling tool instead of keeping a separate set of activity attributes.",
+    "Include only the fields needed to manage the project effectively.",
+    "Constraints and assumptions can be recorded in the assumption log instead of on this form.",
+    "For an adaptive development approach, the activity list evolves as requirements are added or changed in the product backlog.",
+    "For an adaptive approach, consider adding a field for the planned release or iteration of each activity."
+  ],
+  "agile_or_adaptive": "For adaptive approaches, or progressively elaborated projects, the attributes are updated throughout the project; add a release or iteration field per activity, since the list follows the product backlog (PDF pages 73 to 74, printed pages 62 to 63).",
+  "decisions": [
+    {
+      "decision": "which activities must finish or start before others (sequencing logic)",
+      "recorded_in": "Predecessors; Successor; Relationship",
+      "notes": ""
+    },
+    {
+      "decision": "whether a relationship carries a lead or a lag",
+      "recorded_in": "Lead or Lag",
+      "notes": ""
+    },
+    {
+      "decision": "which start, completion or review dates are imposed and which constraints apply",
+      "recorded_in": "Imposed Dates or Other Constraints",
+      "notes": ""
+    },
+    {
+      "decision": "how many people, of which role and skill, the activity needs",
+      "recorded_in": "Number and Type of Team Resources Required; Skill Requirements",
+      "notes": ""
+    },
+    {
+      "decision": "what type of effort the activity is (fixed duration, fixed effort, level of effort, apportioned effort)",
+      "recorded_in": "Type of Effort",
+      "notes": "The book lists these types; it does not say how each is estimated here."
+    },
+    {
+      "decision": "where the activity is performed when not at the performing site",
+      "recorded_in": "Location of Performance",
+      "notes": ""
+    }
+  ],
+  "citation": "Book of Forms form 2.13, PDF pages 73 to 74 (printed pages 62 to 63); blank form PDF page 75 (printed page 64)",
+  "notes": "printed_label joins several labels with \" | \" where one table row maps to more than one printed box. The blank form differs from Table 2.13 (PDF page 74, printed page 63): it prints one box \"Imposed Dates or Other Constraints\" for the table's two rows Imposed dates and Constraints, prints Type of Effort before Location of Performance, and uses Predecessors, Successor, Relationship and Lead or Lag columns for the three relationship rows. The printed labels win (references/fields/2.13.json). The logic table prints Relationship and Lead or Lag twice, once per side. The sheet is one per activity. The book's Tailoring Tips repeat the sentence about the activity list evolving with the backlog under the activity attributes; it is condensed once above. Process: 6.2 Define Activities."
+}

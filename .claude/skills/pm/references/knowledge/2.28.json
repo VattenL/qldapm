@@ -1,0 +1,132 @@
+{
+  "form": "2.28",
+  "name": "Resource Requirements",
+  "process_group": "Planning",
+  "pmbok_processes": [
+    "9.2 Estimate Activity Resources"
+  ],
+  "purpose": "Describes the type and quantity of resources needed to complete the project work: people, equipment, material, supplies and, as needed, locations such as training rooms or testing sites. The requirements follow the project scope, so they stay stable while scope is stable, evolve when scope evolves, and become more detailed and more stable over time.",
+  "receives_from": [
+    {
+      "source": "1.2",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "2.26",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "Scope baseline",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "2.12",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "2.13",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    },
+    {
+      "source": "Cost estimates resource calendars",
+      "what": "Printed as one bullet. It may mean cost estimates (2.20) and resource calendars; the book does not say, and does not say what is passed."
+    },
+    {
+      "source": "2.32",
+      "what": "Named by the book as a source; which content is not stated in the book."
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "2.17",
+      "what": "Named by the book as a recipient; which content is not stated in the book."
+    },
+    {
+      "target": "2.18",
+      "what": "Named by the book as a recipient; which content is not stated in the book."
+    },
+    {
+      "target": "2.21",
+      "what": "Named by the book as a recipient; which content is not stated in the book."
+    },
+    {
+      "target": "2.32",
+      "what": "Named by the book as a recipient; which content is not stated in the book."
+    },
+    {
+      "target": "2.37",
+      "what": "Named by the book as a recipient; which content is not stated in the book."
+    }
+  ],
+  "alignment": [
+    {
+      "form": "2.18",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "2.20",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    },
+    {
+      "form": "Bid documents",
+      "what_must_agree": "The book says only \"aligned and consistent\"; the specific fields are not stated in the book."
+    }
+  ],
+  "elements": [
+    {
+      "element": "ID",
+      "printed_label": "ID",
+      "guidance": "Unique identifier."
+    },
+    {
+      "element": "Type of resource",
+      "printed_label": "Resource",
+      "guidance": "Whether the resource is a team resource or a physical one; if physical, whether equipment, supplies, material, location or another kind."
+    },
+    {
+      "element": "Quantity",
+      "printed_label": "Quantity",
+      "guidance": "The number or quantity needed for the activity, with the unit of measure used."
+    },
+    {
+      "element": "Assumptions",
+      "printed_label": "Assumptions",
+      "guidance": "Assumptions about the resource, such as availability or certifications."
+    },
+    {
+      "element": "Comments",
+      "printed_label": "Comments",
+      "guidance": "Basis of estimate, grade, competency or other relevant information."
+    }
+  ],
+  "tailoring": [
+    "Divide the form into two sections, one for team resources and one for physical resources, or one for internal resources and one for contracted or purchased resources.",
+    "Consider a basis of estimates column with the estimating method for quantities, the range of estimates, the confidence level, and constraints or risks tied to the resource.",
+    "For projects with large amounts of inventory, supplies or material, document support requirements such as inventory, supply chain and logistics."
+  ],
+  "agile_or_adaptive": "",
+  "decisions": [
+    {
+      "decision": "Which kinds of resource each activity needs (team, equipment, supplies, material, location)",
+      "recorded_in": "Resource",
+      "notes": ""
+    },
+    {
+      "decision": "How much of each resource, in what unit",
+      "recorded_in": "Quantity",
+      "notes": ""
+    },
+    {
+      "decision": "Whether to split team and physical, or internal and contracted, resources",
+      "recorded_in": "",
+      "notes": "Tailoring tip."
+    },
+    {
+      "decision": "Whether to add a basis-of-estimate column",
+      "recorded_in": "Comments",
+      "notes": "Tailoring tip; the blank form has no such column."
+    }
+  ],
+  "citation": "Book of Forms form 2.28, PDF pages 124 to 125 (printed pages 113 to 114)",
+  "notes": "The sources list prints 'Cost estimates resource calendars' as one bullet (no comma); it is recorded as printed, and whether it means cost estimates (2.20) plus resource calendars is not stated in the book. 2.20 says it provides to Resource requirements while 2.28 lists cost estimates as a source, so the two forms feed each other. The prose table calls the second element 'Type of resource'; the blank form (PDF page 126, printed page 115) prints 'Resource', which wins. The prose gives no section on adaptive projects."
+}

@@ -1,0 +1,22 @@
+{
+  "form": "4.4",
+  "name": "Earned Value Analysis",
+  "printed_title": "EARNED VALUE ANALYSIS REPORT",
+  "kind": "fields",
+  "page_count": 1,
+  "title_block": ["Project Title", "Date Prepared", "Budget at Completion (BAC)", "Overall Status"],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 219,
+      "blocks": [
+        {"type": "table", "bank": 1, "columns": ["Current Reporting Period", "Current Period Cumulative", "Past Period Cumulative"], "row_labels": ["Planned value (PV)", "Earned value (EV)", "Actual cost (AC)", "Schedule variance (SV)", "Cost variance (CV)", "Schedule performance index (SPI)", "Cost performance index (CPI)"]},
+        {"type": "fields", "labels": ["Root Cause of Schedule Variance", "Schedule Impact", "Root Cause of Cost Variance", "Budget Impact"]},
+        {"type": "table", "bank": 1, "columns": ["Current Reporting Period", "Current Period Cumulative", "Past Period Cumulative"], "row_labels": ["Percent planned", "Percent earned", "Percent spent", "Estimates at Completion (EAC)", "EAC w/CPI [BAC/CPI]", "EAC w/ CPI*SPI [AC + ((BAC - EV)/(CPI*SPI))]", "Selected EAC, Justification, and Explanation", "To complete performance index (TCPI)"]}
+      ]
+    }
+  ],
+  "pairs": [["Project Title", "Date Prepared"], ["Budget at Completion (BAC)", "Overall Status"]],
+  "legend": "",
+  "notes": "Portrait page. The whole body is one bordered grid; it is split here into two tables and a fields block. The three value columns are headed Current Reporting Period, Current Period Cumulative and Past Period Cumulative; that header row prints once, at the top of the grid, so the second table repeats it only for the renderer. The row-label column has no printed header. Blank spacer rows print after Actual cost (AC), after Cost performance index (CPI), after Percent spent and after Selected EAC, Justification, and Explanation. Root Cause of Schedule Variance, Schedule Impact, Root Cause of Cost Variance and Budget Impact each print as a full-width label row (with a trailing colon) over a full-width blank row. In the Current Reporting Period column the cells for Percent planned, Percent earned, Percent spent, EAC w/CPI [BAC/CPI], EAC w/ CPI*SPI [AC + ((BAC - EV)/(CPI*SPI))], Selected EAC, Justification, and Explanation, and To complete performance index (TCPI) are shaded grey (not filled). Estimates at Completion (EAC) prints bold with a trailing colon and its three cells are white. Row labels keep the printed sentence case (Planned value, not Planned Value), the printed spacing difference between w/CPI and w/ CPI*SPI (the gap before each bracketed formula prints wider than a word space and is written as one space here), and an ASCII hyphen in BAC - EV; the CPI*SPI formula wraps over two printed lines. Prose Table 4.4 names a single Estimates at completion element and gives the formulas as EAC = BAC/CPI and EAC = AC + [(BAC - EV)/(CPI x SPI)] plus two TCPI formulas; the blank form prints an Estimates at Completion (EAC) row followed by two formula rows and a Selected EAC row, and no TCPI formula. Budget at Completion (BAC) is in the prose bullet list but not in Table 4.4; Overall Status appears only on the blank form. The index name is Earned Value Analysis; the title bar reads EARNED VALUE ANALYSIS REPORT."
+}

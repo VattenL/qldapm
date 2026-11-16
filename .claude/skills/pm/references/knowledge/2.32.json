@@ -1,0 +1,237 @@
+{
+  "form": "2.32",
+  "name": "Risk Register",
+  "process_group": "Planning",
+  "pmbok_processes": [
+    "11.2 Identify Risks"
+  ],
+  "purpose": "Captures the details of each identified individual risk and carries it through risk analysis, response planning, response implementation and current status, so risks can be tracked over the whole project. It is developed at the start of the project and updated throughout.",
+  "starts": {
+    "when": "the start of the project",
+    "cite": "Book of Forms form 2.32, PDF page 140 (printed page 129)"
+  },
+  "receives_from": [
+    {
+      "source": "1.2",
+      "what": "Assumption log: reviewed as a source of risks (the prose says the register can receive information from anywhere in the project environment); the book does not say which fields are used"
+    },
+    {
+      "source": "3.1",
+      "what": "Issue log: reviewed as a source of risks (the prose says the register can receive information from anywhere in the project environment); the book does not say which fields are used"
+    },
+    {
+      "source": "3.5",
+      "what": "Lessons learned register: reviewed as a source of risks (the prose says the register can receive information from anywhere in the project environment); the book does not say which fields are used"
+    },
+    {
+      "source": "2.5",
+      "what": "Requirements management plan: reviewed as a source of risks (the prose says the register can receive information from anywhere in the project environment); the book does not say which fields are used"
+    },
+    {
+      "source": "2.6",
+      "what": "Requirements documentation: reviewed as a source of risks (the prose says the register can receive information from anywhere in the project environment); the book does not say which fields are used"
+    },
+    {
+      "source": "Scope baseline",
+      "what": "reviewed as a source of risks (the prose says the register can receive information from anywhere in the project environment); the book does not say which fields are used"
+    },
+    {
+      "source": "2.11",
+      "what": "Schedule management plan: reviewed as a source of risks (the prose says the register can receive information from anywhere in the project environment); the book does not say which fields are used"
+    },
+    {
+      "source": "2.16",
+      "what": "Duration estimates: reviewed as a source of risks (the prose says the register can receive information from anywhere in the project environment); the book does not say which fields are used"
+    },
+    {
+      "source": "Schedule baseline",
+      "what": "reviewed as a source of risks (the prose says the register can receive information from anywhere in the project environment); the book does not say which fields are used"
+    },
+    {
+      "source": "2.19",
+      "what": "Cost management plan: reviewed as a source of risks (the prose says the register can receive information from anywhere in the project environment); the book does not say which fields are used"
+    },
+    {
+      "source": "2.20",
+      "what": "Cost estimates: reviewed as a source of risks (the prose says the register can receive information from anywhere in the project environment); the book does not say which fields are used"
+    },
+    {
+      "source": "2.22",
+      "what": "Cost baseline: reviewed as a source of risks (the prose says the register can receive information from anywhere in the project environment); the book does not say which fields are used"
+    },
+    {
+      "source": "2.23",
+      "what": "Quality management plan: reviewed as a source of risks (the prose says the register can receive information from anywhere in the project environment); the book does not say which fields are used"
+    },
+    {
+      "source": "2.26",
+      "what": "Resource management plan: reviewed as a source of risks (the prose says the register can receive information from anywhere in the project environment); the book does not say which fields are used"
+    },
+    {
+      "source": "2.28",
+      "what": "Resource requirements: reviewed as a source of risks (the prose says the register can receive information from anywhere in the project environment); the book does not say which fields are used"
+    },
+    {
+      "source": "2.31",
+      "what": "Risk management plan: reviewed as a source of risks (the prose says the register can receive information from anywhere in the project environment); the book does not say which fields are used"
+    },
+    {
+      "source": "Procurement documents",
+      "what": "reviewed as a source of risks (the prose says the register can receive information from anywhere in the project environment); the book does not say which fields are used"
+    },
+    {
+      "source": "Agreements",
+      "what": "reviewed as a source of risks (the prose says the register can receive information from anywhere in the project environment); the book does not say which fields are used"
+    },
+    {
+      "source": "1.3",
+      "what": "Stakeholder register: reviewed as a source of risks (the prose says the register can receive information from anywhere in the project environment); the book does not say which fields are used"
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "2.8",
+      "what": "Scope statement: named as a recipient in the prose; the book does not say which fields flow"
+    },
+    {
+      "target": "2.16",
+      "what": "Duration estimates: named as a recipient in the prose; the book does not say which fields flow"
+    },
+    {
+      "target": "2.20",
+      "what": "Cost estimates: named as a recipient in the prose; the book does not say which fields flow"
+    },
+    {
+      "target": "2.23",
+      "what": "Quality management plan: named as a recipient in the prose; the book does not say which fields flow"
+    },
+    {
+      "target": "2.28",
+      "what": "Resource requirements: named as a recipient in the prose; the book does not say which fields flow"
+    },
+    {
+      "target": "2.33",
+      "what": "Risk report: named as a recipient in the prose; the book does not say which fields flow"
+    },
+    {
+      "target": "2.37",
+      "what": "Procurement management plan: named as a recipient in the prose; the book does not say which fields flow"
+    },
+    {
+      "target": "2.40",
+      "what": "Stakeholder engagement plan: named as a recipient in the prose; the book does not say which fields flow"
+    },
+    {
+      "target": "3.5",
+      "what": "Lessons learned register: named as a recipient in the prose; the book does not say which fields flow"
+    },
+    {
+      "target": "5.2",
+      "what": "Project closeout: named as a recipient in the prose; the book does not say which fields flow"
+    }
+  ],
+  "alignment": [],
+  "elements": [
+    {
+      "element": "Risk ID",
+      "printed_label": "ID",
+      "guidance": "A unique identifier for the risk. The blank form prints the column as ID."
+    },
+    {
+      "element": "Risk statement",
+      "printed_label": "Risk Statement",
+      "guidance": "The risk event or condition. Usually phrased 'EVENT may occur, causing IMPACT' or 'If CONDITION exists, EVENT may occur, leading to EFFECT'."
+    },
+    {
+      "element": "Risk owner",
+      "printed_label": "Owner",
+      "guidance": "The person responsible for managing and tracking the risk. The blank form prints the column as Owner."
+    },
+    {
+      "element": "Probability",
+      "printed_label": "Probability",
+      "guidance": "The likelihood of the event or condition occurring."
+    },
+    {
+      "element": "Impact",
+      "printed_label": "Impact",
+      "guidance": "The effect on one or more project objectives. The blank form prints one Impact group with four columns: Scope, Quality, Schedule and Cost."
+    },
+    {
+      "element": "Score",
+      "printed_label": "Score",
+      "guidance": "With numeric scoring, multiply probability by impact. With relative scoring, combine the two ratings (for example high-low or medium-high)."
+    },
+    {
+      "element": "Response",
+      "printed_label": "Response",
+      "guidance": "The planned response strategy for the risk or condition. The prose names no strategies here; the technique names come from PMBOK 6 chapter 11."
+    },
+    {
+      "element": "Revised probability",
+      "printed_label": "Revised Probability",
+      "guidance": "The likelihood of the event or condition after the response has been implemented."
+    },
+    {
+      "element": "Revised impact",
+      "printed_label": "Impact",
+      "guidance": "The impact once the response has been implemented. In the blank form it is the second Impact group in the second bank (Scope, Quality, Schedule, Cost), printed as Impact, not Revised Impact."
+    },
+    {
+      "element": "Revised score",
+      "printed_label": "Revised Score",
+      "guidance": "The risk score after the response has been implemented."
+    },
+    {
+      "element": "Actions",
+      "printed_label": "Actions",
+      "guidance": "Any actions that must be taken to respond to the risk."
+    },
+    {
+      "element": "Status",
+      "printed_label": "Status",
+      "guidance": "Open or closed."
+    },
+    {
+      "element": "Comments",
+      "printed_label": "Comments",
+      "guidance": "Any comments or other helpful information about the risk event or condition."
+    }
+  ],
+  "tailoring": [],
+  "agile_or_adaptive": "",
+  "decisions": [
+    {
+      "decision": "Who owns and tracks each risk",
+      "recorded_in": "Owner",
+      "notes": ""
+    },
+    {
+      "decision": "How serious each risk is, and so which to prioritise",
+      "recorded_in": "Score",
+      "notes": "Numeric scoring multiplies probability by impact; relative scoring combines the two ratings. This page does not say where the scales come from; the risk management plan (2.31, Table 2.28) defines probability and impact."
+    },
+    {
+      "decision": "Which response strategy a risk gets now",
+      "recorded_in": "Response",
+      "notes": "The register records the chosen response; the techniques are in the PMBOK 6 chapter 11 note."
+    },
+    {
+      "decision": "What probability, impact and score are expected once the response is in place",
+      "recorded_in": "Revised Probability; Impact (second bank); Revised Score",
+      "notes": ""
+    },
+    {
+      "decision": "Which actions implement the response and who carries them out",
+      "recorded_in": "Actions; Responsible Party",
+      "notes": "Responsible Party prints in the blank form but has no row in Table 2.29."
+    },
+    {
+      "decision": "Whether a risk is still open or can be closed",
+      "recorded_in": "Status",
+      "notes": ""
+    }
+  ],
+  "citation": "Book of Forms form 2.32, PDF pages 139 to 140 (printed pages 128 to 129); Table 2.29 PDF page 140 (printed page 129)",
+  "notes": "Blank form: PDF page 141 (printed page 130). The book prints no Tailoring Tips and no Alignment section for this form, so tailoring and alignment are empty; for the documents to compare use the receives_from and provides_to lists. The blank form prints a Responsible Party column (bank 2) that Table 2.29 does not list, and prints ID and Owner where Table 2.29 says Risk ID and Risk owner; the blank form wins for labels. The prose says the register is 'an output from process 11.2 Identify Risks'. 'Scope baseline' and 'Schedule baseline' are not single forms (the baselines are made of several forms), so they are named, not numbered. 'Project closeout' in the provides_to list is taken to be form 5.2 Project or Phase Closeout; the prose does not give a number."
+}

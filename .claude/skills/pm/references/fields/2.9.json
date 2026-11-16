@@ -1,0 +1,31 @@
+{
+  "form": "2.9",
+  "name": "Work Breakdown Structure",
+  "printed_title": "WORK BREAKDOWN STRUCTURE",
+  "kind": "outline",
+  "page_count": 1,
+  "title_block": [
+    "Project Title",
+    "Date Prepared"
+  ],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 62,
+      "blocks": [
+        {
+          "type": "text",
+          "text": "1. Project\n1.1. Major Deliverable\n1.1.1. Control Account\n1.1.1.1. Work Package\n1.1.1.2. Work Package\n1.1.1.3. Work Package\n1.1.2. Work Package\n1.2. Control Account\n1.2.1. Work Package\n1.2.2. Work Package\n1.3. Major Deliverable\n1.3.1. Control Account\n1.3.1.1. Work Package\n1.3.1.2. Work Package\n1.3.1.3. Work Package\n1.3.2. Control Account\n1.3.2.1. Work Package\n1.3.2.2. Work Package"
+        }
+      ]
+    }
+  ],
+  "pairs": [
+    [
+      "Project Title",
+      "Date Prepared"
+    ]
+  ],
+  "legend": "",
+  "notes": "The body is an indented numbered outline, not labelled boxes. Each printed line is a placeholder: the code (1., 1.1., 1.1.1., 1.1.1.1.) gives the depth and is printed with a trailing full stop, and the words name the kind of element at that position (Project, Major Deliverable, Control Account, Work Package), to be replaced by the real element names. The sample shows that depth is not fixed per kind: a Work Package can sit at level 3 (1.1.2.) or level 4 (1.1.1.1.), and a Control Account can sit at level 2 (1.2.). Render as a nested ordered list with the printed codes; the prose table 2.9 (PDF 61) defines only Control account and Work package."
+}

@@ -1,0 +1,167 @@
+{
+ "form": "4.4",
+ "name": "Earned Value Analysis",
+ "process_group": "Monitoring and Controlling",
+ "pmbok_processes": [
+  "4.5 Monitor and Control Project Work",
+  "6.6 Control Schedule",
+  "7.4 Control Costs",
+  "12.3 Control Procurements"
+ ],
+ "purpose": "Reports the health of the project by combining scope, schedule and cost information into earned value metrics, for the current reporting period and cumulatively. It can also forecast the total cost at completion, or the efficiency needed to finish within the baseline budget. It is run at predefined intervals, either as a standalone report or as part of the project status report.",
+ "receives_from": [],
+ "provides_to": [
+  {
+   "target": "4.2",
+   "what": "the analysis can be provided as part of the project status report instead of a standalone report (prose)"
+  }
+ ],
+ "alignment": [
+  {
+   "form": "4.2",
+   "what_must_agree": "the status report and this analysis must quote the same earned value figures and the same overall status (reading; the book gives only the list entry)"
+  },
+  {
+   "form": "2.18",
+   "what_must_agree": "planned value, earned value and the schedule variance must agree with the project schedule and its progress (reading; the book gives only the list entry)"
+  },
+  {
+   "form": "Project budget",
+   "what_must_agree": "BAC, planned value and actual cost must agree with the project budget; the book has no form named project budget (reading; the book gives only the list entry)"
+  },
+  {
+   "form": "4.3",
+   "what_must_agree": "the variances and root causes here must match the variance analysis (reading; the book gives only the list entry)"
+  },
+  {
+   "form": "4.6",
+   "what_must_agree": "contract cost and schedule figures here must match the contractor status report (reading; the book gives only the list entry)"
+  }
+ ],
+ "elements": [
+  {
+   "element": "Planned value",
+   "printed_label": "Planned value (PV)",
+   "guidance": "The value of the work planned to be accomplished. The blank form has three columns: Current Reporting Period, Current Period Cumulative and Past Period Cumulative."
+  },
+  {
+   "element": "Earned value",
+   "printed_label": "Earned value (EV)",
+   "guidance": "The value of the work actually accomplished."
+  },
+  {
+   "element": "Actual cost",
+   "printed_label": "Actual cost (AC)",
+   "guidance": "The cost of the work that was accomplished."
+  },
+  {
+   "element": "Schedule variance",
+   "printed_label": "Schedule variance (SV)",
+   "guidance": "Earned value minus planned value: SV = EV - PV."
+  },
+  {
+   "element": "Cost variance",
+   "printed_label": "Cost variance (CV)",
+   "guidance": "Earned value minus actual cost: CV = EV - AC."
+  },
+  {
+   "element": "Schedule performance index",
+   "printed_label": "Schedule performance index (SPI)",
+   "guidance": "Earned value divided by planned value: SPI = EV/PV."
+  },
+  {
+   "element": "Cost performance index",
+   "printed_label": "Cost performance index (CPI)",
+   "guidance": "Earned value divided by actual cost: CPI = EV/AC."
+  },
+  {
+   "element": "Root cause of schedule variance",
+   "printed_label": "Root Cause of Schedule Variance",
+   "guidance": "The root cause of the schedule variance."
+  },
+  {
+   "element": "Schedule impact",
+   "printed_label": "Schedule Impact",
+   "guidance": "The effect on deliverables, milestones or the critical path."
+  },
+  {
+   "element": "Root cause of cost variance",
+   "printed_label": "Root Cause of Cost Variance",
+   "guidance": "The root cause of the cost variance."
+  },
+  {
+   "element": "Budget impact",
+   "printed_label": "Budget Impact",
+   "guidance": "The effect on the project budget and on contingency funds and reserves, plus any action intended to address the variance."
+  },
+  {
+   "element": "Percent planned",
+   "printed_label": "Percent planned",
+   "guidance": "The cumulative percent of the work planned to be accomplished: PV/BAC."
+  },
+  {
+   "element": "Percent earned",
+   "printed_label": "Percent earned",
+   "guidance": "The cumulative percent of the work that has been accomplished: EV/BAC."
+  },
+  {
+   "element": "Percent spent",
+   "printed_label": "Percent spent",
+   "guidance": "The total cost spent to accomplish the work as a share of the budget: AC/BAC."
+  },
+  {
+   "element": "Estimates at completion",
+   "printed_label": "Estimates at Completion (EAC)",
+   "guidance": "Choose a method to forecast total expenditure at completion, calculate it, and justify why that estimate was selected. The book's two examples: EAC = BAC/CPI when the CPI is expected to stay the same for the rest of the project; EAC = AC + [(BAC - EV)/(CPI x SPI)] when both indices influence the remaining work. The blank form prints these as the rows EAC w/CPI and EAC w/ CPI*SPI, followed by Selected EAC, Justification, and Explanation."
+  },
+  {
+   "element": "To complete performance index",
+   "printed_label": "To complete performance index (TCPI)",
+   "guidance": "The work remaining divided by the funds remaining. TCPI = (BAC - EV)/(BAC - AC) to complete on plan, or TCPI = (BAC - EV)/(EAC - AC) to complete at the current EAC. The blank form prints no TCPI formula."
+  }
+ ],
+ "tailoring": [
+  "Run the analysis at control account level, at project level, or both, depending on need.",
+  "Add a field for the implications of continued variance, based on a trend analysis or on identified responses.",
+  "More than one equation can calculate EAC, depending on whether the remaining work will be done at the budgeted rate or at the current rate; the form presents two.",
+  "There are several ways to calculate TCPI; use the project's information to choose the approach to report.",
+  "Add a field for the implications of continued schedule variance, such as a schedule forecast that uses SPI as the basis of a trend analysis, or one based on analysing the critical path.",
+  "Some organizations use earned schedule metrics; the form can be extended with earned schedule calculations alongside a critical path analysis.",
+  "The presentation can be tailored too: many PMOs use reporting software that turns the data into dashboards, control charts, S-curves or other displays."
+ ],
+ "agile_or_adaptive": "",
+ "decisions": [
+  {
+   "decision": "Which method forecasts the cost at completion",
+   "recorded_in": "Selected EAC, Justification, and Explanation",
+   "notes": "The book gives two example formulas and asks for the choice to be justified; it states no rule for picking between them beyond whether the CPI will stay the same or both indices will influence the rest of the work."
+  },
+  {
+   "decision": "Which TCPI basis to report",
+   "recorded_in": "To complete performance index (TCPI)",
+   "notes": "Complete on plan (BAC - AC in the denominator) or complete at the current EAC (EAC - AC in the denominator)."
+  },
+  {
+   "decision": "What caused each variance and what it affects",
+   "recorded_in": "Root Cause of Schedule Variance; Schedule Impact; Root Cause of Cost Variance; Budget Impact",
+   "notes": "The book states no variance threshold that triggers action; not stated in the book."
+  },
+  {
+   "decision": "What action is intended against the variance",
+   "recorded_in": "Budget Impact",
+   "notes": "The Table 4.4 description of Budget Impact includes the intended actions to address the variance and the effect on contingency funds and reserves."
+  },
+  {
+   "decision": "Overall status of the project",
+   "recorded_in": "Overall Status",
+   "notes": "Printed on the blank form only; the prose gives no scale."
+  },
+  {
+   "decision": "Whether to analyse at control account level, project level or both",
+   "recorded_in": "",
+   "notes": "A tailoring choice named in the Tailoring Tips; the form has no field for it."
+  }
+ ],
+ "citation": "Book of Forms form 4.4, PDF pages 217 to 218 (printed pages 206 to 207); Table 4.4 PDF page 218 (printed page 207); blank form PDF page 219 (printed page 208)",
+ "notes": "The prose has no receives-from or provides-to section, so receives_from is empty (the book does not say where PV, EV and AC come from) and provides_to holds only the status-report statement. The prose lists Budget at Completion (BAC) among the information collected, and the blank form prints it in the title block, but Table 4.4 has no row for it; the blank form also prints Overall Status, which Table 4.4 does not list. The prose identifies earned value analysis as a technique in the four listed processes; it is not stated to be an output of any of them. Table 4.4 has a single Estimates at completion element and two TCPI formulas; the blank form splits the EAC into three rows and prints no TCPI formula. Printed labels follow the blank form's sentence case. The prose Alignment list names 'Project budget' and 'Contractor status report'; project budget has no form, and the contractor status report is form 4.6. The prose also calls earned value analysis an example of a data analysis technique in PMBOK 6 (PDF page 217, printed page 206), and says it is conducted at pre-defined intervals. Where VAC, ETC and the EAC variants without a row are written is the skill's convention (Selected EAC, Justification, and Explanation), not the book's; the book gives no Overall Status scale and does not say whether the BAC includes the contingency reserve."
+}

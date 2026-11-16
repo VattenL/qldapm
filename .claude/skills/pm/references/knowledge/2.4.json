@@ -1,0 +1,122 @@
+{
+  "form": "2.4",
+  "name": "Scope Management Plan",
+  "process_group": "Planning",
+  "pmbok_processes": [
+    "5.1 Plan Scope Management"
+  ],
+  "purpose": "The scope management plan is part of the project management plan and specifies how scope will be defined, developed, monitored, controlled and validated. At least it covers developing a detailed scope statement, decomposing the project into deliverables with a WBS, deciding what is a scope change versus a revision, maintaining the WBS and scope baseline, and accepting deliverables. It is developed once and does not usually change. It may also direct what a WBS Dictionary should contain and how the scope and requirements management plans interact.",
+  "receives_from": [
+    {
+      "source": "1.1",
+      "what": "charter information; not stated in the book which elements"
+    },
+    {
+      "source": "2.1",
+      "what": "project management plan information; not stated in the book which elements"
+    }
+  ],
+  "provides_to": [
+    {
+      "target": "2.6",
+      "what": "scope management plan information; not stated in the book which elements"
+    },
+    {
+      "target": "2.8",
+      "what": "scope management plan information; not stated in the book which elements"
+    },
+    {
+      "target": "2.9",
+      "what": "scope management plan information; not stated in the book which elements (the WBS row of Table 2.3 covers how the WBS is arranged and control account and work package guidelines)"
+    },
+    {
+      "target": "2.10",
+      "what": "scope management plan information; not stated in the book which elements (the WBS Dictionary row of Table 2.3 covers what the dictionary documents and the level of detail)"
+    }
+  ],
+  "alignment": [
+    {
+      "form": "Development approach",
+      "what_must_agree": "must be consistent with the development approach; the book gives no form number"
+    },
+    {
+      "form": "Life cycle description",
+      "what_must_agree": "must be consistent with the life cycle description; the book gives no form number (form 2.1 has a Project Life Cycle element, but the book does not state that link in this list)"
+    },
+    {
+      "form": "2.2",
+      "what_must_agree": "aligned and consistent with the change management plan; the book does not say which fields"
+    },
+    {
+      "form": "2.5",
+      "what_must_agree": "aligned and consistent with the requirements management plan; the book does not say which fields"
+    },
+    {
+      "form": "Release and iteration plan",
+      "what_must_agree": "must be consistent with the release and iteration plan; the book gives no form number"
+    }
+  ],
+  "elements": [
+    {
+      "element": "WBS",
+      "printed_label": "Work Breakdown (WBS) Structure",
+      "guidance": "Describe the WBS and whether it is arranged by phases, geography, major deliverables or another way. The guidelines for establishing control accounts and work packages can also go here."
+    },
+    {
+      "element": "WBS Dictionary",
+      "printed_label": "WBS Dictionary",
+      "guidance": "Identify what information is documented in the WBS Dictionary and the level of detail required."
+    },
+    {
+      "element": "Scope baseline maintenance",
+      "printed_label": "Scope Baseline Maintenance",
+      "guidance": "Identify which types of scope change must go through formal change control and how the scope baseline is maintained."
+    },
+    {
+      "element": "Deliverable acceptance",
+      "printed_label": "Deliverable Acceptance",
+      "guidance": "For each deliverable, say how it will be validated for customer acceptance, including any tests or documentation needed for sign-off."
+    },
+    {
+      "element": "Scope and requirements integration",
+      "printed_label": "Scope and Requirements Integration",
+      "guidance": "Describe how project and product requirements are addressed in the scope statement and WBS; identify the integration points and how requirements and scope validation will occur."
+    },
+    {
+      "element": "Project management and business analysis integration",
+      "printed_label": "",
+      "guidance": "Describe how business analysis and project management integrate as scope is defined, developed, tested, validated and turned over to operations. The blank form does not print this element."
+    }
+  ],
+  "tailoring": [
+    "On smaller projects, combine the scope management plan with the requirements management plan.",
+    "On larger projects, consider a test and evaluation plan that defines how deliverables are validated and accepted by the customer.",
+    "If the project involves business analysis, incorporate how business analysis and project management activities interact.",
+    "If using an agile or adaptive development approach, incorporate information on the release and iteration plans."
+  ],
+  "agile_or_adaptive": "If an agile or adaptive development approach is used, incorporate information on the release and iteration plans (Tailoring Tips, PDF page 41, printed page 30).",
+  "decisions": [
+    {
+      "decision": "How the WBS is arranged (phases, geography, major deliverables, other) and where control accounts and work packages are set",
+      "recorded_in": "Work Breakdown (WBS) Structure",
+      "notes": ""
+    },
+    {
+      "decision": "What the WBS Dictionary will carry and to what level of detail",
+      "recorded_in": "WBS Dictionary",
+      "notes": ""
+    },
+    {
+      "decision": "Which scope changes need the formal change control process",
+      "recorded_in": "Scope Baseline Maintenance",
+      "notes": ""
+    },
+    {
+      "decision": "How each deliverable is validated for customer acceptance and what signs it off",
+      "recorded_in": "Deliverable Acceptance",
+      "notes": ""
+    }
+  ],
+  "citation": "Book of Forms form 2.4, PDF pages 41 to 42 (printed pages 30 to 31)",
+  "notes": "Purpose, receives, provides, process and Tailoring Tips and Alignment: PDF page 41 (printed page 30). Table: PDF page 42 (printed page 31). The table is printed as Table 2.3 in the book (the 2.x tables are numbered one behind the form numbers from 2.3 on). The table has six rows; the sixth, Project management and business analysis integration, has no box on the blank form. The prose bullet list of processes (scope statement, WBS, change versus revision, maintaining WBS and baseline, acceptance) maps loosely onto the elements, and the book does not give the mapping."
+}

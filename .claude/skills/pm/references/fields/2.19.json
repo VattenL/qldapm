@@ -1,0 +1,50 @@
+{
+  "form": "2.19",
+  "name": "Cost Management Plan",
+  "printed_title": "COST MANAGEMENT PLAN",
+  "kind": "fields",
+  "page_count": 1,
+  "title_block": [
+    "Project Title",
+    "Date Prepared"
+  ],
+  "pages": [
+    {
+      "page": 1,
+      "pdf_page": 95,
+      "blocks": [
+        {
+          "type": "fields",
+          "labels": [
+            "Units of Measure",
+            "Level of Precision",
+            "Level of Accuracy"
+          ]
+        },
+        {
+          "type": "fields",
+          "labels": [
+            "Organizational Procedure Links",
+            "Control Thresholds",
+            "Rules of Performance Measurement",
+            "Cost Reporting and Format",
+            "Additional Details"
+          ]
+        }
+      ]
+    }
+  ],
+  "pairs": [
+    [
+      "Project Title",
+      "Date Prepared"
+    ],
+    [
+      "Units of Measure",
+      "Level of Precision",
+      "Level of Accuracy"
+    ]
+  ],
+  "legend": "",
+  "notes": "Units of Measure, Level of Precision and Level of Accuracy print as three boxes side by side on one row, each label in a header strip above its box, so that entry in pairs has three members, left to right (as in 2.11). The remaining five labels are full-width boxes. Labels print with trailing colons, dropped here. The prose table (Table 2.17) says 'Cost reporting information and format'; the blank form prints 'Cost Reporting and Format', which wins."
+}
