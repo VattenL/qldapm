@@ -38,9 +38,12 @@ package, are the **scope baseline**.
 
 Validate Scope (5.5) and Control Scope (5.6) produce no artifact here. Both are Monitoring and
 Controlling processes: Validate Scope needs verified deliverables handed over by Control Quality
-(8.3), and at the time of writing the project has produced none. Change requests are outputs of
-those two processes only, and they are the input to Perform Integrated Change Control (4.6). The
-four planning processes 5.1 to 5.4, which are what this document covers, output no change requests.
+(8.3), and at the time of writing the project has produced none. Many processes produce change
+requests as an output (PMBOK 6 section 4.6.1.4, printed page 117, PDF page 156), among them Direct
+and Manage Project Work (4.3.3.4, printed page 96, PDF page 135), Monitor and Control Project Work
+(4.5.3.2, printed page 112, PDF page 151), and the controlling processes 5.5 and 5.6; all of them go
+to Perform Integrated Change Control (4.6). The four planning processes 5.1 to 5.4, which are what
+this document covers, output no change requests.
 
 ### Inputs actually used
 
@@ -522,7 +525,7 @@ The totals are fixed by the charter and the sheets roll up to them exactly:
 | Code of Accounts | 1.1.1.3 |
 | Responsible Person | PM |
 | Description of Work | Maintain the risk register R1 to R12 with owners and responses, run the issue log, and raise change requests into Perform Integrated Change Control with their impact assessed against the reserve. |
-| Assumptions and Constraints | Change requests are outputs of the controlling processes 5.5 and 5.6, so this package raises and tracks them once the project is executing. <mark>First-pass estimate, re-baselined at M1.</mark> |
+| Assumptions and Constraints | Many processes produce change requests (PMBOK 6 section 4.6.1.4), among them 4.3 Direct and Manage Project Work, 4.5 Monitor and Control Project Work, 5.5, and 5.6, so this package raises and tracks them once the project is executing. <mark>First-pass estimate, re-baselined at M1.</mark> |
 | Milestones | 1. Risk register baselined at M1; 2. Weekly risk review from M1 |
 | Due Dates | <mark>Mon 14 September 2026 to Fri 5 February 2027, weekly</mark> |
 

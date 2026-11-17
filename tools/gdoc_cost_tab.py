@@ -442,12 +442,15 @@ def spacing(content, tab_id):
 NUMBERED = re.compile(r"(?<=[.;:]) (?=\(\d{1,2}\) )")
 
 
-def number_lines(doc, tab_n):
+def number_lines(doc, tab_n, within=None):
     """A Markdown cell holds one line, so the numbered items of a box, "(1) ... (2) ...", arrive run
     together. Each item after the first starts a line of its own: the space before "(n)" that follows
     the end of the item before becomes a paragraph break. Once broken there is no such space left, so
-    a pass run again changes nothing."""
+    a pass run again changes nothing. `within`, a (start, stop) pair of indexes, limits the pass to the
+    top-level elements that start inside it."""
     tab_id, content = doc.tab(tab_n)
+    if within:
+        content = [el for el in content if within[0] <= el.get("startIndex", 0) < within[1]]
     spaces = []
 
     def walk(elements):
