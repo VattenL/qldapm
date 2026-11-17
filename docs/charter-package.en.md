@@ -33,7 +33,7 @@ Part 2A covers all fourteen charter elements in the order the book lists them. P
 
 **Part 2, Project Charter.** 2A Charter elements, all fourteen in the book's order, including the business case, the risk register R1 to R12, the milestone schedule, and the budget. 2B The PROJECT CHARTER form, filled in, four pages.
 
-**Part 3, Prompt Log.** 3.1 Version history V1 to V11. 3.2 The prompts, with a quality assessment of each. 3.3 What the sequence shows.
+**Part 3, Prompt Log.** 3.1 Version history V1 to V12. 3.2 The prompts, with a quality assessment of each. 3.3 What the sequence shows.
 
 ### Reading convention
 
@@ -469,7 +469,7 @@ The customer owns the business need and the operation the system will run. The C
 | --- | --- | --- |
 | **Scope** | Deliver the twelve functions F01 to F12 and the eleven deliverables D1 to D11 for the three branches. | All twelve functions accepted in UAT, measured against the test set agreed and signed at M5, with at least 99% of test cases passed and the remainder being defects that do not affect operation; acceptance cannot be withheld for scope outside the baseline; all eleven deliverables signed off by the sponsor; no function deferred without an approved change request. |
 | **Time** | Go live by <mark>5 January 2027</mark> and close the project by <mark>5 February 2027</mark>, within the five-month window starting <mark>14 September 2026</mark>, with the first warranty month contained inside that window. | Go-live on or before 5 January 2027; no milestone M1 to M7 more than 1 week later than baseline; the first warranty month runs its full 31 days before closeout. |
-| **Cost** | Deliver the whole scope within the preapproved 700,000,000 VND, including software, deployment, migration, training, and warranty. | Final cost at or below 700,000,000 VND; cost variance at each stage gate within plus or minus 5% of baseline; management reserve use reported monthly. |
+| **Cost** | Deliver the whole scope within the preapproved 700,000,000 VND, including software, deployment, migration, training, and warranty. | Final cost at or below 700,000,000 VND; cost variance at each stage gate within plus or minus 5% of baseline; contingency reserve use reported monthly. |
 | **Other** | **Quality:** a system fit for daily operation from the first day. **Stakeholder satisfaction:** the center runs its daily operation on the system, not on spreadsheets. | At least 99% of UAT test cases passed, the remainder being defects that do not affect operation, each with an agreed fix date; no open Critical or High defect at go-live, and none in the tuition, payment, or teaching-hour path. At least 80% of the <mark>52 staff users</mark> trained and active in the first month, including at least 90% of the 17 administrative users and 75% of the 35 teachers; average user satisfaction at least 4 of 5 in the closeout survey; at least 90% of classes with attendance recorded in the system during the first warranty month; at least <mark>70% of guardians with a smartphone</mark> have activated the app by closeout. |
 
 | Summary Milestones | Due Date |
