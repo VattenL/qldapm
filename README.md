@@ -20,6 +20,7 @@ The deliverable is Markdown. The shared Google Doc is a copy of it and is rebuil
 docs/charter-package.en.md    English deliverable, the source of truth
 docs/charter-package.vi.md    Vietnamese version, version 2.0, no longer maintained
 docs/scope-package.en.md      Scope baseline deliverable: RTM, WBS, WBS dictionary
+docs/report-full.md           The full report tab before the page cut, exported from the Doc to read and study; images in docs/assets/report-full/
 docs/requirements.md          General (course-wide) requirement, 3 points
 docs/wbs_req.md               Scope baseline brief, plus the class notes checked against the sources
 docs/pm-skill-guide.md        How the team uses the pm skill; docs/pm-skill-guide.vi.md in Vietnamese
