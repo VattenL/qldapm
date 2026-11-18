@@ -20,6 +20,7 @@ The deliverable is Markdown. The shared Google Doc is a copy of it and is rebuil
 docs/charter-package.en.md    English deliverable, the source of truth
 docs/charter-package.vi.md    Vietnamese version, version 2.0, no longer maintained
 docs/scope-package.en.md      Scope baseline deliverable: RTM, WBS, WBS dictionary
+docs/report-full.md           The full report tab before the page cut, exported from the Doc to read and study; images in docs/assets/report-full/
 docs/requirements.md          General (course-wide) requirement, 3 points
 docs/wbs_req.md               Scope baseline brief, plus the class notes checked against the sources
 docs/pm-skill-guide.md        How the team uses the pm skill; docs/pm-skill-guide.vi.md in Vietnamese
@@ -35,6 +36,9 @@ tools/test_check_scope.py     Unit tests for the checker's parsers
 tools/cost_estimate.py        Generates forms 2.20 and 2.21 and the scope change request from the WBS dictionary, the levelled schedule, and the listed prices
 tools/test_cost_estimate.py   Unit tests for the estimate's arithmetic and invariants
 tools/gdoc_cost_tab.py        Writes the cost estimates into the Doc tab "5: Cost Estimation" in the printed layout
+tools/gdoc_merge_tabs.py      Writes the tabs of the Doc into one new tab, element by element, from a saved read
+tools/gdoc_report_cut.py      Rebuilds the combined report tab as a new tab under 90 pages before the appendices, Arial at 12 pt or more
+tools/test_gdoc_report_cut.py Unit tests for its index arithmetic, moves, and styles
 docs/assets/style.css         Print stylesheet, only used by the retired PDF pipeline
 build/                        Old HTML and PDF output, retired
 build.py                      Old Markdown to HTML to PDF pipeline, retired
